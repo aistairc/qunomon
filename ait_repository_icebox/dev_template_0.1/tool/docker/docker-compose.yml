@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  jupyter:
+    build:
+      context: ./jupyter
+      dockerfile: dockerfile
+    ports:
+      - 9888:8888
+    container_name: jupyter
+    environment:
+      TZ: Asia/Tokyo
+      NB_UID: 1000
+      NB_GID: 100
+      GRANT_SUDO: "yes"
+      PASSWORD: "password"
+      JUPYTER_TOKEN: "token"
+    volumes:
+      - ../../exp:/workdir/root/exp
+      - ../../develop:/workdir/root/develop
+      - ../../deploy:/workdir/root/deploy
+      - ../../local_qai:/usr/local/qai
+      - ../../../../lib/:/workdir/root/lib
+      - ../../../../template/:/workdir/root/template
+      - ../../tool:/workdir/root/tool
+
+  eclipse-theia:
+    image: theiaide/theia-python:1.3.0
+    ports:
+      - 3010:3000
+    container_name: eclipse-theia
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ../../deploy/:/home/project/deploy
+      - ../../local_qai:/usr/local/qai
+      - ../TheiaTools:/home/project/TheiaTools

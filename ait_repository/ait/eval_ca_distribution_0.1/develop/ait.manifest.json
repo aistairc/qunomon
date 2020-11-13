@@ -1,0 +1,58 @@
+{
+  "name": "eval_ca_distribution",
+  "description": "Evaluating distribution of dataset with expected distribution",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データセットの均一性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "Data",
+      "type": "dataset",
+      "description": "Classification of different attributes related to autonomous driving scenarios",
+      "format": [
+        "csv"
+      ],
+      "schema": "https://bdd-data.berkeley.edu/"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "attribute_no",
+      "type": "int",
+      "description": "Total number of attribute for distibution analysis",
+      "default_val": "6"
+    },
+    {
+      "name": "dimension",
+      "type": "int",
+      "description": "Dimensions of how many attributes to combine for distibution analysis",
+      "default_val": "2"
+    }
+  ],
+  "report": {
+    "measures": [],
+    "resources": [
+      {
+        "name": "distibution_csv",
+        "path": "/usr/local/qai/resources/1/",
+        "type": "table",
+        "description": "Table of distribution for each combination"
+      },
+      {
+        "name": "distibution_plot",
+        "path": "/usr/local/qai/resources/2/",
+        "type": "picture",
+        "description": "Plot of distribution for each combination"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AITLog"
+    }
+  ]
+}

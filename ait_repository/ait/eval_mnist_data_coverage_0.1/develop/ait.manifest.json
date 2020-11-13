@@ -1,0 +1,86 @@
+{
+  "name": "eval_mnist_data_coverage",
+  "description": "\n    Calculate coverage for the contour area and perimeter of the dataset MNIST image.\r\n\n    \r\n\n    𝐶𝑜𝑣[𝑥(𝑛)]=|𝑚𝑎𝑥{𝑥(𝑛)}−𝑚𝑖𝑛{𝑥(𝑛)}|/| 〖ℎ𝑖𝑔ℎ〗_𝑖−〖𝑙𝑜𝑤〗_𝑖 | \n    ",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データセットの被覆性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "images",
+      "type": "dataset",
+      "description": "MNIST images",
+      "format": [
+        "gz"
+      ],
+      "schema": "http://fashion-mnist.s3-website.eu-central-1.amazonaws.com"
+    },
+    {
+      "name": "labels",
+      "type": "dataset",
+      "description": "MNIST labels",
+      "format": [
+        "gz"
+      ],
+      "schema": "http://fashion-mnist.s3-website.eu-central-1.amazonaws.com"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "coverage_category",
+      "type": "str",
+      "description": "\n                                            Specify what coverage rate to be calculated.\n\n                                            Area = Tire area\n\n                                            ArcLength = contour perimeter length\n\n                                            Mean = Average pixel value\n\"\n                                            ",
+      "default_val": "Area"
+    },
+    {
+      "name": "interval",
+      "type": "int",
+      "description": "The interval factor used to calculate coverage.",
+      "default_val": "100"
+    },
+    {
+      "name": "max_range",
+      "type": "int",
+      "description": "The max_range factor used in coverage calculations.",
+      "default_val": "800"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "coverage_total_measures",
+        "type": "float",
+        "description": "Overall coverage within the expected range.",
+        "structure": "single"
+      },
+      {
+        "name": "coverage_each_measures",
+        "type": "float",
+        "description": "Each class coverage within the expected range.",
+        "structure": "sequence"
+      }
+    ],
+    "resources": [
+      {
+        "name": "count_total_class",
+        "path": "/usr/local/qai/resources/1/count_total_class.png",
+        "type": "picture",
+        "description": "Total coverage for all classes."
+      },
+      {
+        "name": "count_each_class",
+        "path": "/usr/local/qai/resources/2/count_class{}.png",
+        "type": "picture",
+        "description": "Total coverage for each classes."
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AITLog"
+    }
+  ]
+}

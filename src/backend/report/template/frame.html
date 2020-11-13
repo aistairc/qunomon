@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+<!--
+function adjust_frame_css(F){
+  if(document.getElementById(F)) {
+    var myF = document.getElementById(F);
+    var myC = myF.contentWindow.document.documentElement;
+    var myW = 100;
+    var myH = 100;
+    if(document.all) {
+      myH  = myC.scrollHeight;
+      myW  = myC.scrollWidth;
+    } else {
+      myH = myC.offsetHeight;
+      myW = myC.offsetWidth;
+    }
+    myF.style.height = myH+"px";
+    myF.style.width = myW+"px";
+  }
+}
+// -->
+</script>
+</head>
+<link href="../../template/css/base_report.css" rel="stylesheet" type="text/css">
+
+<body>
+  <table border="1" class="table">
+    <tbody>
+      <tr>
+        <th colspan="2" align="left">Test Description概要</th>
+      </tr>
+      <tr>
+      <th class="report_terms">Test Description名</th>
+      <td><!--%%TD_NAME%%--></td>
+      </tr>
+      <tr>
+      <th>テスト内容</th>
+      <td><!--%%TD_INFOMATION%%--></td>
+      </tr>
+      <tr>
+      <th>判定</th>
+      <td><!--%%TD_RESULT%%--></td>
+      </tr>
+      <tr>
+      <th>判定条件</th>
+      <td><!--%%TD_CONDITIONAL_EXPRESSION%%--></td>
+      </tr>
+      <tr>
+      <th>見解</th>
+      <td><!--%%TD_OPINION%%--></td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <table border="1" class="table">
+    <tbody>
+      <tr>
+      <th colspan="2" align="left">AIT概要</th>
+      </tr>
+      <tr>
+      <th class="report_terms">AIT名</th>
+      <td><!--%%AIT_NAME%%-->:<!--%%AIT_VERSION%%--></td>
+      </tr>
+      <tr>
+      <th>説明</th>
+      <td><!--%%AIT_INFOMATION%%--></td>
+      </tr>
+      <tr>
+      <th>URL</th>
+      <td><!--%%AIT_URL%%--></td>
+      </tr>
+    </tbody>
+    </table>
+  <br/>
+  <strong class="infomation">テスト結果:</strong><br>
+  <!--%%TD_RESOURCES%%-->
+  
+
+</body>
+</html>

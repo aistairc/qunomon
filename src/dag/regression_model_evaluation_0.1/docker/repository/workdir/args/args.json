@@ -1,0 +1,33 @@
+{
+    "mounts": [
+        {
+            "name": "args_dir",
+            "dst_path": "/tf/repository/workdir/args"
+        },
+        {
+            "name": "result_dir",
+            "dst_path": "/tf/repository/workdir/result"
+        },
+        {
+            "name": "inv_data_set",
+            "dst_path": "/tf/repository/workdir/inventory"
+        }
+    ],
+    "method_params": {},
+    "condition_params": [
+        {
+            "name": "ccc",
+            "value": "ddd"
+        }
+    ],
+    "inventories": [
+        {
+            "name": "data_set",
+            "value": "/tf/repository/workdir/inventory/dataset/boston_housing.npz"
+        },
+        {
+            "name": "model_str",
+            "value": "/tf/repository/workdir/inventory/tf_model/model.h5"
+        }
+    ]
+}

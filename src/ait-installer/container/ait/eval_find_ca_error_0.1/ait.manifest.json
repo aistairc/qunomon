@@ -1,0 +1,98 @@
+{
+  "name": "eval_find_ca_error",
+  "description": "Evaluating quantity of unsound CA combination cases in dataset",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データ設計の十分性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "ca_data",
+      "type": "dataset",
+      "description": "Classification of different attributes related to autonomous driving scenarios. \n                                             Need header.\n                                             Include header for Unsound_CA_combinations.\n                                             ",
+      "format": [
+        "csv"
+      ],
+      "schema": "CSV"
+    },
+    {
+      "name": "Unsound_CA_combinations",
+      "type": "attribute set",
+      "description": "Combinations of different attribute values that are not possible in real life",
+      "format": [
+        "csv"
+      ],
+      "schema": "User given data"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "PCA",
+      "type": "str",
+      "description": "Primary conditional attribute",
+      "default_val": "Road type"
+    },
+    {
+      "name": "PCV",
+      "type": "str",
+      "description": "Primary conditional value",
+      "default_val": "Highway"
+    },
+    {
+      "name": "SCA",
+      "type": "str",
+      "description": "Secondary conditional attribute",
+      "default_val": "Signal"
+    },
+    {
+      "name": "SCV",
+      "type": "str",
+      "description": "Secondary conditional Value",
+      "default_val": "Green"
+    },
+    {
+      "name": "Combination_index",
+      "type": "int",
+      "description": "Index of unsound CA combination case",
+      "default_val": "5"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "count",
+        "type": "int",
+        "description": "Quantity of unsound case",
+        "structure": "single"
+      },
+      {
+        "name": "percentage",
+        "type": "float",
+        "description": "Percentage of unsound case in dataset",
+        "structure": "single"
+      }
+    ],
+    "resources": [
+      {
+        "name": "CountPlot",
+        "path": "/usr/local/qai/resources/1/error_ca_count_plot.png",
+        "type": "picture",
+        "description": "Plot of number of data in each unsound case"
+      },
+      {
+        "name": "PercentagePlot",
+        "path": "/usr/local/qai/resources/2/error_ca_percentage_plot.png",
+        "type": "picture",
+        "description": "Plot of percentage of unsound cases in data"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AITLog"
+    }
+  ]
+}

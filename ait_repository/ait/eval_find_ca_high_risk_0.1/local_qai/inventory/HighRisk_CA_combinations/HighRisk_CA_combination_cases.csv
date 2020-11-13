@@ -1,0 +1,55 @@
+Road type,Weather,Lighting,Obstacle,Pedestrian,Signal,Road condition,Traffic,Zebra crossing,Image clarity,Time
+Highway,Snowy,Any,Any,On road,Any,Any,Any,Any,Any,Night
+Highway,Foggy,Any,Any,On road,Any,Any,Any,Any,Any,Night
+Highway,Rainy,Any,Any,On road,Any,Any,Any,Any,Any,Night
+Highway,Snowy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Night
+Highway,Foggy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Night
+Highway,Rainy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Night
+Highway,Snowy,Any,Any,Any,Any,Any,Any,Any,Any,Night
+Highway,Foggy,Any,Any,Any,Any,Any,Any,Any,Any,Night
+Highway,Rainy,Any,Any,Any,Any,Any,Any,Any,Any,Night
+Highway,Snowy,Any,Any,On road,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Foggy,Any,Any,On road,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Rainy,Any,Any,On road,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Snowy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Foggy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,rainy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Snowy,Any,Any,Any,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Foggy,Any,Any,Any,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,rainy,Any,Any,Any,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Snowy,Any,Any,On road,Any,Any,Any,Any,Any,Night
+General way,Foggy,Any,Any,On road,Any,Any,Any,Any,Any,Night
+General way,Rainy,Any,Any,On road,Any,Any,Any,Any,Any,Night
+General way,Snowy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Night
+General way,Foggy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Night
+General way,Rainy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Night
+General way,Snowy,Any,Any,Any,Any,Any,Any,Any,Any,Night
+General way,Foggy,Any,Any,Any,Any,Any,Any,Any,Any,Night
+General way,rainy,Any,Any,Any,Any,Any,Any,Any,Any,Night
+General way,Snowy,Any,Any,On road,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Foggy,Any,Any,On road,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,rainy,Any,Any,On road,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Snowy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Foggy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Rainy,Any,Any,On sidewalk,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Snowy,Any,Any,Any,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,Foggy,Any,Any,Any,Any,Any,Any,Any,Any,Dawn/Dusk
+General way,rainy,Any,Any,Any,Any,Any,Any,Any,Any,Dawn/Dusk
+Highway,Any,Any,Vehicle,Any,Any,Any,Any,Any,Not clear,Night
+Highway,Any,Any,Others,Any,Any,Any,Any,Any,Not clear,Night
+Highway,Any,Any,Not sure,Any,Any,Any,Any,Any,Not clear,Night
+Highway,Any,Any,Vehicle,Any,Any,Any,Any,Any,Partly clear,Night
+Highway,Any,Any,Others,Any,Any,Any,Any,Any,Partly clear,Night
+Highway,Any,Any,Not sure,Any,Any,Any,Any,Any,Partly clear,Night
+General way,Any,Any,Vehicle,Any,Any,Any,Any,Any,Not clear,Night
+General way,Any,Any,Others,Any,Any,Any,Any,Any,Not clear,Night
+General way,Any,Any,Not sure,Any,Any,Any,Any,Any,Not clear,Night
+General way,Any,Any,Vehicle,Any,Any,Any,Any,Any,Partly clear,Night
+General way,Any,Any,Others,Any,Any,Any,Any,Any,Partly clear,Night
+General way,Any,Any,Not sure,Any,Any,Any,Any,Any,Partly clear,Night
+Tunnel,Any,Any,Vehicle,Any,Any,Any,Any,Any,Not clear,Night
+Tunnel,Any,Any,Others,Any,Any,Any,Any,Any,Not clear,Night
+Tunnel,Any,Any,Not sure,Any,Any,Any,Any,Any,Not clear,Night
+Tunnel,Any,Any,Vehicle,Any,Any,Any,Any,Any,Partly clear,Night
+Tunnel,Any,Any,Others,Any,Any,Any,Any,Any,Partly clear,Night
+Tunnel,Any,Any,Not sure,Any,Any,Any,Any,Any,Partly clear,Night

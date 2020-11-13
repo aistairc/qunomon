@@ -1,0 +1,12 @@
+version: '3'
+services:
+  reverse-proxy:
+    image: reverse-proxy
+    ports:
+      - 8888:80
+    container_name: reverse-proxy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./conf.d/:/etc/nginx/conf.d

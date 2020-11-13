@@ -1,0 +1,92 @@
+version: '3'
+
+services:
+  postgres10:
+    image: postgres:10-alpine
+    container_name: "postgres10"
+    hostname: "postgres10"
+    ports: 
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DATABASE_HOST=postgres10
+    volumes:
+      - postgres10-data:/var/lib/postgresql/data
+
+  pgadmin44:
+    image: dpage/pgadmin4:4
+    container_name: "pgadmin44"
+    ports:
+      - "5051:80"
+    volumes:
+      - pgadmin44-data:/var/lib/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}
+      - PGADMIN_DEFAULT_PASSWORD=${POSTGRES_PASSWORD}
+    hostname: "pgadmin44"
+    depends_on:
+      - postgres10
+
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "airflow"
+    restart: always
+    depends_on:
+      - postgres10
+    environment:
+      - LOAD_EX=n
+      - EXECUTOR=Local
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=postgres10
+      - POSTGRES_PORT=5432
+#    volumes:
+#      - af-dags-data:/usr/local/airflow/dags
+#      - af-logs-data:/usr/local/airflow/logs
+#      - af-plugins-data:/usr/local/airflow/plugins
+    volumes:
+      - ./dags:/usr/local/airflow/dags
+      - ./logs:/usr/local/airflow/logs
+      - ./plugins:/usr/local/airflow/plugins
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /C/testbed_mount_volume/ip/:/usr/local/airflow/ip
+    ports:
+      - "8180:8080"
+    command: webserver
+
+  registry:
+    container_name: registry
+    image: registry:2.7.1
+    hostname: local-registry
+    ports:
+      - 5500:5000
+    volumes:
+      - registry-data
+
+volumes:
+  postgres10-data:
+    driver: local
+  pgadmin44-data:
+    driver: local
+  registry-data:
+    driver: local
+#  af-dags-data:
+#    driver_opts:
+#      type: none
+#      device: /C/m-akita/github/qai-testbed/src/docker-airflow/dags
+#      o: bind
+#  af-logs-data:
+#    driver_opts:
+#      type: none
+#      device: /C/m-akita/github/qai-testbed/src/docker-airflow/logs
+#      o: bind
+#  af-plugins-data:
+#    driver_opts:
+#      type: none
+#      device: /C/m-akita/github/qai-testbed/src/docker-airflow/plugins
+#      o: bind

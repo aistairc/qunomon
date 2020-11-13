@@ -1,0 +1,17 @@
+{
+  "Inventories": [
+    {
+      "Name": "iris_data",
+      "Value": "/usr/local/qai/inventory/iris_data/tableconvert_csv_4nryby.csv"
+    }
+  ],
+  "MethodParams": [
+    {
+      "Name": "mean_column_name",
+      "Value": "petal.width"
+    }
+  ],
+  "testbed_mount_volume_path": "/usr/local/qai/mnt",
+  "run_id": 1,
+  "job_id": 1
+}

@@ -1,0 +1,207 @@
+{
+  "name": "eval_dnn_coverage_tf1.13",
+  "description": "\n    Calculate the neuron coverage for the input dataset given by the user, and display it in the form of a heat map. After that, a gradient for the input dataset is computed by backpropagation. Based on the gradient, the most efficient manipulation to input values in order for the neuron coverage to increase is selected. A number of data is removed from the dataset, and these removed data are converted to new data by the selected manipulation. Then, the new data is added to the dataset, and the coverage is recalculated by running the model with the updated dataset. Similarly, a gradient for the updated dataset is computed. These processes are repeated until the target coverage rate is achieved. Data manipulation algorithm is implemented by the user in Python.\n    ",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの安定性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "image_data",
+      "type": "dataset",
+      "description": "MNIST image data",
+      "format": [
+        "gz"
+      ],
+      "schema": "http://yann.lecun.com/exdb/mnist/"
+    },
+    {
+      "name": "label",
+      "type": "dataset",
+      "description": "MNIST label data",
+      "format": [
+        "gz"
+      ],
+      "schema": "http://yann.lecun.com/exdb/mnist/"
+    },
+    {
+      "name": "tf_ckpt",
+      "type": "model",
+      "description": "Tensorflow model datas.\n\n                                             This is loaded by `tf.train.import_meta_graph`.",
+      "format": [
+        "*"
+      ],
+      "schema": "https://github.com/tensorflow/models/tree/master/official"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "mnist_image_px_size",
+      "type": "int",
+      "description": "\n                                            MNIST Imagge pixel size.\n                                            ",
+      "default_val": "28"
+    },
+    {
+      "name": "determination_on_activation",
+      "type": "int",
+      "description": "\n                                            Neuron Activity/Inactivity\n\n                                            Determination Type\n\n                                            0: Threshold Determination\n\n                                            1: Upper/Lower Limit Determination\n\n                                            2: N Cases of Maximum Value Determination\n                                            ",
+      "default_val": "0"
+    },
+    {
+      "name": "threshold",
+      "type": "float",
+      "description": "\n                                            Threshold\n\n                                            Valid only for threshold determination\n                                            ",
+      "default_val": "0"
+    },
+    {
+      "name": "lower_bound",
+      "type": "float",
+      "description": "\n                                            Lower Limit\n\n                                            No default value\n\n                                            (Valid only for upper/lower limit determination)\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "upper_bound",
+      "type": "float",
+      "description": "\n                                            Upper Limit\n\n                                            No default value\n\n                                            (Valid only for upper/lower limit determination\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "activation_filter_no",
+      "type": "int",
+      "description": "\n                                            Number of Cases N\n\n                                            The default value is 1\n\n                                            (Valid only for N Cases of maximum value determination)\n                                            ",
+      "default_val": "1"
+    },
+    {
+      "name": "heat_map_type",
+      "type": "int",
+      "description": "\n                                            Heat Map Generation Method Type\n\n                                            The default value is 1\n\n                                            0: Generation Not Necessary\n\n                                            1: 0/1 Table\n\n                                            2: Simple Increment\n\n                                            3: Density Coverage\n\n                                            ",
+      "default_val": "1"
+    },
+    {
+      "name": "combination_type",
+      "type": "int",
+      "description": "\n                                            Combination Type\n\n                                            The default value is 0\n\n                                            0: Implementation Not Necessary\n\n                                            1: Execute\n                                            ",
+      "default_val": "0"
+    },
+    {
+      "name": "combination_first",
+      "type": "int",
+      "description": "\n                                            One Layer of Combination Coverage Target\n\n                                            No default value\n\n                                            (Valid and mandatory only for combination type execution)\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "combination_second",
+      "type": "int",
+      "description": "\n                                            The Other Layer of Combination Coverage Target\n\n                                            No default value\n\n                                            (Valid and mandatory only for combination type execution)\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "target_scope_name",
+      "type": "list[str]",
+      "description": "\n                                            Names of tensorflow scopes in which neural networks are defined\n\n                                            No default value (Mandatory)\n\n                                            List items are separate by \",\".\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "edit_num",
+      "type": "int",
+      "description": "\n                                            Number of data manipulated at a time\n\n                                            The default value is 100\n                                            ",
+      "default_val": "100"
+    },
+    {
+      "name": "target_rate",
+      "type": "float",
+      "description": "\n                                            Target Coverage Rate (Execution terminates when the coverage reaches Target Coverage Rate)\n\n                                            The default value is 1.0\n                                            ",
+      "default_val": "1.0"
+    },
+    {
+      "name": "increase_rate",
+      "type": "float",
+      "description": "\n                                            Expected Coverage Growth Rate (if the coverage growth rage compared to 5 times before is less than Expected Coverage Growth Rate, unused manipulations are preferentially selected)\n\n                                            The default value is 0.0\n                                            ",
+      "default_val": "0"
+    },
+    {
+      "name": "dataset_x_num",
+      "type": "int",
+      "description": "\n                                            Number of Input Data Placeholders (in the given dataset)\n\n                                            No default value (Mandatory)\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "dataset_y_num",
+      "type": "int",
+      "description": "\n                                            Number of Label Data Placeholders (in the given dataset)\n\n                                            No default value (Mandatory)\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "dataset_k_num",
+      "type": "int",
+      "description": "\n                                            Number of Constant Data Placeholders (in the given dataset)\n\n                                            No default value (Mandatory)\n                                            ",
+      "default_val": ""
+    },
+    {
+      "name": "split_dataset_start",
+      "type": "int",
+      "description": "\n                                            Dataset Division Start Position (Data from Start Position to End Position of the given dataset are used for coverage testing)\n\n                                            The default value is 0\n                                            ",
+      "default_val": "0"
+    },
+    {
+      "name": "split_dataset_end",
+      "type": "int",
+      "description": "\n                                            Dataset Division End Position (Data from Start Position to End Position of the given dataset are used for coverage testing)\n\n                                            The default value is the size of the given dataset\n                                            ",
+      "default_val": "100"
+    },
+    {
+      "name": "implement_class_name",
+      "type": "str",
+      "description": "\n                                            Class Name in which function 'get_atomic_manipulations' is implemented\n\n                                            No default value (Mandatory)\n                                            ",
+      "default_val": ""
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "coverage_rate_all_layer",
+        "type": "float",
+        "description": "coverage of the model as a whole.",
+        "structure": "single"
+      },
+      {
+        "name": "coverage_rate_each_layer",
+        "type": "float",
+        "description": "coverage of each layer in the model.",
+        "structure": "sequence"
+      },
+      {
+        "name": "coverage_rate_combination",
+        "type": "float",
+        "description": "coverage of select combination.",
+        "structure": "single"
+      }
+    ],
+    "resources": [
+      {
+        "name": "test_case_generator",
+        "path": "/usr/local/qai/resources/1/test_case_generator.csv",
+        "type": "table",
+        "description": "generate coverage increase data."
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "heatmap",
+      "path": "/usr/local/qai/downloads/1/heatmap.html",
+      "description": "the heat map of the coverage as an HTML file."
+    },
+    {
+      "name": "abs_dataset",
+      "path": "/usr/local/qai/downloads/2/output.h5",
+      "description": "the created input data by the manipulation as h5 file."
+    },
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/3/ait.log",
+      "description": "AITLog"
+    }
+  ]
+}

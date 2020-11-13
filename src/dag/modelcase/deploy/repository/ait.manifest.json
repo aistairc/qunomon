@@ -1,0 +1,188 @@
+{
+    "{M}name": "eval_mnist_acc_test_by_tfmodel", // 名前が重複する場合は後で考える
+    "{M}description": "* データ入力形式: XXX\n* MLエンジン: tensorflow-vX.X\n* 出力: XXX\n",
+    "{M}author": "John Smith",
+    "{O}email": "John_Smith@aaa.com",
+    // バージョンは作る人が好きに設定できる
+    "{M}verson": "1",
+    // URLの先にname, description, scopeが書かれる
+    "{M}quality": "https://airc.aist.go.jp/aiqm/quality/internal/要求分析の十分性",
+    "{O}reference": {
+        "書き方は後日検討": "書き方は後日検討"
+    },
+
+    /*  インベントリ
+        name: インベントリの名前(AIT作成者は好きな名前をつけることができる)
+        extensions: インベントリに格納されるファイルの拡張子
+        tag: インベントリのファイルの特徴を記録する(使いたいインベントリを検索するときに使う)
+        description: インベントリの説明。フロントエンドで表示される予定。(省略可)
+    */
+    "{M}inventories": [
+        // inventoryはフォルダと1対1
+        // 中身はすべて同じ目的のファイル
+        {
+            "{M}name": "data_name_alpha",
+            //datasetは複数ファイル, featureは単一csv
+            // labelとか書きたかったらfeatureの中に入れる
+            "{M}type": "dataset or model or feature", 
+            "{M}description": "1枚の手書き文字データ(28x28, png)のpng",
+            "{M}format": ["png", "csv"], //extensionのこと
+            "{O}schema": "schema" // 後日検討、一旦用意しておく
+        },
+        {
+            "name": "data_name_beta",
+            "type": "data or model",
+            "description": "複数の手書き文字データ(28x28, png)のzip",
+            "[new]path": "/usr/owner/inv",
+            "[new]format": "format",
+            "[new]schema(beta)": "schema"
+            // "[deleted]extension": "png",
+            // "[deleted]tag" : [
+            //     "image"
+            // ],
+            
+        },
+        {
+            "name": "model_name_gamma",
+            "type": "data or model",
+            "description": "Tensorflowで作成したモデル",
+            "[new]path": "/usr/owner/inv",
+            "[new]format": "format",
+            "[new]schema(beta)": "schema"
+            // "[deleted]extension": "zip",
+            // "[deleted]tag" : [
+            //     "archive",
+            //     "image"
+            // ]
+        }
+    ],
+
+    /*  テスト実行時に用いるパラメータ
+        name: パラメータの名前(AIT作成者は好きな名前をつけることができる)
+        type: Pythonにおける型
+        description: パラメータの説明。フロントエンドで表示される予定。(省略可)
+        required: テスト実行に必ず入力を要求するかどうか。
+        default_val: 値の入力がされていないときのデフォルト値(省略可)
+    */
+    "{M}parameters": [
+        {
+            "{M}name": "epsilon",
+            "{M}type": "float",
+            "{M}description": "敵対的生成のずらし具合, \\epsilon \\in \\{0.0, 1.0\\}",
+            "{O}default_val": "0.5" //←常にstr
+        },
+        {
+            "name": "delta",
+            "type": "int"
+            // "[deleted]description": "",
+            // "[deleted]required": false
+        },
+        {
+            "name": "msg",
+            "type": "str"
+            // "[deleted]description": "メッセージとか",
+            // "[deleted]required": false,
+            // "[deleted]default_val": "default"
+        }
+    ],
+
+    "{M}report": {
+        // measuresに何も書かなかった場合、自動成功
+        "{M}measures": [
+            {
+                "{M}name": "mae",
+                "{M}description": "mean absolute error. $\\sum_k {|f_k - y_k|} / n$",
+                "{M}type": "int, float, str, ...",
+                "{M}structure": "single, sequance, table, matrix" //singleを想定し、sequance, tableと拡大していく予定
+            },
+            {
+                "name": "mse",
+                "defenition": "$\\sum_k (f_k - y_k)^2 / n$",
+                "description": "mean squared error",
+                "[renamed]valueType": "float",
+                "[new]valueStructure": "single, sequance, table, matrix",
+                "[new]parameters": [ 
+                    {
+                        "name": "f_k",
+                        "type": "float"
+                    },
+                    {
+                        "name": "y_k",
+                        "type": "float"
+                    }
+                ]
+            },
+            {
+                "name": "F value",
+                "defenition": "$\\sum_k (f_k - y_k)^2 / n$",
+                "description": "mean squared error",
+                "[renamed]valueType": "float",
+                "[new]valueStructure": "matrix",
+                "[new]parameters": [ 
+                    {
+                        "name": "col",
+                        "type": "int"
+                    },
+                    {
+                        "name": "row",
+                        "type": "int"
+                    }
+                ]
+            },
+            {
+                "name": "coverage",
+                "defenition": "?",
+                "description": "なんらかのカバー範囲",
+                "[renamed]valueType": "float",
+                "[new]valueStructure": "single, sequance, table, matrix",
+                "[new]parameters": [
+                    {
+                        "name": "x",
+                        "type": "int"
+                    }
+                ]
+            }
+        ],
+        // report出力時に表示することができるファイル
+        "{M}resources":[
+            {
+                "{M}name": "distribution_graph",
+                "{M}path": "aa/bb/cc/distribution_graph.png", //repositoryをrootにしたときの相対パス
+                "{M}type": "image",
+                "{M}description": "分布"
+            },
+            {
+                "name": "scatter_graph",
+                "path": "aa/bb/cc/scatter_graph.png",
+                "type": "image",
+                "description": "散布図"
+            },
+            {
+                "name": "confusion_matrix",
+                "path": "aa/bb/cc/confusion_matrix.png",
+                "type": "image",
+                "description": "散布図"
+            }
+        ]
+    },
+
+    /*  テスト実行により生成されたファイルの内、フロントエンドにてダウンロード可能とするファイルはここに書く
+        注1: report_resourcesに書かれたもののと同じものを書くことも可能
+             その場合、指定されたファイルは、「レポートで用いられる」且つ「ダウンロード可」となる。
+        注2: 注1とは逆に、report_resourcesには書かなかったファイルをdownloadsに書くと、
+             「レポートに使われない」が「ダウンロードは可能」となる。
+    */
+    "{M}downloads": [
+        {
+            "{M}name": "log.txt",
+            "{M}path": "/aa/bb/cc/log.png",
+            "{M}description": "one image"
+        },
+        {
+            "name": "adversarial_samples",
+            "path": "/aa/bb/cc",
+            "description": "zipped images"
+        }
+    ]
+
+}

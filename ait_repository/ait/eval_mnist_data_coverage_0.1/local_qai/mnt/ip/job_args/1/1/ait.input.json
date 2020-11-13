@@ -1,0 +1,29 @@
+{
+  "Inventories": [
+    {
+      "Name": "images",
+      "Value": "/usr/local/qai/inventory/train_images/train-images-idx3-ubyte.gz"
+    },
+    {
+      "Name": "labels",
+      "Value": "/usr/local/qai/inventory/train_labels/train-labels-idx1-ubyte.gz"
+    }
+  ],
+  "MethodParams": [
+    {
+      "Name": "coverage_category",
+      "Value": "Area"
+    },
+    {
+      "Name": "interval",
+      "Value": "100"
+    },
+    {
+      "Name": "max_range",
+      "Value": "800"
+    }
+  ],
+  "testbed_mount_volume_path": "/usr/local/qai/mnt",
+  "run_id": 1,
+  "job_id": 1
+}

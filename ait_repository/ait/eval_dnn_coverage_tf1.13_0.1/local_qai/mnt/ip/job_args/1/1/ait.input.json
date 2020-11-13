@@ -1,0 +1,101 @@
+{
+  "Inventories": [
+    {
+      "Name": "image_data",
+      "Value": "/usr/local/qai/inventory/MNIST_data/image/train-images-idx3-ubyte.gz"
+    },
+    {
+      "Name": "label",
+      "Value": "/usr/local/qai/inventory/MNIST_data/label/train-labels-idx1-ubyte.gz"
+    },
+    {
+      "Name": "tf_ckpt",
+      "Value": "/usr/local/qai/inventory/tf_ckpt"
+    }
+  ],
+  "MethodParams": [
+    {
+      "Name": "mnist_image_px_size",
+      "Value": "28"
+    },
+    {
+      "Name": "determination_on_activation",
+      "Value": "0"
+    },
+    {
+      "Name": "threshold",
+      "Value": "0.5"
+    },
+    {
+      "Name": "lower_bound",
+      "Value": "0.5"
+    },
+    {
+      "Name": "upper_bound",
+      "Value": "1"
+    },
+    {
+      "Name": "activation_filter_no",
+      "Value": "10"
+    },
+    {
+      "Name": "heat_map_type",
+      "Value": "1"
+    },
+    {
+      "Name": "combination_type",
+      "Value": "1"
+    },
+    {
+      "Name": "combination_first",
+      "Value": "4"
+    },
+    {
+      "Name": "combination_second",
+      "Value": "5"
+    },
+    {
+      "Name": "target_scope_name",
+      "Value": "conv1,conv2,conv3,conv4,conv5,conv6,fc1"
+    },
+    {
+      "Name": "edit_num",
+      "Value": "10"
+    },
+    {
+      "Name": "target_rate",
+      "Value": "1.0"
+    },
+    {
+      "Name": "increase_rate",
+      "Value": "0.0"
+    },
+    {
+      "Name": "dataset_x_num",
+      "Value": "1"
+    },
+    {
+      "Name": "dataset_y_num",
+      "Value": "1"
+    },
+    {
+      "Name": "dataset_k_num",
+      "Value": "1"
+    },
+    {
+      "Name": "split_dataset_start",
+      "Value": "0"
+    },
+    {
+      "Name": "split_dataset_end",
+      "Value": "100"
+    },
+    {
+      "Name": "implement_class_name",
+      "Value": "Tutorial"
+    }
+  ],
+  "testbed_mount_volume_path": "/usr/local/qai/mnt",
+  "run_id": 1,
+  "job_id": 1
+}

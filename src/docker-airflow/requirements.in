@@ -1,0 +1,2 @@
+airflow[mysql, password, slack, celery, async]
+redis

@@ -1,0 +1,303 @@
+# QAI Testbed backend REST API Test script
+# REST Client URL:
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@hostUrl = http://127.0.0.1:5000
+@baseUrl = {{hostUrl}}/qai-testbed/api/0.0.1
+
+###
+# API:health-check
+
+GET {{baseUrl}}/health-check
+
+###
+# API: MLFrameworks
+GET {{baseUrl}}/mlFrameworks
+
+###
+# API: GET /mlComponents
+GET {{baseUrl}}/dep-a/mlComponents
+
+###
+# API: POST /mlComponents
+POST {{baseUrl}}/dep-a/mlComponents
+content-type: application/json
+
+{
+    "Name": "Fashion Classifier",
+    "Description": "Fashion image classification",
+    "ProblemDomain": "Image Classification",
+    "MLFrameworkId": 1
+}
+
+###
+# API: POST testDescriotions
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions
+content-type: application/json
+
+{
+    "Name": "Neuron Coverage",
+    "QualityDimensionID": 5,
+    "ParentID": 1,
+    "QualityMeasurements": [
+        {"Id":1, "Value":"60", "RelationalOperatorId":1, "Enable": true}
+    ],
+    "TargetInventories": [
+        {"Id":1, "InventoryId": 1, "TemplateInventoryId": 1},
+        {"Id":2, "InventoryId": 2, "TemplateInventoryId": 2}
+    ],
+    "TestRunner": {
+        "Id":1,
+        "Params":[
+            {"TestRunnerParamTemplateId":1, "Value":"0.5"},
+            {"TestRunnerParamTemplateId":2, "Value":"0.3"},
+            {"TestRunnerParamTemplateId":3, "Value":"1.0"}
+        ]
+    }
+}
+
+###
+# API: PUT testDescriotions
+PUT {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/4
+content-type: application/json
+
+{
+    "Name": "Neuron Coverage2",
+    "QualityDimensionID": 5,
+    "QualityMeasurements": [
+        {"Id":1, "Value":"70", "RelationalOperatorId":1, "Enable": false}
+    ],
+    "TargetInventories": [
+        {"Id":1, "InventoryId": 1, "TemplateInventoryId": 1},
+        {"Id":2, "InventoryId": 6, "TemplateInventoryId": 2}
+    ],
+    "TestRunner": {
+        "Id":1,
+        "Params":[
+            {"TestRunnerParamTemplateId":1, "Value":"0.6"},
+            {"TestRunnerParamTemplateId":2, "Value":"0.4"},
+            {"TestRunnerParamTemplateId":3, "Value":"1.1"}
+        ]
+    }
+}
+
+###
+# API: PUT testDescriotions change AIT
+PUT {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/4
+content-type: application/json
+
+{
+    "Name": "Neuron CoverageX",
+    "QualityDimensionID": 6,
+    "QualityMeasurements": [
+        {"Id":2, "Value":"0.9", "RelationalOperatorId":1, "Enable": true}
+    ],
+    "TargetInventories": [
+        {"Id":1, "InventoryId": 3, "TemplateInventoryId": 3},
+        {"Id":2, "InventoryId": 4, "TemplateInventoryId": 4},
+        {"Id":3, "InventoryId": 5, "TemplateInventoryId": 5}
+    ],
+    "TestRunner": {
+        "Id":2,
+        "Params":[
+            {"TestRunnerParamTemplateId":4, "Value":"select"},
+            {"TestRunnerParamTemplateId":5, "Value":"1"},
+            {"TestRunnerParamTemplateId":6, "Value":"balance"},
+            {"TestRunnerParamTemplateId":7, "Value":"test"},
+            {"TestRunnerParamTemplateId":8, "Value":"attacks"},
+            {"TestRunnerParamTemplateId":9, "Value":"robustness"},
+            {"TestRunnerParamTemplateId":10, "Value":"detection"}
+        ]
+    }
+}
+
+###
+# API: DELETE testDescriotions
+DELETE {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1
+
+###
+# API: testDescriotions/runners
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/runners
+content-type: application/json
+
+{
+    "Command": "AsyncStart",
+    "TestDescriptionIds": [3]
+}
+
+###
+# API: testDescriotions/run-status
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/run-status
+
+###
+# API: testDescriotions
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions
+
+###
+# API: testDescriotionDetail
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/3
+
+###
+# API: testDescriotion Star
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1/star
+
+###
+# API: testDescriotion UnStar
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1/unstar
+
+###
+# API: testDescriotion ancestors
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1/ancestors
+
+###
+# API: testDescriotions/reportGenerator(set param)
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/reportGenerator
+content-type: application/json
+
+{
+    "Command": "SetParam",
+    "Destination": ["3"],
+    "Params": {
+        "Opinion": "精度について問題なし。",
+        "Graphs": [
+            {"GraphId": 1, "ReportRequired": true, "ReportIndex": 4, "ReportName": "Graph-A"},
+            {"GraphId": 2, "ReportRequired": true, "ReportIndex": 3, "ReportName": "Graph-B"},
+            {"GraphId": 3, "ReportRequired": true, "ReportIndex": 2, "ReportName": "Graph-C"},
+            {"GraphId": 4, "ReportRequired": true, "ReportIndex": 1, "ReportName": "Graph-D"}
+        ]
+    }
+}
+
+###
+# API: testDescriotions/reportGenerator(set param)
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/reportGenerator
+content-type: application/json
+
+{
+    "Command": "SetParam",
+    "Destination": ["3"],
+    "Params": {
+        "Opinion": "精度について問題なし。",
+        "Graphs": [
+            {"GraphId": 1, "ReportRequired": true, "ReportIndex": 4, "ReportName": "Graph-A"},
+            {"GraphId": 2, "ReportRequired": false, "ReportIndex": 3, "ReportName": "Graph-B"},
+            {"GraphId": 3, "ReportRequired": false},
+            {"GraphId": 4, "ReportRequired": true, "ReportIndex": 1, "ReportName": "Graph-D"}
+        ]
+    }
+}
+
+###
+# API: testDescriotions/reportGenerator(report generate)
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/reportGenerator
+content-type: application/json
+
+{
+    "Command": "Generate",
+    "Destination": ["3"]
+}
+
+###
+# API: qualitydimensions
+GET {{baseUrl}}/QualityDimensions
+
+###
+# API: GET QualityMeasurements
+GET {{baseUrl}}/QualityMeasurements
+
+###
+# API: POST QualityMeasurements
+POST {{baseUrl}}/QualityMeasurements
+content-type: application/json
+
+{
+  "Name": "分類問題における学習モデルACC計測",
+  "Version": "0.1",
+  "Description": "ACC = (TP+TF) / (TP+FP+TN+FN)",
+  "QualityDimensionId": 5,
+  "OperandTemplates": [
+  {
+      "Name": "ACC",
+      "Unit": "%"
+  }]
+}
+
+###
+# API: GET QualityMeasurements/RelationalOperators
+GET {{baseUrl}}/QualityMeasurements/RelationalOperators
+
+###
+# API: testRunnerList
+GET {{baseUrl}}/testRunners
+
+###
+# API: download
+GET {{baseUrl}}/download/1
+
+###
+# API: format
+GET {{baseUrl}}/formats
+
+###
+# API: inventories
+GET {{baseUrl}}/dep-a/mlComponents/1/inventories
+
+###
+# API: POST inventories
+POST {{baseUrl}}/dep-a/mlComponents/1/inventories
+content-type: application/json
+
+{
+  "Name": "Testdata",
+  "TypeId": 1,
+  "FileSystemId": 1,
+  "FilePath": "/mnt/xxx/99",
+  "Description": "テスト用のデータ",
+  "Formats": [
+    "csv",
+    "dump"
+  ],
+  "Schema": "http://sample.com/datafotmat/testdata"
+}
+
+###
+# API: DELETE inventories
+DELETE {{baseUrl}}/dep-a/mlComponents/1/inventories/1
+
+###
+# API: PUT inventories
+PUT {{baseUrl}}/dep-a/mlComponents/1/inventories/1
+content-type: application/json
+
+{
+  "Name": "Testdata99",
+  "TypeId": 2,
+  "FileSystemId": 2,
+  "FilePath": "/mnt/xxx/99",
+  "Description": "テスト99用のデータ",
+  "Formats": [
+    "csv",
+    "zip"
+  ],
+  "Schema": "http://sample.com/datafotmat/testdata2"
+}
+
+###
+# API: dataTypes
+GET {{baseUrl}}/dataTypes
+
+###
+# API: fileSystems
+GET {{baseUrl}}/fileSystems
+
+###
+# API: POST AIT manifest
+POST {{baseUrl}}/testRunners/manifest
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="ait.manifest"; filename="ait.manifest.json"
+Content-Type: application/json
+
+< ./test_res/ait.manifest.json
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

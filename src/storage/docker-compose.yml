@@ -1,0 +1,37 @@
+version: "3"
+ 
+services:
+  psql:
+    image: postgres:12-alpine
+    container_name: "psql"
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DATABASE_HOST=${DATABASE_HOST}
+    volumes:
+      - psql-data:/var/lib/postgresql/data
+      # SQLで初期化する場合は以下コメントアウト
+      # - ./initdb:/docker-entrypoint-initdb.d
+
+  pgadmin4:
+    image: dpage/pgadmin4:4
+    container_name: "pgadmin4"
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin4-data:/var/lib/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}
+      - PGADMIN_DEFAULT_PASSWORD=${POSTGRES_PASSWORD}
+    hostname: localhost
+    depends_on:
+      - psql
+
+volumes:
+  psql-data:
+    driver: local
+  pgadmin4-data:
+    driver: local

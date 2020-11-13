@@ -1,0 +1,6 @@
+numpy<=1.19.3
+keras<=2.4.3
+nbconvert<=6.0.7
+nbformat<=5.0.8
+psutil<=5.7.3
+py-cpuinfo<=7.0.0

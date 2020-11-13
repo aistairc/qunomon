@@ -1,0 +1,106 @@
+{
+    "name": "dev_deploy_test", 
+    "description": "* データ入力形式: XXX\n* MLエンジン: tensorflow-vX.X\n* 出力: XXX\n",
+    "author": "John Smith",
+    "email": "John_Smith@aaa.com",
+    "version": "0.1",
+    "quality": "https://airc.aist.go.jp/aiqm/quality/internal/要求分析の十分性",
+    "reference": {
+        "書き方は後日検討": "書き方は後日検討"
+    },
+
+    "inventories": [
+        {
+            "name": "data_name_alpha",
+            "type": "dataset", 
+            "description": "1枚の手書き文字データ(28x28, png)のpng",
+            "format": ["png", "csv"],
+            "schema": "schema"
+        },
+        {
+            "name": "data_name_beta",
+            "type": "dataset",
+            "description": "複数の手書き文字データ(28x28, png)のzip",
+            "format": ["png", "csv"],
+            "schema": "schema"
+        },
+        {
+            "name": "model_name_gamma",
+            "type": "model",
+            "description": "Tensorflowで作成したモデル",
+            "format": ["h5"],
+            "schema": "schema"
+        }
+    ],
+
+    "parameters": [
+        {
+            "name": "epsilon",
+            "type": "float",
+            "description": "敵対的生成のずらし具合, \\epsilon \\in \\{0.0, 1.0\\}",
+            "default_val": "0.5"
+        },
+        {
+            "name": "delta",
+            "type": "int",
+            "description": "description of delta",
+            "default_val": "1"
+        },
+        {
+            "name": "msg",
+            "type": "str",
+            "description": "description of msg"
+        }
+    ],
+
+    "report": {
+        "measures": [
+            {
+                "name": "mae",
+                "description": "mean absolute error. $\\sum_k {|f_k - y_k|} / n$",
+                "type": "float",
+                "structure": "single"
+            },
+            {
+                "name": "coverage",
+                "description": "なんらかのカバー範囲",
+                "type": "float",
+                "structure": "single"
+            }
+        ],
+        "resources":[
+            {
+                "name": "distribution_graph",
+                "path": "/usr/local/qai/aa/bb/cc/distribution_graph.png", 
+                "type": "image",
+                "description": "分布"
+            },
+            {
+                "name": "scatter_graph",
+                "path": "/usr/local/qai/aa/bb/cc/scatter_graph.png",
+                "type": "image",
+                "description": "散布図"
+            },
+            {
+                "name": "confusion_matrix",
+                "path": "/usr/local/qai/aa/bb/cc/confusion_matrix.png",
+                "type": "image",
+                "description": "散布図"
+            }
+        ]
+    },
+
+    "downloads": [
+        {
+            "name": "log.txt",
+            "path": "/usr/local/qai/aa/bb/cc/log.png",
+            "description": "one image"
+        },
+        {
+            "name": "adversarial_samples",
+            "path": "/usr/local/qai/aa/bb/cc",
+            "description": "zipped images"
+        }
+    ]
+
+}

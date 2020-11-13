@@ -1,0 +1,14 @@
+!doc/conf.py
+!doc/index.rst
+!doc/make.bat
+!doc/Makefile
+*.rst
+
+# Environments
+# .env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

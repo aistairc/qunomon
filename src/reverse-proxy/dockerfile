@@ -1,0 +1,3 @@
+FROM nginx:1.17.9
+
+COPY ./conf.d/ /etc/nginx/conf.d

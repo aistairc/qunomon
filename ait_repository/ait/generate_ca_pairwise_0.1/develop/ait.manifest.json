@@ -1,0 +1,52 @@
+{
+  "name": "generate_ca_pairwise",
+  "description": "\n    The AIT is generate pair-wise combination for PICT.\n    ",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データ設計の十分性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "pair_wise_model",
+      "type": "dataset",
+      "description": "\n                                             Model of pair-wise.\n                                             Define factors and constraints.\n                                             ",
+      "format": [
+        "txt"
+      ],
+      "schema": "https://github.com/Microsoft/pict/blob/master/doc/pict.md"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "order_combination",
+      "type": "int",
+      "description": "Order of combinations.",
+      "default_val": "2"
+    },
+    {
+      "name": "seed",
+      "type": "int",
+      "description": "\n                                            Randomize generation, N - seed.\n                                            if you fix seed, please set it to 1 or more.\n                                            ",
+      "default_val": "-1"
+    }
+  ],
+  "report": {
+    "measures": [],
+    "resources": [
+      {
+        "name": "generated_paie_wise",
+        "path": "/usr/local/qai/resources/1/pair-wise.csv",
+        "type": "table",
+        "description": "PICT generate pair-wise."
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AIT execute log"
+    }
+  ]
+}

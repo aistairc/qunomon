@@ -1,0 +1,16 @@
+{
+  "Inventories": [
+    {
+      "Name": "Data",
+      "Value": "/usr/local/qai/inventory/data/BDD_labels_2036.csv"
+    },
+    {
+      "Name": "High_risk_CA_combinations",
+      "Value": "/usr/local/qai/inventory/HighRisk_CA_combinations/HighRisk_CA_combination_cases.csv"
+    }
+  ],
+  "MethodParams": [],
+  "testbed_mount_volume_path": "/usr/local/qai/mnt",
+  "run_id": 1,
+  "job_id": 1
+}

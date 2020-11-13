@@ -1,0 +1,29 @@
+{
+  "Inventories": [
+    {
+      "Name": "mnist_dataset",
+      "Value": "/usr/local/qai/inventory/mnist_dataset/mnist_dataset.zip"
+    },
+    {
+      "Name": "mnist_model",
+      "Value": "/usr/local/qai/inventory/mnist_model/model_mnist.zip"
+    }
+  ],
+  "MethodParams": [
+    {
+      "Name": "Lap",
+      "Value": "10"
+    },
+    {
+      "Name": "NumTest",
+      "Value": "500"
+    },
+    {
+      "Name": "mnist_type",
+      "Value": "train"
+    }
+  ],
+  "testbed_mount_volume_path": "/usr/local/qai/mnt",
+  "run_id": 1,
+  "job_id": 1
+}

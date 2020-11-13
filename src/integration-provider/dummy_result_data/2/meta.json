@@ -1,0 +1,7 @@
+{
+    "description":"this is dummy data.",
+    "files":[
+        {"filename":"acc.csv", "type":"table"},
+        {"filename":"Incorrect_data.csv", "type":"table"}
+    ]
+}

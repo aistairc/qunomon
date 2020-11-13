@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script>
+<!--
+
+// -->
+</script>
+<title>AIシステム品質レポート</title>
+</head>
+<link href="./../template/css/base_report.css" rel="stylesheet" type="text/css">
+
+<body>
+<div id="top_page">
+    <div id="back_ground">
+    <div id="title_block">
+        <span>AIシステム品質レポート</span><br/>
+        <h1 id="title">～<!--%%MLCOMPONENT_NAME%%-->～</h1>
+        <p><a href="https://www.cpsec.aist.go.jp/achievements/aiqm/AIQM-Guideline-1.0.1.pdf">機械学習品質マネジメントガイドライン 第1版</a>準拠</p>
+    </div>
+    <div class="author_infomation">
+        <span class="infomation">
+        提出日：<!--%%DATE%%--><br/>
+        作成者：<!--%%AUTHOR%%--><br/>
+        </span>
+    </div>
+    </div>
+</div>
+
+
+<div id="contentslist_page" class="page-break-before">
+<br/>
+<br/>
+<h2>● 目次</h2>
+    <pre>
+    <span id="contents">
+        1.環境情報<br/>
+        2.サマリ<br/>
+        3.運用品質<br/>
+          <span class="contents_sub">3.1	<!--%%SECTION_TITLE_1%%--></span><br/>
+          <span class="contents_sub">3.2	<!--%%SECTION_TITLE_7%%--></span><br/>
+        4 データセットの品質<br/>
+          <span class="contents_sub">4.1	<!--%%SECTION_TITLE_2%%--></span><br/>
+          <span class="contents_sub">4.2	<!--%%SECTION_TITLE_3%%--></span><br/>
+          <span class="contents_sub">4.3	<!--%%SECTION_TITLE_4%%--></span><br/>
+        5 モデルの品質<br/>
+          <span class="contents_sub">5.1	<!--%%SECTION_TITLE_5%%--></span><br/>
+          <span class="contents_sub">5.2	<!--%%SECTION_TITLE_6%%--></span><br/>
+          <span class="contents_sub">5.3	<!--%%SECTION_TITLE_8%%--></span><br/>
+        6 参考<br/>
+        ● レポートフォーマット改版履歴<br/>
+    </span>
+    </pre>
+</div>
+
+<div id="test_enviroment_page" class="page-break-before">
+<br/>
+<br/>
+<h2>1. 環境情報</h2>
+<div id="section_area">
+    <div id="text">
+        <span class="contents_sub">テスト環境の情報<br/></span>
+        <table border="1" class="table">
+            <tr>
+              <th class="terms">項目</th>
+              <th class="value">設定値</th>
+            </tr>
+        <!--%%TEST_ENVIRONMENT%%-->
+        </table>
+    </div>
+</div>
+</div>
+    
+<div id="summary_page" class="page-break-before">
+<br>
+<br>
+<h2>2.サマリ</h2>
+    <div class="section_area">
+        <!--%%SUMMARY%%-->
+    </div>
+</div>
+    
+<div id="report_page" class="page-break-before">
+<br>
+<br>
+<h2>3.運用品質</h2>
+<div class="section_area">
+    <div class="text">
+        運用状態を正しく想定し、適切な分析と対策がなされているかを確認する。
+    </div>
+</div>
+<h3>3.１ <!--%%SECTION_TITLE_1%%--></h3>
+<div class="section_area">
+    <div class="text">
+        &nbsp;&nbsp;機械学習利用システムの実世界での利用状況において、機械学習要素に入力されると想定される運用時の実データの性質について分析が行われ、その分析結果が想定される全ての利用状況を被覆していることを、「要求分析の十分性」とする。<br/>
+        &nbsp;&nbsp;ここでは訓練用データの整理や必要な検査用データの有無の確認などに用いられるよう、具体的な個々のデータと紐付けられるレベルまで、その分析した要件を具体的な言葉で書き下し、データを元に品質を分析する「軸」を定めることを目標とする。<br/>
+        <br/>
+    </div>
+    <br>
+    <!--%%SECTION_1%%-->
+</div>
+<h3 class="page-break-before">3.2 <!--%%SECTION_TITLE_7%%--></h3>
+<div class="section_area">
+    <div class="text">
+        &nbsp;&nbsp;運用開始時点で充足されていた内部品質が、運用期間中を通じて維持されることを「運用時品質の維持性」と称する。<br/>
+        &nbsp;&nbsp;システム外部の環境変化に十分に追従できることと、その追従のための訓練済み機械学習モデルなどの変更が品質の不用意な劣化を引き起こさないことの2 点を含む。<br/>
+    </div>
+    <br>
+    <!--%%SECTION_7%%-->
+</div>
+<div class="page-break-before">
+    <br>
+    <br>
+    <h2>4 データセットの品質</h2>
+    <div class="section_area">
+        <div class="text">
+            &nbsp;&nbsp;データセットが適切に選択されているかを確認する。<br/>
+        </div>
+    </div>
+    
+    <h3>4.1 <!--%%SECTION_TITLE_2%%--></h3>
+    <div class="section_area">
+        <div class="text">
+            &nbsp;&nbsp;要求分析の十分性を前提として、システムが対応すべき様々な状況に対して十分な訓練用データやテスト用データを収集し整理するためのデータ設計の十分な検討を、「データ設計の十分性」とする。<br/>
+            &nbsp;&nbsp;システムの想定する利用状況が複雑な場合には、取りうる組みあわせの数が膨大になるため、全ての組み合わせについてデータセットで網羅することは現実的でない。その場合には、複数の状況を包括する粗い粒度レベルで広く網羅性を確認しつつ、危害や性能低下の可能性が高い細かな状況の組み合わせにも十分に対応し漏れがないことが必要になる。<br/>
+            &nbsp;&nbsp;ここでは、応用毎に適切な手段を選択することで、現実的かつ実用上十分な網羅性を達成することを目標とする。<br/>
+        </div>
+        <br>
+        <!--%%SECTION_2%%-->
+    </div>
+    
+</div>
+
+<h3 class="page-break-before">4.2 <!--%%SECTION_TITLE_3%%--></h3>
+<div class="section_area">
+    <div class="text">
+        &nbsp;&nbsp;「データ設計の十分性」で設計した「対応すべき状況の組み合わせ」の各々に対して、状況の抜け漏れがなく、十分な量の学習データが与えられていることを、「データセットの被覆性」とする。<br/>
+        &nbsp;&nbsp;要求分析やデータ設計において特定された状況やケースについて、データの不足による学習不足や、偏ったデータによる特定の状況への学習漏れが起こらないことを保証するのが、本特性軸を設定する目的である。<br/>
+    </div>
+    <br>
+    <!--%%SECTION_3%%-->
+</div>
+<h3 class="page-break-before">4.3 <!--%%SECTION_TITLE_4%%--></h3>
+<div class="section_area">
+    <div class="text">
+        &nbsp;&nbsp;「被覆性」と対となる概念として、想定する入力データ全体に対するデータの均一性がある。<br/>
+        &nbsp;&nbsp;データセット内の各状況や各ケースが、入力されるデータ全体におけるそれらの発生頻度に応じて抽出されているとき、均一であるとする。<br/>
+    </div>
+    <br>
+    <!--%%SECTION_4%%-->
+</div>
+<div class="page-break-before">
+    <br>
+    <br>
+    <h2>5 モデルの品質</h2>
+    <div class="section_area">
+        <div class="text">
+            &nbsp;&nbsp;入力に対し、モデルが適切に動作するかを確認する。<br/>
+        </div>
+    </div>
+    
+    <h3>5.1 <!--%%SECTION_TITLE_5%%--></h3>
+    <div class="section_area">
+        <div class="text">
+            &nbsp;&nbsp;学習データセット（訓練用データ、テスト用データ、バリデーション用データからなる）に含まれる具体的な入力データに対して、機械学習要素が期待通りの反応を示すことを、「機械学習モデルの正確性」とする。<br/>
+            &nbsp;&nbsp;訓練段階での収束性などの数値的な振る舞いの他に、訓練などに用いるデータに誤りがないこと（誤ったデータが訓練に問題ないレベルで十分少ないこと）なども、この特性に含む。<br/>
+            &nbsp;&nbsp;学習データセットのみを用いた評価では、環境からの入力データ一般に対して機械学習要素が意図した動作を行うかどうかを確認できるわけではない。そこで、本項で掲げる正確性と、次項において取り上げるモデルの安定性はその両立をはかることが重要となる。<br/>
+        </div>
+        <br>
+        <!--%%SECTION_5%%-->
+    </div>
+</div>
+
+<h3 class="page-break-before">5.2 <!--%%SECTION_TITLE_6%%--></h3>
+<div class="section_area">
+    <div class="text">
+        &nbsp;&nbsp;学習データセットに含まれない入力データに対して、機械学習要素が学習データセット内のそれに近いデータに対する反応と十分に類似した反応を示すことを、「機械学習モデルの安定性」と称する。<br/>
+        &nbsp;&nbsp;低い汎化能力や敵対的データによる予測不可能な振る舞いを排除することにより、機械学習要素の振る舞いの予測可能性を高める。<br/>
+    </div>
+    <br>
+    <!--%%SECTION_6%%-->
+</div>
+<h3 class="page-break-before">5.3 <!--%%SECTION_TITLE_8%%--></h3>
+<div class="section_area">
+    <div class="text">
+        &nbsp;&nbsp;機械学習の訓練段階に用いる訓練用プログラムや、実行時に使われる予測・推論プログラムが、与えられたデータや訓練済み機械学習モデルなどに対してソフトウェアプログラムとして正しく動作することを、「プログラムの健全性」とする。<br/>
+        &nbsp;&nbsp;アルゴリズムとしての正しさの他、メモリリソース制約や時間制約の充足、ソフトウェアセキュリティなど一般的なソフトウェアとしての品質要求がここに包含される。<br/>
+    </div>
+    <br>
+    <!--%%SECTION_8%%-->
+</div>
+<div class="page-break-before">
+    <br>
+    <br>
+    <h2>6 参考</h2>
+    <div class="section_area">
+        <div class="text">
+        </div>
+    </div>
+    
+    <div>
+        <br/>
+        <br/>
+        <h2>● レポートフォーマット改版履歴</h2>
+        <div class="section_area">
+            <table border="1" class="table">
+                <tr>
+                  <th class="version">バージョン</th>
+                  <th class="date">改版日</th>
+                  <th class="influence">影響</th>
+                </tr>
+                <tr>
+                  <td>v1.0.0</td>
+                  <td>2020.11.16</td>
+                  <td>公開版</td>
+                </tr>
+              </table>
+        </div>
+    </div>    
+</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$('#summary_frame').on('load', function(){
+    try {
+        $(this).height(0);
+        $(this).height(this.contentWindow.document.documentElement.scrollHeight);
+    } catch (e) {
+    }
+}).trigger('load');
+</script>
+</body>
+</html>

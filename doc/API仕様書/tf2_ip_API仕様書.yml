@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+  title: TF2 API(integration provider)
+  description: TF2 QAI-Testbed integration provider 
+  version: 1.0.0
+
+servers:
+  - url: 'https://127.0.0.1:6000/qai-ip/api/0.0.1'
+    description: IP server
+
+paths:
+  '/{organizer_id}/mlComponents/{ml_components_id}/job':
+    post:
+      tags:
+        - Job
+      summary: ジョブの新規作成・実行.
+      description: ジョブの新規作成・実行.
+      parameters:
+        - name: organizer_id
+          in: path
+          description: 組織ID
+          required: true
+          schema:
+            type: string
+        - name: ml_components_id
+          in: path
+          description: 機械学習コンポーネントId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ジョブ実行の成否とjob_id
+          content:
+            application/json:
+              schema:
+                required:
+                  - Result
+                  - JobId
+                properties:
+                  Result:
+                    type: object
+                    properties:
+                      Code:
+                        type: string
+                      Massage:
+                        type: string
+                  JobId:
+                    type: integer
+                example:
+                  Result:
+                    Code: 'R12000'
+                    Message: 'job create success.'
+                  JobId: 1
+
+  '/health-check':
+    get:
+      tags:
+        - _maintenance
+      summary: 疎通確認
+      description: 疎通確認
+      responses:
+        '200':
+          description: 疎通確認
+          content:
+            application/json:
+              schema:
+                required:
+                  - Code
+                  - Massage
+                properties:
+                  Code:
+                    type: integer
+                  Massage:
+                    type: string
+                example:
+                  "Code": 0
+                  "Message": "alive."
+
+  '/{organizer_id}/mlComponents/{ml_components_id}/jobs/{job_id}/runs/{run_id}/notify-complete':
+    post:
+      tags:
+        - Job
+      summary: ジョブの実行状況の確認.
+      description: すでに実行されたジョブの状況を確認し、更新されている場合、DBをアップデートさせる.
+      parameters:
+        - name: organizer_id
+          in: path
+          description: 組織ID
+          required: true
+          schema:
+            type: string
+        - name: ml_components_id
+          in: path
+          description: 機械学習コンポーネントId
+          required: true
+          schema:
+            type: integer
+        - name: job_id
+          in: path
+          description: フロントエンドで実行ボタンを押した単位をjobと呼ぶ。
+          required: true
+          schema:
+            type: integer
+        - name: run_id
+          in: path
+          description: Jobに内包するTDの各々の実行をrunと呼ぶ。
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: APIのステータス
+          content:
+            application/json:
+              schema:
+                required:
+                  - Result
+                properties:
+                  Result:
+                    type: object
+                    properties:
+                      Code:
+                        type: string
+                      Massage:
+                        type: string
+                example:
+                  Result:
+                    Code: 'R40000'
+                    Message: 'notify success.'
+        '404':
+          description: APIのステータス
+          content:
+            application/json:
+              schema:
+                required:
+                  - Result
+                properties:
+                  Result:
+                    type: object
+                    properties:
+                      Code:
+                        type: string
+                      Massage:
+                        type: string
+                example:
+                  Result:
+                    Code: 'R49020'
+                    Message: 'not found summary_file.'
+
+components:
+  schemas:
+    Result:
+      type: object

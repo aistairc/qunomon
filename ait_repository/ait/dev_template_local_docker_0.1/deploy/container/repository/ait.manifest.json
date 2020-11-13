@@ -1,0 +1,53 @@
+{
+  "name": "dev_template_local_docker",
+  "description": "AIT template (docker image regist to local)",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データ設計の十分性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "iris_data",
+      "type": "dataset",
+      "description": "アヤメの分類データです",
+      "format": [
+        "csv"
+      ],
+      "schema": "https://archive.ics.uci.edu/ml/datasets/iris"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "mean_column_name",
+      "type": "str",
+      "description": "sepal.width\nsepal.length\npetal.width\npetal.length",
+      "default_val": "sepal.width"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "mean",
+        "type": "float",
+        "description": "mean of select column",
+        "structure": "single"
+      }
+    ],
+    "resources": [
+      {
+        "name": "pairplot",
+        "path": "/usr/local/qai/resources/1/pairplot.png",
+        "type": "picture",
+        "description": "pairplot"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AIT実行ログ"
+    }
+  ]
+}

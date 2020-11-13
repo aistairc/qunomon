@@ -1,0 +1,97 @@
+{
+  "name": "eval_mnist_bw_classify",
+  "description": "\n    Calculate the black and white classification of the dataset MNIST images.\n\n    \n\n    Evaluation value: whole class\n\n    Percentage of white ratio\n\n    standard deviation\n\n    \n\n    Resource Output:\n\n    Pixel mean and standard deviation by class\n\n    Normal distribution of pixels by class\n\n    \n\n    Other outputs: none\n\n    ",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データセットの均一性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "test_set_images",
+      "type": "dataset",
+      "description": "Image set (MNIST format)",
+      "format": [
+        "gz"
+      ],
+      "schema": "http://yann.lecun.com/exdb/mnist/"
+    },
+    {
+      "name": "test_set_labels",
+      "type": "dataset",
+      "description": "Image label (MNIST format)",
+      "format": [
+        "gz"
+      ],
+      "schema": "http://yann.lecun.com/exdb/mnist/"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "average_weight",
+      "type": "bool",
+      "description": "pixel average calculation with weight\n[True or False]",
+      "default_val": "True"
+    },
+    {
+      "name": "image_px_size",
+      "type": "int",
+      "description": "prediction image pixel size",
+      "default_val": "28"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "bw_probabl",
+        "type": "float",
+        "description": "Black - White probabl\n\nex)\n\n                                          Black=6000, White=4000 then BW_probabl=1.5",
+        "structure": "single"
+      },
+      {
+        "name": "bw_std",
+        "type": "float",
+        "description": "standard deviation",
+        "structure": "single"
+      },
+      {
+        "name": "bw_probabl_per_class",
+        "type": "float",
+        "description": "bw_probabl per class",
+        "structure": "sequence"
+      },
+      {
+        "name": "bw_std_per_class",
+        "type": "float",
+        "description": "bw_std per class",
+        "structure": "sequence"
+      }
+    ],
+    "resources": [
+      {
+        "name": "BWClassifyResultCSV",
+        "path": "/usr/local/qai/resources/1/bw_classify_result.csv",
+        "type": "table",
+        "description": "'ClassNo', 'data_num', 'mean', 'std', 'b_num', 'w_num'"
+      },
+      {
+        "name": "BWHistgram",
+        "path": "/usr/local/qai/resources/2/bw_histgram_class_{}.png",
+        "type": "picture",
+        "description": "Distribution of average (normalized) pixel values"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AITLog"
+    },
+    {
+      "name": "BWClassifyResult",
+      "path": "/usr/local/qai/downloads/2/bw_classify_result.csv",
+      "description": "ID,Class,Index,Pixel average (normalized),B/W"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Road type:      Highway, General way, Tunnel, Under FO,PL/GS, Undefined
+Weather:        Fine, Cloudy, rainy, Snowy, Foggy, Heat haze, Undefined
+Lighting:       High, Normal, Low, None, Undefined
+Obstacle:       Vehicle, Others, None, Not sure, Undefined
+Pedestrian:     On road, On sidewalk, None, Not sure, Undefined
+Signal:         Green, Yellow, Red, None, Not sure, Undefined
+Road condition: Dry, Wet, Snowy, Undefined
+Traffic:        High, Medium, Low, None, Undefined
+Zebra crossing: Yes, No, Not visible, Undefined
+Image clarity:  Clear, Partly clear, Not clear, Undefined
+Time:           Day, Night, Dawn/Dusk, Undefined

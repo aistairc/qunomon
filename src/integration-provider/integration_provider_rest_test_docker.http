@@ -1,0 +1,104 @@
+# QAI Testbed backend REST API Test script
+# REST Client URL:
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@hostUrl = http://127.0.0.1:8888
+@baseUrl = {{hostUrl}}/qai-ip/api/0.0.1
+
+###
+# API:health-check
+
+GET {{baseUrl}}/health-check
+
+###
+# API: pipeline
+
+POST {{baseUrl}}/dep-a/mlComponents/1/pipeline
+content-type: application/json
+
+{
+    "PipelineType": "TestRunner",
+    "TargetID": 1
+}
+
+###
+# API: job
+POST {{baseUrl}}/dep-a/mlComponents/1/job
+content-type: application/json
+
+{
+    "TestDescriptionIds": [3]
+}
+
+###
+# API: job-status
+GET {{baseUrl}}/job-status/1
+
+###
+# API: job-status
+GET {{baseUrl}}/job-result/1
+
+###
+# API: deploy dag
+POST {{baseUrl}}/deploy-dag
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dag_zip"; filename="dev_deploy_test_0.1.zip"
+Content-Type: application/zip
+
+< ./test_res/dev_deploy_test_0.1.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+# API: deploy dag error manifest not found
+POST {{baseUrl}}/deploy-dag
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dag_zip"; filename="dev_deploy_test_0.1.zip"
+Content-Type: application/zip
+
+< ./test_res/dev_deploy_test_0.1_manifest_not_exist.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+# API: deploy dag error dockerfile not found
+POST {{baseUrl}}/deploy-dag
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dag_zip"; filename="dev_deploy_test_0.1.zip"
+Content-Type: application/zip
+
+< ./test_res/dev_deploy_test_0.1_dockerfile_not_exist.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+# API: deploy dag error dag not found
+POST {{baseUrl}}/deploy-dag
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dag_zip"; filename="dev_deploy_test_0.1.zip"
+Content-Type: application/zip
+
+< ./test_res/dev_deploy_test_0.1_dag_not_exist.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+# API: POST async deploy dag
+POST {{baseUrl}}/async-deploy-dag
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dag_zip"; filename="dev_deploy_test_0.1.zip"
+Content-Type: application/zip
+
+< ./test_res/dev_deploy_test_0.1.zip
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+###
+# API: GET async deploy dag
+GET {{baseUrl}}/async-deploy-dag

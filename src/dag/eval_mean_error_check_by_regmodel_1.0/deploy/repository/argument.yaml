@@ -1,0 +1,13 @@
+parameter:
+  aaa:
+    type: 'float'
+  bbb:
+    type: 'int'
+  ccc:
+    type: 'str'
+
+inventory:
+  model:
+    - model_inventory_aaa
+  data:
+    - data_inventory_bbb

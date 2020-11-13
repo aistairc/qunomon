@@ -1,0 +1,366 @@
+@startuml erdiagram
+
+skinparam monochrome true
+
+package "UserArea" <<rectangle>>{
+    entity "System"
+    entity "SubSystem"
+    entity "Component"
+    entity "AIComponent"
+    System --|{ SubSystem
+    SubSystem --|{ Component
+    Component ||--|| AIComponent
+}
+
+package "TestbedArea" <<rectangle>>{
+    package "NoSQLDB" as ext <<Database>> {
+        entity "Store" {
+            asset_store_id
+            log_store_id
+            visualize_store_id
+            report_store_id
+        }
+    }
+    
+    package "QualityTemplateArea" <<rectangle>>{
+
+        entity "M_TestRunner" {
+            + id [PK]
+            ==
+            # quality_measurement_id [FK(M_Quality_Measurement.id)]
+            name
+            ' dag_name
+            description
+            author
+            email
+            version
+            quality
+        }
+
+        entity "M_TestRunnerReference" {
+            + id [PK]
+            ==
+            # testrunner_id [FK(M_TestRunner.id)]
+            reference
+        }
+
+        entity "M_TestRunnerParamTemplate" {
+            + id [PK]
+            ==
+            # testrunner_id [FK(M_TestRunner.id)]
+            name
+            value_type
+            description
+            default_val
+            
+        }
+
+        entity "M_TestInventoryTemplate" {
+            + id [PK]
+            ==
+            # testrunner_id [FK(M_TestRunner.id)]
+            name
+            type
+            description
+            ' T.B.D. schema
+        }
+
+        entity "M_TestInventoryTemplate_Format" {
+            + id [PK]
+            ==
+            # inventory_template_id [FK(M_TestInventoryTemplate.id)]
+            # format_id [FK(M_Format.id)]
+        }
+
+        entity "M_TestInventoryTemplateTag" {
+            + id [PK]
+            ==
+            # inventory_template_id [FK(M_TestInventoryTemplate.id)]
+            # tag_id [FK(M_Tag.id)]
+        }
+
+        entity "M_Quality_Dimension" {
+            + id [PK]
+            ==
+            name
+        }
+
+        entity "M_Quality_Measurement" {
+            + id [PK]
+            ==
+            # quality_dimension_id [FK(M_Quality_Dimension.id)]
+            name
+        }
+        
+        entity "M_OperandTemplate" {
+            + id [PK]
+            ==
+            # quality_measurement_id [FK(M_OperandTemplate.id)]
+            # structure_id [FK(M_Structure.id)]
+            name
+            unit
+            description
+            type
+        }
+
+        entity "M_GraphTemplate" {
+            + id [PK]
+            ==
+            # test_runner_id [FK(M_TestRunner.id)]
+            type
+            name
+            path
+            description
+        }
+
+        entity "M_Downloadable_Data" {
+            + id [PK]
+            ==
+            # test_runner_id [FK(M_TestRunner.id)]
+            name
+            path
+            description
+        }
+
+        M_Quality_Measurement --|{ M_TestRunner
+        M_Quality_Measurement --|{ M_OperandTemplate
+        M_TestRunner --|{ M_TestRunnerReference
+        M_TestRunner --|{ M_TestRunnerParamTemplate
+        M_TestRunner --|{ M_GraphTemplate
+        M_TestRunner --|{ M_Downloadable_Data
+        M_TestRunner --|{ M_TestInventoryTemplate
+    }
+
+    package "BasicArea" <<rectangle>>{
+        entity "M_Organization" {
+            + id [PK]
+            ==
+            name 
+        }
+
+        entity "M_Project" {
+            + id [PK]
+            ==
+            # org_id [FK(M_Organization.id)]
+            name
+        }
+
+        entity "(未実装)M_ProjectAssigneRole" {
+            + id [PK]
+            ==
+            # org_id [FK(M_Organization.id)]
+            # proj_id [FK(M_Project.id)]
+            # user_id [FK(M_User.id)]
+            role
+        }
+
+        entity "(未実装)M_User" {
+            + id [PK]
+            ==
+            # org_id [FK(M_Organization.id)]
+            # proj_id [FK(M_Project.id)]
+            user_name
+            mail_address
+            password
+        }
+        
+        entity "M_Inventory" {
+            + id [PK]
+            ==
+            # prj_id [FK(M_Project.id)]
+            name
+            type
+            address
+            description
+            delete_flag
+        }
+        
+        entity "M_Tag" {
+            + id [PK]
+            ==
+            name
+            type
+        }
+
+        entity "M_Setting" {
+            + id [PK]
+            ==
+            key
+            value
+        }
+
+        entity "M_Format" {
+            + id [PK]
+            ==
+            format
+        }
+
+        entity "M_Structure" {
+            + id [PK]
+            ==
+            structure
+        }
+
+        entity "M_Inventory_Tag" {
+            + id [PK]
+            ==
+            # inventory_id [FK(M_Inventory.id)]
+            # tag_id [FK(M_Tag.id)]
+        }
+
+        entity "(未実装)M_DownloadWhiteList" {
+            + id [PK]
+            ==
+            # proj_id [FK(M_Projectid)]
+            asset_id
+        }
+
+        entity "M_RelationalOperator" {
+            + id [PK]
+            ==
+            expression
+            description
+        }
+
+        ' M_Organization --|{ (未実装)M_User
+        M_Organization --|{ M_Project
+        M_Inventory --|{ M_Inventory_Tag
+        M_Tag --|{ M_Inventory_Tag
+        M_Structure --|{ M_OperandTemplate
+        ' M_Project --|{ (未実装)M_DownloadWhiteList
+        ' (未実装)M_ProjectAssigneRole -- M_Project
+        ' (未実装)M_ProjectAssigneRole -- (未実装)M_User
+        ' M_Organization -- (未実装)M_ProjectAssigneRole
+
+    }
+
+    package "QualityManagementArea" <<rectangle>>{
+
+        entity "T_Test" {
+            + id [PK]
+            ==
+            # prj_id [FK(T_Project.id)]
+            # job_id [FK(T_Job.id)]
+            report_url
+        }
+
+        entity "T_TestDescription" {
+            + id [PK]
+            ==
+            # test_id [FK(T_Test.id)]
+            # quality_dimension_id [FK(M_Quality_Dimension.id)]
+            # quality_measurement_id [FK(M_Quality_Measurement.id)]
+            # test_runner_id [FK(M_TestRunner.id)]
+            # parent_id [FK(T_TestDescription.id)]
+            # run_id [FK(T_Run.id)]
+            name
+            creation_datetime
+            opinion
+            delete_flag
+            value_target
+        }
+        
+        entity "T_Inventory_TestDescription" {
+            + id [PK]
+            ==
+            # inventory_id [FK(M_Inventory.id)]
+            # test_description_id [FK(T_TestDescription.id)]
+            # template_inventory_id [FK(T_Inventory_TestDescription.id)]
+        }
+
+        entity "T_TestRunnerParam" {
+            + id [PK]
+            ==
+            # test_runner_param_template_id [FK(M_TestRunnerParamTemplate.id)]
+            # test_description_id [FK(T_TestDescription.id)]
+            value
+        }
+        
+        entity "T_Operand"{
+            + id [PK]
+            ==
+            # operand_template_id [FK(M_OperandTemplate.id)]
+            # test_description_id [FK(T_TestDescription.id)]
+            # relational_operator_id [FK(M_RelationalOperator.id)]
+            value
+        }
+
+        ' entity "(未実装)T_TestDescriptionResult"{
+        '     + id [PK]
+        '     ==
+        '     # test_description_id [FK(T_TestDescription.id)]
+        '     summary
+        '     detail
+        '     log_address
+        ' }
+        
+        entity "T_Graph"{
+            + id [PK]
+            ==
+            # graph_template_id [FK(M_GraphTemplate.id)]
+            ' # test_description_result_id [FK(T_TestDescriptionResult.id)]
+            # test_runner_id [FK(T_Run.id)]
+            # test_download_id [FK(T_Download.id)]
+            graph_address
+            report_required
+        }
+
+        entity "T_Download"{
+            + id [PK]
+            ==
+            path
+        }
+
+        entity "T_Job"{
+            + id [PK]
+            ==
+            status
+            result
+            result_detail
+            creation_datetime
+            test_id
+        }
+
+        entity "T_Run"{
+            + id [PK]
+            ==
+            # job_id [FK(T_Job.id)]
+            status
+            result
+            result_detail
+            launch_datetime
+            done_datetime
+            execution_date
+            result_summary_file
+            result_meta_file
+            log_file
+            test_description_id
+        }
+
+        M_Project --|{ M_Inventory
+        M_Project -- T_Test
+        T_Test --|{ T_TestDescription
+        T_TestDescription --|{ T_Operand
+        T_Operand -- M_OperandTemplate
+        T_TestDescription --|{ T_TestRunnerParam
+        T_TestRunnerParam -- M_TestRunnerParamTemplate
+        ' T_TestDescription -- T_TestDescriptionResult
+        ' T_TestDescriptionResult --|{ T_Graph
+        T_Graph -- M_GraphTemplate
+        T_TestDescription --|{ T_Inventory_TestDescription
+        M_Inventory --|{ T_Inventory_TestDescription
+        M_TestInventoryTemplate --|{ M_TestInventoryTemplateTag
+        M_TestInventoryTemplate --|{ M_TestInventoryTemplate_Format
+        M_Tag --|{ M_TestInventoryTemplateTag
+        M_Format --|{ M_TestInventoryTemplate_Format
+        T_Job --|{ T_Run
+        M_RelationalOperator --|{ T_Operand
+    }
+
+    M_Project||--||AIComponent
+    T_TestDescription--M_Quality_Dimension
+    T_TestDescription--M_TestRunner
+    T_TestDescription--M_Quality_Measurement
+}
+
+@enduml

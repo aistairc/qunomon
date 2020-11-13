@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+</head>
+<link href="./../../../template/css/base_report.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+<!--
+function adjust_frame_css(F){
+  if(document.getElementById(F)) {
+    var myF = document.getElementById(F);
+    var myC = myF.contentWindow.document.documentElement;
+    var myH = 100;
+    var myW = 100;
+    if(document.all) {
+      myH  = myC.scrollHeight;
+      myW  = myC.width;
+    } else {
+      myH = myC.offsetHeight;
+      myW = myC.width;
+    }
+    myF.style.height = myH+"px";
+  }
+}
+// -->
+</script>
+<body>
+  <div class="result_table">
+    <!--%%TABLE%%-->
+  </div>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      var flag = true;
+      var fontSize = 16;
+      var tableElements = document.getElementsByTagName('table');
+      var tableElement = tableElements[0];
+      var tbodyElements = document.getElementsByTagName('tbody');
+      var tbodyElement = tbodyElements[0];
+      while (flag) {
+        var h = tableElement.getBoundingClientRect().height;
+        if (h > 430){
+          fontSize--;
+        } else {
+          flag = false;
+        }
+        tbodyElement.style.fontSize = fontSize + "px";
+      }
+    }
+  </script>
+
+</body>
+</html>

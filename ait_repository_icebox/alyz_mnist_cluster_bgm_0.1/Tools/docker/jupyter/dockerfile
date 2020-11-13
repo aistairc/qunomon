@@ -1,0 +1,27 @@
+# python3をベースにする
+FROM tensorflow/tensorflow:2.3.0
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    tree \
+    vim
+
+# RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip setuptools \
+    && pip3 install jupyterlab \
+    && pip3 install matplotlib \
+    && jupyter serverextension enable --py jupyterlab
+#    && jupyter labextension install mlflow-extension \
+#    && jupyter labextension install @lckr/jupyterlab_variableinspector
+
+# 作業ディレクトリを指定
+WORKDIR /workdir
+
+# コンテナ側のポート番号
+EXPOSE 8888
+
+ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+
+# Jupyterlabのルートとなるディレクトリを指定
+CMD ["--notebook-dir=/workdir"]

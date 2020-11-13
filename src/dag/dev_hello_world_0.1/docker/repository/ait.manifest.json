@@ -1,0 +1,76 @@
+{
+  "name": "dev_hello_world",
+  "description": "AIT HelloWorld",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "未分類",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "TrainedModel",
+      "type": "model",
+      "description": "TrainedModel",
+      "format": [
+        "ONNX"
+      ],
+      "schema": "https://support.hdfgroup.org/HDF5/doc/"
+    }],
+  "parameters": [
+    {
+      "name": "Name",
+      "type": "string",
+      "description": "Name",
+      "default_val": ""
+    }],
+  "report": {
+    "measures": [
+      {
+        "name": "学習モデルの敵対的サンプル安定性計測2",
+        "type": "float",
+        "description": "",
+        "structure": "single"
+      }],
+    "resources": [
+      {
+        "name": "acc.csv",
+        "path": "/usr/local/qai/resources/1/acc.csv",
+        "type": "table",
+        "description": "acc.csv"
+      },
+      {
+        "name": "acc.png",
+        "path": "/usr/local/qai/resources/2/acc.png",
+        "type": "picture",
+        "description": "acc.png"
+      },
+      {
+        "name": "images.png",
+        "path": "/usr/local/qai/resources/3/images.png",
+        "type": "picture",
+        "description": "images.png"
+      },
+      {
+        "name": "Incorrect_data.csv",
+        "path": "/usr/local/qai/resources/4/Incorrect_data.csv",
+        "type": "table",
+        "description": "incorrect data csv"
+      }]
+  },
+  "downloads": [
+    {
+      "name": "log.txt",
+      "path": "/usr/local/qai/downloads/1/log.txt",
+      "description": "AIT実行ログ"
+    },
+    {
+      "name": "adversarial_samples",
+      "path": "/usr/local/qai/downloads/2/adversarial_samples.zip",
+      "description": "AIT実行ログ"
+    },
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/3/ait.log",
+      "description": "AIT実行ログ"
+    }]
+}

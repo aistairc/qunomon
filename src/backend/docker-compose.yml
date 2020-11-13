@@ -1,0 +1,21 @@
+version: "3"
+ 
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app
+    container_name: backend
+    ports: 
+      - ${FLASK_PORT}:${FLASK_PORT}
+    expose: 
+      - ${FLASK_PORT}
+    environment:
+      - FLASK_PORT=${FLASK_PORT}
+      - FLASK_CONFIG=${FLASK_CONFIG}
+    volumes:
+      - ./:/work/
+    command: 
+      ['python', '-m', 'entrypoint', 'startserver']
+      # ['python', 'entrypoint', 'startserver']

@@ -1,0 +1,10 @@
+{
+  "input_placeholder": {
+    "name": "Placeholder:0",
+    "shape": "(?, 784)"
+  },
+  "output_node": {
+    "name": "ArgMax:0",
+    "shape": "(?,)"
+  }
+}

@@ -1,0 +1,31 @@
+{
+	"determination_on_activation": 0,
+	"threshold":0.5,
+	"lower_bound": 0.5,
+	"upper_bound": 1,
+	"heat_map_type": 1,
+	"activation_filter_no": 10,
+	"combination_type": 1,
+	"combination_first": 4,
+	"combination_second": 5,
+	"target_scope_name": [
+		"conv1",
+		"conv2",
+		"conv3",
+		"conv4",
+		"conv5",
+		"conv6",
+		"fc1"
+	],
+	"edit_num": 10,
+	"target_rate": 1.0,
+	"increase_rate": 0.0,
+	"output_file_name": "examples/output.h5",
+	"network_structure_path": "examples/tf_ckpt/model.ckpt_name.json",
+	"dataset_x_num": 1,
+	"dataset_y_num": 1,
+	"dataset_k_num": 1,
+	"split_dataset_start": 0,
+	"split_dataset_end": 100,
+	"implement_class_name": "Tutorial"
+}

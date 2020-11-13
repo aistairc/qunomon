@@ -1,0 +1,71 @@
+FROM python:3.6-slim-stretch
+LABEL maintainer="AIST"
+
+ENV ROOT_USER=root
+ENV QAI_USER=qai
+ENV QAI_HOME=/usr/local/${QAI_USER}
+ENV QAI_USER_HOME=${QAI_HOME}
+
+# Never prompts the user for choices on installation/configuration of packages
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM linux
+
+# Define ja_JP.
+RUN apt-get update -yqq \
+    && apt-get install locales -yqq \
+    && echo "ja_JP UTF-8" > /etc/locale.gen \
+    && locale-gen
+ENV LANGUAGE ja_JP:ja
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
+ENV LC_CTYPE ja_JP.UTF-8
+ENV LC_MESSAGES ja_JP.UTF-8
+
+# fot pycrypto
+RUN apt-get update -yqq \
+    && apt-get install gcc g++ make libffi-dev libssl-dev -yqq
+
+COPY ./repository/ ${QAI_USER_HOME}/
+
+WORKDIR ${QAI_USER_HOME}
+RUN pip install -r ${QAI_USER_HOME}/requirements.txt \
+    && rm ${QAI_USER_HOME}/requirements.txt
+
+#------------
+RUN apt-get update -yqq
+RUN apt-get install python-lxml -y
+RUN apt-get install python-dev libxml2 libxml2-dev libxslt-dev -y
+RUN apt-get install curl -yqq
+
+RUN export PYTHONPATH=$PYTHONPATH:/tensorflow/models/research:/tensorflow/
+
+WORKDIR /tmp
+RUN apt-get install -y unzip
+RUN curl -OL https://github.com/google/protobuf/releases/download/v3.9.0/protoc-3.9.0-linux-x86_64.zip
+RUN unzip -d protoc3 protoc-3.9.0-linux-x86_64.zip
+RUN mv protoc3/bin/* /usr/local/bin/
+RUN mv protoc3/include/* /usr/local/include/
+RUN rm -rf protoc-3.9.0-linux-x86_64.zip protoc3
+
+RUN apt-get install git -y
+RUN git clone https://github.com/cocodataset/cocoapi.git
+
+WORKDIR /tmp/cocoapi/PythonAPI
+RUN python3 setup.py build_ext --inplace
+RUN rm -rf build
+RUN python3 setup.py build_ext install
+RUN rm -rf build
+
+RUN mkdir /tensorflow
+WORKDIR /tensorflow
+RUN git clone https://github.com/tensorflow/models.git
+WORKDIR /tensorflow/models/research
+RUN protoc object_detection/protos/*.proto --python_out=.
+#------------
+
+WORKDIR ${QAI_USER_HOME}
+
+# mound root dir
+RUN mkdir ./inventory ./mnt
+
+ENTRYPOINT [ "python", "entrypoint.py" ]

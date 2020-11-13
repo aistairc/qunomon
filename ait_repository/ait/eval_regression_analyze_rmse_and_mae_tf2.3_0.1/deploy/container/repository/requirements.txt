@@ -1,0 +1,5 @@
+tensorflow==2.3.0
+pandas==1.1.1
+matplotlib==3.3.1
+seaborn==0.10.1
+./ait_sdk-0.1.4-py3-none-any.whl

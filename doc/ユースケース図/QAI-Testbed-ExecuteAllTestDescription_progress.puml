@@ -1,0 +1,89 @@
+@startuml TF2_Testbed
+
+skinparam monochrome true
+
+|QAI_Framework|
+
+start
+
+while (requireStop) is (false)
+
+  if (実行リソースに空きあり?　かつ　job_queueが空でない?) then (no)
+    :wait;
+    stop
+    note left
+      次のループに移動する
+    end note
+  endif
+  
+  :job = job_queue.pop();
+  while (task in job.tasks)
+    fork
+      :asset_aquire(task.assets);
+      |#AntiqueWhite|NoSQLDB|
+      :Asset取得;
+      |QAI_Framework|
+      :task_invoker.begin_invoke(task);
+      partition TestRunnerBlocck {
+        :test_runner.init(task.test_runner_param);
+        :test_runner.set_aquire(task.assets);
+        |QAI_Framework|
+        :test_runner.execute();
+        :test_runner.eval(task.measurement_set,task.measurement_param);
+      }
+      |#AntiqueWhite|NoSQLDB|
+      :Assetにlogを追加;
+      :(あれば)Assetにvisualizeを追加;
+      |QAI_Framework|
+      :result.task_result.add(test_runner.get_result());
+    endfork
+  endwhile
+
+  :notify_job_event(complete, result);
+
+  |Backend|
+  :(DB-insert) 
+  from
+    T_TestDescriptionResult as t_testrdesc_result
+  value
+    t_testrdesc_result.testdesc_id = result.testdesc_id
+    t_testrdesc_result.is_success = result.is_success
+    t_testrdesc_result.log_store_id = result.log_store_id
+    t_testrdesc_result.visualize_store_id = result.visualize_store_id;
+
+  |#AntiqueWhite|DB|
+  :T_TestDescriptionResult;
+
+  |Backend|
+  :(DB-update) 
+  from
+    M_Organization as m_org
+    M_Project as m_proj
+    T_Test as t_test 
+    T_TestDescription as t_testdesc
+  where 
+    m_org.id=result.org_id and
+    m_proj.id=result.proj_id
+  join
+    m_org on 
+      m_org.id==m_proj.org_id and
+    m_proj on 
+      m_proj.id==t_test.prj_id and
+    t_test on 
+      t_test.id==t_testdesc.test_id
+  update value
+    t_test.status = complete
+    t_testdesc.status = complete;
+
+  |#AntiqueWhite|DB|
+  :M_Organization
+  M_Project
+  T_Test
+  T_TestDescription;
+
+endwhile (true)
+
+|QAI_Framework|
+stop
+
+@enduml

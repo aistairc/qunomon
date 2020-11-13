@@ -1,0 +1,55 @@
+{
+  "name": "eval_coverage_ca_pairwise",
+  "description": "it is calculates that Data-set has how much coverage for the combination of a given pair-wise.\n1.Find out if each pairwise row exists in the dataset\n2.A search pairwise pattern and a matching amount is output to a file.\n3.Calculate what percentage of all pairwise patterns are matched.\nBelow, restrictions\n1.The dataset must have the same columns as the pairwise combination.\n2.It is error if the required column does not exist in dataset.\n3.The dataset may have an extra column.\n4.It does not support regular expression search.\n\"*\" Is treated as one character \"*\".\n5.Pairwise and dataset may have null value.\nデータセットが特定のペアワイズの組み合わせに対してどの程度のカバレッジを持っているかを計算する。\n1.ペアワイズの各行が、データセットに存在するか検索する\n2.検索したペアワイズのパターンとマッチした件数をファイル出力する。\n3.マッチした件数が全ペアワイズパターンのうちの何パーセントか計算する。\n以下、制約事項\n1.データセットは、ペアワイズの組み合わせと同じカラムを持っている必要がある。\n2.データセットに、必要なカラムが存在しない場合はエラーになる。\n3.データセットは、余分なカラムを持っていてもよい。\n4.正規表現検索には対応しない。\n”＊”は”＊”という１文字として扱う。\n5.ペアワイズやデータセットにnullは存在してもよい。",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データセットの被覆性",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "pairwise_list",
+      "type": "dataset",
+      "description": "Pairwise_list.csv",
+      "format": [
+        "csv"
+      ],
+      "schema": "https://www.sciencedirect.com/topics/computer-science/pairwise-comparison"
+    },
+    {
+      "name": "target",
+      "type": "dataset",
+      "description": "target.csv",
+      "format": [
+        "csv"
+      ],
+      "schema": "https://www.sciencedirect.com/topics/computer-science/pairwise-comparison"
+    }
+  ],
+  "parameters": [],
+  "report": {
+    "measures": [
+      {
+        "name": "coverage",
+        "type": "float",
+        "description": "coverage of all patterns are matched",
+        "structure": "single"
+      }
+    ],
+    "resources": [
+      {
+        "name": "matching_result",
+        "path": "/usr/local/qai/resources/1/Pairwise_list_matching_result.csv",
+        "type": "csv",
+        "description": "pairwise_matching_result"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "path": "/usr/local/qai/downloads/1/ait.log",
+      "description": "AIT_run_log"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  jupyter:
+    build:
+      context: ./jupyter
+      dockerfile: dockerfile
+    user: root
+    ports:
+      - 9988:8888
+    container_name: jupyter_ait_test
+    environment:
+      TZ: Asia/Tokyo
+      NB_UID: 1000
+      NB_GID: 100
+      GRANT_SUDO: "yes"
+      PASSWORD: "password"
+      JUPYTER_TOKEN: "token"
+    volumes:
+      - ../../tests:/workdir/root/tests
+      - ../../../lib:/workdir/root/lib
+      - ../../../ait:/workdir/root/ait

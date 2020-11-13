@@ -1,0 +1,58 @@
+Vue.js	2.6.10	MIT	2013	Yuxi (Evan) You	https://github.com/vuejs/vue#license
+axios	0.19.0	MIT	2014	Matt Zabriskie	https://github.com/axios/axios#license
+babel-eslint	10.0.3	MIT	2014	Sebastian McKenzie	https://github.com/babel/babel-eslint/blob/master/LICENSE
+eslint	5.16.0	MIT	2013	JS Foundation and other contributors	https://github.com/eslint/eslint/blob/master/LICENSE
+eslint-plugin-vue	5.0.0	MIT	2017	Toru Nagashima	https://github.com/vuejs/eslint-plugin-vue/blob/master/LICENSE
+Python	3.6.8	PSF_PYTHON3.6.8	2001	Python Software Foundation	https://docs.python.org/3/license.html
+Flask	1.1.1	BSD-3-Clause	2010	Pallets	https://flask.palletsprojects.com/en/1.1.x/license/
+Flask-REST	1.3	BSD-3-Clause	2011	Alexis Métaireau and contributors	https://github.com/almet/flask-rest/blob/master/LICENSE
+Flask-RESTful	0.3.7	BSD-3-Clause	2013	"Twilio, Inc."	https://github.com/flask-restful/flask-restful/blob/master/LICENSE
+Flask-Script	2.0.6	BSD-3-Clause	2010 Dan Jacob 2014 Matthias Urlichs		https://github.com/smurfix/flask-script/blob/master/LICENSE
+Flask-SQLAlchemy	2.4.1	BSD-3-Clause	2010	Pallets	https://github.com/pallets/flask-sqlalchemy/blob/master/LICENSE.rst
+Flask-JWT	0.3.2	MIT	2014	Matthew Wright	https://github.com/mattupstate/flask-jwt/blob/master/LICENSE
+flask-mongoengine	0.9.5	BSD-3-Clause	2010	See AUTHORS	https://github.com/MongoEngine/flask-mongoengine/blob/master/LICENSE
+flask-marshmallow	0.10.1	MIT	2014	Steven Loria and contributors	https://github.com/marshmallow-code/flask-marshmallow/blob/dev/LICENSE
+Flask-Injector	0.12.3	BSD-3-Clause	2012	Alec Thomas 2015 Smarkets Limited	https://github.com/alecthomas/flask_injector/blob/master/COPYING
+marshmallow	3.3.0	MIT	2020	Steven Loria and contributors	https://github.com/marshmallow-code/marshmallow/blob/dev/LICENSE
+SQLAlchemy	1.3.11	MIT	2005	SQLAlchemy authors and contributors <see AUTHORS file>.	https://github.com/sqlalchemy/sqlalchemy/blob/master/LICENSE
+SQLAlchemy	1.3.15	MIT	2005	SQLAlchemy authors and contributors <see AUTHORS file>.	https://github.com/sqlalchemy/sqlalchemy/blob/master/LICENSE
+marshmallow-sqlalchemy	0.21.0	MIT	2015	Steven Loria and contributors	https://github.com/marshmallow-code/marshmallow-sqlalchemy/blob/dev/LICENSE
+pymongo	3.10.0	Apache_License_2.0	2009	Mike Dirolf	https://github.com/mongodb/mongo-python-driver/blob/master/LICENSE
+passlib	1.7.2	BSD-3-Clause	2008	"Assurance Technologies, LLC."	https://foss.heptapod.net/python-libs/passlib/blob/branch/stable/LICENSE
+psycopg2	2.8.4	original_psycopg2	2010	"Daniele Varrazzo, The Psycopg Team."	https://github.com/psycopg/psycopg2/blob/master/LICENSE
+pandas	1.0.2	BSD-3-Clause	2008	"AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team"	https://github.com/pandas-dev/pandas/blob/master/LICENSE
+pdfkit	0.6.1	MIT	2012	JazzCore	https://github.com/JazzCore/python-pdfkit/blob/master/LICENSE
+SQLAlchemy	2.23.0	MIT	2005	SQLAlchemy authors and contributors <see AUTHORS file>	https://github.com/sqlalchemy/sqlalchemy/blob/master/LICENSE
+matplotlib	3.2.1	original_matplotlib	2012	Matplotlib Development Team	https://github.com/matplotlib/matplotlib/blob/master/LICENSE/LICENSE
+wkhtmltopdf	0.12.6	GNU_Lesser_General_Public_License_v3.0	2007	"Free Software Foundation, Inc."	https://github.com/wkhtmltopdf/wkhtmltopdf/blob/master/LICENSE
+apache-airflow	1.10.9	Apache_License_2.0	2016	The Apache Software Foundation	https://github.com/apache/airflow/blob/master/LICENSE
+pytz	2020.1	MIT	2008	Stuart Bishop.	https://pythonhosted.org/pytz/#license
+pyOpenSSL	19.1.0	Apache_License_2.0	2001	The pyOpenSSL developers.	https://github.com/pyca/pyopenssl/blob/da402f4a545256c5dfe78448c75dcf47fcd0b4d3/LICENSE
+ndg-httpsclient	0.5.1	BSD-3-Clause	2012	Science & Technology Facilities Council (STFC)	https://github.com/cedadev/ndg_httpsclient/blob/master/ndg/httpsclient/LICENSE
+pyasn1	0.4.8	BSD-2-Clause	2005	Ilya Etingof	https://github.com/etingof/pyasn1/blob/master/LICENSE.rst
+werkzeug	0.16.0	BSD-3-Clause	2007	Pallets	https://github.com/pallets/werkzeug/blob/master/LICENSE.rst
+absl-py	0.10.0	Apache_License_2.0	2017	Google Inc.	https://github.com/abseil/abseil-py/blob/master/LICENSE
+redis	3.2	MIT	2012	Andy McCurdy	https://github.com/andymccurdy/redis-py/blob/master/LICENSE
+docker	4.2.0	Apache_License_2.0	2016	Docker Inc.	https://github.com/docker/docker-py/blob/master/LICENSE
+postgres	12-alpine	MIT	2014	Docker PostgreSQL Authors (See AUTHORS)	https://github.com/docker-library/postgres/blob/master/LICENSE
+postgres	10-alpine	MIT	2014	Docker PostgreSQL Authors (See AUTHORS)	https://github.com/docker-library/postgres/blob/master/LICENSE
+pgadmin4	4	PostgreSQL_License	2013	The pgAdmin Development Team	https://www.pgadmin.org/docs/pgadmin4/latest/licence.html#licence
+registry	2.7.1	Apache_License_2.0	2015	Docker Inc.	https://docs.docker.com/registry/#what-it-is
+requests	2.23.0	Apache_License_2.0	2011	"MMXVIX, A Kenneth Reitz Project, Python Software Foundation"	https://github.com/psf/requests/blob/master/LICENSE
+numpy	1.18.2	BSD-3-Clause	2005	NumPy Developers.	https://github.com/numpy/numpy/blob/master/LICENSE.txt
+ptvsd	4.3.2	MIT	2017	Microsoft Corporation	https://github.com/microsoft/ptvsd/blob/master/LICENSE
+nose2	0.9.2	BSD-2-Clause	2012	Jason Pellerin	https://github.com/nose-devs/nose2/blob/master/license.txt
+keras	2.4.3	MIT	2015	François Chollet.	https://github.com/keras-team/keras/blob/master/LICENSE
+nbconvert	6.0.7	BSD-3-Clause	"2001-2015 IPython Development Team, 2015- Jupyter Development Team"		https://github.com/jupyter/nbconvert/blob/master/LICENSE
+nbformat	5.0.7	BSD-3-Clause	"2001-2015 IPython Development Team, 2015- Jupyter Development Team"		https://github.com/jupyter/nbformat/blob/master/COPYING.md
+psutil	5.7.2	BSD-3-Clause	2009	"Jay Loden, Dave Daeschler, Giampaolo Rodola"	https://github.com/giampaolo/psutil/blob/master/LICENSE
+py-cpuinfo	7.0.0	MIT	2014	Matthew Brennan Jones	https://github.com/workhorsy/py-cpuinfo/blob/master/LICENSE
+pytest	6.0.1	MIT	2004	Holger Krekel and others	https://github.com/pytest-dev/pytest/blob/master/LICENSE
+wheel	0.35.1	MIT	2012	Daniel Holth and contributors.	https://github.com/pypa/wheel/blob/master/LICENSE.txt
+sphinx	3.2.1	BSD-2-Clause	2007	the Sphinx team (see AUTHORS file).	https://github.com/sphinx-doc/sphinx/blob/3.x/LICENSE
+sphinx_rtd_theme	0.5.0	MIT	2013	"Dave Snider, Read the Docs, Inc. & contributors"	https://github.com/readthedocs/sphinx_rtd_theme/blob/master/LICENSE
+tensorflow	2.3.0	Apache_License_2.0	2019	The TensorFlow Authors	https://github.com/tensorflow/tensorflow/blob/master/LICENSE
+jupyterlab	2.2.8	Apache_License_2.0	2015	Project Jupyter Contributors	https://github.com/jupyterlab/jupyterlab/blob/master/LICENSE
+theia	1	Eclipse_Public_License_2.0	2017	"Eclipse Foundation, Inc."	https://github.com/eclipse-theia/theia/blob/master/LICENSE
+noto-cjk	2.001	SIL_Open_Font_License_1.1	2015	Google Inc.	https://github.com/googlefonts/noto-cjk/blob/master/LICENSE
+Nginx	1.19.3	BSD-2-Clause	"2002-2019 Igor Sysoev, 2011-2019 Nginx, Inc."		https://github.com/nginx/nginx/blob/master/docs/text/LICENSE

@@ -1,0 +1,6 @@
+{
+  "NameList": "../model/model_mnist.ckpt_name.json",
+  "CompOp": "==",
+  "Lap": 10,
+  "NumTest": 500
+}

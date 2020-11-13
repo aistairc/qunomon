@@ -1,0 +1,32 @@
+{
+  "Inventories": [
+    {
+      "Name": "trained_model_checkpoint",
+      "Value": "/usr/local/qai/inventory/trained_model_checkpoint/trained_model_checkpoint.zip"
+    },
+    {
+      "Name": "trained_model_graph",
+      "Value": "/usr/local/qai/inventory/trained_model_graph/trained_model_graph.zip"
+    },
+    {
+      "Name": "trained_model_protobuf",
+      "Value": "/usr/local/qai/inventory/trained_model_protobuf/trained_model_protobuf.zip"
+    },
+    {
+      "Name": "test_set_images",
+      "Value": "/usr/local/qai/inventory/test_set_images/test_set_images.zip"
+    },
+    {
+      "Name": "test_set_labels",
+      "Value": "/usr/local/qai/inventory/test_set_labels/bdd100k_labels_images_val.json"
+    },
+    {
+      "Name": "labels_define",
+      "Value": "/usr/local/qai/inventory/labels_define/mscoco_complete_label_map.pbtxt"
+    }
+  ],
+  "MethodParams": [],
+  "testbed_mount_volume_path": "/usr/local/qai/mnt",
+  "run_id": 1,
+  "job_id": 1
+}
