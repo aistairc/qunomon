@@ -108,12 +108,13 @@ img::-moz-selection { color: white; background: transparent; }
 
 body { -webkit-tap-highlight-color: #222; }
 
-#pickup01, #pickup02, #pickup03, #pickup04 { clear: both; background-image: url("../img/pickup_bg.jpg"); background-repeat: no-repeat; background-size: cover; color: #022011; height: 250px; background-color: rgba(5, 59, 14, 0.267); }
-#pickup01 .container, #pickup02 .container, #pickup03 .container, #pickup04 .container { position: relative; top: 50%; transform: translateY(-50%); }
+section.pickup { clear: both; background-image: url("../img/pickup_bg.jpg"); background-repeat: no-repeat; background-size: cover; color: #022011; }
 
 #nav_usermamual, #nav_aitguide, #nav_aitsdk, #nav_restapi, #nav_contact { font-size: 18px; color: #022011; }
 
-.pickup { background-color: rgba(5, 59, 14, 0.267); border-radius: 80px; }
+.pickup .sentence { background-color: rgba(5, 59, 14, 0.267); padding: 20px 40px; border-radius: 60px; }
+
+.pickup .container { padding: 40px 0px; }
 
 .nav-transition img { transition: width 300ms 0s ease; }
 
@@ -125,7 +126,7 @@ body { -webkit-tap-highlight-color: #222; }
 
 header .header-content .header-content-inner p.sentence { color: white; font-weight: 600; text-shadow: 1px 1px 0 black; background-color: rgba(5, 59, 14, 0.267); padding: 10px; border-radius: 20px; }
 
-header .header-content .header-content-inner p.sentence.english, .pickup.english .section-heading, .pickup.english .text-faded { font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; }
+header .header-content .header-content-inner p.sentence.english, .pickup .english { font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; }
 
 header .header-content .header-content-inner p.sentence.english b, header .header-content .header-content-inner p.sentence.english strong { font-size: 120%; font-weight: 900; }
 
