@@ -51,12 +51,12 @@ header .header-content { text-align: center; padding: 100px 0px 100px; width: 10
 header .header-content .header-content-inner { float: left; position: relative; }
 header .header-content .header-content-inner h1 { font-weight: 1000; text-transform: uppercase; margin-top: 0; margin-bottom: 0; }
 header .header-content .header-content-inner p { font-weight: 300; color: rgba(255, 255, 255, 0.7); font-size: 16px; margin-bottom: 50px; }
-header .header-content .header-video { float: left; position: relative; width: 450px; height: 350px; margin-left: 50px; }
+header .header-content .header-video { position: relative; width: 100%; height: auto; }
 header .header-content hr { margin: 30px auto 30px auto; }
 @media (min-width: 768px) { header { min-height: 100%; }
   header .header-content { position: absolute; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); padding: 0 50px; }
   header .header-content .header-content-inner { max-width: 1000px; margin-left: auto; margin-right: auto; }
-  header .header-content .header-content-inner p { font-size: 18px; max-width: 80%; margin-left: auto; margin-right: auto; } }
+  header .header-content .header-content-inner p { font-size: 18px; margin-left: auto; margin-right: auto; } }
 
 .section-heading { margin-top: 20px; color: white; }
 
@@ -113,7 +113,7 @@ body { -webkit-tap-highlight-color: #222; }
 
 #nav_usermamual, #nav_aitguide, #nav_aitsdk, #nav_restapi, #nav_contact { font-size: 18px; color: #022011; }
 
-.row { background-color: rgba(5, 59, 14, 0.267); border-radius: 80px; }
+.pickup { background-color: rgba(5, 59, 14, 0.267); border-radius: 80px; }
 
 .nav-transition img { transition: width 300ms 0s ease; }
 
@@ -125,6 +125,18 @@ body { -webkit-tap-highlight-color: #222; }
 
 header .header-content .header-content-inner p.sentence { color: white; font-weight: 600; text-shadow: 1px 1px 0 black; background-color: rgba(5, 59, 14, 0.267); padding: 10px; border-radius: 20px; }
 
+header .header-content .header-content-inner p.sentence.english, .pickup.english .section-heading, .pickup.english .text-faded { font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; font-weight: 400; }
+
+header .header-content .header-content-inner p.sentence.english b, header .header-content .header-content-inner p.sentence.english strong { font-size: 120%; font-weight: 900; }
+
 header .header-content .header-content-inner p.sentence a { color: white; font-weight: 900; position: relative; display: inline-block; text-decoration: none; border-bottom: 2px solid #285028; }
 
 header .header-content .header-content-inner p.sentence a:hover { color: #64a064; }
+
+.row-center { text-align: center; letter-spacing: -0.4em; }
+
+.row-center > [class*='col-'] { display: inline-block; letter-spacing: 0; vertical-align: top; float: none !important; }
+
+.row-center.va-middle > [class*='col-'] { vertical-align: middle; }
+
+.row-center.va-bottom > [class*='col-'] { vertical-align: bottom; }
