@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ait_sdk.utils package &mdash; AIT SDK 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="ait_sdk.test package" href="ait_sdk.test.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> AIT SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="ait_sdk.html">ait_sdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ait_sdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.common.html">ait_sdk.common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.deploy.html">ait_sdk.deploy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.develop.html">ait_sdk.develop package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.experiment.html">ait_sdk.experiment package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.license.html">ait_sdk.license package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.test.html">ait_sdk.test package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ait_sdk.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ait-sdk-utils-acc-calculator-module">ait_sdk.utils.acc_calculator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.exception">ait_sdk.utils.exception module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.logging">ait_sdk.utils.logging module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.mnist">ait_sdk.utils.mnist module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.timer">ait_sdk.utils.timer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ait_sdk.html#module-ait_sdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIT SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="ait_sdk.html">ait_sdk package</a> &raquo;</li>
+        
+      <li>ait_sdk.utils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ait_sdk.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ait-sdk-utils-package">
+<h1>ait_sdk.utils package<a class="headerlink" href="#ait-sdk-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ait-sdk-utils-acc-calculator-module">
+<h2>ait_sdk.utils.acc_calculator module<a class="headerlink" href="#ait-sdk-utils-acc-calculator-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ait_sdk.utils.exception">
+<span id="ait-sdk-utils-exception-module"></span><h2>ait_sdk.utils.exception module<a class="headerlink" href="#module-ait_sdk.utils.exception" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="ait_sdk.utils.exception.InvalidOperationException">
+<em class="property">exception </em><code class="sig-prename descclassname">ait_sdk.utils.exception.</code><code class="sig-name descname">InvalidOperationException</code><a class="headerlink" href="#ait_sdk.utils.exception.InvalidOperationException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>不正な操作を実施したときに発生させる例外</p>
+<p>Exceptions raised when an illegal operation is performed</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.utils.logging">
+<span id="ait-sdk-utils-logging-module"></span><h2>ait_sdk.utils.logging module<a class="headerlink" href="#module-ait_sdk.utils.logging" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ait_sdk.utils.logging.get_log_path">
+<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">get_log_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.utils.logging.get_log_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>ログの出力ファイルを取得します。</p>
+<p>Get the output file of the log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>output file path(str)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ait_sdk.utils.logging.get_logger">
+<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">get_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; logging.Logger<a class="headerlink" href="#ait_sdk.utils.logging.get_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>logging.Loggerを作成します。</p>
+<p>Create a logging.Logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>logging.Loggerのインスタンス</p>
+<p>logging.Logger instance</p>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>logger (logging.Logger)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ait_sdk.utils.logging.log">
+<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">log_func_args</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.logging.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>デコレーターでloggerを引数にとるためのラッパー関数</p>
+<p>A wrapper function for taking a logger as an argument in the decorator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>logger</strong> (<em>logging.Logger</em>) – </p></li>
+<li><p><strong>log_func_args</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>_decoratorの返り値</p>
+<p>return of _decorator</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ait_sdk.utils.logging.set_log_dir">
+<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">set_log_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.utils.logging.set_log_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>ログの出力ディレクトリを指定します。</p>
+<p>Specifies the output directory of the log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dir</strong> (<em>str</em>) – <p>ログの出力ディレクトリ</p>
+<p>output directory of the log</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.utils.mnist">
+<span id="ait-sdk-utils-mnist-module"></span><h2>ait_sdk.utils.mnist module<a class="headerlink" href="#module-ait_sdk.utils.mnist" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.utils.mnist.MNIST">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.utils.mnist.</code><code class="sig-name descname">MNIST</code><a class="headerlink" href="#ait_sdk.utils.mnist.MNIST" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MNISTの画像をラベルを読み込むクラスです。</p>
+<p>Class to read labels from MNIST images.</p>
+<dl class="py method">
+<dt id="ait_sdk.utils.mnist.MNIST.load_image">
+<code class="sig-name descname">load_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">image_size</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#ait_sdk.utils.mnist.MNIST.load_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>MNISTの画像を読み込みます。</p>
+<p>Load an MNIST image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – <p>MNISTの画像ファイル(gz)パスを指定します。</p>
+<p>Specify the image file (gz) path for MNIST.</p>
+</p></li>
+<li><p><strong>image_size</strong> (<em>str</em>) – <p>MNISTの1辺の画像ピクセルサイズを指定します。</p>
+<p>Specifies the image pixel size of one side of MNIST.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.utils.mnist.MNIST.load_label">
+<code class="sig-name descname">load_label</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="headerlink" href="#ait_sdk.utils.mnist.MNIST.load_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>MNISTのラベルを読み込みます。</p>
+<p>Load an MNIST label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – <p>MNISTのラベルファイル(gz)パスを指定します。</p>
+<p>Specify the label file (gz) path for MNIST.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.utils.timer">
+<span id="ait-sdk-utils-timer-module"></span><h2>ait_sdk.utils.timer module<a class="headerlink" href="#module-ait_sdk.utils.timer" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.utils.timer.Timer">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.utils.timer.</code><code class="sig-name descname">Timer</code><a class="headerlink" href="#ait_sdk.utils.timer.Timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AITの実行時間を計測するためのクラス。</p>
+<p>Class for measuring the execution time of AIT.</p>
+<dl class="py method">
+<dt id="ait_sdk.utils.timer.Timer.get_start_dt">
+<code class="sig-name descname">get_start_dt</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; datetime.datetime<a class="headerlink" href="#ait_sdk.utils.timer.Timer.get_start_dt" title="Permalink to this definition">¶</a></dt>
+<dd><p>開始日時を取得します。</p>
+<p>Get the start date and time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>start date and time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.utils.timer.Timer.get_stop_dt">
+<code class="sig-name descname">get_stop_dt</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; datetime.datetime<a class="headerlink" href="#ait_sdk.utils.timer.Timer.get_stop_dt" title="Permalink to this definition">¶</a></dt>
+<dd><p>停止日時を取得します。</p>
+<p>Get the stop date and time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>stop date and time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.utils.timer.Timer.start_timer">
+<code class="sig-name descname">start_timer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.utils.timer.Timer.start_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>タイマーを開始します。</p>
+<p>Start the timer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.utils.timer.Timer.stop_timer">
+<code class="sig-name descname">stop_timer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.utils.timer.Timer.stop_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>タイマーを停止します。</p>
+<p>Stop the timer.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ait_sdk.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ait_sdk.utils.convert_type">
+<code class="sig-prename descclassname">ait_sdk.utils.</code><code class="sig-name descname">convert_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#ait_sdk.utils.convert_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>指定された方で値を変換します。</p>
+<p>Converts the value to the specified one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – <p>型を指定します。
+型は以下を許容します。</p>
+<p>Specify the type.
+The type allows for the following</p>
+<p>’int’
+‘float’
+‘bool’
+‘string’
+‘str’
+‘list[int]’
+‘list[float]’
+‘list[bool]’
+‘list[string]’
+‘list[str]’</p>
+</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – <p>値を指定します。</p>
+<p>Specify the value.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ait_sdk.utils.get_summary_text">
+<code class="sig-prename descclassname">ait_sdk.utils.</code><code class="sig-name descname">get_summary_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.get_summary_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>モデルのサマリ情報を出力します。</p>
+<p>Outputs the summary information of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> – <p>モデル</p>
+<p>model</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="ait_sdk.test.html" class="btn btn-neutral float-left" title="ait_sdk.test package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, AIST
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

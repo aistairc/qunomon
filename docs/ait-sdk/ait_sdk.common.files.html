@@ -1,0 +1,1026 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ait_sdk.common.files package &mdash; AIT SDK 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ait_sdk.deploy package" href="ait_sdk.deploy.html" />
+    <link rel="prev" title="ait_sdk.common package" href="ait_sdk.common.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> AIT SDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="ait_sdk.html">ait_sdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ait_sdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="ait_sdk.common.html">ait_sdk.common package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="ait_sdk.common.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ait_sdk.common.html#module-ait_sdk.common">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.deploy.html">ait_sdk.deploy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.develop.html">ait_sdk.develop package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.experiment.html">ait_sdk.experiment package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.license.html">ait_sdk.license package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.test.html">ait_sdk.test package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ait_sdk.utils.html">ait_sdk.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ait_sdk.html#module-ait_sdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AIT SDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="ait_sdk.html">ait_sdk package</a> &raquo;</li>
+        
+          <li><a href="ait_sdk.common.html">ait_sdk.common package</a> &raquo;</li>
+        
+      <li>ait_sdk.common.files package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/ait_sdk.common.files.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ait-sdk-common-files-package">
+<h1>ait_sdk.common.files package<a class="headerlink" href="#ait-sdk-common-files-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ait_sdk.common.files.ait_input">
+<span id="ait-sdk-common-files-ait-input-module"></span><h2>ait_sdk.common.files.ait_input module<a class="headerlink" href="#module-ait_sdk.common.files.ait_input" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.common.files.ait_input.AITInput">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.common.files.ait_input.</code><code class="sig-name descname">AITInput</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_manifest</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#ait_sdk.common.files.ait_manifest.AITManifest" title="ait_sdk.common.files.ait_manifest.AITManifest">ait_sdk.common.files.ait_manifest.AITManifest</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AITの入力ファイル「ait.input.json」を管理するクラスです。</p>
+<p>This class manages the AIT input file “ait.input.json”.</p>
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_inventories">
+<code class="sig-name descname">get_inventories</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_inventories" title="Permalink to this definition">¶</a></dt>
+<dd><p>inventoriesを取得します。</p>
+<p>Get inventories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>inventories</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_inventory_path">
+<code class="sig-name descname">get_inventory_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_inventory_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>inventory_pathを取得します。</p>
+<p>Get inventory_path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>inventoryのnameを指定します。</p>
+<p>Specify the name of the inventory.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>inventory_path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_job_id">
+<code class="sig-name descname">get_job_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_job_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>job_idを取得します。</p>
+<p>Get job_id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>job_id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_method_param_value">
+<code class="sig-name descname">get_method_param_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_method_param_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>method_param_valueを取得します。</p>
+<p>Get method_param_value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>method_param_valueのnameを指定します。</p>
+<p>Specify the name of the method_param_value.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>method_param_value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_method_params">
+<code class="sig-name descname">get_method_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_method_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>method_paramsを取得します。</p>
+<p>Get method_params.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>method_params</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_mount_dir_path">
+<code class="sig-name descname">get_mount_dir_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; pathlib.Path<a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_mount_dir_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>mount_dir_pathを取得します。</p>
+<p>Get mount_dir_path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>mount_dir_path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.get_run_id">
+<code class="sig-name descname">get_run_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.get_run_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_idを取得します。</p>
+<p>Get run_id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>run_id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input.AITInput.read_json">
+<code class="sig-name descname">read_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_json_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_input.AITInput.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>ait.input.jsonを読み込みます。</p>
+<p>Load ait.input.json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_json_path</strong> (<em>str</em>) – <p>jsonファイルパスを指定します。</p>
+<p>Specify the json file path.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.common.files.ait_input_generator">
+<span id="ait-sdk-common-files-ait-input-generator-module"></span><h2>ait_sdk.common.files.ait_input_generator module<a class="headerlink" href="#module-ait_sdk.common.files.ait_input_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.common.files.ait_input_generator.AITInputGenerator">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.common.files.ait_input_generator.</code><code class="sig-name descname">AITInputGenerator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">manifest_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.common.files.ait_input_generator.AITInputGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ait.input.jsonを出力するためのクラス。
+set関数で各項目を入力し、write関数でjsonを出力する。
+あらかじめait.manifest.jsonを生成しておく必要がある。</p>
+<p>Class for outputting ait.input.json.
+You input each item with the set function and output json with the write function.
+You must generate ait.manifest.json beforehand.</p>
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input_generator.AITInputGenerator.add_ait_inventories">
+<code class="sig-name descname">add_ait_inventories</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_input_generator.AITInputGenerator.add_ait_inventories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inventories項目を設定する。</p>
+<p>Set the Inventories item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>Inventoriesの名称。ait.manifest.jsonのInventoriesの名称と同じにする必要がある。</p>
+<p>The name of Inventories, which should be the same as the name of Inventories in ait.manifest.json.</p>
+</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – <p>Inventoriesの格納場所。{AIT_ROOT}/local_qai/inventory/以下のフォルダ/ファイル名の情報。
+（例）{AIT_ROOT}/local_qai/inventory/input/test.jpgなら「input/test.jpg」</p>
+<p>The location of Inventories. Information on the folders/file names under {AIT_ROOT}/local_qai/inventory/.
+(e.g., “input/test.jpg” for {AIT_ROOT}/local_qai/inventory/input/test.jpg</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input_generator.AITInputGenerator.set_ait_params">
+<code class="sig-name descname">set_ait_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_input_generator.AITInputGenerator.set_ait_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameters項目を設定する。</p>
+<p>Set the parameters item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>parametersの名称。ait.manifest.jsonのparametersの名称と同じにする必要がある。</p>
+<p>The name of the parameters, which must be the same as the name of the parameters in ait.manifest.json.</p>
+</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – <p>parametersの値。</p>
+<p>The value of parameters.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_input_generator.AITInputGenerator.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_input_generator.AITInputGenerator.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>設定した各項目をjsonファイルに出力する。</p>
+<p>出力先ファイルパスは以下となる。
+/usr/local/qai/mnt/ip/job_args/[job_id]/[run_id]/ait.input.json</p>
+<p>Output each set item to a json file.</p>
+<p>The output file path is as follows.
+/usr/local/qai/mnt/ip/job_args/[job_id]/[run_id]/ait.input.json</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>出力先ファイルパス
+Output file path</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.common.files.ait_manifest">
+<span id="ait-sdk-common-files-ait-manifest-module"></span><h2>ait_sdk.common.files.ait_manifest module<a class="headerlink" href="#module-ait_sdk.common.files.ait_manifest" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.common.files.ait_manifest.</code><code class="sig-name descname">AITManifest</code><a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AITを定義するファイル「ait.manifest.json」を管理するクラスです。</p>
+<p>This class manages the file “ait.manifest.json”, which defines AIT.</p>
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_download_path">
+<code class="sig-name descname">get_ait_download_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">is_raise_key_error</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_download_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>download_pathを取得します。</p>
+<p>Get download_path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>downloadのnameを指定します。</p>
+<p>Specify the name of the download.</p>
+</p></li>
+<li><p><strong>is_raise_key_error</strong> (<em>bool</em>) – <p>downloadのnameが存在しない場合にkey_errorを発生させるかどうかを指定します。</p>
+<p>Specifies whether key_error is raised if the download name does not exist.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>download_path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_downloads">
+<code class="sig-name descname">get_ait_downloads</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_downloads" title="Permalink to this definition">¶</a></dt>
+<dd><p>downloadsを取得します。</p>
+<p>Get downloads.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>downloads</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_measures">
+<code class="sig-name descname">get_ait_measures</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_measures" title="Permalink to this definition">¶</a></dt>
+<dd><p>measuresを取得します。</p>
+<p>Get measures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>measures</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_parameter_default_value">
+<code class="sig-name descname">get_ait_parameter_default_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">is_raise_key_error</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_parameter_default_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter_default_valueを取得します。</p>
+<p>Get parameter_default_value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>parameterのnameを指定します。</p>
+<p>Specify the name of the parameter.</p>
+</p></li>
+<li><p><strong>is_raise_key_error</strong> (<em>bool</em>) – <p>parameterのnameが存在しない場合にkey_errorを発生させるかどうかを指定します。</p>
+<p>Specifies whether key_error is raised if the parameter name does not exist.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parameter_default_value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_parameter_type">
+<code class="sig-name descname">get_ait_parameter_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_parameter_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter_typeを取得します。</p>
+<p>Get parameter_type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>parameterのnameを指定します。</p>
+<p>Specify the name of the parameter.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parameter_type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_resource_path">
+<code class="sig-name descname">get_ait_resource_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_resource_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>resource_pathを取得します。</p>
+<p>Get resource_path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>resourceのnameを指定します。</p>
+<p>Specify the name of the resource.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>resource_path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_resources">
+<code class="sig-name descname">get_ait_resources</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>resourcesを取得します。</p>
+<p>Get resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>resources</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_name">
+<code class="sig-name descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>nameを取得します。</p>
+<p>Get name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_version">
+<code class="sig-name descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>versionを取得します。</p>
+<p>Get version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>version</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest.AITManifest.read_json">
+<code class="sig-name descname">read_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">manifest_json_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>ait.manifest.jsonを読み込みます。</p>
+<p>Load ait.manifest.json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>manifest_json_path</strong> (<em>str</em>) – <p>jsonファイルパスを指定します。</p>
+<p>Specify the json file path.</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.common.files.ait_manifest_generator">
+<span id="ait-sdk-common-files-ait-manifest-generator-module"></span><h2>ait_sdk.common.files.ait_manifest_generator module<a class="headerlink" href="#module-ait_sdk.common.files.ait_manifest_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.common.files.ait_manifest_generator.</code><code class="sig-name descname">AITManifestGenerator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_dir</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ait.manifest.jsonを出力するためのクラス。
+set関数で各項目を入力し、write関数でjsonを出力する。</p>
+<p>Class for outputting ait.manifest.json.
+Input each item with the set function and output json with the write function.</p>
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_downloads">
+<code class="sig-name descname">add_ait_downloads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_downloads" title="Permalink to this definition">¶</a></dt>
+<dd><p>downloads項目を設定する。</p>
+<p>Set the downloads item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>description</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_inventories">
+<code class="sig-name descname">add_ait_inventories</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">format_</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="n">schema</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_inventories" title="Permalink to this definition">¶</a></dt>
+<dd><p>inventories項目を設定する。</p>
+<p>Set the inventories item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>type</strong> (<em>str</em>) – <p>以下いずれかの値である必要があります。</p>
+<p>It should be one of the following values</p>
+<blockquote>
+<div><p>dataset
+model
+attribute set</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – </p></li>
+<li><p><strong>format</strong> (<em>List</em>) – </p></li>
+<li><p><strong>schema</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_measures">
+<code class="sig-name descname">add_ait_measures</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">structure</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_measures" title="Permalink to this definition">¶</a></dt>
+<dd><p>measures項目を設定する。</p>
+<p>Set the measures item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>type</strong> (<em>str</em>) – <p>以下いずれかの値である必要があります。</p>
+<p>It should be one of the following values</p>
+<blockquote>
+<div><p>int
+float
+bool
+str</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – </p></li>
+<li><p><strong>structure</strong> (<em>str</em>) – <p>以下いずれかの値である必要があります。</p>
+<p>It should be one of the following values</p>
+<blockquote>
+<div><p>single
+sequence</p>
+</div></blockquote>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_parameters">
+<code class="sig-name descname">add_ait_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">default_val</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameters項目を設定する。</p>
+<p>Set the parameters item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>type</strong> (<em>str</em>) – <p>以下いずれかの値である必要があります。</p>
+<p>It should be one of the following values</p>
+<blockquote>
+<div><p>int
+float
+bool
+str</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – </p></li>
+<li><p><strong>default_val</strong> (<em>str</em>) – <p>任意</p>
+<p>Optional</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_resources">
+<code class="sig-name descname">add_ait_resources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_resources" title="Permalink to this definition">¶</a></dt>
+<dd><p>resources項目を設定する。</p>
+<p>Set the resources item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>path</strong> (<em>str</em>) – </p></li>
+<li><p><strong>type</strong> (<em>str</em>) – <p>以下いずれかの値である必要があります。</p>
+<p>It should be one of the following values</p>
+<blockquote>
+<div><p>text
+picture
+table</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_author">
+<code class="sig-name descname">set_ait_author</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">author</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_author" title="Permalink to this definition">¶</a></dt>
+<dd><p>author項目を設定する。</p>
+<p>Set the author item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>author</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_description">
+<code class="sig-name descname">set_ait_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>description項目を設定する。</p>
+<p>AIT利用者にとって選択の一助となるように、AITの算出する指標値について、
+導出式を記載することを推奨します。</p>
+<p>Set a description item.</p>
+<p>In order to help AIT users make a choice, the index values calculated by AIT should be
+It is recommended that the derivation formula be stated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>description</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_email">
+<code class="sig-name descname">set_ait_email</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">email</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>email項目を設定する。</p>
+<p>Set the email field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>email</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_name">
+<code class="sig-name descname">set_ait_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name項目を設定する。
+名称+バージョンで全体で一意になる必要性があります。</p>
+<p>名称自由に決めていただいて結構ですが、一意制約があるため以下の命名規則に沿って定義することを推奨します。</p>
+<p>Set the name item.
+The name + version must be unique across the whole.</p>
+<p>You can use any name you want, but it is recommended to define it according to the following naming conventions because of the unique restriction.</p>
+<ul>
+<li><p>{prefix}_{target_problem}_{delegate_metric}_{…}
+* {prefix}</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>eval : 品質評価</p></li>
+<li><p>alyz : 分析</p></li>
+<li><p>misc : その他</p></li>
+<li><p>dev : 開発でのみ使用</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>{target_problem}
+* 対象とする問題領域を簡潔に記載します。</p></li>
+<li><p>{delegate_metric}
+* 代表的な指標値を記載します。</p></li>
+<li><dl class="simple">
+<dt>{…}</dt><dd><ul>
+<li><p>これ以降は自由に記載してください。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_quality">
+<code class="sig-name descname">set_ait_quality</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quality</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_quality" title="Permalink to this definition">¶</a></dt>
+<dd><p>quality項目を設定する。
+QualityはURLで表現されます。
+上記URLから取得できるjsonデータにQualityDimensionに関する情報が記載されます。
+この機能が実装されるまでは、暫定的にURLの最終要素をQualityDimensionとして扱います。</p>
+<p>Set the quality item.
+Quality is expressed as a URL.
+The information about the QualityDimension is described in the json data you can get from the above URL.
+Until this feature is implemented, the final element of the URL is treated as the QualityDimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>quality</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_reference">
+<code class="sig-name descname">set_ait_reference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reference</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_reference" title="Permalink to this definition">¶</a></dt>
+<dd><p>reference項目を設定する。
+AITの根拠となる論文参照を記載します。</p>
+<p>Establish a reference item.
+Describe the paper reference as the basis for the AIT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reference</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_version">
+<code class="sig-name descname">set_ait_version</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">version</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.set_ait_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>version項目を設定する。</p>
+<p>バージョンはメジャーバージョンとマイナーバージョンの組み合わせを推奨しますが、数値である必要はなく、
+それぞれが管理可能な体系としてください。</p>
+<p>Set the version item.</p>
+<p>Versions should be a combination of major and minor versions, but they do not have to be numeric.
+Each should be a manageable system.</p>
+<ul class="simple">
+<li><p>{major_version}_{minor_version}</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>version</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>設定した各項目をjsonファイルに出力する。
+書き込む前に必須チェックを実施する。</p>
+<p>Output each set item to a json file.
+Before writing, perform the required checks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – 必須項目が存在しないときに発生する
+    
+    This occurs when a required field does not exist</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>出力先ファイルパス</p>
+<p>Output file path</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.common.files.ait_output">
+<span id="ait-sdk-common-files-ait-output-module"></span><h2>ait_sdk.common.files.ait_output module<a class="headerlink" href="#module-ait_sdk.common.files.ait_output" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.common.files.ait_output.AITOutput">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.common.files.ait_output.</code><code class="sig-name descname">AITOutput</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.common.files.ait_output.AITOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AITが出力するファイル「ait.output.json」を管理するクラスです。</p>
+<p>This class manages the file “ait.output.json”, which is output by AIT.</p>
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_output.AITOutput.add_downloads">
+<code class="sig-name descname">add_downloads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_output.AITOutput.add_downloads" title="Permalink to this definition">¶</a></dt>
+<dd><p>downloadsを追加します。</p>
+<p>Add downloads.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>名前を指定します。</p>
+<p>Specify a name.</p>
+</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – <p>パスを指定します。</p>
+<p>Specify a path.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_output.AITOutput.add_measure">
+<code class="sig-name descname">add_measure</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_output.AITOutput.add_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>measureを追加します。</p>
+<p>Add measure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>名前を指定します。</p>
+<p>Specify a name.</p>
+</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – <p>値を指定します。</p>
+<p>Specify a value.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_output.AITOutput.add_resource">
+<code class="sig-name descname">add_resource</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_output.AITOutput.add_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>resourceを追加します。</p>
+<p>Add resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – <p>名前を指定します。</p>
+<p>Specify a name.</p>
+</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – <p>パスを指定します。</p>
+<p>Specify a path.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_output.AITOutput.write_output">
+<code class="sig-name descname">write_output</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output_file_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">start_dt</span><span class="p">:</span> <span class="n">datetime.datetime</span></em>, <em class="sig-param"><span class="n">stop_dt</span><span class="p">:</span> <span class="n">datetime.datetime</span></em>, <em class="sig-param"><span class="n">error</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_output.AITOutput.write_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>ait.output.jsonを出力します。</p>
+<p>Output ait.output.json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_file_path</strong> (<em>str</em>) – <p>出力先パスを指定します。</p>
+<p>Specify the output path.</p>
+</p></li>
+<li><p><strong>start_dt</strong> (<em>datetime</em>) – <p>処理開始日時を指定します。</p>
+<p>Specify the date and time to start processing.</p>
+</p></li>
+<li><p><strong>stop_dt</strong> (<em>datetime</em>) – <p>処理終了日時を指定します。</p>
+<p>Specify the date and time when the process ends.</p>
+</p></li>
+<li><p><strong>error</strong> (<em>str</em>) – <p>エラー情報を指定します。</p>
+<p>Specify the error information.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.common.files.ait_requirements_generator">
+<span id="ait-sdk-common-files-ait-requirements-generator-module"></span><h2>ait_sdk.common.files.ait_requirements_generator module<a class="headerlink" href="#module-ait_sdk.common.files.ait_requirements_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="ait_sdk.common.files.ait_requirements_generator.AITRequirementsGenerator">
+<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.common.files.ait_requirements_generator.</code><code class="sig-name descname">AITRequirementsGenerator</code><a class="headerlink" href="#ait_sdk.common.files.ait_requirements_generator.AITRequirementsGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>requirements.txtを出力するためのクラス。</p>
+<p>Class for outputting requirements.txt.</p>
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_requirements_generator.AITRequirementsGenerator.add_package">
+<code class="sig-name descname">add_package</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">package_ver</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_requirements_generator.AITRequirementsGenerator.add_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>パッケージ情報のリストを作成する。</p>
+<p>Create a list of package information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>package_name</strong> (<em>str</em>) – <p>インストールするパッケージ名</p>
+<p>Package name to be installed</p>
+</p></li>
+<li><p><strong>package_ver</strong> (<em>str</em>) – <p>インストールするパッケージのバージョン（任意）</p>
+<p>Version of the package to be installed (optional)</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ait_sdk.common.files.ait_requirements_generator.AITRequirementsGenerator.create_requirements">
+<code class="sig-name descname">create_requirements</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">base_dir</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_requirements_generator.AITRequirementsGenerator.create_requirements" title="Permalink to this definition">¶</a></dt>
+<dd><p>pip install パッケージ情報のリストをrequirementsファイルに出力する。</p>
+<p>pip install Output the list of package information to the requirements file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>base_dir</strong> (<em>str</em>) – <p>requirements.txtの保存ディレクトリ</p>
+<p>Requirements.txt storage directory</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>requirementsファイル保存先フルパス</p>
+<p>full path to the requirements file</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ait_sdk.common.files">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ait_sdk.common.files" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ait_sdk.deploy.html" class="btn btn-neutral float-right" title="ait_sdk.deploy package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ait_sdk.common.html" class="btn btn-neutral float-left" title="ait_sdk.common package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, AIST
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

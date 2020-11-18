@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.6. Test &mdash; AIT Guide 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Notebook Example" href="../04_example/index.html" />
+    <link rel="prev" title="3.5. Deploy" href="05_deploy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> AIT Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Get Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Prepare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_prepare_local_qai.html">3.3. Prepare local_qai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_develop.html">3.4. Develop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_deploy.html">3.5. Deploy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.6. Test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare">3.6.1. prepare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-template-test-notebook">3.6.2. copy template test notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-testing-jupyter-lab">3.6.3. launch testing jupyter lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-config-json">3.6.4. edit config.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-your-ait-name-ipynb-in-jupyter-lab">3.6.5. edit {Your AIT name}.ipynb in jupyter lab</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cell-1-pip-install-ait-sdk">3.6.5.1. [cell:1] pip install ait-sdk</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-3-setting">3.6.5.2. [cell:3] setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-9-post-inventories">3.6.5.3. [cell:9] post inventories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-10-get-inventories">3.6.5.4. [cell:10] get inventories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-11-add-test-description">3.6.5.5. [cell:11] add test description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-13-run-test-description">3.6.5.6. [cell:13] run test description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cell-15-output-report">3.6.5.7. [cell:15] output report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04_example/index.html">4. Notebook Example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AIT Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">3. </span>Tutorial</a> &raquo;</li>
+        
+      <li><span class="section-number">3.6. </span>Test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/03_tutorial/06_test.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="test">
+<h1><span class="section-number">3.6. </span>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prepare">
+<h2><span class="section-number">3.6.1. </span>prepare<a class="headerlink" href="#prepare" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>launch testded</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="p">{</span><span class="n">testbed_root</span><span class="p">}</span>
+<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="copy-template-test-notebook">
+<h2><span class="section-number">3.6.2. </span>copy template test notebook<a class="headerlink" href="#copy-template-test-notebook" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>copy src</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">testbed_root</span><span class="p">}</span>\<span class="n">ait_repository</span>\<span class="n">test</span>\<span class="n">tests</span>\<span class="n">dev_template_local_docker_0</span><span class="o">.</span><span class="mf">1.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</li>
+<li><p>copy dst</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">testbed_root</span><span class="p">}</span>\<span class="n">ait_repository</span>\<span class="n">test</span>\<span class="n">tests</span>\<span class="p">{</span><span class="n">Your</span> <span class="n">AIT</span> <span class="n">name</span><span class="p">}</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="launch-testing-jupyter-lab">
+<h2><span class="section-number">3.6.3. </span>launch testing jupyter lab<a class="headerlink" href="#launch-testing-jupyter-lab" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>execute</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">testbed_root</span><span class="p">}</span>\<span class="n">ait_repository</span>\<span class="n">test</span>\<span class="n">tools</span>\<span class="n">launch_jupyter</span><span class="o">.</span><span class="n">bat</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="edit-config-json">
+<h2><span class="section-number">3.6.4. </span>edit config.json<a class="headerlink" href="#edit-config-json" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>file path</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">testbed_root</span><span class="p">}</span>\<span class="n">ait_repository</span>\<span class="n">test</span>\<span class="n">tests</span>\<span class="n">config</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</li>
+<li><p>contents</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;host_ait_root_dir&quot;</span> <span class="p">:</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">github</span><span class="se">\\</span><span class="s2">qai-testbed</span><span class="se">\\</span><span class="s2">ait_repository&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;is_container&quot;</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">host_ait_root_dir</span></code> is your checkout path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_container</span></code> is testbed launch mode and always <code class="docutils literal notranslate"><span class="pre">true</span></code>. <code class="docutils literal notranslate"><span class="pre">false</span></code> is used by testbed developer.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="edit-your-ait-name-ipynb-in-jupyter-lab">
+<h2><span class="section-number">3.6.5. </span>edit {Your AIT name}.ipynb in jupyter lab<a class="headerlink" href="#edit-your-ait-name-ipynb-in-jupyter-lab" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cell-1-pip-install-ait-sdk">
+<h3><span class="section-number">3.6.5.1. </span>[cell:1] pip install ait-sdk<a class="headerlink" href="#cell-1-pip-install-ait-sdk" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>if <code class="docutils literal notranslate"><span class="pre">ait_sdk-X.X.X-py3-none-any.whl</span></code> is changed, update this.</p></li>
+</ul>
+</div>
+<div class="section" id="cell-3-setting">
+<h3><span class="section-number">3.6.5.2. </span>[cell:3] setting<a class="headerlink" href="#cell-3-setting" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ait_name</span></code> and <code class="docutils literal notranslate"><span class="pre">ait_version</span></code> is change your’s.</p></li>
+</ul>
+</div>
+<div class="section" id="cell-9-post-inventories">
+<h3><span class="section-number">3.6.5.3. </span>[cell:9] post inventories<a class="headerlink" href="#cell-9-post-inventories" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>You need to make an API call to the inventory you have defined in ait.manifest.json.</p></li>
+</ul>
+</div>
+<div class="section" id="cell-10-get-inventories">
+<h3><span class="section-number">3.6.5.4. </span>[cell:10] get inventories<a class="headerlink" href="#cell-10-get-inventories" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>get inventories by name.</p></li>
+</ul>
+</div>
+<div class="section" id="cell-11-add-test-description">
+<h3><span class="section-number">3.6.5.5. </span>[cell:11] add test description<a class="headerlink" href="#cell-11-add-test-description" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Add a TestDescription corresponding to the ait.manifest.json definition.</p></li>
+</ul>
+</div>
+<div class="section" id="cell-13-run-test-description">
+<h3><span class="section-number">3.6.5.6. </span>[cell:13] run test description<a class="headerlink" href="#cell-13-run-test-description" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">Result</span></code> is <code class="docutils literal notranslate"><span class="pre">ERR</span></code> is wrong.<br />please check <a class="reference external" href="http://127.0.0.1:8180/admin/">Airflow</a> log.</p>
+<p><img alt="../_images/011.png" src="../_images/011.png" /></p>
+<p><img alt="../_images/021.png" src="../_images/021.png" /></p>
+<p><img alt="../_images/031.png" src="../_images/031.png" /></p>
+<p><img alt="../_images/041.png" src="../_images/041.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="cell-15-output-report">
+<h3><span class="section-number">3.6.5.7. </span>[cell:15] output report<a class="headerlink" href="#cell-15-output-report" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>response <code class="docutils literal notranslate"><span class="pre">ReportUrl</span></code> use report download.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="s1">&#39;OutParams&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;ReportUrl&#39;</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:8888/qai-testbed/api/0.0.1/download/20&#39;</span><span class="p">},</span>
+<span class="s1">&#39;Result&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Code&#39;</span><span class="p">:</span> <span class="s1">&#39;D12000&#39;</span><span class="p">,</span> <span class="s1">&#39;Message&#39;</span><span class="p">:</span> <span class="s1">&#39;command invoke success.&#39;</span><span class="p">}}</span>
+<span class="o">&lt;</span><span class="n">bound</span> <span class="n">method</span> <span class="n">Response</span><span class="o">.</span><span class="n">json</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">Response</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span><span class="o">&gt;&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../04_example/index.html" class="btn btn-neutral float-right" title="4. Notebook Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="05_deploy.html" class="btn btn-neutral float-left" title="3.5. Deploy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, AIST
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

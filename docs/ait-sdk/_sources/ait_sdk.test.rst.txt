@@ -1,0 +1,21 @@
+ait\_sdk.test package
+=====================
+
+Submodules
+----------
+
+ait\_sdk.test.hepler module
+---------------------------
+
+.. automodule:: ait_sdk.test.hepler
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ait_sdk.test
+   :members:
+   :undoc-members:
+   :show-inheritance:

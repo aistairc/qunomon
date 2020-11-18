@@ -1,0 +1,24 @@
+ait\_sdk package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ait_sdk.common
+   ait_sdk.deploy
+   ait_sdk.develop
+   ait_sdk.experiment
+   ait_sdk.license
+   ait_sdk.test
+   ait_sdk.utils
+
+Module contents
+---------------
+
+.. automodule:: ait_sdk
+   :members:
+   :undoc-members:
+   :show-inheritance:

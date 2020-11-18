@@ -1,0 +1,61 @@
+ait\_sdk.common.files package
+=============================
+
+Submodules
+----------
+
+ait\_sdk.common.files.ait\_input module
+---------------------------------------
+
+.. automodule:: ait_sdk.common.files.ait_input
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.common.files.ait\_input\_generator module
+--------------------------------------------------
+
+.. automodule:: ait_sdk.common.files.ait_input_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.common.files.ait\_manifest module
+------------------------------------------
+
+.. automodule:: ait_sdk.common.files.ait_manifest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.common.files.ait\_manifest\_generator module
+-----------------------------------------------------
+
+.. automodule:: ait_sdk.common.files.ait_manifest_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.common.files.ait\_output module
+----------------------------------------
+
+.. automodule:: ait_sdk.common.files.ait_output
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.common.files.ait\_requirements\_generator module
+---------------------------------------------------------
+
+.. automodule:: ait_sdk.common.files.ait_requirements_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ait_sdk.common.files
+   :members:
+   :undoc-members:
+   :show-inheritance:

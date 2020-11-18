@@ -1,0 +1,29 @@
+ait\_sdk.license package
+========================
+
+Submodules
+----------
+
+ait\_sdk.license.license\_generator module
+------------------------------------------
+
+.. automodule:: ait_sdk.license.license_generator
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.license.license\_setting module
+----------------------------------------
+
+.. automodule:: ait_sdk.license.license_setting
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ait_sdk.license
+   :members:
+   :undoc-members:
+   :show-inheritance:

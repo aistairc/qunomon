@@ -1,0 +1,18 @@
+ait\_sdk.common package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   ait_sdk.common.files
+
+Module contents
+---------------
+
+.. automodule:: ait_sdk.common
+   :members:
+   :undoc-members:
+   :show-inheritance:

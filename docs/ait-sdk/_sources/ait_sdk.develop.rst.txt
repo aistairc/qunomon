@@ -1,0 +1,37 @@
+ait\_sdk.develop package
+========================
+
+Submodules
+----------
+
+ait\_sdk.develop.ait\_base module
+---------------------------------
+
+.. automodule:: ait_sdk.develop.ait_base
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.develop.ait\_path\_helper module
+-----------------------------------------
+
+.. automodule:: ait_sdk.develop.ait_path_helper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ait\_sdk.develop.annotation module
+----------------------------------
+
+.. automodule:: ait_sdk.develop.annotation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ait_sdk.develop
+   :members:
+   :undoc-members:
+   :show-inheritance:

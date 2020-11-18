@@ -1,0 +1,4 @@
+# Notebook Example
+
+my_ait.ipynb
+eval_mnist_acc_tf2.3_0.1.ipynb
