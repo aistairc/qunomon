@@ -1,5 +1,0 @@
-deploy/dag.py
-deploy/**/ait.manifest.json
-deploy/**/ait_sdk-*.whl
-deploy/**/my_ait.py
-tool/docker_deploy.bat
