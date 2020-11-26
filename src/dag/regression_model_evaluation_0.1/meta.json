@@ -1,8 +1,0 @@
-{
-  "general": {
-      "auther": "airc",
-      "version": "1.0"
-  },
-  "dag_id": "regression_model_evaluation_0.1",
-  "dag_file": "dag.py"
-}

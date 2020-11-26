@@ -1,8 +1,0 @@
-{
-  "general": {
-      "auther": "airc",
-      "version": "1.0"
-  },
-  "dag_id": "metamorphic_testing_0.1",
-  "dag_file": "dag.py"
-}
