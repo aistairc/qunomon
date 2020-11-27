@@ -63,7 +63,7 @@ http://127.0.0.1:8888/
 * launch command prompt
 
 ```
-cd {foo}\qai-testbed\src\backend
+cd {checkout_dir}\src\backend
 python -m venv venv
 ```
 
@@ -86,7 +86,7 @@ pip install -r requirements_dev.txt
 * launch command prompt
 
 ```
-cd {foo}\qai-testbed\src\integration-provider
+cd {checkout_dir}\src\integration-provider
 python -m venv venv
 ```
 #### 2.virtual environment activate

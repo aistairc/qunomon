@@ -233,7 +233,7 @@ export default {
             }
         },
         inventoryDelete(inventoryId) {
-            if (confirm("削除してよろしいですか？")) {
+            if (confirm(this.$t("confirm.delete"))) {
                 const url = this.$backendURL +
                     '/' +
                     this.organizationIdCheck +
@@ -248,12 +248,7 @@ export default {
                     })
                     .catch((error) => {
                         if(error.response.data.Code == 'I45000'){
-                            if(this.$i18n.locale == 'ja'){
-                                alert("テストディスクリプションに登録されているため、削除できませんでした。");
-                            }
-                            else{
-                                alert("Could not be deleted because it is registered in TestDescriptions.");
-                            }
+                            alert(this.$t("inventories.alertMessage"));
                         }
                         else{
                             this.$router.push({
@@ -339,14 +334,6 @@ export default {
                 default:
 
             }
-        },
-        signOut() {
-            sessionStorage.removeItem('mlComponentId');
-            sessionStorage.removeItem('organizationId');
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: 'SignIn'
-            });
         }
     },
     computed: {

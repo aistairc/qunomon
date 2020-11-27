@@ -491,6 +491,7 @@ export default {
         this.mlComponentIdCheck();
         this.organizationIdCheck = sessionStorage.getItem('organizationId');
         this.mlComponentId = sessionStorage.getItem('mlComponentId');
+        this.testDescriptionId = sessionStorage.getItem('testDescriptionId');
         this.getMLComponent();
         const url = this.$backendURL +
             '/' +
@@ -498,7 +499,7 @@ export default {
             '/mlComponents/' +
             this.mlComponentId +
             '/testDescriotions/' +
-            this.$route.params.testDescriptionId;
+            this.testDescriptionId;
         this.$axios.get(url)
             .then((response) => {
                 this.test_description_details = response.data;
@@ -732,7 +733,7 @@ export default {
         },
         setRequestBody(command){
             var body = {};
-            var testDescriptionId_str = String(this.$route.params.testDescriptionId);
+            var testDescriptionId_str = String(this.testDescriptionId);
             if (command == 'SetParam') {
                 var graphBody = [];
                 for(var left of this.tdGraphs){
@@ -789,7 +790,7 @@ export default {
                         '/mlComponents/' +
                         this.mlComponentId +
                         '/testDescriotions/' +
-                        this.$route.params.testDescriptionId
+                        this.testDescriptionId
                 )
                 .then((response) => {
                     this.result = response.data;
@@ -834,7 +835,7 @@ export default {
                 '/testDescriotions/runners'
             this.$axios.post(url, {
                     "Command": "AsyncStart",
-                    "TestDescriptionIds": [this.$route.params.testDescriptionId]
+                    "TestDescriptionIds": [this.testDescriptionId]
                 })
                 .then((response) => {
                     // eslint-disable-next-line no-console
@@ -873,7 +874,7 @@ export default {
                             '/mlComponents/' +
                             this.mlComponentId +
                             '/testDescriotions/' +
-                            this.$route.params.testDescriptionId;
+                            this.testDescriptionId;
                         this.$axios.get(url)
                             .then((response) => {
                                 // eslint-disable-next-line no-console
@@ -1075,15 +1076,6 @@ export default {
             this.$router.push({
                 name: 'TestDescriptionsDownload'
             })
-        },
-
-        signOut() {
-            sessionStorage.removeItem('mlComponentId');
-            sessionStorage.removeItem('organizationId');
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: 'SignIn'
-            });
         },
 
         onStarChange: function (testDescription) {

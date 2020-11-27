@@ -385,18 +385,7 @@ export default {
     this.organizationIdCheck = sessionStorage.getItem("organizationId");
     this.mlComponentId = sessionStorage.getItem("mlComponentId");
     this.getMLComponent();
-    if(this.$route.params.testDescriptionName) {
-      // 1画面目からの遷移時はパラメータから
-      this.testDescriptionName = this.$route.params.testDescriptionName;
-      this.qualityDimension = this.$route.params.qualityDimension;
-      this.selectedTestrunner = this.$route.params.testRunner;
-      this.report = this.$route.params.testRunner.Report;
-      this.qualityDimensionName = this.$route.params.qualityDimensionName;
-    } else {
-      // インベントリ追加時はセッションから
-      this.getPreviousPageSettingData();
-    }
-
+    this.getPreviousPageSettingData();
     this.getAppend();
   },
   computed: {},
@@ -420,7 +409,7 @@ export default {
       this.errorMessages = [];
       this.commonCheckTestDescription();
       if (this.errorMessages.length === 0) {
-        if (confirm("作成してよろしいですか？")) {
+        if (confirm(this.$t("confirm.cretate"))) {
           this.setTestDescription();
           const url =
             this.$backendURL +
@@ -458,7 +447,7 @@ export default {
     },
     //TestDescriptionAppend1の画面へ戻る処理
     backTestDescriptionAppend() {
-      if (confirm("入力した内容が失われますがよろしいですか？")) {
+      if (confirm(this.$t("confirm.loseInformation"))) {
         this.setTestDescriptionData();
         this.$router.push({
           name: "TestDescriptionAppend",
@@ -472,14 +461,6 @@ export default {
       this.backTestDescriptionAppendData.testDescriptionName = this.testDescriptionName;
       this.backTestDescriptionAppendData.selectedQualityDimension = this.qualityDimension;
       this.backTestDescriptionAppendData.selectedTestrunner = this.selectedTestrunner;
-    },
-    signOut() {
-      sessionStorage.removeItem("mlComponentId");
-      sessionStorage.removeItem("organizationId");
-      sessionStorage.removeItem('language');
-      this.$router.push({
-        name: "SignIn",
-      });
     },
     //Quality Assesmentのチェックボックスの処理
     changecheckbox() {
@@ -610,12 +591,11 @@ export default {
         getPreviousPageSettingData() {
             // セッションから取得
             this.testDescriptionName = sessionStorage.getItem('testDescriptionName');
-            this.qualityDimension = sessionStorage.getItem('selectedQualityDimension');
             this.qualityDimensionName = sessionStorage.getItem('qualityDimensionName');
-            this.selectedTestrunner = JSON.parse(sessionStorage.getItem('selectedTestrunner'));
-            this.selectedInventories = JSON.parse(sessionStorage.getItem('selectedInventories'));
-            this.report = JSON.parse(sessionStorage.getItem('report'));
-            this.measurementFormsList = JSON.parse(sessionStorage.getItem('measurementFormsList'));
+            this.qualityDimension = sessionStorage.getItem('qualityDimension');
+            this.selectedTestrunner = JSON.parse(sessionStorage.getItem('testRunner'));
+            this.report = this.selectedTestrunner.Report;
+
             // セッションのキー削除
             sessionStorage.removeItem('testDescriptionName');
             sessionStorage.removeItem('selectedQualityDimension');

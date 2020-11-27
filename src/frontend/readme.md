@@ -1,7 +1,7 @@
 - コマンドプロンプト
 
 ```
-cd {foo}\qai-testbed\src\frontend
+cd {checkout_dir}\src\frontend
 
 docker-compose up -d
 ```

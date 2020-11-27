@@ -4,7 +4,7 @@
   "author": "AIST",
   "email": "",
   "version": "0.1",
-  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データセットの被覆性",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/Diversity_of_test_data",
   "reference": "",
   "inventories": [
     {
@@ -40,7 +40,7 @@
       {
         "name": "matching_result",
         "path": "/usr/local/qai/resources/1/Pairwise_list_matching_result.csv",
-        "type": "csv",
+        "type": "table",
         "description": "pairwise_matching_result"
       }
     ]

@@ -55,6 +55,12 @@ export const MLComponentMixin = {
             if(this.select_ml_framework_id == -1){
                 this.errorMessages.push('MLFrameworkName is required.');
             }
+        },
+        signOut() {
+            sessionStorage.clear();
+            this.$router.push({
+                name: 'SignIn'
+            });
         }
     }
 }

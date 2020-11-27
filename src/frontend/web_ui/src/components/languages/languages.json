@@ -43,8 +43,7 @@
             "updateTime": "更新日時",
             "editOptions": "編集オプション",
             "append": "追加",
-            "editIconMessage": "インベントリ情報を編集できます。",
-            "deleteIconMessage": "インベントリを削除できます。" 
+            "alertMessage": "テストディスクリプションに登録されているため、削除できませんでした。"
         },
         "inventoryAppend": {
             "mes": "インベントリの情報を設定してください",
@@ -88,9 +87,6 @@
             "upDate": "更新日時",
             "name": "名前",
             "editOptions": "編集オプション",
-            "editIconMessage": "テストディスクリプションを編集できます。",
-            "copyIconMessage": "テストディスクリプションを複製できます。",
-            "descriptionIconMessage": "テストディスクリプションの詳細情報を確認できます。",
             "information": "詳細情報",
             "parentId": "親ID",
             "inventory": "インベントリ",
@@ -274,6 +270,12 @@
             "errorMessage": "エラーメッセージ",
             "frontErrorMessage1": "申し訳ありません。何らかの理由でエラー情報を取得できませんでした。",
             "frontErrorMessage2": "コンソール画面でエラー内容を確認してください。"
+        },
+        "confirm": {
+            "loseInformation": "入力した内容が失われますがよろしいですか？",
+            "create": "作成してよろしいですか？",
+            "edit": "編集してよろしいですか？",
+            "delete": "削除してよろしいですか？"
         }
     },
     "en": {
@@ -320,8 +322,7 @@
             "updateTime": "Update Time",
             "editOptions": "Edit Options",
             "append": "Append",
-            "editIconMessage": "Edit the information in this inventory.",
-            "deleteIconMessage": "Delete this inventory."
+            "alertMessage": "Could not be deleted because it is registered in TestDescriptions."
         },
         "inventoryAppend": {
             "mes": "Please set Inventory condition",
@@ -365,9 +366,6 @@
             "upDate": "Update",
             "name": "Name",
             "editOptions": "Edit Options",
-            "editIconMessage": "Edit the information in this TestDescription.",
-            "copyIconMessage": "Copy this TestDescription.",
-            "descriptionIconMessage": "See more information on this TestDescription.",
             "information": "Information",
             "parentId": "Parent ID",
             "inventory": "Inventory",
@@ -551,6 +549,12 @@
             "errorMessage": "errorMessage",
             "frontErrorMessage1": "Sorry. The error information could not be acquired for some reason.",
             "frontErrorMessage2": "Check the error content on the console screen."
+        },
+        "confirm": {
+            "loseInformation": "Would you like to lose the information you entered?",
+            "create": "Create this?",
+            "edit": "Edit this?",
+            "delete": "Delete this?"
         }
     }
 }

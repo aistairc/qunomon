@@ -8,7 +8,7 @@
 
 * download zip
 
-    https://github.com/aistairc/qunomon/archive/1.0.0.zip
+    https://github.com/aistairc/qunomon/archive/main.zip
 
 or
 

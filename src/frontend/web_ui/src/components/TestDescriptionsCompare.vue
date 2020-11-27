@@ -345,8 +345,10 @@ export default {
             "/mlComponents/" +
             this.mlComponentId +
             "/testDescriotions/";
-        const url_1 = url + this.$route.params.testDescriptionId1;
-        const url_2 = url + this.$route.params.testDescriptionId2;
+        // const url_1 = url + this.$route.params.testDescriptionId1;
+        // const url_2 = url + this.$route.params.testDescriptionId2;
+        const url_1 = url + sessionStorage.getItem('testDescriptionId1');
+        const url_2 = url + sessionStorage.getItem('testDescriptionId2');
 
         //1つ目のTD情報を取得
         this.$axios
@@ -607,16 +609,8 @@ export default {
                 this.setStar(testDescription.Id);
             }
             testDescription.Star = !testDescription.Star;
-        },
-        signOut() {
-            sessionStorage.removeItem('mlComponentId');
-            sessionStorage.removeItem('organizationId');
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: 'SignIn'
-            });
         }
-    },
+    }
 };
 </script>
 

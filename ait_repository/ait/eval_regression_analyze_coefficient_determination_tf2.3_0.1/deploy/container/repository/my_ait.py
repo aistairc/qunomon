@@ -33,7 +33,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[ ]:
+# In[2]:
 
 
 #########################################
@@ -135,7 +135,7 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの正確性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories('trained_model', 'model', 'Tensorflow 2.3で学習したモデル', ['h5'], 'https://support.hdfgroup.org/HDF5/doc/')
     manifest_genenerator.add_ait_inventories('dataset_for_verification', 'dataset', '検証用データセット\n目的変数と説明変数のセットでラベルは必要', ['csv'], 'uncreated')

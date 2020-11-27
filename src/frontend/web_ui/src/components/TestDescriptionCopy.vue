@@ -311,11 +311,7 @@ export default {
         this.organizationIdCheck = sessionStorage.getItem('organizationId');
         this.mlComponentId = sessionStorage.getItem('mlComponentId');
         this.getMLComponent();
-        if(this.$route.params.testDescriptionId){
-            this.testDescriptionId = this.$route.params.testDescriptionId;
-        } else {
-            this.testDescriptionId = sessionStorage.getItem('testDescriptionId');
-        }
+        this.testDescriptionId = sessionStorage.getItem('testDescriptionId');
         this.getTestDescription();
     },
     computed: {
@@ -340,7 +336,7 @@ export default {
             this.errorMessages = [];
             this.commonCheckTestDescription();
             if (this.errorMessages.length === 0) {
-                if (confirm("作成してよろしいですか？")) {
+                if (confirm(this.$t("confirm.cretate"))) {
                     this.setTestDescription();
                     this.requestData.ParentID = this.test_description_detail.Id;
                     const url = this.$backendURL +
@@ -464,7 +460,7 @@ export default {
         },
         //キャンセルボタン
         postTestDescriptionCancel() {
-            if (confirm("入力した内容が失われますがよろしいですか？")) {
+            if (confirm(this.$t("confirm.loseInformation"))) {
                 this.$router.push({
                     name: "TestDescriptions",
                 });

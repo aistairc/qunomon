@@ -277,32 +277,22 @@ export default {
             sessionStorage.removeItem('report');
             sessionStorage.removeItem('measurementFormsList');
         },
-        signOut() {
-            sessionStorage.removeItem("mlComponentId");
-            sessionStorage.removeItem("organizationId");
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: "SignIn",
-            });
-        },
         //作成2画面目への遷移
         postTestDescriptionAppend() {
             //Quality Dimensionの名前の取得
             var qualityDimensionIdGet = document.getElementById("qualityDimensionId");
             var qualityDimensionIndex = qualityDimensionIdGet.selectedIndex; //インデックス番号を取得
             var qualityDimensionName = qualityDimensionIdGet.options[qualityDimensionIndex].text;
+            sessionStorage.setItem('testDescriptionName', this.testDescriptionName);
+            sessionStorage.setItem('qualityDimension', this.changeDemension);
+            sessionStorage.setItem('testRunner', JSON.stringify(this.changeTestrunner));
+            sessionStorage.setItem('qualityDimensionName', qualityDimensionName);
             this.$router.push({
-                name: "TestDescriptionAppend2",
-                params: {
-                    testDescriptionName: this.testDescriptionName,
-                    qualityDimension: this.changeDemension,
-                    testRunner: this.changeTestrunner,
-                    qualityDimensionName: qualityDimensionName,
-                },
+                name: "TestDescriptionAppend2"
             });
         },
         postTestDescriptionCancel() {
-            if (confirm("入力した内容が失われますがよろしいですか？")) {
+            if (confirm(this.$t("confirm.loseInformation"))) {
                 this.$router.push({
                     name: "TestDescriptions",
                 });
@@ -380,7 +370,7 @@ export default {
 }
 
 input[type="text"] {
-    width: 220px;
+    width: 330px;
 }
 
 input[type="text"]:focus,
@@ -389,7 +379,7 @@ select:focus {
 }
 
 .select {
-    width: 228px;
+    width: 338px;
 }
 
 .center {
@@ -460,7 +450,7 @@ td {
 }
 
 .left {
-    width: 68%;
+    width: 35%;
 }
 
 .right {

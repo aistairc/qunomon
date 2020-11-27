@@ -204,14 +204,6 @@ export default {
         modalReset() {
             this.key = this.key ? 0 : 1;
         },
-        signOut() {
-            sessionStorage.removeItem('mlComponentId');
-            sessionStorage.removeItem('organizationId');
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: 'SignIn'
-            });
-        },
         onRowClick(params) {
             this.screenTransion(params.row.id);
         },

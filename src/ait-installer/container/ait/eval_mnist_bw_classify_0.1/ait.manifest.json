@@ -4,7 +4,7 @@
   "author": "AIST",
   "email": "",
   "version": "0.1",
-  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/データセットの均一性",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/Distribution_of_training_data",
   "reference": "",
   "inventories": [
     {

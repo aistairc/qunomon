@@ -20,7 +20,7 @@
 # |11|license attribute set|1|Use only notebook launch.<br>Setting attribute for license.|should edit|
 # |12|prepare deploy|1|Use only notebook launch.<br>Convert to python programs and create dag.py.|no edit|
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -126,7 +126,7 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/データセットの被覆性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Diversity_of_test_data')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories('Data', 'dataset', 'Classification of different attributes related to autonomous driving scenarios', ['csv'], 'https://bdd-data.berkeley.edu/')
     manifest_genenerator.add_ait_inventories('High_risk_CA_combinations', 'attribute set', 'Combinations of different attribute values that are high risk situations in real life', ['csv'], 'User given data')

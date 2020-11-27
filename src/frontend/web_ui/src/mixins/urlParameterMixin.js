@@ -3,7 +3,8 @@ export const urlParameterMixin = {
         return {
             organizationId: null,
             mlComponentId: null,
-            mlComponent: null
+            mlComponent: null,
+            testDescriptionId: null
         }
     },
     methods: {

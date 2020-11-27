@@ -4,7 +4,7 @@
   "author": "AIST",
   "email": "",
   "version": "0.1",
-  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの正確性",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model",
   "reference": "",
   "inventories": [
     {
@@ -53,7 +53,7 @@
       {
         "name": "evaluation_index_matrix",
         "path": "/usr/local/qai/resources/evaluation_index_matrix.csv",
-        "type": "csv",
+        "type": "table",
         "description": "Table of evaluation indicators summary."
       },
       {

@@ -126,7 +126,7 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/データセットの均一性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Distribution_of_training_data')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories('Data', 'dataset', 'Classification of different attributes related to autonomous driving scenarios', ['csv'], 'https://bdd-data.berkeley.edu/')
     manifest_genenerator.add_ait_parameters('attribute_no', 'int', 'Total number of attribute for distibution analysis', '6')

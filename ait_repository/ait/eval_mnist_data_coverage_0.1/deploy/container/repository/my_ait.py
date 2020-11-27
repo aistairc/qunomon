@@ -118,7 +118,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[ ]:
 
 
 if not is_ait_launch:
@@ -127,7 +127,7 @@ if not is_ait_launch:
     get_ipython().system('apt-get install -y libgl1-mesa-dev')
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -147,7 +147,7 @@ from pathlib import Path
 from os import makedirs, path
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -166,7 +166,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -186,7 +186,7 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/データセットの被覆性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Diversity_of_test_data')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories(name='images', 
                                              type_='dataset', 
@@ -237,7 +237,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -260,7 +260,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -291,7 +291,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[12]:
+# In[ ]:
 
 
 def load_mnist_label(path):
@@ -382,7 +382,7 @@ def def_calc_cov(target_moment_df, col_name, max_range ,interval):
     return cov
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -399,7 +399,7 @@ def total_calc_cov(target_moment_df, col_name, max_range ,interval):
     return cov
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -421,7 +421,7 @@ def each_calc_cov(target_moment_df, col_name, max_range ,interval, class_num):
     return list_cov
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -443,7 +443,7 @@ def map_total_calc_cov(target_moment_df, col_name, title, file_path: str=None ):
     sns_plt.savefig(file_path)
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -479,7 +479,7 @@ def map_each_calc_cov(target_moment_df, col_name, class_num, file_path: str=None
     return out_files
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -495,7 +495,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################

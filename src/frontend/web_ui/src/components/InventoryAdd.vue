@@ -142,7 +142,7 @@ export default {
             this.errorMessages = [];
             this.commonCheckInventory();
             if (this.errorMessages.length === 0) {
-                if (confirm("作成してよろしいですか？")) {
+                if (confirm(this.$t("confirm.create"))) {
                     this.setInventory();
                     this.requestData.Formats = [this.selectedFormats];
                     const url = this.$backendURL +
@@ -172,7 +172,7 @@ export default {
             }
         },
         postInventoryCancel() {
-            if (confirm("入力した内容が失われますがよろしいですか？")) {
+            if (confirm(this.$t("confirm.loseInformation"))) {
                 this.hide();
             }
         },

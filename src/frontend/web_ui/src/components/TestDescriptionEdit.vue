@@ -249,15 +249,15 @@ export default {
         };
     },
     created() {
+        this.organizationIdCheck = sessionStorage.getItem("organizationId");
+        this.mlComponentId = sessionStorage.getItem("mlComponentId");
+        this.testDescriptionId = sessionStorage.getItem("testDescriptionId");
         this.getTestDescription();
     },
     mounted: function () {
         this.mlComponentIdCheck();
-        this.organizationIdCheck = sessionStorage.getItem("organizationId");
-        this.mlComponentId = sessionStorage.getItem("mlComponentId");
         this.getMLComponent();
         this.setLanguageData();
-        this.deleteSession();
     },
     computed: {
         filterTestRunners() {
@@ -294,24 +294,6 @@ export default {
             sessionStorage.setItem('language', lang);
             this.$i18n.locale = lang;
         },
-        signOut() {
-            sessionStorage.removeItem("mlComponentId");
-            sessionStorage.removeItem("organizationId");
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: "SignIn",
-            });
-        },
-        deleteSession() {
-            sessionStorage.removeItem('testDescriptionId')
-            sessionStorage.removeItem('testDescriptionName');
-            sessionStorage.removeItem('selectedQualityDimension');
-            sessionStorage.removeItem('qualityDimensionName');
-            sessionStorage.removeItem('selectedTestrunner');
-            sessionStorage.removeItem('selectedInventories');
-            sessionStorage.removeItem('report');
-            sessionStorage.removeItem('measurementFormsList');
-        },
         //編集2画面目への遷移
         postTestDescriptionEdit() {
             //Quality Dimensionの名前の取得
@@ -327,38 +309,34 @@ export default {
                     }
                 }
                 this.setMeasurementFormsList();
+                sessionStorage.setItem('setTempTestRunnerId', this.setTempTestRunner.Id);
+                sessionStorage.setItem('setTempTestRunner',JSON.stringify(this.setTempTestRunner));
+                sessionStorage.setItem('changeTestrunnerId',this.changeTestrunner.Id);
+                sessionStorage.setItem('testDescriptionName',this.testDescriptionName);
+                sessionStorage.setItem('qualityDimension',this.changeDemension);
+                sessionStorage.setItem('testRunner',JSON.stringify(this.changeTestrunner));
+                sessionStorage.setItem('qualityDimensionName',qualityDimensionName);
+                sessionStorage.setItem('testDescriptionId',this.testDescriptionId);
+                sessionStorage.setItem('selectedInventories',JSON.stringify(this.selectedInventories));
+                sessionStorage.setItem('selectedTestrunner',JSON.stringify(this.selectedTestrunner));
+                sessionStorage.setItem('checkedMeasurements',this.checkedMeasurements);
+                sessionStorage.setItem('measurementFormsList',JSON.stringify(this.measurementFormsList));
+                sessionStorage.setItem('test_description_detail',JSON.stringify(this.test_description_detail));
                 this.$router.push({
-                    name: "TestDescriptionEdit2",
-                    params: {
-                        setTempTestRunnerId: this.setTempTestRunner.Id,
-                        setTempTestRunner: this.setTempTestRunner,
-                        changeTestrunnerId: this.changeTestrunner.Id,
-                        testDescriptionName: this.testDescriptionName,
-                        qualityDimension: this.changeDemension,
-                        testRunner: this.changeTestrunner,
-                        qualityDimensionName: qualityDimensionName,
-                        testDescriptionId: this.$route.params.testDescriptionId,
-                        selectedInventories: this.selectedInventories,
-                        selectedTestrunner: this.selectedTestrunner,
-                        checkedMeasurements: this.checkedMeasurements,
-                        measurementFormsList: this.measurementFormsList,
-                        test_description_detail: this.test_description_detail,
-                    },
+                    name: "TestDescriptionEdit2"
                 });
             } else {
+                sessionStorage.setItem('setTempTestRunnerId', this.setTempTestRunner.Id);
+                sessionStorage.setItem('setTempTestRunner', JSON.stringify(this.setTempTestRunner));
+                sessionStorage.setItem('changeTestrunnerId', this.changeTestrunner.Id);
+                sessionStorage.setItem('testDescriptionName', this.testDescriptionName);
+                sessionStorage.setItem('qualityDimension', this.changeDemension);
+                sessionStorage.setItem('testRunner', JSON.stringify(this.changeTestrunner));
+                sessionStorage.setItem('qualityDimensionName', qualityDimensionName);
+                sessionStorage.setItem('testDescriptionId', this.testDescriptionId);
+                sessionStorage.setItem('checkedMeasurements', JSON.stringify(this.checkedMeasurements));
                 this.$router.push({
-                    name: "TestDescriptionEdit2",
-                    params: {
-                        setTempTestRunnerId: this.setTempTestRunner.Id,
-                        setTempTestRunner: this.setTempTestRunner,
-                        changeTestrunnerId: this.changeTestrunner.Id,
-                        testDescriptionName: this.testDescriptionName,
-                        qualityDimension: this.changeDemension,
-                        testRunner: this.changeTestrunner,
-                        qualityDimensionName: qualityDimensionName,
-                        testDescriptionId: this.$route.params.testDescriptionId,
-                        checkedMeasurements: this.checkedMeasurements,
-                    },
+                    name: "TestDescriptionEdit2"
                 });
             }
         },
@@ -369,7 +347,7 @@ export default {
                 "/mlComponents/" +
                 this.mlComponentId +
                 "/testDescriotions/" +
-                this.$route.params.testDescriptionId;
+                this.testDescriptionId;
             this.$axios.get(url)
                 .then((response) => {
                     this.test_description_detail = response.data.TestDescriptionDetail;
@@ -451,7 +429,7 @@ export default {
             this.count = cnt;
         },
         postTestDescriptionCancel() {
-            if (confirm("入力した内容が失われますがよろしいですか？")) {
+            if (confirm(this.$t("confirm.loseInformation"))) {
                 this.$router.push({
                     name: "TestDescriptions",
                 });
@@ -534,7 +512,7 @@ export default {
 }
 
 input[type="text"] {
-    width: 220px;
+    width: 330px;
 }
 
 input[type="text"]:focus,
@@ -543,7 +521,7 @@ select:focus {
 }
 
 .select {
-    width: 228px;
+    width: 338px;
 }
 
 .center {
@@ -614,7 +592,7 @@ td {
 }
 
 .left {
-    width: 68%;
+    width: 35%;
 }
 
 .right {

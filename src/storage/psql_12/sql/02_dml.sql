@@ -172,14 +172,14 @@ INSERT INTO public."M_Organization" (id, name) VALUES ('dep-c', '部署C');
 -- Data for Name: M_Quality_Dimension; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (1, '要求分析の十分性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (2, 'データ設計の十分性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (3, 'データセットの被覆性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (4, 'データセットの均一性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (5, '機械学習モデルの正確性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (6, '機械学習モデルの安定性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (7, '運用時品質の維持性');
-INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (8, 'プログラムの健全性');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (1, 'Completeness_of_problem_domain_analysis');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (2, 'Coverage_for_distinguished_problem_cases');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (3, 'Diversity_of_test_data');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (4, 'Distribution_of_training_data');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (5, 'Accuracy_of_trained_model');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (6, 'Robustness_of_trained_model');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (7, 'Stability_Maintainability_of_quality');
+INSERT INTO public."M_Quality_Dimension" (id, name) VALUES (8, 'Dependability_of_underlying_software');
 
 
 --

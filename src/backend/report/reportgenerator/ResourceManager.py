@@ -2,6 +2,7 @@ import pandas as pd
 import glob
 import reportgenerator.Tools as tools
 from pathlib import Path
+import textwrap
 
 import matplotlib.pyplot as plt
 from math import pi
@@ -43,6 +44,9 @@ class ResourceManager():
         try:
             df_overview = pd.DataFrame(columns=["目標達成", "目標未達成", "非該当"])
             for qp_id, qp_category in self.report_dataset['QualityDimension'].items():
+
+                qp_category = '\n'.join(textwrap.wrap(qp_category, 20))
+
                 cnt_pass = 0
                 cnt_fail = 0
                 cnt_noentry = 0
@@ -83,7 +87,7 @@ class ResourceManager():
             fig, ax = plt.subplots()
             fig.set_figwidth(10.0)
             fig.set_figheight(5.0)
-            fig.subplots_adjust(left=0.15)  # y軸に品質特性名を出すためにグラフを左にずらす(表示領域を確保)
+            fig.subplots_adjust(left=0.2)  # y軸に品質特性名を出すためにグラフを左にずらす(表示領域を確保)
 
             data_points = np.arange(len(qp_categories))
             left_data = pd.Series(np.zeros(len(qp_categories)), index=qp_categories.tolist())

@@ -296,9 +296,10 @@
                 this.hide();                
             },
             compare: function(){
+                sessionStorage.setItem('testDescriptionId1', this.checkedItems[0]);
+                sessionStorage.setItem('testDescriptionId2', this.checkedItems[1]);
                 this.$router.push({
-                    name: 'TestDescriptionsCompare',
-                    params: {testDescriptionId1: this.checkedItems[0], testDescriptionId2: this.checkedItems[1]}
+                    name: 'TestDescriptionsCompare'
                 })
             },
             onStarChange: function(testDescription){

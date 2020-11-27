@@ -3,6 +3,7 @@
 # coding=utf-8
 
 import shutil
+import os
 from pathlib import Path
 from nbconvert.exporters import PythonExporter, export
 from nbformat import read, NO_CONVERT
@@ -101,6 +102,25 @@ def prepare_deploy(ait_manifest: AITManifest, ait_sdk_name: str, base_dir: str, 
     shutil.copyfile(src_file, dst_file)
     _replace_template(ait_manifest.get_name(), ait_manifest.get_version(), dst_file, 'shift-jis')
 
+    # ait deploy
+    if not is_remote_deploy:
+        # ait deploy(directory)
+        ait_deploy_name = ait_manifest.get_name() + '_' + ait_manifest.get_version()
+        ait_deploy_base_dir = str(base_path/'../tool/ait_deploy/container/ait') + '/' + ait_deploy_name
+        ait_deploy_archive_dir = str(base_path/'../tool/ait_deploy/container/ait') + '/' + ait_deploy_name + '/' + ait_deploy_name+ '/' + ait_deploy_name
+        copy_dir = str(base_path/'../deploy')
+        if os.path.exists(ait_deploy_base_dir):
+            shutil.rmtree(ait_deploy_base_dir)
+        shutil.copytree(copy_dir, ait_deploy_archive_dir)
+        shutil.copyfile(str(base_path/'ait.manifest.json'), ait_deploy_base_dir + '/ait.manifest.json')
+        delete_file = ait_deploy_archive_dir + '/container/dockerfile_license'
+        os.remove(delete_file)
+
+        # ait deploy(script)
+        src_file = str(base_path/f'../template/ait_deploy.bat')
+        dst_file = str(base_path/'../tool/ait_deploy.bat')
+        shutil.copyfile(src_file, dst_file)
+        _replace_template(ait_manifest.get_name(), ait_manifest.get_version(), dst_file, 'shift-jis')
 
 def _replace_template(ait_name, ait_version, dst_file, encoding):
     with open(dst_file, encoding=encoding) as f:

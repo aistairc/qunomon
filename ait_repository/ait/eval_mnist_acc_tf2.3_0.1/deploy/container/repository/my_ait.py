@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[16]:
+# In[4]:
 
 
 #########################################
@@ -110,7 +110,7 @@ if not is_ait_launch:
     requirements_generator.add_package('tensorflow-estimator', '2.3.0')
 
 
-# In[17]:
+# In[5]:
 
 
 #########################################
@@ -124,7 +124,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[19]:
+# In[6]:
 
 
 #########################################
@@ -181,7 +181,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[20]:
+# In[8]:
 
 
 #########################################
@@ -197,7 +197,7 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの正確性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model')
     manifest_genenerator.set_ait_reference('')
 
     manifest_genenerator.add_ait_inventories(name='trained_model', 
@@ -296,7 +296,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[24]:
+# In[9]:
 
 
 #########################################
@@ -325,7 +325,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[25]:
+# In[10]:
 
 
 #########################################
@@ -356,7 +356,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[26]:
+# In[11]:
 
 
 #########################################
@@ -374,7 +374,7 @@ def calc_acc_all(y_test, y_pred) -> (float, float, float, float):
     return calc.average_accuracy(one_hot_y, y_pred).numpy() ,            calc.macro_precision(one_hot_y, y_pred).numpy() ,            calc.macro_recall(one_hot_y, y_pred).numpy() ,            calc.macro_f_measure(one_hot_y, y_pred).numpy()
 
 
-# In[27]:
+# In[12]:
 
 
 #########################################
@@ -392,7 +392,7 @@ def calc_acc_by_class( y_test, y_pred) -> (List[float], List[float], List[float]
     return calc.all_class_accuracy(one_hot_y, y_pred) ,            [v.numpy() for v in calc.all_class_precision(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_recall(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_f_measure(one_hot_y, y_pred)]
 
 
-# In[28]:
+# In[13]:
 
 
 #########################################
@@ -411,7 +411,7 @@ def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
     np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
 
 
-# In[29]:
+# In[14]:
 
 
 #########################################
@@ -443,7 +443,7 @@ def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[30]:
+# In[15]:
 
 
 #########################################
@@ -527,7 +527,7 @@ def save_roc_curve(y_test, y_pred, n_classes: int, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[31]:
+# In[16]:
 
 
 #########################################
@@ -547,7 +547,7 @@ def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
                          average=average)
 
 
-# In[32]:
+# In[17]:
 
 
 #########################################
@@ -624,7 +624,7 @@ def save_ng_predicts(X_test, y_test, y_pred, n_classes: int, file_path: str=None
     return out_files
 
 
-# In[33]:
+# In[18]:
 
 
 #########################################
@@ -648,7 +648,7 @@ def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[34]:
+# In[19]:
 
 
 #########################################
@@ -665,7 +665,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[35]:
+# In[20]:
 
 
 #########################################
@@ -725,7 +725,7 @@ def main() -> None:
     move_log()
 
 
-# In[37]:
+# In[21]:
 
 
 #########################################
@@ -736,7 +736,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[38]:
+# In[22]:
 
 
 #########################################
@@ -747,7 +747,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[40]:
+# In[23]:
 
 
 #########################################

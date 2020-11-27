@@ -7,7 +7,7 @@
 ## 準備
 
 ```
-cd {foo}\qai-testbed\src\backend\report
+cd {checkout_dir}\src\backend\report
 ```
 
 ### 依存パッケージをインストール

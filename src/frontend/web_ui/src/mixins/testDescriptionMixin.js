@@ -35,6 +35,8 @@ export const tdMixin = {
             previousPageSettingData: {},
             backTestDescriptionAppendData: {},
             backTestDescriptionEditData: {},
+            testDescriptionName: null,
+            changeTestrunner: null
         }
     },
     created(){
@@ -182,17 +184,17 @@ export const tdMixin = {
             this.$refs.addInventoryBtn.show(history);
         },
         postHistory_testDescriptionEdit(history,testDescriptionId) {
+            this.setTestDescription(testDescriptionId);
             this.$router.push({
                 name: 'TestDescriptionEdit',
-                params: {history: history,
-                        testDescriptionId: testDescriptionId}
+                params: {history: history}
             })
         },
         postHistory_testDescriptionCopy(history,testDescriptionId) {
+            this.setTestDescription(testDescriptionId);
             this.$router.push({
                 name: 'TestDescriptionCopy',
-                params: {history: history,
-                        testDescriptionId: testDescriptionId}
+                params: {history: history}
             })
         },
         setMeasurementForms(){
@@ -203,7 +205,7 @@ export const tdMixin = {
                         {
                             Id: this.selectedTestrunner.Report.Measures[i].Id,
                             Value: '',
-                            RelationalOperatorId: '',
+                            RelationalOperatorId: 1,
                             Enable: true
                         }
                     ];
@@ -243,5 +245,14 @@ export const tdMixin = {
                 })
             });
         }, 
+        setTestDescription(testDescriptionId){
+            sessionStorage.setItem('testDescriptionId', testDescriptionId);
+        },
+        signOut() {
+            sessionStorage.clear();
+            this.$router.push({
+                name: 'SignIn'
+            });
+        }
     }
 }

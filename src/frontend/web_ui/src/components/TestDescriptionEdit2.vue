@@ -401,11 +401,7 @@ export default {
     this.organizationIdCheck = sessionStorage.getItem("organizationId");
     this.mlComponentId = sessionStorage.getItem("mlComponentId");
     this.getMLComponent();
-    if(this.$route.params.testDescriptionId) {
-      this.getEdit();
-    } else {
-      this.getPreviousPageSettingData();
-    }
+    this.getEdit();
   },
   computed: {},
   methods: {
@@ -428,7 +424,7 @@ export default {
       this.errorMessages = [];
       this.commonCheckTestDescription();
       if (this.errorMessages.length === 0) {
-        if (confirm("編集してよろしいですか？")) {
+        if (confirm(this.$t("confirm.edit"))) {
           this.setTestDescription();
           const url = this.$backendURL
                                     + '/'
@@ -457,28 +453,25 @@ export default {
       }
     },
     getEdit() {
-      this.testDescriptionId = this.$route.params.testDescriptionId;
-      this.testDescriptionName = this.$route.params.testDescriptionName;
-      this.qualityDimension = this.$route.params.qualityDimension;
-      this.selectedTestrunner = this.$route.params.testRunner;
-      this.report = this.$route.params.testRunner.Report;
-      this.qualityDimensionName = this.$route.params.qualityDimensionName;
-      if (
-        this.$route.params.setTempTestRunnerId ==
-        this.$route.params.changeTestrunnerId
-      ) {
-        this.selectedInventories = this.$route.params.selectedInventories;
-        this.checkedMeasurements = this.$route.params.measurementFormsList;
-        this.setMeasurementFormsEdit();
-      } else {
-        this.selectedInventories = {};
-        this.checkedMeasurements = [];
-        this.setMeasurementForms();
-      }
+      this.testDescriptionId = sessionStorage.getItem('testDescriptionId');
+      this.testDescriptionName = sessionStorage.getItem('testDescriptionName');
+      this.qualityDimension = sessionStorage.getItem('qualityDimension');
+      this.selectedTestrunner =  JSON.parse(sessionStorage.getItem('testRunner'));
+      this.report = this.selectedTestrunner.Report;
+      this.qualityDimensionName = sessionStorage.getItem('qualityDimensionName');
+      if(sessionStorage.getItem('setTempTestRunnerId') == sessionStorage.getItem('changeTestrunnerId')){
+          this.selectedInventories =  JSON.parse(sessionStorage.getItem('selectedInventories'));
+          this.checkedMeasurements =  JSON.parse(sessionStorage.getItem('measurementFormsList'));
+          this.setMeasurementFormsEdit();
+        } else {
+          this.selectedInventories = {};
+          this.checkedMeasurements = [];
+          this.setMeasurementForms();
+        }
     },
     //TestDescriptionEdit1の画面へ戻る処理
     backTestDescriptionEdit() {
-      if (confirm("入力した内容が失われますがよろしいですか？")) {
+      if (confirm(this.$t("confirm.loseInformation"))) {
         this.setTestDescriptionData();
         this.$router.push({
           name: "TestDescriptionEdit",
@@ -493,14 +486,6 @@ export default {
       this.backTestDescriptionEditData.testDescriptionName = this.testDescriptionName;
       this.backTestDescriptionEditData.selectedQualityDimension = this.qualityDimension;
       this.backTestDescriptionEditData.selectedTestrunner = this.selectedTestrunner;
-    },
-    signOut() {
-      sessionStorage.removeItem("mlComponentId");
-      sessionStorage.removeItem("organizationId");
-      sessionStorage.removeItem('language');
-      this.$router.push({
-        name: "SignIn",
-      });
     },
     //Quality Assesmentのチェックボックスの処理
     changecheckbox() {
@@ -521,15 +506,15 @@ export default {
       }
     },
     setMeasurementFormsEdit(){
-        if (this.$route.params.test_description_detail.QualityMeasurements.length == 0){
+          if (JSON.parse(sessionStorage.getItem('test_description_detail')).QualityMeasurements.length == 0){
             this.count = 0;
             return;
         }
 
         var forms = [];
-        var preId = this.$route.params.test_description_detail.QualityMeasurements[0].Id;
+        var preId = JSON.parse(sessionStorage.getItem('test_description_detail')).QualityMeasurements[0].Id;
         var cnt = 0;
-        for(var qualityMeasurement of this.$route.params.test_description_detail.QualityMeasurements){
+        for(var qualityMeasurement of JSON.parse(sessionStorage.getItem('test_description_detail')).QualityMeasurements){
             var measurementForm = {
                 Id: qualityMeasurement.Id,
                 Value: qualityMeasurement.Value,
@@ -659,28 +644,8 @@ export default {
         sessionStorage.setItem('report', JSON.stringify(this.report));
         sessionStorage.setItem('selectedInventories', JSON.stringify(this.selectedInventories));
         sessionStorage.setItem('measurementFormsList', JSON.stringify(this.measurementFormsList));
-    },
-    getPreviousPageSettingData() {
-        // セッションから取得
-        this.testDescriptionId = sessionStorage.getItem('testDescriptionId');
-        this.testDescriptionName = sessionStorage.getItem('testDescriptionName');
-        this.qualityDimension = sessionStorage.getItem('selectedQualityDimension');
-        this.qualityDimensionName = sessionStorage.getItem('qualityDimensionName');
-        this.selectedTestrunner = JSON.parse(sessionStorage.getItem('selectedTestrunner'));
-        this.selectedInventories = JSON.parse(sessionStorage.getItem('selectedInventories'));
-        this.report = JSON.parse(sessionStorage.getItem('report'));
-        this.measurementFormsList = JSON.parse(sessionStorage.getItem('measurementFormsList'));
-        // セッションのキー削除
-        sessionStorage.removeItem('testDescriptionId')
-        sessionStorage.removeItem('testDescriptionName');
-        sessionStorage.removeItem('selectedQualityDimension');
-        sessionStorage.removeItem('qualityDimensionName');
-        sessionStorage.removeItem('selectedTestrunner');
-        sessionStorage.removeItem('selectedInventories');
-        sessionStorage.removeItem('report');
-        sessionStorage.removeItem('measurementFormsList');
-    },
-  },
+    }
+  }
 };
 </script>
 

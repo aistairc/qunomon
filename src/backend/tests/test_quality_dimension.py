@@ -21,14 +21,14 @@ with such.A('QualityDimensions') as it:
                 it.assertEqual(len(response[0]['QualityDimensions']), 8)
 
                 dims = response[0]['QualityDimensions']
-                it.assertTrue(any(d['Name'] == '要求分析の十分性' for d in dims))
-                it.assertTrue(any(d['Name'] == 'データ設計の十分性' for d in dims))
-                it.assertTrue(any(d['Name'] == 'データセットの被覆性' for d in dims))
-                it.assertTrue(any(d['Name'] == 'データセットの均一性' for d in dims))
-                it.assertTrue(any(d['Name'] == '機械学習モデルの正確性' for d in dims))
-                it.assertTrue(any(d['Name'] == '機械学習モデルの安定性' for d in dims))
-                it.assertTrue(any(d['Name'] == '運用時品質の維持性' for d in dims))
-                it.assertTrue(any(d['Name'] == 'プログラムの健全性' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Completeness_of_problem_domain_analysis' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Coverage_for_distinguished_problem_cases' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Diversity_of_test_data' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Distribution_of_training_data' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Accuracy_of_trained_model' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Robustness_of_trained_model' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Stability_Maintainability_of_quality' for d in dims))
+                it.assertTrue(any(d['Name'] == 'Dependability_of_underlying_software' for d in dims))
 
 
 it.createTests(globals())

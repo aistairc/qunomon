@@ -116,14 +116,14 @@ def _init_db_common(config_name):
     extensions.sql_db.session.add_all(settings)
     extensions.sql_db.session.flush()
 
-    quality_props = [QualityDimensionMapper(name='要求分析の十分性'),
-                     QualityDimensionMapper(name='データ設計の十分性'),
-                     QualityDimensionMapper(name='データセットの被覆性'),
-                     QualityDimensionMapper(name='データセットの均一性'),
-                     QualityDimensionMapper(name='機械学習モデルの正確性'),
-                     QualityDimensionMapper(name='機械学習モデルの安定性'),
-                     QualityDimensionMapper(name='運用時品質の維持性'),
-                     QualityDimensionMapper(name='プログラムの健全性')]
+    quality_props = [QualityDimensionMapper(name='Completeness_of_problem_domain_analysis'),
+                     QualityDimensionMapper(name='Coverage_for_distinguished_problem_cases'),
+                     QualityDimensionMapper(name='Diversity_of_test_data'),
+                     QualityDimensionMapper(name='Distribution_of_training_data'),
+                     QualityDimensionMapper(name='Accuracy_of_trained_model'),
+                     QualityDimensionMapper(name='Robustness_of_trained_model'),
+                     QualityDimensionMapper(name='Stability_Maintainability_of_quality'),
+                     QualityDimensionMapper(name='Dependability_of_underlying_software')]
     extensions.sql_db.session.add_all(quality_props)
     extensions.sql_db.session.flush()
 
@@ -459,16 +459,17 @@ def _init_db_demo_2():
     test_runners = [
         TestRunnerMapper(name='acc_check_1.0.py', description='eval_acc_check_by_tfmodel_1.0', author='John Smith',
                          email='John_Smith@aaa.com', version='1',
-                         quality='https://airc.aist.go.jp/aiqm/quality/internal/学習の正確性',
+                         quality='https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model',
                          landing_page='https://aithub.com/acc_check/1.0'),
         TestRunnerMapper(name='adversarial_example_acc_test_1.0.py',
                          description='eval_adversarial_example_acc_test_by_tfmodel_1.0',
                          author='John Smith', email='John_Smith@aaa.com', version='1',
-                         quality='https://airc.aist.go.jp/aiqm/quality/internal/学習の安定性',
+                         quality='https://airc.aist.go.jp/aiqm/quality/internal/Robustness_of_trained_model',
                          landing_page='https://aithub.com/adversarial_example_acc_test/1.0'),
         TestRunnerMapper(name='dev_hello_world',
                          description='dev_hello_world_0.1', author='John Smith', email='John_Smith@aaa.com',
-                         version='0.1', quality='https://airc.aist.go.jp/aiqm/quality/internal/学習の安定性',
+                         version='0.1',
+                         quality='https://airc.aist.go.jp/aiqm/quality/internal/Robustness_of_trained_model',
                          landing_page='https://aithub.com/dev_hello_world/')
     ]
     extensions.sql_db.session.add_all(test_runners)

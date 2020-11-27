@@ -172,7 +172,6 @@ export default {
         this.organizationIdCheck = sessionStorage.getItem('organizationId');
         this.mlComponentId = sessionStorage.getItem('mlComponentId');
         this.testDescriptionId = sessionStorage.getItem('testDescriptionId');
-        sessionStorage.removeItem('testDescriptionId');
         this.getMLComponent();
         const url = this.$backendURL + '/' +
             this.organizationIdCheck + '/mlComponents/' +
@@ -364,14 +363,6 @@ export default {
                 link.href = value;
                 link.click();
             }
-        },
-        signOut() {
-            sessionStorage.removeItem('mlComponentId');
-            sessionStorage.removeItem('organizationId');
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: 'SignIn'
-            });
         },
         updateStatus(data) {
             this.test_descriptions.Test.Status = data.Job.Status;

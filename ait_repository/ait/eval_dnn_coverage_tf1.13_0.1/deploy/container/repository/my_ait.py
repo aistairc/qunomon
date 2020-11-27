@@ -200,7 +200,7 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの安定性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Robustness_of_trained_model')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories(name='image_data', 
                                              type_='dataset', 

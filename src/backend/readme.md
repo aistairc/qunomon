@@ -38,7 +38,7 @@
 
 * コマンドプロンプト
     ```
-    cd {foo}\qai-testbed\src\backend
+    cd {checkout_dir}\src\backend
     ```
 
 * コマンドプロンプト

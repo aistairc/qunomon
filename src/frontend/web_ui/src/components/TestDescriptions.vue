@@ -418,15 +418,16 @@ import TDRelation from './TestDescriptionRelationship';
                 this.sort.key = key;
             },
             compare: function(){
+                sessionStorage.setItem('testDescriptionId1', this.checkedItems[0]);
+                sessionStorage.setItem('testDescriptionId2', this.checkedItems[1]);
                 this.$router.push({
-                    name: 'TestDescriptionsCompare',
-                    params: {testDescriptionId1: this.checkedItems[0], testDescriptionId2: this.checkedItems[1]}
+                    name: 'TestDescriptionsCompare'
                 })
             },
             postTestDescriptionId_toDetail: function(testDescriptionId){
+                this.setTestDescription(testDescriptionId);
                 this.$router.push({
-                    name: 'TestDescriptionsDetail',
-                    params: {testDescriptionId: testDescriptionId}
+                    name: 'TestDescriptionsDetail'
                 })
             },
             postTestDescriptionId_toAncestors: function(testDescriptionId){
@@ -448,14 +449,6 @@ import TDRelation from './TestDescriptionRelationship';
 				this.$router.push({
 					name: 'TestDescriptionAppend'
 				})
-			},
-			signOut(){
-				sessionStorage.removeItem('mlComponentId');
-				sessionStorage.removeItem('organizationId');
-				sessionStorage.removeItem('language');
-				this.$router.push({
-					name: 'SignIn'
-				});
 			},
 			screenTransion(mlComponentId){
 				sessionStorage.setItem('mlComponentId', mlComponentId);

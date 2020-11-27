@@ -177,7 +177,7 @@ Number of data n, true values: y(1),y(2),⋯,y(n) Predicted values: f(1),f(2),�
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの正確性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories(name='trained_model', 
                                              type_='model', 

@@ -38,7 +38,7 @@
 
 * コマンドプロンプト
     ```
-    cd {foo}\qai-testbed\src\integration-provider
+    cd {checkout_dir}\src\integration-provider
     ```
 
 * コマンドプロンプト

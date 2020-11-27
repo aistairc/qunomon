@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -199,7 +199,7 @@ Please set the memory allocation of docker to 4GB or more.''')
     manifest_genenerator.set_ait_author('AIST')
     manifest_genenerator.set_ait_email('')
     manifest_genenerator.set_ait_version('0.1')
-    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/機械学習モデルの正確性')
+    manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model')
     manifest_genenerator.set_ait_reference('')
     manifest_genenerator.add_ait_inventories(name='trained_model_checkpoint', 
                                              type_='model', 
@@ -348,7 +348,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[11]:
 
 
 if not is_ait_launch:

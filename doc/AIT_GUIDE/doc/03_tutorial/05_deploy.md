@@ -62,3 +62,17 @@ Please check yourself to see if your third-party OSS license is listed.
     ```
     {AIT_ROOT}\tool\generate_thirdparty_notices.bat
     ```
+
+## build AIT
+
+``` important:: Qunomon system must be booted before running this batch file.
+```
+
+``` important:: If you execute this batch file, the procedure of "3.6.Test" is not necessary.
+```
+
+* execute bat
+
+    ```
+    {AIT_ROOT}\tool\ait_deploy.bat
+    ```

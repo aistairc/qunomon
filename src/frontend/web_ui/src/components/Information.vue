@@ -115,15 +115,7 @@ export default {
         changeLanguage(lang) {
             sessionStorage.setItem('language', lang);
             this.$i18n.locale = lang;
-        },
-        signOut() {
-            sessionStorage.removeItem('mlComponentId');
-            sessionStorage.removeItem('organizationId');
-            sessionStorage.removeItem('language');
-            this.$router.push({
-                name: 'SignIn'
-            });
-        },
+        }
     }
 }
 </script>

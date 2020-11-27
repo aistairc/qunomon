@@ -184,5 +184,11 @@ export const inventoryMixin = {
                 this.selectedFormats = '*';
             }
         },
+        signOut() {
+            sessionStorage.clear();
+            this.$router.push({
+                name: 'SignIn'
+            });
+        }
     }
 }
