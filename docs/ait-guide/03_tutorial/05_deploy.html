@@ -100,6 +100,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#build-docker-image">3.5.3. build docker image</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-thirdparty-notice">3.5.4. create thirdparty notice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-ait">3.5.5. build AIT</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="06_test.html">3.6. Test</a></li>
@@ -265,6 +266,24 @@
 <ul>
 <li><p>execute bat</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">AIT_ROOT</span><span class="p">}</span>\<span class="n">tool</span>\<span class="n">generate_thirdparty_notices</span><span class="o">.</span><span class="n">bat</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="build-ait">
+<h2><span class="section-number">3.5.5. </span>build AIT<a class="headerlink" href="#build-ait" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Qunomon system must be booted before running this batch file.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you execute this batch file, the procedure of “3.6.Test” is not necessary.</p>
+</div>
+<ul>
+<li><p>execute bat</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">AIT_ROOT</span><span class="p">}</span>\<span class="n">tool</span>\<span class="n">ait_deploy</span><span class="o">.</span><span class="n">bat</span>
 </pre></div>
 </div>
 </li>
