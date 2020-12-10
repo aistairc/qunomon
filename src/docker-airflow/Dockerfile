@@ -80,7 +80,7 @@ RUN set -ex \
     && pip install SQLAlchemy==1.3.15 \
     && pip install werkzeug==0.16.0 \
     && pip install apache-airflow[crypto,celery,postgres,hive,jdbc,mysql,ssh${AIRFLOW_DEPS:+,}${AIRFLOW_DEPS}]==${AIRFLOW_VERSION} \
-                     --constraint https://raw.githubusercontent.com/apache/airflow/1.10.10/requirements/requirements-python3.6.txt \
+                     --constraint https://raw.githubusercontent.com/apache/airflow/${AIRFLOW_VERSION}/requirements/requirements-python3.6.txt \
     #&& pip install tensorflow==1.14.0 \
     #&& pip install tfx==0.14.0 \
     #&& pip install ml-metadata \

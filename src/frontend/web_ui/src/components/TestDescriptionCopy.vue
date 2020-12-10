@@ -208,6 +208,9 @@
                                                 <td class="inventory_terms center">
                                                     <span>{{$t("testDescriptionCopy.name")}}</span>
                                                 </td>
+                                                <td class="inventory_data_type center">
+                                                    <span>{{$t("testDescriptionCopy.dataType")}}</span>
+                                                </td>
                                                 <td class="inventory_formats center">
                                                     <span>{{$t("testDescriptionCopy.formats")}}</span>
                                                 </td>
@@ -217,6 +220,7 @@
                                                 <td class="inventory_input center">
                                                     <span>{{$t("testDescriptionCopy.inventoryInput")}}</span>
                                                 </td>
+                                                <td class="inventory_add center"/>
                                             </tr>
                                         </thead>
                                         <tbody class="tbody" v-if="selectedTestrunner">
@@ -225,6 +229,9 @@
                                                 <td class="inventory_terms">
                                                     <span>{{TargetInventory.Name}}</span>
                                                     <span class="asterisk">&#042;</span>
+                                                </td>
+                                                <td class="inventory_data_type">
+                                                    <span>{{TargetInventory.DataType.Name}}</span>
                                                 </td>
                                                 <td class="inventory_formats">
                                                     <span v-for="Format in TargetInventory.Formats" :key="Format.Id">{{ Format.Format }}</span>
@@ -242,19 +249,18 @@
                                                         </option>
                                                     </select>
                                                 </td>
+                                                <td class="inventory_add">
+                                                    <template v-if="$i18n.locale === 'en'">
+                                                        <img src="~@/assets/plus.svg" alt="add" title="add" class="icon" @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
+                                                    </template>
+                                                    <template v-else>
+                                                        <img src="~@/assets/plus.svg" alt="追加" title="追加" class="icon" @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
+                                                    </template>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
-
                                     <inventoryAdd :key="copy_key" ref="addInventoryBtn" @addInventory="addInventories"></inventoryAdd>
-                                    <div class="btn" id="btn_menu">
-                                        <template v-if="$i18n.locale === 'en'">
-                                            <input type="button" value="Add Inventory" class="btn_single" @click="inventoryAdd($route.path)">
-                                        </template>
-                                        <template v-else>
-                                            <input type="button" value="インベントリ追加" class="btn_single" @click="inventoryAdd($route.path)">
-                                        </template>
-                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -757,11 +763,15 @@ td {
 }
 
 .inventory_terms {
-    width: 180px;
+    width: 150px;
+}
+
+.inventory_data_type {
+    width: 80px;
 }
 
 .inventory_formats {
-    width: 160px;
+    width: 80px;
 }
 
 .inventory_description {
@@ -770,6 +780,10 @@ td {
 
 .inventory_input {
     width: 190px;
+}
+
+.inventory_add {
+    width: 30px;
 }
 
 /*Quality Assesment*/

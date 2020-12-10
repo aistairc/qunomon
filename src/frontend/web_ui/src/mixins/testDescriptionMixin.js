@@ -179,9 +179,9 @@ export const tdMixin = {
             }
             return inventoriesList;
         },
-        inventoryAdd(history) {
+        inventoryAdd(history, selectDataType, selectedFormats) {
             this.setPreviousPageSettingData();
-            this.$refs.addInventoryBtn.show(history);
+            this.$refs.addInventoryBtn.show(history, selectDataType, selectedFormats);
         },
         postHistory_testDescriptionEdit(history,testDescriptionId) {
             this.setTestDescription(testDescriptionId);

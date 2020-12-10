@@ -26,14 +26,14 @@
                 <dl>
                     <dt class="label">{{$t("inventoryAppend.filePath")}}<span class="error">&#042;</span></dt>
                     <dd>
-                        <input type="text" size="50" placeholder="C:\..." name="file_path" v-model="filePath" v-on:blur="checkFormat" />
+                        <input type="text" size="50" placeholder="C:\..." name="file_path" v-model="filePath"/>
                     </dd>
                 </dl>
                 <div class="formatError" v-if="isInvalidFormat">{{$t("inventoryAppend.formatError")}}</div>
                 <dl>
                     <dt class="label">{{$t("inventoryAppend.dataType")}}<span class="error">&#042;</span></dt>
                     <dd>
-                        <select class="select" v-model="selectedType">
+                        <select class="select" v-model="selectedType" disabled>
                             <option value="" hidden style="color: gray">
                                 {{$t("common.defaultPulldown")}}
                             </option>
@@ -59,7 +59,7 @@
                 <dl>
                     <dt class="label">{{$t("inventoryAppend.format")}}<span class="error">&#042;</span></dt>
                     <dd>
-                        <select class="select" v-model="selectedFormatType" @change="changeFormatList">
+                        <select class="select" v-model="selectedFormatType" disabled>
                             <option value="" hidden style="color: gray">
                                 {{$t("common.defaultPulldown")}}
                             </option>
@@ -68,7 +68,7 @@
                                 {{ formatType }}
                             </option>
                         </select>
-                        <select class="select" v-model="selectedFormats" @change="changeFormatTypeList">
+                        <select class="select" v-model="selectedFormats" disabled>
                             <option value="" hidden style="color: gray">
                                 {{$t("common.defaultPulldown")}}
                             </option>
@@ -129,9 +129,13 @@ export default {
         this.getFileSystems();
     },
     methods: {
-        show(prevScreenName) {
+        show(prevScreenName, selectDataType, selectedFormats) {
             this.clearInputInventory();
             this.$modal.show("inventoryAddModal");
+            this.selectDataType = selectDataType;
+            this.selectedType = selectDataType;
+            this.selectedFormats = selectedFormats
+            this.changeFormatTypeList()
             this.prevScreenName = prevScreenName;
         },
         hide() {
@@ -145,6 +149,7 @@ export default {
                 if (confirm(this.$t("confirm.create"))) {
                     this.setInventory();
                     this.requestData.Formats = [this.selectedFormats];
+                    this.requestData.DataTypeId = undefined;
                     const url = this.$backendURL +
                         "/" +
                         this.organizationIdCheck +
@@ -179,11 +184,7 @@ export default {
         clearInputInventory(){
             this.name = "";
             this.filePath = "";
-            this.selectDatatype = "";
             this.selectedFileSystem = "";
-            this.selectedType = "";
-            this.selectedFormatType = "";
-            this.selectedFormats = "";
             this.description = "";
             this.isInvalidFormat = false;
             this.errorMessages = [];

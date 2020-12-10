@@ -70,6 +70,10 @@ class ResourceManager():
                     cnt_pass = cnt_pass + 1 if td_data['TestDescriptionResult']["Summary"] == 'OK' else cnt_pass
                     cnt_fail = cnt_fail + 1 if td_data['TestDescriptionResult']["Summary"] != 'OK' else cnt_fail
 
+                # 該当品質特性にTDがない場合、表示対象に含めない
+                if cnt_pass == 0 and cnt_fail == 0 and cnt_noentry == 0:
+                    continue
+
                 s = pd.Series([cnt_pass, cnt_fail, cnt_noentry], index=df_overview.columns, name=qp_category)
                 df_overview = df_overview.append(s)
 
@@ -124,22 +128,28 @@ class ResourceManager():
         # 内部品質ごとにテスト実施数をカウント
         try:
             values = []
+            categories = []
 
             if self.report_dataset['TestDescriptionDetail'] is None:
                 for qp_id in self.report_dataset['QualityDimension'].keys():
                     values += [0]
+                    categories = list(value for value in self.report_dataset['QualityDimension'].values())
             else:
                 for qp_id in self.report_dataset['QualityDimension'].keys():
                     cnt = 0
                     for td_id in self.report_dataset['TestDescriptionDetail'].keys():
                         qp_td_id = self.report_dataset['TestDescriptionDetail'][td_id]['QualityDimension']['Id']
                         cnt = cnt + 1 if str(qp_td_id) == str(qp_id) else cnt
-                    values += [cnt]
+
+                    if cnt != 0:
+                        values += [cnt]
+                        categories.append(self.report_dataset['QualityDimension'][qp_id])
 
             # レーダーチャートを閉じるために最初の値を再度加える(仕様)
             values += [values[0]]
 
-            categories = list(value for value in self.report_dataset['QualityDimension'].values())
+            categories = ['\n'.join(textwrap.wrap(c, 20)) for c in categories]
+
             N = len(categories)
 
             # カテゴリ数に合わせて角度を決定

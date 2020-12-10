@@ -74,7 +74,7 @@ Screen for editing the created TestDescription (2 screens)
     * The registered information is displayed.
     * Check the name, format, and detailed information, and select Inventory.
     * If there are many display items, it is possible to scroll.
-    * If there is no Inventory that matches the format, it is possible to add an Inventory by pressing the Add Inventory button to display the Add Inventory modal.
+    * If there is no Inventory that matches the format, it is possible to add an Inventory by pressing the Add Inventory button(+) to display the Add Inventory modal.
 
   * (2) Button area
     * It is possible to update the Description by pressing the Update button.
@@ -108,7 +108,7 @@ Screen for editing the created TestDescription (2 screens)
     * Select the Target Inventory you want to register.
     * Check the name, format, and detailed information, and select Inventory.
     * If there are many display items, it is possible to scroll.
-    * If there is no Inventory that matches the format, it is possible to add an Inventory by pressing the Add Inventory button to display the Add Inventory modal.
+    * If there is no Inventory that matches the format, it is possible to add an Inventory by pressing the Add Inventory button(+) to display the Add Inventory modal.
 
   * (2) Button area
     * It is possible to update the Description by pressing the Update button.
