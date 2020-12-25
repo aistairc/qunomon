@@ -121,7 +121,7 @@
           </div>
           <hr />
 
-          <!-- Quality Assesment -->
+          <!-- Acceptance Criteria -->
           <div>
             <table class="table_block">
               <tr>
@@ -494,7 +494,7 @@ export default {
       this.backTestDescriptionEditData.selectedQualityDimension = this.qualityDimension;
       this.backTestDescriptionEditData.selectedTestrunner = this.selectedTestrunner;
     },
-    //Quality Assesmentのチェックボックスの処理
+    //Acceptance Criteriaのチェックボックスの処理
     changecheckbox() {
       var qaCheckbox = document.getElementsByClassName("checkboxCheck");
       for (var i = 0; i < qaCheckbox.length; i++) {
@@ -502,13 +502,13 @@ export default {
         var qaRelationalOperator = qaName.nextSibling;
         var qaValue = qaRelationalOperator.nextSibling;
         if (qaCheckbox[i].checked) {
-          qaName.classList.remove("qualityAssesmentChecked");
-          qaRelationalOperator.classList.remove("qualityAssesmentChecked");
-          qaValue.classList.remove("qualityAssesmentChecked");
+          qaName.classList.remove("acceptanceCriteriaChecked");
+          qaRelationalOperator.classList.remove("acceptanceCriteriaChecked");
+          qaValue.classList.remove("acceptanceCriteriaChecked");
         } else {
-          qaName.classList.add("qualityAssesmentChecked");
-          qaRelationalOperator.classList.add("qualityAssesmentChecked");
-          qaValue.classList.add("qualityAssesmentChecked");
+          qaName.classList.add("acceptanceCriteriaChecked");
+          qaRelationalOperator.classList.add("acceptanceCriteriaChecked");
+          qaValue.classList.add("acceptanceCriteriaChecked");
         }
       }
     },
@@ -825,7 +825,7 @@ td {
     width: 30px;
 }
 
-/*Quality Assesment*/
+/*Acceptance Criteria*/
 #conditions {
   margin-left: 20px;
 }
@@ -844,7 +844,7 @@ input[type="radio"] {
   width: auto;
 }
 
-.qualityAssesmentChecked {
+.acceptanceCriteriaChecked {
   color: rgba(0, 0, 102, 0.4);
   user-select: none;
   pointer-events: none;

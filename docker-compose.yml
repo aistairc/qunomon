@@ -55,6 +55,7 @@ services:
       - ./src/backend/:/work/
       - ./src/docker-airflow/logs:/src/airflow_logs
       - testbed_mount_volume_src:/testbed_mount_volume_dst:Z
+      - ./logs/app:/work/logs
     command: 
       ['python', '-m', 'entrypoint', 'startserver']
     depends_on: 
@@ -113,6 +114,7 @@ services:
       - ./src/docker-airflow/logs:/src/airflow_logs
       - testbed_mount_volume_src:/testbed_mount_volume_dst:Z
       - /var/run/docker.sock:/var/run/docker.sock:rw # デプロイ用のdockerソケット
+      - ./logs/ip:/work/logs
     command: 
       ['python', '-m', 'entrypoint', 'startserver']
     depends_on: 

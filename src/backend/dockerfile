@@ -12,6 +12,8 @@ COPY requirements.txt $PROJECT_ROOTDIR
 # pip install ReportGenerator モジュールのセットアップ準備
 COPY ./report/ $PROJECT_ROOTDIR/report
 
+COPY ./libs/ $PROJECT_ROOTDIR/libs
+
 # モジュールのセットアップ
 RUN pip install -U pip && \
     pip install -r requirements.txt

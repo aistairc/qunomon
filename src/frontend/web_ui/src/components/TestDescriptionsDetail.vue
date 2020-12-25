@@ -122,7 +122,8 @@
                         <template v-if="tdDtl.TestDescriptionResult">
                             <template v-if="tdDtl.TestDescriptionResult.Summary ==='OK' || tdDtl.TestDescriptionResult.Summary === 'NG'">
                                 <div id="table" align="center">
-                                    <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center" :sort-options="{enabled: false,}" style-class="vgt-table" @on-row-click="onRowClick">
+                                    <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center" :sort-options="{enabled: false,}" style-class="vgt-table" @on-row-click="onRowClick"
+                                                  :pagination-options="pagenationSettings" @on-per-page-change="onPerPageChange">
                                         <template slot="table-row" slot-scope="props">
                                             <!--ラジオボタン-->
                                             <span v-if="props.column.field == 'radiobox'">
@@ -137,11 +138,13 @@
                                 <!-- 追加ボタン -->
                                 <div id="btn_add">
                                     <template v-if="$i18n.locale === 'en'">
-                                        <input type="button" id="add_btn" value="add to Report→" class="btn_single" v-bind:class="{ 'un_btn' : isActive }" onclick="addList(this);" @click="addRowData">
+                                        <input type="button" id="add_btn" value="add to Report→" class="btn_single" v-bind:class="{ 'un_btn' : isActive }" @click="addRowData">
                                     </template>
                                     <template v-else>
-                                        <input type="button" id="add_btn" value="レポートに追加→" class="btn_single" v-bind:class="{ 'un_btn' : isActive }" onclick="addList(this);" @click="addRowData">
+                                        <input type="button" id="add_btn" value="レポートに追加→" class="btn_single" v-bind:class="{ 'un_btn' : isActive }" @click="addRowData">
                                     </template>
+                                    <br/>
+                                    <span>{{$t("testDescriptionDetail.addReportNote")}}</span>
                                 </div>
                                 <!-- グラフ -->
                                 <div class="result_img" v-show="selectedType != null && selectedType === 'picture'">
@@ -324,6 +327,16 @@
                                     style="width: 97%;"
                                 >
                                 </AgGridVue>
+                                
+                                <!-- 削除ボタン -->
+                                <div id="btn_del_all">
+                                    <template v-if="$i18n.locale === 'en'">
+                                        <input type="button" id="del_all_btn" value="←remove all Report graphs" class="btn_single" v-bind:class="{ 'un_btn' : isRemoveAllRowActive }" @click="removeAllRowData">
+                                    </template>
+                                    <template v-else>
+                                        <input type="button" id="del_all_btn" value="←レポートから全グラフ削除" class="btn_single" v-bind:class="{ 'un_btn' : isRemoveAllRowActive }" @click="removeAllRowData">
+                                    </template>
+                                </div>
                             </div>
                             <!-- 見解 -->
                             <div class="opinion">
@@ -400,16 +413,22 @@ export default {
             name: "dgDetail",
             languagedata: null,
             columns: [{
+                    label: this.setTableLanguage("index"),
+                    field: "index",
+                    thClass: 't_left',
+                    width: "7%",
+                },
+                {
                     label: this.setTableLanguage("name"),
                     field: "name",
                     thClass: 't_left',
-                    width: "45%",
+                    width: "33%",
                 },
                 {
                     label: this.setTableLanguage("description"),
                     field: "description",
                     thClass: 't_left',
-                    width: "35%",
+                    width: "40%",
                 },
                 {
                     label: this.setTableLanguage("format"),
@@ -423,7 +442,21 @@ export default {
                     width: "0px",
                 }
             ],
-            rows: []
+            rows: [],
+            isRemoveAllRowActive: false,
+            pagenationSettings:{
+                enabled: true,
+                mode: 'records',
+                perPage: 5,
+                perPageDropdown: [10, 50, 100],
+                dropdownAllowAll: false,
+                setCurrentPage: 1,
+                nextLabel: this.setTableLanguage("pageNext"),
+                prevLabel: this.setTableLanguage("pagePrev"),
+                rowsPerPageLabel: this.setTableLanguage("rowsPerPageLabel"),
+                ofLabel: 'of',
+                allLabel: 'All',
+            }
         }
     },
     components: {
@@ -435,7 +468,7 @@ export default {
         this.columnDefs = [{
                 headerName: this.setReportTableLanguage("no"),
                 field: "no",
-                width: 50,
+                width: 60,
                 rowDrag: true,
             },
             {
@@ -542,6 +575,8 @@ export default {
             this.languagedata = require('./languages/languages.json');
             if (this.$i18n.locale == 'ja') {
                 switch (fieldName) {
+                    case 'index':
+                        return this.languagedata.ja.testDescriptionDetail.index;
                     case 'name':
                         return this.languagedata.ja.testDescriptionDetail.name;
                     case 'description':
@@ -550,10 +585,18 @@ export default {
                         return this.languagedata.ja.testDescriptionDetail.type;
                     case 'radiobox':
                         return this.languagedata.ja.testDescriptionDetail.radiobox;
+                    case 'pageNext':
+                        return this.languagedata.ja.testDescriptionDetail.pageNext;
+                    case 'pagePrev':
+                        return this.languagedata.ja.testDescriptionDetail.pagePrev;
+                    case 'rowsPerPageLabel':
+                        return this.languagedata.ja.testDescriptionDetail.rowsPerPageLabel;
                     default:
                 }
             } else if (this.$i18n.locale == 'en') {
                 switch (fieldName) {
+                    case 'index':
+                        return this.languagedata.en.testDescriptionDetail.index;
                     case 'name':
                         return this.languagedata.en.testDescriptionDetail.name;
                     case 'description':
@@ -562,6 +605,12 @@ export default {
                         return this.languagedata.en.testDescriptionDetail.type;
                     case 'radiobox':
                         return this.languagedata.en.testDescriptionDetail.radiobox;
+                    case 'pageNext':
+                        return this.languagedata.en.testDescriptionDetail.pageNext;
+                    case 'pagePrev':
+                        return this.languagedata.en.testDescriptionDetail.pagePrev;
+                    case 'rowsPerPageLabel':
+                        return this.languagedata.en.testDescriptionDetail.rowsPerPageLabel;
                     default:
                 }
             }
@@ -609,13 +658,16 @@ export default {
             }
         },
         getTDResources(val) {
+            var index = 1;
             for (var td in val) {
                 this.rows.push({
+                    index: index,
                     name: val[td].Name,
                     description: val[td].Description,
                     format: val[td].GraphType,
                     graph_num: val[td].Id
                 })
+                index++;
             }
         },
         onRowClick(params) {
@@ -625,11 +677,20 @@ export default {
             this.graph_name = params.row.name;
             this.graph_rename = params.row.name;
             this.selectedType = '';
-            //全行を取得し、ループ
+
+            //表示中のページ行を取得し、ループ
             var tdTable = this.$refs.tdTable;
-            for (var j = 0; j < tdTable.rows.length; j++) {
+            var pageOffset = (tdTable.currentPage - 1) * tdTable.currentPerPage
+            var pageLast = pageOffset + tdTable.currentPerPage
+            var pageRemain = tdTable.currentPerPage
+
+            if (tdTable.rows.length <= pageLast){
+                pageRemain = tdTable.currentPerPage - (pageLast - tdTable.rows.length)
+            }
+
+            for (var j = 0; j < pageRemain; j++) {
                 //選択された行の場合
-                if (row_num == j) {
+                if (row_num == j + pageOffset) {
                     if (document.getElementsByName('graph')[j].checked) {
                         document.getElementsByName('graph')[j].checked = false;
                         document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.remove('checked');
@@ -669,6 +730,15 @@ export default {
                 }
             }
 
+        },
+        onPerPageChange(){
+            var tdTable = this.$refs.tdTable;
+            tdTable.currentPage = 1;
+            this.graph_num = '';
+            this.graph_name = '';
+            this.graph_rename = '';
+            this.selectedType = '';
+            this.isActive = true;
         },
         postReportGenerator(command) {
             this.errorMessages = [];
@@ -1010,11 +1080,19 @@ export default {
                     break
                 }
             }
+            if (this.rowData.length == 0){
+                this.isRemoveAllRowActive = true;
+            }
         },
         //右側の表にデータを追加するメソッド。引数を(no, name, graph)設定し,
         //newRowData[newRowData.length - 1] = {no: no, name: name, reportName: graph, remove:{value: '-', id: this.setRowId()}}
         //のように変更すれば任意のデータを追加することができる。
         addRowData: function () {
+            var row_limit = 20;
+            if(this.rowData.length >= row_limit){
+                alert(this.$t("testDescriptionDetail.warnAddReportResource"));
+                return;
+            }
             var newRowData = this.rowData;
             newRowData[newRowData.length] = {}
             newRowData[newRowData.length - 1] = {
@@ -1032,6 +1110,13 @@ export default {
             
             this.sortChange();
             this.isActive = true;
+            this.isRemoveAllRowActive = false;
+        },
+        removeAllRowData: function () {
+            this.rowData = [];
+            this.gridOptions.api.setRowData(this.rowData);
+            this.isActive = false;
+            this.isRemoveAllRowActive = true;
         },
         creatRowData: function () {
             this.fignum = 1
@@ -1059,6 +1144,9 @@ export default {
                                         value: '-',
                                         id: j
                                     }}
+            }
+            if(reportSize==0){
+                this.isRemoveAllRowActive = true;
             }
         },
         //行のソート用のメソッド
@@ -1403,6 +1491,12 @@ csvグラフ
     margin-top: 20px;
 }
 
+#btn_del_all {
+    text-align: left ;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
 
 #opinion input[type="text"] {
     border: solid 1px gray;

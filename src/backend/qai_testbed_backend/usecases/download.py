@@ -2,12 +2,17 @@
 from flask import make_response
 from pathlib import Path
 import mimetypes
+from qlib.utils.logging import get_logger, log
 
 from ..entities.dowmload import DownloadMapper
 from ..across.exception import QAINotFoundException
 
 
+logger = get_logger()
+
+
 class DownloadService:
+    @log(logger)
     def get(self, id_: int):
         dl = DownloadMapper.query.get(id_)
         if dl is None:

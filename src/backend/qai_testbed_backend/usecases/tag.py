@@ -1,4 +1,6 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
+from qlib.utils.logging import get_logger, log
+
 from ..controllers.dto import Result
 from ..entities.tag import TagMapper
 from ..across.exception import QAINotFoundException, QAIException, QAIInvalidRequestException, \
@@ -8,8 +10,12 @@ from ..gateways.extensions import sql_db
 from sqlalchemy.exc import SQLAlchemyError
 
 
+logger = get_logger()
+
+
 class TagService:
 
+    @log(logger)
     def get(self):
         try:
             tags = TagMapper.query.all()

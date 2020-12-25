@@ -9,6 +9,8 @@ from ..controllers.dto.test_description import TestRunner, TestRunnerParam
 from .test_runner_param import TestRunnerParamMapper
 from ..controllers.dto.testrunner import TestRunnerTemplate, Report
 from .quality_dimension import QualityDimensionMapper
+from ..across.utils import get_last_url_element
+
 
 class TestRunnerMapper(sql_db.Model):
 
@@ -49,9 +51,11 @@ class TestRunnerMapper(sql_db.Model):
 
     @hybrid_method
     def to_template_dto(self) -> TestRunnerTemplate:
-        #  TODO:QualityMeasurementsが存在しないAITに対する暫定対応
+        #  QualityMeasurementsが存在しない場合、「quality」をキーに検索
         if len(self.quality_measurements) == 0:
-            tmp_quality_dimension_id = QualityDimensionMapper.query.first().id
+            qd_name = get_last_url_element(self.quality)
+            quality_dim = QualityDimensionMapper.query.filter(QualityDimensionMapper.name == qd_name).first()
+            tmp_quality_dimension_id = quality_dim.id
         else:
             tmp_quality_dimension_id = self.quality_measurements[0].quality_dimension_id
         return TestRunnerTemplate(

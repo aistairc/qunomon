@@ -138,12 +138,6 @@
         "path": "/usr/local/qai/resources/2/all_label_accuracy.png",
         "type": "picture",
         "description": "accuracy of all label"
-      },
-      {
-        "name": "each_picture",
-        "path": "/usr/local/qai/resources/3/{}predict.jpg",
-        "type": "picture",
-        "description": "predict of each picture"
       }
     ]
   },
@@ -157,6 +151,11 @@
       "name": "each_label_accuracy",
       "path": "/usr/local/qai/downloads/2/each_label_accuracy.csv",
       "description": "accuracy of each label"
+    },
+    {
+      "name": "each_picture",
+      "path": "/usr/local/qai/downloads/3/{}predict.jpg",
+      "description": "predict of each picture"
     }
   ]
 }

@@ -11,6 +11,7 @@ import socket
 import datetime
 import os
 import glob
+from qlib.utils.logging import get_logger, log
 
 from ..across.exception import QAIException, QAINotFoundException, QAIInternalServerException,\
     QAIInvalidRequestException
@@ -24,6 +25,9 @@ from ..entities.run import RunMapper
 from ..entities.setting import SettingMapper
 from ..gateways.extensions import sql_db
 from sqlalchemy.exc import SQLAlchemyError
+
+
+logger = get_logger()
 
 
 @singleton
@@ -59,6 +63,7 @@ class JobService:
             shutil.rmtree(str(dir_path))
             dir_path.mkdir(parents=True)
 
+    @log(logger)
     def post(self, organizer_id: str, ml_component_id: int, request: PostJobReq) -> PostJobRes:
 
         if len(request.test_description_ids) == 0:

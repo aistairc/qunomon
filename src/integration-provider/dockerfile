@@ -4,6 +4,8 @@ ENV PROJECT_ROOTDIR /work/
 
 WORKDIR $PROJECT_ROOTDIR
 
+COPY ./libs/ $PROJECT_ROOTDIR/libs
+
 COPY constraints.txt $PROJECT_ROOTDIR
 
 RUN pip install -U pip && \

@@ -221,6 +221,7 @@ INSERT INTO public."M_Setting" (key, value) VALUES ('mount_dst_path', '/testbed_
 INSERT INTO public."M_Setting" (key, value) VALUES ('airflow_entry_point', 'http://airflow:8080');
 INSERT INTO public."M_Setting" (key, value) VALUES ('docker_repository_url', 'registry:5500');
 INSERT INTO public."M_Setting" (key, value) VALUES ('airflow_mount_volume_path', '/testbed_mount_volume_dst');
+INSERT INTO public."M_Setting" (key, value) VALUES ('report_resource_limit', '20');
 
 
 --

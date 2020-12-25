@@ -9,6 +9,7 @@ from sqlalchemy.exc import SQLAlchemyError
 import shutil
 from operator import lt, le, eq, ne, ge, gt
 import re
+from qlib.utils.logging import get_logger, log
 
 from ..across.exception import QAIException, QAINotFoundException, \
     QAIInvalidRequestException, QAIInternalServerException
@@ -30,6 +31,9 @@ from ..entities.downloadable_data import DownloadableDataMapper
 from ..gateways.extensions import sql_db
 
 
+logger = get_logger()
+
+
 @singleton
 class NotifyRunCompeteService:
 
@@ -43,6 +47,9 @@ class NotifyRunCompeteService:
             self.logging_root_path = '/src/airflow_logs'
         self.backend_entry_point = SettingMapper.query.get('backend_entry_point').value
 
+        self.report_resource_limit = int(SettingMapper.query.get('report_resource_limit').value)
+
+    @log(logger)
     def post(self, organizer_id: str, ml_component_id: int, job_id: int, run_id: int) \
             -> PostNotifyCompleteRunRes:
         td = None
@@ -267,7 +274,10 @@ class NotifyRunCompeteService:
 
             # グラフをT_Graphテーブルへ追加する
             insert_graph = GraphMapper()
-            insert_graph.report_required = True
+            if self.report_resource_limit >= graph_index:
+                insert_graph.report_required = True
+            else:
+                insert_graph.report_required = False
             insert_graph.graph_address = self._get_dl_url(dl)
             insert_graph.report_index = graph_index
             insert_graph.report_name = graph_template.name

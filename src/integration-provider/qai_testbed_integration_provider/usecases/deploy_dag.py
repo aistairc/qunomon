@@ -12,10 +12,14 @@ from docker.errors import ImageNotFound
 from glob import glob
 import asyncio
 from threading import Lock, Thread
+from qlib.utils.logging import get_logger, log
 
 from ..across.exception import QAIInvalidRequestException, QAIInternalServerException
 from ..controllers.dto import Result
 from ..entities.setting import SettingMapper
+
+
+logger = get_logger()
 
 
 @singleton
@@ -48,6 +52,7 @@ class DeployDAGService:
             shutil.rmtree(str(dir_path))
             dir_path.mkdir(parents=True)
 
+    @log(logger)
     def post(self, request, is_async_build=False, is_build=True) -> Result:
 
         if is_async_build and not self._async_deploy_dag_lock.acquire(blocking=False):

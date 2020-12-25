@@ -8,7 +8,7 @@ import os
 import shutil
 from distutils.dir_util import remove_tree, copy_tree
 from sqlalchemy import asc
-
+from qlib.utils.logging import get_logger, log
 from reportgenerator import ReportGenerator
 
 from ..across.exception import QAINotFoundException, QAIBadRequestException,\
@@ -28,11 +28,15 @@ from ..entities.test_runner import TestRunnerMapper
 from sqlalchemy.exc import SQLAlchemyError
 
 
+logger = get_logger()
+
+
 @singleton
 class TestRunnerService:
     def __init__(self):
         self.ip_entry_point = SettingMapper.query.get('ip_entry_point').value
 
+    @log(logger)
     def post(self, organizer_id: str, ml_component_id: int, request: PostTestRunnerReq) -> PostTestRunnerRes:
         test = TestMapper.query.\
                           filter(TestMapper.ml_component_id == ml_component_id).\
@@ -86,6 +90,7 @@ class TestRunnerService:
                     start_datetime=datetime.now(timezone(timedelta(hours=+9), 'JST')))
         )
 
+    @log(logger)
     def get_test_runners(self) -> GetTestRunnerRes:
         test_runners = TestRunnerMapper.query.all()  # organizer_id, ml_component_idに関わらずすべて取得
         if test_runners is None:
@@ -102,6 +107,7 @@ class TestRunnerStatusService:
     def __init__(self):
         self.ip_entry_point = SettingMapper.query.get('ip_entry_point').value
 
+    @log(logger)
     def get(self, organizer_id: str, ml_component_id: int) -> GetTestRunnerStatusRes:
         test = TestMapper.query.\
                           filter(TestMapper.ml_component_id == ml_component_id).\
@@ -274,6 +280,7 @@ class ReportGeneratorService:
             raise e
         return res
 
+    @log(logger)
     def post(self, organizer_id: str, ml_component_id: int, request: PostReportGeneratorReq) -> PostReportGeneratorRes:
         test = TestMapper.query.\
                           filter(TestMapper.ml_component_id == ml_component_id).\

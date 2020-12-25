@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -179,7 +179,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[9]:
 
 
 #########################################
@@ -279,20 +279,19 @@ Please set the memory allocation of docker to 4GB or more.''')
                                            path='/usr/local/qai/resources/2/all_label_accuracy.png', 
                                            type_='picture', 
                                            description='accuracy of all label')
-    manifest_genenerator.add_ait_resources(name='each_picture', 
-                                           path='/usr/local/qai/resources/3/{}predict.jpg', 
-                                           type_='picture', 
-                                           description='predict of each picture')
     manifest_genenerator.add_ait_downloads(name='Log', 
                                            path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT_log')
     manifest_genenerator.add_ait_downloads(name='each_label_accuracy', 
                                            path='/usr/local/qai/downloads/2/each_label_accuracy.csv', 
                                            description='accuracy of each label')
+    manifest_genenerator.add_ait_downloads(name='each_picture', 
+                                           path='/usr/local/qai/downloads/3/{}predict.jpg', 
+                                           description='predict of each picture')
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[10]:
 
 
 #########################################
@@ -317,7 +316,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[11]:
 
 
 #########################################
@@ -348,7 +347,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[12]:
 
 
 if not is_ait_launch:
@@ -369,7 +368,7 @@ if not is_ait_launch:
     get_ipython().system('rm -rf protoc-3.9.0-linux-x86_64.zip protoc3')
 
 
-# In[ ]:
+# In[13]:
 
 
 if not is_ait_launch:
@@ -390,7 +389,7 @@ if not is_ait_launch:
     get_ipython().run_line_magic('cd', '/workdir/root/develop')
 
 
-# In[ ]:
+# In[14]:
 
 
 sys.path.append(os.path.join(Path().resolve(), '/tensorflow/models/research'))
@@ -434,7 +433,7 @@ avg_acc_per_train = []
 f_each = []
 
 
-# In[ ]:
+# In[15]:
 
 
 def _run_inference_for_single_image(model, image) -> np.ndarray:
@@ -471,7 +470,7 @@ def _run_inference_for_single_image(model, image) -> np.ndarray:
     return output_dict
 
 
-# In[ ]:
+# In[16]:
 
 
 def _read_labels(label_path) -> np.ndarray:
@@ -481,7 +480,7 @@ def _read_labels(label_path) -> np.ndarray:
     return labels
 
 
-# In[ ]:
+# In[17]:
 
 
 def _get_boxes(objects) -> np.ndarray:
@@ -489,7 +488,7 @@ def _get_boxes(objects) -> np.ndarray:
             or ('box3d' in o and o['box3d'] is not None)]
 
 
-# In[ ]:
+# In[18]:
 
 
 def _get_id_label(current_object_label) -> int:
@@ -526,7 +525,7 @@ def _get_id_label(current_object_label) -> int:
     return -1
 
 
-# In[ ]:
+# In[19]:
 
 
 def _get_label_from_id(id) -> str:
@@ -553,7 +552,7 @@ def _get_label_from_id(id) -> str:
     return ""
 
 
-# In[ ]:
+# In[20]:
 
 
 def _adding_avg_label_from_id(id, value, avg_acc_per_traffic_sign, avg_acc_per_traffic_light, 
@@ -583,7 +582,7 @@ def _adding_avg_label_from_id(id, value, avg_acc_per_traffic_sign, avg_acc_per_t
     return avg_acc_per_traffic_sign, avg_acc_per_traffic_light, avg_acc_per_car, avg_acc_per_rider, avg_acc_per_motor, avg_acc_per_person, avg_acc_per_bus, avg_acc_per_truck, avg_acc_per_bike, avg_acc_per_train
 
 
-# In[ ]:
+# In[21]:
 
 
 def _search_image_information(objects, image_name) -> np.ndarray:
@@ -613,7 +612,7 @@ def _search_image_information(objects, image_name) -> np.ndarray:
     return list_boxes
 
 
-# In[ ]:
+# In[22]:
 
 
 def _load_labels_ground_truth(gt_list_boxes, total_GT_correct_predicted):
@@ -625,7 +624,7 @@ def _load_labels_ground_truth(gt_list_boxes, total_GT_correct_predicted):
     return list_ground_truth,total_GT_correct_predicted
 
 
-# In[ ]:
+# In[23]:
 
 
 def _averageOfList(num) -> float:
@@ -637,7 +636,7 @@ def _averageOfList(num) -> float:
     return avg
 
 
-# In[ ]:
+# In[24]:
 
 
 # JSONファイルと推論結果を比較する
@@ -780,7 +779,7 @@ def _compare_json(gt_list_boxes, objects, total_GT_correct_predicted,avg_acc_per
                     total_correct_predicted[id] = total_correct_predicted[id] + 1
 
 
-# In[ ]:
+# In[25]:
 
 
 def _accuracy_count(total_GT_correct_predicted, avg_acc_per_traffic_sign, avg_acc_per_traffic_light, 
@@ -836,7 +835,7 @@ def _accuracy_count(total_GT_correct_predicted, avg_acc_per_traffic_sign, avg_ac
         f_each.append("---\n")
 
 
-# In[ ]:
+# In[26]:
 
 
 def _view_accuracy_label(total_GT_correct_predicted) -> None:
@@ -870,7 +869,7 @@ def _view_accuracy_label(total_GT_correct_predicted) -> None:
     save_all_label_accuracy_png(df)
 
 
-# In[ ]:
+# In[27]:
 
 
 # ワイルドカードを使ってファイルの削除
@@ -880,7 +879,7 @@ def _remove_glob(pathname, recursive=True):
             os.remove(p)
 
 
-# In[ ]:
+# In[28]:
 
 
 # 画像データの解凍
@@ -895,7 +894,7 @@ def _load_image(file_path: str) -> np.ndarray:
     return data
 
 
-# In[ ]:
+# In[29]:
 
 
 #########################################
@@ -904,7 +903,7 @@ def _load_image(file_path: str) -> np.ndarray:
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'each_picture')
+@downloads(ait_output, path_helper, 'each_picture')
 def save_images(model, image_path_list, category_index, file_path: str=None) -> None:
     makedirs(str(Path(file_path).parent), exist_ok=True)
     
@@ -965,7 +964,7 @@ def save_images(model, image_path_list, category_index, file_path: str=None) -> 
     return out_files
 
 
-# In[ ]:
+# In[30]:
 
 
 #########################################
@@ -980,7 +979,7 @@ def save_all_label_accuracy_csv(df, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[ ]:
+# In[31]:
 
 
 #########################################
@@ -1007,7 +1006,7 @@ def save_all_label_accuracy_png(df, file_path: str=None) -> None:
     plt.close('all')
 
 
-# In[ ]:
+# In[32]:
 
 
 #########################################
@@ -1026,7 +1025,7 @@ def save_each_label_accuracy(file_path: str=None) -> None:
             writer.writerow(buf)
 
 
-# In[ ]:
+# In[33]:
 
 
 #########################################
@@ -1040,7 +1039,7 @@ def measure_traffic_sign_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[34]:
 
 
 #########################################
@@ -1054,7 +1053,7 @@ def measure_traffic_light_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[35]:
 
 
 #########################################
@@ -1068,7 +1067,7 @@ def measure_car_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[36]:
 
 
 #########################################
@@ -1082,7 +1081,7 @@ def measure_rider_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[37]:
 
 
 #########################################
@@ -1096,7 +1095,7 @@ def measure_motor_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[38]:
 
 
 #########################################
@@ -1110,7 +1109,7 @@ def measure_person_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[39]:
 
 
 #########################################
@@ -1124,7 +1123,7 @@ def measure_bus_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[40]:
 
 
 #########################################
@@ -1138,7 +1137,7 @@ def measure_truck_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[41]:
 
 
 #########################################
@@ -1152,7 +1151,7 @@ def measure_bike_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[42]:
 
 
 #########################################
@@ -1166,7 +1165,7 @@ def measure_train_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[43]:
 
 
 #########################################
@@ -1182,7 +1181,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[44]:
 
 
 #########################################
@@ -1254,7 +1253,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[45]:
 
 
 #########################################

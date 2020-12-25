@@ -1,6 +1,7 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 from datetime import datetime, timedelta, timezone
 from requests import post, get
+from qlib.utils.logging import get_logger, log
 
 from ..across.exception import QAINotFoundException, QAIBadRequestException, QAIException, QAIInternalServerException
 from ..controllers.dto import Result
@@ -10,10 +11,14 @@ from ..entities.quality_dimension import QualityDimensionMapper
 from ..gateways.extensions import sql_db
 
 
+logger = get_logger()
+
+
 class QualityMeasurementService:
     def __init__(self):
         pass
 
+    @log(logger)
     def get_quality_measurement(self) -> GetQualityMeasurementTemplateRes:
         quality_measurements = QualityMeasurementMapper.query.all()  # organizer_id, ml_component_idに関わらずすべて取得
         if quality_measurements is None:

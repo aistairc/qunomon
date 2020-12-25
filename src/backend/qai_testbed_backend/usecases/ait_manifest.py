@@ -4,6 +4,7 @@ import json
 from injector import singleton
 import werkzeug
 from tempfile import TemporaryDirectory
+from qlib.utils.logging import get_logger, log
 
 from ..across.exception import QAIException, \
     QAIInvalidRequestException, QAIBadRequestException
@@ -21,9 +22,12 @@ from ..entities.test_runner import TestRunnerMapper
 from ..entities.format import FormatMapper
 from ..entities.test_inventory_template_format import TestInventoryTemplateFormatMapper
 from ..entities.resource_type import ResourceTypeMapper
-from  ..entities.data_type import DataTypeMapper
+from ..entities.data_type import DataTypeMapper
 from ..gateways.extensions import sql_db
 from sqlalchemy.exc import SQLAlchemyError
+
+
+logger = get_logger()
 
 
 @singleton
@@ -31,6 +35,7 @@ class AITManifestService:
     def __init__(self):
         pass
 
+    @log(logger)
     def post(self, request) -> Result:
         with TemporaryDirectory() as temp_dir:
             # マニフェストファイル保存

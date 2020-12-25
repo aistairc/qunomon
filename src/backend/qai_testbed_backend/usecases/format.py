@@ -1,5 +1,6 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 from sqlalchemy.exc import SQLAlchemyError
+from qlib.utils.logging import get_logger, log
 
 from ..controllers.dto import Result
 from ..entities.format import FormatMapper
@@ -8,8 +9,12 @@ from ..across.exception import QAINotFoundException, QAIException, QAIInvalidReq
 from ..controllers.dto.format import GetFormatRes
 
 
+logger = get_logger()
+
+
 class FormatService:
 
+    @log(logger)
     def get(self):
         try:
             formats = FormatMapper.query.all()

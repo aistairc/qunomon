@@ -48,5 +48,6 @@ db_common = {
     'mount_dst_path': '/usr/local/airflow/',
     'airflow_entry_point': 'http://127.0.0.1:8180',
     'docker_repository_url': 'registry:5500',
-    'airflow_mount_volume_path': 'C:\\testbed_mount_volume'
+    'airflow_mount_volume_path': 'C:\\testbed_mount_volume',
+    'report_resource_limit': '20'
 }

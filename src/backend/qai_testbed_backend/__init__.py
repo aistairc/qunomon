@@ -105,14 +105,9 @@ def _init_db_common(config_name):
     """共通のDBレコード"""
 
     db_common = config.db_common[config_name]
-    settings = [SettingMapper(key='backend_entry_point', value=db_common['backend_entry_point']),
-                SettingMapper(key='ip_entry_point', value=db_common['ip_entry_point']),
-                SettingMapper(key='mount_src_path', value=db_common['mount_src_path']),
-                SettingMapper(key='mount_dst_path', value=db_common['mount_dst_path']),
-                SettingMapper(key='airflow_entry_point', value=db_common['airflow_entry_point']),
-                SettingMapper(key='docker_repository_url', value=db_common['docker_repository_url']),
-                SettingMapper(key='airflow_mount_volume_path', value=db_common['airflow_mount_volume_path'])]
-
+    settings = []
+    for k, v in db_common.items():
+        settings.append(SettingMapper(key=k, value=v))
     extensions.sql_db.session.add_all(settings)
     extensions.sql_db.session.flush()
 

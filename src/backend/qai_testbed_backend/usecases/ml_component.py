@@ -1,5 +1,6 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 from sqlalchemy.exc import SQLAlchemyError
+from qlib.utils.logging import get_logger, log
 
 from ..controllers.dto import Result
 from ..controllers.dto.ml_component import GetMLComponentRes, PostMLComponentReq, PostMLComponentRes
@@ -10,7 +11,11 @@ from ..across.exception import QAINotFoundException, QAIInvalidRequestException,
 from ..gateways.extensions import sql_db
 
 
+logger = get_logger()
+
+
 class MLComponentService:
+    @log(logger)
     def get_ml_component_list(self, organizer_id: str) -> GetMLComponentRes:
         org = OrganizationMapper.query.get(organizer_id)
         if org is None:
@@ -24,6 +29,7 @@ class MLComponentService:
             ml_components=[m.to_dto() for m in ml_components]
         )
 
+    @log(logger)
     def post(self, organizer_id: str, req: PostMLComponentReq) -> PostMLComponentRes:
         org = OrganizationMapper.query.get(organizer_id)
         if org is None:

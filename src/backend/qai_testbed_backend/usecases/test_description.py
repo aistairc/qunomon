@@ -1,5 +1,6 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 from typing import Optional
+from qlib.utils.logging import get_logger, log
 
 from ..controllers.dto import Result
 from ..controllers.dto.test_description import GetTestDescriptionsRes, GetTestDescriptionDetailRes,\
@@ -18,12 +19,16 @@ from sqlalchemy.exc import SQLAlchemyError
 import datetime
 
 
+logger = get_logger()
+
+
 class TestDescriptionService:
 
     def __init__(self):
         # TODO 要DI
         pass
 
+    @log(logger)
     def get(self, organizer_id: str, ml_component_id: int, testdescription_id: int) -> GetTestDescriptionDetailRes:
         try:
             td = TestDescriptionMapper.query. \
@@ -46,6 +51,7 @@ class TestDescriptionService:
         except Exception as e:
             raise QAIInternalServerException(result_code='T39999', result_msg='internal server error: {}'.format(e))
 
+    @log(logger)
     def get_list(self, organizer_id: str, ml_component_id: int) -> GetTestDescriptionsRes:
         try:
             test = TestMapper.query.\
@@ -70,6 +76,7 @@ class TestDescriptionService:
         except Exception as e:
             raise QAIInternalServerException(result_code='T19999', result_msg='internal server error: {}'.format(e))
 
+    @log(logger)
     def delete_test_description(self, organizer_id: str, ml_component_id: int,
                                 testdescription_id: int) -> DeleteTestDescriptionRes:
         try:
@@ -111,6 +118,7 @@ class TestDescriptionService:
             self._delete_children_td(organizer_id, ml_component_id, td_child.id)
             td_child.delete_flag = True
 
+    @log(logger)
     def put_test_descriptions(self, organizer_id: str, ml_component_id: int,
                               testdescription_id: int, req: PutTestDescriptionsReq) -> PutTestDescriptionRes:
         try:
@@ -155,6 +163,7 @@ class TestDescriptionService:
             sql_db.session.rollback()
             raise QAIInternalServerException(result_code='T49999', result_msg='internal server error: {}'.format(e))
 
+    @log(logger)
     def append_test_description(self, organizer_id: str, ml_component_id: int,
                                 req: AppendTestDescriptionReq) -> AppendTestDescriptionRes:
         try:
@@ -241,6 +250,7 @@ class TestDescriptionService:
         else:
             test_description.value_target = True
 
+    @log(logger)
     def set_star(self, organizer_id: str, ml_component_id: int, test_description_id: int) -> Result:
         try:
             td = TestDescriptionMapper.query. \
@@ -267,6 +277,7 @@ class TestDescriptionService:
             sql_db.session.rollback()
             raise QAIInvalidRequestException('T69999', 'database error: {}'.format(e))
 
+    @log(logger)
     def set_unstar(self, organizer_id: str, ml_component_id: int, test_description_id: int) -> Result:
         try:
             td = TestDescriptionMapper.query. \
@@ -293,6 +304,7 @@ class TestDescriptionService:
             sql_db.session.rollback()
             raise QAIInvalidRequestException('T79999', 'database error: {}'.format(e))
 
+    @log(logger)
     def get_ancestor(self, organizer_id: str, ml_component_id: int, test_description_id: int)\
             -> GetTestDescriptionAncestorsRes:
         try:

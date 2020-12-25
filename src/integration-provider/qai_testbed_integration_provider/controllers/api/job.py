@@ -4,11 +4,15 @@ from flask import request
 from flask_restful import Resource
 from marshmallow import ValidationError
 from injector import inject
+from qlib.utils.logging import get_logger, log
 
 from ...across.exception import QAIException
 from ..dto import Result, ResultSchema
 from ..dto.job import PostJobReqSchema, PostJobResSchema
 from ...usecases.job import JobService
+
+
+logger = get_logger()
 
 
 class JobAPI(Resource):
@@ -20,6 +24,7 @@ class JobAPI(Resource):
     # @jwt_required()
     # @helpers.standardize_api_response
     # TODO 要変換アノテーション
+    @log(logger)
     def post(self, organizer_id: str, ml_component_id: str):
 
         # リクエストパース
@@ -28,11 +33,13 @@ class JobAPI(Resource):
         try:
             req = PostJobReqSchema().load(json_input)
         except ValidationError as err:
+            logger.exception('Raise Exception: %s', err)
             result = Result(code='R10000', message='ValidationError')
             return ResultSchema().dump(result), 422
 
         try:
             res = self.service.post(organizer_id, int(ml_component_id), req)
         except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(e.to_result()), e.status_code
         return PostJobResSchema().dump(res), 200

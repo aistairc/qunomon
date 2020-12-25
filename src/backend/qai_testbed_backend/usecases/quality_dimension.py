@@ -1,11 +1,17 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
+from qlib.utils.logging import get_logger, log
+
 from ..controllers.dto import Result
-from ..controllers.dto.quality_dimension import GetQualityDimensionsRes
+from ..controllers.dto.quality_dimension import GetQualityDimensionsRes, QualityDimensions
 from ..entities.quality_dimension import QualityDimensionMapper
 from ..across.exception import QAINotFoundException
 
 
+logger = get_logger()
+
+
 class QualityDimensionService:
+    @log(logger)
     def get_quality_dimension(self) -> GetQualityDimensionsRes:
         quality_dimensions = QualityDimensionMapper.query.all()
 

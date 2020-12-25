@@ -16,3 +16,4 @@ psycopg2 == 2.8.4
 requests == 2.23.0
 docker == 4.2.2
 ptvsd==4.3.2
+./libs/qlib-0.1.0-py3-none-any.whl

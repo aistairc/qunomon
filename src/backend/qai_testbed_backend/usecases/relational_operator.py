@@ -1,4 +1,6 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
+from qlib.utils.logging import get_logger, log
+
 from ..controllers.dto import Result
 from ..entities.relational_operator import RelationalOperatorMapper
 from ..across.exception import QAINotFoundException, QAIException, QAIInvalidRequestException, \
@@ -7,8 +9,12 @@ from ..controllers.dto.relational_operator import GetRelationalOperatorRes
 from sqlalchemy.exc import SQLAlchemyError
 
 
+logger = get_logger()
+
+
 class RelationalOperatorService:
 
+    @log(logger)
     def get(self):
         try:
             relational_operators = RelationalOperatorMapper.query.all()

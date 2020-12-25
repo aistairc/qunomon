@@ -3,6 +3,7 @@ import datetime
 from typing import List
 from sqlalchemy.exc import IntegrityError
 import re
+from qlib.utils.logging import get_logger, log
 
 from ..controllers.dto import Result
 from ..controllers.dto.inventory import GetInventoriesRes, DeleteInventoryRes, AppendInventoryReq,\
@@ -22,8 +23,12 @@ from ..gateways.extensions import sql_db
 from sqlalchemy.exc import SQLAlchemyError
 
 
+logger = get_logger()
+
+
 class InventoryService:
 
+    @log(logger)
     def get_inventories(self, organizer_id: str, ml_component_id: int) -> GetInventoriesRes:
 
         if OrganizationMapper.query.get(organizer_id) is None:
@@ -43,6 +48,7 @@ class InventoryService:
             inventories=[i.to_dto_detail() for i in inventories]
         )
 
+    @log(logger)
     def delete_inventory(self, organizer_id: str, ml_component_id: int,
                          inventory_id: int) -> DeleteInventoryRes:
         inventory = InventoryMapper.query. \
@@ -83,6 +89,7 @@ class InventoryService:
             result=Result(code='I42000', message='delete success.')
         )
 
+    @log(logger)
     def append_inventory(self, organizer_id: str, ml_component_id: int,
                          req: AppendInventoryReq) -> AppendInventoryRes:
         inventory = InventoryMapper()
