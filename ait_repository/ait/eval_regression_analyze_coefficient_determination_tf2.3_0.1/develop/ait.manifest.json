@@ -46,19 +46,16 @@
     "resources": [
       {
         "name": "coefficient_of_determination_matrix",
-        "path": "/usr/local/qai/resources/coefficient_of_determination_matrix.csv",
         "type": "table",
         "description": "決定係数の結果をまとめた表"
       },
       {
         "name": "correlation_coefficient_1to1",
-        "path": "/usr/local/qai/resources/correlation_coefficient_1to1/{}-{}.png",
         "type": "picture",
         "description": "説明変数と目的変数の相関グラフ\nファイル名は{目的変数}-{説明変数}.png"
       },
       {
         "name": "correlation_coefficient_1to2",
-        "path": "/usr/local/qai/resources/correlation_coefficient_1to2/{}-{}-{}.png",
         "type": "picture",
         "description": "説明変数2つと目的変数の3次元相関グラフ\nファイル名は{目的変数}-{説明変数1}-{説明変数2}.png"
       }
@@ -67,12 +64,10 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT実行ログ"
     },
     {
       "name": "predictive_value",
-      "path": "/usr/local/qai/downloads/2/predictive_value.csv",
       "description": "予測値"
     }
   ]

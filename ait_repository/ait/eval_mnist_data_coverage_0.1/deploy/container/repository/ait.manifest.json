@@ -64,13 +64,11 @@
     "resources": [
       {
         "name": "count_total_class",
-        "path": "/usr/local/qai/resources/1/count_total_class.png",
         "type": "picture",
         "description": "Total coverage for all classes."
       },
       {
         "name": "count_each_class",
-        "path": "/usr/local/qai/resources/2/count_class{}.png",
         "type": "picture",
         "description": "Total coverage for each classes."
       }
@@ -79,7 +77,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AITLog"
     }
   ]

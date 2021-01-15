@@ -94,10 +94,8 @@ class AITManifestService:
             # downloadable_template
             downloadable_data_mapper_list = []
             for download in manifest.downloads:
-                if not download.path.startswith('/usr/local/qai/'):
-                    raise QAIBadRequestException('T54001', 'download path mus start /usr/local/qai/')
                 downloadable_data_mapper_list.append(
-                    DownloadableTemplateMapper(name=download.name, path=download.path, description=download.description,
+                    DownloadableTemplateMapper(name=download.name, description=download.description,
                                                test_runner_id=test_runner_mapper.id))
             sql_db.session.add_all(downloadable_data_mapper_list)
 
@@ -129,8 +127,6 @@ class AITManifestService:
             # graph_template
             graph_template_mapper_list = []
             for resource in manifest.report.resources:
-                if not resource.path.startswith('/usr/local/qai/'):
-                    raise QAIBadRequestException('T54001', 'resource path mus start /usr/local/qai/')
 
                 # リソースタイプ取得
                 res_type = ResourceTypeMapper.query.filter(ResourceTypeMapper.type == resource.type).first()
@@ -140,7 +136,7 @@ class AITManifestService:
                     sql_db.session.flush()
 
                 graph_template_mapper_list.append(
-                    GraphTemplateMapper(resource_type_id=res_type.id, name=resource.name, path=resource.path,
+                    GraphTemplateMapper(resource_type_id=res_type.id, name=resource.name,
                                         description=resource.description,
                                         test_runner_id=test_runner_mapper.id))
             sql_db.session.add_all(graph_template_mapper_list)

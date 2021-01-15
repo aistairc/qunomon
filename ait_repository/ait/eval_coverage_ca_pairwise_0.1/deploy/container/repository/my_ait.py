@@ -20,7 +20,7 @@
 # |11|license attribute set|1|Use only notebook launch.<br>Setting attribute for license.|should edit|
 # |12|prepare deploy|1|Use only notebook launch.<br>Convert to python programs and create dag.py.|no edit|
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -33,7 +33,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[2]:
+# In[ ]:
 
 
 #########################################
@@ -65,7 +65,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[ ]:
 
 
 #########################################
@@ -82,7 +82,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################
@@ -109,7 +109,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -130,12 +130,12 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_inventories('pairwise_list', 'dataset', 'Pairwise_list.csv', ['csv'], 'https://www.sciencedirect.com/topics/computer-science/pairwise-comparison')
     manifest_genenerator.add_ait_inventories('target', 'dataset', 'target.csv', ['csv'], 'https://www.sciencedirect.com/topics/computer-science/pairwise-comparison')
     manifest_genenerator.add_ait_measures('coverage', 'float', 'coverage of all patterns are matched', 'single')
-    manifest_genenerator.add_ait_resources('matching_result', '/usr/local/qai/resources/1/Pairwise_list_matching_result.csv', 'table', 'pairwise_matching_result')
-    manifest_genenerator.add_ait_downloads('Log', '/usr/local/qai/downloads/1/ait.log', 'AIT_run_log')
+    manifest_genenerator.add_ait_resources('matching_result', 'table', 'pairwise_matching_result')
+    manifest_genenerator.add_ait_downloads('Log', 'AIT_run_log')
     manifest_path = manifest_genenerator.write()
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -150,7 +150,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -181,7 +181,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -199,7 +199,7 @@ def coverage_measures(all_num, match_num):
     return coverage
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -208,17 +208,15 @@ def coverage_measures(all_num, match_num):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'matching_result')
+@resources(ait_output, path_helper, 'matching_result', 'Pairwise_list_matching_result.csv')
 def save_file(output_lines, file_path: str=None):
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     with open(file_path, 'w') as f:
         writer = csv.writer(f)
         for buf in output_lines:
             writer.writerow(buf)
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -227,14 +225,12 @@ def save_file(output_lines, file_path: str=None):
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     shutil.move(get_log_path(), file_path)
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -291,7 +287,7 @@ def main() -> None:
     move_log()
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -302,7 +298,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -313,7 +309,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################

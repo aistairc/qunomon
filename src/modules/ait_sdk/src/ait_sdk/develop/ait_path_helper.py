@@ -121,11 +121,11 @@ class AITPathHelper:
             output_resource_path
 
         """
-        org_path = self._ait_manifest.get_ait_resource_path(item_name)
+        org_path = f'/usr/local/qai/resources/{item_name}/'
         return org_path.replace('/usr/local/qai', str(self._get_result_dir_path()))
 
     @log(logger)
-    def get_output_download_path(self, item_name: str, is_raise_key_error: bool = True) -> str:
+    def get_output_download_path(self, item_name: str) -> str:
         """
         output_download_pathを取得します。
 
@@ -137,14 +137,9 @@ class AITPathHelper:
 
                 Specify the name of the item.
 
-            is_raise_key_error (bool) :
-                存在しないkeyを指定した場合、key_errorを発生させるかどうかを指定します。
-
-                When a non-existent key is specified, it raises a key_error or not.
-
         Returns:
             output_download_path
 
         """
-        org_path = self._ait_manifest.get_ait_download_path(item_name, is_raise_key_error)
+        org_path = f'/usr/local/qai/downloads/{item_name}/'
         return org_path.replace('/usr/local/qai', str(self._get_result_dir_path()))

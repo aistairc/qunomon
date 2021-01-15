@@ -36,13 +36,11 @@
     "resources": [
       {
         "name": "distibution_csv",
-        "path": "/usr/local/qai/resources/1/",
         "type": "table",
         "description": "Table of distribution for each combination"
       },
       {
         "name": "distibution_plot",
-        "path": "/usr/local/qai/resources/2/",
         "type": "picture",
         "description": "Plot of distribution for each combination"
       }
@@ -51,7 +49,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AITLog"
     }
   ]

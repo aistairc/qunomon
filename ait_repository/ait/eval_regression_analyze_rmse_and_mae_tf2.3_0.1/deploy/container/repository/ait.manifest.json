@@ -52,13 +52,11 @@
     "resources": [
       {
         "name": "evaluation_index_matrix",
-        "path": "/usr/local/qai/resources/evaluation_index_matrix.csv",
         "type": "table",
         "description": "Table of evaluation indicators summary."
       },
       {
         "name": "observed_predicted_plot",
-        "path": "/usr/local/qai/resources/correlation_graph_of_predicted_and_measured_values.png",
         "type": "picture",
         "description": "Plot of actual values on the horizontal axis and predictions on the vertical axis. The more plots exist near the diagonal line, the better the prediction."
       }
@@ -67,7 +65,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT_log"
     }
   ]

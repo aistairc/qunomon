@@ -2,6 +2,8 @@
 # !/usr/bin/env python3.6
 # coding=utf-8
 from functools import wraps
+from pathlib import Path
+from os import makedirs
 
 from ..utils.timer import Timer
 from ..common.files.ait_output import AITOutput
@@ -160,7 +162,7 @@ def measures(ait_output: AITOutput, *names: str, is_many: bool = False):
     return _decorator
 
 
-def resources(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
+def resources(ait_output: AITOutput, path_helper: AITPathHelper, item_name: str, file_name: str = None):
     """
     resourceを追加するためのラッパー関数
 
@@ -177,7 +179,8 @@ def resources(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
     Args:
         ait_output (ait_sdl.common.files.ait_output.AITOutput)
         path_helper (ait_sdl.develop.ait_path_helper.AITPathHelper)
-        name (str)
+        item_name (str)
+        file_name (str)
 
     Returns:
         _decoratorの返り値
@@ -225,8 +228,13 @@ def resources(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
                 Return value of func
             """
 
-            file_path = path_helper.get_output_resource_path(name)
-            kwargs['file_path'] = file_path
+            dir_path = path_helper.get_output_resource_path(item_name)
+            makedirs(dir_path, exist_ok=True)
+            if file_name is None:
+                out_path = dir_path
+            else:
+                out_path = str(Path(dir_path).joinpath(file_name))
+            kwargs['file_path'] = out_path
 
             # funcの実行
             ret = func(*args, **kwargs)
@@ -234,19 +242,18 @@ def resources(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
             # resource追加
             if type(ret) is list or type(ret) is tuple:
                 for val in ret:
-                    ait_output.add_resource(name=name, path=val)
+                    ait_output.add_resource(name=item_name, path=val)
+            elif type(ret) is str:
+                ait_output.add_resource(name=item_name, path=ret)
             else:
-                if type(ret) is str:
-                    ait_output.add_resource(name=name, path=ret)
-                else:
-                    ait_output.add_resource(name=name, path=file_path)
+                ait_output.add_resource(name=item_name, path=out_path)
 
             return ret
         return wrapper
     return _decorator
 
 
-def downloads(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
+def downloads(ait_output: AITOutput, path_helper: AITPathHelper, item_name: str, file_name: str = None):
     """
     downloadを追加するためのラッパー関数
 
@@ -261,7 +268,8 @@ def downloads(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
     Args:
         ait_output (ait_sdl.common.files.ait_output.AITOutput)
         path_helper (ait_sdl.develop.ait_path_helper.AITPathHelper)
-        name (str)
+        item_name (str)
+        file_name (str)
 
     Returns:
         _decoratorの返り値
@@ -309,8 +317,13 @@ def downloads(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
                 Return value of func
             """
 
-            file_path = path_helper.get_output_download_path(name)
-            kwargs['file_path'] = file_path
+            dir_path = path_helper.get_output_download_path(item_name)
+            makedirs(dir_path, exist_ok=True)
+            if file_name is None:
+                out_path = dir_path
+            else:
+                out_path = str(Path(dir_path).joinpath(file_name))
+            kwargs['file_path'] = out_path
 
             # funcの実行
             ret = func(*args, **kwargs)
@@ -318,9 +331,11 @@ def downloads(ait_output: AITOutput, path_helper: AITPathHelper, name: str):
             # resource追加
             if type(ret) is list or type(ret) is tuple:
                 for val in ret:
-                    ait_output.add_downloads(name=name, path=val)
+                    ait_output.add_downloads(name=item_name, path=val)
+            elif type(ret) is str:
+                ait_output.add_downloads(name=item_name, path=ret)
             else:
-                ait_output.add_downloads(name=name, path=file_path)
+                ait_output.add_downloads(name=item_name, path=out_path)
 
             return ret
         return wrapper

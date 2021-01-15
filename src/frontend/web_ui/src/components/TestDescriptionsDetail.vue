@@ -122,8 +122,11 @@
                         <template v-if="tdDtl.TestDescriptionResult">
                             <template v-if="tdDtl.TestDescriptionResult.Summary ==='OK' || tdDtl.TestDescriptionResult.Summary === 'NG'">
                                 <div id="table" align="center">
-                                    <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center" :sort-options="{enabled: false,}" style-class="vgt-table" @on-row-click="onRowClick"
-                                                  :pagination-options="pagenationSettings" @on-per-page-change="onPerPageChange">
+                                    <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center"
+                                                  :sort-options="{enabled: false,}" style-class="vgt-table" @on-row-click="onRowClick"
+                                                  :pagination-options="pagenationSettings" @on-per-page-change="onPerPageChange"
+                                                  :group-options="groupSettings"
+                                                  :select-options="selectSettings">
                                         <template slot="table-row" slot-scope="props">
                                             <!--ラジオボタン-->
                                             <span v-if="props.column.field == 'radiobox'">
@@ -419,22 +422,22 @@ export default {
                     width: "7%",
                 },
                 {
-                    label: this.setTableLanguage("name"),
-                    field: "name",
+                    label: this.setTableLanguage("file_name"),
+                    field: "file_name",
                     thClass: 't_left',
-                    width: "33%",
+                    width: "35%",
                 },
                 {
                     label: this.setTableLanguage("description"),
                     field: "description",
                     thClass: 't_left',
-                    width: "40%",
+                    width: "43%",
                 },
                 {
                     label: this.setTableLanguage("format"),
                     field: "format",
                     thClass: 't_left',
-                    width: "20%",
+                    width: "15%",
                 },
                 {
                     label: this.setTableLanguage("radiobox"),
@@ -456,7 +459,18 @@ export default {
                 rowsPerPageLabel: this.setTableLanguage("rowsPerPageLabel"),
                 ofLabel: 'of',
                 allLabel: 'All',
-            }
+            },
+            groupSettings:{
+                enabled: true,
+                headerPosition: 'top',
+                collapsable: true
+            },
+            selectSettings:{
+                enabled: false,
+                disableSelectInfo: true,
+                selectAllByGroup: false
+            },
+            isExpanded: false,
         }
     },
     components: {
@@ -555,6 +569,12 @@ export default {
                 })
             });
     },
+    updated(){
+        if(this.$refs.tdTable != undefined && this.isExpanded == false){
+            this.$refs.tdTable.expandAll();
+            this.isExpanded = true;
+        }
+    },
     methods: {
         //言語データ読み込み
         setLanguageData() {
@@ -577,8 +597,8 @@ export default {
                 switch (fieldName) {
                     case 'index':
                         return this.languagedata.ja.testDescriptionDetail.index;
-                    case 'name':
-                        return this.languagedata.ja.testDescriptionDetail.name;
+                    case 'file_name':
+                        return this.languagedata.ja.testDescriptionDetail.file_name;
                     case 'description':
                         return this.languagedata.ja.testDescriptionDetail.description;
                     case 'format':
@@ -597,8 +617,8 @@ export default {
                 switch (fieldName) {
                     case 'index':
                         return this.languagedata.en.testDescriptionDetail.index;
-                    case 'name':
-                        return this.languagedata.en.testDescriptionDetail.name;
+                    case 'file_name':
+                        return this.languagedata.en.testDescriptionDetail.file_name;
                     case 'description':
                         return this.languagedata.en.testDescriptionDetail.description;
                     case 'format':
@@ -659,59 +679,80 @@ export default {
         },
         getTDResources(val) {
             var index = 1;
+            var gourp_td = {}
             for (var td in val) {
-                this.rows.push({
+                if (gourp_td[val[td].Name] == null){
+                    gourp_td[val[td].Name] = []
+                }
+                gourp_td[val[td].Name].push({
                     index: index,
                     name: val[td].Name,
+                    file_name: val[td].FileName,
                     description: val[td].Description,
                     format: val[td].GraphType,
                     graph_num: val[td].Id
                 })
                 index++;
             }
+            for (var key in gourp_td){
+                this.rows.push({
+                    mode: "span",
+                    label: key,
+                    html: false,
+                    children: gourp_td[key]
+                })
+            }
         },
         onRowClick(params) {
-            //選択されている行数を取得
-            var row_num = params.row.originalIndex
             this.graph_num = params.row.graph_num;
             this.graph_name = params.row.name;
             this.graph_rename = params.row.name;
             this.selectedType = '';
 
+            var row_index = params.row.index - 1;
+
+            // クリック対象の行を取得
+            var rowElement = undefined
+            for(var i in params.event.path){
+                if(params.event.path[i].className=='clickable' || params.event.path[i].className=='clickable checked'){
+                    rowElement = params.event.path[i];
+                    break;
+                }
+            }
+            var target_graph_element = rowElement.lastChild.childNodes[0].childNodes[0]
+
             //表示中のページ行を取得し、ループ
             var tdTable = this.$refs.tdTable;
-            var pageOffset = (tdTable.currentPage - 1) * tdTable.currentPerPage
-            var pageLast = pageOffset + tdTable.currentPerPage
             var pageRemain = tdTable.currentPerPage
 
-            if (tdTable.rows.length <= pageLast){
-                pageRemain = tdTable.currentPerPage - (pageLast - tdTable.rows.length)
-            }
-
             for (var j = 0; j < pageRemain; j++) {
+                var graph_element = document.getElementsByName('graph')[j]
+                if (graph_element == undefined){
+                    break;
+                }
                 //選択された行の場合
-                if (row_num == j + pageOffset) {
-                    if (document.getElementsByName('graph')[j].checked) {
-                        document.getElementsByName('graph')[j].checked = false;
-                        document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.remove('checked');
+                if (graph_element == target_graph_element) {
+                    if (graph_element.checked) {
+                        graph_element.checked = false;
+                        graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
                         this.selectedType = '';
 
                         //ボタンの活性
                         this.isActive = true;
                     } else {
                         this.selectedType = params.row.format;
-                        document.getElementsByName('graph')[j].checked = true;
-                        document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.add('checked')
+                        graph_element.checked = true;
+                        graph_element.parentNode.parentNode.parentNode.classList.add('checked')
                         if (this.selectedType === "picture") {
-                            this.getImage(this.tdGraphs[row_num].Graph);
+                            this.getImage(this.tdGraphs[row_index].Graph);
                         }else if(this.selectedType === 'table'){
-                            this.getTableData(this.tdGraphs[row_num].Graph);
+                            this.getTableData(this.tdGraphs[row_index].Graph);
                         }
 
                         //ボタンの活性
                         if(this.rowData!=""){
                             for (var r_id in this.rowData) {
-                                if (this.rowData[r_id].graphId == this.tdGraphs[row_num].Id) {
+                                if (this.rowData[r_id].graphId == this.tdGraphs[row_index].Id) {
                                     this.isActive = true;
                                     break;
                                 } else {
@@ -725,8 +766,8 @@ export default {
                     }
                 //選択されていない行の場合
                 } else {
-                    document.getElementsByName('graph')[j].checked = false;
-                    document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.remove('checked');
+                    graph_element.checked = false;
+                    graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
                 }
             }
 
@@ -1255,6 +1296,10 @@ export default {
     background: #9bbb59 !important;
     padding: .11em .2em !important;
     font-weight: normal;
+}
+
+#table>>>.vgt-table th.vgt-row-header{
+    color: black !important;
 }
 
 #table>>>.vgt-table th.sortable:after,

@@ -105,52 +105,6 @@ class AITManifest:
         return self._manifest_json['version']
 
     @log(logger)
-    def get_ait_resource_path(self, name: str) -> str:
-        """
-        resource_pathを取得します。
-
-        Get resource_path.
-
-        Args:
-            name (str) :
-                resourceのnameを指定します。
-
-                Specify the name of the resource.
-
-        Returns:
-            resource_path
-        """
-        return self._find_path(section=self._manifest_json['report']['resources'],
-                               value_key='path',
-                               name=name)
-        
-    @log(logger)
-    def get_ait_download_path(self, name: str, is_raise_key_error: bool = True) -> str:
-        """
-        download_pathを取得します。
-
-        Get download_path.
-
-        Args:
-            name (str) :
-                downloadのnameを指定します。
-
-                Specify the name of the download.
-
-            is_raise_key_error (bool) :
-                downloadのnameが存在しない場合にkey_errorを発生させるかどうかを指定します。
-
-                Specifies whether key_error is raised if the download name does not exist.
-
-        Returns:
-            download_path
-        """
-        return self._find_path(section=self._manifest_json['downloads'],
-                               value_key='path',
-                               name=name,
-                               is_raise_key_error=is_raise_key_error)
-
-    @log(logger)
     def get_ait_parameter_default_value(self, name: str, is_raise_key_error: bool = True) -> str:
         """
         parameter_default_valueを取得します。

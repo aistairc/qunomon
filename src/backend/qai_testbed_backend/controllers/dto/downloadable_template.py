@@ -6,10 +6,9 @@ from . import Result, ResultSchema, BaseSchema
 
 
 class DownloadableTemplate:
-    def __init__(self, id_: int, name: str, path: str, description: str) -> None:
+    def __init__(self, id_: int, name: str, description: str) -> None:
         self.id_ = id_
         self.name = name
-        self.path = path
         self.description = description
 
 
@@ -23,7 +22,6 @@ class DownloadableTemplateSchema(BaseSchema):
     __model__ = DownloadableTemplate
     id_ = fields.Int(data_key='Id', required=True)
     name = fields.Str(data_key='Name', required=True)
-    path = fields.Str(data_key='Path', required=True)
     description = fields.Str(data_key='Description', required=True)
 
 

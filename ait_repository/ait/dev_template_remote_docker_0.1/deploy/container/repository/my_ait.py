@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -46,7 +46,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[2]:
+# In[ ]:
 
 
 #########################################
@@ -78,7 +78,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[ ]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################
@@ -102,7 +102,7 @@ if not is_ait_launch:
     requirements_generator.add_package('seaborn')
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -116,7 +116,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -129,10 +129,10 @@ import pandas as pd
 import seaborn as sn
 import matplotlib.pyplot as plt
 from pathlib import Path
-from os import makedirs, path
+from os import path
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -151,7 +151,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -183,16 +183,14 @@ if not is_ait_launch:
                                           description='mean of select column', 
                                           structure='single')
     manifest_genenerator.add_ait_resources(name='pairplot', 
-                                           path='/usr/local/qai/resources/1/pairplot.png', 
                                            type_='picture', 
                                            description='pairplot')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT実行ログ')
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -209,7 +207,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -240,7 +238,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -254,7 +252,7 @@ def calc_mean(iris_data, col_name):
     return iris_data.mean()[col_name]
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -263,14 +261,13 @@ def calc_mean(iris_data, col_name):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'pairplot')
-def save_pair_plot(iris_data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
+@resources(ait_output, path_helper, 'pairplot', 'pairplot.png')
+def save_pair_plot(iris_data, file_path: str=None) -> str:    
     sn.pairplot(iris_data, hue='variety')
     plt.savefig(file_path)
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -279,14 +276,12 @@ def save_pair_plot(iris_data, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
-def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
+def move_log(file_path: str=None) -> str:
     shutil.move(get_log_path(), file_path)
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -306,7 +301,7 @@ def main() -> None:
     move_log()
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -317,7 +312,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -328,7 +323,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################

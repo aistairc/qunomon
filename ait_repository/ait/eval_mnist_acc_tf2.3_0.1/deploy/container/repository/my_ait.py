@@ -181,7 +181,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[10]:
 
 
 #########################################
@@ -271,32 +271,26 @@ if not is_ait_launch:
                                           structure='sequence')
 
     manifest_genenerator.add_ait_resources(name='ConfusionMatrixHeatmap', 
-                                           path='/usr/local/qai/resources/1/confusion_matrix.png', 
                                            type_='picture', 
                                            description='混同行列(ヒートマップ)')
     manifest_genenerator.add_ait_resources(name='ROC-curve', 
-                                           path='/usr/local/qai/resources/2/roc_curve.png', 
                                            type_='picture', 
                                            description='ROC曲線')
     manifest_genenerator.add_ait_resources(name='NGPredictImages', 
-                                           path='/usr/local/qai/resources/3/ng_predict_actual_class_{}.png', 
                                            type_='picture', 
                                            description='推論NGとなった画像の一覧を、正解ラベルの枚数分だけ出力する')
 
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT実行ログ')
     manifest_genenerator.add_ait_downloads(name='ConfusionMatrixCSV', 
-                                           path='/usr/local/qai/downloads/2/confusion_matrix.csv', 
                                            description='混同行列')
     manifest_genenerator.add_ait_downloads(name='PredictionResult', 
-                                           path='/usr/local/qai/downloads/3/prediction.csv', 
                                            description='ID,正解ラベル,推論結果確率(ラベル毎)')
 
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[11]:
 
 
 #########################################
@@ -325,7 +319,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[12]:
 
 
 #########################################
@@ -356,7 +350,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[13]:
 
 
 #########################################
@@ -374,7 +368,7 @@ def calc_acc_all(y_test, y_pred) -> (float, float, float, float):
     return calc.average_accuracy(one_hot_y, y_pred).numpy() ,            calc.macro_precision(one_hot_y, y_pred).numpy() ,            calc.macro_recall(one_hot_y, y_pred).numpy() ,            calc.macro_f_measure(one_hot_y, y_pred).numpy()
 
 
-# In[12]:
+# In[14]:
 
 
 #########################################
@@ -392,7 +386,7 @@ def calc_acc_by_class( y_test, y_pred) -> (List[float], List[float], List[float]
     return calc.all_class_accuracy(one_hot_y, y_pred) ,            [v.numpy() for v in calc.all_class_precision(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_recall(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_f_measure(one_hot_y, y_pred)]
 
 
-# In[13]:
+# In[15]:
 
 
 #########################################
@@ -402,16 +396,15 @@ def calc_acc_by_class( y_test, y_pred) -> (List[float], List[float], List[float]
 # 3/9
 
 @log(logger)
-@downloads(ait_output, path_helper, 'ConfusionMatrixCSV')
+@downloads(ait_output, path_helper, 'ConfusionMatrixCSV', 'confusion_matrix.csv')
 def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     cmx_data = confusion_matrix(y_test, K.argmax(y_pred))
     logger.info(cmx_data)
     np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
 
 
-# In[14]:
+# In[16]:
 
 
 #########################################
@@ -421,9 +414,8 @@ def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
 # 4/9
 
 @log(logger)
-@resources(ait_output, path_helper, 'ConfusionMatrixHeatmap')
+@resources(ait_output, path_helper, 'ConfusionMatrixHeatmap', 'confusion_matrix.png')
 def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     y_pred = K.argmax(y_pred)
 
@@ -443,7 +435,7 @@ def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[15]:
+# In[17]:
 
 
 #########################################
@@ -453,9 +445,8 @@ def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
 # 5/9
 
 @log(logger)
-@resources(ait_output, path_helper, 'ROC-curve')
+@resources(ait_output, path_helper, 'ROC-curve', 'roc_curve.png')
 def save_roc_curve(y_test, y_pred, n_classes: int, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     y_true = to_categorical(y_test)
     y_score = y_pred
@@ -527,7 +518,7 @@ def save_roc_curve(y_test, y_pred, n_classes: int, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[16]:
+# In[18]:
 
 
 #########################################
@@ -547,7 +538,7 @@ def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
                          average=average)
 
 
-# In[17]:
+# In[19]:
 
 
 #########################################
@@ -557,9 +548,8 @@ def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
 # 7/9
 
 @log(logger)
-@resources(ait_output, path_helper, 'NGPredictImages')
+@resources(ait_output, path_helper, 'NGPredictImages', 'ng_predict_actual_class_{}.png')
 def save_ng_predicts(X_test, y_test, y_pred, n_classes: int, file_path: str=None) -> List[str]:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     out_files = []
     y_true = y_test
@@ -624,7 +614,7 @@ def save_ng_predicts(X_test, y_test, y_pred, n_classes: int, file_path: str=None
     return out_files
 
 
-# In[18]:
+# In[20]:
 
 
 #########################################
@@ -634,9 +624,8 @@ def save_ng_predicts(X_test, y_test, y_pred, n_classes: int, file_path: str=None
 # 8/9
 
 @log(logger)
-@downloads(ait_output, path_helper, 'PredictionResult')
+@downloads(ait_output, path_helper, 'PredictionResult', 'prediction.csv')
 def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     # Label + PredictProva
     out_data = np.hstack([y_test.reshape(y_test.shape[0], 1), y_pred])
@@ -648,7 +637,7 @@ def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[19]:
+# In[21]:
 
 
 #########################################
@@ -658,14 +647,13 @@ def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
 # 9/9
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     shutil.move(get_log_path(), file_path)
 
 
-# In[20]:
+# In[22]:
 
 
 #########################################
@@ -725,7 +713,7 @@ def main() -> None:
     move_log()
 
 
-# In[21]:
+# In[ ]:
 
 
 #########################################
@@ -736,7 +724,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[22]:
+# In[ ]:
 
 
 #########################################
@@ -747,7 +735,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[23]:
+# In[ ]:
 
 
 #########################################

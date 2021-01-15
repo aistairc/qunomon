@@ -267,7 +267,7 @@ class AITManifestGenerator:
 
     # resources
     @log(logger)
-    def add_ait_resources(self, name: str, path: str, type_: str, description: str) -> None:
+    def add_ait_resources(self, name: str, type_: str, description: str) -> None:
         """
         resources項目を設定する。
 
@@ -275,8 +275,6 @@ class AITManifestGenerator:
 
         Args:
             name (str)
-
-            path (str)
 
             type_ (str):
 
@@ -290,11 +288,11 @@ class AITManifestGenerator:
 
             description (str)
         """
-        self._ait_resources.append({'name': name, 'path': path, 'type': type_, 'description': description})
+        self._ait_resources.append({'name': name, 'type': type_, 'description': description})
 
     # downloads
     @log(logger)
-    def add_ait_downloads(self, name: str, path: str, description: str) -> None:
+    def add_ait_downloads(self, name: str, description: str) -> None:
         """
         downloads項目を設定する。
 
@@ -302,10 +300,9 @@ class AITManifestGenerator:
 
         Args:
             name (str)
-            path (str) 
             description (str)
         """
-        self._ait_downloads.append({'name': name, 'path': path, 'description': description})
+        self._ait_downloads.append({'name': name, 'description': description})
 
     @log(logger)
     def _check_required_items(self) -> None:

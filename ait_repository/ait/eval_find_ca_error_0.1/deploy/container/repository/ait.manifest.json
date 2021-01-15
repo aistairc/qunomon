@@ -76,13 +76,11 @@
     "resources": [
       {
         "name": "CountPlot",
-        "path": "/usr/local/qai/resources/1/error_ca_count_plot.png",
         "type": "picture",
         "description": "Plot of number of data in each unsound case"
       },
       {
         "name": "PercentagePlot",
-        "path": "/usr/local/qai/resources/2/error_ca_percentage_plot.png",
         "type": "picture",
         "description": "Plot of percentage of unsound cases in data"
       }
@@ -91,7 +89,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AITLog"
     }
   ]

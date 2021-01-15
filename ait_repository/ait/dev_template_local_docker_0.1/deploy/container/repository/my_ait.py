@@ -102,7 +102,7 @@ if not is_ait_launch:
     requirements_generator.add_package('seaborn')
 
 
-# In[ ]:
+# In[5]:
 
 
 #########################################
@@ -116,7 +116,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[6]:
 
 
 #########################################
@@ -132,7 +132,7 @@ from pathlib import Path
 from os import makedirs, path
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -151,7 +151,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -183,16 +183,14 @@ if not is_ait_launch:
                                           description='mean of select column', 
                                           structure='single')
     manifest_genenerator.add_ait_resources(name='pairplot', 
-                                           path='/usr/local/qai/resources/1/pairplot.png', 
                                            type_='picture', 
                                            description='pairplot')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT実行ログ')
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -209,7 +207,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -240,7 +238,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -254,7 +252,7 @@ def calc_mean(iris_data, col_name):
     return iris_data.mean()[col_name]
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -263,14 +261,13 @@ def calc_mean(iris_data, col_name):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'pairplot')
+@resources(ait_output, path_helper, 'pairplot', 'pairplot.png')
 def save_pair_plot(iris_data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     sn.pairplot(iris_data, hue='variety')
     plt.savefig(file_path)
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -279,14 +276,12 @@ def save_pair_plot(iris_data, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################
@@ -306,7 +301,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[15]:
 
 
 #########################################
@@ -317,7 +312,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################
@@ -328,7 +323,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################

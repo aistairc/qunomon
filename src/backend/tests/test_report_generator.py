@@ -51,7 +51,8 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions/re
             for graph_template in graph_templates:
                 graph_list.append(GraphMapper(report_required=True, graph_address='', report_index=graph_index,
                                               report_name=graph_template.name,
-                                              graph_template_id=graph_template.id, run_id=run.id, download_id=1))
+                                              graph_template_id=graph_template.id, run_id=run.id, download_id=1,
+                                              file_name=''))
                 graph_index += 1
             sql_db.session.add_all(graph_list)
             sql_db.session.flush()

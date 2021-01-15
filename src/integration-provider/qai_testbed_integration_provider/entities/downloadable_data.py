@@ -11,6 +11,7 @@ class DownloadableDataMapper(sql_db.Model):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     download_address = sa.Column(sa.String, nullable=False)
+    file_name = sa.Column(sa.String, nullable=False)
 
     run_id = sa.Column(sa.Integer, sa.ForeignKey('T_Run.id'))
     downloadable_template_id = sa.Column(sa.Integer, sa.ForeignKey('M_Downloadable_Template.id'))

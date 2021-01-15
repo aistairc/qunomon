@@ -249,10 +249,9 @@ class MeasureSchema(BaseSchema):
 
 
 class Resource:
-    def __init__(self, id_: int, name: str, path: str, type_: str, description: str) -> None:
+    def __init__(self, id_: int, name: str, type_: str, description: str) -> None:
         self.id_ = id_
         self.name = name
-        self.path = path
         self.type_ = type_
         self.description = description
 
@@ -261,7 +260,6 @@ class ResourceSchema(BaseSchema):
     __model__ = Resource
     id_ = fields.Int(data_key='Id', required=True)
     name = fields.Str(data_key='Name', required=True)
-    path = fields.Str(data_key='Path', required=True)
     type_ = fields.Str(data_key='Type', required=True)
     description = fields.Str(data_key='Description', required=True)
 

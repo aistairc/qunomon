@@ -1484,8 +1484,6 @@ paths:
                                 type: integer
                               Name:
                                 type: string
-                              Path:
-                                type: string
                               Type:
                                 type: string
                               Description:
@@ -1496,8 +1494,6 @@ paths:
                           Id:
                             type: integer
                           Name:
-                            type: string
-                          Path:
                             type: string
                           Description:
                             type: string
@@ -1566,7 +1562,6 @@ paths:
                         Resources:
                           - Id: 1
                             Name: distribution_graph
-                            Path: aa/bb/cc/distribution_graph.png
                             Type: image
                             Description: 分布
                     - Id: 2
@@ -1624,7 +1619,6 @@ paths:
                         Resources:
                           - Id: 2
                             Name: confusion_matrix
-                            Path: aa/bb/cc/confusion_matrix.png
                             Type: image
                             Description: 混同行列
         '500':
@@ -2671,6 +2665,8 @@ paths:
                                   type: integer
                                 Name:
                                   type: string
+                                FileName:
+                                  type: string
                                 Description:
                                   type: string
                                 GraphType:
@@ -2691,6 +2687,8 @@ paths:
                                 Id:
                                   type: integer
                                 Name:
+                                  type: string
+                                FileName:
                                   type: string
                                 Description:
                                   type: string
@@ -2766,6 +2764,7 @@ paths:
                         - Id: 1
                           GraphType: "picture"
                           Name: "distribution_graph"
+                          FileName: "distribution_graph_a.png"
                           Description: "分布"
                           ReportRequired: False
                           ReportIndex: 1
@@ -2774,6 +2773,7 @@ paths:
                         - Id: 2
                           GraphType: "picture"
                           Name: "distribution_graph"
+                          FileName: "distribution_graph_b.png"
                           Description: "分布"
                           ReportRequired: False
                           ReportIndex: 2
@@ -2782,6 +2782,7 @@ paths:
                         - Id: 3
                           GraphType: "picture"
                           Name: "distribution_graph"
+                          FileName: "distribution_graph_c.png"
                           Description: "分布"
                           ReportRequired: False
                           ReportIndex: 3
@@ -2789,7 +2790,8 @@ paths:
                           Graph: 'http://XXX'
                       Downloads:
                         - Id: 1
-                          Name: "log.txt"
+                          Name: "log"
+                          FileName: "log.txt"
                           Description: "one image"
                           DownloadURL: 'http://XXX'
                       CreationDatetime: "2020-09-28T01:22:03.920542"

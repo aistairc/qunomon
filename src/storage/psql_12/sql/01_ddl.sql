@@ -61,7 +61,6 @@ ALTER SEQUENCE public."M_DataType_id_seq" OWNED BY public."M_DataType".id;
 CREATE TABLE public."M_Downloadable_Template" (
     id integer NOT NULL,
     name character varying NOT NULL,
-    path character varying NOT NULL,
     description character varying,
     test_runner_id integer
 );
@@ -167,7 +166,6 @@ ALTER SEQUENCE public."M_Format_id_seq" OWNED BY public."M_Format".id;
 CREATE TABLE public."M_GraphTemplate" (
     id integer NOT NULL,
     name character varying NOT NULL,
-    path character varying NOT NULL,
     description character varying,
     test_runner_id integer,
     resource_type_id integer
@@ -845,6 +843,7 @@ ALTER SEQUENCE public."T_Download_id_seq" OWNED BY public."T_Download".id;
 CREATE TABLE public."T_Downloadable_Data" (
     id integer NOT NULL,
     download_address character varying NOT NULL,
+    file_name character varying NOT NULL,
     run_id integer,
     downloadable_template_id integer,
     download_id integer
@@ -885,6 +884,7 @@ CREATE TABLE public."T_Graph" (
     graph_address character varying NOT NULL,
     report_index integer NOT NULL,
     report_name character varying NOT NULL,
+    file_name character varying NOT NULL,
     graph_template_id integer,
     run_id integer,
     download_id integer

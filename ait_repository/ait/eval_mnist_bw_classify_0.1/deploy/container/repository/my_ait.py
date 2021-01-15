@@ -225,18 +225,14 @@ if not is_ait_launch:
                                           description='bw_std per class', 
                                           structure='sequence')
     manifest_genenerator.add_ait_resources(name='BWClassifyResultCSV', 
-                                           path='/usr/local/qai/resources/1/bw_classify_result.csv', 
                                            type_='table', 
                                            description='\'ClassNo\', \'data_num\', \'mean\', \'std\', \'b_num\', \'w_num\'')
     manifest_genenerator.add_ait_resources(name='BWHistgram', 
-                                           path='/usr/local/qai/resources/2/bw_histgram_class_{}.png', 
                                            type_='picture', 
                                            description='Distribution of average (normalized) pixel values')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AITLog')
     manifest_genenerator.add_ait_downloads(name='BWClassifyResult', 
-                                           path='/usr/local/qai/downloads/2/bw_classify_result.csv', 
                                            description='ID,Class,Index,Pixel average (normalized),B/W')
     manifest_path = manifest_genenerator.write()
 
@@ -461,9 +457,8 @@ def calc_bw_std_per_class(summary_cls_df, classes):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'BWClassifyResultCSV')
+@resources(ait_output, path_helper, 'BWClassifyResultCSV', 'bw_classify_result.csv')
 def save_result_csv(summary_cls_df, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     summary_cls_df.to_csv(file_path, header=True, index=True)
 
 
@@ -476,9 +471,8 @@ def save_result_csv(summary_cls_df, file_path: str=None) -> None:
 #########################################
 
 @log(logger, log_func_args=False)
-@resources(ait_output, path_helper, 'BWHistgram')
+@resources(ait_output, path_helper, 'BWHistgram', 'bw_histgram_class_{}.png')
 def save_histgram(mean_by_image, mean_by_class, classes, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     return save_histgram_core(classes, file_path, mean_by_image, mean_by_class)
 
@@ -492,9 +486,8 @@ def save_histgram(mean_by_image, mean_by_class, classes, file_path: str=None) ->
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     shutil.move(get_log_path(), file_path)
 
@@ -508,9 +501,8 @@ def move_log(file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'BWClassifyResult')
+@downloads(ait_output, path_helper, 'BWClassifyResult', 'bw_classify_result.csv')
 def save_bw_classify_result(detail_cls_df, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     detail_cls_df.to_csv(file_path, header=True, index=True)
 

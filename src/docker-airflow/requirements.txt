@@ -39,7 +39,7 @@ itsdangerous==0.24        # via flask
 jinja2>=2.10.1            # via airflow, flask, python-nvd3
 kombu==4.1.0              # via celery
 lockfile==0.12.2          # via python-daemon
-lxml==3.8.0               # via airflow
+lxml>=4.6.2               # via airflow
 mako==1.0.7               # via alembic
 markdown==2.6.11          # via airflow
 markupsafe==1.0           # via jinja2, mako

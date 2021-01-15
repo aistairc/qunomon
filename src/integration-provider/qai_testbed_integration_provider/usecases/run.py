@@ -284,6 +284,7 @@ class NotifyRunCompeteService:
             insert_graph.download_id = dl.id
             insert_graph.graph_template_id = graph_template.id
             insert_graph.run_id = td.run_id
+            insert_graph.file_name = Path(item_path).name
             sql_db.session.add(insert_graph)
 
     def _update_downloadable_data_without_commit(self, td: TestDescriptionMapper, output_json: dict, output_dir: Path):
@@ -309,7 +310,8 @@ class NotifyRunCompeteService:
             downloadable_mapper = DownloadableDataMapper(run_id=td.run_id,
                                                          download_id=dl.id,
                                                          downloadable_template_id=downloadable_template_mapper.id,
-                                                         download_address=self._get_dl_url(dl))
+                                                         download_address=self._get_dl_url(dl),
+                                                         file_name=Path(item_path).name)
             sql_db.session.add(downloadable_mapper)
 
     def _get_dl_url(self, dl):

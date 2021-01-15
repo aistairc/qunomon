@@ -118,7 +118,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[6]:
 
 
 if not is_ait_launch:
@@ -127,7 +127,7 @@ if not is_ait_launch:
     get_ipython().system('apt-get install -y libgl1-mesa-dev')
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -147,7 +147,7 @@ from pathlib import Path
 from os import makedirs, path
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -166,7 +166,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -224,20 +224,17 @@ if not is_ait_launch:
                                           description='Each class coverage within the expected range.', 
                                           structure='sequence')
     manifest_genenerator.add_ait_resources(name='count_total_class', 
-                                           path='/usr/local/qai/resources/1/count_total_class.png', 
                                            type_='picture', 
                                            description='Total coverage for all classes.')
     manifest_genenerator.add_ait_resources(name='count_each_class', 
-                                           path='/usr/local/qai/resources/2/count_class{}.png', 
                                            type_='picture', 
                                            description='Total coverage for each classes.')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AITLog')
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -260,7 +257,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -291,7 +288,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[12]:
 
 
 def load_mnist_label(path):
@@ -382,7 +379,7 @@ def def_calc_cov(target_moment_df, col_name, max_range ,interval):
     return cov
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -399,7 +396,7 @@ def total_calc_cov(target_moment_df, col_name, max_range ,interval):
     return cov
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################
@@ -421,7 +418,7 @@ def each_calc_cov(target_moment_df, col_name, max_range ,interval, class_num):
     return list_cov
 
 
-# In[ ]:
+# In[15]:
 
 
 #########################################
@@ -430,10 +427,9 @@ def each_calc_cov(target_moment_df, col_name, max_range ,interval, class_num):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'count_total_class')
+@resources(ait_output, path_helper, 'count_total_class', 'count_total_class.png')
 def map_total_calc_cov(target_moment_df, col_name, title, file_path: str=None ):
     
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     # 過去に保存した同じファイルがあれば削除
     if path.exists(file_path):
         os.remove(file_path)
@@ -443,7 +439,7 @@ def map_total_calc_cov(target_moment_df, col_name, title, file_path: str=None ):
     sns_plt.savefig(file_path)
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################
@@ -452,11 +448,9 @@ def map_total_calc_cov(target_moment_df, col_name, title, file_path: str=None ):
 #########################################
     
 @log(logger)
-@resources(ait_output, path_helper, 'count_each_class')
+@resources(ait_output, path_helper, 'count_each_class', 'count_class{}.png')
 def map_each_calc_cov(target_moment_df, col_name, class_num, file_path: str=None ):
     
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     out_files = []
     
     for c in class_num:
@@ -479,7 +473,7 @@ def map_each_calc_cov(target_moment_df, col_name, class_num, file_path: str=None
     return out_files
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################
@@ -488,9 +482,8 @@ def map_each_calc_cov(target_moment_df, col_name, class_num, file_path: str=None
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     shutil.move(get_log_path(), file_path)
 

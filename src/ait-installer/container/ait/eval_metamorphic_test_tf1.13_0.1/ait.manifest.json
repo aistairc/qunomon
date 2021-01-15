@@ -58,7 +58,6 @@
     "resources": [
       {
         "name": "result",
-        "path": "/usr/local/qai/resources/1/result.csv",
         "type": "table",
         "description": "number of NG output"
       }
@@ -67,12 +66,10 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT_log"
     },
     {
       "name": "DeepLog",
-      "path": "/usr/local/qai/downloads/2/deep.log",
       "description": "deep_saucer_log"
     }
   ]

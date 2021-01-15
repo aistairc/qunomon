@@ -39,7 +39,6 @@
     "resources": [
       {
         "name": "matching_result",
-        "path": "/usr/local/qai/resources/1/Pairwise_list_matching_result.csv",
         "type": "table",
         "description": "pairwise_matching_result"
       }
@@ -48,7 +47,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT_run_log"
     }
   ]

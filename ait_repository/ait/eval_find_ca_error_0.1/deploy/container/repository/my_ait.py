@@ -20,7 +20,7 @@
 # |11|license attribute set|1|Use only notebook launch.<br>Setting attribute for license.|should edit|
 # |12|prepare deploy|1|Use only notebook launch.<br>Convert to python programs and create dag.py.|no edit|
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -140,9 +140,9 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters('Combination_index', 'int', 'Index of unsound CA combination case', '5')
     manifest_genenerator.add_ait_measures('count', 'int', 'Quantity of unsound case', 'single')
     manifest_genenerator.add_ait_measures('percentage', 'float', 'Percentage of unsound case in dataset', 'single')
-    manifest_genenerator.add_ait_resources('CountPlot', '/usr/local/qai/resources/1/error_ca_count_plot.png', 'picture', 'Plot of number of data in each unsound case')
-    manifest_genenerator.add_ait_resources('PercentagePlot', '/usr/local/qai/resources/2/error_ca_percentage_plot.png', 'picture', 'Plot of percentage of unsound cases in data')
-    manifest_genenerator.add_ait_downloads('Log', '/usr/local/qai/downloads/1/ait.log', 'AITLog')
+    manifest_genenerator.add_ait_resources('CountPlot', 'picture', 'Plot of number of data in each unsound case')
+    manifest_genenerator.add_ait_resources('PercentagePlot', 'picture', 'Plot of percentage of unsound cases in data')
+    manifest_genenerator.add_ait_downloads('Log', 'AITLog')
     manifest_path = manifest_genenerator.write()
 
 
@@ -240,10 +240,8 @@ def percentage_for_index(ca_data, combination_cases_data, index):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'CountPlot')
+@resources(ait_output, path_helper, 'CountPlot', 'error_ca_count_plot.png')
 def save_count_plot(combination_cases_data_result, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     plt.figure(dpi=100, figsize=(8,6))
     combination_cases_data_result['count'].plot(kind = 'barh')
     plt.xlabel('Count')
@@ -253,10 +251,8 @@ def save_count_plot(combination_cases_data_result, file_path: str=None) -> None:
     
     
 @log(logger)
-@resources(ait_output, path_helper, 'PercentagePlot')
+@resources(ait_output, path_helper, 'PercentagePlot', 'error_ca_percentage_plot.png')
 def save_percentage_plot(combination_cases_data_result, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-    
     plt.figure(dpi=100, figsize=(8,6))
     combination_cases_data_result['percentage'].plot(kind = 'bar')
     plt.xlabel('Index number')
@@ -275,10 +271,8 @@ def save_percentage_plot(combination_cases_data_result, file_path: str=None) -> 
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     shutil.move(get_log_path(), file_path)
 
 
@@ -320,7 +314,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -331,7 +325,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################

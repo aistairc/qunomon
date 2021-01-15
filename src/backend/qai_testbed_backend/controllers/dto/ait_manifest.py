@@ -6,16 +6,14 @@ from . import BaseSchema
 
 
 class Download:
-    def __init__(self, name: str, path: str, description: str) -> None:
+    def __init__(self, name: str, description: str) -> None:
         self.name = name
-        self.path = path
         self.description = description
 
 
 class DownloadSchema(BaseSchema):
     __model__ = Download
     name = fields.Str(data_key='name', required=True)
-    path = fields.Str(data_key='path', required=True)
     description = fields.Str(data_key='description', required=True)
 
 
@@ -70,9 +68,8 @@ class ReportMeasureSchema(BaseSchema):
 
 
 class ReportResource:
-    def __init__(self, name: str, path: str, type_: str, description: str) -> None:
+    def __init__(self, name: str, type_: str, description: str) -> None:
         self.name = name
-        self.path = path
         self.type = type_
         self.description = description
 
@@ -80,7 +77,6 @@ class ReportResource:
 class ReportResourceSchema(BaseSchema):
     __model__ = ReportResource
     name = fields.Str(data_key='name', required=True)
-    path = fields.Str(data_key='path', required=True)
     type_ = fields.Str(data_key='type', required=True)
     description = fields.Str(data_key='description', required=True)
 

@@ -37,7 +37,6 @@
     "resources": [
       {
         "name": "pairplot",
-        "path": "/usr/local/qai/resources/1/pairplot.png",
         "type": "picture",
         "description": "pairplot"
       }
@@ -46,7 +45,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT実行ログ"
     }
   ]

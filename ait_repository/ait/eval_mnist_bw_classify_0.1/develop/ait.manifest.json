@@ -70,13 +70,11 @@
     "resources": [
       {
         "name": "BWClassifyResultCSV",
-        "path": "/usr/local/qai/resources/1/bw_classify_result.csv",
         "type": "table",
         "description": "'ClassNo', 'data_num', 'mean', 'std', 'b_num', 'w_num'"
       },
       {
         "name": "BWHistgram",
-        "path": "/usr/local/qai/resources/2/bw_histgram_class_{}.png",
         "type": "picture",
         "description": "Distribution of average (normalized) pixel values"
       }
@@ -85,12 +83,10 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AITLog"
     },
     {
       "name": "BWClassifyResult",
-      "path": "/usr/local/qai/downloads/2/bw_classify_result.csv",
       "description": "ID,Class,Index,Pixel average (normalized),B/W"
     }
   ]

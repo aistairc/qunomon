@@ -79,7 +79,7 @@ if not is_ait_launch:
     requirements_generator.add_package('seaborn','0.10.1')
     requirements_generator.add_package('matplotlib','3.3.0')
     requirements_generator.add_package('tensorflow','2.3.0')
-    requirements_generator.add_package('numpy','1.19.1')
+    requirements_generator.add_package('numpy','1.18.0')
     requirements_generator.add_package('tensorflow-estimator','2.3.0')
     requirements_generator.add_package(f'./{ait_sdk_name}')
     requirements_path = requirements_generator.create_requirements(current_dir)
@@ -119,7 +119,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -141,15 +141,15 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_inventories('dataset_for_verification', 'dataset', '検証用データセット\n目的変数と説明変数のセットでラベルは必要', ['csv'], 'uncreated')
     manifest_genenerator.add_ait_parameters('target_variable', 'str', '目的変数', '')
     manifest_genenerator.add_ait_measures('degree_of_freedom_adjusted_coefficient_determination', 'float', '0~1の値をとり、1に近いほど精度の高い予測ができているといえる。', 'single')
-    manifest_genenerator.add_ait_resources('coefficient_of_determination_matrix', '/usr/local/qai/resources/coefficient_of_determination_matrix.csv', 'table', '決定係数の結果をまとめた表')
-    manifest_genenerator.add_ait_resources('correlation_coefficient_1to1', '/usr/local/qai/resources/correlation_coefficient_1to1/{}-{}.png', 'picture', '説明変数と目的変数の相関グラフ\nファイル名は{目的変数}-{説明変数}.png')
-    manifest_genenerator.add_ait_resources('correlation_coefficient_1to2', '/usr/local/qai/resources/correlation_coefficient_1to2/{}-{}-{}.png', 'picture', '説明変数2つと目的変数の3次元相関グラフ\nファイル名は{目的変数}-{説明変数1}-{説明変数2}.png')
-    manifest_genenerator.add_ait_downloads('Log', '/usr/local/qai/downloads/1/ait.log', 'AIT実行ログ')
-    manifest_genenerator.add_ait_downloads('predictive_value', '/usr/local/qai/downloads/2/predictive_value.csv', '予測値')
+    manifest_genenerator.add_ait_resources('coefficient_of_determination_matrix', 'table', '決定係数の結果をまとめた表')
+    manifest_genenerator.add_ait_resources('correlation_coefficient_1to1', 'picture', '説明変数と目的変数の相関グラフ\nファイル名は{目的変数}-{説明変数}.png')
+    manifest_genenerator.add_ait_resources('correlation_coefficient_1to2', 'picture', '説明変数2つと目的変数の3次元相関グラフ\nファイル名は{目的変数}-{説明変数1}-{説明変数2}.png')
+    manifest_genenerator.add_ait_downloads('Log', 'AIT実行ログ')
+    manifest_genenerator.add_ait_downloads('predictive_value', '予測値')
     manifest_path = manifest_genenerator.write()
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -165,7 +165,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -196,7 +196,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -211,7 +211,7 @@ def coefficient_of_determination_measure(dofa_r2):
     return str(dofa_r2.numpy())
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -220,9 +220,8 @@ def coefficient_of_determination_measure(dofa_r2):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'coefficient_of_determination_matrix')
+@resources(ait_output, path_helper, 'coefficient_of_determination_matrix', 'coefficient_of_determination_matrix.csv')
 def create_matrix(r2, dofa_r2, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     # 決定係数の表を作成
     data = [['coefficient of determination', r2.numpy()],
@@ -232,7 +231,7 @@ def create_matrix(r2, dofa_r2, file_path: str=None) -> None:
         writer.writerows(data)
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -241,9 +240,8 @@ def create_matrix(r2, dofa_r2, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'correlation_coefficient_1to1')
+@resources(ait_output, path_helper, 'correlation_coefficient_1to1', '{}-{}.png')
 def create_plot(target_variable, data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     out_files = []
     
@@ -261,7 +259,7 @@ def create_plot(target_variable, data, file_path: str=None) -> None:
     return out_files
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -270,9 +268,8 @@ def create_plot(target_variable, data, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'correlation_coefficient_1to2')
+@resources(ait_output, path_helper, 'correlation_coefficient_1to2', '{}-{}-{}.png')
 def create_3dplot(target_variable, data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     out_files = []
     explanatory_variables = data.columns
@@ -304,7 +301,7 @@ def create_3dplot(target_variable, data, file_path: str=None) -> None:
     return out_files
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -313,14 +310,13 @@ def create_3dplot(target_variable, data, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     shutil.move(get_log_path(), file_path)
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -329,15 +325,14 @@ def move_log(file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'predictive_value')
+@downloads(ait_output, path_helper, 'predictive_value', 'predictive_value.csv')
 def move_predictive_value(predictive, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     # 予測値をcsvで保存
     np.savetxt(file_path, predictive)
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -396,7 +391,7 @@ def main() -> None:
     move_predictive_value(predictive)
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -407,7 +402,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -418,7 +413,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################

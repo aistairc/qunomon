@@ -45,19 +45,16 @@
     "resources": [
       {
         "name": "CountResult",
-        "path": "/usr/local/qai/resources/1/highrisk_ca_totalcount.csv",
         "type": "table",
         "description": "Count of number of data in each high risk case"
       },
       {
         "name": "CombinedCountResult",
-        "path": "/usr/local/qai/resources/2/Combined_result_data/",
         "type": "table",
         "description": "Count of number of data in various high risk case combinations"
       },
       {
         "name": "DistributionPlot",
-        "path": "/usr/local/qai/resources/3/Combined_result_plots/",
         "type": "picture",
         "description": "Plot of percentage of various high risk cases in data"
       }
@@ -66,7 +63,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AITLog"
     }
   ]

@@ -181,7 +181,6 @@
     "resources": [
       {
         "name": "test_case_generator",
-        "path": "/usr/local/qai/resources/1/test_case_generator.csv",
         "type": "table",
         "description": "generate coverage increase data."
       }
@@ -190,17 +189,14 @@
   "downloads": [
     {
       "name": "heatmap",
-      "path": "/usr/local/qai/downloads/1/heatmap.html",
       "description": "the heat map of the coverage as an HTML file."
     },
     {
       "name": "abs_dataset",
-      "path": "/usr/local/qai/downloads/2/output.h5",
       "description": "the created input data by the manipulation as h5 file."
     },
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/3/ait.log",
       "description": "AITLog"
     }
   ]

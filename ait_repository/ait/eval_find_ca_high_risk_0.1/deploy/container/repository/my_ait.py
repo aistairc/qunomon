@@ -132,10 +132,10 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_inventories('High_risk_CA_combinations', 'attribute set', 'Combinations of different attribute values that are high risk situations in real life', ['csv'], 'User given data')
     manifest_genenerator.add_ait_measures('SingleCount', 'int', 'Number of high risk cases in simple combinations', 'single')
     manifest_genenerator.add_ait_measures('CombinedCount', 'int', 'Number of high risk cases in combine combinations', 'single')
-    manifest_genenerator.add_ait_resources('CountResult', '/usr/local/qai/resources/1/highrisk_ca_totalcount.csv', 'table', 'Count of number of data in each high risk case')
-    manifest_genenerator.add_ait_resources('CombinedCountResult', '/usr/local/qai/resources/2/Combined_result_data/', 'table', 'Count of number of data in various high risk case combinations')
-    manifest_genenerator.add_ait_resources('DistributionPlot', '/usr/local/qai/resources/3/Combined_result_plots/', 'picture', 'Plot of percentage of various high risk cases in data')
-    manifest_genenerator.add_ait_downloads('Log', '/usr/local/qai/downloads/1/ait.log', 'AITLog')
+    manifest_genenerator.add_ait_resources('CountResult', 'table', 'Count of number of data in each high risk case')
+    manifest_genenerator.add_ait_resources('CombinedCountResult', 'table', 'Count of number of data in various high risk case combinations')
+    manifest_genenerator.add_ait_resources('DistributionPlot', 'picture', 'Plot of percentage of various high risk cases in data')
+    manifest_genenerator.add_ait_downloads('Log', 'AITLog')
     manifest_path = manifest_genenerator.write()
 
 
@@ -221,10 +221,8 @@ def calc_combine_count(count):
 # should edit
 #########################################
 @log(logger)
-@resources(ait_output, path_helper, 'CountResult')
+@resources(ait_output, path_helper, 'CountResult', 'highrisk_ca_totalcount.csv')
 def simple_count(data, highrisk_data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-    
     highrisk_data_out = highrisk_data.copy()
     
     for index, row in highrisk_data_out.iterrows():
@@ -317,16 +315,13 @@ def combinationwise_count(data,highrisk_data,file_path: str=None) -> int:
 @log(logger)
 @resources(ait_output, path_helper, 'CombinedCountResult')
 def save_combinationwise_count(result_df, file_name, file_path: str=None) -> None:
-    makedirs(str(Path(file_path)), exist_ok=True)
     file_path = file_path+file_name+'.csv'
     result_df.to_csv(file_path,index = False )
-
     return file_path
 
 @log(logger)
 @resources(ait_output, path_helper, 'DistributionPlot')
 def plot_result(result_df,f_name, file_path: str=None) -> None:
-    makedirs(str(Path(file_path)), exist_ok=True)
     if len(result_df)<30: font_size = 10
     if len(result_df)>30: font_size = 5
     result_df.plot(x = 'Value combination', y = 'Ratio', kind = 'bar', fontsize = font_size,figsize = (10,6))
@@ -352,9 +347,8 @@ def plot_result(result_df,f_name, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     shutil.move(get_log_path(), file_path)
 
 
@@ -383,7 +377,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################
@@ -394,7 +388,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[15]:
 
 
 #########################################
@@ -405,7 +399,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################

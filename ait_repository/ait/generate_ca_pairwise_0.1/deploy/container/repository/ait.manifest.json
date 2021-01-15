@@ -36,7 +36,6 @@
     "resources": [
       {
         "name": "generated_paie_wise",
-        "path": "/usr/local/qai/resources/1/pair-wise.csv",
         "type": "table",
         "description": "PICT generate pair-wise."
       }
@@ -45,7 +44,6 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT execute log"
     }
   ]

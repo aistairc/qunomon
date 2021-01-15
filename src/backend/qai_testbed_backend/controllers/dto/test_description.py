@@ -125,7 +125,7 @@ class TestRunner:
 
 class Graph:
     def __init__(self, id_: int, name: str, description: str, report_required: bool, graph_type: str,
-                 report_index: int, report_name: str, graph: str) -> None:
+                 report_index: int, report_name: str, graph: str, file_name: str) -> None:
         self.id_ = id_
         self.name = name
         self.description = description
@@ -134,6 +134,7 @@ class Graph:
         self.report_index = report_index
         self.report_name = report_name
         self.graph = graph
+        self.file_name = file_name
 
 
 class TestDescriptionResult:
@@ -332,6 +333,7 @@ class GraphSchema(BaseSchema):
     __model__ = Graph
     id_ = fields.Int(data_key='Id')
     name = fields.Str(data_key='Name')
+    file_name = fields.Str(data_key='FileName')
     graph_type = fields.Str(data_key='GraphType')
     description = fields.Str(data_key='Description')
     report_required = fields.Boolean(data_key='ReportRequired')

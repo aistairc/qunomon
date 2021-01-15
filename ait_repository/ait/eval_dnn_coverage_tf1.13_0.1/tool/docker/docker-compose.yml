@@ -3,12 +3,12 @@ version: '3.5'
 services:
   jupyter:
     build:
-      context: ./jupyter
+      context: ./jupyter-simple
       dockerfile: dockerfile
     user: root
     ports:
       - 9888:8888
-    container_name: jupyter
+    container_name: jupyter-simple
     environment:
       TZ: Asia/Tokyo
       NB_UID: 1000

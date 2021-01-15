@@ -285,22 +285,17 @@ if not is_ait_launch:
                                           structure='sequence')
 
     manifest_genenerator.add_ait_resources(name='ConfusionMatrixHeatmap', 
-                                           path='/usr/local/qai/resources/1/confusion_matrix.png', 
                                            type_='picture', 
                                            description='混同行列(ヒートマップ)')
     manifest_genenerator.add_ait_resources(name='ROC-curve', 
-                                           path='/usr/local/qai/resources/2/roc_curve.png', 
                                            type_='picture', 
                                            description='ROC曲線')
 
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT実行ログ')
     manifest_genenerator.add_ait_downloads(name='ConfusionMatrixCSV', 
-                                           path='/usr/local/qai/downloads/2/confusion_matrix.csv', 
                                            description='混同行列')
     manifest_genenerator.add_ait_downloads(name='PredictionResult', 
-                                           path='/usr/local/qai/downloads/3/prediction.csv', 
                                            description='ID,正解ラベル,推論結果確率(ラベル毎)')
 
     manifest_path = manifest_genenerator.write()
@@ -414,10 +409,8 @@ def calc_acc_by_class( y_test, y_pred) -> (List[float], List[float], List[float]
 # 3/8
 
 @log(logger)
-@downloads(ait_output, path_helper, 'ConfusionMatrixCSV')
+@downloads(ait_output, path_helper, 'ConfusionMatrixCSV', 'confusion_matrix.csv')
 def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     cmx_data = confusion_matrix(y_test, K.argmax(y_pred))
     logger.info(cmx_data)
     np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
@@ -433,10 +426,8 @@ def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
 # 4/8
 
 @log(logger)
-@resources(ait_output, path_helper, 'ConfusionMatrixHeatmap')
+@resources(ait_output, path_helper, 'ConfusionMatrixHeatmap', 'confusion_matrix.png')
 def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     y_pred = K.argmax(y_pred)
 
     labels = sorted(list(set(y_test)))
@@ -465,10 +456,8 @@ def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
 # 5/8
 
 @log(logger)
-@resources(ait_output, path_helper, 'ROC-curve')
+@resources(ait_output, path_helper, 'ROC-curve', 'roc_curve.png')
 def save_roc_curve(y_test, y_pred, n_classes: int, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     y_true = to_categorical(y_test)
     y_score = y_pred
 
@@ -566,10 +555,8 @@ def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
 # 7/8
 
 @log(logger)
-@downloads(ait_output, path_helper, 'PredictionResult')
+@downloads(ait_output, path_helper, 'PredictionResult', 'prediction.csv')
 def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     # Label + PredictProva
     out_data = np.hstack([y_test.reshape(y_test.shape[0], 1), y_pred])
 
@@ -590,10 +577,8 @@ def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
 # 8/8
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     shutil.move(get_log_path(), file_path)
 
 

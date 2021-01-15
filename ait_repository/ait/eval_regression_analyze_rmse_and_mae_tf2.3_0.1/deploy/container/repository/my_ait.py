@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -202,15 +202,12 @@ Number of data n, true values: y(1),y(2),â‹¯,y(n) Predicted values: f(1),f(2),â‹
                                           description='The closer to 0, the smaller prediction error.',
                                           structure='single')
     manifest_genenerator.add_ait_resources(name='evaluation_index_matrix', 
-                                           path='/usr/local/qai/resources/evaluation_index_matrix.csv', 
                                            type_='table', 
                                            description='Table of evaluation indicators summary.')
     manifest_genenerator.add_ait_resources(name='observed_predicted_plot', 
-                                           path='/usr/local/qai/resources/correlation_graph_of_predicted_and_measured_values.png', 
                                            type_='picture', 
                                            description='Plot of actual values on the horizontal axis and predictions on the vertical axis. The more plots exist near the diagonal line, the better the prediction.')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT_log')
     manifest_path = manifest_genenerator.write()
 
@@ -299,9 +296,8 @@ def measure_mae(mae):
 # should edit
 #########################################
 @log(logger)
-@resources(ait_output, path_helper, 'evaluation_index_matrix')
+@resources(ait_output, path_helper, 'evaluation_index_matrix', 'evaluation_index_matrix.csv')
 def save_index_matrix(csv_data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     with open(file_path, 'w') as f:
             writer = csv.writer(f, lineterminator='\n')
@@ -317,9 +313,8 @@ def save_index_matrix(csv_data, file_path: str=None) -> None:
 # should edit
 #########################################
 @log(logger)
-@resources(ait_output, path_helper, 'observed_predicted_plot')
+@resources(ait_output, path_helper, 'observed_predicted_plot', 'correlation_graph_of_predicted_and_measured_values.png')
 def save_predicted_plot(model, test_data_labels, normed_test_data, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     sns.set_style("whitegrid")
     test_predictions = model.predict(normed_test_data).flatten()
@@ -342,9 +337,8 @@ def save_predicted_plot(model, test_data_labels, normed_test_data, file_path: st
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     shutil.move(get_log_path(), file_path)
 

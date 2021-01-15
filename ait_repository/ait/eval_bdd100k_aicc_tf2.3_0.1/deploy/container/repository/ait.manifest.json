@@ -129,13 +129,11 @@
     "resources": [
       {
         "name": "all_label_accuracy_csv",
-        "path": "/usr/local/qai/resources/1/all_label_accuracy.csv",
         "type": "text",
         "description": "accuracy of all label"
       },
       {
         "name": "all_label_accuracy_png",
-        "path": "/usr/local/qai/resources/2/all_label_accuracy.png",
         "type": "picture",
         "description": "accuracy of all label"
       }
@@ -144,17 +142,14 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT_log"
     },
     {
       "name": "each_label_accuracy",
-      "path": "/usr/local/qai/downloads/2/each_label_accuracy.csv",
       "description": "accuracy of each label"
     },
     {
       "name": "each_picture",
-      "path": "/usr/local/qai/downloads/3/{}predict.jpg",
       "description": "predict of each picture"
     }
   ]

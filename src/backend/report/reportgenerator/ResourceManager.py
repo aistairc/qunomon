@@ -9,6 +9,7 @@ from math import pi
 import numpy as np
 import os
 import shutil
+import math
 
 plt.rcParams['font.family'] = 'Noto Sans CJK JP'
 
@@ -145,16 +146,27 @@ class ResourceManager():
                         values += [cnt]
                         categories.append(self.report_dataset['QualityDimension'][qp_id])
 
-            # レーダーチャートを閉じるために最初の値を再度加える(仕様)
-            values += [values[0]]
-
             categories = ['\n'.join(textwrap.wrap(c, 20)) for c in categories]
 
             N = len(categories)
 
-            # カテゴリ数に合わせて角度を決定
-            angles = [n / float(N) * 2 * pi for n in range(N)]
-            angles += angles[:1]
+            if N >= 3:
+                # カテゴリ数に合わせて角度を決定
+                angles = [n / float(N) * 2 * pi for n in range(N)]
+                angles += angles[:1]
+            elif N == 2:
+                # カテゴリ数が2の場合は、0度と180度で直線になってしまうので、90度にした上でダミーポイントを追加して三角形にする
+                angles = [0, 0.5 * np.pi, 0, 0]
+                categories += [""] #ダミーのカテゴリ
+                values += [0] #ダミーのvalues
+            elif N == 1:
+                # カテゴリ数が1の場合は、0度だけで点になってしまうので、ダミーのポイントを追加して直線にする
+                angles = [0, 0, 0]
+                categories += [""] #ダミーのカテゴリ
+                values += [0] #ダミーのvalues
+
+            # レーダーチャートを閉じるために最初の値を再度加える(仕様)
+            values += [values[0]]
 
             # レーダーチャート作成
             ax = plt.subplot(111, polar=True)
@@ -162,9 +174,15 @@ class ResourceManager():
             plt.xticks(angles[:-1], categories, color='grey', size=10)
             ax.set_rlabel_position(180)
 
-            # TODO: レーダーチャートの表示範囲が固定。valuesの最大値に従って可変にするべき
-            plt.yticks([1, 3, 5], ["1", "3", "5"], color="grey", size=10)
-            plt.ylim(0, 5)
+            # レーダーチャートの表示範囲を、valuesの最大値に従って可変にする
+            # valuesの最大値
+            max_value = max(values)
+            # 表示範囲の最大値（５の倍数にする）
+            max_range = (int(max_value / 5) + math.ceil((max_value % 5) / 5)) * 5
+            # 表示範囲の配列
+            display_range_list = np.linspace(0, max_range, 6, dtype = 'int')
+            plt.yticks(display_range_list, display_range_list, color="grey", size=10)
+            plt.ylim(0, max_range)
 
             # Plot
             ax.plot(angles, values, linewidth=1, c='m', linestyle='solid')

@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################
@@ -127,7 +127,7 @@ if not is_ait_launch:
     requirements_generator.add_package('Werkzeug','0.12.2')
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -141,7 +141,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -163,7 +163,7 @@ from deep_saucer.neuron_coverage.tensorflow_native.lib.coverage_verification imp
 from ait_sdk.utils.mnist import MNIST
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -182,7 +182,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -375,23 +375,19 @@ if not is_ait_launch:
                                           type_='float', 
                                           description='coverage of select combination.', 
                                           structure='single')
-    manifest_genenerator.add_ait_resources(name='test_case_generator', 
-                                           path='/usr/local/qai/resources/1/test_case_generator.csv', 
+    manifest_genenerator.add_ait_resources(name='test_case_generator',  
                                            type_='table', 
                                            description='generate coverage increase data.')
     manifest_genenerator.add_ait_downloads(name='heatmap', 
-                                           path='/usr/local/qai/downloads/1/heatmap.html', 
                                            description='the heat map of the coverage as an HTML file.')
     manifest_genenerator.add_ait_downloads(name='abs_dataset', 
-                                           path='/usr/local/qai/downloads/2/output.h5', 
                                            description='the created input data by the manipulation as h5 file.')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/3/ait.log', 
                                            description='AITLog')
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -450,7 +446,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -481,7 +477,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[ ]:
 
 
 def get_value_list(list_dict):
@@ -519,7 +515,7 @@ def create_config_json(ait_input):
     return config_json
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -533,7 +529,7 @@ def calc_coverage_rate_all_layer(coverage_rate):
     return np.mean(get_value_list(coverage_rate))
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -547,7 +543,7 @@ def calc_coverage_rate_each_layer(coverage_rate):
     return get_value_list(coverage_rate)
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -561,7 +557,7 @@ def calc_coverage_rate_combination(combination_cov):
     return list(combination_cov.values())[0]
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -570,13 +566,12 @@ def calc_coverage_rate_combination(combination_cov):
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'heatmap')
+@downloads(ait_output, path_helper, 'heatmap', 'heatmap.html')
 def save_heatmap(result_heatmap_output, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     shutil.copyfile(result_heatmap_output, file_path)
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -585,16 +580,14 @@ def save_heatmap(result_heatmap_output, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'test_case_generator')
+@resources(ait_output, path_helper, 'test_case_generator', 'test_case_generator.csv')
 def save_test_case_generator(result_test_case_generator, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-    
     with open(file_path, 'w') as f:
         writer = csv.writer(f)
         writer.writerow(result_test_case_generator)
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -603,14 +596,12 @@ def save_test_case_generator(result_test_case_generator, file_path: str=None) ->
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-
     shutil.move(get_log_path(), file_path)
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################
@@ -619,13 +610,12 @@ def move_log(file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'abs_dataset')
+@downloads(ait_output, path_helper, 'abs_dataset', 'output.h5')
 def save_abs_dataset(result_abs_dataset_pass, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     shutil.copyfile(result_abs_dataset_pass, file_path)
 
 
-# In[19]:
+# In[ ]:
 
 
 #########################################

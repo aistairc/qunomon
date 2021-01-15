@@ -24,4 +24,4 @@ six==1.11.0
 tensorflow==1.13.1
 tensorflow-tensorboard==0.1.6
 Werkzeug==0.12.2
-./ait_sdk-0.1.4-py3-none-any.whl
+./ait_sdk-0.1.5-py3-none-any.whl

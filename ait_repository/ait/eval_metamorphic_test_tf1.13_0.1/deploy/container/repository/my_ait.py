@@ -226,14 +226,11 @@ Make sure can be classified in the same result as the original class be added a 
                                           description='Average number of NG output', 
                                           structure='single')
     manifest_genenerator.add_ait_resources(name='result', 
-                                           path='/usr/local/qai/resources/1/result.csv', 
                                            type_='table', 
                                            description='number of NG output')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT_log')
     manifest_genenerator.add_ait_downloads(name='DeepLog', 
-                                           path='/usr/local/qai/downloads/2/deep.log', 
                                            description='deep_saucer_log')
     manifest_path = manifest_genenerator.write()
 
@@ -315,10 +312,8 @@ def ng_average(cov):
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'result')
+@resources(ait_output, path_helper, 'result', 'result.csv')
 def save_result(output_list, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-    
     with open(file_path, 'w') as f:
         f.writelines(output_list)
         #writer = csv.writer(f)
@@ -334,10 +329,8 @@ def save_result(output_list, file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-    
     shutil.move(get_log_path(), file_path)
 
 
@@ -350,10 +343,8 @@ def move_log(file_path: str=None) -> None:
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'DeepLog')
+@downloads(ait_output, path_helper, 'DeepLog', 'deep.log')
 def move_deep_log(log_path, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
-    
     shutil.copyfile(log_path, file_path)
 
 

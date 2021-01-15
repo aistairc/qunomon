@@ -131,10 +131,9 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_inventories('Data', 'dataset', 'Classification of different attributes related to autonomous driving scenarios', ['csv'], 'https://bdd-data.berkeley.edu/')
     manifest_genenerator.add_ait_parameters('attribute_no', 'int', 'Total number of attribute for distibution analysis', '6')
     manifest_genenerator.add_ait_parameters('dimension', 'int', 'Dimensions of how many attributes to combine for distibution analysis', '2')
-    #manifest_genenerator.add_ait_measures('distribution', 'float', 'distribution in percentage for each combination', 'single')
-    manifest_genenerator.add_ait_resources('distibution_csv', '/usr/local/qai/resources/1/', 'table', 'Table of distribution for each combination')
-    manifest_genenerator.add_ait_resources('distibution_plot', '/usr/local/qai/resources/2/', 'picture', 'Plot of distribution for each combination')
-    manifest_genenerator.add_ait_downloads('Log', '/usr/local/qai/downloads/1/ait.log', 'AITLog')
+    manifest_genenerator.add_ait_resources('distibution_csv', 'table', 'Table of distribution for each combination')
+    manifest_genenerator.add_ait_resources('distibution_plot', 'picture', 'Plot of distribution for each combination')
+    manifest_genenerator.add_ait_downloads('Log', 'AITLog')
     manifest_path = manifest_genenerator.write()
 
 
@@ -216,22 +215,14 @@ def condition_check(data,n,r):
 @log(logger)
 @resources(ait_output, path_helper, 'distibution_csv')
 def save_distibution_csv(result_df, file_name, file_path: str=None):
-    
-    makedirs(str(Path(file_path)), exist_ok=True)
-
     file_name = file_name.replace(' ', '')
-    
-    csv_path = file_path + file_name +'.csv'
-    result_df.to_csv(csv_path, index = False)
-    
-    return csv_path
+    file_path = file_path + file_name +'.csv'
+    result_df.to_csv(file_path, index = False)
+    return file_path
 
 @log(logger)
 @resources(ait_output, path_helper, 'distibution_plot')
 def save_distibution_plot(result_df, att_name, file_path: str=None, is_single: bool=False):
-    
-    makedirs(str(Path(file_path)), exist_ok=True)
-
     file_name = att_name.replace(' ', '')
     
     if len(result_df)<60: font_size = 14
@@ -249,10 +240,9 @@ def save_distibution_plot(result_df, att_name, file_path: str=None, is_single: b
         if _data>1:_data=1
         if _data<0.001: continue
         plt.annotate( str(_data),(index , _data*1.1), va = 'bottom' ,ha = 'center', rotation = 90)
-    fig_path = file_path +  file_name +'.jpg'
-    plt.savefig(fig_path, bbox_inches="tight")
-    
-    return fig_path
+    file_path = file_path +  file_name +'.jpg'
+    plt.savefig(file_path, bbox_inches="tight")
+    return file_path
 
 @log(logger)
 def calc_dist_single(data,n):
@@ -354,9 +344,8 @@ def calc_dist_main(data, n,r):
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     shutil.move(get_log_path(), file_path)
 
 

@@ -20,7 +20,7 @@
 # |11|license attribute set|1|Use only notebook launch.<br>Setting attribute for license.|should edit|
 # |12|prepare deploy|1|Use only notebook launch.<br>Convert to python programs and create dag.py.|no edit|
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -146,11 +146,9 @@ if not is_ait_launch:
                                             ''', 
                                             default_val='-1')
     manifest_genenerator.add_ait_resources(name='generated_paie_wise', 
-                                           path='/usr/local/qai/resources/1/pair-wise.csv', 
                                            type_='table', 
                                            description='PICT generate pair-wise.')
     manifest_genenerator.add_ait_downloads(name='Log', 
-                                           path='/usr/local/qai/downloads/1/ait.log', 
                                            description='AIT execute log')
     manifest_path = manifest_genenerator.write()
 
@@ -224,9 +222,8 @@ if not is_ait_launch:
 #########################################
 
 @log(logger)
-@resources(ait_output, path_helper, 'generated_paie_wise')
+@resources(ait_output, path_helper, 'generated_paie_wise', 'pair-wise.csv')
 def generated_paie_wise(model_path:str, order_combination: int, seed: int, file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
     
     # generate for PICT -> tsv format
     with open(file_path, 'w', encoding='utf-8') as f:
@@ -255,9 +252,8 @@ def generated_paie_wise(model_path:str, order_combination: int, seed: int, file_
 #########################################
 
 @log(logger)
-@downloads(ait_output, path_helper, 'Log')
+@downloads(ait_output, path_helper, 'Log', 'ait.log')
 def move_log(file_path: str=None) -> None:
-    makedirs(str(Path(file_path).parent), exist_ok=True)
 
     shutil.move(get_log_path(), file_path)
 

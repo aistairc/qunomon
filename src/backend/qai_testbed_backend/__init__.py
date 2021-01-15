@@ -525,45 +525,36 @@ def _init_db_demo_2():
     resource_type = ResourceTypeMapper.query.all()
 
     graph_templates = [GraphTemplateMapper(resource_type_id=resource_type[1].id, name='log.png',
-                                           path='/aa/bb/cc/log.png', description='one image',
+                                           description='one image',
                                            test_runner_id=test_runners[0].id),
                        GraphTemplateMapper(resource_type_id=resource_type[1].id, name='log.png',
-                                           path='/aa/bb/cc/log.png', description='one image',
+                                           description='one image',
                                            test_runner_id=test_runners[0].id),
                        GraphTemplateMapper(resource_type_id=resource_type[2].id, name='distribution_graph',
-                                           path='aa/bb/cc/distribution_graph.png',
                                            description='image', test_runner_id=test_runners[0].id),
                        GraphTemplateMapper(resource_type_id=resource_type[2].id, name='acc.csv',
-                                           path='/usr/local/qai/resources/1/acc.csv',
                                            description='acc csv',
                                            test_runner_id=test_runners[2].id),
                        GraphTemplateMapper(resource_type_id=resource_type[1].id, name='acc.png',
-                                           path='/usr/local/qai/resources/2/acc.png',
                                            description='acc image',
                                            test_runner_id=test_runners[2].id),
                        GraphTemplateMapper(resource_type_id=resource_type[1].id, name='images.png',
-                                           path='/usr/local/qai/resources/3/images.png', description='image',
+                                           description='image',
                                            test_runner_id=test_runners[2].id),
                        GraphTemplateMapper(resource_type_id=resource_type[2].id, name='Incorrect_data.csv',
-                                           path='/usr/local/qai/resources/4/Incorrect_data.csv',
                                            description='incorrect data csv', test_runner_id=test_runners[2].id)]
     extensions.sql_db.session.add_all(graph_templates)
     extensions.sql_db.session.flush()
 
-    downloadable_data = [DownloadableTemplateMapper(name="log.txt", path='/aa/bb/cc/log.txt', description='log data',
+    downloadable_data = [DownloadableTemplateMapper(name="log.txt", description='log data',
                                                     test_runner_id=test_runners[0].id),
-                         DownloadableTemplateMapper(name="log.txt", path='/aa/bb/cc/log.txt', description='log data',
+                         DownloadableTemplateMapper(name="log.txt", description='log data',
                                                     test_runner_id=test_runners[1].id),
-                         DownloadableTemplateMapper(name="log.txt",
-                                                    path='/usr/local/qai/downloads/1/log.txt', description='log data',
+                         DownloadableTemplateMapper(name="log.txt", description='log data',
                                                     test_runner_id=test_runners[2].id),
-                         DownloadableTemplateMapper(name="adversarial_samples",
-                                                    path='/usr/local/qai/downloads/2/adversarial_samples.zip',
-                                                    description='log data',
+                         DownloadableTemplateMapper(name="adversarial_samples", description='log data',
                                                     test_runner_id=test_runners[2].id),
-                         DownloadableTemplateMapper(name="adversarial_samples",
-                                                    path='/usr/local/qai/downloads/3/ait.log',
-                                                    description='log data',
+                         DownloadableTemplateMapper(name="adversarial_samples", description='log data',
                                                     test_runner_id=test_runners[2].id)]
     extensions.sql_db.session.add_all(downloadable_data)
     extensions.sql_db.session.flush()

@@ -16,6 +16,7 @@ class GraphMapper(sql_db.Model):
     graph_address = sa.Column(sa.String, nullable=False)
     report_index = sa.Column(sa.Integer, nullable=False)
     report_name = sa.Column(sa.String, nullable=False)
+    file_name = sa.Column(sa.String, nullable=False)
 
     graph_template_id = sa.Column(sa.Integer, sa.ForeignKey('M_GraphTemplate.id'))
     run_id = sa.Column(sa.Integer, sa.ForeignKey('T_Run.id'))
@@ -34,4 +35,5 @@ class GraphMapper(sql_db.Model):
             graph_type=self.graph_template.resource_type.type,
             report_index=self.report_index,
             report_name=self.report_name,
-            graph=self.graph_address)
+            graph=self.graph_address,
+            file_name=self.file_name)

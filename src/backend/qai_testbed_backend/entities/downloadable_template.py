@@ -12,7 +12,6 @@ class DownloadableTemplateMapper(sql_db.Model):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     name = sa.Column(sa.String, nullable=False)
-    path = sa.Column(sa.String, nullable=False)
     description = sa.Column(sa.String, nullable=True)
 
     test_runner_id = sa.Column(sa.Integer, sa.ForeignKey('M_TestRunner.id'))
@@ -22,6 +21,5 @@ class DownloadableTemplateMapper(sql_db.Model):
         return DownloadableTemplate(
             id_=self.id,
             name=self.name,
-            path=self.path,
             description=self.description
         )

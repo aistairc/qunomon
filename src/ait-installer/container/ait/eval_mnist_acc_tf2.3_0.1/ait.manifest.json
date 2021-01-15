@@ -121,19 +121,16 @@
     "resources": [
       {
         "name": "ConfusionMatrixHeatmap",
-        "path": "/usr/local/qai/resources/1/confusion_matrix.png",
         "type": "picture",
         "description": "混同行列(ヒートマップ)"
       },
       {
         "name": "ROC-curve",
-        "path": "/usr/local/qai/resources/2/roc_curve.png",
         "type": "picture",
         "description": "ROC曲線"
       },
       {
         "name": "NGPredictImages",
-        "path": "/usr/local/qai/resources/3/ng_predict_actual_class_{}.png",
         "type": "picture",
         "description": "推論NGとなった画像の一覧を、正解ラベルの枚数分だけ出力する"
       }
@@ -142,17 +139,14 @@
   "downloads": [
     {
       "name": "Log",
-      "path": "/usr/local/qai/downloads/1/ait.log",
       "description": "AIT実行ログ"
     },
     {
       "name": "ConfusionMatrixCSV",
-      "path": "/usr/local/qai/downloads/2/confusion_matrix.csv",
       "description": "混同行列"
     },
     {
       "name": "PredictionResult",
-      "path": "/usr/local/qai/downloads/3/prediction.csv",
       "description": "ID,正解ラベル,推論結果確率(ラベル毎)"
     }
   ]
