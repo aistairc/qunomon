@@ -1119,7 +1119,10 @@ paths:
       description: 測定基準の一覧を取得する
       responses:
         '200':
-          description: 測定基準情報
+          description: |
+            測定基準情報を取得する.
+            * レスポンスの `QualityMeasurements.properties.Min` と 
+              `QualityMeasurements.properties.Max` は未定義の場合nullが返される.
           content:
             application/json:
               schema:
@@ -1147,6 +1150,10 @@ paths:
                         type: integer
                       Type:
                         type: string
+                      Min:
+                        type: number
+                      Max:
+                        type: number
                       Structure:
                         type: string
                 example:
@@ -1159,12 +1166,16 @@ paths:
                       Description: 学習モデルの正確性評価指標 
                       QualityDimensionId: 5
                       Type: "float"
+                      Min: 0.0
+                      Max: null
                       Structure: "single"
                     - Id: 2
                       Name: 学習モデルの敵対的サンプル安定性計測
                       Description: 学習モデルの安定性評価指標 
                       QualityDimensionId: 6
                       Type: "float"
+                      Min: null
+                      Max: 1.0
                       Structure: "single"
         '404':
           description:  アクセスエラー
@@ -1376,7 +1387,11 @@ paths:
       tags:
         - TestRunner
       summary: テストランナー(AIT)一覧取得.
-      description: テストランナー(AIT)の一覧を取得する
+      description: |
+        テストランナー(AIT)の一覧を取得する.
+        * レスポンスの `TestRunners.properties.Report.properties.Measures.properties.Min` と 
+          `TestRunners.properties.Report.properties.Measures.properties.Max` 
+          は未定義の場合nullが返される.
       responses:
         '200':
           description: テストランナー(AIT)情報
@@ -1475,6 +1490,10 @@ paths:
                                 type: string
                               Description:
                                 type: string
+                              Min:
+                                type: number
+                              Max:
+                                type: number
                               Srtructure:
                                 type: string
                           Resources:
@@ -1553,11 +1572,15 @@ paths:
                             Name: mae
                             Type: float
                             Description: mean absolute error. $\\sum_k {|f_k - y_k|} / n$
+                            Min: 0.0
+                            Max: null
                             Srtructure: single
                           - Id: 2
                             Name: F-Value
                             Type: float
                             Description: $\\sum_k (f_k - y_k)^2 / n$
+                            Min: 0.0
+                            Max: null
                             Srtructure: single
                         Resources:
                           - Id: 1
@@ -1615,6 +1638,8 @@ paths:
                             Name: F-Value
                             Type: float
                             Description: $\\sum_k (f_k - y_k)^2 / n$
+                            Min: 0.0
+                            Max: null
                             Srtructure: single
                         Resources:
                           - Id: 2
@@ -1712,6 +1737,10 @@ paths:
                           type: string
                         Type:
                           type: string
+                        Min:
+                          type: number
+                        Max:
+                          type: number
                         Structure:
                           type: string
                     Resources:
@@ -1773,6 +1802,8 @@ paths:
                     - Name: "mae"
                       Description: "mean absolute error. $\\sum_k {|f_k - y_k|} / n$"
                       Type: "int"
+                      Min: 0.0
+                      Max: null
                       Structure: "single"
                   Resources:
                     - Name: "distribution_graph"

@@ -52,10 +52,13 @@ class InventorySchema(BaseSchema):
 
 
 class ReportMeasure:
-    def __init__(self, name: str, description: str, type_: str, structure: str) -> None:
+    def __init__(self, name: str, description: str, type_: str, 
+                 structure: str, min_value: float = None, max_value: float = None) -> None:
         self.name = name
         self.description = description
         self.type = type_
+        self.min_value = min_value
+        self.max_value = max_value
         self.structure = structure
 
 
@@ -64,6 +67,8 @@ class ReportMeasureSchema(BaseSchema):
     name = fields.Str(data_key='name', required=True)
     description = fields.Str(data_key='description', required=True)
     type_ = fields.Str(data_key='type', required=True)
+    min_value = fields.Float(data_key='min', required=False)
+    max_value = fields.Float(data_key='max', required=False)
     structure = fields.Str(data_key='structure', required=True)
 
 

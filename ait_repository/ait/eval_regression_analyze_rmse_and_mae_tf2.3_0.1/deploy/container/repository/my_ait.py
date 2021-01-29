@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -98,7 +98,7 @@ if not is_ait_launch:
 # should edit
 #########################################
 if not is_ait_launch:
-    requirements_generator.add_package('tensorflow', '2.3.0')
+    requirements_generator.add_package('tensorflow', '2.4.0')
     requirements_generator.add_package('pandas', '1.1.1')
     requirements_generator.add_package('matplotlib', '3.3.1')
     requirements_generator.add_package('seaborn', '0.10.1')
@@ -409,7 +409,7 @@ def main() -> None:
     move_log()
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -420,7 +420,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################
@@ -431,7 +431,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[19]:
+# In[ ]:
 
 
 #########################################

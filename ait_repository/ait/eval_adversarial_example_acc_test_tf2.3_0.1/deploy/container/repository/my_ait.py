@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -78,7 +78,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[7]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[4]:
+# In[8]:
 
 
 #########################################
@@ -100,17 +100,17 @@ if not is_ait_launch:
 if not is_ait_launch:
     requirements_generator._package_list = []
     requirements_generator.add_package('matplotlib', '3.3.0')
-    requirements_generator.add_package('numpy', '1.18.5')
+    requirements_generator.add_package('numpy', '1.19.2')
     requirements_generator.add_package('pandas', '1.1.0')
     requirements_generator.add_package('scikit-learn', '0.23.2')
     requirements_generator.add_package('scipy', '1.4.1')
     requirements_generator.add_package('seaborn', '0.10.1')
     requirements_generator.add_package('sklearn', '0.0')
-    requirements_generator.add_package('tensorflow', '2.3.0')
-    requirements_generator.add_package('tensorflow-estimator', '2.3.0')
+    requirements_generator.add_package('tensorflow', '2.4.0')
+    requirements_generator.add_package('tensorflow-estimator', '2.4.0')
 
 
-# In[5]:
+# In[9]:
 
 
 #########################################
@@ -124,7 +124,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[10]:
 
 
 #########################################
@@ -162,7 +162,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -181,7 +181,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -301,7 +301,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -332,7 +332,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -363,7 +363,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -381,7 +381,7 @@ def calc_acc_all(y_test, y_pred) -> (float, float, float, float):
     return calc.average_accuracy(one_hot_y, y_pred).numpy() ,            calc.macro_precision(one_hot_y, y_pred).numpy() ,            calc.macro_recall(one_hot_y, y_pred).numpy() ,            calc.macro_f_measure(one_hot_y, y_pred).numpy()
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -399,7 +399,7 @@ def calc_acc_by_class( y_test, y_pred) -> (List[float], List[float], List[float]
     return calc.all_class_accuracy(one_hot_y, y_pred) ,            [v.numpy() for v in calc.all_class_precision(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_recall(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_f_measure(one_hot_y, y_pred)]
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -416,7 +416,7 @@ def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
     np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -446,7 +446,7 @@ def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -525,7 +525,7 @@ def save_roc_curve(y_test, y_pred, n_classes: int, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -545,7 +545,7 @@ def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
                          average=average)
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -567,7 +567,7 @@ def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################
@@ -582,7 +582,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[19]:
+# In[ ]:
 
 
 def create_adversarial_images(input_images, input_label, model, epsilon):
@@ -603,7 +603,7 @@ def create_adversarial_images(input_images, input_label, model, epsilon):
     return adv_image
 
 
-# In[20]:
+# In[ ]:
 
 
 #########################################
@@ -663,7 +663,7 @@ def main() -> None:
     move_log()
 
 
-# In[21]:
+# In[ ]:
 
 
 #########################################
@@ -674,7 +674,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[22]:
+# In[ ]:
 
 
 #########################################
@@ -685,7 +685,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[23]:
+# In[ ]:
 
 
 #########################################

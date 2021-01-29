@@ -65,7 +65,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[ ]:
 
 
 #########################################
@@ -78,16 +78,16 @@ if not is_ait_launch:
     requirements_generator.add_package('pandas','1.1.0')
     requirements_generator.add_package('seaborn','0.10.1')
     requirements_generator.add_package('matplotlib','3.3.0')
-    requirements_generator.add_package('tensorflow','2.3.0')
-    requirements_generator.add_package('numpy','1.18.0')
-    requirements_generator.add_package('tensorflow-estimator','2.3.0')
+    requirements_generator.add_package('tensorflow','2.4.0')
+    requirements_generator.add_package('numpy','1.19.2')
+    requirements_generator.add_package('tensorflow-estimator','2.4.0')
     requirements_generator.add_package(f'./{ait_sdk_name}')
     requirements_path = requirements_generator.create_requirements(current_dir)
 
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################

@@ -1,0 +1,57 @@
+{
+  "name": "eval_mean_difference_german_aif360",
+  "description": "\n                                             detecting bias on credit decisions, data set is german_credit.\n                                             Available protected_attribute and privileged_classes example (See german.doc for details)\n                                             month(>=24.0),\n                                             credit_amount(>=3000.0),\n                                             investment_as_income_percentage(>=3.0),\n                                             residence_since(>=3.0),\n                                             age(>=25.0, defult),\n                                             number_of_credits(>=2.0),\n                                             people_liable_for(>=2.0)\n                                             ",
+  "author": "AIST",
+  "email": "",
+  "version": "0.1",
+  "quality": "https://airc.aist.go.jp/aiqm/quality/internal/Distribution_of_training_data",
+  "reference": "",
+  "inventories": [
+    {
+      "name": "Data",
+      "type": "dataset",
+      "description": "german credit data",
+      "format": [
+        "csv"
+      ],
+      "schema": "https://archive.ics.uci.edu/ml/datasets/"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "protected_attribute",
+      "type": "str",
+      "description": "protected attributee",
+      "default_val": "age"
+    },
+    {
+      "name": "privileged_classes",
+      "type": "float",
+      "description": "privileged classes",
+      "default_val": "25.0"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "mean_difference",
+        "type": "float",
+        "description": "mean difference of metric fairness",
+        "structure": "single"
+      }
+    ],
+    "resources": [
+      {
+        "name": "metric_fairness_plot",
+        "type": "picture",
+        "description": "base rates polt of privileged_groups and unprivileged_groups"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "description": "AITLog"
+    }
+  ]
+}

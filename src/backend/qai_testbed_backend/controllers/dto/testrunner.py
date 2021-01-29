@@ -231,11 +231,13 @@ class TargetInventoryTemplateSchema(BaseSchema):
 
 
 class Measure:
-    def __init__(self, id_: int, name: str, type_: str, description: str, structure: str) -> None:
+    def __init__(self, id_: int, name: str, type_: str, description: str, min_value:float, max_value:float, structure: str) -> None:
         self.id_ = id_
         self.name = name
         self.type_ = type_
         self.description = description
+        self.min_value = min_value
+        self.max_value = max_value
         self.structure = structure
 
 
@@ -245,6 +247,8 @@ class MeasureSchema(BaseSchema):
     name = fields.Str(data_key='Name', required=True)
     type_ = fields.Str(data_key='Type', required=True)
     description = fields.Str(data_key='Description', required=True)
+    min_value = fields.Str(data_key='Min', required=False)
+    max_value = fields.Str(data_key='Max', required=False)
     structure = fields.Str(data_key='Structure', required=True)
 
 

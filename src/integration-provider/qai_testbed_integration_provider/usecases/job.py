@@ -12,6 +12,8 @@ import datetime
 import os
 import glob
 from qlib.utils.logging import get_logger, log
+import docker
+from docker.errors import ImageNotFound
 
 from ..across.exception import QAIException, QAINotFoundException, QAIInternalServerException,\
     QAIInvalidRequestException
@@ -178,6 +180,23 @@ class JobService:
                             format(self.airflow_host, dag_id))
         if res.status_code != 200:
             raise QAIInternalServerException(result_code='R17002', result_msg='failed unpause dag.')
+
+        # docker imageのpull
+        # 本来はairflow内でpullされるはずだが、イメージ取得失敗するため、このタイミングでpullするように変更
+        docker_remote_image_name = 'qunomon/' + manifest['name'] + ':' + manifest['version']
+        if os.name == 'nt':
+            client = docker.from_env()
+        else:  # コンテナ起動の場合ソケット指定
+            client = docker.DockerClient(base_url='unix://var/run/docker.sock')
+        try:
+            # イメージが存在しない場合、pullする
+            client.images.get(docker_remote_image_name)
+        except ImageNotFound:
+            try:
+                client.images.pull(docker_remote_image_name)
+            except ImageNotFound as ex:
+                # localで作成したイメージはこのルートに入る。ログ出力して継続。
+                logger.debug(f'{docker_remote_image_name} failed pull.')
 
         # # リフレッシュ(all)
         # res = requests.post('{}/admin/rest_api/api?api=refresh_all_dags'.format(self.airflow_host))

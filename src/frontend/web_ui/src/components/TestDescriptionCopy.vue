@@ -124,8 +124,20 @@
                                                 <input type="checkbox" class="list_ checkboxCheck" name="listCheck" v-bind:value="measurementForm.Id" v-model="checkedMeasurements" @change="changecheckbox" />
                                             </td>
                                             <td class="tdQAName dashed" id="checkbox">
-                                                <span>{{ measure.Name }}</span><span class="asterisk">&#042;</span><br>
-                                                <span class="description">{{ measure.Description }}</span>
+                                                <span> {{ measure.Name }}</span>
+                                                <span class="asterisk">&#042;</span>
+                                                <span class="type">&#058; {{ measure.Type }}</span>
+                                                <span class="range" v-if="measure.Type == 'float' || measure.Type == 'int'">
+                                                    <br />
+                                                    <span class="min" v-if="measure.Min !== null">Min: {{ measure.Min }}</span>
+                                                    <span class="min unlimited" v-else>Min: unlimited</span>
+                                                    <span class="max" v-if="measure.Max !== null">Max: {{ measure.Max }}</span>
+                                                    <span class="max unlimited" v-else>Max: unlimited</span>
+                                                </span>
+                                                <br />
+                                                <span class="description">{{
+                                                measure.Description
+                                                }}</span>
                                             </td>
                                             <td class="tdQARelationalOperator td_margin">
                                                 <select class="select_mini" name="myText" v-model="measurementForm.RelationalOperatorId" v-if="relationalOperators">
@@ -654,8 +666,21 @@ select:focus {
     width: 188px;
 }
 
+.setting_table td span.type{
+  font-size: 10px;
+}
+.setting_table td span.range span.min,
+.setting_table td span.range span.max{
+  margin: 0 0.5em;
+  font-size: 10px;
+}
+
+.setting_table td span.range span.unlimited{
+  color: #bbb;
+}
+
 .asterisk {
-    color: #ff0000;
+  color: #ff0000;
 }
 
 .center {

@@ -19,6 +19,8 @@ class QualityMeasurementMapper(sql_db.Model):
     name = sa.Column(sa.String, nullable=False)
     description = sa.Column(sa.String, nullable=False)
     type = sa.Column(sa.String, nullable=False)
+    min_value = sa.Column(sa.Float, nullable=True)
+    max_value = sa.Column(sa.Float, nullable=True)
 
     structure_id = sa.Column(sa.Integer, sa.ForeignKey('M_Structure.id'))
     quality_dimension_id = sa.Column(sa.Integer, sa.ForeignKey('M_Quality_Dimension.id'))
@@ -69,5 +71,7 @@ class QualityMeasurementMapper(sql_db.Model):
             name=self.name,
             type_=self.type,
             description=self.description,
+            min_value=self.min_value,
+            max_value=self.max_value,
             structure=self.structure.structure
         )

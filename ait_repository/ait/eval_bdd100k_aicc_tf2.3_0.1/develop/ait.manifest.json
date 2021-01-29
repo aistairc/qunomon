@@ -129,7 +129,7 @@
     "resources": [
       {
         "name": "all_label_accuracy_csv",
-        "type": "text",
+        "type": "table",
         "description": "accuracy of all label"
       },
       {

@@ -16,12 +16,14 @@ class OperandTemplate:
 
 class QualityMeasurementTemplate:
     def __init__(self, name: str, structure: str, description: str, quality_dimension_id: int,
-                 type_: str, id_: int = 0) -> None:
+                 type_: str, id_: int = 0, min_value: float = None, max_value: float = None) -> None:
         self.id_ = id_
         self.name = name
         self.description = description
         self.quality_dimension_id = quality_dimension_id
         self.type = type_
+        self.min_value = min_value
+        self.max_value = max_value
         self.structure = structure
 
 
@@ -60,6 +62,8 @@ class QualityMeasurementTemplateSchema(BaseSchema):
     description = fields.Str(data_key='Description', required=True)
     quality_dimension_id = fields.Int(data_key='QualityDimensionId', required=True)
     type = fields.Str(data_key='Type', required=True)
+    min_value = fields.Float(data_key='Min', required=False)
+    max_value = fields.Float(data_key='Max', required=False)
     structure = fields.Str(data_key='Structure', required=True)
 
 

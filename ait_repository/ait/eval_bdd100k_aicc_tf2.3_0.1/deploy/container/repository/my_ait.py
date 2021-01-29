@@ -106,7 +106,7 @@ if not is_ait_launch:
     requirements_generator.add_package('matplotlib')
     requirements_generator.add_package('Pillow')
     requirements_generator.add_package('pycocotools')
-    requirements_generator.add_package('tensorflow','2.3.0')
+    requirements_generator.add_package('tensorflow','2.4.0')
     requirements_generator.add_package('lxml')
     requirements_generator.add_package('tf_slim')
     requirements_generator.add_package('pandas')
@@ -272,7 +272,7 @@ Please set the memory allocation of docker to 4GB or more.''')
                                           description='accuracy predicted of train', 
                                           structure='single')
     manifest_genenerator.add_ait_resources(name='all_label_accuracy_csv',  
-                                           type_='text', 
+                                           type_='table', 
                                            description='accuracy of all label')
     manifest_genenerator.add_ait_resources(name='all_label_accuracy_png', 
                                            type_='picture', 
@@ -363,7 +363,7 @@ if not is_ait_launch:
     get_ipython().system('rm -rf protoc-3.9.0-linux-x86_64.zip protoc3')
 
 
-# In[ ]:
+# In[12]:
 
 
 if not is_ait_launch:
@@ -384,7 +384,7 @@ if not is_ait_launch:
     get_ipython().run_line_magic('cd', '/workdir/root/develop')
 
 
-# In[ ]:
+# In[13]:
 
 
 sys.path.append(os.path.join(Path().resolve(), '/tensorflow/models/research'))
@@ -428,7 +428,7 @@ avg_acc_per_train = []
 f_each = []
 
 
-# In[ ]:
+# In[14]:
 
 
 def _run_inference_for_single_image(model, image) -> np.ndarray:
@@ -465,7 +465,7 @@ def _run_inference_for_single_image(model, image) -> np.ndarray:
     return output_dict
 
 
-# In[ ]:
+# In[15]:
 
 
 def _read_labels(label_path) -> np.ndarray:
@@ -475,7 +475,7 @@ def _read_labels(label_path) -> np.ndarray:
     return labels
 
 
-# In[ ]:
+# In[16]:
 
 
 def _get_boxes(objects) -> np.ndarray:
@@ -483,7 +483,7 @@ def _get_boxes(objects) -> np.ndarray:
             or ('box3d' in o and o['box3d'] is not None)]
 
 
-# In[ ]:
+# In[17]:
 
 
 def _get_id_label(current_object_label) -> int:
@@ -520,7 +520,7 @@ def _get_id_label(current_object_label) -> int:
     return -1
 
 
-# In[ ]:
+# In[18]:
 
 
 def _get_label_from_id(id) -> str:
@@ -547,7 +547,7 @@ def _get_label_from_id(id) -> str:
     return ""
 
 
-# In[ ]:
+# In[19]:
 
 
 def _adding_avg_label_from_id(id, value, avg_acc_per_traffic_sign, avg_acc_per_traffic_light, 
@@ -577,7 +577,7 @@ def _adding_avg_label_from_id(id, value, avg_acc_per_traffic_sign, avg_acc_per_t
     return avg_acc_per_traffic_sign, avg_acc_per_traffic_light, avg_acc_per_car, avg_acc_per_rider, avg_acc_per_motor, avg_acc_per_person, avg_acc_per_bus, avg_acc_per_truck, avg_acc_per_bike, avg_acc_per_train
 
 
-# In[ ]:
+# In[20]:
 
 
 def _search_image_information(objects, image_name) -> np.ndarray:
@@ -607,7 +607,7 @@ def _search_image_information(objects, image_name) -> np.ndarray:
     return list_boxes
 
 
-# In[ ]:
+# In[21]:
 
 
 def _load_labels_ground_truth(gt_list_boxes, total_GT_correct_predicted):
@@ -619,7 +619,7 @@ def _load_labels_ground_truth(gt_list_boxes, total_GT_correct_predicted):
     return list_ground_truth,total_GT_correct_predicted
 
 
-# In[ ]:
+# In[22]:
 
 
 def _averageOfList(num) -> float:
@@ -631,7 +631,7 @@ def _averageOfList(num) -> float:
     return avg
 
 
-# In[ ]:
+# In[23]:
 
 
 # JSONファイルと推論結果を比較する
@@ -774,7 +774,7 @@ def _compare_json(gt_list_boxes, objects, total_GT_correct_predicted,avg_acc_per
                     total_correct_predicted[id] = total_correct_predicted[id] + 1
 
 
-# In[ ]:
+# In[24]:
 
 
 def _accuracy_count(total_GT_correct_predicted, avg_acc_per_traffic_sign, avg_acc_per_traffic_light, 
@@ -830,7 +830,7 @@ def _accuracy_count(total_GT_correct_predicted, avg_acc_per_traffic_sign, avg_ac
         f_each.append("---\n")
 
 
-# In[ ]:
+# In[25]:
 
 
 def _view_accuracy_label(total_GT_correct_predicted) -> None:
@@ -864,7 +864,7 @@ def _view_accuracy_label(total_GT_correct_predicted) -> None:
     save_all_label_accuracy_png(df)
 
 
-# In[ ]:
+# In[26]:
 
 
 # ワイルドカードを使ってファイルの削除
@@ -874,7 +874,7 @@ def _remove_glob(pathname, recursive=True):
             os.remove(p)
 
 
-# In[ ]:
+# In[27]:
 
 
 # 画像データの解凍
@@ -889,7 +889,7 @@ def _load_image(file_path: str) -> np.ndarray:
     return data
 
 
-# In[ ]:
+# In[28]:
 
 
 #########################################
@@ -957,7 +957,7 @@ def save_images(model, image_path_list, category_index, file_path: str=None) -> 
     return out_files
 
 
-# In[ ]:
+# In[29]:
 
 
 #########################################
@@ -971,7 +971,7 @@ def save_all_label_accuracy_csv(df, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[ ]:
+# In[30]:
 
 
 #########################################
@@ -997,7 +997,7 @@ def save_all_label_accuracy_png(df, file_path: str=None) -> None:
     plt.close('all')
 
 
-# In[ ]:
+# In[31]:
 
 
 #########################################
@@ -1014,7 +1014,7 @@ def save_each_label_accuracy(file_path: str=None) -> None:
             writer.writerow(buf)
 
 
-# In[ ]:
+# In[32]:
 
 
 #########################################
@@ -1028,7 +1028,7 @@ def measure_traffic_sign_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[33]:
 
 
 #########################################
@@ -1042,7 +1042,7 @@ def measure_traffic_light_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[34]:
 
 
 #########################################
@@ -1056,7 +1056,7 @@ def measure_car_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[35]:
 
 
 #########################################
@@ -1070,7 +1070,7 @@ def measure_rider_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[36]:
 
 
 #########################################
@@ -1084,7 +1084,7 @@ def measure_motor_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[37]:
 
 
 #########################################
@@ -1098,7 +1098,7 @@ def measure_person_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[38]:
 
 
 #########################################
@@ -1112,7 +1112,7 @@ def measure_bus_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[39]:
 
 
 #########################################
@@ -1126,7 +1126,7 @@ def measure_truck_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[40]:
 
 
 #########################################
@@ -1140,7 +1140,7 @@ def measure_bike_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[41]:
 
 
 #########################################
@@ -1154,7 +1154,7 @@ def measure_train_accuracy(accuracy):
     return accuracy
 
 
-# In[ ]:
+# In[42]:
 
 
 #########################################
@@ -1168,7 +1168,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[43]:
 
 
 #########################################

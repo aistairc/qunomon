@@ -120,6 +120,7 @@ class AITManifestService:
                 # quality_measurement
                 quality_measurement_mapper_list.append(
                     QualityMeasurementMapper(name=measure.name, description=measure.description, type=measure.type,
+                                             min_value=measure.min_value, max_value = measure.max_value,
                                              structure_id=structure.id, test_runner_id=test_runner_mapper.id,
                                              quality_dimension_id=quality_dim.id))
             sql_db.session.add_all(quality_measurement_mapper_list)

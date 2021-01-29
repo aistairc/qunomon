@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2
--- Dumped by pg_dump version 12.2
+-- Dumped from database version 12.4
+-- Dumped by pg_dump version 12.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -401,6 +401,8 @@ CREATE TABLE public."M_Quality_Measurement" (
     name character varying NOT NULL,
     description character varying NOT NULL,
     type character varying NOT NULL,
+    min_value double precision,
+    max_value double precision,
     structure_id integer,
     quality_dimension_id integer,
     test_runner_id integer
