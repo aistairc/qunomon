@@ -52,13 +52,17 @@
         "name": "coverage_total_measures",
         "type": "float",
         "description": "Overall coverage within the expected range.",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "coverage_each_measures",
         "type": "float",
         "description": "Each class coverage within the expected range.",
-        "structure": "sequence"
+        "structure": "sequence",
+        "min": "0",
+        "max": "1"
       }
     ],
     "resources": [

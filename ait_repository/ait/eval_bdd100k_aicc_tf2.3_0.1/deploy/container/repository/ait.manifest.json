@@ -69,61 +69,81 @@
         "name": "traffic_sign_accuracy",
         "type": "float",
         "description": "accuracy predicted of traffic_sign",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "traffic_light_accuracy",
         "type": "float",
         "description": "accuracy predicted of traffic_light",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "car_accuracy",
         "type": "float",
         "description": "accuracy predicted of car",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "rider_accuracy",
         "type": "float",
         "description": "accuracy predicted of rider",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "motor_accuracy",
         "type": "float",
         "description": "accuracy predicted of motor",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "person_accuracy",
         "type": "float",
         "description": "accuracy predicted of person",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "bus_accuracy",
         "type": "float",
         "description": "accuracy predicted of bus",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "truck_accuracy",
         "type": "float",
         "description": "accuracy predicted of truck",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "bike_accuracy",
         "type": "float",
         "description": "accuracy predicted of bike",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "train_accuracy",
         "type": "float",
         "description": "accuracy predicted of train",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       }
     ],
     "resources": [

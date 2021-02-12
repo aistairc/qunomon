@@ -224,7 +224,9 @@ Make sure can be classified in the same result as the original class be added a 
     manifest_genenerator.add_ait_measures(name='average', 
                                           type_='float', 
                                           description='Average number of NG output', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_resources(name='result', 
                                            type_='table', 
                                            description='number of NG output')
@@ -421,7 +423,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################
@@ -432,7 +434,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################
@@ -443,7 +445,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[18]:
 
 
 #########################################

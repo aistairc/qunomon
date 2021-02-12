@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -78,7 +78,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[7]:
+# In[3]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[8]:
+# In[4]:
 
 
 #########################################
@@ -110,7 +110,7 @@ if not is_ait_launch:
     requirements_generator.add_package('tensorflow-estimator', '2.4.0')
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -124,7 +124,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -250,39 +250,57 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_measures(name='Accuracy', 
                                           type_='float', 
                                           description='(TP+TN) / (TP+FP+FN+TN)', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='Precision', 
                                           type_='float', 
                                           description='TP / (TP+FP)', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='Recall', 
                                           type_='float', 
                                           description='TP / (TP+FN)', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='F−measure', 
                                           type_='float', 
                                           description='(2Recall∗Precision) / (Recall+Precision)', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='AUC', 
                                           type_='float', 
                                           description='Area under the ROC curve', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='AccuracyByClass', 
                                           type_='float', 
                                           description='Accuracy for each class.', 
-                                          structure='sequence')
+                                          structure='sequence',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='PrecisionByClass', 
                                           type_='float', 
                                           description='Precision for each class.', 
-                                          structure='sequence')
+                                          structure='sequence',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='RecallByClass', 
                                           type_='float', 
                                           description='Recall for each class.', 
-                                          structure='sequence')
+                                          structure='sequence',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='F−measureByClass', 
                                           type_='float', 
                                           description='F−measure for each class.', 
-                                          structure='sequence')
+                                          structure='sequence',
+                                          min='0',
+                                          max='1')
 
     manifest_genenerator.add_ait_resources(name='ConfusionMatrixHeatmap', 
                                            type_='picture', 

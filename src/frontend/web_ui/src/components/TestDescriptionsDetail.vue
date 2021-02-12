@@ -124,7 +124,9 @@
                                 <div id="table" align="center">
                                     <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center"
                                                   :sort-options="{enabled: false,}" style-class="vgt-table" @on-row-click="onRowClick"
-                                                  :pagination-options="pagenationSettings" @on-per-page-change="onPerPageChange"
+                                                  :pagination-options="pagenationSettings"
+                                                  @on-per-page-change="onPerPageChange"
+                                                  @on-page-change="onPageChange"
                                                   :group-options="groupSettings"
                                                   :select-options="selectSettings">
                                         <template slot="table-row" slot-scope="props">
@@ -399,7 +401,8 @@ export default {
             tdDtl:'',
             graph_name: '',
             graph_rename: '',
-            graph_num: '',
+            graph_id: '',
+            graph_index: '',
             row_num: '',
             fignum: '',
             test_description_details: null,
@@ -480,8 +483,8 @@ export default {
     beforeMount() {
         //ag-grid用のヘッダー定義
         this.columnDefs = [{
-                headerName: this.setReportTableLanguage("no"),
-                field: "no",
+                headerName: this.setReportTableLanguage("id"),
+                field: "viewId",
                 width: 60,
                 rowDrag: true,
             },
@@ -503,8 +506,8 @@ export default {
                 },
                 flex: 5,
             },
-            {   
-                field: "graphId",
+            {
+                field: "no",
                 hide: true,
             },
             {
@@ -572,6 +575,7 @@ export default {
     updated(){
         if(this.$refs.tdTable != undefined && this.isExpanded == false){
             this.$refs.tdTable.expandAll();
+            this.beginUpdateUsedRowStyle();
             this.isExpanded = true;
         }
     },
@@ -641,8 +645,8 @@ export default {
             this.languagedata = require('./languages/languages.json');
             if (this.$i18n.locale == 'ja') {
                 switch (fieldName) {
-                    case 'no':
-                        return this.languagedata.ja.testDescriptionDetail.no;
+                    case 'id':
+                        return this.languagedata.ja.testDescriptionDetail.index;
                     case 'name':
                         return this.languagedata.ja.testDescriptionDetail.name;
                     case 'reportName':
@@ -653,8 +657,8 @@ export default {
                 }
             } else if (this.$i18n.locale == 'en') {
                 switch (fieldName) {
-                    case 'no':
-                        return this.languagedata.en.testDescriptionDetail.no;
+                    case 'id':
+                        return this.languagedata.en.testDescriptionDetail.index;
                     case 'name':
                         return this.languagedata.en.testDescriptionDetail.name;
                     case 'reportName':
@@ -690,7 +694,7 @@ export default {
                     file_name: val[td].FileName,
                     description: val[td].Description,
                     format: val[td].GraphType,
-                    graph_num: val[td].Id
+                    graph_id: val[td].Id
                 })
                 index++;
             }
@@ -704,9 +708,10 @@ export default {
             }
         },
         onRowClick(params) {
-            this.graph_num = params.row.graph_num;
+            this.graph_id = params.row.graph_id;
             this.graph_name = params.row.name;
             this.graph_rename = params.row.name;
+            this.graph_index = params.row.index;
             this.selectedType = '';
 
             var row_index = params.row.index - 1;
@@ -714,7 +719,7 @@ export default {
             // クリック対象の行を取得
             var rowElement = undefined
             for(var i in params.event.path){
-                if(params.event.path[i].className=='clickable' || params.event.path[i].className=='clickable checked'){
+                if(params.event.path[i].className.indexOf('clickable') != -1){
                     rowElement = params.event.path[i];
                     break;
                 }
@@ -770,16 +775,21 @@ export default {
                     graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
                 }
             }
-
+            this.updateUsedRowStyle();
         },
         onPerPageChange(){
             var tdTable = this.$refs.tdTable;
             tdTable.currentPage = 1;
-            this.graph_num = '';
+            this.graph_id = '';
+            this.graph_index = '';
             this.graph_name = '';
             this.graph_rename = '';
             this.selectedType = '';
             this.isActive = true;
+            this.beginUpdateUsedRowStyle();
+        },
+        onPageChange() {
+            this.beginUpdateUsedRowStyle();
         },
         postReportGenerator(command) {
             this.errorMessages = [];
@@ -855,7 +865,7 @@ export default {
                                 if(this.rowData[i].reportName == null && this.rowData[i].reportName == ""){
                                     tempName = this.rowData[i].name;
                                 }
-                                var repoIndex = parseInt(this.rowData[i].no.replace("fig",""));
+                                var repoIndex = parseInt(this.rowData[i].no);
                                 var tempBody_RequiredTrue = {
                                     "GraphId": this.rowData[i].graphId,
                                     "ReportRequired": true,
@@ -1113,17 +1123,33 @@ export default {
         },
         //-ボタンで表を削除するメソッド。変更不要。
         onRemoveSelected: function (id) {
-            for (var row in this.rowData) {
-                if (this.rowData[row].remove.id == id) {
-                    this.rowData.splice(row, 1)
-                    this.gridOptions.api.setRowData(this.rowData);
-                    this.sortChange();
-                    break
+            //RowDataをculRowDataへディープコピー
+            var culRowData = [];
+            this.gridOptions.api.forEachNode(node => culRowData.push(node.data));
+            //作業変数定義
+            var newNo = 1; //上から順に振られる番号(順序番号)を振り直すための変数
+            var removeRow = -1; //削除対象の順序番号
+            //削除対象を配列から削除
+            for (var row in culRowData) {
+                if (culRowData[row].remove.id == id) {
+                    //削除対象の順序番号を控えておく
+                    removeRow = row;
+                }else{
+                    //順序番号の振り直し
+                    culRowData[row].no = newNo;
+                    newNo += 1;
                 }
             }
+            culRowData.splice(removeRow, 1) //控えていた削除対象番号を用いて削除
+
+            // 更新処理
+            this.gridOptions.api.setRowData(culRowData);
+            this.rowData = culRowData;
+            this.sortChange();
             if (this.rowData.length == 0){
                 this.isRemoveAllRowActive = true;
             }
+            this.updateUsedRowStyle();
         },
         //右側の表にデータを追加するメソッド。引数を(no, name, graph)設定し,
         //newRowData[newRowData.length - 1] = {no: no, name: name, reportName: graph, remove:{value: '-', id: this.setRowId()}}
@@ -1137,18 +1163,19 @@ export default {
             var newRowData = this.rowData;
             newRowData[newRowData.length] = {}
             newRowData[newRowData.length - 1] = {
-                no: this.graph_num,
+                no: this.graph_index,
+                viewId: this.graph_index,
                 name: this.graph_name,
                 reportName: this.graph_rename,
-                graphId: this.graph_num,
+                graphId: this.graph_id,
                 remove: {
                     value: '-',
                     id: this.setRowId()
                 }
             }
-            
+
             this.gridOptions.api.setRowData(newRowData);
-            
+
             this.sortChange();
             this.isActive = true;
             this.isRemoveAllRowActive = false;
@@ -1158,6 +1185,7 @@ export default {
             this.gridOptions.api.setRowData(this.rowData);
             this.isActive = false;
             this.isRemoveAllRowActive = true;
+            this.clearUsedRowStyle();
         },
         creatRowData: function () {
             this.fignum = 1
@@ -1177,10 +1205,26 @@ export default {
                 } else {
                     this.graph_rename = graph.Name
                 }
-                this.rowData[j-1] = {no: 'fig' + j,
+
+                // 表示中のIDを取得
+                var viewId = -1;
+                for(var rowSummaryKey in this.rows){
+                    for(var rowKey in this.rows[rowSummaryKey].children){
+                        if(this.rows[rowSummaryKey].children[rowKey].graph_id == graph.Id){
+                            viewId = this.rows[rowSummaryKey].children[rowKey].index;
+                            break;
+                        }
+                    }
+                    if(viewId != -1){
+                        break;
+                    }
+                }
+
+                this.rowData[j-1] = {no: j,
+                                    graphId: graph.Id,
                                     name: graph.Name,
                                     reportName: this.graph_rename,
-                                    graphId: graph.Id,
+                                    viewId: viewId,
                                     remove: {
                                         value: '-',
                                         id: j
@@ -1195,7 +1239,7 @@ export default {
             var culRowData = [];
             this.gridOptions.api.forEachNode(node => culRowData.push(node.data));
             for (var row in culRowData) {
-                culRowData[row].no = "fig" + (Number(row) + 1);
+                culRowData[row].no = (Number(row) + 1);
             }
             this.gridOptions.api.setRowData(culRowData);
         },
@@ -1240,6 +1284,63 @@ export default {
                 var MaxId = idList.reduce(aryMax);
                 return MaxId + 1;
             }
+        },
+        clearUsedRowStyle(){
+            var tdTable = this.$refs.tdTable;
+            var pageRemain = tdTable.currentPerPage;
+
+            for (var j = 0; j < pageRemain; j++) {
+                var graph_element = document.getElementsByName('graph')[j];
+                if (graph_element == undefined){
+                    break;
+                }
+
+                var rowElement = graph_element.parentNode.parentNode.parentNode;
+                rowElement.classList.remove('graph_used');
+            }
+        },
+        updateUsedRowStyle(){
+            if(this.rowData == ""){
+                return;
+            }
+
+            var tdTable = this.$refs.tdTable;
+            var pageRemain = tdTable.currentPerPage;
+
+            // 使用済みスタイルの全解除
+            this.clearUsedRowStyle();
+
+            //使用済みの行にCSS「graph_used」適用
+            for (var j = 0; j < pageRemain; j++) {
+                var graph_element = document.getElementsByName('graph')[j];
+                if (graph_element == undefined){
+                    break;
+                }
+
+                // 選択中のスタイル適用はスキップ
+                if (graph_element.checked) {
+                    continue;
+                }
+                var rowElement = graph_element.parentNode.parentNode.parentNode;
+                var viewId = rowElement.childNodes[4].childNodes[0].childNodes[0].data;
+                viewId = parseInt(viewId.trim());
+
+                for (var r_id in this.rowData) {
+                    if (this.rowData[r_id].viewId == viewId) {
+                        rowElement.classList.add('graph_used');
+                    }
+                }
+            }
+        },
+        beginUpdateUsedRowStyle() {
+            // elementに反映されるまでのタイムラグを吸収して実行するためのメソッド
+            var self = this;
+            setTimeout(
+                function () {
+                    self.updateUsedRowStyle();
+                },
+                "100"
+            );
         }
     },
     computed: {
@@ -1315,6 +1416,10 @@ export default {
 #table>>>.vgt-left-align {
     text-align: left !important;
     vertical-align: middle !important;
+}
+
+#table>>>.vgt-table tr.clickable.graph_used {
+    background-color: #8cfff9;
 }
 
 .submenu_detail a {
@@ -1577,6 +1682,7 @@ csvグラフ
     margin: 0;
     line-height: normal;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    cursor:pointer;
 }
 
 

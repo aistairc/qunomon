@@ -31,7 +31,8 @@
         "name": "mean",
         "type": "float",
         "description": "mean of select column",
-        "structure": "single"
+        "structure": "single",
+        "min": "0"
       }
     ],
     "resources": [

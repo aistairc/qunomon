@@ -67,55 +67,73 @@
         "name": "Accuracy",
         "type": "float",
         "description": "(TP+TN) / (TP+FP+FN+TN)",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "Precision",
         "type": "float",
         "description": "TP / (TP+FP)",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "Recall",
         "type": "float",
         "description": "TP / (TP+FN)",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "F−measure",
         "type": "float",
         "description": "(2Recall∗Precision) / (Recall+Precision)",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "AUC",
         "type": "float",
         "description": "Area under the ROC curve",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "AccuracyByClass",
         "type": "float",
         "description": "Accuracy for each class.",
-        "structure": "sequence"
+        "structure": "sequence",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "PrecisionByClass",
         "type": "float",
         "description": "Precision for each class.",
-        "structure": "sequence"
+        "structure": "sequence",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "RecallByClass",
         "type": "float",
         "description": "Recall for each class.",
-        "structure": "sequence"
+        "structure": "sequence",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "F−measureByClass",
         "type": "float",
         "description": "F−measure for each class.",
-        "structure": "sequence"
+        "structure": "sequence",
+        "min": "0",
+        "max": "1"
       }
     ],
     "resources": [

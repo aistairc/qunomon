@@ -128,14 +128,37 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_version('0.1')
     manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Diversity_of_test_data')
     manifest_genenerator.set_ait_reference('')
-    manifest_genenerator.add_ait_inventories('Data', 'dataset', 'Classification of different attributes related to autonomous driving scenarios', ['csv'], 'https://bdd-data.berkeley.edu/')
-    manifest_genenerator.add_ait_inventories('High_risk_CA_combinations', 'attribute set', 'Combinations of different attribute values that are high risk situations in real life', ['csv'], 'User given data')
-    manifest_genenerator.add_ait_measures('SingleCount', 'int', 'Number of high risk cases in simple combinations', 'single')
-    manifest_genenerator.add_ait_measures('CombinedCount', 'int', 'Number of high risk cases in combine combinations', 'single')
-    manifest_genenerator.add_ait_resources('CountResult', 'table', 'Count of number of data in each high risk case')
-    manifest_genenerator.add_ait_resources('CombinedCountResult', 'table', 'Count of number of data in various high risk case combinations')
-    manifest_genenerator.add_ait_resources('DistributionPlot', 'picture', 'Plot of percentage of various high risk cases in data')
-    manifest_genenerator.add_ait_downloads('Log', 'AITLog')
+    manifest_genenerator.add_ait_inventories(name='Data', 
+                                             type_='dataset', 
+                                             description='Classification of different attributes related to autonomous driving scenarios', 
+                                             format_=['csv'], 
+                                             schema='https://bdd-data.berkeley.edu/')
+    manifest_genenerator.add_ait_inventories(name='High_risk_CA_combinations', 
+                                             type_='attribute set', 
+                                             description='Combinations of different attribute values that are high risk situations in real life', 
+                                             format_=['csv'], 
+                                             schema='User given data')
+    manifest_genenerator.add_ait_measures(name='SingleCount', 
+                                          type_='int', 
+                                          description='Number of high risk cases in simple combinations', 
+                                          structure='single', 
+                                          min='0')
+    manifest_genenerator.add_ait_measures(name='CombinedCount', 
+                                          type_='int', 
+                                          description='Number of high risk cases in combine combinations', 
+                                          structure='single', 
+                                          min='0')
+    manifest_genenerator.add_ait_resources(name='CountResult', 
+                                           type_='table', 
+                                           description='Count of number of data in each high risk case')
+    manifest_genenerator.add_ait_resources(name='CombinedCountResult', 
+                                           type_='table', 
+                                           description='Count of number of data in various high risk case combinations')
+    manifest_genenerator.add_ait_resources(name='DistributionPlot', 
+                                           type_='picture', 
+                                           description='Plot of percentage of various high risk cases in data')
+    manifest_genenerator.add_ait_downloads(name='Log', 
+                                           description='AITLog')
     manifest_path = manifest_genenerator.write()
 
 
@@ -149,8 +172,10 @@ if not is_ait_launch:
 if not is_ait_launch:
     from ait_sdk.common.files.ait_input_generator import AITInputGenerator
     input_generator = AITInputGenerator(manifest_path)
-    input_generator.add_ait_inventories('Data','data/BDD_labels_2036.csv')
-    input_generator.add_ait_inventories('High_risk_CA_combinations','HighRisk_CA_combinations/HighRisk_CA_combination_cases.csv')
+    input_generator.add_ait_inventories(name='Data',
+                                        value='data/BDD_labels_2036.csv')
+    input_generator.add_ait_inventories(name='High_risk_CA_combinations',
+                                        value='HighRisk_CA_combinations/HighRisk_CA_combination_cases.csv')
     input_generator.write()
 
 
@@ -377,7 +402,7 @@ def main() -> None:
     move_log()
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -388,7 +413,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -399,7 +424,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################

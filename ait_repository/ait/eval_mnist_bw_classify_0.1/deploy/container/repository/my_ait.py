@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -211,19 +211,23 @@ if not is_ait_launch:
                                           type_='float', 
                                           description='''Black - White probabl\n\nex)\n
                                           Black=6000, White=4000 then BW_probabl=1.5''', 
-                                          structure='single')
+                                          structure='single', 
+                                          min='0')
     manifest_genenerator.add_ait_measures(name='bw_std', 
                                           type_='float', 
                                           description='standard deviation', 
-                                          structure='single')
+                                          structure='single', 
+                                          min='0')
     manifest_genenerator.add_ait_measures(name='bw_probabl_per_class', 
                                           type_='float', 
                                           description='bw_probabl per class', 
-                                          structure='sequence')
+                                          structure='sequence', 
+                                          min='0')
     manifest_genenerator.add_ait_measures(name='bw_std_per_class', 
                                           type_='float', 
                                           description='bw_std per class', 
-                                          structure='sequence')
+                                          structure='sequence', 
+                                          min='0')
     manifest_genenerator.add_ait_resources(name='BWClassifyResultCSV', 
                                            type_='table', 
                                            description='\'ClassNo\', \'data_num\', \'mean\', \'std\', \'b_num\', \'w_num\'')

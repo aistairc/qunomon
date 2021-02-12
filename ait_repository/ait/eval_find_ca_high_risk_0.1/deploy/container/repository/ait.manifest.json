@@ -33,13 +33,15 @@
         "name": "SingleCount",
         "type": "int",
         "description": "Number of high risk cases in simple combinations",
-        "structure": "single"
+        "structure": "single",
+        "min": "0"
       },
       {
         "name": "CombinedCount",
         "type": "int",
         "description": "Number of high risk cases in combine combinations",
-        "structure": "single"
+        "structure": "single",
+        "min": "0"
       }
     ],
     "resources": [

@@ -46,7 +46,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[ ]:
+# In[2]:
 
 
 #########################################
@@ -78,7 +78,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[ ]:
+# In[3]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[ ]:
+# In[4]:
 
 
 #########################################
@@ -102,7 +102,7 @@ if not is_ait_launch:
     requirements_generator.add_package('seaborn')
 
 
-# In[ ]:
+# In[5]:
 
 
 #########################################
@@ -116,7 +116,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[6]:
 
 
 #########################################
@@ -132,7 +132,7 @@ from pathlib import Path
 from os import path
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -151,7 +151,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -181,7 +181,8 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_measures(name='mean', 
                                           type_='float', 
                                           description='mean of select column', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0')
     manifest_genenerator.add_ait_resources(name='pairplot', 
                                            type_='picture', 
                                            description='pairplot')

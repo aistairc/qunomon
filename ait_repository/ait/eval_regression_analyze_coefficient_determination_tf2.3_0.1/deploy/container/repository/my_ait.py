@@ -137,15 +137,39 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_version('0.1')
     manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Accuracy_of_trained_model')
     manifest_genenerator.set_ait_reference('')
-    manifest_genenerator.add_ait_inventories('trained_model', 'model', 'Tensorflow 2.3で学習したモデル', ['h5'], 'https://support.hdfgroup.org/HDF5/doc/')
-    manifest_genenerator.add_ait_inventories('dataset_for_verification', 'dataset', '検証用データセット\n目的変数と説明変数のセットでラベルは必要', ['csv'], 'uncreated')
-    manifest_genenerator.add_ait_parameters('target_variable', 'str', '目的変数', '')
-    manifest_genenerator.add_ait_measures('degree_of_freedom_adjusted_coefficient_determination', 'float', '0~1の値をとり、1に近いほど精度の高い予測ができているといえる。', 'single')
-    manifest_genenerator.add_ait_resources('coefficient_of_determination_matrix', 'table', '決定係数の結果をまとめた表')
-    manifest_genenerator.add_ait_resources('correlation_coefficient_1to1', 'picture', '説明変数と目的変数の相関グラフ\nファイル名は{目的変数}-{説明変数}.png')
-    manifest_genenerator.add_ait_resources('correlation_coefficient_1to2', 'picture', '説明変数2つと目的変数の3次元相関グラフ\nファイル名は{目的変数}-{説明変数1}-{説明変数2}.png')
-    manifest_genenerator.add_ait_downloads('Log', 'AIT実行ログ')
-    manifest_genenerator.add_ait_downloads('predictive_value', '予測値')
+    manifest_genenerator.add_ait_inventories(name='trained_model',
+                                             type_='model',
+                                             description='Tensorflow 2.3で学習したモデル',
+                                             format_=['h5'],
+                                             schema='https://support.hdfgroup.org/HDF5/doc/')
+    manifest_genenerator.add_ait_inventories(name='dataset_for_verification',
+                                             type_='dataset',
+                                             description='検証用データセット\n目的変数と説明変数のセットでラベルは必要',
+                                             format_=['csv'],
+                                             schema='uncreated')
+    manifest_genenerator.add_ait_parameters(name='target_variable',
+                                            type_='str',
+                                            description='目的変数',
+                                            default_val='')
+    manifest_genenerator.add_ait_measures(name='degree_of_freedom_adjusted_coefficient_determination',
+                                          type_='float',
+                                          description='0~1の値をとり、1に近いほど精度の高い予測ができているといえる。',
+                                          structure='single',
+                                          min='0',
+                                          max='1')
+    manifest_genenerator.add_ait_resources(name='coefficient_of_determination_matrix',
+                                           type_='table',
+                                           description='決定係数の結果をまとめた表')
+    manifest_genenerator.add_ait_resources(name='correlation_coefficient_1to1',
+                                           type_='picture',
+                                           description='説明変数と目的変数の相関グラフ\nファイル名は{目的変数}-{説明変数}.png')
+    manifest_genenerator.add_ait_resources(name='correlation_coefficient_1to2',
+                                           type_='picture',
+                                           description='説明変数2つと目的変数の3次元相関グラフ\nファイル名は{目的変数}-{説明変数1}-{説明変数2}.png')
+    manifest_genenerator.add_ait_downloads(name='Log',
+                                           description='AIT実行ログ')
+    manifest_genenerator.add_ait_downloads(name='predictive_value',
+                                           description='予測値')
     manifest_path = manifest_genenerator.write()
 
 

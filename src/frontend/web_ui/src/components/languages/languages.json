@@ -431,7 +431,6 @@
             "fig": "Fig",
             "format": "Format",
             "radiobox": "",
-            "no": "No",
             "remove": "",
             "type": "Type",
             "warnAddReportResource": "You have exceeded the quantity that can be added to the report.",

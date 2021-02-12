@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[ ]:
+# In[4]:
 
 
 #########################################
@@ -127,7 +127,7 @@ if not is_ait_launch:
     requirements_generator.add_package('Werkzeug','0.12.2')
 
 
-# In[ ]:
+# In[5]:
 
 
 #########################################
@@ -141,7 +141,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[6]:
 
 
 #########################################
@@ -163,7 +163,7 @@ from deep_saucer.neuron_coverage.tensorflow_native.lib.coverage_verification imp
 from ait_sdk.utils.mnist import MNIST
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -182,7 +182,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -366,15 +366,21 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_measures(name='coverage_rate_all_layer', 
                                           type_='float', 
                                           description='coverage of the model as a whole.', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='coverage_rate_each_layer', 
                                           type_='float', 
                                           description='coverage of each layer in the model.', 
-                                          structure='sequence')
+                                          structure='sequence',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='coverage_rate_combination', 
                                           type_='float', 
                                           description='coverage of select combination.', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_resources(name='test_case_generator',  
                                            type_='table', 
                                            description='generate coverage increase data.')
@@ -387,7 +393,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -446,7 +452,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -477,7 +483,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[11]:
 
 
 def get_value_list(list_dict):
@@ -515,7 +521,7 @@ def create_config_json(ait_input):
     return config_json
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -529,7 +535,7 @@ def calc_coverage_rate_all_layer(coverage_rate):
     return np.mean(get_value_list(coverage_rate))
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -543,7 +549,7 @@ def calc_coverage_rate_each_layer(coverage_rate):
     return get_value_list(coverage_rate)
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################
@@ -557,7 +563,7 @@ def calc_coverage_rate_combination(combination_cov):
     return list(combination_cov.values())[0]
 
 
-# In[ ]:
+# In[15]:
 
 
 #########################################
@@ -571,7 +577,7 @@ def save_heatmap(result_heatmap_output, file_path: str=None) -> None:
     shutil.copyfile(result_heatmap_output, file_path)
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################
@@ -587,7 +593,7 @@ def save_test_case_generator(result_test_case_generator, file_path: str=None) ->
         writer.writerow(result_test_case_generator)
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################
@@ -601,7 +607,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[18]:
 
 
 #########################################
@@ -615,7 +621,7 @@ def save_abs_dataset(result_abs_dataset_pass, file_path: str=None) -> None:
     shutil.copyfile(result_abs_dataset_pass, file_path)
 
 
-# In[ ]:
+# In[19]:
 
 
 #########################################

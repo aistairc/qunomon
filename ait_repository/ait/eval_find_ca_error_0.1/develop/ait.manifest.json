@@ -64,13 +64,16 @@
         "name": "count",
         "type": "int",
         "description": "Quantity of unsound case",
-        "structure": "single"
+        "structure": "single",
+        "min": "0"
       },
       {
         "name": "percentage",
         "type": "float",
         "description": "Percentage of unsound case in dataset",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "100"
       }
     ],
     "resources": [

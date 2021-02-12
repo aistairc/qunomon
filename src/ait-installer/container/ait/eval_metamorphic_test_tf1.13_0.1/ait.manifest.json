@@ -52,7 +52,9 @@
         "name": "average",
         "type": "float",
         "description": "Average number of NG output",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       }
     ],
     "resources": [

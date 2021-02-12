@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -196,11 +196,13 @@ Number of data n, true values: y(1),y(2),â‹¯,y(n) Predicted values: f(1),f(2),â‹
     manifest_genenerator.add_ait_measures(name='RMSE', 
                                           type_='float', 
                                           description='The closer to 0, the smaller prediction error.',
-                                          structure='single')
+                                          structure='single',
+                                          min='0')
     manifest_genenerator.add_ait_measures(name='MAE', 
                                           type_='float', 
                                           description='The closer to 0, the smaller prediction error.',
-                                          structure='single')
+                                          structure='single',
+                                          min='0')
     manifest_genenerator.add_ait_resources(name='evaluation_index_matrix', 
                                            type_='table', 
                                            description='Table of evaluation indicators summary.')
@@ -409,7 +411,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################
@@ -420,7 +422,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[18]:
 
 
 #########################################
@@ -431,7 +433,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[19]:
 
 
 #########################################

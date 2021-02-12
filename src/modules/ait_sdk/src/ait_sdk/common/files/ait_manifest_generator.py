@@ -234,7 +234,7 @@ class AITManifestGenerator:
 
     # measures
     @log(logger)
-    def add_ait_measures(self, name: str, type_: str, description: str, structure: str) -> None:
+    def add_ait_measures(self, name: str, type_: str, description: str, structure: str, min: str = '', max: str = '') -> None:
         """
         measures項目を設定する。
 
@@ -262,8 +262,25 @@ class AITManifestGenerator:
 
                     single
                     sequence
+
+            min (str) :
+                最小値を設定します。（任意）
+
+                Set the minimum value. (optional)
+
+            max (str) :
+                最大値を設定します。（任意）
+
+                Set the maximum value. (optional)
         """
-        self._ait_measures.append({'name': name, 'type': type_, 'description': description, 'structure': structure})
+        if len(min) > 0 and len(max) > 0:
+            self._ait_measures.append({'name': name, 'type': type_, 'description': description, 'structure': structure, 'min':min, 'max':max})
+        elif len(min) > 0 and len(max) == 0:
+            self._ait_measures.append({'name': name, 'type': type_, 'description': description, 'structure': structure, 'min':min})
+        elif len(min) == 0 and len(max) > 0:
+            self._ait_measures.append({'name': name, 'type': type_, 'description': description, 'structure': structure, 'max':max})
+        else:
+            self._ait_measures.append({'name': name, 'type': type_, 'description': description, 'structure': structure})
 
     # resources
     @log(logger)
@@ -329,7 +346,7 @@ class AITManifestGenerator:
 
         self._check__required_item_section('inventories', self._ait_inventories)
         self._check__required_item_section('parameters', self._ait_parameters, ['default_val'])
-        self._check__required_item_section('measures', self._ait_measures)
+        self._check__required_item_section('measures', self._ait_measures, ['min', 'max'])
         self._check__required_item_section('resources', self._ait_resources)
         self._check__required_item_section('downloads', self._ait_downloads)
 

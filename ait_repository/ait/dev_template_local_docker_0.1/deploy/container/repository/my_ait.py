@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -181,7 +181,8 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_measures(name='mean', 
                                           type_='float', 
                                           description='mean of select column', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0')
     manifest_genenerator.add_ait_resources(name='pairplot', 
                                            type_='picture', 
                                            description='pairplot')

@@ -13,7 +13,7 @@ RUN apt-get update -yqq \
 
 # RUN pip install --upgrade pip
 RUN pip3 install --upgrade pip setuptools \
-    && pip3 install jupyterlab \
+    && pip3 install jupyterlab==2.2.9 \
     && pip3 install matplotlib \
     && jupyter serverextension enable --py jupyterlab
 #    && jupyter labextension install mlflow-extension \

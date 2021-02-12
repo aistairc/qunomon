@@ -33,7 +33,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[ ]:
+# In[2]:
 
 
 #########################################
@@ -65,7 +65,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[ ]:
+# In[3]:
 
 
 #########################################
@@ -82,7 +82,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[4]:
 
 
 #########################################
@@ -109,7 +109,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[5]:
 
 
 #########################################
@@ -127,15 +127,31 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_version('0.1')
     manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Diversity_of_test_data')
     manifest_genenerator.set_ait_reference('')
-    manifest_genenerator.add_ait_inventories('pairwise_list', 'dataset', 'Pairwise_list.csv', ['csv'], 'https://www.sciencedirect.com/topics/computer-science/pairwise-comparison')
-    manifest_genenerator.add_ait_inventories('target', 'dataset', 'target.csv', ['csv'], 'https://www.sciencedirect.com/topics/computer-science/pairwise-comparison')
-    manifest_genenerator.add_ait_measures('coverage', 'float', 'coverage of all patterns are matched', 'single')
-    manifest_genenerator.add_ait_resources('matching_result', 'table', 'pairwise_matching_result')
-    manifest_genenerator.add_ait_downloads('Log', 'AIT_run_log')
+    manifest_genenerator.add_ait_inventories(name='pairwise_list',
+                                             type_='dataset',
+                                             description='Pairwise_list.csv',
+                                             format_=['csv'],
+                                             schema='https://www.sciencedirect.com/topics/computer-science/pairwise-comparison')
+    manifest_genenerator.add_ait_inventories(name='target',
+                                             type_='dataset',
+                                             description='target.csv',
+                                             format_=['csv'],
+                                             schema='https://www.sciencedirect.com/topics/computer-science/pairwise-comparison')
+    manifest_genenerator.add_ait_measures(name='coverage',
+                                          type_='float',
+                                          description='coverage of all patterns are matched',
+                                          structure='single',
+                                          min='0',
+                                          max='1')
+    manifest_genenerator.add_ait_resources(name='matching_result',
+                                           type_='table',
+                                           description='pairwise_matching_result')
+    manifest_genenerator.add_ait_downloads(name='Log',
+                                           description='AIT_run_log')
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[6]:
 
 
 #########################################
@@ -150,7 +166,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -181,7 +197,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -199,7 +215,7 @@ def coverage_measures(all_num, match_num):
     return coverage
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -216,7 +232,7 @@ def save_file(output_lines, file_path: str=None):
             writer.writerow(buf)
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -230,7 +246,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -287,7 +303,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -298,7 +314,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -309,7 +325,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################

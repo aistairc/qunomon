@@ -40,13 +40,15 @@
         "name": "RMSE",
         "type": "float",
         "description": "The closer to 0, the smaller prediction error.",
-        "structure": "single"
+        "structure": "single",
+        "min": "0"
       },
       {
         "name": "MAE",
         "type": "float",
         "description": "The closer to 0, the smaller prediction error.",
-        "structure": "single"
+        "structure": "single",
+        "min": "0"
       }
     ],
     "resources": [

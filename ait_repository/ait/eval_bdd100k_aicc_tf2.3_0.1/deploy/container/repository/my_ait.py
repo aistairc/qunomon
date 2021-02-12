@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -234,43 +234,63 @@ Please set the memory allocation of docker to 4GB or more.''')
     manifest_genenerator.add_ait_measures(name='traffic_sign_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of traffic_sign', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='traffic_light_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of traffic_light', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='car_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of car', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='rider_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of rider', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='motor_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of motor', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='person_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of person', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='bus_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of bus', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='truck_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of truck', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='bike_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of bike', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_measures(name='train_accuracy', 
                                           type_='float', 
                                           description='accuracy predicted of train', 
-                                          structure='single')
+                                          structure='single',
+                                          min='0',
+                                          max='1')
     manifest_genenerator.add_ait_resources(name='all_label_accuracy_csv',  
                                            type_='table', 
                                            description='accuracy of all label')
@@ -363,7 +383,7 @@ if not is_ait_launch:
     get_ipython().system('rm -rf protoc-3.9.0-linux-x86_64.zip protoc3')
 
 
-# In[12]:
+# In[ ]:
 
 
 if not is_ait_launch:
@@ -384,7 +404,7 @@ if not is_ait_launch:
     get_ipython().run_line_magic('cd', '/workdir/root/develop')
 
 
-# In[13]:
+# In[ ]:
 
 
 sys.path.append(os.path.join(Path().resolve(), '/tensorflow/models/research'))
@@ -428,7 +448,7 @@ avg_acc_per_train = []
 f_each = []
 
 
-# In[14]:
+# In[ ]:
 
 
 def _run_inference_for_single_image(model, image) -> np.ndarray:
@@ -465,7 +485,7 @@ def _run_inference_for_single_image(model, image) -> np.ndarray:
     return output_dict
 
 
-# In[15]:
+# In[ ]:
 
 
 def _read_labels(label_path) -> np.ndarray:
@@ -475,7 +495,7 @@ def _read_labels(label_path) -> np.ndarray:
     return labels
 
 
-# In[16]:
+# In[ ]:
 
 
 def _get_boxes(objects) -> np.ndarray:
@@ -483,7 +503,7 @@ def _get_boxes(objects) -> np.ndarray:
             or ('box3d' in o and o['box3d'] is not None)]
 
 
-# In[17]:
+# In[ ]:
 
 
 def _get_id_label(current_object_label) -> int:
@@ -520,7 +540,7 @@ def _get_id_label(current_object_label) -> int:
     return -1
 
 
-# In[18]:
+# In[ ]:
 
 
 def _get_label_from_id(id) -> str:
@@ -547,7 +567,7 @@ def _get_label_from_id(id) -> str:
     return ""
 
 
-# In[19]:
+# In[ ]:
 
 
 def _adding_avg_label_from_id(id, value, avg_acc_per_traffic_sign, avg_acc_per_traffic_light, 
@@ -577,7 +597,7 @@ def _adding_avg_label_from_id(id, value, avg_acc_per_traffic_sign, avg_acc_per_t
     return avg_acc_per_traffic_sign, avg_acc_per_traffic_light, avg_acc_per_car, avg_acc_per_rider, avg_acc_per_motor, avg_acc_per_person, avg_acc_per_bus, avg_acc_per_truck, avg_acc_per_bike, avg_acc_per_train
 
 
-# In[20]:
+# In[ ]:
 
 
 def _search_image_information(objects, image_name) -> np.ndarray:
@@ -607,7 +627,7 @@ def _search_image_information(objects, image_name) -> np.ndarray:
     return list_boxes
 
 
-# In[21]:
+# In[ ]:
 
 
 def _load_labels_ground_truth(gt_list_boxes, total_GT_correct_predicted):
@@ -619,7 +639,7 @@ def _load_labels_ground_truth(gt_list_boxes, total_GT_correct_predicted):
     return list_ground_truth,total_GT_correct_predicted
 
 
-# In[22]:
+# In[ ]:
 
 
 def _averageOfList(num) -> float:
@@ -631,7 +651,7 @@ def _averageOfList(num) -> float:
     return avg
 
 
-# In[23]:
+# In[ ]:
 
 
 # JSONファイルと推論結果を比較する
@@ -774,7 +794,7 @@ def _compare_json(gt_list_boxes, objects, total_GT_correct_predicted,avg_acc_per
                     total_correct_predicted[id] = total_correct_predicted[id] + 1
 
 
-# In[24]:
+# In[ ]:
 
 
 def _accuracy_count(total_GT_correct_predicted, avg_acc_per_traffic_sign, avg_acc_per_traffic_light, 
@@ -830,7 +850,7 @@ def _accuracy_count(total_GT_correct_predicted, avg_acc_per_traffic_sign, avg_ac
         f_each.append("---\n")
 
 
-# In[25]:
+# In[ ]:
 
 
 def _view_accuracy_label(total_GT_correct_predicted) -> None:
@@ -864,7 +884,7 @@ def _view_accuracy_label(total_GT_correct_predicted) -> None:
     save_all_label_accuracy_png(df)
 
 
-# In[26]:
+# In[ ]:
 
 
 # ワイルドカードを使ってファイルの削除
@@ -874,7 +894,7 @@ def _remove_glob(pathname, recursive=True):
             os.remove(p)
 
 
-# In[27]:
+# In[ ]:
 
 
 # 画像データの解凍
@@ -889,7 +909,7 @@ def _load_image(file_path: str) -> np.ndarray:
     return data
 
 
-# In[28]:
+# In[ ]:
 
 
 #########################################
@@ -957,7 +977,7 @@ def save_images(model, image_path_list, category_index, file_path: str=None) -> 
     return out_files
 
 
-# In[29]:
+# In[ ]:
 
 
 #########################################
@@ -971,7 +991,7 @@ def save_all_label_accuracy_csv(df, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[30]:
+# In[ ]:
 
 
 #########################################
@@ -997,7 +1017,7 @@ def save_all_label_accuracy_png(df, file_path: str=None) -> None:
     plt.close('all')
 
 
-# In[31]:
+# In[ ]:
 
 
 #########################################
@@ -1014,7 +1034,7 @@ def save_each_label_accuracy(file_path: str=None) -> None:
             writer.writerow(buf)
 
 
-# In[32]:
+# In[ ]:
 
 
 #########################################
@@ -1028,7 +1048,7 @@ def measure_traffic_sign_accuracy(accuracy):
     return accuracy
 
 
-# In[33]:
+# In[ ]:
 
 
 #########################################
@@ -1042,7 +1062,7 @@ def measure_traffic_light_accuracy(accuracy):
     return accuracy
 
 
-# In[34]:
+# In[ ]:
 
 
 #########################################
@@ -1056,7 +1076,7 @@ def measure_car_accuracy(accuracy):
     return accuracy
 
 
-# In[35]:
+# In[ ]:
 
 
 #########################################
@@ -1070,7 +1090,7 @@ def measure_rider_accuracy(accuracy):
     return accuracy
 
 
-# In[36]:
+# In[ ]:
 
 
 #########################################
@@ -1084,7 +1104,7 @@ def measure_motor_accuracy(accuracy):
     return accuracy
 
 
-# In[37]:
+# In[ ]:
 
 
 #########################################
@@ -1098,7 +1118,7 @@ def measure_person_accuracy(accuracy):
     return accuracy
 
 
-# In[38]:
+# In[ ]:
 
 
 #########################################
@@ -1112,7 +1132,7 @@ def measure_bus_accuracy(accuracy):
     return accuracy
 
 
-# In[39]:
+# In[ ]:
 
 
 #########################################
@@ -1126,7 +1146,7 @@ def measure_truck_accuracy(accuracy):
     return accuracy
 
 
-# In[40]:
+# In[ ]:
 
 
 #########################################
@@ -1140,7 +1160,7 @@ def measure_bike_accuracy(accuracy):
     return accuracy
 
 
-# In[41]:
+# In[ ]:
 
 
 #########################################
@@ -1154,7 +1174,7 @@ def measure_train_accuracy(accuracy):
     return accuracy
 
 
-# In[42]:
+# In[ ]:
 
 
 #########################################
@@ -1168,7 +1188,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[43]:
+# In[ ]:
 
 
 #########################################

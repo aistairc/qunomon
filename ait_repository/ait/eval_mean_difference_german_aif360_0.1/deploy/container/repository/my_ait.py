@@ -102,7 +102,7 @@ if not is_ait_launch:
 # should edit
 #########################################
 if not is_ait_launch:
-    requirements_generator.add_package('pandas', '1.1.0')
+    requirements_generator.add_package('pandas', '1.1.1')
     requirements_generator.add_package('seaborn', '0.10.1')
     requirements_generator.add_package('tensorflow', '2.4.0')
     requirements_generator.add_package('aif360', '0.3.0')
@@ -159,7 +159,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[11]:
+# In[8]:
 
 
 #########################################
@@ -203,7 +203,9 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_measures(name='mean_difference', 
                                           type_='float', 
                                           description='mean difference of metric fairness', 
-                                          structure='single')
+                                          structure='single', 
+                                          min='-1',
+                                          max='1')
     manifest_genenerator.add_ait_resources(name='metric_fairness_plot', 
                                            type_='picture', 
                                            description='base rates polt of privileged_groups and unprivileged_groups')
@@ -212,7 +214,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -231,7 +233,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -262,7 +264,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -280,7 +282,7 @@ def data_loading(filepath, column_names, na_values):
     return df
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -295,7 +297,7 @@ def preprocessing(df):
     return df
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -315,7 +317,7 @@ def ait_input_check(protected_attribute, privileged_classes):
         sys.exit(1)
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################
@@ -329,7 +331,7 @@ def measure_mean_difference(mean_difference):
     return mean_difference
 
 
-# In[ ]:
+# In[15]:
 
 
 #########################################
@@ -358,7 +360,7 @@ def save_metric_fairness_plot(metric_fairness, protected_attribute, file_path: s
     return file_path
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################
@@ -372,7 +374,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################

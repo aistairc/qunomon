@@ -163,19 +163,25 @@
         "name": "coverage_rate_all_layer",
         "type": "float",
         "description": "coverage of the model as a whole.",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "coverage_rate_each_layer",
         "type": "float",
         "description": "coverage of each layer in the model.",
-        "structure": "sequence"
+        "structure": "sequence",
+        "min": "0",
+        "max": "1"
       },
       {
         "name": "coverage_rate_combination",
         "type": "float",
         "description": "coverage of select combination.",
-        "structure": "single"
+        "structure": "single",
+        "min": "0",
+        "max": "1"
       }
     ],
     "resources": [

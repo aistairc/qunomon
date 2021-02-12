@@ -20,7 +20,7 @@
 # |11|license attribute set|1|Use only notebook launch.<br>Setting attribute for license.|should edit|
 # |12|prepare deploy|1|Use only notebook launch.<br>Convert to python programs and create dag.py.|no edit|
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -127,22 +127,58 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_version('0.1')
     manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Coverage_for_distinguished_problem_cases')
     manifest_genenerator.set_ait_reference('')
-    manifest_genenerator.add_ait_inventories('ca_data', 'dataset', 
-                                             '''Classification of different attributes related to autonomous driving scenarios. 
+    manifest_genenerator.add_ait_inventories(name='ca_data', 
+                                             type_='dataset', 
+                                             description='''Classification of different attributes related to autonomous driving scenarios. 
                                              Need header.
                                              Include header for Unsound_CA_combinations.
-                                             ''', ['csv'], 'CSV')
-    manifest_genenerator.add_ait_inventories('Unsound_CA_combinations', 'attribute set', 'Combinations of different attribute values that are not possible in real life', ['csv'], 'User given data')
-    manifest_genenerator.add_ait_parameters('PCA', 'str', 'Primary conditional attribute', 'Road type')
-    manifest_genenerator.add_ait_parameters('PCV', 'str', 'Primary conditional value', 'Highway')
-    manifest_genenerator.add_ait_parameters('SCA', 'str', 'Secondary conditional attribute', 'Signal')
-    manifest_genenerator.add_ait_parameters('SCV', 'str', 'Secondary conditional Value', 'Green')
-    manifest_genenerator.add_ait_parameters('Combination_index', 'int', 'Index of unsound CA combination case', '5')
-    manifest_genenerator.add_ait_measures('count', 'int', 'Quantity of unsound case', 'single')
-    manifest_genenerator.add_ait_measures('percentage', 'float', 'Percentage of unsound case in dataset', 'single')
-    manifest_genenerator.add_ait_resources('CountPlot', 'picture', 'Plot of number of data in each unsound case')
-    manifest_genenerator.add_ait_resources('PercentagePlot', 'picture', 'Plot of percentage of unsound cases in data')
-    manifest_genenerator.add_ait_downloads('Log', 'AITLog')
+                                             ''', 
+                                             format_=['csv'], 
+                                             schema='CSV')
+    manifest_genenerator.add_ait_inventories(name='Unsound_CA_combinations', 
+                                             type_='attribute set', 
+                                             description='Combinations of different attribute values that are not possible in real life', 
+                                             format_=['csv'], 
+                                             schema='User given data')
+    manifest_genenerator.add_ait_parameters(name='PCA', 
+                                            type_='str', 
+                                            description='Primary conditional attribute', 
+                                            default_val='Road type')
+    manifest_genenerator.add_ait_parameters(name='PCV', 
+                                            type_='str', 
+                                            description='Primary conditional value', 
+                                            default_val='Highway')
+    manifest_genenerator.add_ait_parameters(name='SCA', 
+                                            type_='str', 
+                                            description='Secondary conditional attribute', 
+                                            default_val='Signal')
+    manifest_genenerator.add_ait_parameters(name='SCV', 
+                                            type_='str', 
+                                            description='Secondary conditional Value', 
+                                            default_val='Green')
+    manifest_genenerator.add_ait_parameters(name='Combination_index', 
+                                            type_='int', 
+                                            description='Index of unsound CA combination case', 
+                                            default_val='5')
+    manifest_genenerator.add_ait_measures(name='count', 
+                                          type_='int', 
+                                          description='Quantity of unsound case', 
+                                          structure='single', 
+                                          min='0')
+    manifest_genenerator.add_ait_measures(name='percentage', 
+                                          type_='float', 
+                                          description='Percentage of unsound case in dataset', 
+                                          structure='single', 
+                                          min='0', 
+                                          max='100')
+    manifest_genenerator.add_ait_resources(name='CountPlot', 
+                                           type_='picture', 
+                                           description='Plot of number of data in each unsound case')
+    manifest_genenerator.add_ait_resources(name='PercentagePlot', 
+                                           type_='picture', 
+                                           description='Plot of percentage of unsound cases in data')
+    manifest_genenerator.add_ait_downloads(name='Log', 
+                                           description='AITLog')
     manifest_path = manifest_genenerator.write()
 
 
@@ -156,13 +192,20 @@ if not is_ait_launch:
 if not is_ait_launch:
     from ait_sdk.common.files.ait_input_generator import AITInputGenerator
     input_generator = AITInputGenerator(manifest_path)
-    input_generator.add_ait_inventories('ca_data','ca_data/ca_labels_2036.csv')
-    input_generator.add_ait_inventories('Unsound_CA_combinations','Unsound_CA_combinations/unsound_CA_combination_cases.csv')
-    input_generator.set_ait_params('PCA','Road type')
-    input_generator.set_ait_params('PCV','Highway')
-    input_generator.set_ait_params('SCA','Signal')
-    input_generator.set_ait_params('SCV','Green')
-    input_generator.set_ait_params('Combination_index','5')
+    input_generator.add_ait_inventories(name='ca_data',
+                                        value='ca_data/ca_labels_2036.csv')
+    input_generator.add_ait_inventories(name='Unsound_CA_combinations',
+                                        value='Unsound_CA_combinations/unsound_CA_combination_cases.csv')
+    input_generator.set_ait_params(name='PCA',
+                                   value='Road type')
+    input_generator.set_ait_params(name='PCV',
+                                   value='Highway')
+    input_generator.set_ait_params(name='SCA',
+                                   value='Signal')
+    input_generator.set_ait_params(name='SCV',
+                                   value='Green')
+    input_generator.set_ait_params(name='Combination_index',
+                                   value='5')
     input_generator.write()
 
 
