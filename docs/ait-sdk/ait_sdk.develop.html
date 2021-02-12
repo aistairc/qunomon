@@ -247,19 +247,14 @@
 
 <dl class="py method">
 <dt id="ait_sdk.develop.ait_path_helper.AITPathHelper.get_output_download_path">
-<code class="sig-name descname">get_output_download_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">is_raise_key_error</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.develop.ait_path_helper.AITPathHelper.get_output_download_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_output_download_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">item_name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.develop.ait_path_helper.AITPathHelper.get_output_download_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>output_download_pathを取得します。</p>
 <p>Get output_download_path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>item_name</strong> (<em>str</em>) – <p>項目名を指定します。</p>
+<dd class="field-odd"><p><strong>item_name</strong> (<em>str</em>) – <p>項目名を指定します。</p>
 <p>Specify the name of the item.</p>
-</p></li>
-<li><p><strong>is_raise_key_error</strong> (<em>bool</em>) – <p>存在しないkeyを指定した場合、key_errorを発生させるかどうかを指定します。</p>
-<p>When a non-existent key is specified, it raises a key_error or not.</p>
-</p></li>
-</ul>
+</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>output_download_path</p>
@@ -325,7 +320,7 @@ Measure the execution time of the main function and output the ait_output.</p>
 
 <dl class="py function">
 <dt id="ait_sdk.develop.annotation.downloads">
-<code class="sig-prename descclassname">ait_sdk.develop.annotation.</code><code class="sig-name descname">downloads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_output</span><span class="p">:</span> <span class="n"><a class="reference internal" href="ait_sdk.common.files.html#ait_sdk.common.files.ait_output.AITOutput" title="ait_sdk.common.files.ait_output.AITOutput">ait_sdk.common.files.ait_output.AITOutput</a></span></em>, <em class="sig-param"><span class="n">path_helper</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#ait_sdk.develop.ait_path_helper.AITPathHelper" title="ait_sdk.develop.ait_path_helper.AITPathHelper">ait_sdk.develop.ait_path_helper.AITPathHelper</a></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.develop.annotation.downloads" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ait_sdk.develop.annotation.</code><code class="sig-name descname">downloads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_output</span><span class="p">:</span> <span class="n"><a class="reference internal" href="ait_sdk.common.files.html#ait_sdk.common.files.ait_output.AITOutput" title="ait_sdk.common.files.ait_output.AITOutput">ait_sdk.common.files.ait_output.AITOutput</a></span></em>, <em class="sig-param"><span class="n">path_helper</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#ait_sdk.develop.ait_path_helper.AITPathHelper" title="ait_sdk.develop.ait_path_helper.AITPathHelper">ait_sdk.develop.ait_path_helper.AITPathHelper</a></span></em>, <em class="sig-param"><span class="n">item_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">file_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.develop.annotation.downloads" title="Permalink to this definition">¶</a></dt>
 <dd><p>downloadを追加するためのラッパー関数</p>
 <p>デコレータで読み込んだfile_pathを設定するため、関数の引数にはかならずfile_pathを定義すること。
 ひとつのdownloadに複数ファイルを設定する場合は、list型かtuple型でパスを返却すること。</p>
@@ -337,7 +332,8 @@ If you set multiple files in one download, you must return the path as a list ty
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ait_output</strong> (<em>ait_sdl.common.files.ait_output.AITOutput</em>) – </p></li>
 <li><p><strong>path_helper</strong> (<em>ait_sdl.develop.ait_path_helper.AITPathHelper</em>) – </p></li>
-<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>item_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -371,7 +367,7 @@ If you set multiple files in one download, you must return the path as a list ty
 
 <dl class="py function">
 <dt id="ait_sdk.develop.annotation.resources">
-<code class="sig-prename descclassname">ait_sdk.develop.annotation.</code><code class="sig-name descname">resources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_output</span><span class="p">:</span> <span class="n"><a class="reference internal" href="ait_sdk.common.files.html#ait_sdk.common.files.ait_output.AITOutput" title="ait_sdk.common.files.ait_output.AITOutput">ait_sdk.common.files.ait_output.AITOutput</a></span></em>, <em class="sig-param"><span class="n">path_helper</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#ait_sdk.develop.ait_path_helper.AITPathHelper" title="ait_sdk.develop.ait_path_helper.AITPathHelper">ait_sdk.develop.ait_path_helper.AITPathHelper</a></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.develop.annotation.resources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ait_sdk.develop.annotation.</code><code class="sig-name descname">resources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_output</span><span class="p">:</span> <span class="n"><a class="reference internal" href="ait_sdk.common.files.html#ait_sdk.common.files.ait_output.AITOutput" title="ait_sdk.common.files.ait_output.AITOutput">ait_sdk.common.files.ait_output.AITOutput</a></span></em>, <em class="sig-param"><span class="n">path_helper</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#ait_sdk.develop.ait_path_helper.AITPathHelper" title="ait_sdk.develop.ait_path_helper.AITPathHelper">ait_sdk.develop.ait_path_helper.AITPathHelper</a></span></em>, <em class="sig-param"><span class="n">item_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">file_name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.develop.annotation.resources" title="Permalink to this definition">¶</a></dt>
 <dd><p>resourceを追加するためのラッパー関数</p>
 <p>デコレータで読み込んだfile_pathを設定するため、関数の引数にはかならずfile_pathを定義すること。
 ひとつのresourceに複数ファイルを設定する場合は、list型かtuple型でパスを返却すること。
@@ -385,7 +381,8 @@ If the file path is returned, it will overwrite the file path and output it to a
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ait_output</strong> (<em>ait_sdl.common.files.ait_output.AITOutput</em>) – </p></li>
 <li><p><strong>path_helper</strong> (<em>ait_sdl.develop.ait_path_helper.AITPathHelper</em>) – </p></li>
-<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>item_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

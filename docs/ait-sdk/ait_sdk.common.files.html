@@ -376,28 +376,6 @@ Output file path</p>
 <p>AITを定義するファイル「ait.manifest.json」を管理するクラスです。</p>
 <p>This class manages the file “ait.manifest.json”, which defines AIT.</p>
 <dl class="py method">
-<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_download_path">
-<code class="sig-name descname">get_ait_download_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">is_raise_key_error</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_download_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>download_pathを取得します。</p>
-<p>Get download_path.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – <p>downloadのnameを指定します。</p>
-<p>Specify the name of the download.</p>
-</p></li>
-<li><p><strong>is_raise_key_error</strong> (<em>bool</em>) – <p>downloadのnameが存在しない場合にkey_errorを発生させるかどうかを指定します。</p>
-<p>Specifies whether key_error is raised if the download name does not exist.</p>
-</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>download_path</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_downloads">
 <code class="sig-name descname">get_ait_downloads</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>Dict<span class="p">[</span>str<span class="p">, </span>str<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_downloads" title="Permalink to this definition">¶</a></dt>
 <dd><p>downloadsを取得します。</p>
@@ -456,23 +434,6 @@ Output file path</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>parameter_type</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="ait_sdk.common.files.ait_manifest.AITManifest.get_ait_resource_path">
-<code class="sig-name descname">get_ait_resource_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.common.files.ait_manifest.AITManifest.get_ait_resource_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>resource_pathを取得します。</p>
-<p>Get resource_path.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – <p>resourceのnameを指定します。</p>
-<p>Specify the name of the resource.</p>
-</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>resource_path</p>
 </dd>
 </dl>
 </dd></dl>
@@ -542,14 +503,13 @@ set関数で各項目を入力し、write関数でjsonを出力する。</p>
 Input each item with the set function and output json with the write function.</p>
 <dl class="py method">
 <dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_downloads">
-<code class="sig-name descname">add_ait_downloads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_downloads" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_ait_downloads</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_downloads" title="Permalink to this definition">¶</a></dt>
 <dd><p>downloads項目を設定する。</p>
 <p>Set the downloads item.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – </p></li>
-<li><p><strong>path</strong> (<em>str</em>) – </p></li>
 <li><p><strong>description</strong> (<em>str</em>) – </p></li>
 </ul>
 </dd>
@@ -641,14 +601,13 @@ str</p>
 
 <dl class="py method">
 <dt id="ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_resources">
-<code class="sig-name descname">add_ait_resources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_resources" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_ait_resources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">description</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.common.files.ait_manifest_generator.AITManifestGenerator.add_ait_resources" title="Permalink to this definition">¶</a></dt>
 <dd><p>resources項目を設定する。</p>
 <p>Set the resources item.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – </p></li>
-<li><p><strong>path</strong> (<em>str</em>) – </p></li>
 <li><p><strong>type</strong> (<em>str</em>) – <p>以下いずれかの値である必要があります。</p>
 <p>It should be one of the following values</p>
 <blockquote>
