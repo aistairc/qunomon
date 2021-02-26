@@ -550,7 +550,7 @@ export default {
                     if(tr==0){
                         insertElement += `<th class="t_center get_table">${childElement}</th>`
                     } else {
-                        if(parseInt(childElement) || parseFloat(childElement)) {
+                        if(isFinite(childElement)) {
                             insertElement += `<td class="t_right">${childElement}</td>`
                         } else {
                             insertElement += `<td class="t_left">${childElement}</td>`
@@ -581,7 +581,7 @@ export default {
                     if(tr==0){
                         insertElement += `<th class="t_center get_table">${childElement}</th>`
                     } else {
-                        if(parseInt(childElement) || parseFloat(childElement)) {
+                        if(isFinite(childElement)) {
                             insertElement += `<td class="t_right">${childElement}</td>`
                         } else {
                             insertElement += `<td class="t_left">${childElement}</td>`
