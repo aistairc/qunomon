@@ -148,7 +148,8 @@
             "addReportNote": "※追加できるグラフは20個までです。",
             "pageNext": "次へ",
             "pagePrev": "前へ",
-            "rowsPerPageLabel": "1ページ当たりの行数"
+            "rowsPerPageLabel": "1ページ当たりの行数",
+            "logDownload": "ログダウンロード"
         },
         "testDescriptionCreate": {
             "create": "作成",
@@ -437,7 +438,8 @@
             "addReportNote": "* You can add up to 20 graphs.",
             "pageNext": "next",
             "pagePrev": "prev",
-            "rowsPerPageLabel": "Rows per page"
+            "rowsPerPageLabel": "Rows per page",
+            "logDownload": "LogDownload"
         },
         "testDescriptionCreate": {
             "create": "Create",

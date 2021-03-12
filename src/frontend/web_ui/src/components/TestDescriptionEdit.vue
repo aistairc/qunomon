@@ -77,10 +77,10 @@
                                             </td>
                                             <td class="right">
                                                 <template v-if="$i18n.locale === 'en'">
-                                                    <input type="text" v-model="testDescriptionName" placeholder="name" name="name" :key="testDescriptionName" @blur="nextBtnCheck" />
+                                                    <input type="text" v-model="testDescriptionName" placeholder="name" name="name" @blur="nextBtnCheck" />
                                                 </template>
                                                 <template v-else>
-                                                    <input type="text" v-model="testDescriptionName" placeholder="テストディスクリプション名称" name="name" :key="testDescriptionName" @blur="nextBtnCheck" />
+                                                    <input type="text" v-model="testDescriptionName" placeholder="テストディスクリプション名称" name="name" @blur="nextBtnCheck" />
                                                 </template>
                                             </td>
                                         </tr>

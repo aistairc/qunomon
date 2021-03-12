@@ -187,6 +187,14 @@
                                                 <img src="~@/assets/description.svg" alt="詳細" title="詳細" class="icon" @click="postTestDescriptionId_toDetail(TestDescription.Id)">
                                             </template>
                                         </router-link>
+                                        <router-link :to="{ name: 'TestDescriptions'}" class="icon">
+                                            <template v-if="$i18n.locale === 'en'">
+                                                <img src="~@/assets/delete.svg" alt="delete" title="delete" class="icon" @click="postTestDescriptionId_toDelete(TestDescription.Id)">
+                                            </template>
+                                            <template v-else>
+                                                <img src="~@/assets/delete.svg" alt="削除" title="削除" class="icon" @click="postTestDescriptionId_toDelete(TestDescription.Id)">
+                                            </template>
+                                        </router-link>
                                     </td>
                                 </tr>
                             </tbody>
@@ -429,6 +437,28 @@ import TDRelation from './TestDescriptionRelationship';
                 this.$router.push({
                     name: 'TestDescriptionsDetail'
                 })
+            },
+            postTestDescriptionId_toDelete: function(testDescriptionId) {
+                if (confirm(this.$t("confirm.delete"))) {
+                    this.$axios.delete(this.$backendURL +
+                            '/' +
+                            this.organizationIdCheck +
+                            '/mlComponents/' +
+                            this.mlComponentId +
+                            '/testDescriotions/' +
+                            testDescriptionId
+                    )
+                    .then((response) => {
+                        this.result = response.data;
+                        window.location.reload()
+                    })
+                    .catch((error) => {
+                        this.$router.push({
+                            name: 'Information',
+                            params: {error}
+                        })
+                    })
+                }
             },
             postTestDescriptionId_toAncestors: function(testDescriptionId){
                 this.$router.push({

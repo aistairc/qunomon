@@ -31,11 +31,16 @@ def main():
                     ait_full_name='dummy')
 
     for i in range(WAIT_LIMIT):
-        response_bk=helper.get_bk('/health-check', is_print_json=False)
-        response_ip=helper.get_ip('/health-check', is_print_json=False)
-        if response_bk.status_code == 200 and response_ip.status_code == 200:
-            break
-        time.sleep(3)
+        try:
+            print(f'WAIT backend service start...[{i}]')
+            response_bk=helper.get_bk('/health-check', is_print_json=False)
+            response_ip=helper.get_ip('/health-check', is_print_json=False)
+            if response_bk.status_code == 200 and response_ip.status_code == 200:
+                break
+        except Exception as e:
+            print(e)
+        finally:
+            time.sleep(3)
 
     if i==WAIT_LIMIT-1:
         print('ERROR: Backend and integration-provider is not started.')

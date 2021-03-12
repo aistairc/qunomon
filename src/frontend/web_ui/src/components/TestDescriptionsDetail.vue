@@ -113,6 +113,7 @@
                             <span>{{$t("testDescriptionDetail.runThisTest")}} : </span>
                             <template v-if="tdDtl.TestDescriptionResult">
                                 <span>{{tdDtl.TestDescriptionResult.Summary}}</span>
+                                <a id="log_download" v-bind:href=tdDtl.TestDescriptionResult.LogFile download="">{{$t("testDescriptionDetail.logDownload")}}</a>
                             </template>
                             <template v-else>
                                 <span>NA</span>
@@ -121,9 +122,12 @@
                         <!-- 取得グラフ -->
                         <template v-if="tdDtl.TestDescriptionResult">
                             <template v-if="tdDtl.TestDescriptionResult.Summary ==='OK' || tdDtl.TestDescriptionResult.Summary === 'NG'">
-                                <div id="table" align="center">
+                                <div id="table" align="center" v-on:click="updateUsedRowStyle">
                                     <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center"
-                                                  :sort-options="{enabled: false,}" style-class="vgt-table" @on-row-click="onRowClick"
+                                                  :sort-options="{enabled: false,}" style-class="vgt-table"
+                                                  @on-select-all="onSelectAll"
+                                                  @on-row-click="onRowClick"
+                                                  @on-selected-rows-change="onSelectedRowsChange"
                                                   :pagination-options="pagenationSettings"
                                                   @on-per-page-change="onPerPageChange"
                                                   @on-page-change="onPageChange"
@@ -134,6 +138,14 @@
                                             <span v-if="props.column.field == 'radiobox'">
                                                 <input type="radio" name="graph">
                                             </span>
+                                            <span v-else-if="props.column.field == 'index'">
+                                                <span>{{props.row.index}}</span>
+                                                <span v-if="props.row.index == preview_row_index">
+                                                    <span class="material-icons" style="font-size:inherit;">
+                                                        remove_red_eye
+                                                    </span>
+                                                </span>
+                                            </span>
                                             <span v-else>
                                                 {{props.formattedRow[props.column.field]}}
                                             </span>
@@ -141,18 +153,41 @@
                                     </VueGoodTable>
                                 </div>
                                 <!-- 追加ボタン -->
-                                <div id="btn_add">
+                                <div id="add_btn_wrapper">
                                     <template v-if="$i18n.locale === 'en'">
-                                        <input type="button" id="add_btn" value="add to Report→" class="btn_single" v-bind:class="{ 'un_btn' : isActive }" @click="addRowData">
+                                        <div 
+                                          id="add_btn" 
+                                          class="btn_single" 
+                                          v-bind:class="{ 'un_btn' : isActive }" 
+                                          @click="addRowData"
+                                        >
+                                            <span class="add_count">
+                                                <span v-if="isActive">0</span>
+                                                <span v-else>{{add_graph_count}}</span>
+                                            </span>
+                                            add to Report→
+                                        </div>
                                     </template>
                                     <template v-else>
-                                        <input type="button" id="add_btn" value="レポートに追加→" class="btn_single" v-bind:class="{ 'un_btn' : isActive }" @click="addRowData">
+                                        <div 
+                                          id="add_btn" 
+                                          class="btn_single" 
+                                          v-bind:class="{ 'un_btn' : isActive }" 
+                                          @click="addRowData"
+                                        >
+                                            <span class="add_count">
+                                                <span v-if="isActive">0</span>
+                                                <span v-else>{{add_graph_count}}</span>
+                                            </span>
+                                            レポートに追加→
+                                        </div>
                                     </template>
                                     <br/>
                                     <span>{{$t("testDescriptionDetail.addReportNote")}}</span>
                                 </div>
                                 <!-- グラフ -->
-                                <div class="result_img" v-show="selectedType != null && selectedType === 'picture'">
+                                <div class="result_img" v-show="preview_visible">
+                                    Preview: Graph ID = {{preview_row_index}}<br>
                                     <a class="image" target="_blank">
                                         <img width="400px" name="imgsmp" id="image" class="result_img" />
                                     </a>
@@ -396,6 +431,7 @@ export default {
     data() {
         return {
             selectedType: '',
+            preview_visible: false,
             isActive: true,
             tdGraphs: '',
             tdDtl:'',
@@ -403,6 +439,10 @@ export default {
             graph_rename: '',
             graph_id: '',
             graph_index: '',
+            graph_list: [],
+            add_graph_count: 0,
+            preview_order: [],
+            preview_row_index: null,
             row_num: '',
             fignum: '',
             test_description_details: null,
@@ -469,7 +509,7 @@ export default {
                 collapsable: true
             },
             selectSettings:{
-                enabled: false,
+                enabled: true,
                 disableSelectInfo: true,
                 selectAllByGroup: false
             },
@@ -707,75 +747,74 @@ export default {
                 })
             }
         },
-        onRowClick(params) {
-            this.graph_id = params.row.graph_id;
-            this.graph_name = params.row.name;
-            this.graph_rename = params.row.name;
-            this.graph_index = params.row.index;
-            this.selectedType = '';
-
-            var row_index = params.row.index - 1;
-
-            // クリック対象の行を取得
-            var rowElement = undefined
-            for(var i in params.event.path){
-                if(params.event.path[i].className.indexOf('clickable') != -1){
-                    rowElement = params.event.path[i];
-                    break;
-                }
+        onSelectAll(){
+            this.preview_visible = false; //プレビュー非表示
+            this.preview_row_index = -1; //プレビュー対象のidをダミー値に
+            this.preview_order = []; //プレビュー対キリストを空に
+        },
+        onRowClick(params){
+            var clicked_row_index = params.row.index;
+            if(params.selected){
+                // チェックを入れたなら、描写リストの優先順位に最高順位として追加
+                this.preview_order.push(clicked_row_index);
+            }else{
+                // チェックを外したなら、描写リストから除外
+                this.preview_order = this.preview_order.filter(row_index => row_index != clicked_row_index);
             }
-            var target_graph_element = rowElement.lastChild.childNodes[0].childNodes[0]
+        },
+        onSelectedRowsChange(params) {
+            this.graph_list = params.selectedRows;
 
-            //表示中のページ行を取得し、ループ
-            var tdTable = this.$refs.tdTable;
-            var pageRemain = tdTable.currentPerPage
-
-            for (var j = 0; j < pageRemain; j++) {
-                var graph_element = document.getElementsByName('graph')[j]
-                if (graph_element == undefined){
-                    break;
-                }
-                //選択された行の場合
-                if (graph_element == target_graph_element) {
-                    if (graph_element.checked) {
-                        graph_element.checked = false;
-                        graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
-                        this.selectedType = '';
-
-                        //ボタンの活性
-                        this.isActive = true;
-                    } else {
-                        this.selectedType = params.row.format;
-                        graph_element.checked = true;
-                        graph_element.parentNode.parentNode.parentNode.classList.add('checked')
-                        if (this.selectedType === "picture") {
-                            this.getImage(this.tdGraphs[row_index].Graph);
-                        }else if(this.selectedType === 'table'){
-                            this.getTableData(this.tdGraphs[row_index].Graph);
-                        }
-
-                        //ボタンの活性
-                        if(this.rowData!=""){
-                            for (var r_id in this.rowData) {
-                                if (this.rowData[r_id].graphId == this.tdGraphs[row_index].Id) {
-                                    this.isActive = true;
-                                    break;
-                                } else {
-                                    this.isActive = false;
-                                }
-                            }
-                        //右表にグラフがない場合
-                        } else {
-                            this.isActive = false;
-                        }
-                    }
-                //選択されていない行の場合
-                } else {
-                    graph_element.checked = false;
-                    graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
-                }
+            //何も選択されていなかったときの処理
+            if(params.selectedRows.length <= 0){
+                this.isActive = true; // addボタン非活性
+                this.preview_visible = false; //プレビュー非表示
+                this.preview_row_index = -1; //プレビュー対象のidをダミー値に
+                this.updateUsedRowStyle();
+                return;
             }
+
+            //addボタンの活性判定
+            this.checkAddBTNActive();
+            
+            //グラフのプレビュー
+            this.preview_row_index = this.preview_order[this.preview_order.length-1];
+            this.preview_result(this.preview_row_index);
+
             this.updateUsedRowStyle();
+        },
+        //addボタンの活性判定
+        checkAddBTNActive(){
+            this.isActive = true; //非活性状態で初期化
+            this.add_graph_count = 0; //追加予定のグラフの個数を0個で初期化
+            for (let j = 0; j < this.graph_list.length; j++) {
+                var graph = this.graph_list[j];
+                var registered = false;
+                for (var r_id in this.rowData) {
+                    if (graph.graph_id == this.rowData[r_id].graphId) {
+                        registered = true;
+                        break;
+                    }
+                }
+                if(!registered){
+                    this.isActive = false; //右欄に未登録なら活性状態
+                    this.add_graph_count += 1;
+                }
+            }
+        },
+        preview_result(preview_row_index){
+            this.preview_visible = false;
+            var graph = this.graph_list.filter(graph => graph.index == preview_row_index)[0];
+
+            if(!graph) return;
+            this.selectedType = graph.format;
+            if (graph.format === "picture") {
+                this.getImage(this.tdGraphs[graph.index-1].Graph);
+                this.preview_visible = true;
+            }else if(graph.format === 'table'){
+                this.getTableData(this.tdGraphs[graph.index-1].Graph);
+                this.preview_visible = true;
+            }
         },
         onPerPageChange(){
             var tdTable = this.$refs.tdTable;
@@ -904,7 +943,7 @@ export default {
             return body
         },
         testDescriptionDelete() {
-            if (confirm("削除してよろしいですか？")) {
+            if (confirm(this.$t("confirm.delete"))) {
                 this.$axios.delete(this.$backendURL +
                         '/' +
                         this.organizationIdCheck +
@@ -1150,42 +1189,79 @@ export default {
                 this.isRemoveAllRowActive = true;
             }
             this.updateUsedRowStyle();
+            this.checkAddBTNActive();
         },
         //右側の表にデータを追加するメソッド。引数を(no, name, graph)設定し,
         //newRowData[newRowData.length - 1] = {no: no, name: name, reportName: graph, remove:{value: '-', id: this.setRowId()}}
         //のように変更すれば任意のデータを追加することができる。
         addRowData: function () {
+            this.checkAddBTNActive(); //追加するグラフ数を再計算
+
             var row_limit = 20;
-            if(this.rowData.length >= row_limit){
+            // 現在の右枠のグラフ数+追加予定のグラフ数が
+            // 上限(row_limit)を超過したらアラートし、追加しない
+            if(this.rowData.length + this.add_graph_count > row_limit){
                 alert(this.$t("testDescriptionDetail.warnAddReportResource"));
                 return;
             }
-            var newRowData = this.rowData;
-            newRowData[newRowData.length] = {}
-            newRowData[newRowData.length - 1] = {
-                no: this.graph_index,
-                viewId: this.graph_index,
-                name: this.graph_name,
-                reportName: this.graph_rename,
-                graphId: this.graph_id,
-                remove: {
-                    value: '-',
-                    id: this.setRowId()
+
+            var newRowData = [];
+            this.gridOptions.api.forEachNode(node => newRowData.push(node.data));
+
+            for(let i=0; i<this.graph_list.length; i++){
+                var graph = this.graph_list[i];
+                graph.vgtSelected = false;
+
+                // 登録済みなら追加しない
+                var registered = false;
+                for (var r_id in this.rowData) {
+                    if (graph.graph_id == this.rowData[r_id].graphId) {
+                        registered = true;
+                        break;
+                    }
                 }
+                if(registered){
+                    continue;
+                }
+
+                // 未登録なら新規追加
+                var newRow = {
+                    no: graph.index,
+                    viewId: graph.index,
+                    name: graph.name,
+                    reportName: graph.name,
+                    graphId: graph.graph_id,
+                    remove: {
+                        value: '',
+                        id: this.setRowId()
+                    }
+                }
+                newRowData.push(newRow);
             }
+            this.preview_order = [];
+            this.preview_row_index = -1;
 
             this.gridOptions.api.setRowData(newRowData);
+            this.rowData = newRowData;
 
             this.sortChange();
-            this.isActive = true;
+            this.updateUsedRowStyle();
+            this.checkAddBTNActive();
             this.isRemoveAllRowActive = false;
         },
         removeAllRowData: function () {
             this.rowData = [];
             this.gridOptions.api.setRowData(this.rowData);
-            this.isActive = false;
+            // 選択対象があれば追加ボタン活性、なければ非活性
+            if (this.selectedType != ''){
+                this.isActive = false;
+            }
+            else{
+                this.isActive = true;
+            }
             this.isRemoveAllRowActive = true;
             this.clearUsedRowStyle();
+            this.checkAddBTNActive();
         },
         creatRowData: function () {
             this.fignum = 1
@@ -1226,7 +1302,7 @@ export default {
                                     reportName: this.graph_rename,
                                     viewId: viewId,
                                     remove: {
-                                        value: '-',
+                                        value: '',
                                         id: j
                                     }}
             }
@@ -1300,10 +1376,6 @@ export default {
             }
         },
         updateUsedRowStyle(){
-            if(this.rowData == ""){
-                return;
-            }
-
             var tdTable = this.$refs.tdTable;
             var pageRemain = tdTable.currentPerPage;
 
@@ -1322,13 +1394,20 @@ export default {
                     continue;
                 }
                 var rowElement = graph_element.parentNode.parentNode.parentNode;
-                var viewId = rowElement.childNodes[4].childNodes[0].childNodes[0].data;
+                var viewId = rowElement.childNodes[4].childNodes[0].childNodes[0].childNodes[0].data;
                 viewId = parseInt(viewId.trim());
 
                 for (var r_id in this.rowData) {
                     if (this.rowData[r_id].viewId == viewId) {
                         rowElement.classList.add('graph_used');
                     }
+                }
+
+                // プレビュー中の行にハイライトのスタイル適用
+                if (this.preview_row_index == viewId) {
+                    rowElement.classList.add('graph_previewed');
+                }else{
+                    rowElement.classList.remove('graph_previewed');
                 }
             }
         },
@@ -1399,6 +1478,15 @@ export default {
     font-weight: normal;
 }
 
+#table>>>.vgt-table tbody th,
+#table>>>.vgt-table tbody td{
+    cursor:pointer;
+}
+
+#table>>>.vgt-table th.vgt-row-header>span{
+    display: block;
+}
+
 #table>>>.vgt-table th.vgt-row-header{
     color: black !important;
 }
@@ -1420,6 +1508,10 @@ export default {
 
 #table>>>.vgt-table tr.clickable.graph_used {
     background-color: #8cfff9;
+}
+
+#table>>>.vgt-table tr.clickable.graph_previewed {
+    background-color: #faf500 !important;
 }
 
 .submenu_detail a {
@@ -1466,6 +1558,12 @@ status
     margin: 10px 0;
     font-weight: bold;
     border-bottom: #000066 2px dashed;
+}
+
+#log_download {
+    font-size: 12px;
+    margin-left: 25px;
+    font-weight: normal;
 }
 
 /*アイコン*/
@@ -1636,7 +1734,7 @@ csvグラフ
     background-color: rgb(233, 233, 233);
 }
 
-#btn_add {
+#add_btn_wrapper {
     text-align: right ;
     margin-top: 20px;
 }
@@ -1646,6 +1744,19 @@ csvグラフ
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 20px;
+}
+
+.add_count {
+    background-color: white;
+    color: rgb(49, 67, 107);
+    border-radius: 40%;
+    padding: 0em 0.7em;
+    margin-right: 0.3em;
+    text-align: center;
+}
+
+.un_btn .add_count{
+    color: #a1a1bb;
 }
 
 #opinion input[type="text"] {
@@ -1683,6 +1794,12 @@ csvグラフ
     line-height: normal;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
     cursor:pointer;
+}
+
+#grid>>>button.minusBtn:after {
+  font-family: 'Material Icons';
+  font-size: 18px;
+  content: "\e15b";
 }
 
 
