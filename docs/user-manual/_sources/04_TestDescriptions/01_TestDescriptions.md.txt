@@ -64,19 +64,22 @@ Screen that displays all TestDescriptions associated with the MLComponent select
   * (8) Detailed display of TestDescription
     * You can register and cancel favorites by pressing the icon.
 
-  * (9) Relevant TestDescription
+  * (9) Delete of TestDescription
+    * When you press the icon, the TestDescription is deleted.
+
+  * (10) Relevant TestDescription
     * When you press the icon, a modal that displays the copy source is displayed.
     * (* See details 4.1.3)
 
-  * (10) Test implementation
+  * (11) Test implementation
     * When you press the button, the checked TestDescription test is executed.
     * (* See details 4.1.4)
 
-  * (11) Test result comparison
+  * (12) Test result comparison
     * When you press the button, the compare the results of two TestDescription check.
     * (* See details 4.1.5)
 
-  * (12) Test result report download
+  * (13) Test result report download
     * When the user presses the button, the download the results report of TestDescription checked.
     * (* See details 4.1.6)
 
@@ -90,6 +93,7 @@ Screen that displays all TestDescriptions associated with the MLComponent select
     * Opinion is displayed
     * Not displayed if there is no Opinion information
 
+  ![TestDescription list display](01/04_02_02.png)
   * (2) Check one Test Description
     * The background color of the following Test Description changes
       * a. A copy source of the selected TestDescription
