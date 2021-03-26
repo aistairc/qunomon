@@ -719,6 +719,8 @@ CREATE TABLE public."M_TestRunnerParamTemplate" (
     value_type character varying NOT NULL,
     description character varying NOT NULL,
     default_value character varying,
+    min_value double precision,
+    max_value double precision,
     test_runner_id integer
 );
 

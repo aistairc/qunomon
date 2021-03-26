@@ -4,4 +4,4 @@ matplotlib==3.3.0
 tensorflow==2.4.0
 numpy==1.19.2
 tensorflow-estimator==2.4.0
-./ait_sdk-0.1.5-py3-none-any.whl
+./ait_sdk-0.1.6-py3-none-any.whl

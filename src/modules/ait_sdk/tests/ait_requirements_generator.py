@@ -17,7 +17,7 @@ class TestAITRequirementsGenerator(unittest.TestCase):
         aaa.add_package("ddd")
         aaa.add_package("eee")
         # あらかじめ"F:/test/develop"と"F:/test/deploy/container/repository"を作成しておく
-        aaa.create_requirements("ait_sdk-0.1.3-py3-none-any.whl","F:/test/develop")
+        aaa.create_requirements("F:/test/develop")
         print('++ テスト終了')
 
 if __name__ == "__main__":

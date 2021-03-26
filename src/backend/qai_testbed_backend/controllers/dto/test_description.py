@@ -313,6 +313,8 @@ class TestRunnerParamSchema(BaseSchema):
     id_ = fields.Int(data_key='Id', required=False)
     name = fields.Str(data_key='Name', required=False)
     value = fields.Str(data_key='Value')
+    min_value = fields.Float(data_key='Min', required=False)
+    max_value = fields.Float(data_key='Max', required=False)
     test_runner_param_template_id = fields.Int(data_key='TestRunnerParamTemplateId', required=False)
 
 

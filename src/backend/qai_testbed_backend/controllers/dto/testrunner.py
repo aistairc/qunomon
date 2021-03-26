@@ -143,13 +143,16 @@ class PostReportGeneratorRes:
 
 class ParamTemplate:
     def __init__(self, type_: str, description: str, default_value: str = None, id_: Optional[int] = None,
-                 name: Optional[str] = None, test_runner_param_template_id: Optional[int] = None) -> None:
+                 name: Optional[str] = None, test_runner_param_template_id: Optional[int] = None,
+                 min_value: float = None, max_value: float = None) -> None:
         self.id_ = id_
         self.name = name
         self.type_ = type_
         self.test_runner_param_template_id = test_runner_param_template_id
         self.description = description
         self.default_value = default_value
+        self.min_value = min_value
+        self.max_value = max_value
 
 
 class PostReportGeneratorResSchema(BaseSchema):
@@ -202,6 +205,8 @@ class ParamTemplateSchema(BaseSchema):
     id_ = fields.Int(data_key='Id', required=True)
     name = fields.Str(data_key='Name', required=True)
     type_ = fields.Str(data_key='Type', required=True)
+    min_value = fields.Float(data_key='Min', required=False)
+    max_value = fields.Float(data_key='Max', required=False)
     description = fields.Str(data_key='Description', required=True)
     default_value = fields.Str(data_key='DefaultVal', required=True)
 

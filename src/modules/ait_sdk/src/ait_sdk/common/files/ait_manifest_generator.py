@@ -205,7 +205,8 @@ class AITManifestGenerator:
 
     # parameters
     @log(logger)
-    def add_ait_parameters(self, name: str, type_: str, description: str, default_val: str = '') -> None:
+    def add_ait_parameters(self, name: str, type_: str, description: str, default_val: str = '', 
+                           min_value: str = '', max_value: str = '') -> None:
         """
         parameters項目を設定する。
 
@@ -228,9 +229,23 @@ class AITManifestGenerator:
                 任意
 
                 Optional
+
+            min_value (str) :
+                最小値を設定します。（任意）
+
+                Set the minimum value. (optional)
+
+            max_value (str) :
+                最大値を設定します。（任意）
+
+                Set the maximum value. (optional)
         """
-        self._ait_parameters.append({'name': name, 'type': type_, 'description': description,
-                                     'default_val': default_val})
+        parameter = {'name': name, 'type': type_, 'description': description, 'default_val': default_val}
+        if len(min_value)>0 :
+            parameter['min'] = min_value
+        if len(max_value)>0 :
+            parameter['max'] = max_value
+        self._ait_parameters.append(parameter)
 
     # measures
     @log(logger)

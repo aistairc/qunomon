@@ -15,6 +15,8 @@ class TestRunnerParamTemplateMapper(sql_db.Model):
     value_type = sa.Column(sa.String, nullable=False)
     description = sa.Column(sa.String, nullable=False)
     default_value = sa.Column(sa.String, nullable=True)
+    min_value = sa.Column(sa.Float, nullable=True)
+    max_value = sa.Column(sa.Float, nullable=True)
 
     test_runner_id = sa.Column(sa.Integer, sa.ForeignKey('M_TestRunner.id'))
 
@@ -25,5 +27,7 @@ class TestRunnerParamTemplateMapper(sql_db.Model):
             name=self.name,
             type_=self.value_type,
             description=self.description,
-            default_value=self.default_value
+            default_value=self.default_value,
+            min_value=self.min_value,
+            max_value=self.max_value
         )

@@ -70,9 +70,9 @@
                                     <input class="name" type="text" placeholder="テスト名称" name="example" v-model="searchName"/>
                                 </template>
                                 <span class="search">{{$t("testDescriptions.upDate")}}</span>
-                                <input class="day" type="text" placeholder="yyyy/mm/dd" name="example" v-model="dateStart">
+                                <datepicker :format="'yyyy/MM/dd'" :clear-button="true" class="day" placeholder="yyyy/mm/dd" name="dateStart" v-model="dateStart"></datepicker>
                                 <span class="search" style="padding-left: 0;">～</span>
-                                <input class="day day2" type="text" placeholder="yyyy/mm/dd" name="example" v-model="dateEnd">
+                                <datepicker :format="'yyyy/MM/dd'" :clear-button="true" class="day day2" placeholder="yyyy/mm/dd" name="dateEnd" v-model="dateEnd"></datepicker>
                             </p>
                         </form>
                     </div>
@@ -247,11 +247,14 @@
 </template>
 
 <script scoped>
+import Datepicker from 'vuejs-datepicker';
+
 import { tdMixin } from '../mixins/testDescriptionMixin';
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import TDRelation from './TestDescriptionRelationship';
     export default{
         components: {
+            Datepicker,
             TDRelation,
         },
         mixins: [tdMixin, urlParameterMixin],
@@ -764,21 +767,27 @@ import TDRelation from './TestDescriptionRelationship';
                 }
             },
             dateMached: function(){
-                if(this.dateStart == '' && this.dateEnd == ''){
+                if(!this.dateStart && !this.dateEnd){
                     // this.getTestDescriptions(this.nameMatched);
                     
                     return this.nameMatched;
                 }
-                else if(this.dateEnd == ''){
+                else if(!this.dateEnd){
                     var fil_start = this.nameMatched.filter(function(el){
-                        return this.$options.filters.formatFn(el.UpdateDatetime) >= this.dateStart
+                        return(
+                            new Date(this.$options.filters.formatFn(el.UpdateDatetime)) >= 
+                            new Date(this.dateStart)
+                        )
                     },this)
                     // return this.getTestDescriptions(fil_start);
                     return fil_start;
                 }
-                else if(this.dateStart == ''){
+                else if(!this.dateStart){
                     var fil_end = this.nameMatched.filter(function(el){
-                        return this.$options.filters.formatFn(el.UpdateDatetime) <= this.dateEnd +1
+                        return(
+                            new Date(this.$options.filters.formatFn(el.UpdateDatetime)) <= 
+                            new Date(this.dateEnd)
+                        )
                     },this)
 
                     // return this.getTestDescriptions(fil_end);
@@ -786,8 +795,13 @@ import TDRelation from './TestDescriptionRelationship';
                 }
                 else{
                     var fil_full = this.nameMatched.filter(function(el){
-                        return this.$options.filters.formatFn(el.UpdateDatetime) >= this.dateStart
-                        && this.$options.filters.formatFn(el.UpdateDatetime) <= this.dateEnd +1
+                        return(
+                            new Date(this.$options.filters.formatFn(el.UpdateDatetime)) >= 
+                            new Date(this.dateStart)
+                            && 
+                            new Date(this.$options.filters.formatFn(el.UpdateDatetime)) <= 
+                            new Date(this.dateEnd)
+                        )
                     },this)
 
                     // return this.getTestDescriptions(fil_full);
@@ -900,6 +914,17 @@ import TDRelation from './TestDescriptionRelationship';
   padding: 15px 0px 0px;
   float: left;
 }
+
+#search > form div.vdp-datepicker.day,
+#search > form div.vdp-datepicker.day > div{
+    display:inline-block;
+}
+
+#search >>> span.vdp-datepicker__clear-button{
+    display: inline-block;
+    margin-left: -20px;
+}
+
 .star_check{
     margin-right: 10px;
     margin-left: 3px;

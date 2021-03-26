@@ -149,6 +149,8 @@ class AITManifestService:
                     TestRunnerParamTemplateMapper(name=parameter.name, value_type=parameter.type,
                                                   description=parameter.description,
                                                   default_value=parameter.default_value,
+                                                  min_value=parameter.min_value,
+                                                  max_value=parameter.max_value,
                                                   test_runner_id=test_runner_mapper.id))
             sql_db.session.add_all(test_runner_param_template_mapper_list)
 

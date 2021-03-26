@@ -243,6 +243,14 @@
                         <td class="ait_terms">
                           <span>{{ param.Name }}</span>
                           <span class="asterisk">&#042;</span>
+                          <span class="type">&#058; {{ param.Type }}</span>
+                          <span class="range" v-if="param.Type == 'float' || param.Type == 'int'">
+                            <br />
+                            <span class="min" v-if="param.Min !== null">Min: {{ param.Min }}</span>
+                            <span class="min unlimited" v-else>Min: unlimited</span>
+                            <span class="max" v-if="param.Max !== null">Max: {{ param.Max }}</span>
+                            <span class="max unlimited" v-else>Max: unlimited</span>
+                          </span>
                         </td>
                         <td class="ait_description">
                           <span>{{ param.Description }}</span>

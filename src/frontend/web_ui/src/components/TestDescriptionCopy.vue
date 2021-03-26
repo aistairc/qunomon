@@ -186,6 +186,7 @@
                                             <td class="ait_terms">
                                                 <span>{{ param.Name }}</span>
                                                 <span class="asterisk">&#042;</span>
+                                                <span class="type">&#058; {{ param.Type }}</span>
                                             </td>
                                             <td class="ait_description">
                                                 <span>{{ param.Description }}</span>

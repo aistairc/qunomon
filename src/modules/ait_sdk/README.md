@@ -49,6 +49,22 @@ python setup.py bdist_wheel
 
 ※tools\deploy.batの実行でも上記wheel作成を実行できる
 
+* テスト
+  1. wheelの作成  
+     前述のやり方でwheelを作成する
+  2. wheelのインストール
+    ```sh
+    cd dist
+    pip --no-cache-dir install --upgrade ait_sdk-{version}-py3-none-any.whl
+    cd ..
+    ```
+  3. テストの実行
+    ```sh
+    cd tests
+    python {プログラム名}
+    cd ..
+    ```
+
 ## Contribution
 
 N/A

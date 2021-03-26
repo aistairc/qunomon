@@ -18,11 +18,14 @@ class DownloadSchema(BaseSchema):
 
 
 class Parameter:
-    def __init__(self, name: str, type_: str, description: str, default_value: str = None) -> None:
+    def __init__(self, name: str, type_: str, description: str, default_value: str = None, 
+                 min_value: float = None, max_value: float = None) -> None:
         self.name = name
         self.type = type_
         self.description = description
         self.default_value = default_value
+        self.min_value = min_value
+        self.max_value = max_value
 
 
 class ParameterSchema(BaseSchema):
@@ -31,6 +34,8 @@ class ParameterSchema(BaseSchema):
     type_ = fields.Str(data_key='type', required=True)
     description = fields.Str(data_key='description', required=True)
     default_value = fields.Str(data_key='default_val', required=False)
+    min_value = fields.Float(data_key='min', required=False)
+    max_value = fields.Float(data_key='max', required=False)
 
 
 class Inventory:

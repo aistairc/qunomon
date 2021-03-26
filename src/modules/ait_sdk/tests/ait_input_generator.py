@@ -4,8 +4,8 @@
 
 
 import unittest
-from src.ait_sdk.common.files.ait_input_generator import AITInputGenerator
-from src.ait_sdk.common.files.ait_manifest_generator import AITManifestGenerator
+from ait_sdk.common.files.ait_input_generator import AITInputGenerator
+from ait_sdk.common.files.ait_manifest_generator import AITManifestGenerator
 
 
 class TestAITInputGenerator(unittest.TestCase):
@@ -27,10 +27,10 @@ class TestAITInputGenerator(unittest.TestCase):
         aaa.add_ait_parameters('name2', 'type2', 'description2')
         aaa.add_ait_measures('name1', 'type1', 'description1', 'structure1')
         aaa.add_ait_measures('name2', 'type2', 'description2', 'structure2')
-        aaa.add_ait_resources('name1', 'path1', 'type1', 'description1')
-        aaa.add_ait_resources('name2', 'path2', 'type2', 'description2')
-        aaa.add_ait_downloads('name1', 'path1', 'description1')
-        aaa.add_ait_downloads('name2', 'path2', 'description2')
+        aaa.add_ait_resources('name1', 'type1', 'description1')
+        aaa.add_ait_resources('name2', 'type2', 'description2')
+        aaa.add_ait_downloads('name1', 'description1')
+        aaa.add_ait_downloads('name2', 'description2')
         manifest_path = aaa.write()
 
         print('++ テスト開始')
