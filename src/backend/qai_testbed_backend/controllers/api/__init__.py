@@ -13,6 +13,8 @@ api.add_resource(healthcheck.HealthCheckAPI,
                  '/health-check')
 api.add_resource(ml_component.MLComponentAPI,
                  '/<organizer_id>/mlComponents')
+api.add_resource(ml_component.MLComponentDetailAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>')
 api.add_resource(testrunner.TestRunnerAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/runners')
 api.add_resource(testrunner.TestRunnerStatusAPI,

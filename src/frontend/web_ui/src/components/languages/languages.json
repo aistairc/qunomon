@@ -18,7 +18,8 @@
             "mlComponentsName": "MLコンポーネント名",
             "description": "説明",
             "domain": "分類",
-            "mlFrameworkName": "機械学習フレームワーク名"
+            "mlFrameworkName": "機械学習フレームワーク名",
+            "editOptions": "削除"
         },
         "mlComponentCreate": {
             "general": "基本情報",
@@ -309,7 +310,8 @@
             "mlComponentsName": "MLComponent Name",
             "description": "Description",
             "domain": "Domain",
-            "mlFrameworkName": "MLFrameworkName"
+            "mlFrameworkName": "MLFrameworkName",
+            "editOptions": "Delete"
         },
         "mlComponentCreate": {
             "general": "General",

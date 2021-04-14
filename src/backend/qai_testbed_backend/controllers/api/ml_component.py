@@ -6,7 +6,7 @@ from marshmallow import ValidationError
 from qlib.utils.logging import get_logger, log
 
 from ..dto import ResultSchema, Result
-from ..dto.ml_component import GetMLComponentSchemaResSchema, PostMLComponentReqSchema, PostMLComponentResSchema
+from ..dto.ml_component import GetMLComponentSchemaResSchema, PostMLComponentReqSchema, PostMLComponentResSchema, DeleteMLComponentResSchema
 from ...usecases.ml_component import MLComponentService
 from ...across.exception import QAIException, QAINotFoundException
 
@@ -71,3 +71,20 @@ class MLComponentAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='P29999', message='internal server error: {}'.format(e))), 500
+
+class MLComponentDetailAPI(Resource):
+    @inject
+    def __init__(self, service: MLComponentService):
+        self.service = service
+
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str):
+        try:
+            res = self.service.delete_ml_component(organizer_id, int(ml_component_id))
+            return DeleteMLComponentResSchema().dump(res), 200
+        except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(e.to_result()), e.status_code
+        except Exception as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='P39999', message='internal server error: {}'.format(e))), 500

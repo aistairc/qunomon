@@ -46,7 +46,19 @@
                 </div>
                 <!--表-->
                 <div id="table" align="center">
-                    <VueGoodTable ref="mlTable" :columns="columns" styleClass="vgt-table" :rows="rows" max-height="350px" :fixed-header="true" align="center" :search-options="{enabled: true}" @on-row-click="onRowClick" />
+                    <VueGoodTable ref="mlTable" :columns="columns" styleClass="vgt-table" :rows="rows" max-height="350px" :fixed-header="true" align="center" :search-options="{enabled: true}" @on-row-click="onRowClick" >
+                        <template slot="table-row" slot-scope="props">
+                            <!--EditOptions-->
+                            <span v-if="props.column.field == 'edit_options'">
+                                <template v-if="$i18n.locale === 'en'">
+                                    <img src="~@/assets/delete.svg" alt="delete" title="delete" class="icon" @click="deleteMlComponent(props)"/>
+                                </template>
+                                <template v-else>
+                                    <img src="~@/assets/delete.svg" alt="削除" title="削除" class="icon" @click="deleteMlComponent(props)"/>
+                                </template>
+                            </span>
+                        </template>
+                    </VueGoodTable>
                 </div>
             </div>
             <!-- フッタ -->
@@ -80,7 +92,7 @@ export default {
                     label: this.setTableLanguage("mlc_name"),
                     field: "mlc_name",
                     thClass: 'th1',
-                    width: "35%",
+                    width: "25%",
                 },
                 {
                     label: this.setTableLanguage("description"),
@@ -92,7 +104,7 @@ export default {
                     label: this.setTableLanguage("domain"),
                     field: "domain",
                     thClass: 'th3',
-                    width: "15%",
+                    width: "13%",
                 },
                 {
                     label: this.setTableLanguage("mlf_name"),
@@ -100,8 +112,17 @@ export default {
                     thClass: 'th4',
                     width: "25%",
                 },
+                {
+                    label: this.setTableLanguage("edit_options"),
+                    field: "edit_options",
+                    thClass: 'th5',
+                    width: "7%",
+                    sortable: false,
+                },
             ],
-            rows: []
+            rows: [],
+            // 削除ボタンが押されたらtrueにするフラグ
+            del_exe_flag: false
         }
     },
     mounted: function () {
@@ -141,6 +162,8 @@ export default {
                         return this.languagedata.ja.mlComponents.domain;
                     case 'mlf_name':
                         return this.languagedata.ja.mlComponents.mlFrameworkName;
+                    case 'edit_options':
+                        return this.languagedata.ja.mlComponents.editOptions;
                     default:
                 }
             } else if (this.$i18n.locale == 'en') {
@@ -153,6 +176,8 @@ export default {
                         return this.languagedata.en.mlComponents.domain;
                     case 'mlf_name':
                         return this.languagedata.en.mlComponents.mlFrameworkName;
+                    case 'edit_options':
+                        return this.languagedata.en.mlComponents.editOptions;
                     default:
                 }
             }
@@ -205,13 +230,39 @@ export default {
             this.key = this.key ? 0 : 1;
         },
         onRowClick(params) {
-            this.screenTransion(params.row.id);
+            if (this.del_exe_flag == false) {
+                // 削除ボタンが押されていない場合は通常の画面遷移
+                this.screenTransion(params.row.id);
+            }
+            // 削除ボタンフラグをfalseに戻す
+            this.del_exe_flag = false;
         },
         screenTransion(mlComponentId) {
             sessionStorage.setItem('mlComponentId', mlComponentId);
             this.$router.push({
                 name: 'TestDescriptions'
             });
+        },
+        deleteMlComponent(params) {
+            this.del_exe_flag = true;
+            if (confirm(this.$t("confirm.delete"))) {
+                const url = this.$backendURL +
+                    '/' +
+                    this.organizationIdCheck +
+                    '/mlComponents/' +
+                    params.row.id
+                this.$axios.delete(url)
+                    .then((response) => {
+                        this.result = response.data;
+                        window.location.reload()
+                    })
+                    .catch((error) => {
+                        this.$router.push({
+                            name: 'Information',
+                            params: {error}
+                        })
+                    })
+            }
         }
     }
 }

@@ -31,6 +31,10 @@ content-type: application/json
 }
 
 ###
+# API: DELETE mlComponents
+DELETE {{baseUrl}}/dep-a/mlComponents/1
+
+###
 # API: POST testDescriotions
 POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions
 content-type: application/json

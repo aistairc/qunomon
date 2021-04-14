@@ -15,6 +15,7 @@ class MLComponentMapper(sql_db.Model):
     name = sa.Column(sa.String, nullable=False)
     description = sa.Column(sa.String, nullable=False)
     problem_domain = sa.Column(sa.String, nullable=False)
+    delete_flag = sa.Column(sa.Boolean, unique=False, default=False)
 
     org_id = sa.Column(sa.String, sa.ForeignKey('M_Organization.id'))
     ml_framework_id = sa.Column(sa.Integer, sa.ForeignKey('M_MLFrameworkMapper.id'))
@@ -29,5 +30,6 @@ class MLComponentMapper(sql_db.Model):
             name=self.name,
             description=self.description,
             problem_domain=self.problem_domain,
-            ml_framework_name=self.ml_framework.name
+            ml_framework_name=self.ml_framework.name,
+            delete_flag=self.delete_flag,
         )

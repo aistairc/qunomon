@@ -49,7 +49,7 @@ ordereddict==1.1          # via funcsigs
 pandas==0.22.0            # via airflow
 psutil>=5.6.6             # via airflow
 pycparser==2.18           # via cffi
-pygments==2.2.0           # via airflow
+pygments>=2.7.4           # via airflow
 python-daemon==2.1.2      # via airflow
 python-dateutil==2.7.2    # via airflow, croniter, pandas
 python-editor==1.0.3      # via alembic

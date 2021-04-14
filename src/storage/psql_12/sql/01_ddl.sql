@@ -284,7 +284,8 @@ CREATE TABLE public."M_MLComponent" (
     description character varying NOT NULL,
     problem_domain character varying NOT NULL,
     org_id character varying,
-    ml_framework_id integer
+    ml_framework_id integer,
+    delete_flag boolean
 );
 
 

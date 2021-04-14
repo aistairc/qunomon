@@ -6,13 +6,14 @@ from . import Result, ResultSchema, BaseSchema
 
 
 class MLComponent:
-    def __init__(self, name: str, description: str, problem_domain: str, ml_framework_name: str,  id_: int = None)\
+    def __init__(self, name: str, description: str, problem_domain: str, ml_framework_name: str, delete_flag: bool, id_: int = None)\
             -> None:
         self.id_ = id_
         self.name = name
         self.description = description
         self.problem_domain = problem_domain
         self.ml_framework_name = ml_framework_name
+        self.delete_flag = delete_flag
 
 
 class GetMLComponentRes:
@@ -67,3 +68,11 @@ class PostMLComponentResSchema(BaseSchema):
     __model__ = PostMLComponentRes
     result = fields.Nested(ResultSchema, data_key='Result')
     ml_component_id = fields.Integer(data_key='MLComponentId')
+
+class DeleteMLComponentRes:
+    def __init__(self, result: Result) -> None:
+        self.result = result
+
+class DeleteMLComponentResSchema(BaseSchema):
+    __model__ = DeleteMLComponentRes
+    result = fields.Nested(ResultSchema, data_key='Result')

@@ -246,6 +246,70 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Result'
+  '/{OrganizerId}/mlComponents/{mlComponentsId}':
+    delete:
+      tags:
+        - mlComponents
+      summary: 機械学習コンポーネント削除.
+      description: |
+        機械学習コンポーネント一覧表示から、選択した機械学習コンポーネントを削除する。
+        削除する機械学習コンポーネントに関連するインベントリ情報とテストディスクリプション情報を削除する。
+      parameters:
+        - name: OrganizerId
+          in: path
+          description: 組織ID
+          required: true
+          schema:
+            type: string
+        - name: mlComponentsId
+          in: path
+          description: 機械学習コンポーネントId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description:  削除成功通知
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'P32000'
+                  Message: success.
+        '404':
+          description:  アクセスエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'P34000'
+                  Message: not found ml_component.
+        '422':
+          description: |
+            不正リクエスト
+            - BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'P39000'
+                  Message: database error.
+        '500':
+          description: 予期せぬエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'P39999'
+                  Message: internal server error
   '/mlFrameworks':
     get:
       tags:
@@ -1445,6 +1509,12 @@ paths:
                             type: string
                           Type:
                             type: string
+                          Min:
+                            type: number
+                            description: データが存在しない場合、この項目は存在しない
+                          Max:
+                            type: number
+                            description: データが存在しない場合、この項目は存在しない
                           Description:
                             type: string
                           DefaultVal:
@@ -1535,16 +1605,22 @@ paths:
                         - Id: 1
                           Name: Threshold
                           Type: float
+                          Min: 0.0
+                          Max: 1.0
                           Description: "敵対的生成のずらし具合, \\epsilon \\in \\{0.0, 1.0\\}"
                           DefaultVal: "0.5"
                         - Id: 2
                           Name: Lower Limit
                           Type: float
+                          Min: 0.0
+                          Max: null
                           Description: "敵対的生成のずらし具合, \\epsilon \\in \\{0.0, 1.0\\}"
                           DefaultVal: "0.5"
                         - Id: 3
                           Name: Upper Limit
                           Type: float
+                          Min: null
+                          Max: 1.0
                           Description: "敵対的生成のずらし具合, \\epsilon \\in \\{0.0, 1.0\\}"
                           DefaultVal: "0.5"
                       TargetInventories:

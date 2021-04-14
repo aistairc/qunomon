@@ -229,9 +229,9 @@ def _init_db_demo_1():
     extensions.sql_db.session.add_all(orgs)
     extensions.sql_db.session.flush()
 
-    projs = [MLComponentMapper(name='A社住宅価格予測システム', org_id=orgs[0].id),
-             MLComponentMapper(name='B社文字認識システム', org_id=orgs[0].id),
-             MLComponentMapper(name='C社ゴルフスコア読み取りシステム', org_id=orgs[0].id)]
+    projs = [MLComponentMapper(name='A社住宅価格予測システム', org_id=orgs[0].id, delete_flag=False),
+             MLComponentMapper(name='B社文字認識システム', org_id=orgs[0].id, delete_flag=False),
+             MLComponentMapper(name='C社ゴルフスコア読み取りシステム', org_id=orgs[0].id, delete_flag=False)]
     extensions.sql_db.session.add_all(projs)
     extensions.sql_db.session.flush()
 
@@ -584,15 +584,18 @@ def _init_db_demo_2():
     ml_components = [MLComponentMapper(name='A社住宅価格予測-機械学習コンポーネント', org_id=orgs[0].id,
                                        description='A社の住宅価格を予測する機械学習コンポーネント',
                                        problem_domain='重回帰分析',
-                                       ml_framework_id=ml_frameworks[0].id),
+                                       ml_framework_id=ml_frameworks[0].id,
+                                       delete_flag=False),
                      MLComponentMapper(name='B社文字認識-機械学習コンポーネント', org_id=orgs[0].id,
                                        description='B社の文字を認識する機械学習コンポーネント',
                                        problem_domain='画像分類',
-                                       ml_framework_id=ml_frameworks[0].id),
+                                       ml_framework_id=ml_frameworks[0].id,
+                                       delete_flag=False),
                      MLComponentMapper(name='C社ゴルフスコア読取-機械学習コンポーネント', org_id=orgs[0].id,
                                        description='C社のスコア表枠組み、文字を認識する機械学習コンポーネント',
                                        problem_domain='レイアウト認識、画像分類',
-                                       ml_framework_id=ml_frameworks[0].id)]
+                                       ml_framework_id=ml_frameworks[0].id,
+                                       delete_flag=False)]
     extensions.sql_db.session.add_all(ml_components)
     extensions.sql_db.session.flush()
 
