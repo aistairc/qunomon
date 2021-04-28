@@ -28,7 +28,8 @@
       "name": "privileged_classes",
       "type": "float",
       "description": "privileged classes",
-      "default_val": "25.0"
+      "default_val": "25.0",
+      "min": "0"
     }
   ],
   "report": {

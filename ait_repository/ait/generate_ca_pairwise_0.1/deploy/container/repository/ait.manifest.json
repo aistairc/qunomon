@@ -22,12 +22,13 @@
       "name": "order_combination",
       "type": "int",
       "description": "Order of combinations.",
-      "default_val": "2"
+      "default_val": "2",
+      "min": "2"
     },
     {
       "name": "seed",
       "type": "int",
-      "description": "\n                                            Randomize generation, N - seed.\n                                            if you fix seed, please set it to 1 or more.\n                                            ",
+      "description": "\n                                            Randomize generation, N - seed.\n                                            if you fix seed, please set it to 1 or more.\n                                            Alternatively, if you set it to 0 or less, seed will not be fixed.\n                                            ",
       "default_val": "-1"
     }
   ],

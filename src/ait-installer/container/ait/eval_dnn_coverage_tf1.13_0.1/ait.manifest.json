@@ -40,19 +40,25 @@
       "name": "mnist_image_px_size",
       "type": "int",
       "description": "\n                                            MNIST Imagge pixel size.\n                                            ",
-      "default_val": "28"
+      "default_val": "28",
+      "min": "28",
+      "max": "28"
     },
     {
       "name": "determination_on_activation",
       "type": "int",
       "description": "\n                                            Neuron Activity/Inactivity\n\n                                            Determination Type\n\n                                            0: Threshold Determination\n\n                                            1: Upper/Lower Limit Determination\n\n                                            2: N Cases of Maximum Value Determination\n                                            ",
-      "default_val": "0"
+      "default_val": "0",
+      "min": "0",
+      "max": "2"
     },
     {
       "name": "threshold",
       "type": "float",
       "description": "\n                                            Threshold\n\n                                            Valid only for threshold determination\n                                            ",
-      "default_val": "0"
+      "default_val": "0",
+      "min": "0",
+      "max": "1"
     },
     {
       "name": "lower_bound",
@@ -70,19 +76,24 @@
       "name": "activation_filter_no",
       "type": "int",
       "description": "\n                                            Number of Cases N\n\n                                            The default value is 1\n\n                                            (Valid only for N Cases of maximum value determination)\n                                            ",
-      "default_val": "1"
+      "default_val": "1",
+      "min": "0"
     },
     {
       "name": "heat_map_type",
       "type": "int",
       "description": "\n                                            Heat Map Generation Method Type\n\n                                            The default value is 1\n\n                                            0: Generation Not Necessary\n\n                                            1: 0/1 Table\n\n                                            2: Simple Increment\n\n                                            3: Density Coverage\n\n                                            ",
-      "default_val": "1"
+      "default_val": "1",
+      "min": "0",
+      "max": "3"
     },
     {
       "name": "combination_type",
       "type": "int",
       "description": "\n                                            Combination Type\n\n                                            The default value is 0\n\n                                            0: Implementation Not Necessary\n\n                                            1: Execute\n                                            ",
-      "default_val": "0"
+      "default_val": "0",
+      "min": "0",
+      "max": "1"
     },
     {
       "name": "combination_first",
@@ -106,49 +117,58 @@
       "name": "edit_num",
       "type": "int",
       "description": "\n                                            Number of data manipulated at a time\n\n                                            The default value is 100\n                                            ",
-      "default_val": "100"
+      "default_val": "100",
+      "min": "1"
     },
     {
       "name": "target_rate",
       "type": "float",
       "description": "\n                                            Target Coverage Rate (Execution terminates when the coverage reaches Target Coverage Rate)\n\n                                            The default value is 1.0\n                                            ",
-      "default_val": "1.0"
+      "default_val": "1.0",
+      "min": "0",
+      "max": "1.0"
     },
     {
       "name": "increase_rate",
       "type": "float",
       "description": "\n                                            Expected Coverage Growth Rate (if the coverage growth rage compared to 5 times before is less than Expected Coverage Growth Rate, unused manipulations are preferentially selected)\n\n                                            The default value is 0.0\n                                            ",
-      "default_val": "0"
+      "default_val": "0",
+      "max": "0"
     },
     {
       "name": "dataset_x_num",
       "type": "int",
       "description": "\n                                            Number of Input Data Placeholders (in the given dataset)\n\n                                            No default value (Mandatory)\n                                            ",
-      "default_val": ""
+      "default_val": "",
+      "min": "1"
     },
     {
       "name": "dataset_y_num",
       "type": "int",
       "description": "\n                                            Number of Label Data Placeholders (in the given dataset)\n\n                                            No default value (Mandatory)\n                                            ",
-      "default_val": ""
+      "default_val": "",
+      "min": "1"
     },
     {
       "name": "dataset_k_num",
       "type": "int",
       "description": "\n                                            Number of Constant Data Placeholders (in the given dataset)\n\n                                            No default value (Mandatory)\n                                            ",
-      "default_val": ""
+      "default_val": "",
+      "min": "1"
     },
     {
       "name": "split_dataset_start",
       "type": "int",
       "description": "\n                                            Dataset Division Start Position (Data from Start Position to End Position of the given dataset are used for coverage testing)\n\n                                            The default value is 0\n                                            ",
-      "default_val": "0"
+      "default_val": "0",
+      "min": "0"
     },
     {
       "name": "split_dataset_end",
       "type": "int",
       "description": "\n                                            Dataset Division End Position (Data from Start Position to End Position of the given dataset are used for coverage testing)\n\n                                            The default value is the size of the given dataset\n                                            ",
-      "default_val": "100"
+      "default_val": "100",
+      "min": "1"
     },
     {
       "name": "implement_class_name",

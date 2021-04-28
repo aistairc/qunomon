@@ -87,17 +87,17 @@ class NotifyRunCompeteService:
             run.ait_output_file = str(output_file)
             run.done_datetime = datetime.datetime.utcnow()
 
+            # マシン情報をDBに登録
+            machine_info = output_json['ExecuteInfo']['MachineInfo']
+            run.cpu_brand = machine_info['cpu_brand']
+            run.cpu_arch = machine_info['cpu_arch']
+            run.cpu_clocks = machine_info['cpu_clocks']
+            run.cpu_cores = machine_info['cpu_cores']
+            run.memory_capacity = machine_info['memory_capacity']
+
             if 'Result' in output_json:
                 # measurementごとにチェック
                 measure_results = {}
-
-                # マシン情報をDBに登録
-                machine_info = output_json['ExecuteInfo']['MachineInfo']
-                run.cpu_brand = machine_info['cpu_brand']
-                run.cpu_arch = machine_info['cpu_arch']
-                run.cpu_clocks = machine_info['cpu_clocks']
-                run.cpu_cores = machine_info['cpu_cores']
-                run.memory_capacity = machine_info['memory_capacity']
 
                 # Measuresが存在しないAITは無条件でrun.resultをOKに設定する
                 if 'Measures' not in output_json['Result']:
@@ -154,9 +154,12 @@ class NotifyRunCompeteService:
                 run.result = 'ERR'
                 # エラー発生時、エラー詳細をdetailに設定する
                 if 'Error' in output_json['ExecuteInfo']:
-                    run.result_detail = output_json['ExecuteInfo']['Error']
+                    run.error_code = output_json['ExecuteInfo']['Error']['Code']
+                    run.result_detail = output_json['ExecuteInfo']['Error']['Detail']
                 else:
-                    run.result_detail = run.result
+                    # output jsonにErrorセクションなし。フォーマット不整合。
+                    run.error_code = 'E998'
+                    run.result_detail = 'Error section not found in output.json.'
 
             # job更新
             self._update_job_without_commit(job_id)
@@ -250,6 +253,9 @@ class NotifyRunCompeteService:
 
     # TestRunnerの実行結果（グラフなど）をテーブルに格納する
     def _update_graph_without_commit(self, td: TestDescriptionMapper, output_json: dict, output_dir: Path):
+        if 'Result' not in output_json:
+            return
+
         graph_index = 0
 
         for res in output_json['Result']['Resources']:
@@ -288,6 +294,9 @@ class NotifyRunCompeteService:
             sql_db.session.add(insert_graph)
 
     def _update_downloadable_data_without_commit(self, td: TestDescriptionMapper, output_json: dict, output_dir: Path):
+        if 'Result' not in output_json:
+            return
+
         for res in output_json['Result']['Downloads']:
             downloadable_template_mapper = DownloadableTemplateMapper.query. \
                 filter(DownloadableTemplateMapper.test_runner_id == td.test_runner_id). \

@@ -5,10 +5,11 @@ import json
 from datetime import datetime
 import psutil
 import cpuinfo
+from pathlib import Path
 
 from .ait_manifest import AITManifest
 from ...utils.logging import log, get_logger
-
+from ...utils.exception import InvalidOperationException
 
 logger = get_logger()
 
@@ -103,7 +104,8 @@ class AITOutput:
                      output_file_path: str,
                      start_dt: datetime,
                      stop_dt: datetime,
-                     error: str = None) -> None:
+                     ex: Exception = None,
+                     error_detail: str = None) -> None:
 
         """
         ait.output.jsonを出力します。
@@ -126,10 +128,15 @@ class AITOutput:
 
                 Specify the date and time when the process ends.
 
-            error (str) :
-                エラー情報を指定します。
+            ex (exception) :
+                例外を指定します。
 
-                Specify the error information.
+                Specify an exception.
+
+            error_detail (str) :
+                エラー詳細情報を指定します。
+
+                Specify detailed error information.
         """
         output_json = {
             'AIT': {
@@ -143,8 +150,23 @@ class AITOutput:
                 }
             }
         
-        if error is not None:
-            output_json['ExecuteInfo']['Error'] = error
+        if ex is not None:
+            if isinstance(ex, InvalidOperationException):
+                # パラメータ定義不正:
+                code = 'E101'
+            elif isinstance(ex, ValueError) or isinstance(ex, FileNotFoundError):
+                # インベントリ、パラメータに不備
+                code = 'E102'
+            elif isinstance(ex, MemoryError) or isinstance(ex, RuntimeError) or isinstance(ex, SystemError):
+                # システムエラー
+                code = 'E999'
+            else:
+                # その他処理エラー
+                code = 'E901'
+            output_json['ExecuteInfo']['Error'] = {
+                'Code': code,
+                'Detail': error_detail
+            }
         else:
             if (self._measures is not None) or (self._resources is not None) or (self._downloads is not None):
                 output_json['Result'] = {}
@@ -154,6 +176,10 @@ class AITOutput:
                     output_json['Result']['Resources'] = self._resources
                 if (self._downloads is not None) and (len(self._downloads) > 0):
                     output_json['Result']['Downloads'] = self._downloads
+
+        parent_dir = Path(output_file_path).parent
+        if not parent_dir.exists():
+            parent_dir.mkdir(parents=True, exist_ok=True)
 
         with open(output_file_path, 'w', encoding='utf-8') as f:
             json.dump(output_json, f, indent=4, ensure_ascii=False)

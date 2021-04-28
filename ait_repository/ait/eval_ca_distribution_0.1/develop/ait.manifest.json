@@ -22,13 +22,15 @@
       "name": "attribute_no",
       "type": "int",
       "description": "Total number of attribute for distibution analysis",
-      "default_val": "6"
+      "default_val": "6",
+      "min": "2"
     },
     {
       "name": "dimension",
       "type": "int",
       "description": "Dimensions of how many attributes to combine for distibution analysis",
-      "default_val": "2"
+      "default_val": "2",
+      "min": "2"
     }
   ],
   "report": {

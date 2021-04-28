@@ -111,6 +111,10 @@
             "testDescriptions": "テストディスクリプション一覧",
             "analysis": "分析",
             "testResult": "テスト結果",
+            "errorInfo": "エラー情報",
+            "errorCode": "エラーコード",
+            "errorMessage": "エラーメッセージ",
+            "errorDetail": "エラー詳細",
             "runThisTest": "テスト実行結果",
             "setQuality": "品質設定",
             "qualityDimension": "品質特性",
@@ -289,6 +293,15 @@
             "create": "作成してよろしいですか？",
             "edit": "編集してよろしいですか？",
             "delete": "削除してよろしいですか？"
+        },
+        "testDescriptionErrorMessage": {
+            "E101": "パラメータの型定義が不正です。\nAITのパラメータ定義を見直してください。",
+            "E102": "TestDescriptionのインベントリ設定、またはパラメータが不正です。\nエラー詳細を確認し、設定を見直ししてください。",
+            "E201": "AIT実行前エラーが発生しました。\nqunomonを再起動しても発生するようでしたら、開発チームに問い合わせてください。",
+            "E901": "AIT実行中エラーが発生しました。\nエラー詳細を確認し、解決してください。\n解決が困難でしたら開発チームに問い合わせてください。",
+            "E998": "インターフェース不整合が発生しています。\n開発チームに問い合わせてください。",
+            "E999": "システムエラーが発生しました。\nOS再起動、qunomon再起動を試してください。\n改善しない場合は開発チームに問い合わせてください。",
+            "undefined": "未定義のエラーが発生しました。\n開発チームに問い合わせてください。"
         }
     },
     "en": {
@@ -403,6 +416,10 @@
             "testDescriptions": "TestDescriptions",
             "analysis": "Analysis",
             "testResult": "Test Result",
+            "errorInfo": "Error Information",
+            "errorCode": "Error Code",
+            "errorMessage": "Error Message",
+            "errorDetail": "Error Detail",
             "runThisTest": "Run test Result",
             "setQuality": "Set Quality",
             "qualityDimension": "Quality Dimension",
@@ -580,6 +597,15 @@
             "create": "Create this?",
             "edit": "Edit this?",
             "delete": "Delete this?"
+        },
+        "testDescriptionErrorMessage": {
+            "E101": "The parameter type definition is invalid. \nPlease check the parameter definition in AIT.",
+            "E102": "Invalid inventory setting or parameter for TestDescription. \nPlease check the error details and fix the settings.",
+            "E201": "An AIT pre-run error has occurred. \nIf this still occurs after restarting qunomon, please contact the development team.",
+            "E901": "An error occurred during AIT execution. \nPlease check the error details and resolve it. \nIf you are having difficulty, please contact the development team.",
+            "E998": "An interface error has occurred. \nPlease contact the development team for assistance.",
+            "E999": "A system error has occurred. \nTry rebooting the OS and restarting qunomon. \nIf there is no improvement, please contact the development team.",
+            "undefined": "An undefined error has occurred. \nPlease contact the development team."
         }
     }
 }

@@ -265,6 +265,7 @@ class JobService:
         run.status = 'DONE'
         run.result = 'ERR'
         run.result_detail = error_msg
+        run.error_code = 'E201'
         run.done_datetime = datetime.datetime.now()
         sql_db.session.commit()
 

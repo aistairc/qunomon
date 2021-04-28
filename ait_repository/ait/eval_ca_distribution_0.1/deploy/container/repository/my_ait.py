@@ -20,7 +20,7 @@
 # |11|license attribute set|1|Use only notebook launch.<br>Setting attribute for license.|should edit|
 # |12|prepare deploy|1|Use only notebook launch.<br>Convert to python programs and create dag.py.|no edit|
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -128,12 +128,29 @@ if not is_ait_launch:
     manifest_genenerator.set_ait_version('0.1')
     manifest_genenerator.set_ait_quality('https://airc.aist.go.jp/aiqm/quality/internal/Distribution_of_training_data')
     manifest_genenerator.set_ait_reference('')
-    manifest_genenerator.add_ait_inventories('Data', 'dataset', 'Classification of different attributes related to autonomous driving scenarios', ['csv'], 'https://bdd-data.berkeley.edu/')
-    manifest_genenerator.add_ait_parameters('attribute_no', 'int', 'Total number of attribute for distibution analysis', '6')
-    manifest_genenerator.add_ait_parameters('dimension', 'int', 'Dimensions of how many attributes to combine for distibution analysis', '2')
-    manifest_genenerator.add_ait_resources('distibution_csv', 'table', 'Table of distribution for each combination')
-    manifest_genenerator.add_ait_resources('distibution_plot', 'picture', 'Plot of distribution for each combination')
-    manifest_genenerator.add_ait_downloads('Log', 'AITLog')
+    manifest_genenerator.add_ait_inventories(name='Data',
+                                             type_='dataset',
+                                             description='Classification of different attributes related to autonomous driving scenarios',
+                                             format_=['csv'],
+                                             schema='https://bdd-data.berkeley.edu/')
+    manifest_genenerator.add_ait_parameters(name='attribute_no',
+                                            type_='int',
+                                            description='Total number of attribute for distibution analysis',
+                                            default_val='6',
+                                            min_value='2')
+    manifest_genenerator.add_ait_parameters(name='dimension',
+                                            type_='int',
+                                            description='Dimensions of how many attributes to combine for distibution analysis',
+                                            default_val='2',
+                                            min_value='2')
+    manifest_genenerator.add_ait_resources(name='distibution_csv',
+                                           type_='table',
+                                           description='Table of distribution for each combination')
+    manifest_genenerator.add_ait_resources(name='distibution_plot',
+                                           type_='picture',
+                                           description='Plot of distribution for each combination')
+    manifest_genenerator.add_ait_downloads(name='Log',
+                                           description='AITLog')
     manifest_path = manifest_genenerator.write()
 
 

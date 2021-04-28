@@ -55,7 +55,8 @@
       "name": "Combination_index",
       "type": "int",
       "description": "Index of unsound CA combination case",
-      "default_val": "5"
+      "default_val": "5",
+      "min": "1"
     }
   ],
   "report": {

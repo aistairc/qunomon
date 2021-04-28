@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.4
--- Dumped by pg_dump version 12.4
+-- Dumped from database version 12.5
+-- Dumped by pg_dump version 12.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -283,9 +283,9 @@ CREATE TABLE public."M_MLComponent" (
     name character varying NOT NULL,
     description character varying NOT NULL,
     problem_domain character varying NOT NULL,
+    delete_flag boolean,
     org_id character varying,
-    ml_framework_id integer,
-    delete_flag boolean
+    ml_framework_id integer
 );
 
 
@@ -1052,6 +1052,7 @@ CREATE TABLE public."T_Run" (
     ait_output_file character varying,
     log_file character varying,
     test_description_id integer,
+    error_code character varying,
     job_id integer
 );
 

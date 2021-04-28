@@ -46,7 +46,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[2]:
+# In[ ]:
 
 
 #########################################
@@ -78,7 +78,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[ ]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################
@@ -229,15 +229,19 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters(name='epsilon', 
                                             type_='float', 
                                             description='adversarial example perturbation', 
-                                            default_val='0.01')
+                                            default_val='0.01',
+                                            min_value='0')
     manifest_genenerator.add_ait_parameters(name='class_count', 
                                             type_='int', 
                                             description='multiple classification class number', 
-                                            default_val='10')
+                                            default_val='10',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='image_px_size', 
                                             type_='int', 
                                             description='prediction image pixel size', 
-                                            default_val='28')
+                                            default_val='28',
+                                            min_value='1',
+                                            max_value='28')
     manifest_genenerator.add_ait_parameters(name='auc_average', 
                                             type_='string', 
                                             description='{‘micro’, ‘macro’, ‘samples’, ‘weighted’}\r\nref:\r\nhttps://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html', 
@@ -648,7 +652,7 @@ def main() -> None:
     
     # 敵対的サンプル画像生成
     data_tf = tf.convert_to_tensor(X_test_normalize, np.float32)
-    adv_x = create_adversarial_images(data_tf, y_test, model, epsilon=0.1)
+    adv_x = create_adversarial_images(data_tf, y_test, model, epsilon=ait_input.get_method_param_value('epsilon'))
     
     # 推論
     y_pred = model.predict(adv_x)

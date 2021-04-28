@@ -119,6 +119,31 @@
                                 <span>NA</span>
                             </template>
                         </div>
+                        <!-- エラー情報 -->
+                        <template v-if="tdDtl.TestDescriptionResult">
+                            <template v-if="tdDtl.TestDescriptionResult.Summary ==='ERR'">
+                                <div id="error_info" class="accordion">
+                                    <label>{{$t("testDescriptionDetail.errorInfo")}}</label>
+                                    <div id="error_code" class="accordion detail">
+                                        <label>{{$t("testDescriptionDetail.errorCode")}}</label>
+                                        <template v-if="tdDtl.TestDescriptionResult.ErrorCode">
+                                            <span>{{tdDtl.TestDescriptionResult.ErrorCode}}</span>
+                                        </template>
+                                        <template v-else>
+                                            <span>undefined</span>
+                                        </template>
+                                    </div>
+                                    <div id="error_message" class="accordion detail">
+                                        <label>{{$t("testDescriptionDetail.errorMessage")}}</label>
+                                        <span style="white-space:pre-wrap; word-wrap:break-word;">{{tdErrorMessage}}</span>
+                                    </div>
+                                    <div id="error_detail" class="accordion detail">
+                                        <label>{{$t("testDescriptionDetail.errorDetail")}}</label>
+                                        <span style="white-space:pre-wrap; word-wrap:break-word;">{{tdDtl.TestDescriptionResult.Detail}}</span>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
                         <!-- 取得グラフ -->
                         <template v-if="tdDtl.TestDescriptionResult">
                             <template v-if="tdDtl.TestDescriptionResult.Summary ==='OK' || tdDtl.TestDescriptionResult.Summary === 'NG'">
@@ -514,6 +539,7 @@ export default {
                 selectAllByGroup: false
             },
             isExpanded: false,
+            tdErrorMessage: '',
         }
     },
     components: {
@@ -602,6 +628,7 @@ export default {
                 if(this.tdGraphs != null && this.tdGraphs != "") {
                     this.creatRowData();
                 }
+                this.setTDErrorMessage();
             })
             .catch((error) => {
                 this.$router.push({
@@ -709,9 +736,28 @@ export default {
                 }
             }
         },
+        setTDErrorMessageLanguage(errorCode) {
+            // mountよりも先に呼び出されるので、ここで言語設定を呼び出す。
+            this.setLanguageData()
+            this.languagedata = require('./languages/languages.json');
+            if (this.$i18n.locale == 'ja') {
+                if(typeof this.languagedata.ja.testDescriptionErrorMessage[errorCode] != 'undefined'){
+                    return this.languagedata.ja.testDescriptionErrorMessage[errorCode];
+                }else{
+                    return this.languagedata.ja.testDescriptionErrorMessage['undefined'];
+                }
+            } else if (this.$i18n.locale == 'en') {
+                if(typeof this.languagedata.en.testDescriptionErrorMessage[errorCode] != 'undefined'){
+                    return this.languagedata.en.testDescriptionErrorMessage[errorCode];
+                }else{
+                    return this.languagedata.en.testDescriptionErrorMessage['undefined'];
+                }
+            }
+        },
         changeLanguage(lang) {
             sessionStorage.setItem('language', lang);
             this.changeTableTitleLanguage();
+            this.setTDErrorMessage();
         },
         changeTableTitleLanguage() {
             for (var i = 0; i < this.columns.length; i++) {
@@ -719,6 +765,19 @@ export default {
             }
             for (var j = 0; j < this.columnDefs.length; j++) {
                 this.columnDefs[j].label = this.setReportTableLanguage(this.columnDefs[j].field)
+            }
+        },
+        setTDErrorMessage(){
+            if(this.tdDtl.TestDescriptionResult == null){
+                return;
+            }
+
+            if(this.tdDtl.TestDescriptionResult.Summary == "ERR"){
+                if(typeof this.tdDtl.TestDescriptionResult.ErrorCode == 'undefined'){
+                    this.tdErrorMessage = this.setTDErrorMessageLanguage('undefined');
+                }else{
+                    this.tdErrorMessage = this.setTDErrorMessageLanguage(this.tdDtl.TestDescriptionResult.ErrorCode);
+                }
             }
         },
         getTDResources(val) {

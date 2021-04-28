@@ -40,13 +40,17 @@
       "name": "class_count",
       "type": "int",
       "description": "multiple classification class number",
-      "default_val": "10"
+      "default_val": "10",
+      "min": "10",
+      "max": "10"
     },
     {
       "name": "image_px_size",
       "type": "int",
       "description": "prediction image pixel size",
-      "default_val": "28"
+      "default_val": "28",
+      "min": "28",
+      "max": "28"
     },
     {
       "name": "auc_average",

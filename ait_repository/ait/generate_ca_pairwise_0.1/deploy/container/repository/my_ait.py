@@ -137,12 +137,14 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters(name='order_combination', 
                                             type_='int', 
                                             description='Order of combinations.', 
-                                            default_val='2')
+                                            default_val='2',
+                                            min_value='2')
     manifest_genenerator.add_ait_parameters(name='seed', 
                                             type_='int', 
                                             description='''
                                             Randomize generation, N - seed.
                                             if you fix seed, please set it to 1 or more.
+                                            Alternatively, if you set it to 0 or less, seed will not be fixed.
                                             ''', 
                                             default_val='-1')
     manifest_genenerator.add_ait_resources(name='generated_paie_wise', 
@@ -200,7 +202,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[8]:
+# In[ ]:
 
 
 if not is_ait_launch:
@@ -213,7 +215,7 @@ if not is_ait_launch:
     get_ipython().run_line_magic('cd', '..')
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -243,7 +245,7 @@ def generated_paie_wise(model_path:str, order_combination: int, seed: int, file_
         cw.writerows(file_contents)
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -258,7 +260,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -276,7 +278,7 @@ def main() -> None:
     move_log()
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -287,7 +289,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -298,7 +300,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################

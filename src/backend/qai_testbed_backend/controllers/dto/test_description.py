@@ -140,9 +140,10 @@ class Graph:
 class TestDescriptionResult:
     def __init__(self, summary: str, detail: str, log_file: str, graphs: List[Graph],
                  downloads: List[DownloadableData], cpu_brand: str, cpu_arch: str,
-                 cpu_clocks: str, cpu_cores: str, memory_capacity: str) -> None:
+                 cpu_clocks: str, cpu_cores: str, memory_capacity: str, error_code: str = None) -> None:
         self.summary = summary
         self.detail = detail
+        self.error_code = error_code
         self.log_file = log_file
         self.graphs = graphs
         self.downloads = downloads
@@ -348,6 +349,7 @@ class TestDescriptionResultSchema(BaseSchema):
     __model__ = TestDescriptionResult
     summary = fields.Str(data_key='Summary')
     detail = fields.Str(data_key='Detail')
+    error_code = fields.Str(data_key='ErrorCode')
     log_file = fields.Str(data_key='LogFile')
     graphs = fields.Nested(GraphSchema, data_key='Graphs', many=True)
     downloads = fields.Nested(DownloadableDataSchema, data_key='Downloads', many=True)
@@ -358,7 +360,7 @@ class TestDescriptionResultSchema(BaseSchema):
     def remove_skip_values(self, data, **_):
         return {
             key: value for key, value in data.items()
-            if (key != 'Downloads') or (value is not None)
+            if (key != 'Downloads' and key != 'ErrorCode') or (value is not None)
         }
 
 

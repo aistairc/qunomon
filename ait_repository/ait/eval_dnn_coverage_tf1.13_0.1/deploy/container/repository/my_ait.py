@@ -223,7 +223,9 @@ if not is_ait_launch:
                                             description='''
                                             MNIST Imagge pixel size.
                                             ''', 
-                                            default_val='28')
+                                            default_val='28',
+                                            min_value='28',
+                                            max_value='28')
     manifest_genenerator.add_ait_parameters(name='determination_on_activation', 
                                             type_='int', 
                                             description='''
@@ -233,14 +235,18 @@ if not is_ait_launch:
                                             1: Upper/Lower Limit Determination\n
                                             2: N Cases of Maximum Value Determination
                                             ''', 
-                                            default_val='0')
+                                            default_val='0',
+                                            min_value='0',
+                                            max_value='2')
     manifest_genenerator.add_ait_parameters(name='threshold', 
                                             type_='float', 
                                             description='''
                                             Threshold\n
                                             Valid only for threshold determination
                                             ''', 
-                                            default_val='0')
+                                            default_val='0',
+                                            min_value='0',
+                                            max_value='1')
     manifest_genenerator.add_ait_parameters(name='lower_bound', 
                                             type_='float', 
                                             description='''
@@ -262,7 +268,8 @@ if not is_ait_launch:
                                             The default value is 1\n
                                             (Valid only for N Cases of maximum value determination)
                                             ''', 
-                                            default_val='1')
+                                            default_val='1',
+                                            min_value='0')
     manifest_genenerator.add_ait_parameters(name='heat_map_type', 
                                             type_='int', 
                                             description='''
@@ -273,7 +280,9 @@ if not is_ait_launch:
                                             2: Simple Increment\n
                                             3: Density Coverage\n
                                             ''', 
-                                            default_val='1')
+                                            default_val='1',
+                                            min_value='0',
+                                            max_value='3')
     manifest_genenerator.add_ait_parameters(name='combination_type', 
                                             type_='int', 
                                             description='''
@@ -282,7 +291,9 @@ if not is_ait_launch:
                                             0: Implementation Not Necessary\n
                                             1: Execute
                                             ''', 
-                                            default_val='0')
+                                            default_val='0',
+                                            min_value='0',
+                                            max_value='1')
     manifest_genenerator.add_ait_parameters(name='combination_first', 
                                             type_='int', 
                                             description='''
@@ -310,53 +321,62 @@ if not is_ait_launch:
                                             Number of data manipulated at a time\n
                                             The default value is 100
                                             ''', 
-                                            default_val='100')
+                                            default_val='100',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='target_rate', 
                                             type_='float', 
                                             description='''
                                             Target Coverage Rate (Execution terminates when the coverage reaches Target Coverage Rate)\n
                                             The default value is 1.0
                                             ''', 
-                                            default_val='1.0')
+                                            default_val='1.0',
+                                            min_value='0',
+                                            max_value='1.0')
     manifest_genenerator.add_ait_parameters(name='increase_rate', 
                                             type_='float', 
                                             description='''
                                             Expected Coverage Growth Rate (if the coverage growth rage compared to 5 times before is less than Expected Coverage Growth Rate, unused manipulations are preferentially selected)\n
                                             The default value is 0.0
                                             ''', 
-                                            default_val='0')
+                                            default_val='0',
+                                            max_value='0')
     manifest_genenerator.add_ait_parameters(name='dataset_x_num', 
                                             type_='int', 
                                             description='''
                                             Number of Input Data Placeholders (in the given dataset)\n
                                             No default value (Mandatory)
-                                            ''')
+                                            ''',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='dataset_y_num', 
                                             type_='int', 
                                             description='''
                                             Number of Label Data Placeholders (in the given dataset)\n
                                             No default value (Mandatory)
-                                            ''')
+                                            ''',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='dataset_k_num', 
                                             type_='int', 
                                             description='''
                                             Number of Constant Data Placeholders (in the given dataset)\n
                                             No default value (Mandatory)
-                                            ''')
+                                            ''',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='split_dataset_start', 
                                             type_='int', 
                                             description='''
                                             Dataset Division Start Position (Data from Start Position to End Position of the given dataset are used for coverage testing)\n
                                             The default value is 0
                                             ''', 
-                                            default_val='0')
+                                            default_val='0',
+                                            min_value='0')
     manifest_genenerator.add_ait_parameters(name='split_dataset_end', 
                                             type_='int', 
                                             description='''
                                             Dataset Division End Position (Data from Start Position to End Position of the given dataset are used for coverage testing)\n
                                             The default value is the size of the given dataset
                                             ''', 
-                                            default_val='100')
+                                            default_val='100',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='implement_class_name', 
                                             type_='str', 
                                             description='''

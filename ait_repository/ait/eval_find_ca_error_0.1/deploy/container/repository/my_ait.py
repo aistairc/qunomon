@@ -33,7 +33,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[2]:
+# In[ ]:
 
 
 #########################################
@@ -65,7 +65,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[ ]:
 
 
 #########################################
@@ -83,7 +83,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################
@@ -109,7 +109,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -159,7 +159,8 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters(name='Combination_index', 
                                             type_='int', 
                                             description='Index of unsound CA combination case', 
-                                            default_val='5')
+                                            default_val='5',
+                                            min_value='1')
     manifest_genenerator.add_ait_measures(name='count', 
                                           type_='int', 
                                           description='Quantity of unsound case', 
@@ -182,7 +183,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -209,7 +210,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -240,7 +241,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -274,7 +275,7 @@ def percentage_for_index(ca_data, combination_cases_data, index):
     return count_data.loc[int(index)-1,'percentage']
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -305,7 +306,7 @@ def save_percentage_plot(combination_cases_data_result, file_path: str=None) -> 
     
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -319,7 +320,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -346,7 +347,7 @@ def main() -> None:
     move_log()
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -357,7 +358,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -368,7 +369,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################

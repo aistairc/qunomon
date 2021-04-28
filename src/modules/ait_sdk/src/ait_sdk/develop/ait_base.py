@@ -4,6 +4,7 @@
 from typing import List
 import shutil
 from pathlib import Path
+import traceback
 
 from ..common.files.ait_input import AITInput
 from ..common.files.ait_manifest import AITManifest
@@ -43,7 +44,8 @@ class AITBase:
                 self._ait_output.write_output(output_file_path=self._path_helper.get_output_file_path(),
                                               start_dt=self._timer.get_start_dt(),
                                               stop_dt=self._timer.get_stop_dt(),
-                                              error=str(e))
+                                              ex=e,
+                                              error_detail=traceback.format_exc())
             except Exception as e2:
                 logger.error(f'Failed write ait.output.json. exception={e2}')
             raise e

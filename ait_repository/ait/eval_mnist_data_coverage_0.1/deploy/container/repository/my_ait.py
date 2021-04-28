@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -46,7 +46,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[2]:
+# In[ ]:
 
 
 #########################################
@@ -78,7 +78,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[3]:
+# In[ ]:
 
 
 #########################################
@@ -90,7 +90,7 @@ if not is_ait_launch:
     requirements_generator = AITRequirementsGenerator()
 
 
-# In[4]:
+# In[ ]:
 
 
 #########################################
@@ -104,7 +104,7 @@ if not is_ait_launch:
     requirements_generator.add_package('opencv-python')
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################

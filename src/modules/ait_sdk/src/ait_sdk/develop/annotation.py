@@ -4,6 +4,7 @@
 from functools import wraps
 from pathlib import Path
 from os import makedirs
+import traceback
 
 from ..utils.timer import Timer
 from ..common.files.ait_output import AITOutput
@@ -71,13 +72,23 @@ def ait_main(ait_output: AITOutput, path_helper: AITPathHelper):
             timer = Timer()
             timer.start_timer()
 
-            # funcの実行
-            ret = func(*args, **kwargs)
+            exception = None
+            error_detail = None
+
+            try:
+                # funcの実行
+                ret = func(*args, **kwargs)
+            except Exception as e:
+                exception = e
+                ret = -1
+                error_detail = traceback.format_exc()
 
             timer.stop_timer()
             ait_output.write_output(output_file_path=path_helper.get_output_file_path(),
                                     start_dt=timer.get_start_dt(),
-                                    stop_dt=timer.get_stop_dt())
+                                    stop_dt=timer.get_stop_dt(),
+                                    ex=exception,
+                                    error_detail=error_detail)
 
             return ret
         return wrapper

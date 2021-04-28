@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -199,7 +199,8 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters(name='privileged_classes', 
                                             type_='float', 
                                             description='privileged classes', 
-                                            default_val='25.0')
+                                            default_val='25.0',
+                                            min_value='0')
     manifest_genenerator.add_ait_measures(name='mean_difference', 
                                           type_='float', 
                                           description='mean difference of metric fairness', 
@@ -442,7 +443,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[18]:
 
 
 #########################################
@@ -453,7 +454,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[19]:
 
 
 #########################################
@@ -464,7 +465,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[20]:
 
 
 #########################################

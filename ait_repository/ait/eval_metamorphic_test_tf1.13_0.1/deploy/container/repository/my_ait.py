@@ -212,11 +212,13 @@ Make sure can be classified in the same result as the original class be added a 
     manifest_genenerator.add_ait_parameters(name='Lap', 
                                             type_='int', 
                                             description='Input Data Conversion Number', 
-                                            default_val='10')
+                                            default_val='10',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='NumTest', 
                                             type_='int', 
                                             description='Number of Test Data to be Used', 
-                                            default_val='500')
+                                            default_val='500',
+                                            min_value='1')
     manifest_genenerator.add_ait_parameters(name='mnist_type', 
                                             type_='str', 
                                             description='train = Training_data, test = test_data, validation = validation_data', 

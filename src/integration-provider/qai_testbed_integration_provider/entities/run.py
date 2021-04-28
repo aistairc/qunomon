@@ -27,6 +27,7 @@ class RunMapper(sql_db.Model):
     ait_output_file = sa.Column(sa.String, nullable=True)
     log_file = sa.Column(sa.String, nullable=True)
     test_description_id = sa.Column(sa.Integer, nullable=True)
+    error_code = sa.Column(sa.String, nullable=True)
 
     job_id = sa.Column(sa.Integer, sa.ForeignKey('T_Job.id'))
     

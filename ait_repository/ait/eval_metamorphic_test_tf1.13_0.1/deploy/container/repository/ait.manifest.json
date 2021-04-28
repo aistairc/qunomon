@@ -31,13 +31,15 @@
       "name": "Lap",
       "type": "int",
       "description": "Input Data Conversion Number",
-      "default_val": "10"
+      "default_val": "10",
+      "min": "1"
     },
     {
       "name": "NumTest",
       "type": "int",
       "description": "Number of Test Data to be Used",
-      "default_val": "500"
+      "default_val": "500",
+      "min": "1"
     },
     {
       "name": "mnist_type",

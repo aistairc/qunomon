@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[1]:
+# In[ ]:
 
 
 #########################################
@@ -219,11 +219,15 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters(name='class_count', 
                                             type_='int', 
                                             description='multiple classification class number', 
-                                            default_val='10')
+                                            default_val='10',
+                                            min_value='10',
+                                            max_value='10')
     manifest_genenerator.add_ait_parameters(name='image_px_size', 
                                             type_='int', 
                                             description='prediction image pixel size', 
-                                            default_val='28')
+                                            default_val='28',
+                                            min_value='28',
+                                            max_value='28')
     manifest_genenerator.add_ait_parameters(name='auc_average', 
                                             type_='string', 
                                             description='{‘micro’, ‘macro’, ‘samples’, ‘weighted’}\r\nref:\r\nhttps://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html', 
@@ -742,7 +746,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[22]:
+# In[ ]:
 
 
 #########################################
@@ -753,7 +757,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[23]:
+# In[ ]:
 
 
 #########################################

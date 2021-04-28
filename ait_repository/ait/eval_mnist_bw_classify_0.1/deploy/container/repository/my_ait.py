@@ -206,7 +206,8 @@ if not is_ait_launch:
     manifest_genenerator.add_ait_parameters(name='image_px_size', 
                                             type_='int', 
                                             description='prediction image pixel size', 
-                                            default_val='28')
+                                            default_val='28',
+                                            min_value='0')
     manifest_genenerator.add_ait_measures(name='bw_probabl', 
                                           type_='float', 
                                           description='''Black - White probabl\n\nex)\n
@@ -575,7 +576,7 @@ def main() -> None:
     save_bw_classify_result(detail_cls_df)
 
 
-# In[21]:
+# In[ ]:
 
 
 #########################################
@@ -586,7 +587,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[22]:
+# In[ ]:
 
 
 #########################################
@@ -597,7 +598,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[23]:
+# In[ ]:
 
 
 #########################################

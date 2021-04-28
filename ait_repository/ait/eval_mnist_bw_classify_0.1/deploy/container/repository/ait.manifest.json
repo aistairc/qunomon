@@ -37,7 +37,8 @@
       "name": "image_px_size",
       "type": "int",
       "description": "prediction image pixel size",
-      "default_val": "28"
+      "default_val": "28",
+      "min": "0"
     }
   ],
   "report": {

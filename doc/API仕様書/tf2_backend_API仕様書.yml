@@ -2761,6 +2761,17 @@ paths:
                             type: string
                           Datail:
                             type: string
+                          ErrorCode:
+                            type: string
+                            description: |
+                              エラーコードを返却する。  
+                              エラーが発生していない場合、この項目は存在しない。  
+                                * E101:パラメータ定義不正  
+                                * E102:インベントリ、パラメータ不正  
+                                * E201:AIT実行前エラー  
+                                * E901:処理エラー  
+                                * E998:IF不整合(プログラム不良)  
+                                * E999:メモリ不足などのシステムエラー  
                           LogFile:
                             type: string
                           Graphs:
