@@ -209,6 +209,7 @@ CREATE TABLE public."M_Inventory" (
     schema character varying,
     creation_datetime timestamp without time zone,
     update_datetime timestamp without time zone,
+    file_hash_sha256 character varying NOT NULL,
     ml_component_id integer,
     type_id integer,
     file_system_id integer

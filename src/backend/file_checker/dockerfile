@@ -1,0 +1,17 @@
+FROM python:3.6.8
+LABEL maintainer="AIST"
+
+ENV QAI_USER=qai
+ENV QAI_HOME=/usr/local/${QAI_USER}
+ENV QAI_USER_HOME=${QAI_HOME}
+
+WORKDIR ${QAI_USER_HOME}
+
+COPY ./container/ ${QAI_USER_HOME}/
+
+RUN mkdir ${QAI_USER_HOME}/input ${QAI_USER_HOME}/output
+
+RUN pip install --upgrade pip
+RUN pip install -r ${QAI_USER_HOME}/requirements.txt
+
+ENTRYPOINT ["python", "file_checker.py"]

@@ -43,6 +43,7 @@ from .controllers import api
 from .gateways import extensions, config
 from .gateways.auth import jwt
 from .di_module import di_module
+from .across.file_checker import FileChecker
 
 
 def create_app(config_name='default', is_init_db: bool = True):
@@ -63,6 +64,8 @@ def create_app(config_name='default', is_init_db: bool = True):
 
     if is_init_db:
         init_db(app, config_name=config_name)
+
+    clean_up_mount_dir(app)
 
     FlaskInjector(app=app, modules=[di_module])
 
@@ -639,69 +642,22 @@ def _init_db_demo_2():
     extensions.sql_db.session.add_all(test_inventory_templates_tag)
     extensions.sql_db.session.flush()
 
-    invs = [InventoryMapper(name='TestDataset_0818',
-                            type_id=data_types[0].id,
-                            file_system_id=file_systems[0].id,
-                            file_path=str(Path(SettingMapper.query.get('mount_dst_path').value)
-                                        / 'ip' / 'dummyInventory' / 'test.csv'),
-                            description='0818用のデータセット',
-                            delete_flag=False,
-                            ml_component_id=ml_components[0].id,
-                            schema='http://yann.lecun.com/exdb/mnist/'),
-            InventoryMapper(name='TrainedModel_0907',
-                            type_id=data_types[1].id,
-                            file_system_id=file_systems[0].id,
-                            file_path=str(Path(SettingMapper.query.get('mount_dst_path').value)
-                                        / 'ip' / 'dummyInventory' / 'test.csv'),
-                            description='0918用のデータセット',
-                            delete_flag=False,
-                            ml_component_id=ml_components[0].id,
-                            schema='http://yann.lecun.com/exdb/mnist/'),
-            InventoryMapper(name='TestDataset_0918',
-                            type_id=data_types[0].id,
-                            file_system_id=file_systems[0].id,
-                            file_path=str(Path(SettingMapper.query.get('mount_dst_path').value)
-                                        / 'ip' / 'dummyInventory' / 'test.csv'),
-                            description='0907用のモデル',
-                            delete_flag=False,
-                            ml_component_id=ml_components[0].id,
-                            schema='https://support.hdfgroup.org/HDF5/doc/index.html'),
-            InventoryMapper(name='TestDataset_1002',
-                            type_id=data_types[0].id,
-                            file_system_id=file_systems[0].id,
-                            file_path=str(Path(SettingMapper.query.get('mount_dst_path').value)
-                                        / 'ip' / 'dummyInventory' / 'test.csv'),
-                            description='1007用のモデル',
-                            delete_flag=False,
-                            ml_component_id=ml_components[0].id,
-                            schema='https://support.hdfgroup.org/HDF5/doc/index.html'),
-            InventoryMapper(name='DUMMY1_ONNX',
-                            type_id=data_types[1].id,
-                            file_system_id=file_systems[1].id,
-                            file_path=str(Path(SettingMapper.query.get('mount_dst_path').value)
-                                        / 'ip' / 'dummyInventory' / 'test.csv'),
-                            description='開発用ダミーデータ',
-                            delete_flag=False,
-                            ml_component_id=ml_components[0].id,
-                            schema='http://www.kasai.fm/wiki/rfc4180jp'),
-            InventoryMapper(name='DUMMY2_ONNX',
-                            type_id=data_types[1].id,
-                            file_system_id=file_systems[1].id,
-                            file_path=str(Path(SettingMapper.query.get('mount_dst_path').value)
-                                        / 'ip' / 'dummyInventory' / 'test.csv'),
-                            description='開発用ダミーデータ',
-                            delete_flag=False,
-                            ml_component_id=ml_components[0].id,
-                            schema='http://www.kasai.fm/wiki/rfc4180jp')]
-    extensions.sql_db.session.add_all(invs)
-    extensions.sql_db.session.flush()
-
     # dummy data create
     # windowsとLinuxでダミーデータ格納先を変更する
     if os.name == 'nt':
         dummy_file_path = Path(SettingMapper.query.get('mount_src_path').value) / 'ip' / 'dummyInventory' / 'test.csv'
+        file_system_id = file_systems[1].id
+        test_csv_path = str(dummy_file_path)
     else:
-        dummy_file_path = Path(SettingMapper.query.get('mount_dst_path').value) / 'ip' / 'dummyInventory' / 'test.csv'
+        dummy_file_path = Path('/work') / 'dummyInventory' / 'test.csv'
+
+        file_system_id = [f for f in file_systems if f.name == os.getenv('QAI_HOST_FILE_SYSTEM')][0].id
+
+        if os.getenv('QAI_HOST_FILE_SYSTEM') == 'WINDOWS_FILE':
+            split_char = '\\'
+        else:
+            split_char = '/'
+        test_csv_path = os.getenv('QAI_HOST_DIR') + split_char + 'dummyInventory' + split_char + 'test.csv'
 
     dummy_dir = dummy_file_path.parent
     if dummy_dir.exists():
@@ -709,6 +665,65 @@ def _init_db_demo_2():
     dummy_dir.mkdir(parents=True)
     with open(str(dummy_file_path), mode='w') as f:
         f.write('dummy_inventory,hello_world')
+
+    file_check_result = FileChecker().execute(test_csv_path, file_system_id)
+
+    invs = [InventoryMapper(name='TestDataset_0818',
+                            type_id=data_types[0].id,
+                            file_system_id=file_system_id,
+                            file_path=test_csv_path,
+                            description='0818用のデータセット',
+                            delete_flag=False,
+                            ml_component_id=ml_components[0].id,
+                            schema='http://yann.lecun.com/exdb/mnist/',
+                            file_hash_sha256=file_check_result['hash_sha256']),
+            InventoryMapper(name='TrainedModel_0907',
+                            type_id=data_types[1].id,
+                            file_system_id=file_system_id,
+                            file_path=test_csv_path,
+                            description='0918用のデータセット',
+                            delete_flag=False,
+                            ml_component_id=ml_components[0].id,
+                            schema='http://yann.lecun.com/exdb/mnist/',
+                            file_hash_sha256=file_check_result['hash_sha256']),
+            InventoryMapper(name='TestDataset_0918',
+                            type_id=data_types[0].id,
+                            file_system_id=file_system_id,
+                            file_path=test_csv_path,
+                            description='0907用のモデル',
+                            delete_flag=False,
+                            ml_component_id=ml_components[0].id,
+                            schema='https://support.hdfgroup.org/HDF5/doc/index.html',
+                            file_hash_sha256=file_check_result['hash_sha256']),
+            InventoryMapper(name='TestDataset_1002',
+                            type_id=data_types[0].id,
+                            file_system_id=file_system_id,
+                            file_path=test_csv_path,
+                            description='1007用のモデル',
+                            delete_flag=False,
+                            ml_component_id=ml_components[0].id,
+                            schema='https://support.hdfgroup.org/HDF5/doc/index.html',
+                            file_hash_sha256=file_check_result['hash_sha256']),
+            InventoryMapper(name='DUMMY1_ONNX',
+                            type_id=data_types[1].id,
+                            file_system_id=file_system_id,
+                            file_path=test_csv_path,
+                            description='開発用ダミーデータ',
+                            delete_flag=False,
+                            ml_component_id=ml_components[0].id,
+                            schema='http://www.kasai.fm/wiki/rfc4180jp',
+                            file_hash_sha256=file_check_result['hash_sha256']),
+            InventoryMapper(name='DUMMY2_ONNX',
+                            type_id=data_types[1].id,
+                            file_system_id=file_system_id,
+                            file_path=test_csv_path,
+                            description='開発用ダミーデータ',
+                            delete_flag=False,
+                            ml_component_id=ml_components[0].id,
+                            schema='http://www.kasai.fm/wiki/rfc4180jp',
+                            file_hash_sha256=file_check_result['hash_sha256'])]
+    extensions.sql_db.session.add_all(invs)
+    extensions.sql_db.session.flush()
 
     tests = [TestMapper(ml_component_id=ml_components[0].id),
              TestMapper(ml_component_id=ml_components[1].id),
@@ -852,3 +867,16 @@ def _init_db_demo_2():
     ]
     extensions.sql_db.session.add_all(test_inventory_templates_format)
     extensions.sql_db.session.flush()
+
+
+def clean_up_mount_dir(app):
+    with app.app_context():
+        # windowsとLinuxで格納先を変更する
+        if os.name == 'nt':
+            mount_root_path = Path(SettingMapper.query.get('mount_src_path').value)
+        else:
+            mount_root_path = Path(SettingMapper.query.get('mount_dst_path').value)
+
+        inventory_check_result_path = mount_root_path / 'inventory_check'
+        if inventory_check_result_path.exists():
+            shutil.rmtree(str(inventory_check_result_path))

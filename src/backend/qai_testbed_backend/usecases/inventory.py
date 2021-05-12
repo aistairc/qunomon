@@ -19,6 +19,7 @@ from ..entities.inventory_format import InventoryFormatMapper
 from ..entities.file_system import FileSystemMapper
 from ..across.exception import QAIException, \
     QAINotFoundException, QAIInvalidRequestException, QAIInternalServerException
+from ..across.file_checker import FileChecker
 from ..gateways.extensions import sql_db
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -27,6 +28,9 @@ logger = get_logger()
 
 
 class InventoryService:
+
+    def __init__(self):
+        self._file_checker = FileChecker()
 
     @log(logger)
     def get_inventories(self, organizer_id: str, ml_component_id: int) -> GetInventoriesRes:
@@ -97,6 +101,11 @@ class InventoryService:
         if not self._check_file_path(req.file_system_id, req.file_path):
             raise QAIInvalidRequestException('I24001', 'inventory file path is invalid.')
 
+        file_check_result = self._file_checker.execute(req.file_path, req.file_system_id)
+
+        if not file_check_result['exists']:
+            raise QAINotFoundException(result_code='I24000', result_msg=f'not found file_path({req.file_path})')
+
         try:
             inventory.name = req.name
             inventory.type_id = req.type_id
@@ -106,6 +115,7 @@ class InventoryService:
             inventory.schema = req.schema
             inventory.delete_flag = False
             inventory.ml_component_id = ml_component_id
+            inventory.file_hash_sha256 = file_check_result['hash_sha256']
             sql_db.session.add(inventory)
             sql_db.session.flush()
 
@@ -154,6 +164,10 @@ class InventoryService:
         if not self._check_file_path(req.file_system_id, req.file_path):
             raise QAIInvalidRequestException('I34002', 'inventory file path is invalid.')
 
+        file_check_result = self._file_checker.execute(req.file_path, req.file_system_id)
+        if not file_check_result['exists']:
+            raise QAINotFoundException(result_code='I34000', result_msg=f'not found file_path({req.file_path})')
+
         try:
             inventory.name = req.name
             inventory.type_id = req.type_id
@@ -161,6 +175,7 @@ class InventoryService:
             inventory.file_path = req.file_path
             inventory.description = req.description
             inventory.schema = req.schema
+            inventory.file_hash_sha256 = file_check_result['hash_sha256']
             inventory.update_datetime = datetime.datetime.utcnow()
             sql_db.session.flush()
 

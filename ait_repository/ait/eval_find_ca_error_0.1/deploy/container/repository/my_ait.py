@@ -33,7 +33,7 @@ import sys
 is_ait_launch = (len(sys.argv) == 2)
 
 
-# In[ ]:
+# In[2]:
 
 
 #########################################
@@ -65,7 +65,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[ ]:
+# In[3]:
 
 
 #########################################
@@ -83,7 +83,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[4]:
 
 
 #########################################
@@ -109,7 +109,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[5]:
 
 
 #########################################
@@ -183,7 +183,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[6]:
 
 
 #########################################
@@ -210,7 +210,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -241,7 +241,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -275,7 +275,7 @@ def percentage_for_index(ca_data, combination_cases_data, index):
     return count_data.loc[int(index)-1,'percentage']
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -306,7 +306,7 @@ def save_percentage_plot(combination_cases_data_result, file_path: str=None) -> 
     
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -320,7 +320,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -347,7 +347,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -358,7 +358,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -369,7 +369,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################

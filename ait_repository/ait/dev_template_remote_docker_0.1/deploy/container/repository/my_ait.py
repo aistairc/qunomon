@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -191,7 +191,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -208,7 +208,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -239,7 +239,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -253,7 +253,7 @@ def calc_mean(iris_data, col_name):
     return iris_data.mean()[col_name]
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -268,7 +268,7 @@ def save_pair_plot(iris_data, file_path: str=None) -> str:
     plt.savefig(file_path)
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -282,7 +282,7 @@ def move_log(file_path: str=None) -> str:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################
@@ -302,7 +302,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[15]:
 
 
 #########################################
@@ -313,7 +313,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[16]:
 
 
 #########################################
@@ -324,7 +324,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[17]:
 
 
 #########################################

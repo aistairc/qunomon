@@ -13,6 +13,7 @@ from reportgenerator import ReportGenerator
 
 from ..across.exception import QAINotFoundException, QAIBadRequestException,\
     QAIInvalidRequestException
+from ..across.file_checker import FileChecker
 from ..controllers.dto.testrunner import PostTestRunnerReq, PostTestRunnerRes, Result, Job, \
     GetTestRunnerStatusRes, JobStatus, RunStatus, PostReportGeneratorRes, PostReportGeneratorReq
 from ..controllers.dto.testrunner import GetTestRunnerRes
@@ -35,6 +36,7 @@ logger = get_logger()
 class TestRunnerService:
     def __init__(self):
         self.ip_entry_point = SettingMapper.query.get('ip_entry_point').value
+        self._file_checker = FileChecker()
 
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: int, request: PostTestRunnerReq) -> PostTestRunnerRes:
@@ -66,6 +68,8 @@ class TestRunnerService:
             # td_id指定時は、それぞれ削除済みか、実行済みかをチェックする
             for td_id in td_ids:
                 td = TestDescriptionMapper.query.get(td_id)
+                if td is None:
+                    raise QAINotFoundException('R14001', f'test description[id={td_id}] is not exists.')
                 if td.delete_flag:
                     raise QAINotFoundException('R14001', 'test description[id={}, name={}] are deleted.'
                                                .format(td_id, td.name))
@@ -74,6 +78,20 @@ class TestRunnerService:
                                                          'You can\'t re-execute a previously executed TD,'
                                                          ' so create a new one or duplicate it.'
                                                .format(td_id, td.name))
+
+        # インベントリ登録時とファイルが変更されていないか、ハッシュ値チェック
+        for td_id in td_ids:
+            td = TestDescriptionMapper.query.get(td_id)
+            for inventory_td_mapper in td.inventories:
+                file_check_result = self._file_checker.execute(inventory_td_mapper.inventory.file_path,
+                                                               inventory_td_mapper.inventory.file_system_id)
+
+                if not file_check_result['exists']:
+                    raise QAINotFoundException('R14002', f'inventory file not found.'
+                                                         f'file:{inventory_td_mapper.inventory.file_path}')
+                if file_check_result['hash_sha256'] != inventory_td_mapper.inventory.file_hash_sha256:
+                    raise QAIInvalidRequestException('R14003', f'inventory file hash is not much.'
+                                                               f'file:{inventory_td_mapper.inventory.file_path}')
 
         res = post(url=self.ip_entry_point + '/' + organizer_id + '/mlComponents/' + str(ml_component_id) + '/job',
                    headers={'content-type': 'application/json'},

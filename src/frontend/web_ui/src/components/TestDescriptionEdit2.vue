@@ -565,6 +565,50 @@ export default {
         this.count = cnt;
     },
     commonCheckTestDescription(){
+            // criteriaが正常な値か判定
+            for(let checkedMeasurement of this.checkedMeasurements){
+              if(typeof(checkedMeasurement) == "number"){
+                let matchedValueStr = null;
+                for(let measurementForm of this.measurementFormsList){
+                  if(measurementForm[0].Id == checkedMeasurement){
+                    matchedValueStr = measurementForm[0].Value;
+                    break;
+                  }
+                }
+
+                let matchedMeasure = null;
+                for(let measure of this.report.Measures) {
+                  if(measure.Id == checkedMeasurement){
+                    matchedMeasure = measure;
+                    break;
+                  }
+                }
+
+                let matchedMeasureType = matchedMeasure.Type;
+                let isValidValue = true;
+                if(matchedMeasureType == 'float' || matchedMeasureType == 'int'){
+                  let matchedValue = parseFloat(matchedValueStr);
+                  if(!isNaN(matchedMeasure.Min)){
+                    let matchedMin = parseFloat(matchedMeasure.Min);
+                    if(matchedValue < matchedMin){
+                      isValidValue = false;
+                    }
+                  }
+                  if(!isNaN(matchedMeasure.Max)){
+                    let matchedMax = parseFloat(matchedMeasure.Max);
+                    if(matchedMax < matchedValue){
+                      isValidValue = false;
+                    }
+                  }
+
+                  if(!isValidValue){
+                    this.errorMessages.push('The criteria "' + matchedMeasure.Name + '" is invalid value.');
+                  }
+
+                }
+              }
+            }
+
             if(this.testDescriptionName == null || this.testDescriptionName === ""){
                 this.errorMessages.push('Name is required.');
             }

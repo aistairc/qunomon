@@ -18,7 +18,7 @@ click==6.7                # via flask
 croniter==0.3.20          # via airflow
 dill==0.2.7.1             # via airflow
 docutils==0.14            # via python-daemon
-eventlet==0.22.1          # via airflow
+eventlet>=0.31.0          # via airflow
 flask-admin>=1.5.3        # via airflow
 flask-bcrypt==0.7.1       # via airflow
 flask-cache==0.13.1       # via airflow

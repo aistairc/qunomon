@@ -1,5 +1,7 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 from nose2.tools import such
+import tempfile
+from pathlib import Path
 
 from . import app
 from qai_testbed_backend.usecases.ml_component import MLComponentService
@@ -7,6 +9,8 @@ from qai_testbed_backend.usecases.ml_framework import MLFrameworkService
 from qai_testbed_backend.usecases.test_description import TestDescriptionService
 from qai_testbed_backend.usecases.inventory import InventoryService
 from qai_testbed_backend.controllers.dto.ml_component import PostMLComponentReq
+from qai_testbed_backend.controllers.dto.inventory import AppendInventoryReq
+from qai_testbed_backend.controllers.dto.test_description import AppendTestDescriptionReqSchema
 from qai_testbed_backend.across.exception import QAIException, QAINotFoundException
 
 
@@ -89,23 +93,97 @@ with such.A('MLComponents') as it:
                 it.assertEqual(frameworks[0].name, add_ml_component.ml_framework_name)
 
     with it.having('DELETE /MLComponents'):
+
+        delete_ml_component_id = -1
+
         @it.should('should return P32000.')
         def test():
             with app.app_context():
+                global delete_ml_component_id
+
+                # MLComponent作成
+                frameworks = MLFrameworkService().get().ml_frameworks
+                req = PostMLComponentReq(name='削除テスト用',
+                                         description='Test image classification',
+                                         problem_domain='TestClassification',
+                                         ml_framework_id=frameworks[0].id)
+                response = MLComponentService().post(organizer_id='dep-a', req=req)
+                delete_ml_component_id = response.ml_component_id
+
+                # インベントリ追加
+                with tempfile.TemporaryDirectory() as dir_name:
+                    file_name1 = str(Path(dir_name) / 'test1.csv')
+                    with open(file_name1, "w") as f:
+                        f.write('test1,test2')
+                    file_name2 = str(Path(dir_name) / 'test2.csv')
+                    with open(file_name2, "w") as f:
+                        f.write('test3,test4')
+                    req = AppendInventoryReq(name='Testdata99',
+                                             type_id=1,
+                                             file_system_id=2,
+                                             file_path=file_name1,
+                                             description='テスト99用のデータ',
+                                             formats=['csv', 'zip'],
+                                             schema='http://sample.com/datafotmat/testdata2')
+                    InventoryService().append_inventory(organizer_id='dep-a',
+                                                        ml_component_id=delete_ml_component_id, req=req)
+
+                    req = AppendInventoryReq(name='Testdata100',
+                                             type_id=1,
+                                             file_system_id=2,
+                                             file_path=file_name2,
+                                             description='テスト99用のデータ',
+                                             formats=['csv', 'zip'],
+                                             schema='http://sample.com/datafotmat/testdata2')
+                    InventoryService().append_inventory(organizer_id='dep-a',
+                                                        ml_component_id=delete_ml_component_id, req=req)
+
+                response = InventoryService().get_inventories(organizer_id='dep-a',
+                                                              ml_component_id=delete_ml_component_id)
+
+                # TD追加
+                post_json = {
+                    "Name": "Neuron Coverage",
+                    "QualityDimensionID": 5,
+                    "QualityMeasurements": [
+                        {"Id": 1, "Value": "60", "RelationalOperatorId": 1, "Enable": True}
+                    ],
+                    "TargetInventories": [
+                        {"Id": 1, "InventoryId": response.inventories[0].id_, "TemplateInventoryId": 1},
+                        {"Id": 2, "InventoryId": response.inventories[1].id_, "TemplateInventoryId": 2}
+                    ],
+                    "TestRunner": {
+                        "Id": 1,
+                        "Params": [
+                            {"TestRunnerParamTemplateId": 1, "Value": "0.5"},
+                            {"TestRunnerParamTemplateId": 2, "Value": "0.3"},
+                            {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                        ]
+                    }
+                }
+                req = AppendTestDescriptionReqSchema().load(post_json)
+                TestDescriptionService().append_test_description(organizer_id='dep-a',
+                                                                 ml_component_id=delete_ml_component_id, req=req)
+
                 # インベントリの存在確認( inventories > 0 )
-                response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                response = InventoryService().get_inventories(organizer_id='dep-a',
+                                                              ml_component_id=delete_ml_component_id)
                 it.assertGreater(len(response.inventories), 0)
                 # テストディスクリプションの存在確認( test_descriptions > 0 )
-                response = TestDescriptionService().get_list(organizer_id='dep-a', ml_component_id=1)
+                response = TestDescriptionService().get_list(organizer_id='dep-a',
+                                                             ml_component_id=delete_ml_component_id)
                 it.assertGreater(len(response.test.test_descriptions), 0)
                 # 削除
-                response = MLComponentService().delete_ml_component(organizer_id='dep-a', ml_component_id=1)
+                response = MLComponentService().delete_ml_component(organizer_id='dep-a',
+                                                                    ml_component_id=delete_ml_component_id)
                 it.assertEqual(response.result.code, 'P32000')
                 # インベントリの削除確認( inventories = 0 )
-                response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                response = InventoryService().get_inventories(organizer_id='dep-a',
+                                                              ml_component_id=delete_ml_component_id)
                 it.assertEqual(len(response.inventories), 0)
                 # テストディスクリプションの削除確認( test_descriptions = 0 )
-                response = TestDescriptionService().get_list(organizer_id='dep-a', ml_component_id=1)
+                response = TestDescriptionService().get_list(organizer_id='dep-a',
+                                                             ml_component_id=delete_ml_component_id)
                 it.assertEqual(len(response.test.test_descriptions), 0)
 
         @it.should('should return MLComponents that is not delete.')
@@ -137,9 +215,11 @@ with such.A('MLComponents') as it:
 
         @it.should('should return P34001.(ml_component has already been deleted)')
         def test():
+            global delete_ml_component_id
             with app.app_context():
                 try:
-                    response = MLComponentService().delete_ml_component(organizer_id='dep-a', ml_component_id=1) #上のテストですでに削除済み
+                    response = MLComponentService().delete_ml_component(organizer_id='dep-a',
+                                                                        ml_component_id=delete_ml_component_id)
                 except QAIException as e:
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'P34001')

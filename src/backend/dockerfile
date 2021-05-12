@@ -1,7 +1,18 @@
 FROM python:3.6.8
 
 # To SET DB initialize disable
+# True/False
 ENV QAI_TB_INIT_DB False
+
+# there is need setup when QAI_TB_INIT_DB is True
+# To SET DB initialize in host file system
+# windows:WINDOWS_FILE
+# other:UNIX_FILE_SYSTEM
+ENV QAI_HOST_FILE_SYSTEM WINDOWS_FILE
+
+# there is need setup when QAI_TB_INIT_DB is True
+# To SET DB initialize in dockerfile exists dir
+ENV QAI_HOST_DIR C:\\m-akita\\github\\qai-testbed\\src\\backend
 
 # backendセットアップ
 ENV DEBIAN_FRONTEND noninteractive

@@ -1,6 +1,8 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 from datetime import datetime
 from nose2.tools import such
+import tempfile
+from pathlib import Path
 
 from . import app, get_random_str
 from qai_testbed_backend.usecases.inventory import InventoryService
@@ -79,16 +81,20 @@ with such.A('inventories') as it:
     with it.having('POST /inventories'):
         @it.should('should return I22000.')
         def test():
-            req = AppendInventoryReq(name='Testdata99',
-                                     type_id=1,
-                                     file_system_id=2,
-                                     file_path='C:\\aaa\\bb\\99\\テスト.zip',
-                                     description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
-                                     schema='http://sample.com/datafotmat/testdata2')
-            with app.app_context():
-                response = InventoryService().append_inventory(organizer_id='dep-a', ml_component_id=1, req=req)
-                it.assertEqual(response.result.code, 'I22000')
+            with tempfile.TemporaryDirectory() as dir_name:
+                file_name = str(Path(dir_name) / 'test.csv')
+                with open(file_name, "w") as f:
+                    f.write('test1,test2')
+                req = AppendInventoryReq(name='Testdata99',
+                                         type_id=1,
+                                         file_system_id=2,
+                                         file_path=file_name,
+                                         description='テスト99用のデータ',
+                                         formats=['csv', 'zip'],
+                                         schema='http://sample.com/datafotmat/testdata2')
+                with app.app_context():
+                    response = InventoryService().append_inventory(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.assertEqual(response.result.code, 'I22000')
 
         @it.should('should return I24001 if invalid file path is not start alphabet for WINDOWS_FILE.')
         def test():
@@ -195,20 +201,55 @@ with such.A('inventories') as it:
                     it.assertTrue(type(e) is QAIInvalidRequestException)
                     it.assertEqual(e.result_code, 'I24001')
 
+        @it.should('should return I24000 if file_path not found.')
+        def test():
+            req = AppendInventoryReq(name='Testdata99',
+                                     type_id=1,
+                                     file_system_id=2,
+                                     file_path='C:\\'+get_random_str(64),
+                                     description='テスト99用のデータ',
+                                     formats=['csv', 'zip'],
+                                     schema='http://sample.com/datafotmat/testdata2')
+            with app.app_context():
+                try:
+                    InventoryService().append_inventory(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAINotFoundException)
+                    it.assertEqual(e.result_code, 'I24000')
+
     with it.having('PUT /inventories'):
         @it.should('should return I32000.')
         def test():
-            req = PutInventoryReq(name='Testdata99',
-                                  type_id=1,
-                                  file_system_id=1,
-                                  file_path='/mnt/xxx/99',
-                                  description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
-                                  schema='http://sample.com/datafotmat/testdata2')
-            with app.app_context():
-                response = InventoryService().put_inventory(organizer_id='dep-a', ml_component_id=1, inventory_id=1,
-                                                            req=req)
-                it.assertEqual(response.result.code, 'I32000')
+            with tempfile.TemporaryDirectory() as dir_name:
+                file_name = str(Path(dir_name) / 'test.csv')
+                with open(file_name, "w") as f:
+                    f.write('test1,test2')
+                append_req = AppendInventoryReq(name='case1',
+                                                type_id=1,
+                                                file_system_id=2,
+                                                file_path=file_name,
+                                                description='追加データ',
+                                                formats=['csv', 'zip'],
+                                                schema='http://sample.com/datafotmat/testdata2')
+                put_req = PutInventoryReq(name='case1',
+                                          type_id=1,
+                                          file_system_id=2,
+                                          file_path=file_name,
+                                          description='更新データ',
+                                          formats=['csv', 'zip'],
+                                          schema='http://sample.com/datafotmat/testdata2')
+                with app.app_context():
+                    InventoryService().append_inventory(organizer_id='dep-a',
+                                                        ml_component_id=1,
+                                                        req=append_req)
+
+                    response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                    append_inv = response.inventories[-1]
+
+                    response = InventoryService().put_inventory(organizer_id='dep-a', ml_component_id=1,
+                                                                inventory_id=append_inv.id_, req=put_req)
+                    it.assertEqual(response.result.code, 'I32000')
 
         @it.should('should return I34000 if inventory_id is not found.')
         def test():
@@ -230,85 +271,113 @@ with such.A('inventories') as it:
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'I34000')
 
-
-        @it.should('should return I34001 if inventory was deleted.')
+        @it.should('should return I34000 if file_path not found.')
         def test():
-            append_req = AppendInventoryReq(name='Testdata_Append1',
-                                            type_id=1,
-                                            file_system_id=1,
-                                            file_path='/mnt/xxx/append1',
-                                            description='追加→削除データ',
-                                            formats=['csv', 'zip'],
-                                            schema='http://sample.com/datafotmat/testdata2')
             req = PutInventoryReq(name='Testdata99',
                                   type_id=1,
-                                  file_system_id=1,
-                                  file_path='/mnt/xxx/99',
+                                  file_system_id=2,
+                                  file_path='C:\\'+get_random_str(64),
                                   description='テスト99用のデータ',
                                   formats=['csv', 'zip'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
-                InventoryService().append_inventory(organizer_id='dep-a',
-                                                    ml_component_id=1,
-                                                    req=append_req)
-
-                response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
-                append_inv = response.inventories[-1]
-
-                InventoryService().delete_inventory(organizer_id='dep-a', ml_component_id=1,
-                                                    inventory_id=append_inv.id_)
-
                 try:
-                    InventoryService().put_inventory(organizer_id='dep-a',
-                                                     ml_component_id=1,
-                                                     inventory_id=append_inv.id_,  # delete inventory_id
-                                                     req=req)
+                    InventoryService().put_inventory(organizer_id='dep-a', ml_component_id=1, inventory_id=1, req=req)
                     it.fail()
                 except QAIException as e:
                     it.assertTrue(type(e) is QAINotFoundException)
-                    it.assertEqual(e.result_code, 'I34001')
+                    it.assertEqual(e.result_code, 'I34000')
+
+        @it.should('should return I34001 if inventory was deleted.')
+        def test():
+            with tempfile.TemporaryDirectory() as dir_name:
+                file_name = str(Path(dir_name) / 'test.csv')
+                with open(file_name, "w") as f:
+                    f.write('test1,test2')
+                append_req = AppendInventoryReq(name='Testdata_Append1',
+                                                type_id=1,
+                                                file_system_id=2,
+                                                file_path=file_name,
+                                                description='追加→削除データ',
+                                                formats=['csv', 'zip'],
+                                                schema='http://sample.com/datafotmat/testdata2')
+                req = PutInventoryReq(name='Testdata99',
+                                      type_id=1,
+                                      file_system_id=1,
+                                      file_path='/mnt/xxx/99',
+                                      description='テスト99用のデータ',
+                                      formats=['csv', 'zip'],
+                                      schema='http://sample.com/datafotmat/testdata2')
+                with app.app_context():
+                    InventoryService().append_inventory(organizer_id='dep-a',
+                                                        ml_component_id=1,
+                                                        req=append_req)
+
+                    response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                    append_inv = response.inventories[-1]
+
+                    InventoryService().delete_inventory(organizer_id='dep-a', ml_component_id=1,
+                                                        inventory_id=append_inv.id_)
+
+                    try:
+                        InventoryService().put_inventory(organizer_id='dep-a',
+                                                         ml_component_id=1,
+                                                         inventory_id=append_inv.id_,  # delete inventory_id
+                                                         req=req)
+                        it.fail()
+                    except QAIException as e:
+                        it.assertTrue(type(e) is QAINotFoundException)
+                        it.assertEqual(e.result_code, 'I34001')
 
 
         @it.should('should change update_datetime if edit inventory')
         def test():
-            append_req = AppendInventoryReq(name='Testdata_Append1',
-                                            type_id=1,
-                                            file_system_id=1,
-                                            file_path='/mnt/xxx/append1',
-                                            description='追加→削除データ',
-                                            formats=['csv', 'zip'],
-                                            schema='http://sample.com/datafotmat/testdata2')
-            edit_req = PutInventoryReq(name='Testdata99',
-                                       type_id=1,
-                                       file_system_id=1,
-                                       file_path='/mnt/xxx/99',
-                                       description='テスト99用のデータ',
-                                       formats=['csv', 'zip', 'json'],
-                                       schema='http://sample.com/datafotmat/testdata2-2')
-            with app.app_context():
-                InventoryService().append_inventory(organizer_id='dep-a',
-                                                    ml_component_id=1,
-                                                    req=append_req)
+            with tempfile.TemporaryDirectory() as dir_name:
+                file_name1 = str(Path(dir_name) / 'test1.csv')
+                with open(file_name1, "w") as f:
+                    f.write('test1,test2')
+                file_name2 = str(Path(dir_name) / 'test2.csv')
+                with open(file_name2, "w") as f:
+                    f.write('test3,test4')
 
-                response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
-                append_inv = response.inventories[-1]
+                append_req = AppendInventoryReq(name='Testdata_Append1',
+                                                type_id=1,
+                                                file_system_id=2,
+                                                file_path=file_name1,
+                                                description='追加→削除データ',
+                                                formats=['csv', 'zip'],
+                                                schema='http://sample.com/datafotmat/testdata2')
+                edit_req = PutInventoryReq(name='Testdata99',
+                                           type_id=1,
+                                           file_system_id=2,
+                                           file_path=file_name2,
+                                           description='テスト99用のデータ',
+                                           formats=['csv', 'zip', 'json'],
+                                           schema='http://sample.com/datafotmat/testdata2-2')
+                with app.app_context():
+                    InventoryService().append_inventory(organizer_id='dep-a',
+                                                        ml_component_id=1,
+                                                        req=append_req)
 
-                InventoryService().put_inventory(organizer_id='dep-a',
-                                                 ml_component_id=1,
-                                                 inventory_id=append_inv.id_,
-                                                 req=edit_req)
+                    response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                    append_inv = response.inventories[-1]
 
-                response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
-                edit_inv = response.inventories[-1]
+                    InventoryService().put_inventory(organizer_id='dep-a',
+                                                     ml_component_id=1,
+                                                     inventory_id=append_inv.id_,
+                                                     req=edit_req)
 
-                it.assertEqual(append_inv.id_, edit_inv.id_)
-                it.assertEqual(append_inv.creation_datetime, edit_inv.creation_datetime)
-                it.assertNotEqual(append_inv.update_datetime, edit_inv.update_datetime)
-                it.assertEqual(edit_inv.file_path, edit_req.file_path)
-                it.assertEqual(edit_inv.type.id_, edit_req.type_id)
-                it.assertEqual(edit_inv.file_system.id_, edit_req.file_system_id)
-                it.assertEqual(edit_inv.name, edit_req.name)
-                it.assertEqual([f.format for f in edit_inv.formats], edit_req.formats)
+                    response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                    edit_inv = response.inventories[-1]
+
+                    it.assertEqual(append_inv.id_, edit_inv.id_)
+                    it.assertEqual(append_inv.creation_datetime, edit_inv.creation_datetime)
+                    it.assertNotEqual(append_inv.update_datetime, edit_inv.update_datetime)
+                    it.assertEqual(edit_inv.file_path, edit_req.file_path)
+                    it.assertEqual(edit_inv.type.id_, edit_req.type_id)
+                    it.assertEqual(edit_inv.file_system.id_, edit_req.file_system_id)
+                    it.assertEqual(edit_inv.name, edit_req.name)
+                    it.assertEqual([f.format for f in edit_inv.formats], edit_req.formats)
 
         @it.should('should return I34002 if invalid file path is not start alphabet for WINDOWS_FILE.')
         def test():

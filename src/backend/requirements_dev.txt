@@ -20,6 +20,7 @@ matplotlib == 3.2.1
 numpy == 1.18.2
 ptvsd==4.3.2
 beautifulsoup4==4.9.3
+docker == 4.2.2
 ./report
 ./libs/qlib-0.1.0-py3-none-any.whl
 nose2

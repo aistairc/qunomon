@@ -21,6 +21,7 @@ class InventoryMapper(sql_db.Model):
     schema = sa.Column(sa.String, nullable=True)
     creation_datetime = sa.Column(sa.DateTime, default=datetime.datetime.utcnow)
     update_datetime = sa.Column(sa.DateTime, default=datetime.datetime.utcnow)
+    file_hash_sha256 = sa.Column(sa.String, nullable=False)
 
     ml_component_id = sa.Column(sa.Integer, sa.ForeignKey('M_MLComponent.id'))
     type_id = sa.Column(sa.Integer, sa.ForeignKey('M_DataType.id'))

@@ -65,10 +65,9 @@ def get_logger() -> logging.Logger:
     log_path = get_log_path()
     Path(log_path).parent.mkdir(parents=True, exist_ok=True)
 
-    logging.basicConfig(filename=log_path,
-                        format=log_format, 
-                        level=logging.DEBUG,
-                        filemode='a')
+    handler = logging.FileHandler(filename=log_path, mode='a', encoding='utf-8')
+
+    logging.basicConfig(format=log_format, level=logging.DEBUG, handlers=[handler])
     logger = logging.getLogger(__name__)
     return logger
 

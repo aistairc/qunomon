@@ -4,7 +4,7 @@
 
 import unittest
 
-from src.qlib.utils.logging import get_logger, log
+from qlib.utils.logging import get_logger, log
 
 logger = get_logger()
 
@@ -14,10 +14,16 @@ def log_test():
     print('test')
 
 
+@log(logger)
+def log_test2():
+    return 'あいうえお'
+
+
 class TestAITInputGenerator(unittest.TestCase):
 
     def test_log_func(self):
         log_test()
+        log_test2()
 
 
 if __name__ == "__main__":

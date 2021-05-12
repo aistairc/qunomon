@@ -636,7 +636,10 @@ paths:
                   Code: 'I28000'
                   Message: invalid request.
         '404':
-          description:  アクセスエラー
+          description: |
+            以下リクエストを受信したときに返却する。
+              - 指定した{mlComponentsId}が存在しない
+              - FilePathが存在しない
           content:
             application/json:
               schema:
@@ -771,7 +774,10 @@ paths:
                   Code: 'I38000'
                   Message: invalid request.
         '404':
-          description:  アクセスエラー
+          description: |
+            以下リクエストを受信したときに返却する。
+              - 指定した{InventoryId}が存在しない
+              - FilePathが存在しない
           content:
             application/json:
               schema:

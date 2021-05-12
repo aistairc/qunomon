@@ -202,7 +202,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[8]:
 
 
 if not is_ait_launch:
@@ -215,7 +215,7 @@ if not is_ait_launch:
     get_ipython().run_line_magic('cd', '..')
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -245,7 +245,7 @@ def generated_paie_wise(model_path:str, order_combination: int, seed: int, file_
         cw.writerows(file_contents)
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -260,7 +260,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -278,7 +278,7 @@ def main() -> None:
     move_log()
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -289,7 +289,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -300,7 +300,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################

@@ -118,7 +118,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -137,7 +137,7 @@ from pathlib import Path
 from os import makedirs, path
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -156,7 +156,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -214,7 +214,7 @@ Number of data n, true values: y(1),y(2),â‹¯,y(n) Predicted values: f(1),f(2),â‹
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -233,7 +233,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -264,7 +264,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -277,7 +277,7 @@ def measure_rmse(rmse):
     return float(str(rmse.numpy()))
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -290,7 +290,7 @@ def measure_mae(mae):
     return float(str(mae))
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -307,7 +307,7 @@ def save_index_matrix(csv_data, file_path: str=None) -> None:
     return file_path
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -330,7 +330,7 @@ def save_predicted_plot(model, test_data_labels, normed_test_data, file_path: st
     return file_path
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -345,7 +345,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -411,7 +411,7 @@ def main() -> None:
     move_log()
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -422,7 +422,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################
@@ -433,7 +433,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[19]:
+# In[ ]:
 
 
 #########################################

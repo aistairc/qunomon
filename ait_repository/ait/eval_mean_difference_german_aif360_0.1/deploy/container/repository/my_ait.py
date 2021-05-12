@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -108,7 +108,7 @@ if not is_ait_launch:
     requirements_generator.add_package('aif360', '0.3.0')
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -122,7 +122,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -140,7 +140,7 @@ from aif360.datasets import StandardDataset
 from aif360.metrics import BinaryLabelDatasetMetric
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -159,7 +159,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -215,7 +215,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -234,7 +234,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -265,7 +265,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[ ]:
 
 
 #########################################
@@ -283,7 +283,7 @@ def data_loading(filepath, column_names, na_values):
     return df
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -298,7 +298,7 @@ def preprocessing(df):
     return df
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -318,7 +318,7 @@ def ait_input_check(protected_attribute, privileged_classes):
         sys.exit(1)
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -332,7 +332,7 @@ def measure_mean_difference(mean_difference):
     return mean_difference
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -361,7 +361,7 @@ def save_metric_fairness_plot(metric_fairness, protected_attribute, file_path: s
     return file_path
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -375,7 +375,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -443,7 +443,7 @@ def main() -> None:
     move_log()
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################
@@ -454,7 +454,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[19]:
+# In[ ]:
 
 
 #########################################
@@ -465,7 +465,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[20]:
+# In[ ]:
 
 
 #########################################
