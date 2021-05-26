@@ -164,6 +164,9 @@ export default {
                             this.hide();
                         })
                         .catch((error) => {
+                            if (this.checkAndWarnInventoryError(error.response.data)){
+                                return;
+                            }
                             this.$router.push({
                                 name: "Information",
                                 params: {

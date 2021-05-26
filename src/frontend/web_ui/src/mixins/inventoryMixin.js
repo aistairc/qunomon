@@ -189,6 +189,15 @@ export const inventoryMixin = {
             this.$router.push({
                 name: 'SignIn'
             });
+        },
+        checkAndWarnInventoryError(responseData){
+            const invenoryErrorCode = ["I20000", "I20001", "I24000", "I24001", "I34000", "I34001", "I34002"];
+            if (invenoryErrorCode.includes(responseData.Code)){
+                alert(JSON.stringify(responseData, undefined, 4));
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 }

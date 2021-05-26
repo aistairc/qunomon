@@ -131,6 +131,7 @@ ALTER SEQUENCE public."M_FileSystem_id_seq" OWNED BY public."M_FileSystem".id;
 CREATE TABLE public."M_Format" (
     id integer NOT NULL,
     format_ character varying,
+    mime_type character varying,
     resource_type_id integer
 );
 

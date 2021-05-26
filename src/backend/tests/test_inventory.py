@@ -90,7 +90,7 @@ with such.A('inventories') as it:
                                          file_system_id=2,
                                          file_path=file_name,
                                          description='テスト99用のデータ',
-                                         formats=['csv', 'zip'],
+                                         formats=['csv'],
                                          schema='http://sample.com/datafotmat/testdata2')
                 with app.app_context():
                     response = InventoryService().append_inventory(organizer_id='dep-a', ml_component_id=1, req=req)
@@ -103,7 +103,7 @@ with such.A('inventories') as it:
                                      file_system_id=2,
                                      file_path='/mnt/xxx/99',
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -120,7 +120,7 @@ with such.A('inventories') as it:
                                      file_system_id=2,
                                      file_path='C:\\'+get_random_str(257),
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -137,7 +137,7 @@ with such.A('inventories') as it:
                                      file_system_id=1,
                                      file_path='mnt/xxx/99',
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -154,7 +154,7 @@ with such.A('inventories') as it:
                                      file_system_id=1,
                                      file_path='/'+get_random_str(255)+'/'+get_random_str(256),
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -174,7 +174,7 @@ with such.A('inventories') as it:
                                      file_system_id=1,
                                      file_path=file_path,
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -191,7 +191,7 @@ with such.A('inventories') as it:
                                      file_system_id=999,
                                      file_path='/aaa',
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -208,7 +208,7 @@ with such.A('inventories') as it:
                                      file_system_id=2,
                                      file_path='C:\\'+get_random_str(64),
                                      description='テスト99用のデータ',
-                                     formats=['csv', 'zip'],
+                                     formats=['csv'],
                                      schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -217,6 +217,27 @@ with such.A('inventories') as it:
                 except QAIException as e:
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'I24000')
+
+        @it.should('should return I20001 if file mime_type is invalid.')
+        def test():
+            with tempfile.TemporaryDirectory() as dir_name:
+                file_name = str(Path(dir_name) / 'test.csv')
+                with open(file_name, "w") as f:
+                    f.write('test1,test2')
+                req = AppendInventoryReq(name='Testdata99',
+                                         type_id=1,
+                                         file_system_id=2,
+                                         file_path=file_name,
+                                         description='テスト99用のデータ',
+                                         formats=['jpg'],
+                                         schema='http://sample.com/datafotmat/testdata2')
+                with app.app_context():
+                    try:
+                        InventoryService().append_inventory(organizer_id='dep-a', ml_component_id=1, req=req)
+                        it.fail()
+                    except QAIException as e:
+                        it.assertTrue(type(e) is QAIInvalidRequestException)
+                        it.assertEqual(e.result_code, 'I20001')
 
     with it.having('PUT /inventories'):
         @it.should('should return I32000.')
@@ -230,14 +251,14 @@ with such.A('inventories') as it:
                                                 file_system_id=2,
                                                 file_path=file_name,
                                                 description='追加データ',
-                                                formats=['csv', 'zip'],
+                                                formats=['csv'],
                                                 schema='http://sample.com/datafotmat/testdata2')
                 put_req = PutInventoryReq(name='case1',
                                           type_id=1,
                                           file_system_id=2,
                                           file_path=file_name,
                                           description='更新データ',
-                                          formats=['csv', 'zip'],
+                                          formats=['csv'],
                                           schema='http://sample.com/datafotmat/testdata2')
                 with app.app_context():
                     InventoryService().append_inventory(organizer_id='dep-a',
@@ -258,7 +279,7 @@ with such.A('inventories') as it:
                                   file_system_id=1,
                                   file_path='/mnt/xxx/99',
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -278,7 +299,7 @@ with such.A('inventories') as it:
                                   file_system_id=2,
                                   file_path='C:\\'+get_random_str(64),
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -299,14 +320,14 @@ with such.A('inventories') as it:
                                                 file_system_id=2,
                                                 file_path=file_name,
                                                 description='追加→削除データ',
-                                                formats=['csv', 'zip'],
+                                                formats=['csv'],
                                                 schema='http://sample.com/datafotmat/testdata2')
                 req = PutInventoryReq(name='Testdata99',
                                       type_id=1,
                                       file_system_id=1,
                                       file_path='/mnt/xxx/99',
                                       description='テスト99用のデータ',
-                                      formats=['csv', 'zip'],
+                                      formats=['csv'],
                                       schema='http://sample.com/datafotmat/testdata2')
                 with app.app_context():
                     InventoryService().append_inventory(organizer_id='dep-a',
@@ -345,14 +366,14 @@ with such.A('inventories') as it:
                                                 file_system_id=2,
                                                 file_path=file_name1,
                                                 description='追加→削除データ',
-                                                formats=['csv', 'zip'],
+                                                formats=['csv'],
                                                 schema='http://sample.com/datafotmat/testdata2')
                 edit_req = PutInventoryReq(name='Testdata99',
                                            type_id=1,
                                            file_system_id=2,
                                            file_path=file_name2,
                                            description='テスト99用のデータ',
-                                           formats=['csv', 'zip', 'json'],
+                                           formats=['csv'],
                                            schema='http://sample.com/datafotmat/testdata2-2')
                 with app.app_context():
                     InventoryService().append_inventory(organizer_id='dep-a',
@@ -386,7 +407,7 @@ with such.A('inventories') as it:
                                   file_system_id=2,
                                   file_path='/mnt/xxx/99',
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -405,7 +426,7 @@ with such.A('inventories') as it:
                                   file_system_id=2,
                                   file_path='C:\\'+get_random_str(257),
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -424,7 +445,7 @@ with such.A('inventories') as it:
                                   file_system_id=1,
                                   file_path='mnt/xxx/99',
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -443,7 +464,7 @@ with such.A('inventories') as it:
                                   file_system_id=1,
                                   file_path='/'+get_random_str(255)+'/'+get_random_str(256),
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -465,7 +486,7 @@ with such.A('inventories') as it:
                                   file_system_id=1,
                                   file_path=file_path,
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -484,7 +505,7 @@ with such.A('inventories') as it:
                                   file_system_id=999,
                                   file_path='/aaa',
                                   description='テスト99用のデータ',
-                                  formats=['csv', 'zip'],
+                                  formats=['csv'],
                                   schema='http://sample.com/datafotmat/testdata2')
             with app.app_context():
                 try:
@@ -495,5 +516,40 @@ with such.A('inventories') as it:
                 except QAIException as e:
                     it.assertTrue(type(e) is QAIInvalidRequestException)
                     it.assertEqual(e.result_code, 'I34002')
+
+        @it.should('should return I20001 if file mime_type is invalid.')
+        def test():
+            with tempfile.TemporaryDirectory() as dir_name:
+                file_name = str(Path(dir_name) / 'test.csv')
+                with open(file_name, "w") as f:
+                    f.write('test1,test2')
+                append_req = AppendInventoryReq(name='case1',
+                                                type_id=1,
+                                                file_system_id=2,
+                                                file_path=file_name,
+                                                description='追加データ',
+                                                formats=['csv'],
+                                                schema='http://sample.com/datafotmat/testdata2')
+                put_req = PutInventoryReq(name='case1',
+                                          type_id=1,
+                                          file_system_id=2,
+                                          file_path=file_name,
+                                          description='更新データ',
+                                          formats=['png'],
+                                          schema='http://sample.com/datafotmat/testdata2')
+                with app.app_context():
+                    InventoryService().append_inventory(organizer_id='dep-a',
+                                                        ml_component_id=1,
+                                                        req=append_req)
+
+                    response = InventoryService().get_inventories(organizer_id='dep-a', ml_component_id=1)
+                    append_inv = response.inventories[-1]
+                    try:
+                        _ = InventoryService().put_inventory(organizer_id='dep-a', ml_component_id=1,
+                                                             inventory_id=append_inv.id_, req=put_req)
+                        it.fail()
+                    except QAIException as e:
+                        it.assertTrue(type(e) is QAIInvalidRequestException)
+                        it.assertEqual(e.result_code, 'I20001')
 
 it.createTests(globals())

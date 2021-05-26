@@ -209,7 +209,7 @@ with such.A('TestRunners') as it:
                                              file_system_id=2,
                                              file_path=file_name1,
                                              description='テスト99用のデータ',
-                                             formats=['csv', 'zip'],
+                                             formats=['csv'],
                                              schema='http://sample.com/datafotmat/testdata2')
                     InventoryService().append_inventory(organizer_id='dep-a',
                                                         ml_component_id=delete_ml_component_id, req=req)
@@ -219,7 +219,7 @@ with such.A('TestRunners') as it:
                                              file_system_id=2,
                                              file_path=file_name2,
                                              description='テスト99用のデータ',
-                                             formats=['csv', 'zip'],
+                                             formats=['csv'],
                                              schema='http://sample.com/datafotmat/testdata2')
                     InventoryService().append_inventory(organizer_id='dep-a',
                                                         ml_component_id=delete_ml_component_id, req=req)

@@ -71,31 +71,31 @@ INSERT INTO public."M_ResourceType" (id, type) VALUES (4, 'binary');
 -- Data for Name: M_Format; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (1, 'png', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (2, 'jpg', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (3, 'jpeg', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (4, 'jpe', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (5, 'tif', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (6, 'tiff', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (7, 'bmp', 2);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (8, 'csv', 3);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (9, 'tsv', 3);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (10, 'onnx', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (11, 'txt', 1);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (12, 'text', 1);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (13, 'json', 1);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (14, 'xml', 1);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (15, 'md', 1);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (16, 'h5', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (17, 'zip', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (18, 'gz', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (19, '7z', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (20, 'dump', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (21, 'dmp', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (22, 'bin', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (23, 'dat', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (24, 'data', 4);
-INSERT INTO public."M_Format" (id, format_, resource_type_id) VALUES (25, '*', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (1, 'png', 'image/png', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (2, 'jpg', 'image/jpeg', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (3, 'jpeg', 'image/jpeg', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (4, 'jpe', 'image/jpeg', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (5, 'tif', 'image/tiff', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (6, 'tiff', 'image/tiff', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (7, 'bmp', 'image/x-ms-bmp', 2);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (8, 'csv', 'text/plain', 3);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (9, 'tsv', 'text/plain', 3);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (10, 'onnx', 'application/octet-stream', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (11, 'txt', 'text/plain', 1);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (12, 'text', 'text/plain', 1);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (13, 'json', 'text/plain', 1);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (14, 'xml', 'text/xml', 1);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (15, 'md', 'text/plain', 1);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (16, 'h5', 'application/x-hdf', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (17, 'zip', 'application/zip', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (18, 'gz', 'application/gzip', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (19, '7z', 'application/x-7z-compressed', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (20, 'dump', '*', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (21, 'dmp', '*', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (22, 'bin', '*', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (23, 'dat', '*', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (24, 'data', '*', 4);
+INSERT INTO public."M_Format" (id, format_, mime_type, resource_type_id) VALUES (25, '*', '*', 4);
 
 
 --

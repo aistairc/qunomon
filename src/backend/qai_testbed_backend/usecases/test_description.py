@@ -10,10 +10,13 @@ from ..entities.test import TestMapper
 from ..entities.ml_component import MLComponentMapper
 from ..entities.test_description import TestDescriptionMapper
 from ..entities.operand import OperandMapper
+from ..entities.quality_measurement import QualityMeasurementMapper
 from ..entities.inventory_td import InventoryTDMapper
 from ..entities.test_runner_param import TestRunnerParamMapper
+from ..entities.test_runner_param_template import TestRunnerParamTemplateMapper
 from ..across.exception import QAIException, QAINotFoundException, QAIInternalServerException,\
     QAIInvalidRequestException
+from ..across.utils import is_num
 from ..gateways.extensions import sql_db
 from sqlalchemy.exc import SQLAlchemyError
 import datetime
@@ -210,15 +213,44 @@ class TestDescriptionService:
             raise QAIInternalServerException(result_code='T29999', result_msg='internal server error: {}'.format(e))
 
     def _add_test_runner_params(self, req, test_description):
-        test_runner_params = []
-        for test_runner_param_req in req.test_runner.params:
-            test_runner_param = TestRunnerParamMapper()
-            test_runner_param.value = test_runner_param_req.value
-            test_runner_param.test_description_id = test_description.id
-            # TODO test_runner_param_template_idが紐づいているテストランナーのものかチェック
-            test_runner_param.test_runner_param_template_id = test_runner_param_req.test_runner_param_template_id
-            test_runner_params.append(test_runner_param)
-        sql_db.session.add_all(test_runner_params)
+        try:
+            test_runner_params = []
+            for test_runner_param_req in req.test_runner.params:
+                # パラメータのminとmaxを取得する
+                param_temp = TestRunnerParamTemplateMapper.query.get(test_runner_param_req.test_runner_param_template_id)
+                if param_temp is None:
+                    raise QAINotFoundException(result_code='T94000', result_msg='not found TestRunnerParamTemplate')
+                # min < 入力値 < maxのチェック
+                if param_temp.value_type == "int" or param_temp.value_type == "float":
+                    # 入力値が数値か判定
+                    if is_num(test_runner_param_req.value):
+                        if param_temp.min_value is not None:
+                            if param_temp.min_value > float(test_runner_param_req.value):
+                                raise QAIInvalidRequestException('T94001', f'parameter value({test_runner_param_req.value}) < min_val({param_temp.min_value})')
+
+                        if param_temp.max_value is not None:
+                            if param_temp.max_value < float(test_runner_param_req.value):
+                                raise QAIInvalidRequestException('T94001', f'parameter value({test_runner_param_req.value}) > max_val({param_temp.max_value})')
+                    else:
+                        raise QAIInvalidRequestException('T94001',  f'parameter value({test_runner_param_req.value}) is invalid')
+
+                test_runner_param = TestRunnerParamMapper()
+                test_runner_param.value = test_runner_param_req.value
+                test_runner_param.test_description_id = test_description.id
+                # TODO test_runner_param_template_idが紐づいているテストランナーのものかチェック
+                test_runner_param.test_runner_param_template_id = test_runner_param_req.test_runner_param_template_id
+                test_runner_params.append(test_runner_param)
+            sql_db.session.add_all(test_runner_params)
+
+        except QAIException as e:
+            sql_db.session.rollback()
+            raise e
+        except SQLAlchemyError as e:
+            sql_db.session.rollback()
+            raise QAIInvalidRequestException('T99000', 'database error: {}'.format(e))
+        except Exception as e:
+            sql_db.session.rollback()
+            raise QAIInternalServerException(result_code='T99999', result_msg='internal server error: {}'.format(e))
 
     def _add_inventories(self, req, test_description):
         inventories = []
@@ -232,16 +264,47 @@ class TestDescriptionService:
         sql_db.session.add_all(inventories)
 
     def _add_operands(self, req, test_description):
-        operands = []
-        for measurement_req in req.quality_measurements:
-            operand = OperandMapper()
-            operand.quality_measurement_id = measurement_req.id_
-            operand.value = measurement_req.value
-            operand.test_description_id = test_description.id
-            operand.relational_operator_id = measurement_req.relational_operator_id
-            operand.enable = measurement_req.enable
-            operands.append(operand)
-        sql_db.session.add_all(operands)
+        try:
+            operands = []
+            for measurement_req in req.quality_measurements:
+                # クライテリアの入力があった場合
+                if measurement_req.enable:
+                    # クライテリアのminとmaxを取得する
+                    quality_measurement = QualityMeasurementMapper.query.get(measurement_req.id_)
+                    if quality_measurement is None:
+                        raise QAINotFoundException(result_code='TA4000', result_msg='not found QualityMeasurement')
+                    # min < 入力値 < maxのチェック
+                    if quality_measurement.type == "int" or quality_measurement.type == "float":
+                        # 入力値が数値か判定
+                        if is_num(measurement_req.value):
+                            if quality_measurement.min_value is not None:
+                                if quality_measurement.min_value > float(measurement_req.value):
+                                    raise QAIInvalidRequestException('TA4001', f'measurement value({measurement_req.value}) < min_val({quality_measurement.min_value})')
+
+                            if quality_measurement.max_value is not None:
+                                if quality_measurement.max_value < float(measurement_req.value):
+                                    raise QAIInvalidRequestException('TA4001', f'measurement value({measurement_req.value}) > max_val({quality_measurement.max_value})')
+                        else:
+                            raise QAIInvalidRequestException('TA4001',  f'measurement value({measurement_req.value}) is invalid')
+
+                operand = OperandMapper()
+                operand.quality_measurement_id = measurement_req.id_
+                operand.value = measurement_req.value
+                operand.test_description_id = test_description.id
+                operand.relational_operator_id = measurement_req.relational_operator_id
+                operand.enable = measurement_req.enable
+                operands.append(operand)
+            sql_db.session.add_all(operands)
+
+        except QAIException as e:
+            sql_db.session.rollback()
+            raise e
+        except SQLAlchemyError as e:
+            sql_db.session.rollback()
+            raise QAIInvalidRequestException('TA9000', 'database error: {}'.format(e))
+        except Exception as e:
+            sql_db.session.rollback()
+            raise QAIInternalServerException(result_code='TA9999', result_msg='internal server error: {}'.format(e))
 
     def _update_value_target(self, req, test_description):
         """quality_measurementsが存在する場合、レポートへの指標値出力フラグを有効にする"""

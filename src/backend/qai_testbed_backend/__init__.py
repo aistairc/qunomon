@@ -141,31 +141,32 @@ def _init_db_common(config_name):
     extensions.sql_db.session.add_all(resource_type)
     extensions.sql_db.session.flush()
 
-    format_ = [FormatMapper(format_='png', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='jpg', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='jpeg', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='jpe', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='tif', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='tiff', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='bmp', resource_type_id=resource_type[1].id),
-               FormatMapper(format_='csv', resource_type_id=resource_type[2].id),
-               FormatMapper(format_='tsv', resource_type_id=resource_type[2].id),
-               FormatMapper(format_='onnx', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='txt', resource_type_id=resource_type[0].id),
-               FormatMapper(format_='text', resource_type_id=resource_type[0].id),
-               FormatMapper(format_='json', resource_type_id=resource_type[0].id),
-               FormatMapper(format_='xml', resource_type_id=resource_type[0].id),
-               FormatMapper(format_='md', resource_type_id=resource_type[0].id),
-               FormatMapper(format_='h5', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='zip', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='gz', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='7z', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='dump', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='dmp', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='bin', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='dat', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='data', resource_type_id=resource_type[3].id),
-               FormatMapper(format_='*', resource_type_id=resource_type[3].id)]
+    format_ = [FormatMapper(format_='png', resource_type_id=resource_type[1].id, mime_type='image/png'),
+               FormatMapper(format_='jpg', resource_type_id=resource_type[1].id, mime_type='image/jpeg'),
+               FormatMapper(format_='jpeg', resource_type_id=resource_type[1].id, mime_type='image/jpeg'),
+               FormatMapper(format_='jpe', resource_type_id=resource_type[1].id, mime_type='image/jpeg'),
+               FormatMapper(format_='tif', resource_type_id=resource_type[1].id, mime_type='image/tiff'),
+               FormatMapper(format_='tiff', resource_type_id=resource_type[1].id, mime_type='image/tiff'),
+               FormatMapper(format_='bmp', resource_type_id=resource_type[1].id, mime_type='image/x-ms-bmp'),
+               FormatMapper(format_='csv', resource_type_id=resource_type[2].id, mime_type='text/plain'),
+               FormatMapper(format_='tsv', resource_type_id=resource_type[2].id, mime_type='text/plain'),
+               FormatMapper(format_='onnx', resource_type_id=resource_type[3].id, mime_type='application/octet-stream'),
+               FormatMapper(format_='txt', resource_type_id=resource_type[0].id, mime_type='text/plain'),
+               FormatMapper(format_='text', resource_type_id=resource_type[0].id, mime_type='text/plain'),
+               FormatMapper(format_='json', resource_type_id=resource_type[0].id, mime_type='text/plain'),
+               FormatMapper(format_='xml', resource_type_id=resource_type[0].id, mime_type='text/xml'),
+               FormatMapper(format_='md', resource_type_id=resource_type[0].id, mime_type='text/plain'),
+               FormatMapper(format_='h5', resource_type_id=resource_type[3].id, mime_type='application/x-hdf'),
+               FormatMapper(format_='zip', resource_type_id=resource_type[3].id, mime_type='application/zip'),
+               FormatMapper(format_='gz', resource_type_id=resource_type[3].id, mime_type='application/gzip'),
+               FormatMapper(format_='7z', resource_type_id=resource_type[3].id,
+                            mime_type='application/x-7z-compressed'),
+               FormatMapper(format_='dump', resource_type_id=resource_type[3].id, mime_type='*'),
+               FormatMapper(format_='dmp', resource_type_id=resource_type[3].id, mime_type='*'),
+               FormatMapper(format_='bin', resource_type_id=resource_type[3].id, mime_type='*'),
+               FormatMapper(format_='dat', resource_type_id=resource_type[3].id, mime_type='*'),
+               FormatMapper(format_='data', resource_type_id=resource_type[3].id, mime_type='*'),
+               FormatMapper(format_='*', resource_type_id=resource_type[3].id, mime_type='*')]
     extensions.sql_db.session.add_all(format_)
     extensions.sql_db.session.flush()
 
@@ -642,86 +643,83 @@ def _init_db_demo_2():
     extensions.sql_db.session.add_all(test_inventory_templates_tag)
     extensions.sql_db.session.flush()
 
-    # dummy data create
-    # windowsとLinuxでダミーデータ格納先を変更する
-    if os.name == 'nt':
-        dummy_file_path = Path(SettingMapper.query.get('mount_src_path').value) / 'ip' / 'dummyInventory' / 'test.csv'
-        file_system_id = file_systems[1].id
-        test_csv_path = str(dummy_file_path)
-    else:
-        dummy_file_path = Path('/work') / 'dummyInventory' / 'test.csv'
+    # インベントリファイル
+    inv_file_list = ['test.png', 'test.tiff', 'test.jpg', 'test.jpe', 'test.tiff', 'test.tiff']
 
+    if os.name == 'nt':
+        files_dir = Path(__file__).parent.parent / 'tests' / 'files'
+        inv_path_list = [str(files_dir/f) for f in inv_file_list]
+
+        file_system_id = file_systems[1].id
+    else:
         file_system_id = [f for f in file_systems if f.name == os.getenv('QAI_HOST_FILE_SYSTEM')][0].id
 
         if os.getenv('QAI_HOST_FILE_SYSTEM') == 'WINDOWS_FILE':
             split_char = '\\'
         else:
             split_char = '/'
-        test_csv_path = os.getenv('QAI_HOST_DIR') + split_char + 'dummyInventory' + split_char + 'test.csv'
 
-    dummy_dir = dummy_file_path.parent
-    if dummy_dir.exists():
-        shutil.rmtree(str(dummy_dir))
-    dummy_dir.mkdir(parents=True)
-    with open(str(dummy_file_path), mode='w') as f:
-        f.write('dummy_inventory,hello_world')
+        files_dir = os.getenv('QAI_HOST_DIR') + split_char + 'tests' + split_char + 'files'
+        inv_path_list = [files_dir + split_char + f for f in inv_file_list]
 
-    file_check_result = FileChecker().execute(test_csv_path, file_system_id)
+    file_check_result_list = []
+    for inv_path in inv_path_list:
+        file_check_result_list.append(FileChecker().execute(inv_path, file_system_id))
 
     invs = [InventoryMapper(name='TestDataset_0818',
                             type_id=data_types[0].id,
                             file_system_id=file_system_id,
-                            file_path=test_csv_path,
+                            file_path=inv_path_list[0],
                             description='0818用のデータセット',
                             delete_flag=False,
                             ml_component_id=ml_components[0].id,
                             schema='http://yann.lecun.com/exdb/mnist/',
-                            file_hash_sha256=file_check_result['hash_sha256']),
+                            file_hash_sha256=file_check_result_list[0]['hash_sha256']),
             InventoryMapper(name='TrainedModel_0907',
                             type_id=data_types[1].id,
                             file_system_id=file_system_id,
-                            file_path=test_csv_path,
+                            file_path=inv_path_list[1],
                             description='0918用のデータセット',
                             delete_flag=False,
                             ml_component_id=ml_components[0].id,
                             schema='http://yann.lecun.com/exdb/mnist/',
-                            file_hash_sha256=file_check_result['hash_sha256']),
+                            file_hash_sha256=file_check_result_list[1]['hash_sha256']),
             InventoryMapper(name='TestDataset_0918',
                             type_id=data_types[0].id,
                             file_system_id=file_system_id,
-                            file_path=test_csv_path,
+                            file_path=inv_path_list[2],
                             description='0907用のモデル',
                             delete_flag=False,
                             ml_component_id=ml_components[0].id,
                             schema='https://support.hdfgroup.org/HDF5/doc/index.html',
-                            file_hash_sha256=file_check_result['hash_sha256']),
+                            file_hash_sha256=file_check_result_list[2]['hash_sha256']),
             InventoryMapper(name='TestDataset_1002',
                             type_id=data_types[0].id,
                             file_system_id=file_system_id,
-                            file_path=test_csv_path,
+                            file_path=inv_path_list[3],
                             description='1007用のモデル',
                             delete_flag=False,
                             ml_component_id=ml_components[0].id,
                             schema='https://support.hdfgroup.org/HDF5/doc/index.html',
-                            file_hash_sha256=file_check_result['hash_sha256']),
+                            file_hash_sha256=file_check_result_list[3]['hash_sha256']),
             InventoryMapper(name='DUMMY1_ONNX',
                             type_id=data_types[1].id,
                             file_system_id=file_system_id,
-                            file_path=test_csv_path,
+                            file_path=inv_path_list[4],
                             description='開発用ダミーデータ',
                             delete_flag=False,
                             ml_component_id=ml_components[0].id,
                             schema='http://www.kasai.fm/wiki/rfc4180jp',
-                            file_hash_sha256=file_check_result['hash_sha256']),
+                            file_hash_sha256=file_check_result_list[4]['hash_sha256']),
             InventoryMapper(name='DUMMY2_ONNX',
                             type_id=data_types[1].id,
                             file_system_id=file_system_id,
-                            file_path=test_csv_path,
+                            file_path=inv_path_list[5],
                             description='開発用ダミーデータ',
                             delete_flag=False,
                             ml_component_id=ml_components[0].id,
                             schema='http://www.kasai.fm/wiki/rfc4180jp',
-                            file_hash_sha256=file_check_result['hash_sha256'])]
+                            file_hash_sha256=file_check_result_list[5]['hash_sha256'])]
     extensions.sql_db.session.add_all(invs)
     extensions.sql_db.session.flush()
 

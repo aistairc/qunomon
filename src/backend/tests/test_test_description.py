@@ -323,7 +323,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     "Params": [
                         {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
                         {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
-                        {"TestRunnerParamTemplateId": 3, "Value": "1.1"}
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
                     ]
                 }
             }
@@ -387,7 +387,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     "Params": [
                         {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
                         {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
-                        {"TestRunnerParamTemplateId": 3, "Value": "1.1"}
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
                     ]
                 }
             }
@@ -415,7 +415,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     "Params": [
                         {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
                         {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
-                        {"TestRunnerParamTemplateId": 3, "Value": "1.1"}
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
                     ]
                 }
             }
@@ -444,7 +444,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     "Params": [
                         {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
                         {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
-                        {"TestRunnerParamTemplateId": 3, "Value": "1.1"}
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
                     ]
                 }
             }
@@ -457,6 +457,331 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                                                                      testdescription_id=td_id, req=req)
                 it.assertEqual(res.result.code, 'T42000')
                 it.assertFalse(TestDescriptionMapper.query.get(td_id).value_target)
+
+        @it.should('should be an error if the TestRunnerParamTemplate does not exist.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage",
+                "QualityDimensionID": 5,
+                "ParentID": 1,
+                "QualityMeasurements": [],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 1, "TemplateInventoryId": 1},
+                    {"Id": 2, "InventoryId": 2, "TemplateInventoryId": 2}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        # 存在しないTestRunnerParamTemplateId
+                        {"TestRunnerParamTemplateId": 11, "Value": "0.5"},
+                        {"TestRunnerParamTemplateId": 12, "Value": "0.3"},
+                        {"TestRunnerParamTemplateId": 13, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAINotFoundException)
+                    it.assertEqual(e.result_code, 'T94000')
+
+        @it.should('should be an error if the parameter value is non-numeric.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage",
+                "QualityDimensionID": 5,
+                "ParentID": 1,
+                "QualityMeasurements": [],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 1, "TemplateInventoryId": 1},
+                    {"Id": 2, "InventoryId": 2, "TemplateInventoryId": 2}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.5"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.3"},
+                        # 数値型のパラメータ値にアルファベットを入力
+                        {"TestRunnerParamTemplateId": 3, "Value": "abc"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'T94001')
+
+        @it.should('should an error if the parameter value exceeds the maximum float type.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage",
+                "QualityDimensionID": 5,
+                "ParentID": 1,
+                "QualityMeasurements": [],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 1, "TemplateInventoryId": 1},
+                    {"Id": 2, "InventoryId": 2, "TemplateInventoryId": 2}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.5"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.3"},
+                        # float型の最大3.402823e+38を超える入力値
+                        {"TestRunnerParamTemplateId": 3, "Value": "3.402823e+39"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'T94001')
+
+        @it.should('should result in an error if the parameter value is greater than the max_valu.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage",
+                "QualityDimensionID": 5,
+                "ParentID": 1,
+                "QualityMeasurements": [],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 1, "TemplateInventoryId": 1},
+                    {"Id": 2, "InventoryId": 2, "TemplateInventoryId": 2}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.5"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.3"},
+                        #max_valu=1.0より大きいエラー値
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.1"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'T94001')
+
+        @it.should('Should result in an error if the parameter value is less than the min_value.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage",
+                "QualityDimensionID": 5,
+                "ParentID": 1,
+                "QualityMeasurements": [],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 1, "TemplateInventoryId": 1},
+                    {"Id": 2, "InventoryId": 2, "TemplateInventoryId": 2}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        #min_value=0.0より小さいエラー値
+                        {"TestRunnerParamTemplateId": 1, "Value": "-0.5"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.3"},
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'T94001')
+
+        @it.should('should be an error if the QualityMeasurement does not exist.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage2",
+                "QualityDimensionID": 1,
+                "QualityMeasurements": [
+                    # 存在しないQualityMeasurementId
+                    {"Id": 99, "Value": "70", "RelationalOperatorId": 1, "Enable": True}
+                ],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 3, "TemplateInventoryId": 3},
+                    {"Id": 2, "InventoryId": 4, "TemplateInventoryId": 4}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAINotFoundException)
+                    it.assertEqual(e.result_code, 'TA4000')
+
+        @it.should('should be an error if the measurement value is non-numeric.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage2",
+                "QualityDimensionID": 1,
+                "QualityMeasurements": [
+                    # 数値型のMeasurement値にアルファベットを入力
+                    {"Id": 1, "Value": "abc", "RelationalOperatorId": 1, "Enable": True}
+                ],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 3, "TemplateInventoryId": 3},
+                    {"Id": 2, "InventoryId": 4, "TemplateInventoryId": 4}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'TA4001')
+
+        @it.should('should an error if the measurement value exceeds the maximum float type.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage2",
+                "QualityDimensionID": 1,
+                "QualityMeasurements": [
+                    # float型の最大3.402823e+38を超える入力値
+                    {"Id": 1, "Value": "3.402823e+39", "RelationalOperatorId": 1, "Enable": True}
+                ],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 3, "TemplateInventoryId": 3},
+                    {"Id": 2, "InventoryId": 4, "TemplateInventoryId": 4}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'TA4001')
+
+        @it.should('should result in an error if the measurement value is greater than the max_valu.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage2",
+                "QualityDimensionID": 1,
+                "QualityMeasurements": [
+                    #max_valu=100より大きいエラー値
+                    {"Id": 1, "Value": "101.0", "RelationalOperatorId": 1, "Enable": True}
+                ],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 3, "TemplateInventoryId": 3},
+                    {"Id": 2, "InventoryId": 4, "TemplateInventoryId": 4}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'TA4001')
+
+        @it.should('Should result in an error if the measurement value is less than the min_value.')
+        def test():
+            post_json = {
+                "Name": "Neuron Coverage2",
+                "QualityDimensionID": 1,
+                "QualityMeasurements": [
+                    #min_value=0.0より小さいエラー値
+                    {"Id": 1, "Value": "-1.0", "RelationalOperatorId": 1, "Enable": True}
+                ],
+                "TargetInventories": [
+                    {"Id": 1, "InventoryId": 3, "TemplateInventoryId": 3},
+                    {"Id": 2, "InventoryId": 4, "TemplateInventoryId": 4}
+                ],
+                "TestRunner": {
+                    "Id": 1,
+                    "Params": [
+                        {"TestRunnerParamTemplateId": 1, "Value": "0.6"},
+                        {"TestRunnerParamTemplateId": 2, "Value": "0.4"},
+                        {"TestRunnerParamTemplateId": 3, "Value": "1.0"}
+                    ]
+                }
+            }
+            req = AppendTestDescriptionReqSchema().load(post_json)
+            
+            with app.app_context():
+                from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+                try:
+                    res = TestDescriptionService().append_test_description(organizer_id='dep-a', ml_component_id=1, req=req)
+                    it.fail()
+                except QAIException as e:
+                    it.assertTrue(type(e) is QAIInvalidRequestException)
+                    it.assertEqual(e.result_code, 'TA4001')
 
     with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/<testdescription_id>/star'):
         @it.should('should return T62000.')

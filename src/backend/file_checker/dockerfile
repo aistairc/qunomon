@@ -11,7 +11,11 @@ COPY ./container/ ${QAI_USER_HOME}/
 
 RUN mkdir ${QAI_USER_HOME}/input ${QAI_USER_HOME}/output
 
-RUN pip install --upgrade pip
-RUN pip install -r ${QAI_USER_HOME}/requirements.txt
+RUN apt-get update -qq && \
+    apt-get install -y \
+    libmagic-dev
+
+RUN pip install --upgrade pip && \
+    pip install -r ${QAI_USER_HOME}/requirements.txt
 
 ENTRYPOINT ["python", "file_checker.py"]

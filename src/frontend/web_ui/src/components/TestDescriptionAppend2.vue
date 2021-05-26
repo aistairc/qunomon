@@ -528,17 +528,23 @@ export default {
                 let matchedMeasureType = matchedMeasure.Type;
                 let isValidValue = true;
                 if(matchedMeasureType == 'float' || matchedMeasureType == 'int'){
-                  let matchedValue = parseFloat(matchedValueStr);
-                  if(!isNaN(matchedMeasure.Min)){
-                    let matchedMin = parseFloat(matchedMeasure.Min);
-                    if(matchedValue < matchedMin){
-                      isValidValue = false;
-                    }
+                  if(isNaN(matchedValueStr)){
+                    // 入力値が非数値の場合
+                    isValidValue = false;
                   }
-                  if(!isNaN(matchedMeasure.Max)){
-                    let matchedMax = parseFloat(matchedMeasure.Max);
-                    if(matchedMax < matchedValue){
-                      isValidValue = false;
+                  else{
+                    let matchedValue = parseFloat(matchedValueStr);
+                    if(!isNaN(matchedMeasure.Min)){
+                      let matchedMin = parseFloat(matchedMeasure.Min);
+                      if(matchedValue < matchedMin){
+                        isValidValue = false;
+                      }
+                    }
+                    if(isValidValue && !isNaN(matchedMeasure.Max)){
+                      let matchedMax = parseFloat(matchedMeasure.Max);
+                      if(matchedMax < matchedValue){
+                        isValidValue = false;
+                      }
                     }
                   }
 
@@ -570,6 +576,32 @@ export default {
                         }
                         else if(paramTemplate.DefaultVal.length > this.maxCharacters){
                             this.errorMessages.push(paramTemplate.Name + ' must be ' + this.maxCharacters + ' characters or less.');
+                        }
+                        // parameterが正常な値か判定
+                        else if(paramTemplate.Type == 'float' || paramTemplate.Type == 'int'){
+                            let isValidValue = true;
+                            if(isNaN(paramTemplate.DefaultVal)){
+                                // 入力値が非数値の場合
+                                isValidValue = false;
+                            }
+                            else{
+                                let inputParamValue = parseFloat(paramTemplate.DefaultVal);
+                                if(!isNaN(paramTemplate.Min)){
+                                    let minParamValue = parseFloat(paramTemplate.Min);
+                                    if(inputParamValue < minParamValue){
+                                        isValidValue = false;
+                                    }
+                                }
+                                if(isValidValue && !isNaN(paramTemplate.Max)){
+                                    let maxParamValue = parseFloat(paramTemplate.Max);
+                                    if(inputParamValue > maxParamValue){
+                                        isValidValue = false;
+                                    }
+                                }
+                            }
+                            if(!isValidValue){
+                                this.errorMessages.push('The parameter "' + paramTemplate.Name + '" is invalid value.');
+                            }
                         }
                     }
                     if(this.selectedInventories == null || this.selectedInventories == {}){

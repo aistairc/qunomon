@@ -159,6 +159,9 @@ export default {
                         "/inventories"
                     this.$axios.post(url, this.requestData)
                         .then((response) => {
+                            this.$emit("createInventory");
+                            this.hide();
+
                             this.result = response.data;
                             this.clearInputInventory();
                             if (this.$route.params.testDescriptionId) {
@@ -183,7 +186,10 @@ export default {
                             }
                         })
                         .catch((error) => {
-                            alert(JSON.stringify(url));
+                            if (this.checkAndWarnInventoryError(error.response.data)){
+                                return;
+                            }
+
                             this.$router.push({
                                 name: "Information",
                                 params: {
@@ -191,8 +197,6 @@ export default {
                                 }
                             })
                         })
-                    this.$emit("createInventory");
-                    this.hide();
                 }
             } else {
                 scrollTo(0, 0);

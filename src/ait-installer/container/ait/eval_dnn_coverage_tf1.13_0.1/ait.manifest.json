@@ -37,14 +37,6 @@
   ],
   "parameters": [
     {
-      "name": "mnist_image_px_size",
-      "type": "int",
-      "description": "\n                                            MNIST Imagge pixel size.\n                                            ",
-      "default_val": "28",
-      "min": "28",
-      "max": "28"
-    },
-    {
       "name": "determination_on_activation",
       "type": "int",
       "description": "\n                                            Neuron Activity/Inactivity\n\n                                            Determination Type\n\n                                            0: Threshold Determination\n\n                                            1: Upper/Lower Limit Determination\n\n                                            2: N Cases of Maximum Value Determination\n                                            ",

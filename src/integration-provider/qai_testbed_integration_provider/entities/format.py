@@ -11,6 +11,7 @@ class FormatMapper(sql_db.Model):
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True)
     format_ = sa.Column(sa.String, unique=True)
+    mime_type = sa.Column(sa.String)
 
     resource_type_id = sa.Column(sa.Integer, sa.ForeignKey('M_ResourceType.id'))
 

@@ -119,7 +119,8 @@ class InventoryService:
             sql_db.session.add(inventory)
             sql_db.session.flush()
 
-            inventory_format_list = self.create_inventory_format_list(inventory.id, req.formats)
+            inventory_format_list = self.create_inventory_format_list(inventory.id, req.formats,
+                                                                      file_check_result['mime_type'])
             sql_db.session.add_all(inventory_format_list)
             sql_db.session.commit()
             return AppendInventoryRes(
@@ -136,12 +137,18 @@ class InventoryService:
             raise QAIInternalServerException(result_code='I29999', result_msg='internal server error')
 
     @staticmethod
-    def create_inventory_format_list(inventory_id: int, formats: List[Format]) -> List[InventoryFormatMapper]:
+    def create_inventory_format_list(inventory_id: int, formats: List[Format], mime_type: str) \
+            -> List[InventoryFormatMapper]:
         inventory_format_list = []
         for format_ in formats:
             format_mapper = FormatMapper.query.filter(FormatMapper.format_ == format_).first()
             if format_mapper is None:
                 raise QAIInvalidRequestException(result_code='I20000', result_msg=f'Formats:[{format_}] is not found.')
+
+            if format_mapper.mime_type != '*' and format_mapper.mime_type != mime_type:
+                raise QAIInvalidRequestException(result_code='I20001',
+                                                 result_msg=f'Formats:[{format_}] is invalid mime_type. '
+                                                            f'DB:{format_mapper.mime_type} INPUT:{mime_type}')
 
             inventory_format = InventoryFormatMapper(inventory_id=inventory_id, format_id=format_mapper.id)
             inventory_format_list.append(inventory_format)
@@ -182,7 +189,8 @@ class InventoryService:
             InventoryFormatMapper.query. \
                 filter(InventoryFormatMapper.inventory_id == inventory_id).delete()
 
-            inventory_format_list = self.create_inventory_format_list(inventory.id, req.formats)
+            inventory_format_list = self.create_inventory_format_list(inventory.id, req.formats,
+                                                                      file_check_result['mime_type'])
             sql_db.session.add_all(inventory_format_list)
             sql_db.session.commit()
 
@@ -192,6 +200,8 @@ class InventoryService:
         except SQLAlchemyError as e:
             sql_db.session.rollback()
             raise QAIInvalidRequestException('I39000', 'database error: {}'.format(e))
+        except QAIException:
+            raise
         except Exception as e:
             sql_db.session.rollback()
             raise QAIInternalServerException(result_code='I39999', result_msg='internal server error: {}'.format(e))

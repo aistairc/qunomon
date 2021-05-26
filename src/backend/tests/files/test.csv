@@ -1,0 +1,2037 @@
+Name,Road type,Weather,Lighting,Obstacle,Pedestrian,Signal,Road condition,Traffic,Zebra crossing,Image clarity,Time
+264b9ed7-358bb41a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+3b33fd0a-386f8c8e.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2b337ace-f07eaa52.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Not clear,Dawn/Dusk
+9bc0e5c8-5130a218.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+437a6214-0c0aecc4.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Not clear,Night
+a93d8c59-15ea2d5b.jpg,General way,Fine,Low,None,None,None,Dry,High,No,Partly clear,Night
+85415496-5e90bcbf.jpg,General way,Fine,Low,None,On sidewalk,Red,Dry,High,No,Partly clear,Night
+5e25e18e-2f2b8dab.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+62429f91-de77c216.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+7119d4f2-2c19a355.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,No,Clear,Night
+0cdd0b65-7f73759a.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+1bde0226-e8599e77.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Dawn/Dusk
+032164cf-74b5fbda.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+208c9529-1f10a2af.jpg,General way,Rainy,Normal,None,On sidewalk,Green,Wet,Low,Yes,Clear,Day
+6476489b-740d850c.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Not clear,Dawn/Dusk
+5e3cffca-1aace69e.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+ab834a64-1606c7a3.jpg,General way,Rainy,Low,None,None,Not sure,Wet,Low,No,Not clear,Night
+52ee4303-bed51bb0.jpg,General way,Rainy,Normal,None,On sidewalk,Green,Wet,Medium,Not visible,Clear,Day
+77a415ba-fb790dc4.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+2f26b25d-30af670d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+1155e4cc-c7e09eed.jpg,General way,Fine,Low,None,On sidewalk,Yellow,Dry,Medium,Yes,Clear,Night
+ad515c74-079be542.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+2d89f625-5e44c56a.jpg,General way,Fine,High,None,None,Not sure,Dry,Medium,Yes,Partly clear,Day
+26fd9858-69424e40.jpg,Highway,Rainy,Low,None,None,Not sure,Wet,Medium,No,Partly clear,Night
+2eec7a7b-a5d9224a.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Not visible,Clear,Day
+2ae514af-7814ddd5.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+4a98efa1-177bfbd6.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+704f40f4-c0db9343.jpg,General way,Fine,Normal,Vehicle,On sidewalk,Red,Dry,Low,Yes,Partly clear,Day
+a83edcbe-8b85c113.jpg,General way,Rainy,Normal,None,None,None,Wet,Medium,No,Clear,Day
+683752ff-bd4fa513.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+508934aa-c3ca2928.jpg,General way,Fine,High,None,None,Green,Dry,Medium,No,Clear,Day
+8fbbaa79-c3c99370.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+639a503c-a2348005.jpg,General way,Fine,High,None,On road,None,Dry,Medium,No,Clear,Day
+0a0c3694-f3444902.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+6612ee03-1c70566d.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+7f0ef682-c93899df.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+92e3c2b8-503a197d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+651f8390-0174a060.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+9cf54e92-dba772a5.jpg,General way,Fine,Normal,Vehicle,On road,Green,Dry,Low,Yes,Partly clear,Day
+1e0d57ee-54122b51.jpg,General way,Cloudy,Normal,Vehicle,None,None,Wet,Low,Yes,Clear,Day
+3d46ebc7-734b4921.jpg,General way,Fine,Normal,Others,On sidewalk,None,Dry,Low,Yes,Clear,Day
+8fd97460-0d1cb55f.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,Yes,Clear,Night
+41009619-71649668.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,No,Clear,Day
+26ce6f0d-142c4303.jpg,General way,Fine,Normal,Others,None,None,Dry,Low,No,Partly clear,Day
+0cdaa475-5beaa7b5.jpg,General way,Fine,Normal,Vehicle,None,Green,Dry,Low,Yes,Clear,Day
+0726fe96-3e780658.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+24009c6e-164b2e55.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Day
+4ac4e841-c58e2e03.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+b03d087b-5fc1493e.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Not clear,Night
+ad30fd70-6200af0a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1f7ba5ab-1709d210.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+a63049bb-83b6a2d1.jpg,General way,Fine,High,None,None,None,Dry,Low,Yes,Clear,Day
+3c0e7240-3fa41758.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+7fd26268-8cde2dad.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Clear,Night
+b1389032-7768236e.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+9ad7fc73-70446f47.jpg,General way,Fine,High,None,None,Not sure,Dry,Medium,No,Clear,Day
+1f864b3f-0ea99dfa.jpg,General way,Cloudy,Normal,None,On sidewalk,Red,Snowy,Medium,Yes,Partly clear,Dawn/Dusk
+88047d0f-a0969c8e.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+4cf851c9-cd9138bd.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+794b014f-68ed6a87.jpg,General way,Fine,Normal,None,On sidewalk,Green,Wet,Low,Yes,Clear,Day
+2322fabb-fe165c2a.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Partly clear,Day
+736adb96-9c254436.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,Not visible,Clear,Day
+33062dbc-e7be3dc9.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+4183370f-6eb0b302.jpg,General way,Fine,High,None,None,None,Dry,Low,Yes,Clear,Day
+a8d45186-0bd5a174.jpg,General way,Fine,High,Vehicle,On road,None,Dry,Low,No,Clear,Day
+6122250c-c6f2a842.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+628f9900-08230535.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+8e1f1d03-fac49634.jpg,General way,Fine,Low,None,None,None,Wet,Medium,No,Partly clear,Night
+2d76b063-78a40ed2.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Not clear,Night
+265e8ad7-6818a1fc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+8dd4822a-f83797eb.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Clear,Night
+ad21b792-4a4b53f0.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+a1f981a6-a89bbd22.jpg,General way,Fine,Low,None,None,Red,Wet,High,No,Clear,Night
+4ddcbaad-4f3ebec0.jpg,General way,Cloudy,Normal,None,On sidewalk,None,Wet,Medium,Yes,Clear,Day
+1014ad45-7b340597.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+a2ecbfb2-43c30b1e.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+687f5e1f-0ee01ee1.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Dawn/Dusk
+7a5df54e-763ddadf.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+55db0860-2ccefed7.jpg,Under bridge/FO,Fine,Low,None,None,Not sure,Dry,Low,Not visible,Clear,Night
+ac89f772-8705475c.jpg,General way,Rainy,Low,None,None,Green,Wet,Medium,Yes,Partly clear,Night
+5d9308c1-64e46043.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3e62804c-69932ff8.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Low,No,Clear,Day
+84c9bcd8-1d24cabb.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+995a32ec-05a8ac10.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+323a3e5f-39db13e7.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,High,No,Clear,Day
+a43234f1-ef56d2d3.jpg,General way,Fine,Normal,Others,On road,Green,Dry,Medium,Yes,Clear,Day
+2767bb94-22db4c88.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+acb59e79-cabcd5ba.jpg,General way,Fine,High,Others,None,None,Dry,Low,Yes,Clear,Day
+0a4773b8-ff24b5af.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+53f9b9e0-b402cd3b.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+6539ca72-beae9448.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,High,Yes,Clear,Day
+8dfd0ed6-2bdf2471.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+4470c73c-1add6809.jpg,General way,Cloudy,Normal,Vehicle,None,None,Dry,Low,No,Clear,Day
+46e41f98-9d21b56e.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+97b2b363-eb1c5ec4.jpg,General way,Fine,Low,Vehicle,None,Red,Dry,Medium,Yes,Clear,Night
+403cca69-67a9ced4.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+9ed89333-bf13f18b.jpg,General way,Fine,Low,Vehicle,None,Not sure,Dry,Low,Yes,Clear,Night
+8fd334d8-97765f73.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+0429dca3-034fed57.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+51c25046-019b6946.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+1bd56bc1-eb05ea33.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+064bad4e-b2a60955.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+41f5d773-bd806efd.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+7171644d-5dd413d5.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+0990b5da-2aefc9ce.jpg,General way,Fine,Low,None,None,None,Wet,Low,No,Clear,Night
+656587bd-a9d382b7.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+8cc99f48-ca215966.jpg,General way,Cloudy,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+2a38eef1-b81ccd82.jpg,General way,Fine,Low,Others,On road,None,Dry,Undefined,Yes,Clear,Night
+1a38611b-55c217fe.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3d3021b8-08faca11.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+871c4161-18624ecf.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2047354d-1b173437.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+52690e41-3a1a3730.jpg,Highway,Fine,Low,None,None,Red,Dry,Medium,No,Partly clear,Night
+308cb575-5fd120ac.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+169900a5-53efea93.jpg,General way,Fine,Low,None,None,Red,Dry,High,Yes,Clear,Night
+acfa843b-0e33d282.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+3d9dfbdf-56beafce.jpg,Under bridge/FO,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+76d7d15b-68dfdcc1.jpg,Highway,Fine,Low,None,None,None,Wet,Low,No,Clear,Night
+2b03d428-9260f848.jpg,Highway,Fine,Low,None,None,None,Wet,Low,No,Clear,Night
+8f87bfa0-6d52c9dd.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Dawn/Dusk
+4e697370-05db3a4c.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+97a3ce7b-f5b2e543.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+35a0835e-c9222580.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+010d75f8-91f41ad8.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+76db321f-ed1d5479.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Partly clear,Night
+0b6c3c8a-0861ada0.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+7893a60a-27494719.jpg,General way,Fine,High,None,None,Green,Dry,Low,No,Partly clear,Day
+5aa04547-9abd2e53.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+96e1f805-6a4dde32.jpg,General way,Rainy,Low,None,None,None,Wet,Low,No,Partly clear,Dawn/Dusk
+828387f9-75458ea6.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+394c0e58-4776b7e7.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+0e6671dd-445a03fa.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+0d207cff-4d922795.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Clear,Day
+213c2e01-71bf8a75.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+51ca17ab-91dcff3f.jpg,General way,Fine,Low,Others,None,Red,Dry,Low,Yes,Clear,Night
+4a83cb52-00d64095.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+4f838541-73621fc3.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+04dc105d-eeb828c9.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+4f3f5c02-483e1c11.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+78b703a0-48e82a4b.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+2f71857b-5e0289c8.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+169900a5-087fe1a0.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+92519c01-b065ed6e.jpg,General way,Fine,Low,Vehicle,None,Green,Wet,Medium,No,Partly clear,Night
+36663e5c-e098f9a0.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,No,Not clear,Night
+6007a4e1-b6e2a33a.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+99e5ec54-12829bc7.jpg,General way,Fine,High,None,On road,Not sure,Dry,Low,Yes,Clear,Day
+3902161e-67068e48.jpg,General way,Cloudy,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+33164552-8fc4b11c.jpg,General way,Fine,Low,None,None,Red,Dry,High,Yes,Clear,Night
+3207d01f-88b35af4.jpg,Parking lot/Gas station,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+60199d1b-892d798f.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Clear,Day
+51b98da5-cfa24505.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+64b3eb25-21efc7df.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+955bd35b-f14f3eec.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+6f74b463-2cb8f70b.jpg,General way,Fine,High,None,On road,None,Dry,Medium,No,Clear,Day
+42f8d08e-8612f8ca.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+35306bfa-4e3d0631.jpg,Highway,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Dawn/Dusk
+9ed558f4-ff713a6b.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+7eaac912-68ce8d57.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Not visible,Clear,Night
+a0f7060a-e5670875.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Partly clear,Day
+5ab4b4dd-99980fd8.jpg,General way,Rainy,Low,None,On sidewalk,Green,Wet,Medium,Yes,Partly clear,Night
+281a8cc4-89b5ca4a.jpg,General way,Rainy,Low,None,On sidewalk,Green,Wet,Medium,Yes,Partly clear,Night
+5c2ecb21-73ed42d8.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+54a2cec4-bfebb11d.jpg,Highway,Fine,Normal,Others,None,Not sure,Dry,Low,No,Clear,Day
+3612de65-487a35c5.jpg,General way,Fine,High,None,None,Red,Dry,High,No,Clear,Day
+03626025-6e619fb2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+5727624e-8faef05c.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Snowy,Medium,No,Clear,Night
+263bfdd0-cf2496cf.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1d03527c-8fd8bce8.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+8da172cf-577329d4.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+5324e895-9decca17.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Medium,Yes,Clear,Day
+825730d9-824f85b1.jpg,General way,Fine,Low,Others,None,Green,Dry,Low,No,Clear,Dawn/Dusk
+97b7f2d7-890bb656.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Clear,Day
+38f57611-eac67ac6.jpg,Highway,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+4f4ba072-5467a3b6.jpg,General way,Rainy,Normal,None,None,None,Wet,Medium,No,Clear,Day
+9f1c7549-ca490b7d.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+5b27653c-3b382bb7.jpg,General way,Fine,Normal,None,None,Red,Snowy,High,No,Partly clear,Day
+38b272c8-f444ebd7.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+8e9d65ac-a819cb9d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+9865aded-3fe6e785.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+5149266c-5132d807.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+7147d09b-75c68075.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+81c48eb4-9d346990.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+92cd14f3-3d5f2c00.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+1f6db63b-45d1d994.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+833aa2e2-3e637e25.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+9190cbf4-e9ffa0a7.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+19caa97f-57be8a73.jpg,General way,Rainy,Low,None,None,Green,Wet,Low,No,Partly clear,Night
+97b6cf7b-e83ab22f.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+a1d82b67-85d9ac13.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+17da591c-cb0a2a4f.jpg,General way,Fine,High,None,None,Green,Dry,Medium,Yes,Clear,Day
+8c9c986e-196be57f.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+ad58d696-6a5ffca1.jpg,Highway,Fine,Low,None,None,Yellow,Dry,Low,No,Clear,Night
+13e8c5a9-4b4ee24e.jpg,Highway,Rainy,Normal,None,None,Green,Wet,Medium,No,Clear,Day
+767cb64d-1215ff52.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+61314f67-9ab6180d.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Medium,No,Clear,Day
+47663205-90efe88e.jpg,Highway,Fine,Low,None,None,Not sure,Dry,Low,No,Partly clear,Night
+0c9f12a1-913dfb94.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+2c6951f3-31470c16.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+94e3f21d-5dab3edc.jpg,General way,Fine,Low,None,None,None,Wet,Low,Yes,Clear,Night
+7aac2828-733d11c4.jpg,General way,Fine,High,None,On road,Green,Dry,Low,Yes,Clear,Day
+5f8a658f-c709cb78.jpg,General way,Cloudy,Normal,Not sure,On sidewalk,None,Undefined,Low,Not visible,Not clear,Day
+0a9858f3-3306df5b.jpg,Under bridge/FO,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Night
+47019a35-65c1065a.jpg,General way,Rainy,Low,None,None,Green,Wet,Low,No,Partly clear,Night
+597ecb2d-e513ff7c.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+4fd2d211-144cd6c2.jpg,Under bridge/FO,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+3a06f4db-d88d10bb.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Clear,Day
+5a6b7b66-b77fe5f4.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+a78ea708-28b720c5.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Clear,Night
+914f1975-f50bf07f.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+84e130f3-519941af.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+5d137856-9756e6e2.jpg,Under bridge/FO,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+7f3e059f-0a1f27c7.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+8b4a3336-a91fab06.jpg,Highway,Rainy,Normal,None,None,None,Wet,Low,No,Not clear,Day
+a3f71692-fd415ccc.jpg,General way,Fine,Normal,Others,On sidewalk,None,Dry,Low,Yes,Clear,Day
+84b5748a-8f0d2887.jpg,General way,Fine,Normal,Others,On sidewalk,Red,Dry,High,Yes,Partly clear,Day
+8967d144-e3e258b1.jpg,General way,Fine,Normal,None,None,Green,Wet,Medium,Yes,Clear,Day
+2d7a6e4f-914c8972.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+4f8f7dfe-9e0ff8be.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+9b8de371-808df127.jpg,General way,Fine,Normal,None,None,Green,Wet,Low,No,Clear,Night
+63a701de-87aa8d1d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2c730c48-da79a64d.jpg,General way,Snowy,Normal,None,None,Green,Snowy,Low,Not visible,Clear,Night
+a1acd9c2-c3108487.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+9a5d0562-cf01e137.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Clear,Night
+a070c83f-0b7047c2.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+4e66e9f0-d6689b0e.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+7b5d0695-4ba64d54.jpg,General way,Fine,High,None,On sidewalk,None,Dry,Low,No,Clear,Day
+3ab9efbe-431f97db.jpg,General way,Cloudy,Normal,Others,On sidewalk,Not sure,Dry,Low,Yes,Partly clear,Dawn/Dusk
+10ec4581-f9acb333.jpg,Parking lot/Gas station,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+4170f5e5-367f209f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+7101352b-4c20a15a.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4d6d0cf2-bad91cf2.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+51cbec88-e3e484cf.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+5706182e-172c6e3f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+115d9e12-fd31cd1b.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+8a14d75b-985e6187.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+8335e55d-dd25e148.jpg,General way,Rainy,Normal,Vehicle,On sidewalk,None,Wet,Low,Yes,Clear,Day
+45cee415-3919c3d5.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,Yes,Clear,Night
+3c162fba-0ec297f9.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+71c52c0f-1b498e99.jpg,Under bridge/FO,Fine,Low,None,On sidewalk,Green,Dry,Medium,No,Clear,Dawn/Dusk
+7b015350-d86631cd.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+32b33022-be7d281a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+925a3779-9c94ce42.jpg,General way,Fine,Normal,Others,On sidewalk,None,Dry,Low,No,Clear,Day
+43435670-667de11b.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+7126de1c-03bdb36c.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,Yes,Clear,Dawn/Dusk
+1c89eba4-5bd034c2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+8fc4b3e0-09696a99.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+546ff131-57c502ca.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+5501c54f-a87528f0.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+83d632ca-d1a0fb0e.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+0dbeb700-381c1e93.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+ab5686e0-74369ff7.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Not visible,Partly clear,Night
+1a184bb3-1d002eac.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4e526897-dc50a6dc.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,Yes,Clear,Dawn/Dusk
+265585e1-e3e9cefe.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+227c4a9a-4be0048f.jpg,General way,Fine,Normal,Vehicle,None,Green,Dry,Medium,No,Clear,Day
+0554d0e1-545facff.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1ff22f9d-ba89c862.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+930d5775-70a083a0.jpg,General way,Fine,Normal,None,On sidewalk,Yellow,Dry,Medium,Yes,Clear,Day
+fe08d8ac-62a9c9a2.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Clear,Day
+0564969e-9d6ab6a4.jpg,General way,Fine,Normal,Vehicle,On road,Yellow,Dry,High,Yes,Clear,Day
+19e40aef-58135da0.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+9ab127bf-b60f17f3.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+81f59cb8-3bfd24a2.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+50c48399-39c3d110.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+447d3a9d-485fa72b.jpg,General way,Rainy,Low,Vehicle,None,None,Wet,Low,No,Not clear,Night
+59a32ea7-a749523b.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+11fb4e6e-74a5e584.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+0420543b-bac9da48.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+af139cb7-828267d2.jpg,General way,Fine,Low,None,On road,Red,Dry,High,Yes,Clear,Night
+3f3673a0-b4653165.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+786a9875-0f4327cb.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+54ea1a40-cfc2d393.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+3d27f886-931a1a45.jpg,General way,Fine,Normal,None,Not sure,Green,Dry,Medium,Yes,Clear,Day
+4ec8631a-f1ee99f6.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+aa2b93de-d76002fe.jpg,General way,Fine,Low,None,None,Yellow,Dry,Medium,Yes,Clear,Night
+635eded7-87a3b17c.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+0f78ad88-80f804d2.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+79f2a3c0-eec86c73.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Not clear,Day
+8906fbf3-92aadb9d.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,Yes,Clear,Day
+87b18652-f7bb2e01.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,Yes,Partly clear,Day
+17e365e7-e4ac6e75.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4ce4b322-a1c2b117.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0c86d1c5-2e0db5be.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+99580a6e-f9cbeea9.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+8fddc838-b1d918ce.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+11bfabe9-f755a0e1.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+8b90a185-7bdfadc6.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+09ac21d6-eefa8ed0.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+047671d6-83485ddb.jpg,General way,Fine,Normal,Vehicle,On sidewalk,Green,Dry,High,Yes,Not clear,Day
+2afa3340-6aec637d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+0512b710-a10d33c7.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+3383dc8b-45f7a30d.jpg,Highway,Fine,Normal,Others,None,None,Dry,Low,No,Clear,Day
+4098726f-0291540a.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+9105b5b7-4f12d121.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Partly clear,Day
+64001df4-ae73720b.jpg,General way,Rainy,Low,Others,On sidewalk,Green,Wet,Medium,Yes,Clear,Night
+1ac4e4cd-4ed5328e.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+71863a3f-f85c03f6.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+300f18e4-90bff743.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+5f6dc55e-9b63d67b.jpg,General way,Fine,Low,None,None,Red,Dry,High,No,Clear,Night
+59676dfc-109170d6.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+a23038c3-6c68d14e.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Low,Yes,Clear,Day
+101b9832-cfdc90ad.jpg,General way,Fine,Normal,None,On road,Yellow,Dry,Medium,Yes,Clear,Day
+5347b7cb-9f2a63ad.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Night
+9772b277-b0ae9249.jpg,General way,Fine,High,None,None,Green,Dry,Medium,Yes,Clear,Day
+214a6b10-5fa8633e.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+a6b9fea6-b8552d6e.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+a3a0187c-fe92172d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+7a536ea9-75176754.jpg,General way,Fine,Low,None,None,Green,Dry,High,Yes,Clear,Night
+714692ff-f3eda400.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+42fa850a-3d127dbf.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+454b546c-837d6fe8.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+411d00f9-15c0ca98.jpg,General way,Fine,Low,None,On sidewalk,Yellow,Wet,Low,Yes,Clear,Night
+728d5596-2daae9ce.jpg,General way,Fine,Low,None,On road,Red,Dry,Medium,Yes,Clear,Night
+4d30d3df-91ffc7bd.jpg,General way,Undefined,Low,None,None,Green,Dry,Low,Yes,Not clear,Night
+96360dd0-ef61afe6.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+45a00149-366dd2f7.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,No,Clear,Day
+7a7ffccb-aff1f997.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2fea2c95-68a52407.jpg,Highway,Rainy,Normal,None,None,None,Wet,Medium,No,Clear,Day
+72c92797-72b01a60.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Day
+2776d65d-188ddbff.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Partly clear,Night
+a33bd120-bdbf4d33.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+7c5dbdda-745fb049.jpg,Highway,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2b923350-c22307af.jpg,Parking lot/Gas station,Snowy,Normal,None,None,None,Snowy,Low,No,Clear,Dawn/Dusk
+38f40836-2a99cae7.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+377a4a26-1671d18f.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,No,Not clear,Day
+103b71c6-4d687751.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+97ece15c-e12296ae.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+8e50f979-9a46ecc9.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+16726ee8-2295c8fd.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+2b9209ec-a7d00a8a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+391bbd45-f8c1beec.jpg,General way,Fine,Low,None,None,Not sure,Dry,Medium,No,Clear,Night
+57aff47a-053377cd.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+0c4ede7c-cb4ef24f.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+6b699853-043fb42b.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+afcfe370-6f9e1442.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Not clear,Night
+79ced1aa-ec10c0fa.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+7ed57d0a-9c41f205.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+6649eb5b-36ab4bf9.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+07b1ed8a-a267d3ba.jpg,Highway,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+a274c488-e44f7f48.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+689da8a1-c39493d3.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Partly clear,Night
+068ac51e-4bae9b42.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+7915c0ec-6cd6494d.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+104cdad2-5c21871a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+94722d83-a2119ed9.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+6ce99224-f270a7c2.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4c1f08df-44432d2a.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Partly clear,Night
+598b9219-2c52f004.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Clear,Day
+066815bc-38942f7e.jpg,General way,Fine,Normal,Others,None,None,Dry,Low,Yes,Not clear,Day
+30cc60f2-6e7c6d72.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+12719ee1-490ecbb0.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+49ed4a5e-c4ae1d07.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+02e9a153-1d9cde62.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+68eae8d4-f809c2f5.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+95619ecb-8b64e407.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+1212c9e9-f5f5340b.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+07eb68f5-252839d8.jpg,General way,Rainy,Low,None,None,Green,Wet,Low,No,Partly clear,Night
+7da685d7-7bf187a3.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+193fbaca-8e3aaa2a.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+9e4a1e38-81e71e95.jpg,General way,Rainy,Normal,Vehicle,On road,Red,Wet,Medium,Yes,Clear,Day
+30967030-02a51d8d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+a65a378f-c7c9496a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+34056d95-54b35e18.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Low,No,Clear,Day
+47976e80-5ad9ccfb.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+08688b9f-59041747.jpg,General way,Cloudy,Normal,None,None,Not sure,Wet,Low,Yes,Clear,Day
+2137b940-5f31caf3.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+7b4b1bcf-882e35ad.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+5e9b335d-75d94656.jpg,General way,Fine,High,None,None,Green,Dry,Medium,No,Clear,Day
+ad09a5b3-ea04190c.jpg,General way,Foggy,Normal,None,None,None,Dry,Low,No,Clear,Day
+42c7230c-1fad61ce.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+49ae286b-a8d0db39.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+5ae16ac1-32de0fc3.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+9fd82c31-cc060d09.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+a1224f71-e619c30c.jpg,General way,Fine,Low,None,On road,Not sure,Dry,Low,Yes,Clear,Night
+7915c0ec-6cd6494d.jpg,General way,Fine,Low,None,None,Not sure,Dry,Medium,Yes,Partly clear,Night
+757a321d-b1a592e4.jpg,General way,Fine,Normal,None,None,Yellow,Dry,Medium,Yes,Clear,Day
+2bbe0227-4d490a4d.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+48d4f48c-3523b8c4.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+7611556c-857c0a2d.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+0dc64f22-20ff8f85.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+14d38b0f-85134f52.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+26089727-ae79b282.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+0b8d4928-6cbb38b9.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Not clear,Night
+12b21211-9f9982cb.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+231b2c4f-8d6c35ed.jpg,General way,Fine,Low,Others,None,Green,Dry,Low,No,Clear,Night
+58a6d4a6-a959f89a.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Not clear,Day
+507254aa-6dff36e2.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+08fd4409-68bb4760.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+30278c32-6fbf3f68.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+4747bf3a-8eb2d19f.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+5f8e9381-bfb9d2e8.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+a49518b1-3f8679ba.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+438c6c50-1797a2c6.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Not clear,Night
+2ab2f4ce-3fb43b06.jpg,General way,Rainy,Normal,None,None,Green,Dry,Low,No,Partly clear,Day
+a63e5cc0-dcad299f.jpg,General way,Fine,Normal,Others,On road,Green,Dry,Low,Yes,Clear,Day
+1c2a60fd-87d1bf52.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+abfa6816-8fd04b81.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+6188662c-e18e9c44.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+03978fc8-6e43a30b.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+70755f7b-125d9321.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Night
+08600583-56f80631.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+3d7caf85-3fabc903.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+2644747c-a54c954d.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+69d7e3f4-889bc209.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+6b224599-33b9fb18.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+9bfe7d8f-5a5dc021.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2627ac7f-a842fa63.jpg,General way,Snowy,Normal,None,None,None,Wet,Low,No,Clear,Day
+7c1228f7-9e040cbb.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+5dff6680-2929d722.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+3a8c495c-15f5635e.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+9a9006de-1ed8864b.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+aab737a1-e701b430.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+5250cae5-75d70c82.jpg,General way,Snowy,Normal,None,None,Red,Snowy,Medium,No,Clear,Day
+07eb68f5-252839d8.jpg,General way,Rainy,Low,None,None,Green,Wet,Medium,No,Partly clear,Night
+1e1464a5-7e6b4d6f.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+1b42cfb0-231ac07e.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+1407063b-16833596.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+604b5b3e-3c2e6b6b.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Day
+51fe2898-35bc60d7.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+54b2bd55-8c241863.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+032df90b-42018463.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+62a87848-06047d28.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+9afabf0c-0c8752b8.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,High,Yes,Clear,Day
+23a6f214-679fac59.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+049494ac-9aa2732a.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+9a08ec1f-a682c251.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Night
+49aef38d-46ad71f6.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+a1c525ce-0e965af8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+7a4bee59-a02c6c8b.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+11fcd29b-8fb063bc.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+0a229f92-d8ef7bcd.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+95bd3f58-73c66a35.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+9a58e8e4-4b400dc1.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+a8376023-703ffa7e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+770da829-c66b65b6.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+37204af2-2c898672.jpg,Highway,Fine,Normal,None,On road,Red,Dry,Medium,Yes,Clear,Day
+503ea66b-d4cbc237.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+44c8ef75-d2a56023.jpg,General way,Fine,Normal,None,None,Red,Dry,High,No,Clear,Dawn/Dusk
+a46fbbf1-da3f955d.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+50e18e8b-d8de558b.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+33fbca34-1f18826d.jpg,General way,Fine,High,None,None,None,Dry,Low,Yes,Clear,Day
+18c4d009-778cd77b.jpg,Highway,Fine,Normal,None,On road,Not sure,Dry,High,No,Clear,Day
+a39e86a5-f47d1c9e.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+0721803d-714d79e1.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+ac8fbda7-4c7a4db7.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+4d4a5e2d-599d49cc.jpg,General way,Fine,Normal,Vehicle,None,Green,Dry,Low,No,Clear,Day
+935896e5-1ff2f5ff.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,No,Clear,Day
+263fb090-a807fe1d.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4e55bb10-855a6c42.jpg,General way,Rainy,Normal,None,None,Green,Wet,Medium,No,Partly clear,Day
+951bc085-ad5a0d9d.jpg,General way,Fine,Normal,Others,On sidewalk,None,Dry,Undefined,Not visible,Partly clear,Day
+875ec8b2-03643a8a.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+8f61f4f7-45e4e14e.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+18f38f86-b8d15943.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Wet,Low,Yes,Clear,Day
+6d4805c2-933c2469.jpg,General way,Fine,Low,None,On sidewalk,Not sure,Dry,Low,No,Clear,Night
+00fcfec9-7ba5dabf.jpg,General way,Fine,Normal,Others,On sidewalk,None,Dry,Low,No,Clear,Day
+5afa8e53-6edc1686.jpg,General way,Fine,High,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+8b7b5eb4-a1400b4b.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+11b47a8a-24a77ef8.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+47ec5f3c-39bc43ed.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+5c88a0ea-442884de.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+6c411bfe-7a0ee5bd.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+8e6acbf4-7e07afee.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Partly clear,Day
+adb034a5-a4bfc6b4.jpg,General way,Fine,High,None,None,None,Dry,Low,Yes,Clear,Day
+9493a057-fa58f23e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+9e85c238-6e000e4c.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+8da8c8d1-440ac3f0.jpg,General way,Rainy,Low,None,On sidewalk,Green,Wet,Low,Yes,Clear,Night
+3ee5787d-49efa7ae.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+8f9a82d7-55b5e7a3.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Yes,Clear,Day
+214bedea-3dae6632.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+8f39b037-cff177a9.jpg,General way,Fine,Low,None,On road,Red,Dry,Low,Yes,Clear,Night
+a90dabe6-9a423831.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+450d89a2-648b1257.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+aa88a8b0-b07d1224.jpg,Highway,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+9acbe2dc-e1937b2c.jpg,General way,Fine,Low,Vehicle,None,None,Dry,Low,Yes,Partly clear,Night
+8cbbe764-dca6bdb3.jpg,General way,Cloudy,Normal,None,On road,None,Dry,Low,No,Clear,Day
+a630ceeb-03451a57.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Partly clear,Day
+8767263c-f2134040.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+5755fabd-347b9f33.jpg,General way,Fine,High,None,On road,Red,Dry,Low,Yes,Clear,Day
+af19251c-b77f4819.jpg,Under bridge/FO,Fine,Low,None,None,Yellow,Wet,Low,No,Clear,Night
+81c23697-6f287f04.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+83574518-a1c81a98.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+a4224094-a841bb04.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Night
+6df0259a-92a8fe57.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+8669bacf-dae06133.jpg,Undefined,Undefined,Low,None,Not sure,None,Undefined,Undefined,Not visible,Not clear,Night
+61e190b2-2f2523f0.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Night
+6a84f24f-c2df1637.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+89e85e71-c7136b85.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+86f1017c-e6954f9e.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Partly clear,Night
+5af09cc6-d0ea1e00.jpg,General way,Fine,Normal,None,On road,Red,Dry,Undefined,Yes,Clear,Day
+6f0c0a67-33d290c0.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+8f36248c-3bb0d890.jpg,Undefined,Fine,Low,None,None,Red,Dry,Low,No,Partly clear,Night
+5a95393b-934a1c4e.jpg,General way,Snowy,Normal,None,None,None,Snowy,Low,No,Partly clear,Night
+861887a2-3f565b26.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Dawn/Dusk
+7ed1cf36-ffd42766.jpg,General way,Rainy,Low,None,None,Green,Wet,Low,No,Not clear,Night
+63d0e465-51340398.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+5c73ec5f-0d1cb6e1.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+a97dec22-a0841d45.jpg,General way,Fine,High,None,None,None,Dry,Medium,Not visible,Clear,Day
+95bd3f58-ef8c8be5.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,No,Clear,Day
+a64ebff1-d0d010fd.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,No,Clear,Day
+7cb650e7-8ee76cff.jpg,Undefined,Undefined,Low,Not sure,Not sure,Not sure,Undefined,Undefined,Undefined,Not clear,Night
+73ccec16-270f5ee8.jpg,General way,Fine,Normal,None,None,None,Dry,High,Not visible,Clear,Day
+8ef797ca-efa334aa.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Partly clear,Night
+89762660-6c1569ce.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+62a73da1-6627de2f.jpg,Undefined,Fine,Low,None,None,Yellow,Dry,Low,No,Partly clear,Night
+7614f658-53b528b0.jpg,General way,Fine,Normal,None,None,Green,Wet,Low,Yes,Clear,Night
+8769c129-d3bbba1b.jpg,Undefined,Undefined,Low,None,None,Yellow,Dry,Low,No,Partly clear,Night
+8de6a604-84a67f61.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+96476adf-d4cc0211.jpg,General way,Fine,Normal,None,On road,Not sure,Dry,Low,Yes,Clear,Day
+9948a6d2-74e24638.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+a85b0f2b-cca0ff56.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+a38d3f1d-fade0f28.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Partly clear,Day
+92f40326-761bdca5.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+80c2ead1-c1667537.jpg,General way,Fine,Low,None,None,Green,Dry,High,Not visible,Clear,Dawn/Dusk
+9cc1b957-7e4718ea.jpg,Undefined,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+9c4b7c90-bb3c16e5.jpg,Undefined,Undefined,Low,None,Not sure,None,Dry,Low,No,Not clear,Night
+b1909767-b8e972b6.jpg,General way,Fine,Normal,None,None,Green,Wet,Medium,Not visible,Clear,Night
+879b4c0b-15c488ee.jpg,General way,Undefined,Low,Not sure,On road,Not sure,Undefined,Low,Not visible,Partly clear,Night
+a3c8157a-1db05ae3.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Night
+81b0b61c-10c518a7.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+66af1f22-289aba62.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+74e2b670-e058a152.jpg,General way,Fine,Normal,Vehicle,None,Red,Dry,Low,Yes,Clear,Dawn/Dusk
+676104f3-3889c284.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+73715309-a55fc413.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Not visible,Clear,Night
+a2b54bcd-c0a2b00b.jpg,General way,Rainy,Low,None,None,Green,Wet,Low,No,Partly clear,Night
+743b260b-554a9fd5.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Clear,Night
+6672270a-a8978216.jpg,Under bridge/FO,Undefined,Low,None,None,Green,Wet,Medium,Not visible,Clear,Night
+89107cf4-8b4b754a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+9f03b9b1-a5a73263.jpg,General way,Fine,Low,None,None,Green,Wet,Low,No,Partly clear,Night
+67707c91-7896cfa2.jpg,General way,Rainy,Normal,None,None,Undefined,Wet,Medium,Not visible,Not clear,Day
+6790476d-ccce9ccc.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+85bf0b18-673d9e66.jpg,General way,Fine,Low,Vehicle,None,Not sure,Dry,Medium,No,Partly clear,Night
+9cb1a0af-6230342e.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Night
+a8960a86-3551b9fa.jpg,General way,Fine,Normal,None,None,Yellow,Undefined,High,Not visible,Clear,Night
+711c6d4e-004646ef.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+9ef8e327-2412730a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+6be419a4-49a12049.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+799fbd2f-ef2ed861.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+7489ba2c-306e53be.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Partly clear,Night
+6bb62c94-45a2db2f.jpg,General way,Fine,Low,None,None,Yellow,Dry,High,No,Clear,Night
+accd59aa-2d2f3e04.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+77f6feb6-5ab41f6a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+a6da2917-e34fbcd3.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Dawn/Dusk
+a65d7ec1-d9ef4852.jpg,General way,Snowy,Normal,None,None,Red,Snowy,Low,Yes,Clear,Day
+8b975fb2-4e0a5fce.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+95a9f88c-f5aa66e2.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+9f10dfc2-e27a4427.jpg,Highway,Undefined,Low,None,None,Not sure,Undefined,Low,No,Not clear,Night
+a5b6d9d0-6b4e063a.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Undefined,Not visible,Clear,Day
+5ed739dc-629a9fd3.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+7c6fa554-bd120b42.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Dawn/Dusk
+80e09f7b-f1f58c82.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+84802eae-2852ee36.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+ae53e6b7-aa55e834.jpg,Highway,Cloudy,Normal,None,None,None,Wet,Medium,No,Clear,Day
+8620bf55-f5192565.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,No,Clear,Day
+933f7721-a89aa464.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+9ceac549-14c7b4f4.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Dawn/Dusk
+af5c571b-50de1822.jpg,General way,Undefined,Low,None,Undefined,Not sure,Undefined,Medium,Not visible,Partly clear,Night
+821a7fac-8f6166a1.jpg,Parking lot/Gas station,Fine,Normal,None,None,None,Dry,None,No,Clear,Night
+86bf5d25-1421e181.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,Not visible,Clear,Day
+8fd91100-4a12ae23.jpg,General way,Fine,Low,Others,None,Green,Dry,Medium,Yes,Partly clear,Night
+afdefbf2-fd0505fa.jpg,Highway,Fine,High,None,None,Green,Dry,Low,No,Clear,Day
+7b5cd66b-ff24735f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+8fb4e2d6-2bb8377d.jpg,Highway,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+94e7ccd5-f78affb8.jpg,Undefined,Fine,Low,None,None,Red,Dry,Low,No,Partly clear,Night
+9c366496-0e90d29c.jpg,Undefined,Cloudy,Low,Undefined,Undefined,Undefined,Undefined,Undefined,Undefined,Not clear,Day
+a629e303-b74505be.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,No,Clear,Night
+6e1ba34a-9d135651.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Medium,Not visible,Clear,Day
+a7fe4cb1-2b749fa5.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+7d029be1-12c10177.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Dawn/Dusk
+adee438f-2fc03d81.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Dawn/Dusk
+ae473e87-ea274e2a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Day
+838a5ca6-ffd2d0c8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+88029a76-13686c4a.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+68153151-e5a325c5.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+64fa52c2-74e3b3fc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+ae8bbd64-e9fc8e7b.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+aec5f038-24eb1601.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Dawn/Dusk
+73daf1b8-c950cec0.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+5e862ec4-5bdc60b7.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+71ee4d90-77a3aaa0.jpg,Undefined,Undefined,Low,None,None,Green,Undefined,Low,No,Not clear,Night
+7bf27bac-9eb622f9.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+7a80b62a-7e95b93d.jpg,General way,Rainy,Normal,None,None,None,Wet,Medium,No,Partly clear,Night
+7bd3885d-650db152.jpg,Undefined,Fine,Low,None,None,Green,Dry,Undefined,No,Partly clear,Night
+88b6fbc3-576ffa42.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+9b1d552b-59f4efc2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Not visible,Partly clear,Night
+9392f6f6-ec0cbf19.jpg,General way,Cloudy,Normal,None,None,None,Dry,Medium,No,Clear,Day
+841ba18f-8c3b0bc1.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+94be01ae-fa4bc90a.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+8c112c46-5176b6f8.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Low,Yes,Clear,Night
+65c5b333-f9cb3f70.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+5aa4057b-927f29aa.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+78ed6a6a-0ca588c1.jpg,General way,Fine,Normal,Others,None,Green,Dry,Low,Yes,Clear,Night
+969d155d-87cf400d.jpg,General way,Rainy,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+66be1b2d-97e77e12.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+609580b1-3232ae45.jpg,General way,Fine,Normal,Vehicle,Not sure,None,Dry,High,No,Clear,Night
+6706fcee-d8c33b62.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+b14a05a1-4b556eec.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+b015390d-ecac4277.jpg,General way,Fine,Normal,None,None,Green,Dry,High,Not visible,Clear,Dawn/Dusk
+9c1ea83b-16da4acb.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+71871a15-07bd99a8.jpg,General way,Cloudy,Normal,None,None,Not sure,Snowy,Medium,No,Partly clear,Day
+66838ab6-5732bcae.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,Not visible,Clear,Day
+62825d64-171f8e41.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,Not visible,Clear,Day
+93d5292b-4995da4a.jpg,General way,Cloudy,Low,None,None,Green,Wet,Medium,Yes,Clear,Day
+7404e1e8-ac9bd0d7.jpg,General way,Cloudy,Normal,None,None,None,Snowy,Low,No,Clear,Day
+7dec8916-369f8a08.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+7651bcf4-5663aae7.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+7944f396-92824a26.jpg,General way,Fine,High,None,None,Not sure,Dry,Low,Not visible,Clear,Day
+670d63ed-aaa101c8.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+ac14a783-6a9eb2c8.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Medium,Not visible,Clear,Dawn/Dusk
+7e67527a-85f4b7fc.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+6e094f33-72a006a2.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+91d46242-e579aa5a.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Night
+a9cab8d1-b5aa86eb.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+65acee46-e15323ae.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Low,No,Clear,Day
+a1250ed4-bac9d101.jpg,Undefined,Undefined,Low,None,None,None,Undefined,Undefined,Not visible,Partly clear,Night
+78ec6ac7-8c64e27d.jpg,General way,Rainy,Normal,None,None,None,Wet,Medium,Not visible,Partly clear,Day
+8b4be8b2-756c934e.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+670d968c-bfdcc8cc.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+96fc04e6-41b36af0.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+93b93cd9-25ac23b2.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+5ce2bd49-980d24d9.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+96b40435-b4777354.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,No,Partly clear,Night
+5e54981d-749ddbcf.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Partly clear,Night
+5fba98b8-d5f20710.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+616c6563-149dffba.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Partly clear,Day
+96650666-d3ce5c34.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+84d3e5d3-15a568b2.jpg,Highway,Fine,Low,None,None,None,Dry,High,No,Partly clear,Night
+a65d7ec1-49080494.jpg,General way,Snowy,Low,None,None,Red,Snowy,Medium,No,Partly clear,Day
+98f5719c-20aaa38f.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+aa2d6a57-22fb0605.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+a165ad95-78c1dc92.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+8021fadf-5e689176.jpg,Undefined,Undefined,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+a576e150-e70b8d83.jpg,General way,Fine,Low,None,None,Not sure,Dry,Medium,No,Clear,Night
+6f688645-7510f8fa.jpg,General way,Cloudy,Low,None,None,Green,Snowy,High,Yes,Clear,Day
+6acc30c0-53970a3a.jpg,Undefined,Undefined,Low,None,None,Green,Dry,Low,No,Not clear,Night
+755e2285-e7a53fcc.jpg,Undefined,Fine,Low,None,None,Green,Dry,Low,Not visible,Partly clear,Night
+87d37e96-0bab3a63.jpg,Under bridge/FO,Fine,Normal,None,On sidewalk,None,Dry,Medium,Not visible,Clear,Day
+5ce1d730-63c2920e.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Undefined,No,Clear,Day
+7770624c-87eec948.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+63178149-dd6ed015.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+8c018df8-82782417.jpg,General way,Cloudy,Low,None,None,None,Dry,Low,No,Clear,Day
+96e42e11-1303bb9a.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Medium,Not visible,Clear,Day
+9dfcaca7-2f1a2dfe.jpg,Under bridge/FO,Cloudy,Low,None,None,None,Dry,Medium,No,Partly clear,Day
+70b03467-2e9cbed7.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+6bb08d1f-92d70694.jpg,General way,Cloudy,Normal,None,None,Yellow,Dry,Low,No,Clear,Day
+76676aa7-ccb86346.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+b1886f41-0ed05f29.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+689ee90e-104d4359.jpg,Parking lot/Gas station,Cloudy,Normal,None,None,None,Dry,None,No,Clear,Day
+a9d7044a-2c83901c.jpg,Tunnel,Undefined,Low,None,None,None,Dry,Low,No,Partly clear,Night
+83d632ca-744eb735.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Night
+b0fe0c76-9f7c4e46.jpg,Highway,Undefined,Low,None,None,None,Dry,Low,No,Not clear,Night
+67a2118c-13ef0f13.jpg,General way,Cloudy,Low,None,None,None,Dry,High,No,Clear,Dawn/Dusk
+a252ffd0-557c1125.jpg,General way,Undefined,Low,None,None,None,Dry,Low,No,Partly clear,Night
+994376dd-272987fb.jpg,General way,Undefined,Low,None,None,None,Dry,High,No,Partly clear,Night
+6b66e427-d9339dcb.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+73869519-9b1f273f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+704f40f4-c0db9343.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Partly clear,Day
+769136f0-361dbd3e.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+5aa2ffad-8ce2db31.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Dawn/Dusk
+924c642e-234a0dae.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+7f204aeb-61d0696f.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Partly clear,Dawn/Dusk
+868f3012-d14da57c.jpg,General way,Undefined,Low,None,Not sure,Green,Dry,Low,No,Not clear,Night
+83fb8871-c486007b.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+75fc326b-a9819d70.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Night
+95d55c40-8d327d12.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Low,Yes,Partly clear,Night
+a76544ff-4c632497.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Partly clear,Night
+96fdc73a-851b6f8a.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Medium,Yes,Partly clear,Day
+5a2349c6-efc61dae.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+8d224da8-5366c69b.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Not clear,Night
+a4447131-c100669e.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Dawn/Dusk
+a5687e7b-9e95229c.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Partly clear,Night
+5fe3454d-e026abf2.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+6d9624f6-62103b55.jpg,General way,Fine,Low,None,None,Yellow,Dry,Low,Yes,Clear,Night
+6f699c26-12eae8f9.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+71863a3f-ac61f45d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+abb74b5e-4e25a4b6.jpg,General way,Cloudy,Normal,None,Not sure,Not sure,Undefined,Undefined,Not visible,Clear,Day
+6f748ea7-d9fd822d.jpg,General way,Fine,High,None,None,Not sure,Dry,Low,Yes,Partly clear,Night
+aec6a941-bf52b4e9.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+aba4d491-e512fe9d.jpg,Undefined,Undefined,Low,None,None,None,Wet,Low,No,Not clear,Night
+86ec451d-0b03867d.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+8fc9a361-fafe0ab3.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+8a27fc9a-b4ee93b0.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+78a0066d-83a6f440.jpg,Undefined,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+9385ad9b-11d94c45.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+8377c17d-0a48aafd.jpg,General way,Fine,Low,None,None,Not sure,Dry,Medium,Not visible,Partly clear,Dawn/Dusk
+869a54ee-0aea7e7c.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+a32543af-146ff9cb.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+67a68936-e44ffcbd.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+616c7e91-bb12163e.jpg,General way,Rainy,Normal,None,On sidewalk,Red,Wet,Medium,Not visible,Clear,Day
+a3a0f34f-fda04270.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,No,Clear,Day
+69f06623-e778ddb2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+96d2fc87-a7746164.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Not visible,Partly clear,Night
+6d2bd1d9-b83ff5d8.jpg,Highway,Fine,Normal,None,None,Red,Dry,Medium,No,Clear,Day
+a7fcf7cf-86f9feeb.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+9b4bbc7a-bef8188f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+6faabc23-e9f83fea.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+af573ada-67a2c2de.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Day
+6a8e3c99-7826d1be.jpg,General way,Fine,High,None,None,None,Dry,High,Not visible,Partly clear,Day
+9f7256c2-98a0e7fc.jpg,General way,Fine,Low,None,None,None,Dry,Low,Not visible,Clear,Night
+92cf88ed-6403c5a8.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+85fb9a90-51825868.jpg,General way,Fine,Low,None,None,Red,Dry,Undefined,Not visible,Partly clear,Night
+6176fd1a-bc3d9fb0.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+3a458308-441fdf5c.jpg,General way,Fine,Low,None,None,Red,Dry,High,Yes,Clear,Night
+3144b325-c1f560ec.jpg,General way,Fine,Normal,Vehicle,On road,Not sure,Dry,Low,No,Clear,Day
+442a792f-5f5e50b9.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Partly clear,Day
+49a83f60-da856fdc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+37a6e6eb-0073b3a5.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+578ffee6-29b5807e.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+3198a12f-5346e8a7.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+4d62bf74-eb645701.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+35d2571b-800b60da.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Not clear,Night
+41c9bc37-439ff834.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+4cf7e094-f6b0e53c.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+3af9b86e-bde99ec4.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+4e2d2b5b-00e1cf1f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+39cb3808-71e2a508.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+337d2eb5-66332a50.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+4004973f-3a05e6b2.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+38ccfabc-e21f32fc.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3d12f470-45096fb4.jpg,General way,Fine,Low,None,None,None,Dry,Medium,Yes,Partly clear,Dawn/Dusk
+4ba45b80-dee7a32c.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+4a93cba4-ded478b3.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+2e656ddd-74abc62a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Not clear,Night
+4c45e4fb-0a16939d.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Not clear,Dawn/Dusk
+519506bf-4269771d.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Partly clear,Day
+4afd82fb-5169c153.jpg,Parking lot/Gas station,Fine,Normal,None,None,None,Dry,None,No,Clear,Day
+57eb2bd4-0d6f2eae.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,No,Partly clear,Night
+52936ac5-08f6df82.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+44d397c8-d24ffa50.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+414116b2-aaa3af2a.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,No,Clear,Day
+3b9a8e05-f2b400e6.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+420fb34a-27328a7f.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,Yes,Clear,Day
+2e9cabd8-939b0ce7.jpg,General way,Fine,Normal,None,None,Red,Dry,High,Yes,Clear,Day
+48c7ca96-4d0ce239.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+30bd10c5-a4cc384f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+43c53991-57c648ab.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3a519584-fd3854f5.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Partly clear,Night
+507ded2f-3e716e5d.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Not clear,Night
+54b217ab-25a07fd8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+39fba3aa-71271aef.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+2ea7f7b9-f31af436.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+35a5b99f-14749a1a.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3f291ac3-53bdc4d2.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Medium,No,Clear,Day
+49e31c11-0e2cc2e1.jpg,General way,Fine,Low,Vehicle,None,Green,Dry,Low,No,Partly clear,Night
+48767610-b2410dba.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Yes,Clear,Night
+41f32f66-c4fcc32c.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+350be03a-614d4fec.jpg,General way,Fine,Low,Others,None,Not sure,Dry,Low,Yes,Partly clear,Night
+42f1a9db-cb27facb.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Not clear,Night
+3cf763c8-28897051.jpg,General way,Fine,Low,Vehicle,None,Yellow,Dry,Medium,Yes,Partly clear,Night
+535e8ac4-547c407a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Not visible,Partly clear,Night
+4bee32fa-15767c0d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+4ad48c45-892f0062.jpg,General way,Fine,Low,None,None,Green,Dry,None,No,Partly clear,Night
+3a3a571c-133c3823.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+2fea7e08-43634572.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+4c49f366-a2a5d7c6.jpg,Under bridge/FO,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+579e48f8-74bc1096.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+379e3a56-005ca989.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+462763d1-b4efdbfe.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+48c4ac5c-37a3a907.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Day
+3a9ef105-2f6bcf39.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+3e8a5dd2-87e5c8bb.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+43031162-b91c39b0.jpg,General way,Rainy,Low,None,None,Green,Wet,Medium,No,Not clear,Night
+53132f74-46bcadfd.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Day
+452e1902-8d01c28e.jpg,General way,Fine,Low,Others,None,None,Dry,Low,Yes,Partly clear,Night
+327e2f77-91f87922.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+55866155-39e0d627.jpg,General way,Fine,Low,None,None,None,Dry,High,No,Clear,Night
+48ef469b-d950bd5b.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Dawn/Dusk
+3df91fd9-79df918e.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+355f56e4-40157793.jpg,Highway,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+4cf27093-1c1058cf.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4cb8fd91-0b853cd6.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+4d2038ce-5eb33c29.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+3a4ce7f9-ec72aefb.jpg,General way,Fine,Normal,Vehicle,On road,None,Dry,Medium,Yes,Clear,Day
+41800d30-6704b65b.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3d2808bb-369a1c93.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2fc711ef-c73c2bd8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+543fc7b7-019c4c21.jpg,General way,Fine,Low,None,On sidewalk,Green,Wet,Medium,No,Clear,Day
+483f858b-8f85c285.jpg,General way,Fine,Low,None,None,None,Undefined,Medium,No,Not clear,Night
+43f575cb-8b3adfdf.jpg,General way,Fine,Low,None,On road,Green,Dry,Low,Yes,Clear,Day
+2fb64dcd-ce646e91.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+3ace9111-f3c626a2.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+45c9e5a8-1100ff7f.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+53bc1762-7d12e0dc.jpg,General way,Fine,Low,None,None,None,Snowy,Medium,No,Partly clear,Night
+468cb493-bfc2508f.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Dawn/Dusk
+3357e045-e62f83b3.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4a0535b9-7fdab22d.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+542538d3-2efed27e.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,Yes,Clear,Day
+414e7b44-67b30265.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3f2cc92e-08714b30.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,No,Clear,Day
+35f97d7c-c09e0579.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+535d0ba1-f1b0933e.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+3b44ef5a-c09e8479.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4869958a-1e96d416.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2e4af06d-4bf647b7.jpg,General way,Fine,Normal,None,On sidewalk,Green,Wet,Medium,Yes,Clear,Day
+3d2cfdb6-56c712ab.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+44a30ab3-0744a1d5.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4ec2a38d-a5cf181b.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4ccf0cdd-57c02b89.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Day
+3c21d08e-223d832b.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+4f2a09a7-7291f8b8.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3fc6dc94-358b37a6.jpg,General way,Fine,Normal,Others,On road,None,Dry,Low,No,Clear,Day
+58095711-e6a46ebe.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Not visible,Clear,Night
+2ee0e392-6b08a335.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,Not visible,Clear,Day
+58610009-b7b27675.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+36663e5c-d6d7ee0e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+44912fa2-80d12f41.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+57badd0a-1d153c61.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+47c0dd19-f4157a67.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+32a12e83-a4be1165.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+2eca6027-5dfdfa93.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+49749ed2-c6c5fefc.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+319f8d8a-0c54ce3e.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,Yes,Clear,Day
+3e89281c-ce051c92.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+3eb61610-18b265b9.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+5057e1b7-07cf127d.jpg,General way,Fine,Normal,None,None,None,Wet,Low,No,Clear,Day
+4ba9025b-0a170ebc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+30da6500-5c72b360.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+32a239b7-95783d42.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+53a446a8-88e50b77.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3ddcd7aa-8f8bf284.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,Yes,Clear,Day
+2e8976c1-ec42a87c.jpg,General way,Cloudy,Normal,None,On sidewalk,None,Snowy,High,No,Clear,Day
+31a9e4c6-8d7741a8.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+40425847-4b379140.jpg,Highway,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+44046620-0043df6e.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+430bb0ac-06406d1d.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4e6715d7-7f8b0941.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+3232e0fb-e77e1c45.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2f34cbe7-802d303b.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+53e9d896-a6453777.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+564aa288-6aee81b4.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Dawn/Dusk
+3d112ff5-01bd0f58.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+58366efb-a7ee1f49.jpg,General way,Fine,Low,None,None,Green,Wet,Low,Yes,Partly clear,Night
+3bda94d4-09b72cd0.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+56512021-c6c03a93.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Not clear,Night
+2e9bf5eb-973324f5.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+318262ea-1cb96336.jpg,General way,Fine,Normal,None,None,None,Dry,None,Yes,Clear,Day
+4c657544-6400f372.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3b1dce03-74e41d41.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+453e2ab1-37dba5b4.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4788a598-59637d28.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Partly clear,Dawn/Dusk
+3135a355-3adfcb47.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+367ac26f-8076b75d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3e988f6a-a8ded6cc.jpg,General way,Fine,Low,None,On road,None,Snowy,Low,No,Clear,Night
+43d4715b-00bbafc8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4d70ad1a-2ab4ab95.jpg,General way,Fine,Normal,None,On road,None,Dry,Medium,Yes,Clear,Day
+57c670f8-3edada01.jpg,General way,Rainy,Low,None,None,None,Wet,Low,No,Not clear,Night
+3d9b3824-b6b0b16a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+3da75143-d9282e67.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,No,Clear,Dawn/Dusk
+57c7337c-e544fd7c.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Not visible,Partly clear,Night
+4f02ea00-36ee7b5d.jpg,General way,Fine,Normal,None,None,None,Snowy,Medium,No,Clear,Day
+4b980fd7-abc2909d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4e6303aa-2e5138b9.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+029e2aad-f295cf71.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+1f2b7386-646fc580.jpg,General way,Fine,Normal,Others,None,None,Wet,Low,No,Clear,Day
+1e7e8a40-7936597f.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1ac3e681-20c0e410.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,No,Clear,Day
+0cc71303-4a16481d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+165fd452-cf58c843.jpg,General way,Fine,High,None,On road,Green,Dry,Low,Yes,Clear,Day
+19d7eaa1-84c270d5.jpg,General way,Cloudy,Normal,None,None,Not sure,Dry,Low,No,Clear,Day
+20652cf8-fa3dd2e2.jpg,General way,Cloudy,Normal,None,On sidewalk,None,Snowy,Medium,Yes,Clear,Day
+2074b19a-dc731abd.jpg,General way,Fine,Normal,Others,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+13ec3c27-db183380.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1d092676-14cb792f.jpg,Parking lot/Gas station,Fine,Normal,None,On sidewalk,None,Dry,None,No,Clear,Day
+284d8daf-bf7ae87e.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+26d99fb0-209bdd54.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+21891fe7-2e0236d0.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+1aaba030-5fea2587.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+011f8556-ca1f4828.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+01dc1bbe-b5109eb3.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+206a7f81-f6e2d9c6.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2a054576-e7352587.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+20931284-d4b0d688.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+06f9786e-16c538fd.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2714e0ee-10e80b65.jpg,General way,Fine,Low,None,On sidewalk,Red,Dry,Low,Yes,Clear,Night
+138be3dc-f3c84b98.jpg,General way,Fine,Low,None,On sidewalk,Red,Snowy,Medium,Not visible,Partly clear,Night
+129b62fc-44b12a9c.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Partly clear,Night
+104c5b1e-11cc0505.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Yes,Clear,Day
+29447299-10e93667.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+2dac651d-ae522dc2.jpg,General way,Fine,Low,None,None,None,Snowy,Medium,No,Clear,Night
+208e26b1-f6aacee8.jpg,General way,Fine,Normal,Others,On sidewalk,None,Dry,Low,Not visible,Clear,Day
+05f4413f-bae0626e.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Medium,No,Clear,Dawn/Dusk
+00beeb02-50440dcd.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2c9bd44c-d47404e9.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+08119845-793c9e3a.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,Yes,Partly clear,Night
+0209c510-5ef87f7a.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,Yes,Clear,Day
+1f3455ba-fe3da3c3.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+21234fc8-35619f0b.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+26035ba7-ca38acd1.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1eb002c1-b742b529.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+2dc9627c-37433473.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+20931284-2dd4f36b.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+05be3c16-e85868fd.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Snowy,Low,Yes,Clear,Day
+0d4d66bf-2d327e43.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,Not visible,Clear,Dawn/Dusk
+061c50f7-113a3446.jpg,Highway,Fine,High,None,Not sure,Red,Dry,Low,Yes,Clear,Day
+0f1976f5-fd218772.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+021cb34f-455d80a0.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+02a0f142-1c6504df.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,Yes,Clear,Night
+0e946d23-6d2e1d0e.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1a76487a-6d6dc636.jpg,Highway,Fine,Normal,None,None,None,Wet,Low,No,Clear,Day
+07919504-3a57c8d3.jpg,General way,Fine,Normal,None,On sidewalk,None,Snowy,Low,Yes,Clear,Day
+06fb50bb-637d480f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+1e7225d5-64710d9a.jpg,General way,Fine,Low,None,On road,Green,Dry,Low,Yes,Clear,Night
+2113774f-b7137183.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+2838a1e7-6b4aec78.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Partly clear,Day
+19527092-fc2f3a9c.jpg,General way,Fine,Low,None,None,Green,Snowy,Medium,Not visible,Clear,Night
+08d9fe6e-626b6900.jpg,General way,Fine,Normal,None,None,Green,Dry,High,No,Clear,Dawn/Dusk
+0b91b26d-2d0f5e80.jpg,General way,Fine,Low,None,On road,Green,Dry,Low,Yes,Clear,Night
+088e1da1-5d87ca45.jpg,General way,Fine,High,None,On road,Green,Dry,Medium,Yes,Clear,Day
+07be42b3-f0fa018c.jpg,General way,Fine,Normal,None,Not sure,None,Dry,Low,No,Partly clear,Day
+143b8968-550cf7aa.jpg,General way,Cloudy,Normal,None,None,Green,Snowy,Medium,No,Clear,Day
+1df69db3-2f995bd5.jpg,General way,Fine,Normal,None,On sidewalk,Red,Snowy,Low,Yes,Clear,Night
+20b9a47b-250c5d70.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+05d21187-26a34397.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+23df65bd-d25cfbb8.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+11af6b4c-4d1af7af.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+06d937fd-7c5bf9ef.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+24a6f8cd-13d4c27d.jpg,General way,Fine,Normal,None,On sidewalk,None,Snowy,Low,No,Clear,Day
+10e81844-5e6e61cc.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+0f2db473-353bf74b.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0739a8ae-7098f8b5.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Dawn/Dusk
+24cd070b-c01ec762.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+18cb94c8-c4914ee1.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+0cfae664-7a29013d.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Night
+2b7feb72-9252d658.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+0b099136-a2bb901a.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0cb25a5c-f3986835.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+2381641d-25ba3c73.jpg,Highway,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+25d05370-9b65a9be.jpg,Highway,Fine,Normal,None,None,Not sure,Dry,Medium,No,Clear,Day
+0679098c-510c4ded.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+25b85436-3a0e059f.jpg,General way,Fine,Normal,None,On road,None,Dry,Medium,No,Clear,Night
+1a2f603e-67151d1c.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+08dbf441-c7669ef2.jpg,General way,Fine,Normal,Others,None,None,Dry,Low,Yes,Clear,Day
+22a39115-cf753e8e.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+28f3c24f-5ddfe056.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2357db00-7b7930b2.jpg,Parking lot/Gas station,Fine,Normal,Others,On sidewalk,None,Undefined,None,No,Clear,Day
+2021c742-87a39f03.jpg,General way,Fine,Low,Others,On road,Red,Dry,Low,Yes,Clear,Night
+0d03369b-0c637ffc.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+194c269e-36de3d01.jpg,Under bridge/FO,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+168f3a39-55997cb9.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Night
+1391b29a-80e35682.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,No,Clear,Night
+1a3527d6-75f768d8.jpg,General way,Fine,Low,None,On sidewalk,Not sure,Dry,Low,No,Clear,Night
+15dfd725-c9364041.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+2a5faae7-4653836a.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+0f9b9e50-3ce8a7ca.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+15b8c0de-973fcf39.jpg,General way,Fine,Normal,None,On road,Green,Wet,High,No,Partly clear,Day
+143fd83d-1fe9d322.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+0c639b9e-44e4bc1e.jpg,General way,Cloudy,Normal,None,None,Red,Snowy,Low,Yes,Clear,Day
+1c70b4f2-ef1decf4.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1c771b09-095562f4.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+181589c6-8d66eb54.jpg,Highway,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+14c79cde-54e94969.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Night
+23b2a741-cee8e8da.jpg,General way,Fine,Normal,Vehicle,None,Green,Dry,Medium,Yes,Clear,Day
+2a5426eb-33264f72.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+0bce68c1-629ddf0d.jpg,General way,Fine,Normal,None,On sidewalk,Green,Snowy,Medium,No,Clear,Day
+29fa033a-048a13d0.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+215cff91-63eada91.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+11409384-ce69cf39.jpg,General way,Undefined,Normal,None,None,Green,Snowy,Low,Not visible,Partly clear,Night
+29dac8e2-e7ad995e.jpg,General way,Fine,Normal,Vehicle,None,Red,Dry,Low,Yes,Clear,Night
+0c0f3d8e-6bc3e50c.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+2cc8d8ff-a2784224.jpg,General way,Fine,Low,Vehicle,Not sure,Red,Dry,Low,Yes,Clear,Night
+107e165f-1f7983b1.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+1accee17-e3ef2a44.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Night
+023b022b-723860c9.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+186cfc4e-0447250e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+18fe70b9-e4e7aad5.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+2c29598f-3e3b114c.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+09d60d59-2fbe6729.jpg,General way,Fine,Normal,None,Not sure,Green,Dry,Low,Yes,Clear,Night
+23d12210-313ea2b1.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Dry,Low,Yes,Clear,Day
+16dce9f0-beb3f621.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+198b7b23-1f520c05.jpg,General way,Fine,Normal,None,On road,Red,Dry,Medium,Yes,Clear,Day
+04bc9f93-a76176dc.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+14e52a40-5374bfa7.jpg,General way,Cloudy,Normal,None,None,Not sure,Dry,Low,No,Clear,Day
+048e0c14-37c19b65.jpg,Tunnel,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+1ec10b7e-fa3453dc.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1155e4cc-c7e09eed.jpg,General way,Fine,Normal,None,On sidewalk,Yellow,Dry,Medium,Yes,Clear,Night
+08b63876-193d668e.jpg,Under bridge/FO,Fine,Normal,None,On road,None,Dry,Medium,Yes,Clear,Day
+0ea102ca-6b91d2d0.jpg,Highway,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+19167d13-f3f73ea4.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+109fc76c-4981de2c.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+0dc6575e-6450f9d6.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,No,Clear,Day
+0045e757-66a334b5.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+24417546-2c0b8ef2.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+1c227a12-10e5552c.jpg,Highway,Fine,High,None,None,Green,Dry,Low,No,Clear,Day
+1328c70b-3c1eb28f.jpg,General way,Fine,High,None,None,None,Dry,High,No,Clear,Day
+17fd5ee7-0877586f.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+115e6926-e3b3c0ff.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+1b30f76f-95aa8a06.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+1df0484b-c86aa353.jpg,General way,Fine,Normal,None,None,Green,Dry,High,No,Clear,Day
+171da363-26905425.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0c91b387-13c4b48b.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+00f8f875-bad0295f.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Dry,Low,No,Clear,Day
+0df9627b-d2726822.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,No,Clear,Night
+2988a2b2-727da079.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+113de996-13a8c15e.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0d0e0415-608418c6.jpg,General way,Fine,Normal,None,None,Green,Snowy,Low,Yes,Clear,Night
+271967b8-2c7329ae.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2913a78f-732af5d4.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+156e4764-0b05f86c.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Night
+0863c5c9-788f8473.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+28293738-cbcb7549.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+10183d3e-fb054efd.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,No,Clear,Day
+030c8a82-4c8d6fb5.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+17808296-7e236586.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+1d2090ea-b78d40c2.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+0679098c-8952ba69.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+1a58c6a5-011efaa9.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0c4586e7-f71b7a89.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+2118f761-ba07ef5a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Dawn/Dusk
+23786155-69a9c193.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Not visible,Clear,Day
+191e2dd9-b6147847.jpg,General way,Rainy,Normal,None,On sidewalk,Green,Wet,Low,Not visible,Clear,Day
+03866c0e-97976caa.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+1f921abe-aaa8183d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+16866fff-83678272.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Snowy,Low,Yes,Clear,Night
+1737fe46-8a8af0f7.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+192b6eb6-8a064b6a.jpg,General way,Fine,Low,None,On sidewalk,Red,Dry,Low,No,Clear,Dawn/Dusk
+0bdf03ce-9c7c3492.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2430b667-a2df628e.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0c13b339-97955efc.jpg,General way,Fine,Low,None,On sidewalk,None,Snowy,Low,No,Clear,Night
+1131e3c4-f59c44c5.jpg,General way,Fine,Normal,Vehicle,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+2736fdaf-6588c969.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+1583a6c2-36154a5d.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Not visible,Clear,Night
+2609eaad-4308bc49.jpg,General way,Fine,High,None,None,Not sure,Dry,Low,Yes,Clear,Day
+33bd5349-561369cd.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+4cc03987-8e7e7f45.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+46c5b118-58111437.jpg,General way,Fine,Low,None,None,Not sure,Dry,Medium,No,Not clear,Night
+393f2204-34abac75.jpg,General way,Fine,Low,None,None,None,Undefined,Low,No,Not clear,Night
+39f0c0e4-bbdbdeb9.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+46e3a180-073c55b2.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,High,No,Clear,Day
+3ade1ab9-c579d0e7.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+3bac2ba2-ba7185cd.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4ab21add-c31506f3.jpg,Parking lot/Gas station,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4a6ac060-25ae3119.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,Yes,Clear,Day
+3729bea9-a8f86352.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+570320c6-91c81ce2.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+42711b6a-2bfab69f.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+483d70a8-ce1e20bf.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2f805c04-a20c2fd6.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+5373febc-d527dd4f.jpg,General way,Fine,Normal,None,On road,None,Dry,Medium,Yes,Clear,Day
+4819836d-6117bca0.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+329a9178-e743df8a.jpg,General way,Fine,Normal,None,On sidewalk,None,Wet,Low,Yes,Partly clear,Day
+4277182f-13a5cabb.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+3ce41f6a-96670809.jpg,General way,Fine,Low,None,None,None,Snowy,None,No,Not clear,Night
+468e751b-b3c493f1.jpg,General way,Fine,Low,None,On road,Red,Dry,Low,Yes,Clear,Dawn/Dusk
+321036f5-aac6c002.jpg,General way,Fine,Low,None,None,None,Wet,None,Yes,Clear,Night
+2ec516c8-0a78e9ce.jpg,General way,Fine,Low,None,None,None,Dry,None,Yes,Clear,Night
+4f774ae4-2e0652f4.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Partly clear,Night
+3c3f0a35-b8933a0a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+30be4575-839af28f.jpg,General way,Cloudy,Low,None,None,None,Wet,Low,No,Partly clear,Day
+384b318e-582b4d80.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+34f33e1d-463b760b.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,High,No,Clear,Day
+350334d0-7c7c1937.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4ead46a0-31f182e9.jpg,General way,Rainy,Normal,None,None,Green,Wet,Medium,Yes,Clear,Day
+4b916eef-3ccc1e7d.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+55366178-4888663f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4281c0f1-44d41017.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,High,Yes,Clear,Night
+50cb34ee-6e16e753.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+56188d0a-5c75547c.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2e648a8c-86cc913d.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+37654284-12e5277f.jpg,General way,Fine,Low,None,None,None,Dry,High,No,Clear,Night
+45424054-924f2cc6.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+3649d17d-f859fc63.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+45adc379-6941f2ce.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Dawn/Dusk
+52b8c24b-17545e1a.jpg,General way,Fine,Low,None,None,Green,Snowy,Low,No,Clear,Night
+451eea2c-74708e76.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+39834da7-4933981e.jpg,General way,Fine,Low,None,On road,None,Dry,Medium,No,Clear,Night
+43d65cac-426ab819.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+57c68fde-d27a4b26.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+5312f738-5639eecb.jpg,General way,Rainy,Normal,None,On sidewalk,None,Wet,Medium,No,Clear,Day
+4af6bbc9-958032ab.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+357f59f3-5af597fd.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+58bba673-6b7fab87.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Day
+45bb362b-cd327c4c.jpg,General way,Fine,Low,Vehicle,On sidewalk,Green,Dry,Medium,No,Not clear,Night
+47e622d8-f620cec2.jpg,Highway,Fine,Low,Vehicle,None,None,Dry,Low,No,Clear,Night
+57d991fd-7e8858cc.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+44315ac2-6da020f6.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+37aa8ebc-b0ad8fef.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Partly clear,Day
+2e9d2f92-3934176a.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+4f49ac2c-8bebd881.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+46f4339e-6395cd48.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+39ee0661-27957838.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3c6e779d-a6a63d23.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+38dd8fa8-c8e98b3a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+2f1864c1-d62a0153.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3a018681-fc4f0497.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+3055db6e-f54e691e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+566f323a-debd1ef3.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+43bb86a6-8d0effe7.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+53359ee7-03262db3.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+444bd1cc-e0ecef36.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Not clear,Day
+450436b3-b322c719.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4afbc5b2-9c883e33.jpg,General way,Fine,Low,None,None,Green,Wet,Low,No,Not clear,Night
+54084816-18445a55.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+4b6cf073-deff734f.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Not visible,Clear,Day
+32d8273c-bb817428.jpg,General way,Fine,Normal,None,None,Green,Snowy,High,No,Partly clear,Day
+3010f0f4-eb755ccd.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+518fd740-bfce05a7.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+4cdccdb8-1aa709b0.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2ee0c1b2-eb5ebbe6.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Dawn/Dusk
+3df86d24-7c01b3e2.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,Yes,Clear,Day
+50f67560-2369bf34.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+56851e65-6a5e2db5.jpg,General way,Rainy,Low,None,None,None,Wet,Medium,No,Partly clear,Night
+2ebb5ea3-d2555dda.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+3f0735e8-575ffb59.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+54e67fbd-7fcd4322.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2e40dcb9-b1698602.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+495f33c4-10a7022b.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4edf02ce-994b9763.jpg,General way,Fine,Low,None,On road,Red,Dry,Medium,Yes,Clear,Day
+37f9d136-89e2a51e.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+405b52b5-bf5bb7ff.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+41b270eb-68c484f3.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,No,Partly clear,Night
+569311c8-8de38b08.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Partly clear,Day
+3d3b882f-ceee80c3.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+380a3f8e-ba4f0def.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+336a43c7-e1cd0b93.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Night
+44d5e383-c58840d5.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,Yes,Clear,Night
+38710a32-f7e8d83d.jpg,General way,Fine,Low,None,None,Red,Dry,High,Yes,Clear,Night
+3fa0f9ae-9cc3c3b7.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+41cc0108-aec78b26.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+496151fa-38c5c85d.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+36cb685f-44b9b5bd.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+572766ab-70840cbb.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+3f8eff47-2501849f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+40a15359-57b17dfa.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+40328742-2c6bb726.jpg,General way,Fine,Low,None,None,None,Snowy,Low,No,Clear,Day
+48f00dd9-78848720.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+51beb8f1-a900767f.jpg,General way,Fine,Normal,None,None,None,Snowy,High,No,Clear,Day
+32f9273c-a1b71351.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Partly clear,Night
+42ab6696-c1c7e11b.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+3ec3648e-7179cabe.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+45bdcee5-3f1f2b77.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3505a9ff-f8170db8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+49b5edeb-05927200.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Dawn/Dusk
+37ee34be-752db4c2.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+4700ea55-0fec6ca9.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+37f8f5a8-9d1969de.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+377bf3a5-ff418c78.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,No,Clear,Dawn/Dusk
+4cbfd3a6-c9c7d431.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+511f6b51-150573bf.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+37992925-25481e14.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+3b3c4ee5-3cda5228.jpg,Parking lot/Gas station,Cloudy,Normal,None,None,None,Wet,Low,No,Clear,Day
+36177754-7a60191d.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+44191a9e-5107e1db.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3628bf7e-1d44dbc6.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+3bd568e3-2cee3b4f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4662a688-64eb19e6.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+40d3f1dd-7f36367a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4e6d692a-c99da583.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,Yes,Clear,Day
+3bd97add-f814a6ea.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Wet,Medium,Yes,Clear,Day
+2fad2d43-ddad543e.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4f5bdd6a-da93c245.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Dawn/Dusk
+4b28be27-072b073e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+545531d0-8e47f96b.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4fb12c25-3b18d734.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4025360f-4416d623.jpg,Parking lot/Gas station,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+39fc6d1c-6155351d.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4190e32a-21e45aad.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+4b07927b-162c80b0.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+56f9f2fd-6c958a19.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+39c2de15-bb9efbff.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4ef0b323-a6020d7f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+5256c3a6-51db4326.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+5209d79d-972eebc8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+314efffe-3084f094.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+442cbcda-f7c006d5.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+3e5841aa-af9ae741.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+486de9c0-2c9fcf04.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+5531aaa3-86bf4e3a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4f774ae4-c97a92c6.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3211d2d8-cd53b27f.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+53ca5f2e-d4be1355.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Day
+58d07fc5-1850d4ad.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+4680b06e-4814c42a.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,No,Clear,Day
+3f0735e8-c4b2dcc4.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+39e81632-150aa183.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,Yes,Clear,Night
+314f536b-ccdcb271.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Clear,Dawn/Dusk
+31101f08-7a2873c7.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+46bbb7e4-15b054c0.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Night
+3066716f-1fea715d.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+3b924e04-e679771e.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Yes,Clear,Day
+3cc8bedd-17821a21.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+34f3e55f-9919bb47.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4b515707-147f9178.jpg,Under bridge/FO,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+455e4f3d-676f809a.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2e40dcb9-1e10c85c.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+48cbc95f-b1197995.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+52643c04-69a816d1.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+3cefb28e-6671ca26.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+50b115d6-a9652c85.jpg,General way,Fine,Normal,None,None,None,Dry,High,Yes,Clear,Day
+50b6b0d5-c53e0b68.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4e10ad82-135d29ff.jpg,General way,Fine,Low,None,None,None,Wet,Low,No,Clear,Night
+4c0dafd9-115d2a1c.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4e0b0e1d-63453cfe.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+50a9e218-f2b1db33.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+54ee67ef-ea587008.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+3ab69e68-243c08a4.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Dawn/Dusk
+44c9f084-98c52048.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4dee0482-a2c484c4.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+533daa45-17d2913c.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+35d7bd69-4f982a6e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+53b82c11-0f348bdb.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+46d66a53-4e82200b.jpg,General way,Fine,Low,None,None,None,Wet,Low,Yes,Partly clear,Night
+2f22cc24-a30cfb0b.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+40180d7b-e4e84456.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3e901784-8e726f46.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+30d7588c-af8d58c5.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2e4ba639-9d6b40ef.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,Yes,Clear,Night
+3fb5dd12-b63b23c9.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+543e242d-29c4209a.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Medium,Yes,Clear,Day
+3be85fbd-be149b17.jpg,General way,Fine,Low,None,On road,Green,Dry,Low,Yes,Clear,Night
+54569179-cdd42e85.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Wet,Medium,Yes,Clear,Day
+4f16b332-529b40a2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+37204af2-2c898672.jpg,General way,Fine,Normal,None,On road,Red,Dry,Medium,Yes,Clear,Day
+4a3b08f7-24d1c612.jpg,General way,Fine,Low,None,None,Red,Dry,High,No,Clear,Night
+31081723-a223b6d0.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+4fd29372-c3fdf321.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+46c17423-052a6b65.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+34395fb1-c47bf31e.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4e0661c5-65dc5557.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+48524f2c-6ad805e7.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+3b4e7cb5-dbb110d7.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+48e2de8e-7d0021d2.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+5324744a-a1853ca5.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Day
+4f9fe2a9-6a82dbd9.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2f97ca3c-fcf4787b.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+38856657-00f8d4e3.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+53e40c87-289400a1.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+4fdead24-1e95304b.jpg,General way,Fine,Low,None,None,Not sure,Dry,None,Yes,Clear,Night
+5177b749-77f3afaf.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4677c33c-c0376e34.jpg,General way,Cloudy,Low,None,None,Green,Dry,Low,No,Clear,Day
+3d112ff5-01bd0f58.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+42731259-8fceb9e9.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,Yes,Clear,Day
+42cc8feb-278b92d8.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+45f4f6b5-12fb07c5.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+34f33e1d-ba6173c5.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+52f3368b-18c12f30.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Partly clear,Day
+33f3e7c4-8039a9d7.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,None,No,Clear,Day
+57b115a3-d3173f78.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Clear,Day
+3f2cde7a-21b868c5.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2eaca1db-0cbd9d42.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+3d77820f-082941cd.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4cbb2473-229b00ea.jpg,General way,Cloudy,Normal,None,None,None,Dry,None,No,Clear,Day
+2f97ca3c-20d6deac.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4b63b8f5-8dc71288.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Medium,Yes,Not clear,Day
+2f34cbe7-b6dd5e9a.jpg,General way,Fine,Low,None,None,None,Dry,Medium,Yes,Clear,Night
+5869d3a5-41bd872d.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+3e77e354-77203c3b.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+571f7885-8ecfc675.jpg,Under bridge/FO,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Day
+3c90d181-dba2ed8d.jpg,General way,Fine,Low,None,None,Red,Dry,High,No,Clear,Night
+4238bd8d-d98de031.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+4f0a08c2-ed317109.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+57181d97-eb24a130.jpg,General way,Fine,Low,None,None,Red,Snowy,Low,Yes,Clear,Night
+30a9821d-ab6ea198.jpg,General way,Fine,Low,Vehicle,None,Red,Dry,Low,No,Clear,Night
+366c7638-e82495d0.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3684e3c1-973169ba.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+381b0c2d-22e882c8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+34089061-033bdb64.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,No,Clear,Dawn/Dusk
+35c7dd4a-545f569b.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+386988a0-4a84dff2.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+46c53f59-7e2b6f8a.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+3d562b4c-49e86823.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Not clear,Night
+54a92bc0-c547f811.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+5091d1a0-c7ade43e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3464b4c9-a5323c2b.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Partly clear,Day
+56f433ce-b3b638c3.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Not clear,Night
+57fd312c-4eaa49b0.jpg,General way,Fine,Low,None,On sidewalk,Red,Dry,Medium,Yes,Clear,Day
+58131720-d7efaed1.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4cfb0c9b-a19407ba.jpg,General way,Fine,Low,None,None,None,Dry,None,No,Partly clear,Night
+2e45d7c5-02f5264c.jpg,Under bridge/FO,Fine,Low,None,None,Green,Dry,Low,No,Clear,Day
+45231d99-82e17154.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Partly clear,Day
+3e4bacb0-a42bbe5f.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Clear,Day
+32adb27d-c4138a97.jpg,General way,Fine,Low,None,None,None,Dry,Medium,Yes,Clear,Night
+45e49be7-f426b2a9.jpg,General way,Fine,Low,None,None,None,Snowy,Low,No,Clear,Night
+34efb108-a61b1423.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Low,No,Clear,Day
+4fb29f65-278b3ce1.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+401007fb-14c0cc6e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+3fecff67-927901cc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+4fe1af7b-0c8e0d76.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+48ad9d93-93cf23a2.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+51ca17ab-91dcff3f.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+4cd68107-3787f3f4.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+3c39180d-d84dfdb4.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+554d7cd5-a32486dd.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+38bdc47c-22f75c60.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+58c2dde8-c6a6cd63.jpg,General way,Rainy,Normal,None,On sidewalk,None,Wet,Low,No,Partly clear,Day
+4be9303c-13c7dd57.jpg,General way,Fine,Low,None,None,None,Dry,None,No,Clear,Night
+4c97e9f7-23e59efd.jpg,General way,Fine,Normal,None,None,None,Snowy,Medium,No,Clear,Night
+3e8d1d0c-d6bd4fd7.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Not clear,Night
+3e9d589d-164ad27a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4f69e4d9-fb3f4c82.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Partly clear,Day
+32cf0c44-cf5eb460.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+56ef3c29-2aff9467.jpg,Under bridge/FO,Fine,Normal,None,On sidewalk,None,Dry,High,No,Clear,Day
+4b01991d-df29c45c.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+42dfc064-c30855b6.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3dbba701-0f026bf8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+36cabbe3-11561daf.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+3ac257bd-ffe14716.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+40c206d3-99ad2b46.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+359f02ae-8c19ac1e.jpg,General way,Fine,Low,None,None,None,Dry,High,No,Clear,Day
+56265db5-186530b5.jpg,General way,Fine,Low,None,None,None,Dry,High,No,Clear,Night
+5663f149-62d55a94.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+571aa64c-fa46c179.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+400d5f0d-901c3056.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4324ed87-4b5a91d8.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3de9984e-9e5b7dff.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,Yes,Clear,Day
+35a7dccf-ab847368.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Dawn/Dusk
+394bb334-18115adb.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Clear,Day
+4e74f086-a3147c75.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+523055b0-c2bb4b3c.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+51122583-4c271b1f.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+49e4aa79-ec462cb8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+47329bc4-149ba5b8.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+518a19b7-3339e6de.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+2f805c04-c5a68846.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+44f5f046-82dfc8cf.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+3e00bab2-a735d990.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4cf0a509-304cd324.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+49e95283-a02fffe5.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+32cf0c44-faf48809.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+52248c6b-68a76012.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+377bf3a5-e71721bf.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3d3117f0-9365aac0.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+42d197eb-497b6380.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+44e311b6-0cc70e98.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3bad9f24-0cae3c34.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+475dc2c9-a99bc53d.jpg,General way,Cloudy,Low,None,None,None,Snowy,Medium,Yes,Clear,Day
+4e220a53-1a63d6dc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+49ce932b-63dd62c7.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+587ad91a-ccbc5f4e.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+47a4ccca-2694f459.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+58add71f-531d7f3b.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+56e7ec75-e4d60863.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+573d57ae-ca737fa2.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2ff69cf9-716658ad.jpg,General way,Cloudy,Normal,None,None,Green,Wet,Medium,Yes,Clear,Dawn/Dusk
+4e5f2571-da07b34f.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+51b20fb8-de3d812c.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+57e171f1-8cb9d580.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+30b207bb-9e22dac0.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+553c3b79-c9330ca5.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4c1d2408-cca1e508.jpg,General way,Fine,Low,None,On road,Red,Dry,Low,Yes,Clear,Night
+33f72460-9e69387b.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Partly clear,Night
+53feae1d-2b4c4f3e.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+56cdaff3-2edc7f4a.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+3cb86f14-3dad586c.jpg,General way,Fine,Normal,None,None,Green,Snowy,Medium,No,Clear,Dawn/Dusk
+4f373a67-837163f2.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+50d06927-805c3313.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+56b19131-df289919.jpg,General way,Fine,Normal,None,None,None,Snowy,Medium,No,Clear,Day
+574ef24a-a815b38a.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+44bd8dc6-4e6a72ae.jpg,General way,Rainy,Normal,None,None,Green,Wet,Medium,No,Not clear,Day
+4b66b412-92af7b98.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+374619e7-3f929a58.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Partly clear,Day
+47ad3d9b-0ecbb499.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+45adc379-6941f2ce.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Partly clear,Dawn/Dusk
+5827ed15-e8a9f5aa.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Partly clear,Day
+49cd3929-3902ec9b.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+575a2c21-3ee40a12.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,No,Clear,Day
+4c80fdd2-ba93de9c.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+4c4101d9-370a28bf.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4b980fd7-abc2909d.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+4825c745-2e4d9a26.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+51c82b3a-9d9ad9a9.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+52e22215-43184a32.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+44cc4dc8-01aea21d.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+348c187f-5a4a79bf.jpg,Highway,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+503cfff6-b8366b99.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+2fef12f6-f31f4da3.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+46512730-082779eb.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+545cb970-ba851144.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+55a86f3f-f850001e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+35d048b5-6c1bc706.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4727a002-916f1d4e.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,No,Clear,Day
+350334d0-7c7c1937.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+4ad51624-5f5a6e1e.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+47c64586-a7cc95cf.jpg,General way,Fine,Low,None,None,Green,Wet,Medium,No,Not clear,Night
+554f8660-904d1f08.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+4363f749-a7043ded.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+327e2f77-99160976.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Not visible,Clear,Day
+38265e6d-7e19499d.jpg,General way,Fine,Normal,None,On sidewalk,Yellow,Dry,Medium,No,Clear,Day
+54360b72-e00a3f70.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4eedc6c0-574525ea.jpg,Under bridge/FO,Fine,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Day
+38a8a37d-c41cc42d.jpg,Under bridge/FO,Fine,Low,None,None,Red,Snowy,Medium,No,Partly clear,Night
+563bd61d-45d3d40d.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+38221668-26c6ebe7.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Partly clear,Night
+470e3045-26f1b06a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+493aff77-cba1e989.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2fcbca14-a0ce7d4a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+5101b0dc-b5deb6ad.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+52a7a96a-fc153e93.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+4bc9b7da-271df09b.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+3fdece35-bcb884da.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+32997a62-cf3786fd.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+332e740f-ce947e46.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+2f63c867-251548df.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+475f2744-6c7d0f39.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2e817b1a-c1b550eb.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+555c8152-b0a38c36.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+38b272c8-e5bf5ff5.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+3d2273f5-c87b9786.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3952c4d8-c309e371.jpg,General way,Cloudy,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4d3a53b9-994af562.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+38837297-65dd7cea.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+58621914-38d2a9ce.jpg,General way,Fine,Low,None,None,None,Snowy,Low,No,Clear,Night
+3da75143-8ede4710.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Low,No,Clear,Dawn/Dusk
+57113651-c0adc069.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+45a8a226-ef278fae.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+364acc07-57f5611e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4e6b4d5c-34aa35ad.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+415f5e94-41895254.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+46157cf0-2a1599af.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+4706200c-b5022cc0.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+545024fb-23b3b438.jpg,General way,Fine,Low,None,None,None,Dry,Medium,Yes,Clear,Night
+4e1f88e3-c9ce2413.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+36299ad1-933b70ff.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+53f57c2b-60b79e05.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+52c0946f-b37b4531.jpg,General way,Fine,Normal,None,On road,None,Dry,High,No,Clear,Day
+4de868ab-a36fd9be.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+3f7ee13f-c8d31c29.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3b146563-8d667c4b.jpg,General way,Fine,Normal,None,None,None,Snowy,Medium,No,Clear,Day
+37cbd622-809170b8.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+4794d81d-608d2396.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Medium,No,Clear,Dawn/Dusk
+51fed393-9e7f8e90.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+4855080b-43135872.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Clear,Day
+51dd8fb7-b4fb5e97.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,No,Clear,Night
+42711b6a-c7a1f2c4.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+579a2870-d0a59005.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+51af6e28-c269030f.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+30f47755-1d9ca838.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+30cbf134-d75ec302.jpg,General way,Cloudy,Normal,None,None,None,Dry,Medium,No,Clear,Day
+379683b4-1235749b.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+3f24a21e-bb47520a.jpg,General way,Fine,Low,None,On road,Yellow,Dry,Medium,Yes,Clear,Night
+4f4ae581-592e9df0.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+58820efb-e9ca8dff.jpg,Under bridge/FO,Fine,Low,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+3b4d6b48-a27b7318.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,No,Clear,Night
+43126e0d-35dac0c1.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+385d8be7-b2fb5650.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+3d86c5ee-e53bd1d5.jpg,General way,Rainy,Low,None,None,None,Wet,Low,No,Not clear,Night
+3f56363a-dd3ef4b9.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+3ef7bb72-2a6f4434.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+4bb769f4-5039e0d0.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+3f8db209-f82fd95a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+532e0aa1-38cd5689.jpg,Parking lot/Gas station,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+32ffd93d-bacbf72e.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+348c187f-b36a18f6.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4eae0f39-b43438ac.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+557f233c-0b389177.jpg,General way,Rainy,Low,None,None,None,Wet,Low,No,Clear,Dawn/Dusk
+57dd03e1-7b415b61.jpg,General way,Fine,Low,None,None,None,Snowy,Low,No,Clear,Day
+4ba9025b-273c14d8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+42bc096e-21f9d48c.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+48ceb2a9-74d764fe.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+480263a0-1dce8912.jpg,General way,Fine,Low,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+454cb224-23acd0b0.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+3da9662b-e3c15885.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+327390be-b85b4a74.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+43e62372-4242128b.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Yes,Partly clear,Day
+466a34ad-efed6a02.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+4baaeca4-f9590ddc.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+5305169c-00d56deb.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4bf68024-78cdbd0a.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Dawn/Dusk
+3df4f184-20ede609.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+588f5431-89ed57b0.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+470ae715-03c991e0.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Dawn/Dusk
+3021fc2b-78a1d296.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+58c02a66-35f846f9.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Partly clear,Day
+4e34d573-d52f59d8.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Partly clear,Night
+3ec28154-a3d9de2b.jpg,General way,Fine,Low,None,On road,Red,Dry,Medium,Yes,Clear,Night
+48e396d2-793d2222.jpg,General way,Cloudy,Low,None,None,Green,Dry,Medium,No,Partly clear,Day
+399b7e14-6e7bd286.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+453b001d-4d420624.jpg,Parking lot/Gas station,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+42a6ba72-6fb5c236.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+34f7af33-1790fd47.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+565d82d9-0d7b69c3.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Partly clear,Night
+41a3bcff-8d71c2f6.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+414a1519-d7111de6.jpg,Parking lot/Gas station,Fine,Low,None,None,None,Dry,None,No,Partly clear,Night
+55969851-36429d8c.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+57165857-18428154.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+345cc18f-4aacc2c6.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,No,Clear,Day
+5012d78b-473df77f.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+497a29ed-31758b15.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+546b3334-82f22759.jpg,General way,Fine,Low,Others,None,None,Dry,Low,Yes,Clear,Night
+37ca9549-48dd4aa5.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+51d741c9-61e35eec.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Not clear,Day
+51d10703-22941982.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3babcd52-0445a009.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+437b5f8d-fe104286.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+413da38c-428c534e.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Partly clear,Day
+56c11459-5ca06c1d.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+2fa86336-6e170c24.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+4781d4e3-eacbe164.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Dawn/Dusk
+58309884-fe5cd2d5.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+3e2f1a5a-557b933c.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+53ba4686-95ab4c8a.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+445c4ab2-ac748daf.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Not clear,Night
+4b8c9caa-5fd97715.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+498daf4e-44bff8cb.jpg,General way,Fine,Normal,None,None,Green,Dry,High,No,Clear,Day
+3ec17999-dfa75725.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+31690fd0-6712544c.jpg,General way,Fine,Normal,None,On sidewalk,Green,Snowy,Low,Yes,Clear,Day
+3fc6dc81-352978f8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+450f18a5-6873ec71.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+50cb34ee-95b50bef.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+3a786a22-a3fcf0a9.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+4047c5fc-2f9bb053.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Not clear,Night
+41a514b7-ffab6c3d.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2fd7219c-e994bf2e.jpg,General way,Fine,Normal,None,None,Red,Dry,Medium,No,Clear,Day
+3383dc8b-3b245b78.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+38e287be-e2d103ca.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Not visible,Partly clear,Dawn/Dusk
+398c6ab2-ee66d8d5.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+38260cf9-418cb93d.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+2e04cd1f-d534e7d3.jpg,General way,Fine,Low,None,None,Red,Dry,None,Yes,Partly clear,Night
+4eb89747-3f37b95c.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+3cef4d11-cc6d2565.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+4ada6e95-0fb2126b.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+506b3495-5a9c3d6b.jpg,General way,Fine,Low,None,None,Green,Wet,Medium,No,Not clear,Night
+52735213-53277651.jpg,General way,Fine,Low,None,None,None,Wet,Medium,No,Partly clear,Night
+31e04196-82959ff4.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+2f5b65f6-4d82eb63.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+55fdb5bd-a8b60076.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+2e5202f4-b60e72a3.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+38bf6f56-dc03bfc8.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4177264b-ebae208b.jpg,General way,Fine,Normal,Vehicle,None,None,Dry,Medium,Yes,Clear,Day
+448d4bc6-38781cee.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+53745286-45eb0bf0.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+3100e8a0-546dbc4f.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+4fc6aee5-2819638c.jpg,General way,Fine,Low,None,None,Green,Wet,Medium,No,Partly clear,Night
+3d5a9d59-4198d325.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Night
+40295d8f-ee894cac.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+4fd90d20-bd958707.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+50d13970-71a344d6.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Partly clear,Day
+47cdf332-84b585ba.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+50217889-812ecb31.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Partly clear,Night
+5779578d-d68fe2e3.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+3902161e-69c57d3e.jpg,General way,Fine,Normal,None,None,None,Dry,None,No,Clear,Day
+4753db1a-1254040a.jpg,General way,Snowy,Normal,None,None,None,Snowy,Medium,No,Clear,Day
+464b49a0-053fd8b2.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+3103aaf8-9b46f263.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+4a8aa3ad-2aa35dc1.jpg,Parking lot/Gas station,Fine,Low,None,None,Green,Dry,High,No,Partly clear,Night
+311f788a-dacd5aea.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,Yes,Clear,Night
+2f0eccda-d0b65a9a.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+4cd722e9-325db75d.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+4c37c9df-0a397dc5.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+3de202c6-d80480dd.jpg,Under bridge/FO,Fine,Low,None,None,None,Dry,Medium,No,Clear,Day
+37862182-1ca565c0.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+09ac7416-7302f662.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1a2c2af4-92366cd5.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+0fa7d0a7-868d8925.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0b911643-35ca5fa3.jpg,General way,Fine,Low,None,None,None,Dry,Medium,No,Clear,Night
+0b9cf19a-8e02c78d.jpg,General way,Fine,Normal,None,On road,Not sure,Dry,Low,No,Partly clear,Day
+10719793-72719572.jpg,General way,Fine,Normal,Vehicle,Not sure,Red,Dry,Medium,Yes,Partly clear,Night
+20c7a02e-83dc3530.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+17662c87-d2526f74.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Not visible,Clear,Night
+15ec1879-06e3118e.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+1f92f8dd-4efc9d56.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+283e5d7b-1d091f63.jpg,General way,Rainy,Normal,None,None,Green,Wet,Low,Yes,Clear,Day
+17199913-ab22f1e0.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+02514ff2-b8e3551c.jpg,Parking lot/Gas station,Undefined,Low,Others,None,None,Wet,Undefined,No,Clear,Undefined
+16504799-9b3c4c4e.jpg,General way,Fine,Low,None,None,Green,Snowy,Medium,Yes,Clear,Night
+18ca8f6e-56667ac4.jpg,General way,Cloudy,Normal,None,None,Green,Wet,Low,No,Partly clear,Day
+03b1b4bd-011e9eeb.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+2326b725-4afbb2b1.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+21d16613-3cca1ae0.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Dry,Low,Yes,Clear,Day
+2113774f-b7137183.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0d538703-23c86b77.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+187af41a-fcebf18c.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+29c2d643-fc4da0c3.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+116d445b-a0ddd4cb.jpg,General way,Fine,Low,None,None,Red,Snowy,Low,No,Clear,Night
+1ef18034-ecd6d59a.jpg,General way,Fine,Low,None,On sidewalk,Green,Wet,Medium,Yes,Clear,Night
+1205709e-f3c972ac.jpg,General way,Cloudy,Normal,Vehicle,On road,None,Wet,Low,Yes,Clear,Day
+02191150-4615d36f.jpg,General way,Fine,Normal,None,None,Red,Dry,High,Not visible,Clear,Day
+1c98f278-f668ea0a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+07f58d35-2c967dc7.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+26340377-d2b60f2c.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+061015c1-7e7549c7.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Low,Yes,Clear,Night
+1059840e-b6090d3c.jpg,General way,Fine,Low,None,On road,Green,Dry,Low,No,Clear,Night
+0c4d4afa-75fce0c1.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,No,Clear,Day
+135a9651-46c92e9d.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+23c7d0ed-c16ea950.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+07ea0f81-651e028a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+0ddb2323-0c33a237.jpg,General way,Fine,Low,None,On road,Not sure,Snowy,Low,No,Clear,Night
+03375ea2-17ddd6fc.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+22c302a8-d9899da9.jpg,General way,Rainy,Normal,None,None,Green,Wet,Low,No,Clear,Day
+2c91ad18-d67645c3.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2ce887db-f822df76.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+172682ff-3a234a58.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+24d241f0-deeb315f.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+23baaec2-3d245977.jpg,Tunnel,Undefined,Normal,None,None,None,Dry,Low,No,Clear,Day
+02a0f142-1c6504df.jpg,General way,Fine,Low,Vehicle,Not sure,Red,Dry,Medium,Yes,Clear,Night
+1ec4a7bc-90fa64ad.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Low,No,Clear,Night
+0bc0b27e-b932a660.jpg,Parking lot/Gas station,Fine,Normal,None,Undefined,None,Dry,None,No,Clear,Day
+2474cb06-a782a19a.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+1945d080-78efbbaa.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+2869ba61-3c03b87b.jpg,General way,Fine,Low,None,None,Green,Snowy,Low,No,Clear,Night
+0f1f8dba-b51210ab.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,No,Clear,Day
+1659f092-0a9ea83c.jpg,General way,Fine,Low,None,None,Green,Snowy,Low,No,Clear,Night
+1da231cf-7eb31557.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2633cc07-e2291b28.jpg,Highway,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+100a3dd7-edc04608.jpg,General way,Fine,Low,None,On sidewalk,Green,Snowy,Medium,No,Partly clear,Night
+28a5ec96-a9096aea.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2dc83489-04162e69.jpg,General way,Fine,Normal,None,On road,Not sure,Dry,Medium,No,Clear,Day
+047e715f-81e81a28.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+13e6351a-f35d1572.jpg,General way,Fine,Low,None,None,Red,Snowy,Low,Yes,Clear,Night
+1236ceb8-edb395ab.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+0cdc6da9-1febe314.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+03375ea2-c96d61a8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+017b02cb-477b66fa.jpg,General way,Fine,Low,None,None,Green,Snowy,Medium,No,Clear,Night
+0798a3a8-5a64671d.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Snowy,Low,No,Clear,Day
+1f921abe-b85b9f23.jpg,General way,Fine,Low,None,On road,Green,Dry,Low,Yes,Clear,Night
+06960951-c67204e8.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+0f11e283-ba5f30d7.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Low,Yes,Partly clear,Day
+1e538e6d-d51f7138.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+11589021-ab3116a2.jpg,General way,Fine,Normal,None,None,Green,Snowy,Low,No,Clear,Night
+0b661d3b-56cec8f5.jpg,Highway,Rainy,Normal,None,None,None,Wet,Medium,No,Partly clear,Day
+266e6076-b37da5ef.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+01d3a4d7-aaf41e75.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+25c00e6f-06a8a889.jpg,General way,Fine,Low,None,On sidewalk,Red,Dry,Low,No,Clear,Night
+080831d0-6bfa595a.jpg,Highway,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+080a57f6-ac5a5542.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+0a70b8c5-8c3ef863.jpg,General way,Fine,Low,None,None,Red,Snowy,Low,No,Clear,Night
+273dd231-2de39183.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2795a983-34c59760.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Low,Yes,Clear,Night
+216bbddd-1f61f211.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Low,Yes,Clear,Night
+23d99463-71953572.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+0ba01bd3-19727e8b.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+28c713e1-a8c7c97b.jpg,Under bridge/FO,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+184764e8-6e13d252.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+155c545d-acc88ab6.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+223ab2be-479e7f64.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+13a4e4da-1e2ce046.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Dry,Medium,Yes,Clear,Day
+1837cdb2-b6556bf6.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+06a2a338-1fc32754.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+02d5e1be-7ec9c0bd.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+034a8bdf-f9e9ad8d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+0cdde16a-e7a0d875.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+2a0a45df-c9b3e94c.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+05ab62f4-613ed675.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+0bd0515d-8ade9b32.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+281636dd-2e937050.jpg,General way,Rainy,Low,None,None,Green,Wet,Low,No,Clear,Night
+02b7b9ee-a76d996e.jpg,General way,Fine,Low,None,None,Red,Snowy,Medium,Yes,Clear,Night
+0890eeb6-7b4e598f.jpg,General way,Fine,Low,None,None,Red,Wet,Low,No,Clear,Night
+2cc3a221-3c20c5fe.jpg,General way,Fine,Low,None,None,Red,Dry,High,No,Clear,Night
+1a29a4d3-90d387f3.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+07eabbe1-c599fcaa.jpg,General way,Fine,High,None,None,None,Dry,Medium,No,Clear,Day
+25cc626e-f95f549a.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,No,Clear,Day
+2286c2d2-b93beb39.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+1ea8d607-f6b81294.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0d714d2d-4e3f1cff.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+19f52469-c5f61fe6.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+279f4a82-cc103ce2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+29a6a14c-e6a07faa.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+212fc4df-8a550c73.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1f07428e-5858bb94.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+02621ea2-e25d54a0.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Medium,No,Clear,Night
+1c3bd5a7-454e45ae.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+1c9812d9-6dfd5fd4.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+063b9c10-308a37ed.jpg,General way,Cloudy,Normal,None,On road,Green,Snowy,Undefined,Not visible,Clear,Day
+0a42ee8c-13838721.jpg,General way,Fine,Normal,None,Undefined,None,Dry,Medium,No,Clear,Day
+1a4169fd-eacdffe8.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+16a44136-f33aa361.jpg,General way,Fine,Low,None,Not sure,None,Dry,Medium,Yes,Clear,Night
+10f3bb72-045761c7.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+22bc1f90-72b79ef6.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1e9ffa51-bcb393fb.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+2b770aae-a586c584.jpg,General way,Fine,Normal,None,None,None,Wet,Low,No,Clear,Day
+198b38c6-ccb3915d.jpg,General way,Fine,Normal,None,None,Red,Snowy,Medium,No,Clear,Day
+2b8dfc47-9a802e7a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+11815183-57a97711.jpg,General way,Cloudy,Normal,None,None,None,Snowy,Low,No,Clear,Day
+125c3500-503cdc51.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1c0948a6-df7d5937.jpg,General way,Cloudy,Normal,None,On sidewalk,Not sure,Wet,Low,No,Clear,Day
+0102614a-fc165656.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Partly clear,Day
+2ad8324d-615a893e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+224a4127-5dbe3f9a.jpg,General way,Fine,Low,None,None,None,Snowy,Low,Yes,Clear,Night
+1f1a34a0-a77d6f9d.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,High,No,Clear,Day
+2a438f77-7e429f5c.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Partly clear,Day
+1f54213a-b5aa2d76.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Not visible,Clear,Night
+2c4e6fc3-b8e75f41.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+151592af-120629a6.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+1cec4af8-45c98364.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+14ac7c59-d904d83c.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+06311321-0515de98.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+248bc5fb-24bf41a5.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+0aa4bc86-1e9bb591.jpg,General way,Fine,Normal,None,None,None,Snowy,Medium,No,Clear,Day
+238f270f-42f25043.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Snowy,Medium,Not visible,Clear,Day
+0528fc43-3d7684cb.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+2d3d1e90-a84ceb1b.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+28f89523-c420da12.jpg,General way,Fine,High,None,None,None,Dry,Low,Yes,Clear,Day
+06ff7d61-734f0911.jpg,General way,Rainy,Low,None,None,Red,Wet,Medium,Yes,Clear,Night
+10fc3236-df21b310.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+130a2a49-a235c253.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Wet,High,Yes,Clear,Day
+02ef72c1-00a6439d.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+0308ce2b-1bfd979e.jpg,General way,Fine,Low,Vehicle,None,Red,Dry,Low,Yes,Clear,Night
+149d37b6-9e457a59.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+00091078-c1d32eea.jpg,General way,Fine,Normal,None,On sidewalk,Green,Snowy,Low,No,Clear,Day
+2717b146-1e607a26.jpg,General way,Fine,Low,None,On road,None,Dry,Low,Yes,Clear,Night
+0c005860-45e2b557.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Day
+17c9136a-82083e81.jpg,General way,Fine,Low,None,None,Red,Dry,Medium,Yes,Clear,Night
+285cc05c-adbf132d.jpg,Under bridge/FO,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+1cb2a89b-4594573e.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+033dea13-5a8114fe.jpg,General way,Cloudy,Normal,None,On road,Red,Snowy,Medium,Yes,Clear,Day
+2b92915d-347aa3a6.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0e460dd3-471aad9b.jpg,Highway,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Day
+21b782dc-82164c1e.jpg,General way,Fine,Normal,None,Not sure,Green,Dry,High,Yes,Clear,Night
+1abd6590-820d7f31.jpg,General way,Rainy,Normal,None,None,None,Wet,Medium,No,Clear,Day
+168a2c99-c74274d0.jpg,General way,Cloudy,Normal,None,None,Green,Wet,Low,Not visible,Clear,Day
+04c6b8fa-4abd5e9f.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+242a4e41-4ce36b53.jpg,General way,Fine,High,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+07576c3b-3dd3c484.jpg,Parking lot/Gas station,Fine,Normal,Vehicle,On sidewalk,Not sure,Dry,Medium,Yes,Clear,Day
+1371d04a-bcd9f8be.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+184ebe9e-b16fa814.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+1e3909fd-4f2c9b11.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+178a96f7-8ad2d682.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+09b5ab15-d01184c6.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+16dce9f0-08dc8f57.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+14020ffa-5b61de09.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+14e5c1f2-3df8407b.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+1264e9c4-b4f2355e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0f1892c7-3b84a70d.jpg,Highway,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+064f187c-c103fce0.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Partly clear,Night
+0598d1c5-d103716c.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,No,Clear,Night
+198cfa25-f7b54297.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+0d214617-9d9d28dd.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Partly clear,Dawn/Dusk
+0c5c1f82-4ced87a3.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Partly clear,Day
+2dc83489-d56ac338.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2d94dc16-2ec6df65.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Partly clear,Night
+1db3abed-1a7658b8.jpg,General way,Fine,Low,None,On sidewalk,Green,Wet,Low,No,Clear,Night
+061015c1-7e7549c7.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Medium,Yes,Clear,Night
+2198868f-5ce602db.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+2246fef6-74258bfe.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+02927def-14c4c3cb.jpg,Tunnel,Fine,Low,None,None,None,Dry,Medium,No,Clear,Day
+15f559a7-0b0dbcd5.jpg,General way,Fine,Low,None,On sidewalk,Green,Snowy,Low,Yes,Clear,Night
+0f5a5056-8be793bd.jpg,General way,Fine,Low,None,On sidewalk,Red,Dry,Low,Yes,Clear,Night
+0a6bb27d-d6082dc4.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+22b32f53-a504fda5.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+18b2657a-c11f0af8.jpg,General way,Cloudy,Normal,None,None,None,Wet,Low,Yes,Clear,Day
+129e0b6d-3e44a33e.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+246493fe-25b4af20.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+09f23136-817bff87.jpg,General way,Fine,Normal,None,On road,None,Dry,Medium,Yes,Clear,Day
+1247026b-c62b22ea.jpg,General way,Fine,Normal,Others,None,Green,Dry,Medium,No,Clear,Day
+21825b6e-7981d5c8.jpg,General way,Fine,High,None,On sidewalk,Red,Dry,High,No,Clear,Day
+0947dc75-de453b49.jpg,General way,Fine,Normal,Vehicle,On road,Red,Dry,Medium,Yes,Clear,Day
+15718870-1fe8f2e8.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1a34061d-0229de92.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+0e40e862-f22aa57a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1e1d4587-f9a27aea.jpg,General way,Fine,Normal,None,On sidewalk,Red,Snowy,Low,No,Clear,Dawn/Dusk
+2982948f-d628f94b.jpg,General way,Rainy,Normal,None,None,None,Wet,Medium,No,Clear,Day
+14540082-7a61ca45.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+17d449e4-410ad359.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+074496ba-de320b67.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+10f2a492-02a5b6be.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1e511f2a-d9c20b1a.jpg,General way,Fine,Normal,None,Not sure,Green,Dry,Low,Yes,Clear,Day
+1c676e43-25808514.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+13b306d7-5d25a761.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+1cae4ea9-d3a38626.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+152b261b-776bfbb0.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,High,Yes,Clear,Day
+072c1503-eb85b76d.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+1a5d3add-01d43f99.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+18cac65b-c9a69778.jpg,General way,Rainy,Normal,None,On sidewalk,Green,Wet,Medium,Not visible,Clear,Day
+006dd004-34630e8d.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+16b0973f-f6e8d13e.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0141e71e-941b0b5d.jpg,General way,Fine,Normal,None,Not sure,Not sure,Dry,Low,No,Clear,Day
+0528fc43-ee06e4da.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+130ed705-fab408b0.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+0e7ecff9-379817b0.jpg,General way,Fine,Low,None,None,Green,Snowy,Low,Yes,Clear,Night
+24cf6a1f-1a894ea0.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+23827978-c5b24754.jpg,General way,Fine,Normal,None,On sidewalk,Red,Dry,Medium,Yes,Clear,Day
+26e49a6c-f8970682.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+05fd5ca5-3a7a96de.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+09077539-f76006d1.jpg,General way,Fine,Normal,None,On road,None,Dry,Low,Yes,Clear,Day
+1f40dccd-948ec31e.jpg,General way,Fine,Normal,None,On sidewalk,Green,Snowy,Low,Yes,Clear,Day
+1534d7b4-d694dd2a.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+282dfc2e-4d9fb8a8.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+07ff4e00-cf1132c1.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1ef540fd-353b94e8.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+2d378761-a768f035.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+14968e59-be7926f5.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2311e352-07f8feaf.jpg,General way,Fine,Normal,None,On road,Red,Dry,Low,Yes,Clear,Day
+0906a78e-6d55c7fd.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+0d22eba4-32d54614.jpg,General way,Fine,Normal,None,None,Not sure,Snowy,Low,No,Partly clear,Day
+1039e5b8-4bf3f9ef.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0d6403cd-48cc88ce.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+20c07e25-6d2d1448.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+08d0f0fe-180a9442.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+10956fd3-b88e468e.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Night
+2884e5c0-c04ee053.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+29b74173-1fd61c0c.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+131e01f6-e4da70e6.jpg,General way,Fine,Normal,None,On road,Red,Dry,Medium,Yes,Clear,Day
+13250071-2043b0ff.jpg,Under bridge/FO,Fine,Normal,None,On road,Green,Snowy,Low,No,Clear,Day
+1babf77a-777cb612.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+2b923350-b5953558.jpg,General way,Fine,Normal,None,On road,Red,Snowy,Low,No,Clear,Dawn/Dusk
+1b6d0c14-d3108ef2.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+161ba5ea-4c97217e.jpg,General way,Fine,Normal,None,None,None,Snowy,Low,No,Clear,Day
+0f01f75e-e308ae9e.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+2454280d-403e22b3.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+00ed2e85-95394dfd.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+010fc651-7cf4bc7d.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Low,Yes,Clear,Day
+0bb074f1-3da7bf3f.jpg,Highway,Fine,Normal,None,None,Not sure,Dry,Low,No,Clear,Day
+264b9ed7-741f6ed4.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Low,Yes,Clear,Night
+0e83a2e4-ff09a981.jpg,General way,Fine,Low,None,None,Green,Snowy,Low,No,Partly clear,Night
+224cedaf-037b2222.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+13ecf73d-aadc3852.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+243bc521-446e593c.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+02cc9ceb-4c3f4418.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+1c8f05f4-0abef60c.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+14f486e4-d22381ab.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+2b88c907-1b5d88f6.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Clear,Day
+1652cc22-d45c05b5.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,No,Clear,Day
+0b84641a-c360bebd.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0a851459-1da95e63.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+1aa865d5-de6ac341.jpg,General way,Fine,Low,None,None,Red,Dry,High,No,Clear,Night
+0cc07488-08863628.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,No,Clear,Night
+127e2f8a-88f2ee39.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+2100be1f-b497e082.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1c1f20ab-1a3318b3.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Partly clear,Day
+18ca8efa-4f73df88.jpg,General way,Fine,High,None,None,Green,Dry,Low,Yes,Clear,Day
+1212c9e9-acfd8c19.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+21ae72a5-3d95c78a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1a8d12f7-a60d9f53.jpg,General way,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+1835e256-a9223683.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+2b6c7b9d-958b64d0.jpg,General way,Fine,Low,None,None,None,Dry,High,No,Clear,Night
+2d4786e8-4b22ebc9.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+1e7d233f-5578175e.jpg,Under bridge/FO,Fine,Normal,None,On sidewalk,Green,Dry,Low,Not visible,Clear,Day
+07ab11fe-f83637fa.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+1fa7e553-8b12504e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+1930f1dc-f1ef402e.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+2af0bd8f-42d98937.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+0a53c48b-86fda2c8.jpg,General way,Fine,Normal,None,On road,Red,Dry,Medium,Yes,Clear,Dawn/Dusk
+296a8bda-43ff1115.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+204a2a93-6b7e4e3e.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1d26f681-c24155a4.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,Low,Not visible,Clear,Day
+1dae9f19-d63f50bd.jpg,General way,Fine,Normal,Others,None,None,Dry,Medium,No,Clear,Day
+173c837b-c14ec832.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+0ee071d8-b93a4b91.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+03b8bba0-3aa073d8.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+2b5c6612-37569d17.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+2cc27873-0bdd83f3.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,High,Yes,Clear,Day
+27634030-c038c6e7.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+0924b40b-6ec1c8e8.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+0d6b7f11-1bf62abe.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+0ce9abb1-857ab875.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Medium,No,Clear,Day
+02e3a54e-4b28a569.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+12f37766-4aacd17d.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+2cb22519-45606f11.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1e9a2407-f033c4e1.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+1df69db3-8751b3d4.jpg,General way,Fine,Normal,None,Not sure,Green,Snowy,Medium,Yes,Clear,Day
+05c15f05-4d1e136e.jpg,General way,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+1fd0f6e8-d98a909a.jpg,General way,Cloudy,Normal,None,None,Not sure,Dry,Medium,No,Clear,Day
+053d7848-feed3e00.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+14a2bb54-12317429.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+2c6d83c6-ea3c3d75.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+26220ece-148adbb4.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+083174cc-11a28344.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+28c32a13-f0c246c9.jpg,General way,Fine,Normal,Vehicle,On road,Red,Dry,Medium,Yes,Clear,Day
+1f7bfc63-6c736958.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+157764b1-6cc9583a.jpg,Under bridge/FO,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+0423f0e5-1d4577ec.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+2074b19a-1af653a9.jpg,General way,Fine,High,None,None,Not sure,Dry,Low,Yes,Partly clear,Day
+09bf6dba-80cd9fd0.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+1da231cf-cd0e930a.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+2aa8f9dc-c946ff46.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+0b8896f8-912fdafb.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+0d4268d5-d5b2317f.jpg,Under bridge/FO,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+1173c9ff-b15ec0d1.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+10af5310-38cadf93.jpg,General way,Rainy,Low,None,None,Green,Wet,Medium,Yes,Partly clear,Night
+2d8ccb37-29eb711a.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+0cc45408-ce95bf47.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1b130dc7-b7cb32db.jpg,General way,Fine,Normal,None,None,Green,Snowy,High,No,Clear,Day
+22973247-128a6b58.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Day
+18fe70b9-c787fc4b.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+0135c724-b8bd0434.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+0cbbc571-8277573b.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+13f6b90e-0bae86ea.jpg,General way,Fine,High,None,On road,None,Dry,Low,No,Clear,Day
+0b661d3b-153c8829.jpg,General way,Rainy,Normal,None,Not sure,Green,Wet,Low,Not visible,Not clear,Day
+097c9ce7-c1b90aff.jpg,General way,Fine,Normal,None,Not sure,Green,Dry,Low,Yes,Clear,Day
+08d4285a-4a25b9b6.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1c3a3dff-4759119c.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+21d61f0e-b18a5b16.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+04d5e22c-d14809ec.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1b002152-03520d81.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1cd5d614-61eedf38.jpg,General way,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+036b3982-4255bbe0.jpg,General way,Fine,Normal,None,Not sure,Not sure,Dry,Low,Not visible,Clear,Day
+1eb4f683-14d77823.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+2d3affcf-8f2dc105.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+20f7845d-02722e08.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,High,Yes,Clear,Day
+0ed0d326-f3689a47.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1fe4369d-8471a4c8.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+27c0e9a0-0898ecfa.jpg,General way,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+291c25b6-3cbadf7f.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2b2046a4-08bc284d.jpg,General way,Fine,Normal,None,None,Green,Snowy,Low,Not visible,Clear,Day
+2a05090e-ee38c6ba.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Medium,Yes,Clear,Day
+20e2659a-2e3fb6de.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+080aeb7a-fbcbca53.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1c00e339-3774b389.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+22816a1d-9f71308a.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2d77560d-d367e688.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+15741361-c9053845.jpg,Highway,Fine,Normal,None,None,Red,Dry,Low,Not visible,Clear,Day
+00091078-84635cf2.jpg,General way,Fine,Normal,None,On sidewalk,Red,Snowy,High,No,Clear,Day
+26a3aaa7-7079014e.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1d8d80f3-302c8b30.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+2815f505-f577fd81.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+16dcd407-6fbb21eb.jpg,General way,Fine,Normal,None,None,None,Wet,Low,No,Clear,Day
+06ebf6cd-0c129f12.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Snowy,Low,No,Clear,Day
+09409126-324e3880.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+0ed0d326-5ec5573f.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,No,Clear,Day
+00a1176f-5121b501.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+02172d82-354cb4fd.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Medium,Yes,Clear,Day
+1eb452e4-773cabcc.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Night
+29555c85-de9640e9.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,Yes,Clear,Day
+1017ef7a-1f4ea532.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+189114f7-ca84c140.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+14c79cde-52f747e6.jpg,General way,Fine,Low,None,None,Green,Dry,High,No,Clear,Night
+1d7163b8-40b3b28c.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+147745bb-99af0e39.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+00423ac5-1fa7ff43.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+19608531-09ceba7c.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2bb74555-9574ad4e.jpg,General way,Fine,High,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+00268999-0b20ef00.jpg,Highway,Fine,Low,None,None,None,Dry,Medium,No,Clear,Dawn/Dusk
+06c3a194-01be4d6a.jpg,General way,Fine,Normal,None,None,Green,Dry,High,No,Partly clear,Day
+14df900d-c5c145cb.jpg,General way,Fine,Normal,Vehicle,None,Red,Dry,Medium,No,Clear,Day
+00313a01-62156032.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+03a30c44-d9c029ff.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+106b57e4-93a2782a.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+164df305-23530701.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+25a19fc3-3174e62f.jpg,General way,Fine,Low,None,None,None,Dry,Low,Yes,Clear,Night
+07199529-6430cbf4.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+1072195f-6cf88b25.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+102f507a-cb1ee8bf.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Not visible,Clear,Day
+0cd0ba08-c8b0a29d.jpg,General way,Fine,Normal,None,On sidewalk,Not sure,Dry,Medium,Yes,Clear,Day
+111b2be7-007be762.jpg,General way,Fine,Low,None,On road,None,Wet,Low,Yes,Clear,Night
+01094b4f-27d47f20.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+2bd0c559-1fdcccb9.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+058b5040-253e6d44.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1c73412f-bc38ec98.jpg,Under bridge/FO,Fine,Normal,None,None,Red,Dry,Medium,No,Clear,Day
+276696fa-730d60a2.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+06ac374f-5c7f25cf.jpg,General way,Fine,Normal,Others,On sidewalk,None,Snowy,Low,No,Clear,Day
+2831bfc3-7704f47e.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+08d90b71-92e1f2e1.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+1dcbf95d-867ffa9c.jpg,General way,Fine,Normal,None,None,Green,Snowy,Medium,No,Clear,Day
+16a4ac1c-fd0aadb8.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Not visible,Partly clear,Day
+074f53a8-f1d4ca32.jpg,General way,Fine,Normal,None,Not sure,Green,Dry,Low,Yes,Clear,Night
+02d338b7-6f55a2d8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+2b30da97-808ea308.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2a9c24e9-49b4fe10.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+287a82cf-4a64c398.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,High,No,Clear,Day
+0a6966b1-ee9ded94.jpg,General way,Fine,Normal,None,None,Green,Snowy,Low,No,Clear,Dawn/Dusk
+27b4ec10-92442133.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+278f9663-22da5299.jpg,General way,Fine,Low,None,None,None,Snowy,Medium,No,Clear,Night
+243a52a0-6f946471.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+10739276-602cd73b.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Dawn/Dusk
+1d81a9da-fa45797b.jpg,Under bridge/FO,Fine,Low,None,None,None,Dry,Low,No,Clear,Dawn/Dusk
+2bce8bd7-88404ac2.jpg,General way,Fine,Normal,None,None,None,Dry,Low,Yes,Clear,Day
+0798a3a8-5a64671d.jpg,General way,Fine,Normal,None,On sidewalk,Red,Snowy,Low,No,Clear,Day
+0ecdbdbb-1d56bde8.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+22cee0e4-de96bf9f.jpg,General way,Cloudy,Normal,None,None,Not sure,Dry,Low,No,Clear,Day
+1f54213a-b5aa2d76.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+1d288c57-918d5ae6.jpg,Highway,Fine,Low,None,None,None,Wet,Low,No,Clear,Night
+2b6f670e-c0578f7e.jpg,General way,Fine,Normal,Vehicle,On road,Green,Dry,Medium,Yes,Clear,Day
+112687b6-873bf5e9.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+150dd10e-be09713c.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+121f7fbc-0bc6c1e8.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+1cbc711c-f7f09690.jpg,Under bridge/FO,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+006bff20-752bd845.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+220d92ac-36d9ffb7.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+1f864b3f-472adf58.jpg,Highway,Cloudy,Normal,None,None,None,Dry,Low,No,Clear,Day
+033fba91-5ecfcf62.jpg,General way,Fine,Low,None,Not sure,Green,Dry,Low,Yes,Partly clear,Night
+2069e404-c2e32c65.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+1f13032d-3997033f.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+08c88de6-0919fd52.jpg,General way,Fine,Normal,None,On road,Red,Snowy,Low,Yes,Clear,Dawn/Dusk
+2a490157-1d9c56ae.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+26088906-14faadfa.jpg,General way,Fine,Low,None,None,Green,Wet,Low,No,Clear,Night
+05c1c47a-cb817b64.jpg,General way,Fine,Normal,None,On sidewalk,Green,Snowy,Low,Yes,Clear,Day
+125134e5-7dfc45b9.jpg,Highway,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+0ead45b1-dd87f181.jpg,General way,Cloudy,Normal,None,On sidewalk,Red,Dry,Medium,Yes,Clear,Day
+17bcbf87-38a932d9.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1d6fdadc-d7286de0.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+0375374a-594dd8ca.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,No,Clear,Night
+22ede244-f25eefc1.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+06c3126b-de9504ce.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,No,Clear,Night
+0fe7b9f6-03351c21.jpg,Under bridge/FO,Fine,Normal,Others,On sidewalk,Green,Snowy,Medium,No,Clear,Day
+05e4d323-6779ccbc.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0199e7fc-0b6d1a35.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+0fbf178c-8d2aa7d8.jpg,General way,Fine,Normal,None,On road,Red,Snowy,Medium,Yes,Clear,Day
+016a3756-afd08730.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+04488604-72f099d0.jpg,General way,Fine,Low,None,On sidewalk,Green,Dry,Low,Yes,Clear,Night
+15dfd725-c9364041.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0b086427-1167d9f1.jpg,Highway,Fine,Normal,None,None,None,Dry,High,No,Clear,Day
+18ca8f6e-56667ac4.jpg,General way,Cloudy,Normal,None,None,Green,Wet,Low,No,Clear,Day
+087917c4-272b217e.jpg,General way,Fine,Normal,None,None,Green,Dry,High,No,Clear,Day
+1698c1ee-02b63e18.jpg,General way,Rainy,Normal,None,None,None,Wet,Low,No,Clear,Day
+017bec14-8512b7fd.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+07454314-a631158b.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+29555c85-cdde7087.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+1e9c6b63-ac4ab4ab.jpg,Highway,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+2ba02eed-a272ffd7.jpg,General way,Fine,Normal,None,On road,Green,Dry,Medium,Yes,Clear,Day
+06ab90be-453ee4a0.jpg,Highway,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+1cacd06c-57be4099.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+12f7d5f7-a73e8b23.jpg,Under bridge/FO,Fine,Normal,None,On road,Green,Snowy,Low,Yes,Clear,Day
+270489de-677db260.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0509d31a-e50e74d4.jpg,General way,Fine,Low,None,None,Red,Dry,Low,No,Clear,Night
+20d85198-df932552.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Night
+14e53fe7-e129adb4.jpg,General way,Cloudy,Normal,None,None,Green,Dry,Low,Yes,Clear,Day
+12c28a91-cc176519.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+16c5943e-fcfaa6a4.jpg,General way,Fine,Normal,None,On road,Red,Dry,Medium,Yes,Clear,Day
+019d0e2f-26b8c896.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,No,Clear,Day
+1ee773c7-68c02a7a.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+038f4cd8-441cf35f.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+0830c485-f3f034a5.jpg,General way,Cloudy,Normal,None,On sidewalk,Green,Dry,Medium,No,Clear,Day
+101c7d35-0a5a4619.jpg,General way,Rainy,Low,None,Not sure,Green,Wet,Medium,Yes,Partly clear,Night
+2ab88494-29c4d775.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Medium,Yes,Clear,Day
+00313a01-b53a2998.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+00f89335-2ef7949d.jpg,General way,Fine,Normal,None,On sidewalk,Green,Dry,Low,Yes,Clear,Day
+01d0c813-d40ec94f.jpg,General way,Fine,Low,None,None,Green,Dry,Low,No,Clear,Night
+2dce1efd-57bb2536.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Night
+11513e3d-77b4f28a.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+1737fe46-8a8af0f7.jpg,Under bridge/FO,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+0096bcca-fc7d6d3c.jpg,General way,Fine,Low,None,None,Green,Dry,Low,Yes,Clear,Night
+11688f01-ae89426b.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+0d05c79c-0b211e08.jpg,General way,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+1d56a6ef-86725847.jpg,General way,Fine,Normal,None,None,Green,Snowy,Low,Yes,Clear,Night
+22733b8a-6a6264d8.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Day
+11659c5d-2b5fe71d.jpg,Under bridge/FO,Fine,Normal,None,None,Green,Dry,Medium,No,Clear,Night
+00cea101-293a30b5.jpg,General way,Fine,Low,None,None,Green,Wet,Low,No,Clear,Night
+17c6e3c7-1ca1803d.jpg,Highway,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2c423461-beb91c23.jpg,General way,Fine,Low,None,Not sure,Not sure,Dry,Low,No,Clear,Night
+0cb67a01-7cf1687e.jpg,General way,Fine,Normal,None,On sidewalk,None,Dry,Low,Yes,Clear,Day
+130a2a49-192ad046.jpg,General way,Foggy,Normal,None,On road,Green,Snowy,Low,Yes,Clear,Day
+28de60ae-44d60d64.jpg,General way,Fine,Normal,None,None,Not sure,Dry,Low,Yes,Clear,Day
+0102614a-75ae85cf.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2c085480-341bc07e.jpg,General way,Fine,Low,None,None,Red,Dry,Low,Yes,Clear,Night
+1270de59-3fdc5d86.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,No,Clear,Day
+06a1f899-b33078a0.jpg,Highway,Fine,High,None,None,None,Dry,Low,No,Clear,Day
+2895b5bc-7d0638a5.jpg,General way,Fine,Low,None,None,Green,Dry,Medium,Yes,Clear,Night
+0048f391-eae6a189.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+29cd6c22-87fb9c0d.jpg,General way,Fine,Normal,None,On road,Green,Dry,Low,No,Clear,Day
+07c832a3-c87a3f8b.jpg,Under bridge/FO,Fine,Low,Vehicle,None,Green,Dry,Medium,No,Clear,Night
+078075c6-029c7300.jpg,General way,Fine,Normal,None,None,Red,Dry,Low,Yes,Clear,Day
+242b12c2-1f223604.jpg,General way,Fine,Normal,None,None,Green,Dry,Low,No,Clear,Day
+03626025-d90d48fc.jpg,General way,Fine,Normal,None,None,None,Dry,Medium,No,Clear,Night
+1874d807-5ec7e98e.jpg,General way,Fine,Low,None,None,Not sure,Dry,Low,Yes,Clear,Night
+0786294e-634c696d.jpg,Parking lot/Gas station,Cloudy,Normal,Vehicle,None,None,Snowy,None,No,Clear,Day
+0d137191-d9a23795.jpg,Highway,Fine,Low,None,None,None,Dry,Low,No,Clear,Night
+082d5dee-53c30dad.jpg,General way,Fine,Normal,None,None,None,Dry,Low,No,Clear,Day
+2c7b30b0-95549c53.jpg,General way,Fine,Normal,None,On sidewalk,Green,Snowy,Low,Yes,Clear,Day

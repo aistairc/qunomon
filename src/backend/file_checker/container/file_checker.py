@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import magic
 
 
 HOME_DIR = '/usr/local/qai'
@@ -46,6 +47,11 @@ def main(file_name: str, id_: str):
         return
 
     result['hash_sha256'] = calc_file_hash_sha256(str(file_path))
+
+    # get mime_type
+    with magic.Magic() as m:
+        result['mime_type'] = m.from_file(str(file_path))
+
     output_json(result, id_)
     return
 
