@@ -65,7 +65,7 @@ if not is_ait_launch:
     get_ipython().system('pip install --force-reinstall ./$ait_sdk_name')
 
 
-# In[ ]:
+# In[3]:
 
 
 #########################################
@@ -78,16 +78,16 @@ if not is_ait_launch:
     requirements_generator.add_package('pandas','1.1.0')
     requirements_generator.add_package('seaborn','0.10.1')
     requirements_generator.add_package('matplotlib','3.3.0')
-    requirements_generator.add_package('tensorflow','2.4.0')
+    requirements_generator.add_package('tensorflow','2.5.0')
     requirements_generator.add_package('numpy','1.19.2')
-    requirements_generator.add_package('tensorflow-estimator','2.4.0')
+    requirements_generator.add_package('tensorflow-estimator','2.5.0')
     requirements_generator.add_package(f'./{ait_sdk_name}')
     requirements_path = requirements_generator.create_requirements(current_dir)
 
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[ ]:
+# In[4]:
 
 
 #########################################
@@ -119,7 +119,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[ ]:
+# In[5]:
 
 
 #########################################
@@ -173,7 +173,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[ ]:
+# In[6]:
 
 
 #########################################
@@ -189,7 +189,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[ ]:
+# In[7]:
 
 
 #########################################
@@ -220,7 +220,7 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[ ]:
+# In[8]:
 
 
 #########################################
@@ -235,7 +235,7 @@ def coefficient_of_determination_measure(dofa_r2):
     return str(dofa_r2.numpy())
 
 
-# In[ ]:
+# In[9]:
 
 
 #########################################
@@ -255,7 +255,7 @@ def create_matrix(r2, dofa_r2, file_path: str=None) -> None:
         writer.writerows(data)
 
 
-# In[ ]:
+# In[10]:
 
 
 #########################################
@@ -283,7 +283,7 @@ def create_plot(target_variable, data, file_path: str=None) -> None:
     return out_files
 
 
-# In[ ]:
+# In[11]:
 
 
 #########################################
@@ -325,7 +325,7 @@ def create_3dplot(target_variable, data, file_path: str=None) -> None:
     return out_files
 
 
-# In[ ]:
+# In[12]:
 
 
 #########################################
@@ -340,7 +340,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[ ]:
+# In[13]:
 
 
 #########################################
@@ -356,7 +356,7 @@ def move_predictive_value(predictive, file_path: str=None) -> None:
     np.savetxt(file_path, predictive)
 
 
-# In[ ]:
+# In[14]:
 
 
 #########################################

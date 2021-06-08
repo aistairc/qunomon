@@ -98,13 +98,13 @@ if not is_ait_launch:
 # should edit
 #########################################
 if not is_ait_launch:
-    requirements_generator.add_package('tensorflow', '2.4.0')
+    requirements_generator.add_package('tensorflow', '2.5.0')
     requirements_generator.add_package('pandas', '1.1.1')
     requirements_generator.add_package('matplotlib', '3.3.1')
     requirements_generator.add_package('seaborn', '0.10.1')
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################

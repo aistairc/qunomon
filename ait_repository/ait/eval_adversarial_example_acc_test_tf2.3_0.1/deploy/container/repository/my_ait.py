@@ -33,7 +33,7 @@
 # 
 # * new cerarion
 
-# In[ ]:
+# In[1]:
 
 
 #########################################
@@ -106,11 +106,11 @@ if not is_ait_launch:
     requirements_generator.add_package('scipy', '1.4.1')
     requirements_generator.add_package('seaborn', '0.10.1')
     requirements_generator.add_package('sklearn', '0.0')
-    requirements_generator.add_package('tensorflow', '2.4.0')
-    requirements_generator.add_package('tensorflow-estimator', '2.4.0')
+    requirements_generator.add_package('tensorflow', '2.5.0')
+    requirements_generator.add_package('tensorflow-estimator', '2.5.0')
 
 
-# In[5]:
+# In[ ]:
 
 
 #########################################
@@ -124,7 +124,7 @@ if not is_ait_launch:
     get_ipython().system('pip install -r $requirements_path ')
 
 
-# In[6]:
+# In[ ]:
 
 
 #########################################
@@ -149,7 +149,6 @@ from os import makedirs, path
 
 from ait_sdk.utils import get_summary_text
 from ait_sdk.utils.mnist import MNIST
-from ait_sdk.utils.acc_calculator import ACCCalculator
 
 # must use modules
 import shutil  # do not remove
@@ -162,7 +161,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[7]:
+# In[ ]:
 
 
 #########################################
@@ -181,7 +180,7 @@ from ait_sdk.develop.annotation import measures, resources, downloads, ait_main 
 # must use modules
 
 
-# In[8]:
+# In[ ]:
 
 
 #########################################
@@ -235,13 +234,8 @@ if not is_ait_launch:
                                             type_='int', 
                                             description='multiple classification class number', 
                                             default_val='10',
-                                            min_value='1')
-    manifest_genenerator.add_ait_parameters(name='image_px_size', 
-                                            type_='int', 
-                                            description='prediction image pixel size', 
-                                            default_val='28',
-                                            min_value='28',
-                                            max_value='28')
+                                            min_value='2',
+                                            max_value='99')
     manifest_genenerator.add_ait_parameters(name='auc_average', 
                                             type_='string', 
                                             description='{‘micro’, ‘macro’, ‘samples’, ‘weighted’}\r\nref:\r\nhttps://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html', 
@@ -323,7 +317,7 @@ if not is_ait_launch:
     manifest_path = manifest_genenerator.write()
 
 
-# In[9]:
+# In[ ]:
 
 
 #########################################
@@ -344,8 +338,6 @@ if not is_ait_launch:
                                    value='0.1')
     input_generator.set_ait_params(name='class_count',
                                    value='10')
-    input_generator.set_ait_params(name='image_px_size',
-                                   value='28')
     input_generator.set_ait_params(name='auc_average',
                                    value='macro')
     input_generator.set_ait_params(name='auc_multi_class',
@@ -354,7 +346,7 @@ if not is_ait_launch:
     input_generator.write()
 
 
-# In[10]:
+# In[ ]:
 
 
 #########################################
@@ -385,7 +377,74 @@ ait_manifest.read_json(path_helper.get_manifest_file_path())
 ### do not edit cell
 
 
-# In[11]:
+# In[ ]:
+
+
+class ACCCalculator:
+    """
+    精度を計算する
+
+    accuracy calculator
+    """
+
+    def normalize_y_pred(self, y_pred):
+        return K.one_hot(K.argmax(y_pred), y_pred.shape[-1])
+
+    def class_true_positive(self, class_label, y_true, y_pred):
+        y_pred = self.normalize_y_pred(y_pred)
+        return K.cast(K.equal(y_true[:, class_label] + y_pred[:, class_label], 2),
+                    K.floatx())
+
+    def class_precision(self, class_label, y_true, y_pred):
+        y_pred = self.normalize_y_pred(y_pred)
+        return K.sum(self.class_true_positive(class_label, y_true, y_pred)) / (K.sum(y_pred[:, class_label]) + K.epsilon())
+
+    def all_class_precision(self, y_true, y_pred):
+        return [self.class_precision(i, y_true, y_pred) for i in range(y_pred.shape[-1])]
+
+    def macro_precision(self, y_true, y_pred):
+        class_count = y_pred.shape[-1]
+        return K.sum([self.class_precision(i, y_true, y_pred) for i in range(class_count)])             / K.cast(class_count, K.floatx())
+
+    def class_recall(self, class_label, y_true, y_pred):
+        return K.sum(self.class_true_positive(class_label, y_true, y_pred)) / (K.sum(y_true[:, class_label]) + K.epsilon())
+
+    def all_class_recall(self, y_true, y_pred):
+        return [self.class_recall(i, y_true, y_pred) for i in range(y_pred.shape[-1])]
+
+    def macro_recall(self, y_true, y_pred):
+        class_count = y_pred.shape[-1]
+        return K.sum([self.class_recall(i, y_true, y_pred) for i in range(class_count)])             / K.cast(class_count, K.floatx())
+
+    def class_accuracy(self, class_label, y_true, y_pred):
+        y_pred = self.normalize_y_pred(y_pred)
+        return K.cast(K.equal(y_true[:, class_label], y_pred[:, class_label]),
+                    K.floatx())
+
+    def all_class_accuracy(self, y_true, y_pred):
+        return [np.mean(self.class_accuracy(i, y_true, y_pred)) for i in range(y_pred.shape[-1])]
+
+    def average_accuracy(self, y_true, y_pred):
+        class_count = y_pred.shape[-1]
+        class_acc_list = [self.class_accuracy(i, y_true, y_pred) for i in range(class_count)]
+        class_acc_matrix = K.concatenate(class_acc_list, axis=0)
+        return K.mean(class_acc_matrix, axis=0)
+
+    def class_f_measure(self, class_label, y_true, y_pred):
+        precision = self.class_precision(class_label, y_true, y_pred)
+        recall = self.class_recall(class_label, y_true, y_pred)
+        return (2 * precision * recall) / (precision + recall + K.epsilon())
+
+    def all_class_f_measure(self, y_true, y_pred):
+        return [self.class_f_measure(i, y_true, y_pred) for i in range(y_pred.shape[-1])]
+
+    def macro_f_measure(self, y_true, y_pred):
+        precision = self.macro_precision(y_true, y_pred)
+        recall = self.macro_recall(y_true, y_pred)
+        return (2 * precision * recall) / (precision + recall + K.epsilon())
+
+
+# In[ ]:
 
 
 #########################################
@@ -403,7 +462,7 @@ def calc_acc_all(y_test, y_pred) -> (float, float, float, float):
     return calc.average_accuracy(one_hot_y, y_pred).numpy() ,            calc.macro_precision(one_hot_y, y_pred).numpy() ,            calc.macro_recall(one_hot_y, y_pred).numpy() ,            calc.macro_f_measure(one_hot_y, y_pred).numpy()
 
 
-# In[12]:
+# In[ ]:
 
 
 #########################################
@@ -421,7 +480,7 @@ def calc_acc_by_class( y_test, y_pred) -> (List[float], List[float], List[float]
     return calc.all_class_accuracy(one_hot_y, y_pred) ,            [v.numpy() for v in calc.all_class_precision(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_recall(one_hot_y, y_pred)] ,            [v.numpy() for v in calc.all_class_f_measure(one_hot_y, y_pred)]
 
 
-# In[13]:
+# In[ ]:
 
 
 #########################################
@@ -438,7 +497,7 @@ def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
     np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
 
 
-# In[14]:
+# In[ ]:
 
 
 #########################################
@@ -468,7 +527,7 @@ def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[15]:
+# In[ ]:
 
 
 #########################################
@@ -547,7 +606,7 @@ def save_roc_curve(y_test, y_pred, n_classes: int, file_path: str=None) -> None:
     plt.savefig(file_path)
 
 
-# In[16]:
+# In[ ]:
 
 
 #########################################
@@ -567,7 +626,7 @@ def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
                          average=average)
 
 
-# In[17]:
+# In[ ]:
 
 
 #########################################
@@ -589,7 +648,7 @@ def save_prediction_result(y_test, y_pred, file_path: str=None) -> None:
     df.to_csv(file_path)
 
 
-# In[18]:
+# In[ ]:
 
 
 #########################################
@@ -604,7 +663,7 @@ def move_log(file_path: str=None) -> None:
     shutil.move(get_log_path(), file_path)
 
 
-# In[19]:
+# In[ ]:
 
 
 def create_adversarial_images(input_images, input_label, model, epsilon):
@@ -625,7 +684,7 @@ def create_adversarial_images(input_images, input_label, model, epsilon):
     return adv_image
 
 
-# In[20]:
+# In[ ]:
 
 
 #########################################
@@ -636,7 +695,7 @@ def create_adversarial_images(input_images, input_label, model, epsilon):
 @log(logger)
 @ait_main(ait_output, path_helper)
 def main() -> None:
-    image_px_size = ait_input.get_method_param_value('image_px_size')
+    image_px_size = 28
 
     # インベントリのMNISTラベル・画像を読み込み
     mnist = MNIST()
@@ -685,7 +744,7 @@ def main() -> None:
     move_log()
 
 
-# In[21]:
+# In[ ]:
 
 
 #########################################
@@ -696,7 +755,7 @@ if __name__ == '__main__':
     main()
 
 
-# In[22]:
+# In[ ]:
 
 
 #########################################
@@ -707,7 +766,7 @@ ait_owner='AIST'
 ait_creation_year='2020'
 
 
-# In[23]:
+# In[ ]:
 
 
 #########################################

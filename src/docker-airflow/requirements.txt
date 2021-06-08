@@ -58,7 +58,7 @@ python-slugify==1.1.4     # via python-nvd3
 pytz==2018.4              # via babel, celery, flower, pandas
 pyyaml>=4.2b1             # via flask-swagger
 redis==2.10.6
-requests>=2.20.0          # via airflow, slackclient
+requests>=2.25.1          # via airflow, slackclient
 setproctitle==1.1.10      # via airflow
 six==1.11.0               # via bcrypt, python-dateutil, slackclient, websocket-client
 slackclient==1.2.1        # via airflow
@@ -68,7 +68,7 @@ tabulate==0.7.7           # via airflow
 thrift==0.9.3             # via airflow
 tornado==5.0.2            # via flower
 unidecode==1.0.22         # via python-slugify
-urllib3>=1.24.2           # via requests
+urllib3>=1.26.5           # via requests
 vine==1.1.4               # via amqp
 websocket-client==0.47.0  # via slackclient
 werkzeug>=0.15.3          # via flask, flask-wtf
