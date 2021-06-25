@@ -23,7 +23,7 @@ services:
     volumes:
       - pgadmin44-data:/var/lib/pgadmin
     environment:
-      - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}
+      - PGADMIN_DEFAULT_EMAIL=${POSTGRES_USER}@example.com
       - PGADMIN_DEFAULT_PASSWORD=${POSTGRES_PASSWORD}
     hostname: "pgadmin44"
     depends_on:

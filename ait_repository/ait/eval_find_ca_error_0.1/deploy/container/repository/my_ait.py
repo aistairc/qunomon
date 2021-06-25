@@ -156,11 +156,6 @@ if not is_ait_launch:
                                             type_='str', 
                                             description='Secondary conditional Value', 
                                             default_val='Green')
-    manifest_genenerator.add_ait_parameters(name='Combination_index', 
-                                            type_='int', 
-                                            description='Index of unsound CA combination case', 
-                                            default_val='5',
-                                            min_value='1')
     manifest_genenerator.add_ait_measures(name='count', 
                                           type_='int', 
                                           description='Quantity of unsound case', 
@@ -205,8 +200,6 @@ if not is_ait_launch:
                                    value='Signal')
     input_generator.set_ait_params(name='SCV',
                                    value='Green')
-    input_generator.set_ait_params(name='Combination_index',
-                                   value='5')
     input_generator.write()
 
 
@@ -265,14 +258,6 @@ def calc_count_all(ca_data, combination_cases_data):
         combination_cases_data.loc[i,'count']=len(temp_df)
         combination_cases_data.loc[i,'percentage']=(len(temp_df)/len(ca_data))*100
     return combination_cases_data
-
-def count_for_index(ca_data, combination_cases_data, index):
-    count_data = calc_count_all(ca_data, combination_cases_data)
-    return count_data.loc[int(index)-1,'count']
-
-def percentage_for_index(ca_data, combination_cases_data, index):
-    count_data = calc_count_all(ca_data, combination_cases_data)
-    return count_data.loc[int(index)-1,'percentage']
 
 
 # In[9]:
@@ -341,7 +326,6 @@ def main() -> None:
     calc_count_percentage(combination_cases_data_result)
     
     print('Unsound cases and their corresponding quanitites:\n',combination_cases_data_result)
-    count = count_for_index(ca_data, combination_cases_data, ait_input.get_method_param_value('Combination_index'))
     save_count_plot(combination_cases_data_result)
     save_percentage_plot(combination_cases_data_result)
     move_log()
