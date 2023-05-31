@@ -1,5 +1,11 @@
 # qunomon
 
+## Importamt
+
+**Since the next version of Qunomon is under development, the update of the current version has ended.**  
+**In the current version, there may be problems with dependencies of the libraries used.**  
+**Please use it after being aware of the above issues.**  
+
 ## Description
 
 A testbed for testing and managing AI system qualities.
