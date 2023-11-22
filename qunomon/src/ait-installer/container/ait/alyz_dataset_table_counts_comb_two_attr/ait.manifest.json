@@ -1,0 +1,100 @@
+{
+  "name": "alyz_dataset_table_counts_comb_two_attr",
+  "description": "表データ内の不要な（ありえない）属性値の組み合わせを指定し、表データ内にどれだけその不要なデータが含まれているか、属性値のカウントや出現割合を算出する\nAIT利用者はこのサマリ情報を元に、属性値の（出現傾向に着目した）不健全性を把握できる",
+  "source_repository": "https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_comb_two_attr",
+  "version": "0.2",
+  "quality": "https://ait-hub.pj.aist.go.jp/ait-hub/api/0.0.1/qualityDimensions/AIQM_Guideline/Coverage_for_distinguished_problem_cases",
+  "keywords": [
+    "BDD100K",
+    "recode count"
+  ],
+  "references": [],
+  "licenses": [
+    "Apache License Version 2.0"
+  ],
+  "inventories": [
+    {
+      "name": "ca_data",
+      "type": "dataset",
+      "description": "分析対象の表データ(csv)\n1列目は属性名\n全属性がカテゴリ属性",
+      "requirement": {
+        "format": [
+          "csv"
+        ]
+      }
+    },
+    {
+      "name": "Unsound_CA_combinations",
+      "type": "attribute set",
+      "description": "分析対象外となる属性組み合わせ\n列名:PCA,PCV,SCA,SCV\nPCA:属性Aの名前\nPCV:属性Aの属性値\nSCA:属性Bの名前\nSCV:属性Bの属性値\n例えば\"天候が雨かつ、道路が乾いている\"という状況は現実にはあり得ないため、分析対象から除外できる。この場合、以下のように設定する\nPCA,PCV,SCA,SCV\nWeather,Rainy,Road condition,Dry",
+      "requirement": {
+        "format": [
+          "csv"
+        ]
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "name": "PCA",
+      "type": "str",
+      "description": "未使用",
+      "default_val": "Road type"
+    },
+    {
+      "name": "PCV",
+      "type": "str",
+      "description": "未使用",
+      "default_val": "Highway"
+    },
+    {
+      "name": "SCA",
+      "type": "str",
+      "description": "未使用",
+      "default_val": "Signal"
+    },
+    {
+      "name": "SCV",
+      "type": "str",
+      "description": "未使用",
+      "default_val": "Green"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "count",
+        "type": "int",
+        "description": "データセット内の不健全なケースのレコード数",
+        "structure": "single",
+        "min": "0"
+      },
+      {
+        "name": "percentage",
+        "type": "float",
+        "description": "データセット内の不健全なケースの割合",
+        "structure": "single",
+        "min": "0",
+        "max": "100"
+      }
+    ],
+    "resources": [
+      {
+        "name": "CountPlot",
+        "type": "picture",
+        "description": "各不健全ケースのデータ数のプロット"
+      },
+      {
+        "name": "PercentagePlot",
+        "type": "picture",
+        "description": "データ内の不健全なケースのパーセンテージのプロット"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "description": "AIT実行ログ"
+    }
+  ]
+}

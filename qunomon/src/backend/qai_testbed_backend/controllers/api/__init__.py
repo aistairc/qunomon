@@ -1,0 +1,114 @@
+# Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
+
+from flask import Blueprint
+from ...across import helpers
+from . import healthcheck, login, testrunner, test_description, quality_dimension, quality_measurement, download, inventory, \
+    tag, ml_component, format, ml_framework, data_type, role, guideline, user, organization, report_template, \
+    scope, scope_quality_dimension, guideline_schema_file, ait_local, setting, quality_dimension_detail
+
+
+blueprint = Blueprint('qai-testbed', __name__)
+api = helpers.MyApi(blueprint, prefix='/qai-testbed/api/0.0.1')
+
+api.add_resource(healthcheck.HealthCheckAPI,
+                 '/health-check')
+api.add_resource(login.LoginAPI,
+                 '/login')
+api.add_resource(ml_component.MLComponentAPI,
+                 '/<organizer_id>/mlComponents')
+api.add_resource(ml_component.MLComponentFrontAPI,
+                 '/<organizer_id>/mlComponentsFront')
+api.add_resource(ml_component.MLComponentDetailAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>')
+api.add_resource(ml_component.MLComponentReportOpinionAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/report_opinion')
+api.add_resource(testrunner.TestRunnerAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/runners')
+api.add_resource(testrunner.TestRunnerFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/runnersFront')
+api.add_resource(testrunner.TestRunnerStatusAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/run-status')
+api.add_resource(testrunner.ReportGeneratorAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/reportGenerator')
+api.add_resource(testrunner.ReportGeneratorFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/reportGeneratorFront')
+api.add_resource(test_description.TestDescriptionAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions')
+api.add_resource(test_description.TestDescriptionFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotionsFront')
+api.add_resource(test_description.TestDescriptionDetailAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<testdescription_id>')
+api.add_resource(test_description.TestDescriptionStarAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/star')
+api.add_resource(test_description.TestDescriptionUnstarAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/unstar')
+api.add_resource(test_description.TestDescriptionAncestorAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/ancestors')
+api.add_resource(test_description.TestDescriptionUsingAPI,
+                 '/testRunners/<test_runner_id>/usingTD')
+api.add_resource(quality_measurement.QualityMeasurementAPI,
+                 '/QualityMeasurements')
+api.add_resource(quality_measurement.RelationalOperatorAPI,
+                 '/QualityMeasurements/RelationalOperators')
+api.add_resource(testrunner.AITManifestAPI,
+                 '/testRunners')
+api.add_resource(testrunner.AITManifestFrontAPI,
+                 '/testRunnersFront')
+api.add_resource(testrunner.AITManifestDetailAPI,
+                 '/testRunners/<test_runner_id>')
+api.add_resource(download.DownloadAPI,
+                 '/download/<id_>')
+api.add_resource(inventory.InventoryAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/inventories')
+api.add_resource(inventory.InventoryFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/inventoriesFront')
+api.add_resource(inventory.InventoryDetailAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/inventories/<inventory_id>')
+api.add_resource(tag.TagAPI,
+                 '/tags')
+api.add_resource(format.FormatAPI,
+                 '/formats')
+api.add_resource(data_type.DataTypeAPI,
+                 '/dataTypes')
+api.add_resource(ml_framework.MLFrameworkAPI,
+                 '/mlFrameworks')
+api.add_resource(role.RoleAPI,
+                 '/roles')
+api.add_resource(user.UserAPI,
+                 '/users')
+api.add_resource(guideline.GuidelineAPI,
+                 '/guidelines')
+api.add_resource(guideline.GuidelineDetailAPI,
+                 '/guideline/<guideline_id>')
+api.add_resource(organization.OrganizerAPI,
+                 '/organizers')
+api.add_resource(report_template.ReportTemplateAPI,
+                 '/reportTemplates')
+api.add_resource(report_template.ReportTemplateGenerateAPI,
+                 '/reportTemplates/generate')
+api.add_resource(report_template.ReportTemplateZipAPI,
+                 '/reportTemplates/<id>/zip')
+api.add_resource(scope.ScopeAPI,
+                 '/scopes')
+api.add_resource(scope.GuidelineScopeAPI,
+                 '/guidelines/<guideline_id>/scopes')
+api.add_resource(scope_quality_dimension.GuidelineScopeQualityDimensionsAPI,
+                 '/guidelines/<guideline_id>/scope_quality_dimensions')
+api.add_resource(quality_dimension.GuidelineQualityDimensionAPI,
+                 '/guidelines/<guideline_id>/quality_dimensions')
+api.add_resource(quality_dimension.QualityDimensionAPI,
+                 '/scopes/<scope_id>/quality_dimensions')
+api.add_resource(quality_dimension_detail.QualityDimensionDetailAPI,
+                 '/qualityDimensions/<guideline_name>/<qd_name>')
+api.add_resource(ait_local.AITLocalAPI,
+                 '/ait_local')
+api.add_resource(guideline_schema_file.GuidelineSchemaFileAPI,
+                 '/guidelines/guideline_schema_file')
+api.add_resource(guideline_schema_file.GuidelineSchemaFileDetailAPI,
+                 '/guidelines/<guideline_id>/guideline_schema_file')
+api.add_resource(guideline_schema_file.GuidelineSchemaFileEditCheckAPI,
+                 '/guidelines/<guideline_id>/guideline_schema_file/edit_check')
+api.add_resource(guideline_schema_file.GuidelineSchemaFileDeleteCheckAPI,
+                 '/guidelines/<guideline_id>/guideline_schema_file/delete_check')
+api.add_resource(setting.SettingDetailAPI,
+                 '/setting/<key>')

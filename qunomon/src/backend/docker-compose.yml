@@ -1,0 +1,34 @@
+version: "3"
+ 
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args: 
+        - UPLOAD_PATH=${UPLOAD_PATH}
+        - UPLOAD_ZIP_PATH=${UPLOAD_ZIP_PATH}
+    image: app
+    container_name: backend
+    ports: 
+      - ${FLASK_PORT}:${FLASK_PORT}
+    expose: 
+      - ${FLASK_PORT}
+    environment:
+      - FLASK_PORT=${FLASK_PORT}
+      - FLASK_CONFIG=${FLASK_CONFIG}
+      - UPLOAD_PATH=${UPLOAD_PATH}
+      - UPLOAD_ZIP_PATH=${UPLOAD_ZIP_PATH}
+    volumes:
+      - ./:/work/
+    command: 
+      ['python', '-m', 'entrypoint', 'startserver']
+      # ['python', 'entrypoint', 'startserver']
+    networks: # 外部（AIT-HUB）のdocker networkにアクセス（別のdocker-composeなためdocker networkが違う）
+      - default
+      - backend-aithub_app_net
+
+# 外部（AIT-HUB）のdocker network
+networks:
+  backend-aithub_app_net:
+    external: true

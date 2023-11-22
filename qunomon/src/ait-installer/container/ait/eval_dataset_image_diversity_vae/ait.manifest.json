@@ -1,0 +1,102 @@
+{
+  "name": "eval_dataset_image_diversity_vae",
+  "description": "学習用画像データの特徴を学習させたVAEモデルで評価用学習データの特徴量を算出する\nその特徴量の差が0に近いほど、評価用画像データが学習用データの特徴を網羅できていると評価できる",
+  "source_repository": "https://github.com/aistairc/Qunomon_AIT_eval_dataset_image_diversity_vae",
+  "version": "0.2",
+  "quality": "https://ait-hub.pj.aist.go.jp/ait-hub/api/0.0.1/qualityDimensions/AIQM_Guideline/Diversity_of_test_data",
+  "keywords": [
+    "images",
+    "Variational Auto-Encoder",
+    "VAE"
+  ],
+  "references": [
+    {
+      "bib_info": "Auto-Encoding Variational Bayes",
+      "url": "https://doi.org/10.48550/arXiv.1312.6114"
+    }
+  ],
+  "licenses": [
+    "Apache License Version 2.0"
+  ],
+  "inventories": [
+    {
+      "name": "train_images",
+      "type": "dataset",
+      "description": "学習用画像データ\nデータ数60000、ピクセル数28*28分のモノクロ画像が格納されたバイナリファイル。これをgz圧縮されたもの\nMNISTと同じ保存形式",
+      "requirement": {
+        "format": [
+          "gz"
+        ]
+      }
+    },
+    {
+      "name": "train_labels",
+      "type": "dataset",
+      "description": "学習用画像データのラベル\nデータ数60000のラベル（数値）が格納されたバイナリファイル。これをgz圧縮されたもの\nMNISTと同じ保存形式",
+      "requirement": {
+        "format": [
+          "gz"
+        ]
+      }
+    },
+    {
+      "name": "comparison_data",
+      "type": "dataset",
+      "description": "学習用画像データとラベル",
+      "requirement": {
+        "format": [
+          "gz"
+        ]
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "name": "similarity_function",
+      "type": "str",
+      "description": "特徴量を測る距離の算出方式\neuclidean_distance,manhattan_distance,cosine_similarity",
+      "default_val": "cosine_similarity"
+    },
+    {
+      "name": "epochs",
+      "type": "int",
+      "description": "VAEモデルの学習パラメータ:学習の試行回数",
+      "default_val": "10"
+    },
+    {
+      "name": "batch_size",
+      "type": "int",
+      "description": "VAEモデルの学習パラメータ:学習のバッチサイズ",
+      "default_val": "128"
+    }
+  ],
+  "report": {
+    "measures": [
+      {
+        "name": "similarity",
+        "type": "float",
+        "description": "特徴量差\neuclidean distance considered < 1, manhattan distance considered < 1, cosine similarity considered < 0.2",
+        "structure": "sequence",
+        "min": "0"
+      }
+    ],
+    "resources": [
+      {
+        "name": "plot_label_clusters",
+        "type": "picture",
+        "description": "ラベルごとの類似度をクラスタで表現"
+      },
+      {
+        "name": "plot_label_similarity",
+        "type": "picture",
+        "description": "ラベルごとの類似度平均をグラフ描画"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "name": "Log",
+      "description": "AIT実行ログ"
+    }
+  ]
+}

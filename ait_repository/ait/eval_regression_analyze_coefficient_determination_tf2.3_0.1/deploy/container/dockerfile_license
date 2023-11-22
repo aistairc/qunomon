@@ -1,6 +1,0 @@
-FROM eval_regression_analyze_coefficient_determination_tf2.3:0.1
-LABEL maintainer="AIST"
-
-RUN pip install pip-licenses
-
-ENTRYPOINT [ "pip-licenses", "--format=plain-vertical", "--with-license-file", "--no-license-path" ]

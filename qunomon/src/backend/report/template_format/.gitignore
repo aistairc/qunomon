@@ -1,0 +1,8 @@
+# 「base_report_format.html」のみを追跡
+*
+!base_report_format.html
+!/css
+!/js
+!/css/*
+!/js/*
+!.gitignore

@@ -1,0 +1,348 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>AIシステム品質レポート</title>
+<link href="./../template/css/base_report.css" rel="stylesheet" type="text/css">
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+<script src="./../template/js/jquery-3.6.4.min.js"  type="text/javascript"></script>
+</head>
+
+<body>
+<!-- 下記大括弧の中のjinja2コードを変更しないようにご注意ください -->
+{%- set namespace = namespace(title=None) -%}
+{% for item in guideline.metainfo %}
+{% if item.property=="title" %}
+{% set namespace.guideline_title = item.content %}
+{% elif item.property=="creator" %}
+{% set namespace.guideline_creator = item.content %}
+{% elif item.property=="publisher" %}
+{% set namespace.guideline_publisher = item.content %}
+{% endif %}
+{% endfor %}
+{% set namespace.section_count = 1 %}
+{% set namespace.datatype_list = [] %}
+{% for inventory in inventories %}
+<div style="display:none;">{{ namespace.datatype_list.append(inventory.data_type) }}</div>
+{% endfor %}
+
+<div id="top_page">
+    <div id="back_ground">
+    <div id="title_block">
+        <span>AIシステム品質レポート</span><br/>
+        <h1 id="title">～<!--%%MLCOMPONENT_NAME%%-->～</h1>
+{% for item in guideline.metainfo %}
+{% if item.property=="identifier" %}
+            <p>
+                <a href="{{item.content}}">{{ namespace.guideline_title }}</a>
+                準拠
+            </p>
+{% endif %}
+{% endfor %}
+    </div>
+    <div class="author_infomation">
+        <span class="infomation">
+        提出日：<!--%%DATE%%--><br/>
+        作成者：<!--%%AUTHOR%%--><br/>
+        </span>
+    </div>
+    </div>
+</div>
+
+<div id="contentslist_page" class="page-break-before">
+    <h2>● 目次</h2>
+    <div id="contents">
+        <ol>
+            <li>サマリ
+                <ol>
+                    <li>導入</li>
+                    <li>テストに使⽤されたInventory</li>
+                    <li>Quality Dimension 別のテストの合格/実行数</li>
+                    <li>総評</li>
+                </ol>
+            </li>
+
+            <li>品質評価結果
+                <ol>
+{% for qd in guideline.quality_dimensions %}
+                    <li>{{ qd.name }}</li>
+{% endfor %}
+                </ol>
+            </li>
+
+            <li>環境情報</li>
+
+            <li>用語集</li>
+        </ol>
+    </div>
+</div>
+
+<div id="summary_page" class="page-break-before">
+    <h2>{{ namespace.section_count }}. サマリ</h2>
+    <h3>{{ namespace.section_count }}.1 概要</h3>
+    <p>
+        本レポートではMLComponent「<!--%%MLCOMPONENT_NAME%%-->」の品質評価結果を報告する。
+        本レポートは機械学習システムの品質評価テストベッド「Qunomon」によって作成された。
+    </p>
+    <p>
+        品質評価には、{{ namespace.guideline_publisher }}より作成されたガイドライン
+        「{{ namespace.guideline_title }}」(以降、ガイドライン)に準拠する。
+        しばしばガイドラインにはいくつかの異なる観点が存在し、
+        本レポートでは観点「{{ guideline.scope.name }}」にて評価を行った。
+        (今回使用したガイドラインは観点が単一である場合、名前は"default"として表示される。)
+    </p>
+    <p>
+        品質評価はTest Description(以降、TD)と呼ばれる単位で実行される。
+        TDはガイドラインの品質評価観点に従い、レポート作成者に選別されたAITを実行することでInventoryの評価を行う。
+        TDの合格基準は本レポートの作成者によって定義される。
+        本章以降で説明されるTDの合否判定の妥当性については、Test Description概要の判定条件やレポート作成者の見解で判断されたい。
+    </p>
+    <p>
+        本章では、MLComponentの品質評価全体のまとめを記載する。
+        {{ namespace.section_count }}.1節では、本レポートの概要・責任範囲を説明している。
+        {{ namespace.section_count }}.2節では、品質評価に用いられたInventoryを紹介する。
+        {{ namespace.section_count }}.3節では、
+        Quality Dimension(ガイドラインで指定された品質特性)でまとめた品質評価の合否傾向をまとめる。
+        {{ namespace.section_count }}.4章では、レポート作成者の品質評価の総評を示す。
+    </p>
+    <p>
+        本章以降では、Qunomonで評価した品質の詳細な情報を提示する。
+        {{ namespace.section_count+1 }}章では、TDの評価結果の詳細を提示する。
+        {{ namespace.section_count+2 }}章では、本評価を実行したテスト環境を提示する。
+        {{ namespace.section_count+3 }}章では、Qunomon及び本レポート固有の用語を紹介する。
+    </p>
+    <h3>{{ namespace.section_count }}.2 テストに使用されたInventory</h3>
+    <p>
+        本レポートで評価される評価対象は下記のとおりである。
+    </p>
+    <div class="section_area">
+        <ul>
+{% for data_type in namespace.datatype_list|unique %}
+            <li>{{ data_type }}</li>
+            <ul>
+{% for inventory in inventories %}
+{% if inventory.data_type==data_type %}
+                <li>
+                    <span id="{{ inventory.name }}">{{ inventory.name }}</span>: <br>
+                    {{ inventory.description }}
+                </li>
+{% endif %}
+{% endfor %}
+            </ul>
+{% endfor %}
+        </ul>
+    </div>
+    <h3>{{ namespace.section_count }}.3 Quality Dimension別のテストの合格/実行数</h3>
+    <p>
+        TDの合否傾向と件数をQuality Dimensionごとにまとめる。
+        TDに合格基準が定義されていない場合、そのTDは合格したものとしてカウントされる。
+    </p>
+    <div class="section_area">
+        <table border="1" class="table">
+            <tr>
+                <th class="qd_name_column">Quality Dimension名</th>
+                <th class="passed_td_ratio_column">
+                    合格したテスト数/<br>
+                    実行したテスト数
+                </th>
+            </tr>
+{% for qd in guideline.quality_dimensions %}
+            <tr>
+                <td><a href="#{{ qd.id }}">{{ qd.name }}</a></td>
+                <td>
+                    {{ qd.num_passed_td }} / {{ qd.num_run_td }}
+                </td>
+            </tr>
+{% endfor %}
+        </table>
+    </div>
+    <h3>{{ namespace.section_count }}.4 総評</h3>
+    <div class="section_area">
+        <p>
+            <pre>
+{{ opinion }}
+            </pre>
+        </p>
+    </div>
+{% set namespace.section_count = namespace.section_count+1 %}
+</div>
+
+<div id="report_page" class="page-break-before">
+    <h2>{{ namespace.section_count }}. 品質評価結果</h2>
+    <p>
+        本章では、実行されたTDそれぞれの概要、評価結果と評価者の見解をまとめる。
+        後節ではガイドラインのQuality Dimensionの紹介し、そのQuality Dimensionに対応するTDを記載する。
+    </p>
+{% set namespace._i = 0 %}
+{% for qd in guideline.quality_dimensions %}
+    <h3 id="{{ qd.id }}">
+        {{ namespace.section_count }}.{{ namespace._i+1 }} {{ qd.name }}
+    </h3>
+    <div class="section_area">
+        &nbsp;&nbsp;{{ qd.description }}<br/>
+        <br>
+{% if qd.count>0 %}
+        <!--%%SECTION_{{ qd.id }}%%-->
+{% endif %}
+        <!-- Sub Quality Dimensions: [
+            仮置き1
+        ]<br> -->
+    </div>
+{% set namespace._i = namespace._i+1 %}
+{% endfor %}
+{% set namespace.section_count = namespace.section_count+1 %}
+</div>
+
+<div id="test_enviroment_page" class="page-break-before">
+    <h2>{{ namespace.section_count }}. 環境情報</h2>
+    <div class="section_area">
+        <div id="text">
+            <span class="contents_sub">テスト環境の情報<br/></span>
+            <table border="1" class="table">
+                <tr>
+                <th class="terms">項目</th>
+                <th class="value">設定値</th>
+                </tr>
+            <!--%%TEST_ENVIRONMENT%%-->
+            </table>
+        </div>
+    </div>
+{% set namespace.section_count = namespace.section_count+1 %}
+</div>
+
+<div id="glossary_page" class="page-break-before">
+    <h2>{{ namespace.section_count }}. 用語集</h2>
+    <p>
+        本章では、本レポート内で使われるQunomon固有の用語について説明する。
+        ガイドライン固有の用語やQunomonのその他の用語についてはそれぞれのドキュメントを参照されたい。
+    </p>
+    <div class="section_area">
+        <table border="1" class="table">
+            <tr>
+                <th class="term_name_column">用語名</th>
+                <th class="term_description_column">説明</th>
+            </tr>
+
+            <tr>
+                <td id="glossary_qunomon">Qunomon</td>
+                <td>
+                    <p>
+                        Qunomonは、NEDO及び産業技術総合研究所により開発された機械学習システムの品質評価テストベッドのことである。
+                        このツールは品質の測定・検査・改善を支援し、開発者や品質評価者に
+                            <a href="#glossary_mlcomponent">MLComponent</a>の定量的評価を提供する。
+                        また、新しく開発された品質測定技術を取り入れる仕組みを有し、新たな問題にも柔軟に対応できる。
+                    </p>
+                    <p>
+                        本レポートはQunomonにより生成されている。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_mlcomponent">MLComponent</td>
+                <td>
+                    <p>
+                        MLComponentは、機械学習モデル1つを表す単位である。
+                    </p>
+                    <p>
+                        機械学習モデルが取り入れられたシステムでは、しばしば複数の機械学習モデルが含まれる。
+                        <a href="#glossary_qunomon">Qunomon</a>
+                            では、システムに含まれる一つひとつの機械学習モデルをMLComponentと呼び、
+                            MLComponentごとに評価を行うことで、システム全体の評価を可能にしている。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_ait">AIT</td>
+                <td>
+                    <p>
+                        AITは"AI system Test package"と略される、機械学習モデルやデータの評価を行うパッケージのことを指す。
+                        評価者はいくつかのAITを実行することで評価対象を多角的に評価することができる。
+                        <a href="#glossary_qunomon">Qunomon</a>は、任意のAITをインストールする仕組みを有し、
+                            評価に必要なAITを揃えることでより見落としのない品質評価を可能にする。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_inventory">Inventory</td>
+                <td>
+                    <p>
+                        <a href="#glossary_qunomon">Qunomon</a>上でテストする対象は、Inventoryと呼ぶ。
+                        Inventoryは機械学習モデルやCSVのようなデータの情報を管理する。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_testdescription">TestDescription</td>
+                <td>
+                    <p>
+                        <a href="#glossary_qunomon">Qunomon</a>上で実行される1つのテストはTestDescriptionという単位で記述される。
+                        TestDescriptionでは、使用するAIT、評価する品質特性と対象とする<a href="#glossary_inventory">Inventory</a>を記述する。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_guideline">ガイドライン</td>
+                <td>
+                    <p>
+                        本レポートでは、ガイドラインとは機械学習システムの品質評価に関するガイドラインのことを指す。
+                        <a href="#glossary_qunomon">Qunomon</a>で生成されたレポートは、
+                            Qunomon利用者が選択した1つのガイドラインに基づいて品質評価が行われる。
+                        本レポートで参照しているガイドラインは1.1節で示される。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_scope">スコープ</td>
+                <td>
+                    <p>
+                        <a href="#glossary_guideline">ガイドライン</a>ではドメイン等の違いに応じ、
+                            異なる観点で品質評価をするように提示することがある。
+                        <a href="#glossary_qunomon">Qunomon</a>上ではこの観点のことをスコープと呼ぶ。
+                        本レポートではQunomonユーザーの指定したスコープで品質評価を行う。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_quality">Quality</td>
+                <td>
+                    <p>
+                        Qualityは実行されるテストが評価する品質特性を示す。
+                        本レポートで登場するQualityは、Qunomon利用者が選択したガイドラインに応じて異なる。
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <td id="glossary_qualitydimension">Quality Dimension</td>
+                <td>
+                    <p>
+                        <a href="#glossary_quality">Quality</a>は互いに関連する関係を持つことができ、
+                        この関係性の構造をQuality Dimensionと呼ぶ。
+                        レポート閲覧者はこのQuality Dimensionにより各Qualityの関係性を理解でき、
+                        対象のQualityに関連するテスト項目を参照することができる。
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% set namespace.section_count = namespace.section_count+1 %}
+</div>
+
+<script>
+$('#summary_frame').on('load', function(){
+    try {
+        $(this).height(0);
+        $(this).height(this.contentWindow.document.documentElement.scrollHeight);
+    } catch (e) {
+    }
+}).trigger('load');
+</script>
+</body>
+</html>

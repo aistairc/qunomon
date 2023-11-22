@@ -1,0 +1,192 @@
+@startuml aithub-erdiagram-nojsonb
+
+skinparam monochrome true
+
+package "Authentication Area" {
+    ' PnTMLの権限管理はPnTMLへのアクセス許可のみの仕組みなので、こちらで
+    ' ユーザと権限の紐づけを管理する。手動での挿入を想定している。
+    ' ユーザはPnTMLのログイン認証を通過していることを想定する。
+
+    entity "Organizer"{
+        + id <<generated>>
+        ==
+        * 組織名
+        論理削除フラッグ
+    }
+
+    entity "User"{
+        ' ロールは管理者/ユーザ(=AIT開発者)の別
+        ' 有効期限はアカウントの失効のために使用
+        + id <<generated>>
+        ==
+        * ユーザ名
+        # 組織ID FK[Organizer.id]
+        論理削除フラッグ
+        created_at: datetime
+        有効期限: datetime
+        ロール: Enum
+    }
+
+    entity "LoginEvent"{
+        + id <<generated>>
+        ==
+        # ユーザID FK[User.id]
+        論理削除フラッグ
+        ログイン日時
+    }
+
+    User ||..|{ LoginEvent
+    Organizer ||..|{ User
+}
+
+package "QualityDimension Area"{
+    entity "Guideline"{
+        + id <<generated>>
+        ==
+        * ガイドライン名
+        説明
+        URI
+        # 帰属組織ID FK[Organizer.id]
+        # 作成ユーザID FK[User.id]
+        作成日時
+        # 更新ユーザID FK[User.id]
+        更新日時
+        論理削除フラッグ
+    }
+    note left : 「ガイドライン名」は作成時のみ設定可能、編集は不可。\n「URI」:/{組織名}/{ガイドライン名}の部分
+
+    entity "Quality_dimension"{
+        + id <<generated>>
+        ==
+        * 品質特性名
+        説明
+        URI
+        # ガイドラインID FK[Guideline.id]
+        # 作成ユーザID FK[User.id]
+        作成日時
+        # 更新ユーザID FK[User.id]
+        更新日時
+        論理削除フラッグ
+    }
+    note left : 「品質特性名」は作成時のみ設定可能、編集は不可。\n「URI」:/{組織名}/{ガイドライン名}/{品質特性名}の部分
+
+    entity "QD_annotation"{
+        + id <<generated>>
+        ==
+        # 品質特性ID FK[Quality_dimension.id]
+        # アノテーションID FK[Annotation_.id]
+        # 作成ユーザID FK[User.id]
+        作成日時
+        論理削除フラッグ
+    }
+
+    entity "Annotation_"{
+        + id <<generated>>
+        ==
+        * アノテーション名
+        # 作成ユーザID FK[User.id]
+        作成日時
+        論理削除フラッグ
+    }
+    note left : PlantUMLの書式上Annotationが使用できないため、\n便宜的にAnnotation_で記載\nアノテーション名は品質特性の「注釈」となる名前をつける。\nたとえば「データ品質」や「公平性」など。
+
+    Organizer ||.down.|| Guideline
+    Guideline ||.down.|{ Quality_dimension
+    Quality_dimension |o.down.o{ QD_annotation
+    QD_annotation }o.down.o| Annotation_
+}
+
+package "AITHub Main Area"{
+    entity "AIT"{
+    ' manifest情報は同種類のものを結合して全文検索用に保持する
+    ' * string、stringのarrayはstringとして持つ
+    ' * objectのarrayは個別対応する
+    '   * references, licensesは文字列として格納
+    '   * inventory, inventory.requirement, inventory.product は
+    '     属性を考慮した絞り込みの要求があると考え，個別のエントリを持つ
+        + id <<generated>>
+        ==
+        ' AIT Hub独自で管理する情報
+        # AIT登録者ID FK[User.id]
+        DockerイメージURL
+        ダウンロード数
+        閲覧数
+        ソースファイル : binary
+        非公開フラッグ : boolean
+        論理削除フラッグ
+        created_at: datetime
+        --
+        ' AIT Manifestから取得
+        # quality_dimension FK[Quality_dimension.id]
+        AIT名
+        AITバージョン
+        description
+        authors
+        organizations
+        email
+        keywords
+        parameters
+        references
+        licenses
+    }
+
+    entity "Inventory"{
+        + id <<generated>>
+        ==
+        # AITID FK[AIT.id]
+        name
+        type
+        description
+        論理削除フラッグ
+    }
+
+    entity "Requirement"{
+        + id <<generated>>
+        ==
+        # inventory_id FK[Inventory.id]
+        format
+        schema
+        dependency
+        additional_info
+        論理削除フラッグ
+    }
+
+    entity "Product"{
+    ' AITの出力するものを記録
+    ' Report/Downloadの中身をパースして配置する
+    ' type: Literal["measure"|"resource"|"download"]
+        + id <<generated>>
+        ==
+        # ait_id FK[AIT.id]
+        type: Enum
+        name
+        description
+        論理削除フラッグ
+    }
+
+    entity "AIT_Event"{
+        ' AITに対する変更／削除イベントを記録する
+        ' イベントにはコメント（理由）を記載させる
+        ' イベントタイプは下記からなる
+        ' type: Literal["publish"|"unpublish"|"delete"]
+        + id <<generated>>
+        ==
+        # ait_id FK[AIT.id]
+        # user_id FK[User.id]
+        イベントタイプ: Enum
+        イベントコメント
+        タイムスタンプ
+        論理削除フラッグ
+    }
+
+    AIT ||..|{ Inventory
+    AIT ||..|| Product
+    Inventory ||..|{ Requirement
+}
+
+AIT }|..|| Quality_dimension
+AIT }|..|| User
+AIT_Event }|..|| AIT
+AIT_Event }|..|| User
+
+@enduml

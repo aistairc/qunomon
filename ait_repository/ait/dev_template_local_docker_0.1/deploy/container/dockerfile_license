@@ -1,6 +1,0 @@
-FROM dev_template_local_docker:0.1
-LABEL maintainer="AIST"
-
-RUN pip install pip-licenses
-
-ENTRYPOINT [ "pip-licenses", "--format=plain-vertical", "--with-license-file", "--no-license-path" ]

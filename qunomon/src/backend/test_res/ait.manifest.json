@@ -1,0 +1,188 @@
+{
+    "name": "dev_deploy_test", 
+    "description": "* データ入力形式: XXX\n* MLエンジン: tensorflow-vX.X\n* 出力: XXX\n",
+    "source_repository": "https://dummysource_repository/dev_deploy_test",
+    "version": "0.1",
+    "quality": "https://airc.aist.go.jp/aiqm/quality/internal/要求分析の十分性",
+    "keywords": [
+        "ait_keyword1",
+        "ait_keyword2",
+        "ait_keyword3"
+    ],
+    "references": [
+        {
+          "bib_info": "ait_bib_info1",
+          "additional_info": "ait_dditional_info1",
+          "url": "ait_url1"
+        },
+        {
+          "bib_info": "ait_bib_info2",
+          "additional_info": "ait_dditional_info2",
+          "url": "ait_url2"
+        },
+        {
+          "bib_info": "ait_bib_info3",
+          "additional_info": "ait_dditional_info3",
+          "url": "ait_url3"
+        }
+    ],
+    "licenses": [
+        "ait_license1",
+        "ait_license2",
+        "ait_license3"
+    ],
+
+    "inventories": [
+        {
+            "name": "data_name_alpha",
+            "type": "dataset", 
+            "description": "1枚の手書き文字データ(28x28, png)のpng",
+            "requirement": {
+                "format": ["png", "csv"],
+                "compatible_packages": [
+                    {
+                        "name": "inventory1_requirement_dependency1_name",
+                        "version": "inventory1_requirement_dependency1_version",
+                        "additional_info": "inventory1_requirement_dependency1_additional_info"
+                    },
+                    {
+                        "name": "inventory1_requirement_dependency2_name",
+                        "version": "inventory1_requirement_dependency2_version",
+                        "additional_info": "inventory1_requirement_dependency2_additional_info"
+                    },
+                    {
+                        "name": "inventory1_requirement_dependency3_name",
+                        "version": "inventory1_requirement_dependency3_version",
+                        "additional_info": "inventory1_requirement_dependency3_additional_info"
+                    }
+                ],
+                "additional_info": [
+                    {
+                      "functionality": "inference"
+                    },
+                    {
+                      "tasks": [
+                        "Image Classification",
+                        "Object Detection"
+                      ]
+                    },
+                    {
+                      "component_type": "architecture"
+                    },
+                    {
+                      "serialization_type": "serialized"
+                    },
+                    {
+                      "input_formats": [
+                        "image",
+                        "video"
+                      ]
+                    },
+                    {
+                      "output_shape": [
+                        "None",
+                        "320",
+                        "240",
+                        "MultiDim",
+                        "1"
+                      ]
+                    },
+                    {
+                      "output_description": [
+                        "batch_size",
+                        "x-axis",
+                        "y-axis",
+                        "class_probability(multi-hot encoding)",
+                        "confidence"
+                      ]
+                    }
+                  ],
+                "min": "1",
+                "max": "3"
+            },
+            "depends_on_parameter": "parameters_name1"
+        },
+        {
+            "name": "data_name_beta",
+            "type": "dataset",
+            "description": "複数の手書き文字データ(28x28, png)のzip",
+            "requirement": {
+                "format": ["png", "csv"]
+            }
+        },
+        {
+            "name": "model_name_gamma",
+            "type": "model",
+            "description": "Tensorflowで作成したモデル",
+            "requirement": {
+                "format": ["h5"]
+            }
+        }
+    ],
+
+    "parameters": [
+        {
+            "name": "epsilon",
+            "type": "float",
+            "description": "敵対的生成のずらし具合, \\epsilon \\in \\{0.0, 1.0\\}",
+            "default_val": "0.5"
+        },
+        {
+            "name": "delta",
+            "type": "int",
+            "description": "description of delta",
+            "default_val": "1"
+        },
+        {
+            "name": "msg",
+            "type": "str",
+            "description": "description of msg"
+        }
+    ],
+
+    "report": {
+        "measures": [
+            {
+                "name": "mae",
+                "description": "mean absolute error. $\\sum_k {|f_k - y_k|} / n$",
+                "type": "float",
+                "structure": "single"
+            },
+            {
+                "name": "coverage",
+                "description": "なんらかのカバー範囲",
+                "type": "float",
+                "structure": "single"
+            }
+        ],
+        "resources":[
+            {
+                "name": "distribution_graph",
+                "type": "image",
+                "description": "分布"
+            },
+            {
+                "name": "scatter_graph",
+                "type": "image",
+                "description": "散布図"
+            },
+            {
+                "name": "confusion_matrix",
+                "type": "image",
+                "description": "散布図"
+            }
+        ]
+    },
+
+    "downloads": [
+        {
+            "name": "log.txt",
+            "description": "one image"
+        },
+        {
+            "name": "adversarial_samples",
+            "description": "zipped images"
+        }
+    ]
+
+}
