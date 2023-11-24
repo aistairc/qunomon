@@ -1,0 +1,6 @@
+FROM ait_license_base:latest
+LABEL maintainer="AIST"
+
+RUN pip install pip-licenses
+
+ENTRYPOINT [ "pip-licenses", "--format=plain-vertical", "--with-license-file", "--no-license-path" ]

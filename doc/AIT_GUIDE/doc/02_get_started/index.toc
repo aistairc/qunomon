@@ -1,4 +1,0 @@
-# Get Started
-
-01_prerequisites
-02_install
