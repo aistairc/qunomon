@@ -1,5 +1,0 @@
-pandas==1.1.1
-seaborn==0.10.1
-tensorflow==2.5.0
-aif360==0.3.0
-./ait_sdk-0.1.7-py3-none-any.whl

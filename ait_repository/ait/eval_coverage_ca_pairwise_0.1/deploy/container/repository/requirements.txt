@@ -1,2 +1,0 @@
-pandas
-./ait_sdk-0.1.7-py3-none-any.whl

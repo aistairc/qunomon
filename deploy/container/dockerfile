@@ -1,0 +1,42 @@
+FROM python:3.9.13-slim-bullseye
+LABEL maintainer="AIST"
+
+ENV ROOT_USER=root
+ENV QAI_USER=qai
+ENV QAI_HOME=/usr/local/${QAI_USER}
+ENV QAI_USER_HOME=${QAI_HOME}
+
+# Never prompts the user for choices on installation/configuration of packages
+ENV DEBIAN_FRONTEND noninteractive
+ENV TERM linux
+
+# Define ja_JP.
+RUN apt-get update -yqq \
+    && apt-get install locales -yqq \
+    && echo "ja_JP UTF-8" > /etc/locale.gen \
+    && locale-gen
+ENV LANGUAGE ja_JP:ja
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
+ENV LC_CTYPE ja_JP.UTF-8
+ENV LC_MESSAGES ja_JP.UTF-8
+
+# fot pycrypto
+RUN apt-get update -yqq \
+    && apt-get install gcc g++ make libffi-dev libssl-dev -yqq
+
+# コンテナ依存関係を解決
+COPY ./resolve-dependencies.sh /resolve-dependencies.sh
+RUN chmod +x /resolve-dependencies.sh
+RUN /resolve-dependencies.sh
+
+COPY ./repository/ ${QAI_USER_HOME}/
+
+WORKDIR ${QAI_USER_HOME}
+RUN pip install -r ${QAI_USER_HOME}/requirements.txt \
+    && rm ${QAI_USER_HOME}/requirements.txt
+
+# mound root dir
+RUN mkdir ./inventory ./mnt
+
+ENTRYPOINT [ "python", "entrypoint.py" ]

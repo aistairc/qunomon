@@ -1,0 +1,47 @@
+# python3をベースにする
+FROM tensorflow/tensorflow:2.9.1
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    tree \
+    vim \
+    wget
+
+# pythonの3.9をインストール
+RUN wget https://www.python.org/ftp/python/3.9.13/Python-3.9.13.tar.xz
+RUN tar xJf Python-3.9.13.tar.xz
+WORKDIR ./Python-3.9.13
+RUN /bin/bash -c "./configure"
+RUN make
+RUN make altinstall
+RUN update-alternatives --install /usr/local/bin/python python /usr/local/bin/python3.9 1
+
+# RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip setuptools \
+    && pip3 install jupyterlab==2.2.9 \
+    && pip3 install matplotlib==3.7.3 \
+    && pip3 install jupyter-console==6.6.1 \
+    && pip3 install jupyter_server==1.23.0 \
+    && pip3 install jupyter-client==7.4.9 \
+    && pip3 install nbformat==5.2.0 \
+    && pip3 install pyzmq==24.0.1 \
+    && jupyter serverextension enable --py jupyterlab
+#    && jupyter labextension install mlflow-extension \
+#    && jupyter labextension install @lckr/jupyterlab_variableinspector
+
+# コンテナ依存関係を解決
+COPY ./resolve-dependencies.sh /resolve-dependencies.sh
+RUN chmod +x /resolve-dependencies.sh
+RUN /resolve-dependencies.sh
+
+# 作業ディレクトリを指定
+WORKDIR /workdir
+
+# コンテナ側のポート番号
+EXPOSE 8888
+
+ENTRYPOINT ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+
+# Jupyterlabのルートとなるディレクトリを指定
+CMD ["--notebook-dir=/workdir"]

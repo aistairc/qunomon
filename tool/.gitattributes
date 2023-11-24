@@ -1,0 +1,5 @@
+# Linuxシェル
+*.sh    text eol=lf
+
+# Windowsシェル
+*.bat   text eol=crlf

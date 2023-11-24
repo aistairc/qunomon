@@ -1,6 +1,0 @@
-matplotlib==3.3.1
-numpy==1.19.1
-pandas==1.1.1
-seaborn==0.10.1
-scipy==1.5.2
-./ait_sdk-0.1.7-py3-none-any.whl

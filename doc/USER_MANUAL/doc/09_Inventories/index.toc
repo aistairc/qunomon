@@ -1,3 +1,0 @@
-# Inventories
-
-01_Inventories
