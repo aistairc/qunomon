@@ -1,6 +1,0 @@
-FROM eval_metamorphic_test_tf1.13:0.1
-LABEL maintainer="AIST"
-
-RUN pip install pip-licenses
-
-ENTRYPOINT [ "pip-licenses", "--format=plain-vertical", "--with-license-file", "--no-license-path" ]

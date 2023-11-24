@@ -1,0 +1,3 @@
+# Folder configuration for each app
+
+04_Folderconfiguration

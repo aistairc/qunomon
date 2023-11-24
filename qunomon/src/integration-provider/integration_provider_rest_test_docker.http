@@ -1,0 +1,43 @@
+# QAI Testbed backend REST API Test script
+# REST Client URL:
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@hostUrl = https://127.0.0.1:443
+@baseUrl = {{hostUrl}}/qai-ip/api/0.0.1
+
+###
+# API:health-check
+
+GET {{baseUrl}}/health-check
+
+###
+# API: pipeline
+
+POST {{baseUrl}}/dep-a/mlComponents/1/pipeline
+content-type: application/json
+
+{
+    "PipelineType": "TestRunner",
+    "TargetID": 1
+}
+
+###
+# API: job
+POST {{baseUrl}}/dep-a/mlComponents/1/job
+content-type: application/json
+
+{
+    "TestDescriptionIds": [3]
+}
+
+###
+# API: job-status
+GET {{baseUrl}}/job-status/1
+
+###
+# API: job-status
+GET {{baseUrl}}/job-result/1
+
+###
+# API: GET async deploy dag
+GET {{baseUrl}}/async-deploy-dag

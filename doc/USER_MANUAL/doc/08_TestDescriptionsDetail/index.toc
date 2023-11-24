@@ -1,3 +1,0 @@
-# TestDescriptionsDetail
-
-01_TestDescriptionsDetail

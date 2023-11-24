@@ -1,3 +1,0 @@
-# InventoriesCreate
-
-01_InventoriesCreate

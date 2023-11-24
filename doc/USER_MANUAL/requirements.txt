@@ -1,8 +1,0 @@
-commonmark
-recommonmark
-nbsphinx
-sphinx_fontawesome
-sphinxcontrib-toc
-sphinx-markdown-tables
-sphinx==3.2.1
-sphinx_rtd_theme==0.5.0
