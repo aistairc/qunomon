@@ -1,0 +1,96 @@
+# Unit test
+In this chapter, we validate the developed AI evaluation program.
+
+## Prepare for unit test
+### Preparation of input data for unit test
+``` important:: This task is a necessary preparation for the unit test of AI evaluation program, and it is not involved in the packaged AIT.
+```
+Create a directory in `{YOUR_AIT_ROOT}/local_qai/inventory` to store your test data for unit test (as test input), and store the test input.
+The directory name is obtained from the `name` argument of the `add_ait_inventories` function used in #5 Manifest Generation area.
+
+* Here is a sample structure of test input:
+    ```
+    {YOUR_AIT_ROOT}
+    │
+    └─local_qai
+        │
+        └─inventory
+            │
+            └─iris_data
+                   tableconvert_csv_4nryby.csv
+    ```
+
+### Register test input (#6 Prepare for the Input area)
+In this area, define the test input and register the parameters required for the unit test.
+
+* Example
+```py
+    input_generator = AITInputGenerator(manifest_path)
+    input_generator.add_ait_inventories(name='iris_data', value='iris_data/tableconvert_csv_4nryby.csv')
+    input_generator.set_ait_params(name='mean_column_name', value='petal.width')
+```
+
+For detailed information about `AITInputGenerator` class, see the document [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator).
+
+* `name` argument is associated to the name of the inventory and/or the parameter described in the AIT Manifest generated in the section 3.5 (Area #5).
+  * The function `add_ait_inventories`'s argument `name` must be matched to the one of `inventories/name` in the AIT manifest.
+  * The function `set_ait_params`'s argument `name` must be matched to the one of `parameters/name` in the AIT manifest.
+
+## Running unit test
+### Verify operation of my_ait.ipynb
+ALL RUN `my_ait.ipynb` and fix any errors that occur.
+
+``` tip:: When ALL RUN is completed, an AIT execution program that runs on Qunomon will be automatically generated.
+```
+
+### Import local library
+Copy the libraries to be imported from local to ``{YOUR_AIT_ROOT}/deploy/container/repository/`.
+
+``` tip:: Local libraries are libraries that are not installed with a Dockerfile, such as methods that you create yourself.
+```
+
+Open Terminal from Jupyter and invoke the script for initialization.
+
+``` tip:: It is recommended running the bash command.
+```
+
+``` bash
+bash
+cd /workdir/root/tool/local_test/
+./init.sh
+```
+
+``` important:: If the following message is seen, please change the line feed code of the init.sh from CRLF to the LF.
+
+  bash: ./init.sh: No such file or directory
+``` 
+
+### Execute unit test
+Open Terminal from Jupyter and invoke the script which execute a unit test.
+
+``` bash
+cd /workdir/root/tool/local_test/
+./run.sh
+```
+
+``` important:: If the following message is seen, please change the line feed code of the run.sh from CRLF to the LF.
+
+  bash: ./run.sh: No such file or directory
+``` 
+
+## Evaluate unit test
+Check the files below and make sure the unit tests are successful.
+* {YOUR_AIT_ROOT}/tool/local_test/ait.log
+* {YOUR_AIT_ROOT}/local_qai/mnt/ip/job_args/1/1/ait.input.json
+* {YOUR_AIT_ROOT}/local_qai/mnt/ip/job_result/1/1/ait.output.json
+* {YOUR_AIT_ROOT}/local_qai/mnt/ip/job_result/1/1/downloads/Log/ait.log
+
+``` tip:: {YOUR_AIT_ROOT}/tool/local_test/ait.log is output only if the AIT execution fails.
+
+    The destination of ait.log can be changed. See the Function definitions area for details.
+```
+
+``` tip:: If an E901 error occurs, define an object (dictionary etc.) that can be expanded to a String as a method argument.
+```
+
+If your execution was succeeded, the results of execution will be saved to `{YOUR_AIT_ROOT}/local_qai/mnt/ip/job_result/1/1`.

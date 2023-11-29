@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Prepare" href="01_prepare.html" />
-    <link rel="prev" title="2.2. installation" href="../02_get_started/02_install.html" /> 
+    <link rel="next" title="3.1. Preparation" href="01_prepare.html" />
+    <link rel="prev" title="2.2. Installation" href="../02_get_started/02_install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,17 +85,18 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../01_introduction/index.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Prerequisites and installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Prepare</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experiment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_prepare_local_qai.html">3.3. Prepare local_qai</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_develop.html">3.4. Develop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_deploy.html">3.5. Deploy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_test.html">3.6. Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. Port an AI evaluation program to the my_ait.ipynb template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_unit_test.html">3.4. Unit test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html">3.5. Preparing registration for Qunomon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Push to GITHUB</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../04_example/index.html">4. Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
 </ul>
 
             
@@ -189,62 +190,77 @@
 <h1><span class="section-number">3. </span>Tutorial<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="01_prepare.html">3.1. Prepare</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#copy-template-ait-project">3.1.1. copy template ait project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#edit-readme-md-title">3.1.2. edit readme.md title</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#launch-ait-environment">3.1.3. launch ait environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#user-workflow">3.1.1. User workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#fork-the-ait-template">3.1.2. Fork the AIT template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#change-ait-repository-name">3.1.3. Change AIT repository name</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01_prepare.html#recommended-naming-convention-of-ait">3.1.3.1. Recommended naming convention of AIT</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="02_experiment.html">3.2. Experiment</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02_experiment.html#experiment-ait-what-do-something">3.2.1. Experiment ait what do something</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="03_prepare_local_qai.html">3.3. Prepare local_qai</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_develop.html">3.4. Develop</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04_develop.html#edit-my-ait-ipynb">3.4.1. edit my_ait.ipynb</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#my-ait-ipynb-of-structure">3.4.1.1. my_ait.ipynb of structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-create-requirements-and-pip-install">3.4.1.2. #3 area: create requirements and pip install</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-import">3.4.1.3. #4 area: import</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-create-manifest">3.4.1.4. #5 area: create manifest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-create-input">3.4.1.5. #6 area: create input</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-functions">3.4.1.6. #8 area: functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="04_develop.html#output-report-measures">3.4.1.6.1. output report/measures</a></li>
-<li class="toctree-l4"><a class="reference internal" href="04_develop.html#output-report-resources">3.4.1.6.2. output report/resources</a></li>
-<li class="toctree-l4"><a class="reference internal" href="04_develop.html#output-downloads">3.4.1.6.3. output downloads</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-main">3.4.1.7. #9 area: main</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_develop.html#area-license-attribute-set">3.4.1.8. #11 area: license attribute set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#clone-the-ait-repository">3.1.4. Clone the AIT repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#edit-readme-md">3.1.5. Edit readme.md</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html#launch-development-envionment">3.1.6. Launch development envionment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01_prepare.html#screenshots-after-launch">3.1.6.1. Screenshots after launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_prepare.html#development-work-flow">3.1.6.2. Development work flow</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="05_deploy.html">3.5. Deploy</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="05_deploy.html#edit-dockerfile">3.5.1. edit dockerfile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_deploy.html#test-for-theia">3.5.2. test for theia</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="05_deploy.html#run-init-sh-in-theia">3.5.2.1. run init.sh in theia</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05_deploy.html#ait-execution">3.5.2.2. ait execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_experiment.html#usage">3.2.1. Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="05_deploy.html#build-docker-image">3.5.3. build docker image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_deploy.html#create-thirdparty-notice">3.5.4. create thirdparty notice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_develop.html">3.3. Port an AI evaluation program to the my_ait.ipynb template</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html#edit-my-ait-ipynb">3.3.1. Edit my_ait.ipynb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html#the-structure-of-my-ait-ipynb">3.3.2. The structure of my_ait.ipynb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03_develop.html#dependency-management-area">3.3.2.1. #3 Dependency Management area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_develop.html#importing-libraries-area">3.3.2.2. #4 Importing Libraries area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_develop.html#manifest-generation-area">3.3.2.3. #5 Manifest Generation area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_develop.html#functions-definitions-area">3.3.2.4. #8 Functions definitions area</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_develop.html#result-output-functions-report-measures">3.3.2.4.1. result output functions: Report/Measures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_develop.html#result-output-functions-report-resources">3.3.2.4.2. result output functions: Report/Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_develop.html#result-output-functions-downloads">3.3.2.4.3. result output functions: downloads</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="06_test.html">3.6. Test</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="06_test.html#prepare">3.6.1. prepare</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_test.html#copy-template-test-notebook">3.6.2. copy template test notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_test.html#launch-testing-jupyter-lab">3.6.3. launch testing jupyter lab</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_test.html#edit-config-json">3.6.4. edit config.json</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06_test.html#edit-your-ait-name-ipynb-in-jupyter-lab">3.6.5. edit {Your AIT name}.ipynb in jupyter lab</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-1-pip-install-ait-sdk">3.6.5.1. [cell:1] pip install ait-sdk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-3-setting">3.6.5.2. [cell:3] setting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-9-post-inventories">3.6.5.3. [cell:9] post inventories</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-10-get-inventories">3.6.5.4. [cell:10] get inventories</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-11-add-test-description">3.6.5.5. [cell:11] add test description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-13-run-test-description">3.6.5.6. [cell:13] run test description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06_test.html#cell-15-output-report">3.6.5.7. [cell:15] output report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_develop.html#main-algorithms-area">3.3.2.5. #9 Main Algorithms area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_develop.html#license-area">3.3.2.6. #11 License area</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html#check-program-execution">3.3.3. Check program execution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_unit_test.html">3.4. Unit test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_unit_test.html#prepare-for-unit-test">3.4.1. Prepare for unit test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04_unit_test.html#preparation-of-input-data-for-unit-test">3.4.1.1. Preparation of input data for unit test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_unit_test.html#register-test-input-6-prepare-for-the-input-area">3.4.1.2. Register test input (#6 Prepare for the Input area)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_unit_test.html#running-unit-test">3.4.2. Running unit test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04_unit_test.html#verify-operation-of-my-ait-ipynb">3.4.2.1. Verify operation of my_ait.ipynb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_unit_test.html#import-local-library">3.4.2.2. Import local library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_unit_test.html#execute-unit-test">3.4.2.3. Execute unit test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_unit_test.html#evaluate-unit-test">3.4.3. Evaluate unit test</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05_prepare_upload.html">3.5. Preparing registration for Qunomon</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html#edit-dockerfile">3.5.1. Edit Dockerfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html#generate-third-party-notice">3.5.2. Generate Third-party Notice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html#create-zip-file">3.5.3. create zip file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06_integration_test.html#prepare-for-integration-test">3.6.1. Prepare for integration test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_integration_test.html#running-integration-test">3.6.2. Running integration test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_integration_test.html#evaluate-integration-test">3.6.3. Evaluate integration test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_integration_test.html#modifying-ait">3.6.4. Modifying AIT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07_github_push.html">3.7. Push to GITHUB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html#execute-batch-of-push-to-github">3.7.1. Execute batch of push to GITHUB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html#select-upload-inventory">3.7.2. Select upload inventory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html#enter-commit-comment">3.7.3. Enter commit comment</a></li>
 </ul>
 </li>
 </ul>
@@ -259,10 +275,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="01_prepare.html" class="btn btn-neutral float-right" title="3.1. Prepare" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="01_prepare.html" class="btn btn-neutral float-right" title="3.1. Preparation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../02_get_started/02_install.html" class="btn btn-neutral float-left" title="2.2. installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../02_get_started/02_install.html" class="btn btn-neutral float-left" title="2.2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -272,7 +288,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, AIST
+        &copy; Copyright 2023, AIST
 
     </p>
   </div>

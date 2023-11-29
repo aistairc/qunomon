@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.2. installation &mdash; AIT Guide 0.1.0 documentation</title>
+  <title>2.2. Installation &mdash; AIT Guide 0.1.0 documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Tutorial" href="../03_tutorial/index.html" />
-    <link rel="prev" title="2.1. Installation prerequisites" href="01_prerequisites.html" /> 
+    <link rel="prev" title="2.1. Prerequisites of installation" href="01_prerequisites.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,16 +85,17 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../01_introduction/index.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Get Started</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_prerequisites.html">2.1. Installation prerequisites</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prepare-source">2.2.1. prepare source</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Prerequisites and installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_prerequisites.html">2.1. Prerequisites of installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#structure-of-source-files">2.2.1. Structure of source files.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-docker">2.2.2. Installation of Docker</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../03_tutorial/index.html">3. Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_example/index.html">4. Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
 </ul>
 
             
@@ -141,9 +142,9 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">2. </span>Get Started</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">2. </span>Prerequisites and installation</a> &raquo;</li>
         
-      <li><span class="section-number">2.2. </span>installation</li>
+      <li><span class="section-number">2.2. </span>Installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,26 +188,45 @@
 }
 </style>
 <div class="section" id="installation">
-<h1><span class="section-number">2.2. </span>installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p>install docker</p>
-<p>https://www.docker.com/products/docker-desktop</p>
-</li>
+<h1><span class="section-number">2.2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Installation can be done with fork ait-template from GitHub and clone them to any local directory.</p>
+<ul class="simple">
+<li><p>Git must be installed before perform this.</p></li>
 </ul>
-<div class="section" id="prepare-source">
-<h2><span class="section-number">2.2.1. </span>prepare source<a class="headerlink" href="#prepare-source" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p>download zip</p>
-<p>https://github.com/aistairc/qunomon/archive/main.zip</p>
-</li>
-</ul>
-<p>or</p>
-<ul>
-<li><p>git clone (need git client)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">aistairc</span><span class="o">/</span><span class="n">qunomon</span><span class="o">.</span><span class="n">git</span>
+<p>Please be prepare for the environment in which docker installed because Jupyter Lab is run on docker container.</p>
+<div class="section" id="structure-of-source-files">
+<h2><span class="section-number">2.2.1. </span>Structure of source files.<a class="headerlink" href="#structure-of-source-files" title="Permalink to this headline">¶</a></h2>
+<p>AIT template and AIT development environment are stored under the <code class="docutils literal notranslate"><span class="pre">{YourAITname}</span></code> directory.
+In this guide, we basically perform works under this directory.
+※Pre-installed AITs available at aistairc/{name_of_AIT} on GITHUB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ait-template     &lt;---- AIT template
+   ├─deploy      &lt;---- Files for AIT deployment
+   ├─develop     &lt;---- AIT body and meta information
+   ├─local_qai   &lt;---- Placement of input to AIT, etc
+   ├─tool        &lt;---- Development environment
+   ├─LICENSE.txt
+   ├─readme.md
 </pre></div>
 </div>
-</li>
+</div>
+<div class="section" id="installation-of-docker">
+<h2><span class="section-number">2.2.2. </span>Installation of Docker<a class="headerlink" href="#installation-of-docker" title="Permalink to this headline">¶</a></h2>
+<p>Please install Docker Desktop following guideline below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the time of writing this guide, Docker Desktop has terms of use which restrict free use under limited condition. So it may not be available without problems on the user’s work environment or company. You must read, confirm and compliy to their terms of use.
+In addition to this, If you have any problem with using Docker Desktop, you need to introduce Docker environment without Docker Desktop. But in this guide, we don’t support such case.</p>
+<p>Port 9888 is used, but if you want to change it, please change Ports in Docker File as follows.</p>
+<p>Example: When changing the port from 9888 to 9889</p>
+<p>File Path</p>
+<p>{YourAITname}/tool/docker/docker-compose.yml</p>
+<p>Before change</p>
+<p>ports:　9888:8888</p>
+<p>After change</p>
+<p>ports:　9889:8888</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></p></li>
 </ul>
 </div>
 </div>
@@ -222,7 +242,7 @@
         <a href="../03_tutorial/index.html" class="btn btn-neutral float-right" title="3. Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="01_prerequisites.html" class="btn btn-neutral float-left" title="2.1. Installation prerequisites" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="01_prerequisites.html" class="btn btn-neutral float-left" title="2.1. Prerequisites of installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -232,7 +252,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, AIST
+        &copy; Copyright 2023, AIST
 
     </p>
   </div>

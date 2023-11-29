@@ -1,19 +1,47 @@
-# installation
+# Installation
+Installation can be done with fork ait-template from GitHub and clone them to any local directory.
 
-* install docker
+  * Git must be installed before perform this.
 
-    https://www.docker.com/products/docker-desktop
+Please be prepare for the environment in which docker installed because Jupyter Lab is run on docker container.
 
-## prepare source
+### Structure of source files.
+AIT template and AIT development environment are stored under the `{YourAITname}` directory.
+In this guide, we basically perform works under this directory.
+※Pre-installed AITs available at aistairc/{name_of_AIT} on GITHUB.
 
-* download zip
+```
+ait-template     <---- AIT template
+   ├─deploy      <---- Files for AIT deployment
+   ├─develop     <---- AIT body and meta information
+   ├─local_qai   <---- Placement of input to AIT, etc
+   ├─tool        <---- Development environment
+   ├─LICENSE.txt
+   ├─readme.md
+```
+## Installation of Docker
 
-    https://github.com/aistairc/qunomon/archive/main.zip
+Please install Docker Desktop following guideline below.
 
-or
+``` note:: At the time of writing this guide, Docker Desktop has terms of use which restrict free use under limited condition. So it may not be available without problems on the user's work environment or company. You must read, confirm and compliy to their terms of use.
+    In addition to this, If you have any problem with using Docker Desktop, you need to introduce Docker environment without Docker Desktop. But in this guide, we don't support such case.
+    
+    Port 9888 is used, but if you want to change it, please change Ports in Docker File as follows.
 
-* git clone (need git client)
+    Example: When changing the port from 9888 to 9889
 
-    ```
-    git clone https://github.com/aistairc/qunomon.git
-    ```
+    File Path
+    
+    {YourAITname}/tool/docker/docker-compose.yml
+
+    Before change
+    
+    ports:　9888:8888
+
+    After change
+    
+    ports:　9889:8888
+
+```
+
+* [Docker Desktop](https://www.docker.com/products/docker-desktop)

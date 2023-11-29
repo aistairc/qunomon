@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2.1. Installation prerequisites &mdash; AIT Guide 0.1.0 documentation</title>
+  <title>2.1. Prerequisites of installation &mdash; AIT Guide 0.1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. installation" href="02_install.html" />
-    <link rel="prev" title="2. Get Started" href="index.html" /> 
+    <link rel="next" title="2.2. Installation" href="02_install.html" />
+    <link rel="prev" title="2. Prerequisites and installation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,13 +85,17 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../01_introduction/index.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Get Started</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Installation prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_install.html">2.2. installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Prerequisites and installation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Prerequisites of installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-environment">2.1.1. Required Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operability-confirmed-environment">2.1.2. Operability confirmed environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_install.html">2.2. Installation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../03_tutorial/index.html">3. Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_example/index.html">4. Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
 </ul>
 
             
@@ -138,9 +142,9 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">2. </span>Get Started</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">2. </span>Prerequisites and installation</a> &raquo;</li>
         
-      <li><span class="section-number">2.1. </span>Installation prerequisites</li>
+      <li><span class="section-number">2.1. </span>Prerequisites of installation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,11 +187,50 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="installation-prerequisites">
-<h1><span class="section-number">2.1. </span>Installation prerequisites<a class="headerlink" href="#installation-prerequisites" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prerequisites-of-installation">
+<h1><span class="section-number">2.1. </span>Prerequisites of installation<a class="headerlink" href="#prerequisites-of-installation" title="Permalink to this headline">¶</a></h1>
+<p>Before install the AIT development environment, please confirm that your environment have met a conditions below.</p>
+<div class="section" id="required-environment">
+<h2><span class="section-number">2.1.1. </span>Required Environment<a class="headerlink" href="#required-environment" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Support os is <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">10</span> <span class="pre">Pro</span></code> and version above <code class="docutils literal notranslate"><span class="pre">1909</span></code>.</p></li>
+<li><p>Environment which can run Docker above 19.03.</p></li>
+<li><p>For Windows machine, environment which can run Docker Desktop above 2.3.0.3 is required.<br />For macOS machine, environment which can run Docker Desktop above 4.20.1 is required.</p></li>
+<li><p>For Windows machine, environment which can run Google Chrome is required.</p></li>
 </ul>
+</div>
+<div class="section" id="operability-confirmed-environment">
+<h2><span class="section-number">2.1.2. </span>Operability confirmed environment<a class="headerlink" href="#operability-confirmed-environment" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Windows</p>
+<ul class="simple">
+<li><p>‘Windows 10 Pro’ with build version above ‘1909’.</p></li>
+</ul>
+</li>
+<li><p>macOS</p>
+<ul class="simple">
+<li><p>macOS Ventura with version above 13.2.1.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For macOS machine, sh files require permission to execute. If you are unable to execute it, use the following command to grant execution permission to the sh file as necessary.</p>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>script.sh
+</pre></div>
+</div>
+</li>
+<li><p>Linux</p>
+<ul class="simple">
+<li><p>Ubuntu 20.04 LTS or later.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Most of the development process are executed on the container environment. But launcher script for these containers are written as Windows batch file.
+So you might be able to develop AIT on other environment by re-writing them as shell scripts.</p>
+</div>
+<p>In this guide, we introduce a development procedure with Docker Desktop.</p>
+</div>
 </div>
 
 
@@ -198,10 +241,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="02_install.html" class="btn btn-neutral float-right" title="2.2. installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="02_install.html" class="btn btn-neutral float-right" title="2.2. Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="2. Get Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="2. Prerequisites and installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -211,7 +254,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, AIST
+        &copy; Copyright 2023, AIST
 
     </p>
   </div>

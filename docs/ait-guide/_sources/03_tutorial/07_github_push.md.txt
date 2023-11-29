@@ -1,0 +1,34 @@
+# Push to GITHUB
+This chapter describes push GITHUB to publish the verified AIT.
+
+
+## Execute batch of push to GITHUB
+
+Execute the batch file and push to GITHUB.
+
+```
+Windows
+{YOUR_AIT_ROOT}/tool/github_push.bat
+
+linux
+{YOUR_AIT_ROOT}/tool/github_push.sh
+```
+
+## Select upload inventory
+Choose whether to upload inventory for AIT test.
+
+Y: Upload.
+
+N : Do not upload.
+![inventory_upload](07/01_inventory_upload.png)
+
+
+
+## Enter commit comment
+![commit_comment](07/02_commit_comment.png)
+
+※Since authentication to GITHUB is required.
+
+　HTTPS type: token
+
+　SSH: Public key

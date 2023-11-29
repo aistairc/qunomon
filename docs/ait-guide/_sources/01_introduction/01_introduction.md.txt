@@ -1,45 +1,48 @@
 # What is AIT?
 
-* AIT is AI Test Package of testbed `qunomon`.
+AIT(AI system test package) is the package of a test program to be installed and executed on Qunomon testbed. It measures the concrete quality metrics of target ML components under test such as datasets and/or machine learning model.
 
-* AIT is built in as a docker container.
+AIT can be developed by capsuling evaluation programs (written in python) and meta-data (which describes the charactersitics of that AIT) as an Docker image.
+This enables users to search, download, utilize that AIT without knowing the details of specification or implementation of an AIT. Since all AITs are running on the Docker container, Users can also avoid the conflict of the execution environment.
 
-* In addition to the pre-installed AITs, you can implement a new one yourself.
+Qunomon is an open-sourced platform (testbed) for quality assessment of AI systems.
+Qunomon has some pre-installed AITs initially so that users can develop their own AIT based on them and install third-party AITs on their local Qunomon instance.
 
-* The pre-installed AITs are as follows
+We have prepared the AIT development environment which contains some necessary templates and test execution environment to develop and deploy your own (new) AIT in the Qunomon.
+In this guide, we provide some information about development process and technical details of the AIT required to develop your own one.
 
-  * eval_coverage_ca_pairwise  
-    Evaluate the coverage of context attributes.
+## What is AIT development environment?
 
-  * eval_ca_distribution  
-    Evaluate the distribution of context attributes.
+We provide AIT development environment as initially included component of Qunomon platform. 
+Users (such as QA engineer of AI/ML sysmtes or developer/researcher working on novel quality assessment techniques or methods) can develop their own AIT using this environment.
 
-  * eval_mnist_data_coverage  
-    Evaluate mnist data coverage.
+This environment consist of: (1) **Docker images for AIT developers** which can launch Jupyter Notebook in the isolated containers on your local machine, and (2) **AIT template** which includes all required components of the AIT from the beginning.
 
-  * eval_mnist_bw_classify  
-    Evaluate mnist data black/white classification.
+### Docker images for AIT developers
+We include ready-to-launch Jupyter lab (for experimentation and development) in the Qunomon repository. 
+These environment are isolated as containers using docker and provided through your browser so that developers don't have to worry about breaking existing environment and dependencies.
 
-  * eval_mnist_acc_tf2.3  
-    Evaluate mnist accuracy for tensorflow-2.3.
+### AIT Template
 
-  * eval_bdd100k_aicc_tf2.3  
-    Evaluate bdd100k accuracy for tensorflow-2.3.
+AIT Template is a template directory that contains all the basic components of AIT.
+By using this, developers can concentrate on implementing algorithmic part of the AIT.
 
-  * eval_regression_analyze_coefficient_determination_tf2.3  
-    Evaluate regression analyze coefficient determination for tensorflow-2.3.
+Following components are contained in the template so that developers can create a new AIT with only partial modification.
 
-  * eval_regression_analyze_rmse_and_mae_tf2.3  
-    Evaluate regression analyze rmse and mae for tensorflow-2.3.
+* Dockerfile and an execution pipeline definition of an AIT.
+  * Each AIT is isolated in individual containers to avoid conflict with other AITs or user's environments using Docker.
+  * AITs are executed via Qunomon's pipeline execution engine (Airflow) after deployment.
+* AIT Manifest (Meta data of an AIT)
+  * Each AIT must have AIT Manifest to coordinate with Qunomon's other components smoothly so that guarantee portability and reusability of itself.
+* Basic design elements of an AIT
+  * Pre-defined directory structure suitable for experimentation and implementation, license information and third party notices.
+* Docker images for AIT developers.
+  * Scripts and the execution environment to capsulize an AIT as Docker image.
 
-  * eval_dnn_coverage_tf1.13  
-    Evaluate mnist dnn coverage for tensorflow-1.13.
+### Prerequisites for work
+These are the prerequisites for working in the AIT development environment.
+  * The programming language used is Python3.9.
+  * TensorFlow version 2.9.1 shipped with Jupyter Notebook.
+  * Jupyter Notebook uses port 9888. Please do not use this port with other applications while Jupyter Notebook is running.
 
-  * eval_metamorphic_test_tf1.13  
-    Evaluate mnist metamorphic test for tensorflow-1.13.
-
-  * eval_adversarial_example_acc_test_tf2.3  
-    Evaluate mnist adversarial example accuracy for tensorflow-2.3.
-
-  * generate_ca_pairwise  
-    Generate context attributes by PICT.
+    *  If you want to change it, please refer to [Installation of Docker](../02_get_started/02_install.html#installation-of-docker)

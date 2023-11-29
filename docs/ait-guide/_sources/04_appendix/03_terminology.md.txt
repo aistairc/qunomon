@@ -1,0 +1,49 @@
+
+# Terminology
+## Technical terms related to the Qunomon testbed and/or AIT
+- Qunomon
+  - A platform to support quality assessment process (from defining test specification to execution, and generation of the quality report) of the AI systems.
+  - It provides its functionality as web system with a mechanism to evaluate the machine learning components used in the AI system according to external quality criteria such as public guidelines or standards.
+  - The total evaluation will be aggregates the result of exectuion of pluggable test package (AITs); Each corresponds with different perspective and/or evaluation techniques.
+- AIT
+  - A Package of test program for AI/ML component that runs on Qunomon.
+  - When the test description (test specification) is executed, related AITs are invoked by Qunomon, and they outputs evaluation and analysis results for each test item.
+  - AITs are executed in isolated Docker containers so that it does not depends on the host environment (of both users and developers), achieving the portability and reusability.
+  - A development environment that also runs on Docker containers and AIT templates for developers are provided, allowing third parties and users to freely and easily develop, publish and share their test programs as an AIT.
+- AIT template
+  - AIT template is a template directory that contains all the basic components of AIT.
+  - AIT template include AIT development environment which runs on containers.
+- AIT development environment
+  - A development environment that runs on containers.
+  - It consist of two modules: (1) ready-to-launch Jupyter lab (for experimentation and development).
+  - These environment are isolated as containers using docker and provided through browser so that developers don't have to worry about breaking existing environment and dependencies.
+- AIT SDK
+  - A software development kit provided as a library to support deployment of an AIT and coordination with Qunomon.
+  - Since AIT SDK is pre-installed within AIT development environment, these can invoked from AIT template.
+- AIT manifest
+  - Meta data of an AIT to ensure the reusability, portability, findability and coordination of Qunomon's other modules.
+  - AIT manifest can be generated using AIT SDK within templates or can be manually described according to the schema definitions.
+  - Terms related to AIT manifest:
+    - Asset
+      - An input data required to run AIT.
+      - There are various type of assets such as Dataset / models under test, additional data required in assessment/evaluation.
+    - Inventory
+      - A container which defines the format of the "Asset" that is input data to the AIT.
+      - One inventory corresponds with one type of asset.
+      - An AIT can have multiple inventory so that takes multiple type of assets as input data.
+    - Report
+      - An output data (such as: values, graphs) of an AIT when produced as an evaluation result.
+    - Download
+      - An output data of an AIT when produced as an intermediate results or appendix/addendum.
+
+## Other general technical terms
+- Docker
+  - Open source platform which provide container based virtualization technology to the host machine.
+  - By using docker, user can easily develop / execute application inside the isolated container built on the host environment.
+  - Docker containers are relatively light-weight among other virtualization platform, and can be easily introduced to various host environment.
+  - AIT and AIT development environment are isolated on individual container with help of Docker so that AIT developer can avoid the dependency or environmental problem.
+  - https://docs.docker.com/
+- Jupyter Lab
+  - Open source platform for supporting software development and/or scientific experimentation by aggregating code, execution resuilt, memorandom (note) on one single notebook file.
+  - Lab is a next generation UI of famous software Jupyter Notebook maintained by Project Jupyter.
+  - https://jupyterlab.readthedocs.io/en/latest/

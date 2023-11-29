@@ -1,0 +1,290 @@
+# Port an AI evaluation program to the my_ait.ipynb template
+After completing the experiment and deciding the purpose, functionality, I/O specifications of an AIT, move the part of the codes to the AIT template (`my_ait.ipynb`) and prepare for packaging.
+`my_ait.ipynb` template contains codes to ensure reusability in other environment and codes which enable interaction with Qunomon.
+Even if you don't know the specification of Qunomon in detail, you can develop AIT by editing some cells in the template while following the rules.
+
+## Edit my_ait.ipynb
+Open `my_ait.ipynb' in the AIT development environment (Jupyter Lab) and port your AI evaluation program onto this template.
+Please refer 3.3.3 The strcure of my_ait.ipynb for detailed procedure.
+
+``` tip:: This file is mounted on the docker container, you can refer them both from AIT development environment and host environment.
+    - Path to the template seen from the host : `{YOUR_AIT_ROOT}/develop/my_ait.ipynb`
+    - Path to the template seen from the Jupyter Lab: `/root/develop/my_ait.ipynb`
+
+    Actually, the correct filepath seen from the container which runs Jupyter is "/workdir/root/develop/my_ait.ipynb", but the Jupyter Lab configured to refer /workdir/ as its root directory in its file explorer.
+```
+
+The rest of the section describes the detailed strcuture of 'my_ait.ipynb'.
+
+## The structure of my_ait.ipynb
+The `my_ait.ipynb` consists of multiple *area*s; and each *area* consists of multiple *cell*s.
+You can edit these areas and cells or port your codes from experimentation notebook to develop an AIT.
+But some areas and cells are uneditable because they contain the codes that must be included for the packaging.
+
+```tip:: If you edit the uneditable cells by opening them in other text editors, then the AIT may be corrupted.
+   On the other hand, some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.
+```
+
+The table below is the structure of my_ait.ipynb.
+- The meaning of columns:
+  - `#`: Number of the area.
+  - `Name`: Name of the area.
+  - `cells`: Number of the cells contained in that area.
+  - `description`: explains the meaning/purpose of the area.
+  - `for_dev`: If the value is `True`, this area executed only on the Jupyter Lab for the packaging purpose.
+  - `edit`: Whether the area required to be edited or not editable.
+
+| #|                 Name| cells|for_dev|      edit|description|
+|--|---------------------|------|-------|----------|-----------|
+| 1|Environment detection|     1|     No|uneditable|detect whether the notebook are invoked for packaging or in production|
+| 2|Preparing AIT SDK    |     1|    Yes|uneditable|download and install AIT SDK|
+| 3|Dependency Management|     3|    Yes|required(cell #2))|generate requirements.txt for Docker container|
+| 4|Importing Libraries  |     2|    Yes|required(cell #1))|import required libraries|
+| 5|Manifest Generation  |     1|    Yes|  required|generate AIT Manifest|
+| 6|Prepare for the Input|     1|    Yes|  required|generate AIT Input JSON (inventory mapper)|
+| 7|Initialization       |     1|     No|uneditable|initialization for AIT execution|
+| 8|Function definitions |     N|     No|  required|define functions invoked from Main area.<br>also define output functions.|
+| 9|Main Algorithms      |     1|     No|  required|area for main algorithms of an AIT|
+|10|Entry point          |     1|     No|uneditable|an entry point where Qunomon invoke this AIT from here|
+|11|License              |     1|    Yes|  required|generate license information|
+|12|Deployment           |     1|    Yes|uneditable|convert this notebook to the python file for packaging purpose|
+
+### #3 Dependency Management area
+Since an AIT will be executed on the Docker container, there is a need for prepare requirements.txt to successfully install dependencies on the container.
+In this area, we automatically generates a requirements.txt and place them to the appropriate locations by using `AITRequirementsGenerator` class in the AIT SDK.
+Please write the OSS name in the first argument and the version in the second argument to `add_package`.
+It is possible to generate requirements.txt by omitting the second argument of `add_package` and using only the OSS name, but this is not recommended as there is a concern that the dependencies may break down as the OSS version is updated.
+
+* Example
+    * When your AIT depends on the tensorflow 2.5.0 and numpy 1.19.2:
+    ```py
+        if not is_ait_launch:
+            from ait_sdk.common.files.ait_requirements_generator import AITRequirementsGenerator
+            requirements_generator = AITRequirementsGenerator()
+            requirements_generator.add_package('tensorflow', '2.3.0')
+            requirements_generator.add_package('numpy', '1.19.2')
+    ```
+
+For detailed information about `AITRequirementsGenerator`, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator).
+
+``` important:: The AIT SDK itself are automatically added to the requirements.txt. Don't explicitly add them in this area.
+```
+
+``` tip:: is_ait_launch is False when experimenting on Jupyter Lab.
+    Commands that you want to execute only in Jupyter Lab experiments (AITRequirementsGenerator etc) should be enclosed in if not is_ait_launch:.
+```
+
+### #4 Importing Libraries area
+
+Import classes, functions and/or other entities from libraries used in your AIT here.
+
+### #5 Manifest Generation area
+
+AIT Manifest contains metadata such as name, author, description and/or I/O definitions of an AIT for ensure reusability and searchability of it.
+In this area, we automatically generates ait.manifest.json file and place them to the appropriate locations by using `AITManifestGenerator` class in the AIT SDK.
+
+* Example
+    * To set the name of the AIT:
+    ```py
+        manifest_genenerator = AITManifestGenerator(current_dir)
+        manifest_genenerator.set_ait_name('eval_mnist_acc_tf2.3')
+    ```
+
+`AITManifestGenerator` can validate the format of attributes and check whether required attributes are set. So if there're missing or wrong attributes in this area, execution of `my_ait.ipynb` may fail at that time.
+For detailed information about `AITManifestGenerator` class, please see the document [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator).
+
+``` tip:: Please refer to my_ait.ipynb and ait.manifest.json in "1.2. Preinstalled AIT" for registration information of AIT manifest. 
+    Because it depends on the characteristics and purpose of the AI evaluation program.
+```
+### #8 Functions definitions area
+In Function definitions area, you can define any number of user defined functions which is invoked from the following main algorithms area (#9).
+Of the user defined functions, the functions that output the execution results of AIT are annotated and defined as result output functions.
+
+``` tip:: The output value of the result output functions is automatically associated with the corresponding report download name in the AIT manifest generated in #5 Manifest Generation area.
+```
+
+The format of the user-defined function is arbitrary.
+There are three types of output functions:
+* Report/Measures (Output evaluation/analysis results as singular value)
+* Report/Resources (Output evaluation/analysis results as image, graphs or specified file format)
+* Download (Output supplemental and/or intermediate results as image, graphs or specified file format)
+
+Each result output function is described in detail below.
+
+#### result output functions: Report/Measures
+You can define the execution result of the user-defined function as the AIT measurement value.
+You must add following two annotations to your output function.
+* `@log(logger)` annotation
+* `@measures(ait_output, '{NAME_OF_REPORT/MEASURE}')` annotation
+  * {NAME_OF_REPORT/MEASURE} must be matched to the one of the name in the `report/measures` defined in the AIT Manifest.
+
+``` important:: The return value of this function will be treated as an evaluation value of {NAME_OF_REPORT/MEASURE}.  
+    So the function must return a singular value.
+```
+
+* When your AIT output AUC (Area Under the Curve) value as a result:
+    ```py
+    @log(logger)
+    @measures(ait_output, 'AUC')
+    def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
+        y_true = to_categorical(y_test)
+        y_score = y_pred
+
+        return roc_auc_score(y_true, y_score,
+                            multi_class=multi_class,
+                            average=average)
+    ```
+
+    * In the #5 Manifest Generation area, predefine the AIT manifest(`report/measures`) corresponding to the annotation.
+    ```py
+        manifest_genenerator.add_ait_measures(name='AUC', 
+                                            type_='float', 
+                                            description='Compute Area Under the Receiver Operating Characteristic Curve (ROC AUC) from prediction scores.', 
+                                            structure='single',
+                                            min='0',
+                                            max='1')
+    ```
+
+#### result output functions: Report/Resources
+You can define an output resource (e.g. image file) generated by a user-defined function as an AIT resource.
+you must add following two annotations to your output function.
+* `@log(logger)` annotation
+* `@resources(ait_output, path_helper, {NAME_OF_REPORT/RESOURCES}, {FILE_NAME})` annotation
+  * {NAME_OF_REPORT/RESOURCES} must be matched to the one of the name in the `report/resources` defined in the AIT Manifest.
+  * {FILE_NAME} specifies the file name of the AIT resource.
+
+``` important:: This function requires a file_path argument because the resource file path is automatically specified in the file_path argument of the result output function.
+```
+
+* When your AIT outputs confusion matrix as heatmap image (ConfusionMatrixHeatmap):
+    ```py
+    @log(logger)
+    @resources(ait_output, path_helper, 'ConfusionMatrixHeatmap', 'confusion_matrix.png')
+    def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
+        makedirs(str(Path(file_path).parent), exist_ok=True)
+
+        y_pred = K.argmax(y_pred)
+
+        labels = sorted(list(set(y_test)))
+        cmx_data = confusion_matrix(y_test, y_pred, labels=labels)
+
+        df_cmx = pd.DataFrame(cmx_data, index=labels, columns=labels)
+
+        fig = plt.figure(dpi=100, figsize=(8,6))
+        sn.heatmap(df_cmx, annot=True, fmt='g' ,square = True)
+        ax = fig.add_subplot(1, 1, 1)
+        ax.set_xlabel('Predicted class')
+        ax.set_ylabel('Actual class')
+        ax.set_title('Plot of Confusion Matrix')
+
+        # save as png
+        plt.savefig(file_path)
+    ```
+
+    * In the #5 Manifest Generation area, predefine the AIT manifest(`report/resources`) corresponding to the annotation.
+    ```py
+        manifest_genenerator.add_ait_resources(name='ConfusionMatrixHeatmap', type_='picture', description='Confusion matrix heatmap.')
+    ```
+
+#### result output functions: downloads
+In addition to user-defined function resources and measures, you can define user-defined function supplemental and/or results as download files.
+you must add following two annotations to your output function.
+* `@log(logger)` annotation
+* `@downloads(ait_output, path_helper, {NAME_OF_DOWNLOADS}, {FILE_NAME})` annotation
+  * {NAME_OF_DOWNLOADS} must be matched to the one of the name in the `downloads` defined in the AIT Manifest.
+  * {FILE_NAME} specifies the file name of the download file.
+
+``` important:: This function requires a file_path argument because the resource file path is automatically specified in the file_path argument of the result output function.
+```
+
+*  When your AIT outputs confusion matrix as CSV data (ConfusionMatrixCSV) as a supplemental information.
+    ```py
+    @log(logger)
+    @downloads(ait_output, path_helper, 'ConfusionMatrixCSV', 'confusion_matrix.csv')
+    def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
+        makedirs(str(Path(file_path).parent), exist_ok=True)
+
+        cmx_data = confusion_matrix(y_test, K.argmax(y_pred))
+        logger.info(cmx_data)
+        np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
+    ```
+
+    * In the #5 Manifest Generation area, predefine the AIT manifest(`downloads`) corresponding to the annotation.
+    ```py
+        manifest_genenerator.add_ait_downloads(name='ConfusionMatrixCSV', description='Confusion matrix csv.')
+    ```
+
+### #9 Main Algorithms area
+In this area, you should write the main algorithms of the AIT while reffering I/O and/or functions defined before this area.
+This area has some rules to follow.
+* you must add following two annotations to your output function.
+  * `@log(logger)` annotation
+  * `@ait_main(ait_output, path_helper)` annotation
+* The name of the function must be `main()` because this function is invoked by the following area (#10 Entry point).
+* Paremetes must be got from the `get_method_param_value` method of `ait_input` variable (`AITInput` class).
+* Path to the inventory mus be got from the `get_inventory_path` method `ait_input` variable (`AITInput` class).
+<br>
+
+* Example of the main algorithms area
+    ```py
+    @log(logger)
+    @ait_main(ait_output, path_helper)
+    def main() -> None:
+        image_px_size = ait_input.get_method_param_value('image_px_size')
+
+        # load MNIST image and label from inventory
+        mnist = MNIST()
+        X_test = mnist.load_image(ait_input.get_inventory_path('test_set_images'), image_px_size)
+        y_test = mnist.load_label(ait_input.get_inventory_path('test_set_labels'))
+
+        # preprocess normarize
+        X_test_normalize = X_test / 255
+
+        # load model
+        model = tf.keras.models.load_model(ait_input.get_inventory_path('trained_model'))
+        logger.info(get_summary_text(model))
+
+        # predoction
+        y_pred = model.predict(X_test_normalize)
+
+        # Total accuracy evaluation value(measure)
+        calc_acc_all(y_test=y_test, y_pred=y_pred)
+
+        # Accuracy Rating by Class(measure)
+        calc_acc_by_class(y_test=y_test, y_pred=y_pred)
+
+        # Confusion matrix(CSV)
+        save_confusion_matrix_csv(y_test=y_test, y_pred=y_pred)
+
+        # Confusion matrix(PNG)
+        save_confusion_matrix_heatmap(y_test=y_test, y_pred=y_pred)
+
+        # ROC curve(PNG)
+        save_roc_curve(y_test=y_test, y_pred=y_pred, 
+                        n_classes=ait_input.get_method_param_value('class_count'))
+
+        # AUC(measure)
+        calc_auc(y_test=y_test, y_pred=y_pred,
+                multi_class=ait_input.get_method_param_value('auc_multi_class'),
+                average=ait_input.get_method_param_value('auc_average'))
+
+        # NG predictions(PNG)
+        save_ng_predicts(X_test=X_test, y_test=y_test, y_pred=y_pred, 
+                        n_classes= int(ait_input.get_method_param_value('class_count')))
+
+        # PredictionResult(CSV)
+        save_prediction_result(y_test=y_test, y_pred=y_pred)
+
+        # log(Text)
+        move_log()
+    ```
+
+### #11 License area
+Some attributes must be set for automatic generation of your AIT license information.
+Currently you must set the value to the `ait_owner` attribute and the `ait_creation_year` attribute.
+
+## Check program execution
+Execute the my_ait.ipynb file and check that the ported program works properly.
+
+The Output stored in `/root/top_dir/local_qai/mnt/ip/job_result/1/1`.
+AIT manifest stored in `/root/develop/ait.manifest.json`

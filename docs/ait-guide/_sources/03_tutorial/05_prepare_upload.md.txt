@@ -1,0 +1,54 @@
+# Preparing registration for Qunomon
+In this chapter, the developed AI evaluation program is converted to AIT (as zip file) for registration to Qunomon.
+
+## Edit Dockerfile
+If you have built an environment without using AIT-SDK in the Dependency Management area or Importing Libraries area, edit `{YOUR_AIT_ROOT}/deploy/container/Dockerfile`.
+
+``` important:: If your AIT depends on the other software or libraries (such as GCC, RDBMS, ...), you must include them in your Dockerfile and let them installed on AIT container.
+
+    Please write installation command in {YOUR_AIT_ROOT}/deploy/container/resolve-dependencies.sh, not in the Dockerfile. The Dockerfile runs the shell and installs dependencies.
+
+    example. apt install, applying patches, installing Python libraries without using AITRequirementsGenerator, etc.
+```
+
+``` important:: Please don't edit the dockerfile_license file. This item is used for the automatic generation of Third-party notices.
+```
+
+## Generate Third-party Notice
+Run following batch file on the host environment to generate third-party notice.
+Thirdparty Notices are generated under `{YOUR_AIT_ROOT}`.
+
+* Launcher
+  * Windows:
+    ```bat
+    {YOUR_AIT_ROOT}/tool/generate_thirdparty_notices.bat
+    ```
+  * macOS, Linux:
+    ```sh
+    sudo bash {YOUR_AIT_ROOT}/tool/generate_thirdparty_notices.sh
+    ```
+
+``` important:: This script will not work perfectly.
+    You must confirm and ensure that all the depending third party OSS are listed up in the generated third-party notices yourself.
+```
+
+## create zip file
+Extract the resources required for AIT from the developed AI evaluation program and compress that into a zip file.
+Run following batch file on the host environment to generate the zip file.
+
+* Windows:
+  ```bat
+  {AIT_ROOT}/tool/compress_ait_package.bat
+  ```
+* macOS, Linux:
+  ```sh
+  sudo bash {YOUR_AIT_ROOT}/tool/compress_ait_package.sh
+  ```
+
+This command compresses `{YOUR_AIT_ROOT}/deploy/container/` as zip file.
+
+``` tip:: Test inputs and test results are not included in the zip file.
+```
+
+The generated zip file will be stored in `{YOUR_AIT_ROOT}/{YourAITName}.zip`.
+The next chapter will cover integration test with Qunomon.
