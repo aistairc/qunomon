@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3.4. Unit test &mdash; AIT Guide 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.5. Preparing registration for Qunomon" href="05_prepare_upload.html" />
+    <link rel="prev" title="3.3. Port an AI evaluation program to the my_ait.ipynb template" href="03_develop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> AIT Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01_introduction/index.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Prerequisites and installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. Port an AI evaluation program to the my_ait.ipynb template</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. Unit test</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-for-unit-test">3.4.1. Prepare for unit test</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preparation-of-input-data-for-unit-test">3.4.1.1. Preparation of input data for unit test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-test-input-6-prepare-for-the-input-area">3.4.1.2. Register test input (#6 Prepare for the Input area)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#running-unit-test">3.4.2. Running unit test</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verify-operation-of-my-ait-ipynb">3.4.2.1. Verify operation of my_ait.ipynb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-local-library">3.4.2.2. Import local library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execute-unit-test">3.4.2.3. Execute unit test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluate-unit-test">3.4.3. Evaluate unit test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html">3.5. Preparing registration for Qunomon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Push to GITHUB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AIT Guide</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">3. </span>Tutorial</a> &raquo;</li>
+        
+      <li><span class="section-number">3.4. </span>Unit test</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/03_tutorial/04_unit_test.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="unit-test">
+<h1><span class="section-number">3.4. </span>Unit test<a class="headerlink" href="#unit-test" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we validate the developed AI evaluation program.</p>
+<div class="section" id="prepare-for-unit-test">
+<h2><span class="section-number">3.4.1. </span>Prepare for unit test<a class="headerlink" href="#prepare-for-unit-test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preparation-of-input-data-for-unit-test">
+<h3><span class="section-number">3.4.1.1. </span>Preparation of input data for unit test<a class="headerlink" href="#preparation-of-input-data-for-unit-test" title="Permalink to this headline">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This task is a necessary preparation for the unit test of AI evaluation program, and it is not involved in the packaged AIT.</p>
+</div>
+<p>Create a directory in <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/local_qai/inventory</span></code> to store your test data for unit test (as test input), and store the test input.
+The directory name is obtained from the <code class="docutils literal notranslate"><span class="pre">name</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">add_ait_inventories</span></code> function used in #5 Manifest Generation area.</p>
+<ul>
+<li><p>Here is a sample structure of test input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{YOUR_AIT_ROOT}
+│
+└─local_qai
+    │
+    └─inventory
+        │
+        └─iris_data
+               tableconvert_csv_4nryby.csv
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="register-test-input-6-prepare-for-the-input-area">
+<h3><span class="section-number">3.4.1.2. </span>Register test input (#6 Prepare for the Input area)<a class="headerlink" href="#register-test-input-6-prepare-for-the-input-area" title="Permalink to this headline">¶</a></h3>
+<p>In this area, define the test input and register the parameters required for the unit test.</p>
+<ul class="simple">
+<li><p>Example</p></li>
+</ul>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">input_generator</span> <span class="o">=</span> <span class="n">AITInputGenerator</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
+    <span class="n">input_generator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;iris_data/tableconvert_csv_4nryby.csv&#39;</span><span class="p">)</span>
+    <span class="n">input_generator</span><span class="o">.</span><span class="n">set_ait_params</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean_column_name&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;petal.width&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For detailed information about <code class="docutils literal notranslate"><span class="pre">AITInputGenerator</span></code> class, see the document <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator">here</a>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> argument is associated to the name of the inventory and/or the parameter described in the AIT Manifest generated in the section 3.5 (Area #5).</p>
+<ul>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">add_ait_inventories</span></code>’s argument <code class="docutils literal notranslate"><span class="pre">name</span></code> must be matched to the one of <code class="docutils literal notranslate"><span class="pre">inventories/name</span></code> in the AIT manifest.</p></li>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">set_ait_params</span></code>’s argument <code class="docutils literal notranslate"><span class="pre">name</span></code> must be matched to the one of <code class="docutils literal notranslate"><span class="pre">parameters/name</span></code> in the AIT manifest.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="running-unit-test">
+<h2><span class="section-number">3.4.2. </span>Running unit test<a class="headerlink" href="#running-unit-test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="verify-operation-of-my-ait-ipynb">
+<h3><span class="section-number">3.4.2.1. </span>Verify operation of my_ait.ipynb<a class="headerlink" href="#verify-operation-of-my-ait-ipynb" title="Permalink to this headline">¶</a></h3>
+<p>ALL RUN <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> and fix any errors that occur.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When ALL RUN is completed, an AIT execution program that runs on Qunomon will be automatically generated.</p>
+</div>
+</div>
+<div class="section" id="import-local-library">
+<h3><span class="section-number">3.4.2.2. </span>Import local library<a class="headerlink" href="#import-local-library" title="Permalink to this headline">¶</a></h3>
+<p>Copy the libraries to be imported from local to ``{YOUR_AIT_ROOT}/deploy/container/repository/`.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Local libraries are libraries that are not installed with a Dockerfile, such as methods that you create yourself.</p>
+</div>
+<p>Open Terminal from Jupyter and invoke the script for initialization.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended running the bash command.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash
+<span class="nb">cd</span><span class="w"> </span>/workdir/root/tool/local_test/
+./init.sh
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If the following message is seen, please change the line feed code of the init.sh from CRLF to the LF.</p>
+<p>bash: ./init.sh: No such file or directory</p>
+</div>
+</div>
+<div class="section" id="execute-unit-test">
+<h3><span class="section-number">3.4.2.3. </span>Execute unit test<a class="headerlink" href="#execute-unit-test" title="Permalink to this headline">¶</a></h3>
+<p>Open Terminal from Jupyter and invoke the script which execute a unit test.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workdir/root/tool/local_test/
+./run.sh
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If the following message is seen, please change the line feed code of the run.sh from CRLF to the LF.</p>
+<p>bash: ./run.sh: No such file or directory</p>
+</div>
+</div>
+</div>
+<div class="section" id="evaluate-unit-test">
+<h2><span class="section-number">3.4.3. </span>Evaluate unit test<a class="headerlink" href="#evaluate-unit-test" title="Permalink to this headline">¶</a></h2>
+<p>Check the files below and make sure the unit tests are successful.</p>
+<ul class="simple">
+<li><p>{YOUR_AIT_ROOT}/tool/local_test/ait.log</p></li>
+<li><p>{YOUR_AIT_ROOT}/local_qai/mnt/ip/job_args/1/1/ait.input.json</p></li>
+<li><p>{YOUR_AIT_ROOT}/local_qai/mnt/ip/job_result/1/1/ait.output.json</p></li>
+<li><p>{YOUR_AIT_ROOT}/local_qai/mnt/ip/job_result/1/1/downloads/Log/ait.log</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>{YOUR_AIT_ROOT}/tool/local_test/ait.log is output only if the AIT execution fails.</p>
+<p>The destination of ait.log can be changed. See the Function definitions area for details.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If an E901 error occurs, define an object (dictionary etc.) that can be expanded to a String as a method argument.</p>
+</div>
+<p>If your execution was succeeded, the results of execution will be saved to <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/local_qai/mnt/ip/job_result/1/1</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05_prepare_upload.html" class="btn btn-neutral float-right" title="3.5. Preparing registration for Qunomon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03_develop.html" class="btn btn-neutral float-left" title="3.3. Port an AI evaluation program to the my_ait.ipynb template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2023, AIST
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

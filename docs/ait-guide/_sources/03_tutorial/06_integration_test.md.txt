@@ -1,0 +1,49 @@
+# Integration test
+The integration test registers the AIT to Qunomon and confirm its operation as a TestDescription.
+
+## Prepare for integration test
+Prepare an AIT (as zip file) and input-data for integration test.
+
+## Running integration test
+The integration test is performed in the following procedure.
+Refer to [Qunomon User's Guide](https://aistairc.github.io/qunomon/user-manual/index.html) for details on Qunomon installation and operation.
+
+1. install AIT to Qunomon  
+   Install the created AIT to Qunomon
+
+The following operations are performed on Qunomon.
+
+2. Create MLComponent  
+   Create MLComponent.  
+3. Create inventory  
+   Create an inventory and register the input data for integration test.  
+4. Define TestDescription  
+   Define a TestDescription and register the installed AIT.  
+5. Run TestDescription  
+   Run TestDescription and confirm operation of the installed AIT.
+
+## Evaluate integration test
+See the details screen of TestDescription to check if the AIT is working properly.
+
+If a problem occurs during integration test, clarify whether the cause is the AIT or Qunomon.
+Check the logs below to identify the cause of the problem.
+
+| No | Log Type  | Cause Pattern | Acquisition Method |
+| --- | :--- | :--- | :--- |
+| 1 | ait.log| AIT | [Download from the details screen of TestDescription](https://aistairc.github.io/qunomon/user-manual/08_TestDescriptionsDetail/01_TestDescriptionsDetail.html) |
+| 2 | Airflow log | AIT, Qunomon | [Acquisition method of airflow log](dummy.html) |
+
+``` tip:: If a problem occurs during integration test, the cause may be an error in the usage of Qunomon or in the environment definition of AIT.
+  Check the following points.
+
+  * Incorrect inventory registration  
+  * Incorrect TestDescription parameters  
+  * AIT Dockerfile definition error (Omission of registration of required library)
+  * Insufficient Docker definitions (memory, permission)  
+```
+
+## Modifying AIT
+To register a modified AIT with Qunomon, remove the TestDescription and AIT and start over with `1. install AIT to Qunomon`.
+
+``` tip:: To remove the registered AIT, remove all TestDescriptions that use the AIT.
+```

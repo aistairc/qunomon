@@ -2,7 +2,8 @@
 
 01_prepare
 02_experiment
-03_prepare_local_qai
-04_develop
-05_deploy
-06_test
+03_develop
+04_unit_test
+05_prepare_upload
+06_integration_test
+07_github_push

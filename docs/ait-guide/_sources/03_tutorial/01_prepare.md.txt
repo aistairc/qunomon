@@ -1,49 +1,77 @@
-# Prepare
+# Preparation
+After downloading and installing Qunomon, start developing an AIT based on the template.
 
-## copy template ait project
+## User workflow
+![User Workflow](01/02_user_workflow.png)
 
-* copy src
 
+## Fork the AIT template
+AIT template : `https://github.com/aistairc/ait-template`.
+![Alt template fork](01/03_ait_fork.png)
+
+## Change AIT repository name
+![Alt rename](01/04_ait_rename.png)
+
+### Recommended naming convention of AIT
+The recommended naming convention of AIT are as follows.
+* `{prefix}_{target}_{task}_{format}_{measure}`
+
+| name    | mandatory | description                                                                     |
+|---------|-----------|---------------------------------------------------------------------------------|
+| prefix  | Yes       | This represents the type of AIT. There are several reserved types.<br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT. |
+| target  | Yes       | Choose either "dataset" or "model" depending on the   evaluation target of AIT. |
+| task    | No        | The problem targeted by AIT.                                                    |
+| format  | No        | The format of the data processed by AIT.                                        |
+| measure | No        | The quality measured by AIT.                                                    |
+
+* restriction
+  * The name must be 50 characters or less.
+  * The available characters are half-width alphanumeric characters and underscore `_`.
+
+## Clone the AIT repository
+Follow the URL to clone.
+![Alt clone](01/05_ait_clone.png)
+
+## Edit readme.md
+After create a directory for new AIT, open `{YourAITName}/readme.md` and edit title.
+
+* Before
+  ```
+  # ait-name
+  ...
+  ```
+* After
+  ```
+  # {YourAITName}
+  ```
+
+## Launch development envionment
+We are providing Jupyter Lab environment adjusted to the AIT development purpose as AIT development environment.
+After launching them, they are provided as web application on the localhost. You can use them through your browser.
+
+* Launcher
+  * Windows:
+    ```bat
+    {Qunomon_root}/ait_repository/ait/{YourAITName}/tool/launch_devenv.bat
     ```
-    {testbed_root}\ait_repository\ait\dev_template_local_docker_0.1
+  * macOS, Linux:
+    ```sh
+    sudo bash {YourAITname}/tool/launch_devenv.sh
     ```
 
-* copy dst
+### Screenshots after launch
+If the launch has succeeded, applications below are displayed automatically.
 
-    ```
-    {testbed_root}\ait_repository\ait\{Your AIT name}
-    ```
+* Jupyter lab
+![jupyter lab](01/01_jupyter_lab.png)
+<br>
 
-## edit readme.md title
+### Development work flow
 
-* edit file 
+In this tutorial, we assumes following work flow as default development work flow.
 
-    ```
-    {testbed_root}\ait_repository\ait\{Your AIT name}\readme.md
-    ```
-
-* edit part
-
-    ```
-    # dev_template_local_docker_0.1
-    ↓
-    # {Your AIT name}
-    ```
-
-## launch ait environment
-
-* execute
-
-    ```
-    {testbed_root}\ait_repository\ait\{Your AIT name}\tool\launch_devenv.bat
-    ```
-
-* launch environment like these
-
-  * jupyter lab
-
-    ![jupyter lab](01/01_jupyter_lab.png)
-
-  * eclipse theia
-
-    ![eclipse theia](01/02_eclipse_theia.jpg)
+1. Experiment and development of an AI evaluation program.
+2. Porting AI evaluation program onto the AIT template.
+3. Perform unit testing of an AI evaluation program.
+4. Preparing registration for Qunomon.
+5. Perform integration testing of an AIT with Qunomon testbed.

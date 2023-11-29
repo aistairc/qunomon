@@ -174,15 +174,12 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ait_sdk.deploy" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="ait_sdk.deploy.prepare_deploy">
-<code class="sig-prename descclassname">ait_sdk.deploy.</code><code class="sig-name descname">prepare_deploy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_manifest</span><span class="p">:</span> <span class="n"><a class="reference internal" href="ait_sdk.common.files.html#ait_sdk.common.files.ait_manifest.AITManifest" title="ait_sdk.common.files.ait_manifest.AITManifest">ait_sdk.common.files.ait_manifest.AITManifest</a></span></em>, <em class="sig-param"><span class="n">ait_sdk_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">base_dir</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">requirements_path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">is_remote_deploy</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.deploy.prepare_deploy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ait_sdk.deploy.</code><code class="sig-name descname">prepare_deploy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ait_sdk_name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">base_dir</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">requirements_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.deploy.prepare_deploy" title="Permalink to this definition">¶</a></dt>
 <dd><p>デプロイ準備をします。</p>
 <p>Prepare for deployment.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ait_manifest</strong> (<a class="reference internal" href="ait_sdk.common.files.html#ait_sdk.common.files.ait_manifest.AITManifest" title="ait_sdk.common.files.ait_manifest.AITManifest"><em>AITManifest</em></a>) – <p>ait_manifestを指定します。</p>
-<p>Specify the ait_manifest.</p>
-</p></li>
 <li><p><strong>ait_sdk_name</strong> (<em>str</em>) – <p>ait_sdk_nameを指定します。</p>
 <p>Specify ait_sdk_name.</p>
 </p></li>
@@ -191,9 +188,6 @@
 </p></li>
 <li><p><strong>requirements_path</strong> (<em>str</em>) – <p>requirements_pathを指定します。</p>
 <p>Specify requirements_path.</p>
-</p></li>
-<li><p><strong>is_remote_deploy</strong> (<em>bool</em>) – <p>aitのコンテナイメージをリモートから取得するか、ローカルでビルドするかを指定します。</p>
-<p>Specifies whether the ait container image should be obtained remotely or built locally.</p>
 </p></li>
 </ul>
 </dd>

@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Get Started" href="../02_get_started/index.html" />
+    <link rel="next" title="1.2. List of preinstalled AITs" href="02_preinstalled_AITs.html" />
     <link rel="prev" title="1. Introduction" href="index.html" /> 
 </head>
 
@@ -85,12 +85,21 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Introduction</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">1.1. What is AIT?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.1. What is AIT?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-ait-development-environment">1.1.1. What is AIT development environment?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker-images-for-ait-developers">1.1.1.1. Docker images for AIT developers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ait-template">1.1.1.2. AIT Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites-for-work">1.1.1.3. Prerequisites for work</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Get Started</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_preinstalled_AITs.html">1.2. List of preinstalled AITs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Prerequisites and installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_tutorial/index.html">3. Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../04_example/index.html">4. Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
 </ul>
 
             
@@ -184,27 +193,66 @@
 </style>
 <div class="section" id="what-is-ait">
 <h1><span class="section-number">1.1. </span>What is AIT?<a class="headerlink" href="#what-is-ait" title="Permalink to this headline">¶</a></h1>
+<p>AIT(AI system test package) is the package of a test program to be installed and executed on Qunomon testbed. It measures the concrete quality metrics of target ML components under test such as datasets and/or machine learning model.</p>
+<p>AIT can be developed by capsuling evaluation programs (written in python) and meta-data (which describes the charactersitics of that AIT) as an Docker image.
+This enables users to search, download, utilize that AIT without knowing the details of specification or implementation of an AIT. Since all AITs are running on the Docker container, Users can also avoid the conflict of the execution environment.</p>
+<p>Qunomon is an open-sourced platform (testbed) for quality assessment of AI systems.
+Qunomon has some pre-installed AITs initially so that users can develop their own AIT based on them and install third-party AITs on their local Qunomon instance.</p>
+<p>We have prepared the AIT development environment which contains some necessary templates and test execution environment to develop and deploy your own (new) AIT in the Qunomon.
+In this guide, we provide some information about development process and technical details of the AIT required to develop your own one.</p>
+<div class="section" id="what-is-ait-development-environment">
+<h2><span class="section-number">1.1.1. </span>What is AIT development environment?<a class="headerlink" href="#what-is-ait-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>We provide AIT development environment as initially included component of Qunomon platform.
+Users (such as QA engineer of AI/ML sysmtes or developer/researcher working on novel quality assessment techniques or methods) can develop their own AIT using this environment.</p>
+<p>This environment consist of: (1) <strong>Docker images for AIT developers</strong> which can launch Jupyter Notebook in the isolated containers on your local machine, and (2) <strong>AIT template</strong> which includes all required components of the AIT from the beginning.</p>
+<div class="section" id="docker-images-for-ait-developers">
+<h3><span class="section-number">1.1.1.1. </span>Docker images for AIT developers<a class="headerlink" href="#docker-images-for-ait-developers" title="Permalink to this headline">¶</a></h3>
+<p>We include ready-to-launch Jupyter lab (for experimentation and development) in the Qunomon repository.
+These environment are isolated as containers using docker and provided through your browser so that developers don’t have to worry about breaking existing environment and dependencies.</p>
+</div>
+<div class="section" id="ait-template">
+<h3><span class="section-number">1.1.1.2. </span>AIT Template<a class="headerlink" href="#ait-template" title="Permalink to this headline">¶</a></h3>
+<p>AIT Template is a template directory that contains all the basic components of AIT.
+By using this, developers can concentrate on implementing algorithmic part of the AIT.</p>
+<p>Following components are contained in the template so that developers can create a new AIT with only partial modification.</p>
 <ul class="simple">
-<li><p>AIT is AI Test Package of testbed <code class="docutils literal notranslate"><span class="pre">qunomon</span></code>.</p></li>
-<li><p>AIT is built in as a docker container.</p></li>
-<li><p>In addition to the pre-installed AITs, you can implement a new one yourself.</p></li>
-<li><p>The pre-installed AITs are as follows</p>
+<li><p>Dockerfile and an execution pipeline definition of an AIT.</p>
 <ul>
-<li><p>eval_coverage_ca_pairwise<br />Evaluate the coverage of context attributes.</p></li>
-<li><p>eval_ca_distribution<br />Evaluate the distribution of context attributes.</p></li>
-<li><p>eval_mnist_data_coverage<br />Evaluate mnist data coverage.</p></li>
-<li><p>eval_mnist_bw_classify<br />Evaluate mnist data black/white classification.</p></li>
-<li><p>eval_mnist_acc_tf2.3<br />Evaluate mnist accuracy for tensorflow-2.3.</p></li>
-<li><p>eval_bdd100k_aicc_tf2.3<br />Evaluate bdd100k accuracy for tensorflow-2.3.</p></li>
-<li><p>eval_regression_analyze_coefficient_determination_tf2.3<br />Evaluate regression analyze coefficient determination for tensorflow-2.3.</p></li>
-<li><p>eval_regression_analyze_rmse_and_mae_tf2.3<br />Evaluate regression analyze rmse and mae for tensorflow-2.3.</p></li>
-<li><p>eval_dnn_coverage_tf1.13<br />Evaluate mnist dnn coverage for tensorflow-1.13.</p></li>
-<li><p>eval_metamorphic_test_tf1.13<br />Evaluate mnist metamorphic test for tensorflow-1.13.</p></li>
-<li><p>eval_adversarial_example_acc_test_tf2.3<br />Evaluate mnist adversarial example accuracy for tensorflow-2.3.</p></li>
-<li><p>generate_ca_pairwise<br />Generate context attributes by PICT.</p></li>
+<li><p>Each AIT is isolated in individual containers to avoid conflict with other AITs or user’s environments using Docker.</p></li>
+<li><p>AITs are executed via Qunomon’s pipeline execution engine (Airflow) after deployment.</p></li>
+</ul>
+</li>
+<li><p>AIT Manifest (Meta data of an AIT)</p>
+<ul>
+<li><p>Each AIT must have AIT Manifest to coordinate with Qunomon’s other components smoothly so that guarantee portability and reusability of itself.</p></li>
+</ul>
+</li>
+<li><p>Basic design elements of an AIT</p>
+<ul>
+<li><p>Pre-defined directory structure suitable for experimentation and implementation, license information and third party notices.</p></li>
+</ul>
+</li>
+<li><p>Docker images for AIT developers.</p>
+<ul>
+<li><p>Scripts and the execution environment to capsulize an AIT as Docker image.</p></li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="prerequisites-for-work">
+<h3><span class="section-number">1.1.1.3. </span>Prerequisites for work<a class="headerlink" href="#prerequisites-for-work" title="Permalink to this headline">¶</a></h3>
+<p>These are the prerequisites for working in the AIT development environment.</p>
+<ul class="simple">
+<li><p>The programming language used is Python3.9.</p></li>
+<li><p>TensorFlow version 2.9.1 shipped with Jupyter Notebook.</p></li>
+<li><p>Jupyter Notebook uses port 9888. Please do not use this port with other applications while Jupyter Notebook is running.</p>
+<ul>
+<li><p>If you want to change it, please refer to <a class="reference external" href="../02_get_started/02_install.html#installation-of-docker">Installation of Docker</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -215,7 +263,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../02_get_started/index.html" class="btn btn-neutral float-right" title="2. Get Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="02_preinstalled_AITs.html" class="btn btn-neutral float-right" title="1.2. List of preinstalled AITs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="1. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -228,7 +276,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, AIST
+        &copy; Copyright 2023, AIST
 
     </p>
   </div>
