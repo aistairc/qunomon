@@ -23,15 +23,15 @@ Linuxなら「docker」をインストールしてください。
 
 * Windows  
   ```sh
-  docker compose up
+  docker compose up -d
   ```
 * Mac  
   ```sh
-  sudo docker compose -f docker-compose.yml -f docker-compose-mac.yml up
+  sudo docker compose -f docker-compose.yml -f docker-compose-mac.yml up -d
   ```
 * Linux  
   ```sh
-  sudo docker compose up
+  sudo docker compose up -d
   ```
 
 ブラウザで「https://127.0.0.1」を表示してください。

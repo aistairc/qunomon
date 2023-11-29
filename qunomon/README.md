@@ -27,7 +27,7 @@ Support os is Windows10 Pro and macOS.
 Execute the following command as root of this repository.
 
 ```sh
-  docker compose up
+  docker compose up -d
 ```
 
 ### 2.Certificate introduce 
