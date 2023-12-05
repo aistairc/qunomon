@@ -1,3 +1,0 @@
-# Execution
-
-03_Execution

@@ -1,0 +1,236 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: AI Quality Related Guideline
+description: AIT品質関連ガイドラインを表現するスキーマ
+type: object
+properties:
+  guideline:
+    type: object
+    description: ガイドライン全体を表す．
+    properties:
+      scopes:
+        type: array
+        description: ガイドラインで対象とするスコープ群を表す．スコープはガイドライン全体に一つの場合も考えられるし，性質の異なる複数のスコープを持つ場合も考えられる．
+        items:
+          $ref: "#/$defs/scope"
+      quality_dimensions:
+        type: array
+        description: ガイドラインで定義される，あるいは参照される品質特性をリストアップする．
+        items:
+          $ref: "#/$defs/quality_dimension"
+      quality_inhibitors:
+        type: array
+        description: ガイドラインで定義される，あるいは参照される品質阻害要因をリストアップする．
+        items:
+          $ref: "#/$defs/quality_inhibitor"
+      measurements:
+        type: array
+        description: ガイドラインで定義される，あるいは参照される，品質特性（QD）を具体的に測定するための方法，尺度，基準をリストアップする．
+        items:
+          $ref: "#/$defs/measurement"
+      meta_info:
+        type: array
+        description: ガイドラインに関するメタ情報を格納する． Dublin Core Metadata
+          Informationに定義されたProperty, Termを用いて指定する．
+        items:
+          type: object
+          properties:
+            property:
+              type: string
+              description: DCMI Propertyを指定する．
+            term:
+              type: string
+              description: DCMI Termを指定する（あれば）．
+            content:
+              type: string
+              description: Property/Termで指定されたメタ情報の本体．
+          required:
+            - property
+            - content
+        allOf:
+          - meta_info:
+              property: title
+          - meta_info:
+              property: name
+          - meta_info:
+              property: identifier
+    required:
+      - scopes
+      - quality_dimensions
+      - meta_info
+required:
+  - guideline
+$defs:
+  scope:
+    type: object
+    description: ガイドラインで対象とするスコープを表す．スコープ内に限定して利用される品質特性を表現するため，スコープごとに定義済の品質特性のＩＤを指定できる．
+    properties:
+      name:
+        type: string
+        description: 本スコープの名称
+      scope_descriptors:
+        type: array
+        description: |
+          本スコープの範囲を様々な側面から定義する．スコープは一つ以上のディスクリプタの組み合わせで表現すること．
+          「様々な側面」の例として，プロセス，製品，アーキテクチャ，ドメイン（業種）等が挙げられる．
+          ディスクリプタの粒度は限定しない．例えば「特定のプロセスに従うこと」という粒度から「自動運転に関わるシステム全般」などまでを許容する．
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+              description: スコープディスクリプタのタイトルを表す．続く本文がどの側面についてスコープを規定するかを示す．
+            description:
+              type: string
+              description: スコープ定義の本文．
+          required:
+            - title
+            - description
+      quality_scope:
+        type: object
+        description: 本スコープで取り扱うべき品質特性を表す．
+        properties:
+          quality_dimensions:
+            type: array
+            description: |
+              本スコープで対象とする品質特性のうち，本ガイドラインで定義されているものを表す．
+            items:
+              type: string
+              description: （制約）定義済みのquality_dimensionのIDを指定すること．
+          ext_quality_dimensions:
+            type: array
+            description: 本スコープで対象とする品質特性のうち，ガイドライン外のものの一覧を表す．
+            items:
+              description: （制約）値は文字列型もしくはユーザ定義のオブジェクトとすること．
+              anyOf:
+                - type: string
+                - type: object
+    required:
+      - name
+      - scope_descriptors
+      - quality_scopes
+  quality_dimension:
+    type: object
+    description: ガイドラインで取り扱う品質特性を表す．
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      category:
+        type: string
+        description: "品質特性が属するカテゴリの名称。例: 利用時品質、内部品質、外部品質、など"
+      external_reference:
+        type: string
+        description: ガイドライン外から引用・参照した品質特性についての，参照元ドキュメントへのリファレンスを表す．
+      sub_dimensions:
+        type: array
+        description: この品質特性を構成する他の品質特性の一覧．
+        items: 
+          type: string
+          description: （制約）quality_dimensionのIDを指定すること．
+      levels:
+        type: array
+        items:
+          $ref: "#/$defs/quality_level"
+      inhibitors:
+        type: array
+        description: この品質特性の実現を阻害する品質阻害要因の一覧．
+        items:
+          type: string
+          description: （制約）quality_inhibitorのIDを指定すること．
+      measurements:
+        description: この品質特性を具体的に測定する方法の一覧。
+        type: array
+        items:
+          type: string
+  quality_level:
+    type: object
+    description: 品質特性の達成度合を表現する品質レベルを表す
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      level:
+        type: number
+      level_requirements:
+        description: この品質レベルで要求される要求事項の一覧を表す。
+        type: array
+        items:
+          $ref: "#/$defs/level_requirement"
+    required:
+      - id
+      - description
+      - level
+  quality_inhibitor:
+    type: object
+    description: 品質阻害要因．ある品質特性（レベル）の向上，達成，維持，測定を阻害する要因を表す．
+      たとえばセキュリティ・リスクや，品質特性に関して同時に達成できない制約等が挙げられる．
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      countermeasures:
+        description: 品質阻害要因への対策基準を表す．
+        type: array
+        items:
+          $ref: "#/$defs/countermeasure"
+  measurement:
+    type: object
+    description: 品質特性（QD）を具体的に測定するための尺度を表す．
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        enum:
+          - conditional
+          - numeric
+          - categorical
+          - other
+        description: |
+          この尺度のタイプを表す．
+          conditional: 条件の形で提示され、条件を満たすか満たさないかの二値として結果が得られる尺度．
+          numeric: 数値的に結果が得られる尺度．
+          categorical: カテゴリカル値として結果が得られる尺度．
+          other: 図，グラフ，構造化データなどその他の形式で結果が得られる尺度．
+      description:
+        type: string
+        description: 尺度の詳細説明．具体的な定義，計算方法，判定の基準などを示す．
+      sub_measurements:
+        description: この尺度を構成する（子となる）尺度の一覧．
+        type: array
+        items:
+          type: string
+          description: （制約）measurementのIDを指定すること．
+    required:
+      - id
+      - name
+      - type
+      - description
+  countermeasure:
+    type: object
+    description: 品質阻害要因に対する対策を表す．
+    properties:
+      id:
+        type: string
+        description: この対策を表すID．
+      description:
+        type: string
+        description: この対策の具体的な説明．
+  level_requirement:
+    type: object
+    description: 品質レベルで要求される要求事項を表す。
+    properties:
+      id:
+        type: string
+        description: このレベル要求を表すID．
+      description:
+        type: string
+        description: このレベル要求の具体的な説明．
