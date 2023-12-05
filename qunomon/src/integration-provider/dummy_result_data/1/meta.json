@@ -1,9 +1,0 @@
-{
-    "description":"this is dummy data.",
-    "files":[
-        {"filename":"acc.csv", "type":"table"},
-        {"filename":"acc.png", "type":"picture"},
-        {"filename":"Incorrect_data.csv", "type":"table"},
-        {"filename":"images.png", "type":"picture"}
-    ]
-}

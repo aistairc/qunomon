@@ -1,0 +1,420 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIT manifest",
+  "description": "AITマニフェストのスキーマ",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "AITの名称． 推奨フォーマット  {prefix}_{target_problem}_{delegate_metric}_{…} {prefix} :\n  eval : 品質評価\n  alyz : 分析\n  misc : その他\n  dev  : 開発でのみ使用\n{target_problem} : 対象とする問題領域を簡潔に記載します。 {delegate_metric} : 代表的な指標値を記載します。 {…} : 自由記述\n"
+    },
+    "description": {
+      "type": "string",
+      "description": "AITの説明．概要，使用している手法，利用時の前提，備考など"
+    },
+    "source_repository": {
+      "type": "string",
+      "description": "ソースを公開しているリポジトリへのリンク情報"
+    },
+    "version": {
+      "type": "string",
+      "description": "AITの版．Semantic Versioningの利用を推奨．"
+    },
+    "quality": {
+      "type": "string",
+      "description": "測定する品質特性 (Quality Dimension) をURI形式で列挙．"
+    },
+    "measurement": {
+      "type": "string",
+      "description": "品質特性をどのような観点で測定するかについて記載．\n記載内容は，測定値，測定手法，観点等の名称あるいは簡潔な説明であることが望ましい．\n（\"quality\"項目に記載した品質特性の定義・解説文内で定義・言及されている場合，その名称・用語を使うことを推奨．）\n"
+    },
+    "keywords": {
+      "type": "array",
+      "description": "関連するキーワード",
+      "items": {
+        "type": "string"
+      }
+    },
+    "references": {
+      "type": "array",
+      "description": "関連する文献情報のリスト",
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "licenses": {
+      "type": "array",
+      "description": "AITの頒布にかかるライセンスの名称のリスト（検索用）．",
+      "items": {
+        "type": "string"
+      }
+    },
+    "inventories": {
+      "type": "array",
+      "description": "インベントリ情報 (AITの品質評価対象となるデータ・AIモデルのファイルの情報) のリスト．",
+      "items": {
+        "$ref": "#/$defs/inventory"
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "description": "AITに特有のハイパーパラメタのリスト．例）敵対的生成に基づく頑強性テストにおける \"ランダム確率\" パラメタ",
+      "items": {
+        "$ref": "#/$defs/parameter"
+      }
+    },
+    "report": {
+      "$ref": "#/$defs/report"
+    },
+    "downloads": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/download"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "authors",
+    "version",
+    "quality",
+    "inventories",
+    "parameters",
+    "report",
+    "downloads"
+  ],
+  "$defs": {
+    "reference": {
+      "type": "object",
+      "description": "関連文献の情報．",
+      "properties": {
+        "bib_info": {
+          "type": "string",
+          "description": "関連文献の特定に必要な書誌情報．著者名，タイトル，雑誌名，発表日時，取得日時など．既存の引用スタイルの利用を推奨．"
+        },
+        "additional_info": {
+          "type": "string",
+          "description": "関連文献に関する補足情報．AITと関連文献との関係性や概要などを記載する．"
+        },
+        "url": {
+          "type": "string",
+          "description": "関連文献のURL．"
+        }
+      },
+      "required": [
+        "bib_info"
+      ]
+    },
+    "inventory": {
+      "type": "object",
+      "description": "インベントリ情報",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "インベントリに受け入れ可能なアセットのタイプ． dataset: データセット model: シリアライズされたモデル attribute set: 属性の集合\n",
+          "enum": [
+            "dataset",
+            "model",
+            "attribute set"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "インベントリの概要．例）受け入れるアセットの用途や想定データセット、サンプルの提示など"
+        },
+        "requirement": {
+          "$ref": "#/$defs/requirement",
+          "description": "アセットが従うべき要件"
+        },
+        "depends_on_parameter": {
+          "type": "string",
+          "description": "本インベントリの参照を要求するAITパラメタ。当該AITパラメタが未設定の場合、本インベントリは参照されない。"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "description",
+        "requirement"
+      ]
+    },
+    "requirement": {
+      "type": "object",
+      "description": "アセットが従うべき要件",
+      "properties": {
+        "format": {
+          "type": "array",
+          "description": "本インベントリに受け入れ可能なアセットのフォーマット名． 例）\"keras-json\", \"keras-h5\", \"tf2-savedmodel\", \"tf2-checkpoint\", \"pytorch-statedict\", \"zip\", \"coco\", ...\n",
+          "items": {
+            "type": "string"
+          }
+        },
+        "compatible_packages": {
+          "type": "array",
+          "description": "本インベントリが想定するパッケージやライブラリのバージョンを一覧形式で示す。 例えば、Tensorflow 2.6, 2.7, 2.8を用いて生成することを要求する場合、その名称・バージョンをリスト形式で記載する。\n",
+          "items": {
+            "$ref": "#/$defs/compatible_package"
+          }
+        },
+        "additional_info": {
+          "description": "その他の要件．例）データサイズ, 件数, 実行可能形式モデルの入出力仕様など",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/model_info"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "min": {
+          "type": "string",
+          "description": "インベントリファイルの個数の下限値（min<=x）。設定省略する場合、下限値が1とみなす。"
+        },
+        "max": {
+          "type": "string",
+          "description": "インベントリファイルの個数の上限値（x<=max）。設定省略する場合、上限値が1とみなす。"
+        }
+      },
+      "required": [
+        "format"
+      ]
+    },
+    "compatible_package": {
+      "type": "object",
+      "description": "アセットの生成時に依存するソフトウェア",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "ソフトウェアの名前"
+        },
+        "version": {
+          "type": "string",
+          "description": "ソフトウェアのバージョン要件（様式自由）"
+        },
+        "additional_info": {
+          "type": "string",
+          "description": "追加の補足情報．例）利用すべきメソッド・コマンドや引数など"
+        }
+      }
+    },
+    "model_info": {
+      "type": "object",
+      "description": "モデル形式のアセットについての追加情報",
+      "properties": {
+        "functionality": {
+          "type": "string",
+          "description": "モデルが持つべき機能",
+          "enum": [
+            "inference",
+            "training",
+            "other"
+          ]
+        },
+        "tasks": {
+          "type": "array",
+          "description": "モデルの想定タスク．例）Image Classification, Object Detectionなど．",
+          "items": {
+            "type": "string"
+          }
+        },
+        "component_type": {
+          "type": "string",
+          "description": "モデル構成要素の種別。",
+          "enum": [
+            "architecture",
+            "weights",
+            "hyperparameters",
+            "preprocessor"
+          ]
+        },
+        "serialization_type": {
+          "type": "string",
+          "description": "モデルのシリアライズ形式",
+          "enum": [
+            "serialized",
+            "compiled",
+            "transpiled",
+            "source"
+          ]
+        },
+        "input_formats": {
+          "type": "array",
+          "description": "モデルの入力データのフォーマットに関する情報．例）image, video, tabular, structured, ...",
+          "items": {
+            "type": "string"
+          }
+        },
+        "output_shape": {
+          "type": "array",
+          "desctiption": "モデルの出力テンソル形状を記載する．サイズ不定の場合はNone, 次元数不定の場合はMultiDimと記載する． 例）[None, 320, 240, MultiDim, 1]\n",
+          "items": {
+            "type": "string"
+          }
+        },
+        "output_description": {
+          "type": "array",
+          "description": "output_shapeで指定したshapeの各次元について捕捉説明を行う． 例）[batch_size, x-axis, y-axis, class_probability(multi-hot encoding), confidence]\n",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "description": "AITの実行前に設定可能なハイパーパラメタの仕様",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "int",
+            "float",
+            "bool",
+            "string"
+          ]
+        },
+        "description": {
+          "description": "パラメタの説明",
+          "type": "string"
+        },
+        "default_val": {
+          "description": "パラメタのデフォルト値",
+          "type": "string"
+        },
+        "min": {
+          "type": "string",
+          "description": "パラメタの下限値（min<=x）。設定省略する場合、下限値なしとみなす。"
+        },
+        "max": {
+          "type": "string",
+          "description": "パラメタの上限値（x<=max）。設定省略する場合、上限値なしとみなす。"
+        },
+        "depends_on_parameter": {
+          "type": "string",
+          "description": "本パラメタの参照を要求するAITパラメタ。当該AITパラメタが未設定の場合、本パラメタは参照されない。"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "description"
+      ]
+    },
+    "report": {
+      "type": "object",
+      "description": "AITが検査結果として出力するレポートの内容・仕様",
+      "properties": {
+        "measures": {
+          "description": "レポートに含まれるメジャー（尺度）のリスト",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/measure"
+          }
+        },
+        "resources": {
+          "description": "レポートに含まれる図表・ドキュメント等のリスト",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/resource"
+          }
+        }
+      },
+      "required": [
+        "measures",
+        "resources"
+      ]
+    },
+    "measure": {
+      "type": "object",
+      "description": "レポートに含まれるメジャー（尺度）の仕様",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "int",
+            "float",
+            "bool",
+            "string"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "structure": {
+          "type": "string",
+          "enum": [
+            "single"
+          ]
+        },
+        "min": {
+          "type": "string",
+          "description": "尺度の下限値（min<=x）。設定省略する場合、下限値なしとみなす。"
+        },
+        "max": {
+          "type": "string",
+          "description": "尺度の上限値（x<=max）。設定省略する場合、上限値なしとみなす。"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "description",
+        "structure"
+      ]
+    },
+    "resource": {
+      "type": "object",
+      "description": "レポートに含まれるリソース（図表・ドキュメント）等の仕様",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "picture",
+            "table",
+            "binary"
+          ]
+        },
+        "description": {
+          "description": "リソースの説明",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "description"
+      ]
+    },
+    "download": {
+      "description": "AITがレポート以外に出力する副産物データの仕様",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ]
+    }
+  }
+}

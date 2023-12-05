@@ -1,5 +1,0 @@
-FROM nginx:1.17.9
-
-COPY ./conf.d/ /etc/nginx/conf.d
-COPY ./ssl/cert/server.crt /etc/nginx/cert/
-COPY ./ssl/cert/server.key /etc/nginx/cert/

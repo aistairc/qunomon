@@ -1,3 +1,0 @@
-# System configuration
-
-03_Systemconfiguration

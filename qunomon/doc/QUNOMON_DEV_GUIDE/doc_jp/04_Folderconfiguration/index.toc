@@ -1,3 +1,0 @@
-# アプリ毎のフォルダ構成
-
-04_Folderconfiguration
