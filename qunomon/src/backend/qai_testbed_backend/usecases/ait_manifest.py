@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import shutil
 import requests
+import docker
 
 from injector import singleton
 import werkzeug
@@ -62,22 +63,31 @@ class AITManifestService:
     @log(logger)
     def post(self, request) -> PostAITManifestRes:
         # AITHubからAITをインストールする場合
-        json_input = request.get_json()
         manifest_json = {}
         create_user_account = ''
         create_user_name = ''
         install_mode = ''
 
-        if json_input is not None and json_input["installAITFromAITHub"]:
-            manifest_json = json.loads(json_input["aitManifest"])
-            manifest = AITManifestSchema().load(json.loads(json_input["aitManifest"]))
+        json_input = {}
+        json_type_flag = False
+        # requestのContent-Typeがjsonの場合はget_json()で値を取得する
+        if "json" in request.headers['Content-Type']:
+            json_type_flag = True
+            json_input = request.get_json()
 
-            # フロントエンドからAITHUBの登録ユーザアカウントを設定
-            create_user_account = json_input["create_user_account"]
-            create_user_name = json_input["create_user_name"]
+        if json_type_flag:
+            if json_input is not None and json_input["installAITFromAITHub"]:
+                manifest_json = json.loads(json_input["aitManifest"])
+                manifest = AITManifestSchema().load(json.loads(json_input["aitManifest"]))
 
-            # インストールモードに'2'(AITHUB)を設定
-            install_mode = '2'
+                # フロントエンドからAITHUBの登録ユーザアカウントを設定
+                create_user_account = json_input["create_user_account"]
+                create_user_name = json_input["create_user_name"]
+
+                # インストールモードに'2'(AITHUB)を設定
+                install_mode = '2'
+            else:
+                raise QAIInvalidRequestException(result_code='A01400', result_msg='uploadFile is required.')
 
         # ait.manifest.jsonからAITをインストールする場合
         else:
@@ -342,6 +352,20 @@ class AITManifestService:
                           filter(TestDescriptionMapper.delete_flag == False).first()
             if already_exist_td is not None:
                 raise QAINotFoundException('A02400', 'AIT is used in the TestDescription')
+            
+            # AITのDockerイメージを削除
+            docker_host = SettingMapper.query.get('docker_host_name').value
+            ait_nm = target_ait.name
+            ait_ver = target_ait.version
+            ait_acc = target_ait.create_user_account
+            client = docker.from_env()
+            if target_ait.install_mode == '1':
+                tag = f'{docker_host}/{ait_nm}-{ait_acc}:{ait_ver}'
+                if 0 < len(client.api.images(name=tag,quiet=True)):
+                    client.images.remove(tag)
+            elif target_ait.install_mode == '0':
+                tag = f'localhost:5050/{ait_nm}-{ait_acc}:{ait_ver}'
+                client.images.remove(tag)
 
             target_ait.delete_flag = True
             sql_db.session.commit()

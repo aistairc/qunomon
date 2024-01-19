@@ -2000,7 +2000,160 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Result'
-
+    post:
+      tags:
+        - AIT
+      summary: 指定されたtestRunner(AIT)をインストールする.
+      description: |
+        ait_manifestを受け取り、AITを追加する.  
+        MlComponentとは関連しない.  
+        名称とバージョンと品質特性の組み合わせが既に存在する場合、400を返却する.  
+      parameters:
+        - in: path
+          name: installAITFromAITHub
+          description: インストール区分フラグ
+          required: true
+          schema:
+            type: boolean
+      requestBody:
+        description: ait_manifest
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AITManifest'
+      responses:
+        '200':
+          description: インストール正常終了
+          content:
+            application/json:
+              schema:
+                properties:
+                  Result:
+                    $ref: '#/components/schemas/Result'
+                  TestRunnerId:
+                    type: integer
+                    description: インストールしたAITのID
+                example:
+                  Result:
+                    Code: 'A01000'
+                    Message: Success.
+                  TestRunnerId: 100
+        '400':
+          description: |
+            以下の無効なリクエストを受信したときに返却する。
+              - ValidationError
+              - TypeError
+              - BadRequest
+              - Name-Version-Qualityの組み合わせが既に存在する
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'A01400'
+                  Message: invalid request.
+        '401':
+          description: >
+            未認証時のリクエストを受信したときに返却する。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'A01401'
+                      Message: Unauthorized request.
+        '500':
+          description: |
+            サーバでの処理失敗
+            - SQLAlChemyError
+            - その他例外
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+  '/testRunnersFront':
+    post:
+      tags:
+        - AIT
+      summary: 指定されたtestRunner(AIT)をインストールする（scrfトークンありで使用）.
+      description: |
+        ait_manifestを受け取り、AITを追加する.  
+        MlComponentとは関連しない.  
+        名称とバージョンと品質特性の組み合わせが既に存在する場合、400を返却する.  
+        （scrfトークンありで使用）  
+      parameters:
+        - in: path
+          name: installAITFromAITHub
+          description: インストール区分フラグ
+          required: true
+          schema:
+            type: boolean
+      requestBody:
+        description: ait_manifest
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AITManifest'
+      responses:
+        '200':
+          description: インストール正常終了
+          content:
+            application/json:
+              schema:
+                properties:
+                  Result:
+                    $ref: '#/components/schemas/Result'
+                  TestRunnerId:
+                    type: integer
+                    description: インストールしたAITのID
+                example:
+                  Result:
+                    Code: 'A01000'
+                    Message: Success.
+                  TestRunnerId: 100
+        '400':
+          description: |
+            以下の無効なリクエストを受信したときに返却する。
+              - ValidationError
+              - TypeError
+              - BadRequest
+              - Name-Version-Qualityの組み合わせが既に存在する
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'A01400'
+                  Message: invalid request.
+        '401':
+          description: >
+            未認証時のリクエストを受信したときに返却する。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'A01401'
+                      Message: Unauthorized request.
+        '500':
+          description: |
+            サーバでの処理失敗
+            - SQLAlChemyError
+            - その他例外
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
   '/testRunners/{testRunnerId}':
     delete:
       tags:
@@ -2208,6 +2361,87 @@ paths:
                     status: OK
         '500':
           description: 予期せぬエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+    post:
+      tags:
+        - AIT_Local
+      summary: ローカルレジストリに指定されたAITをインストールする.
+      description: |
+        ait_manifestを受け取り、ローカルレジストリにAITを追加する.  
+        MlComponentとは関連しない.  
+        名称とバージョンと品質特性の組み合わせが既に存在する場合、400を返却する.  
+      parameters:
+        - in: path
+          name: installAITFromAITHub
+          description: インストール区分フラグ
+          required: true
+          schema:
+            type: boolean
+      requestBody:
+        description: ait_manifest
+        content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AITManifest'
+      responses:
+        '200':
+          description: インストール正常終了
+          content:
+            application/json:
+              schema:
+                properties:
+                  Result:
+                    $ref: '#/components/schemas/Result'
+                example:
+                  Result:
+                    Code: 'AL1000'
+                    Message: Success.
+
+        '400':
+          description: |
+            以下の無効なリクエストを受信したときに返却する。
+              - ValidationError
+              - TypeError
+              - BadRequest
+              - Name-Version-Qualityの組み合わせが既に存在する
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'AL1400'
+                      Message: Invalid AIT. Registration is rejected.
+                  ValidationOutput:
+                    description: サーバ側のバリデーションで指摘された問題点のリスト
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ValidationOutput'
+        '401':
+          description: >
+            未認証時のリクエストを受信したときに返却する。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'AL1401'
+                      Message: Unauthorized request.
+        '500':
+          description: |
+            サーバでの処理失敗
+            - SQLAlChemyError
+            - その他例外
           content:
             application/json:
               schema:
@@ -3483,7 +3717,7 @@ paths:
                       CreateUserName: "airc開発者"
                       Version: "1"
                       Quality: "https://airc.aist.go.jp/aiqm/quality/internal/要求分析の十分性"
-                      LandingPage: "https://github.com/AITName/AITVersion"
+                      LandingPage: "https://aithub.com/AITName/AITVersion"
                       Params:
                         - Id: 1
                           Name: Threshold
@@ -6159,8 +6393,204 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Result'
+  '/Guidelines':
+    get:
+      tags:
+        - Guideline
+      security: []
+      summary: ガイドライン一覧取得.
+      description: |
+        ガイドライン一覧を取得する。  
+      responses:
+        '200':
+          description: ガイドライン情報
+          content:
+            application/json:
+              schema:
+                required:
+                  - Result
+                  - Guidelines
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                  Guidelines:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Id:
+                          type: integer
+                        AithubGuidelineId:
+                          type: integer
+                        Name:
+                          type: string
+                        Description:
+                          type: string
+                        Creator:
+                          type: string
+                        Publisher:
+                          type: string
+                        Identifier:
+                          type: string
+                        PublishDatetime:
+                          type: string
+                        AIThubDeleteFlag:
+                          type: boolean
+                        CreationDatetime:
+                          type: string
+                        UpdateDatetime:
+                          type: string
+                example:
+                  Result:
+                    Code: "G21000"
+                    Message: "Success"
+                  Guidelines:
+                    - Id: 1
+                      AithubGuidelineId: 1
+                      Name: "AIQM Guideline"
+                      Description: "AI Quality Management Guideline"
+                      Creator: "AIQM_members"
+                      Publisher: "AIST"
+                      Identifier: "https://www.digiarc.aist.go.jp/publication/aiqm/AIQM-Guideline-2.1.0.pdf"
+                      PublishDatetime: "2021/01/01 01:23:45"
+                      AIThubDeleteFlag: false
+                      CreationDatetime: "2021/04/01 09:01:24"
+                      UpdateDatetime: "2021/06/15 11:31:56"
+                    - Id: 2
+                      AithubGuidelineId: 1
+                      Name: "ML Guideline"
+                      Description: "Machine Learning Guideline"
+                      Creator: "ML_members"
+                      Publisher: "AIST"
+                      Identifier: "https://www.digiarc.aist.go.jp/publication/aiqm/AIQM-Guideline-2.1.0.pdf"
+                      PublishDatetime: "2021/02/01 01:30:00"
+                      AIThubDeleteFlag: true
+                      CreationDatetime: "2021/05/04 14:08:07"
+                      UpdateDatetime: "2021/05/16 17:54:41"
+        '404':
+          description:  アクセスエラー
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'G21404'
+                      Message: Not found Guideline.
+        '500':
+          description: 予期せぬエラー
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
 
   '/Guideline/{GuidelineId}':
+    put:
+      tags:
+        - Guideline
+      summary: ガイドライン更新.
+      description: |
+        ガイドライン情報を更新する。
+        
+      parameters:
+        - name: GuidelineId
+          in: path
+          description: ガイドラインID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: ガイドライン更新情報
+        content:
+          application/json:
+            schema:
+              properties:
+                Description:
+                  type: string
+                Creator:
+                  type: string
+                Publisher:
+                  type: string
+                Identifier:
+                  type: string
+                PublishDatetime:
+                  type: string
+                AIThubDeleteFlag:
+                  type: boolean
+            example:
+              Description: "AI Quality Management Guideline"
+              Creator: "AIQM_members"
+              Publisher: "AIST"
+              Identifier: "https://www.digiarc.aist.go.jp/publication/aiqm/AIQM-Guideline-2.1.0.pdf"
+              PublishDatetime: "2021/01/01 01:23:45"
+              AIThubDeleteFlag: false
+      responses:
+        '200':
+          description:  更新成功通知
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'G24000'
+                  Message: success.
+        '401':
+          description: >
+            未認証時のリクエストを受信したときに返却する。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'G24401'
+                      Message: Unauthorized request.
+        '403':
+          description: |
+            不許可リソースに対するリクエストを受信したときに返却する。
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Result:
+                    allOf:
+                      - $ref: '#/components/schemas/Result'
+                    example:
+                      Code: 'G24403'
+                      Message: Forbidden request.
+        '404':
+          description:  アクセスエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'G24404'
+                  Message: not found guideline.
+        '500':
+          description: 予期せぬエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'G24999'
+                  Message: internal server error
     delete:
       tags:
         - Guideline
@@ -6750,6 +7180,76 @@ paths:
               example:
                 Result:
                   Code: 'Q02500'
+                  Message: unexpected error.
+
+  '/guidelines/guideline_schema_file':
+    post:
+      tags:
+        - Guideline
+      summary: ガイドラインスキーマファイル登録
+      description: |
+        ガイドラインスキーマファイルを登録する。  
+        ＜処理詳細＞  
+        １．ユーザからガイドラインスキーマファイルを受信する。  
+        ２．ガイドラインスキーマファイルを登録する。  
+        ３．登録合否とIDをユーザに返す。  
+      requestBody:
+        description: ガイドラインスキーマファイル情報
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - guideline_schema
+              properties:
+                guideline_schema:
+                  description: ガイドラインスキーマファイルのバイナリデータ
+                  type: object
+                guideline_aithub_id:
+                  description: AITHUBのガイドラインID
+                  type: string
+      responses:
+        '200':
+          description: ガイドラインの登録に成功した。登録結果を返す。
+          content:
+            application/json:
+              schema:
+                required:
+                  - Result
+                  - GuidelineSchemaFileId
+                properties:
+                  Result:
+                    $ref: '#/components/schemas/Result'
+                  GuidelineSchemaFileId:
+                    type: integer
+                example:
+                  Result:
+                    Code: 'G25000'
+                    Message: Success.
+                  GuidelineSchemaFileId: 1
+        '400':
+          description: |
+            無効なリクエストを受信したときに返却する。
+              - 入力パラメータが不正な場合
+              - 重複したガイドライン名を設定した場合
+              - スペースを含むガイドライン名を設定した場合
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'G25400'
+                  Message: invalid request.
+        '500':
+          description: 予期せぬエラーが発生した。
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result'
+              example:
+                Result:
+                  Code: 'G25500'
                   Message: unexpected error.
 
   '/guidelines/{guideline_id}/guideline_schema_file':

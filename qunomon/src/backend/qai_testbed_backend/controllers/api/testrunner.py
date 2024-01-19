@@ -76,7 +76,7 @@ class TestRunnerFrontAPI(TestRunnerCoreAPI):
         self.service = service
 
     # csfrトークンチェックあり
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: int):
         # スーパークラスのpostを呼び出す
@@ -147,7 +147,7 @@ class AITManifestFrontAPI(AITManifestCoreAPI):
         self.service = service
 
     # csfrトークンチェックあり
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self):
         # スーパークラスのpostを呼び出す
@@ -241,7 +241,7 @@ class ReportGeneratorFrontAPI(ReportGeneratorCoreAPI):
         self.service = service
 
     # csfrトークンチェックあり
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: str):
         # スーパークラスのpostを呼び出す
@@ -254,8 +254,7 @@ class AITManifestDetailAPI(Resource):
         # TODO 要DI
         self.service = AITManifestService()
 
-    # @jwt_required()
-    @jwt_required
+    @jwt_required()
     # @helpers.standardize_api_response
     # TODO 要変換アノテーション
     @log(logger)

@@ -87,7 +87,7 @@ class TestDescriptionFrontAPI(TestDescriptionCoreAPI):
         self.service = service
 
     # csfrトークンチェックあり
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: str):
         # スーパークラスのpostを呼び出す
@@ -118,7 +118,7 @@ class TestDescriptionDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='T39999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def delete(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
         try:
@@ -134,7 +134,7 @@ class TestDescriptionDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='T59999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
         try:
@@ -166,7 +166,7 @@ class TestDescriptionStarAPI(Resource):
     def __init__(self, service: TestDescriptionService):
         self.service = service
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
         try:
@@ -186,7 +186,7 @@ class TestDescriptionUnstarAPI(Resource):
     def __init__(self, service: TestDescriptionService):
         self.service = service
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
         try:

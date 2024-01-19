@@ -2,7 +2,37 @@
 
 Qunomonを動かす前にガイドラインとAITをあらかじめ登録しておく必要があります。
 
-## ガイドラインおよびAITの作成と登録
+## AIT-HUBを利用する場合
+
+AIT-HUBに登録しているガイドラインとAITをQunomonに登録します。
+
+### AIT-HUBに接続
+
+Setting画面で「AIT-HUB login」ボタンを押下してログイン状態にします。
+
+![0101](01/01.png)
+
+### ガイドライン登録（AIT-HUBを利用する）
+
+Guidelines画面でガイドラインを選択し「Guideline install」ボタンでインストールします。
+
+![0102](01/02.png)
+
+### AIT登録（AIT-HUBを利用する）
+
+AITSearch画面からAITを検索して任意のAITの「install」アイコンを押下します。
+
+（まだインストールしていないAITだけインストールできます。）
+
+![0103](01/03.png)
+
+もしくはAITHUB Ranking画面から任意のAITの「install」アイコンを押下します。
+
+（まだインストールしていないAITだけインストールできます。）
+
+![0104](01/04.png)
+
+## AIT-HUBを利用しない場合
 
 ガイドラインを独自に作成して登録します。
 
@@ -10,7 +40,7 @@ Qunomonを動かす前にガイドラインとAITをあらかじめ登録して�
 
 AITを独自に作成して登録します。
 
-### ガイドライン登録
+### ガイドライン登録（AIT-HUBを利用しない）
 
 Guidelines画面で「Guideline Create」ボタンを押下してガイドライン作成画面に遷移します。
 
@@ -20,7 +50,7 @@ Guidelines画面で「Guideline Create」ボタンを押下してガイドライ
 
 ![0202](02/02.png)
 
-### AIT登録
+### AIT登録（AIT-HUBを利用しない）
 
 AITLocalInstall画面で「Select Upload File」ボタンを押下してAITのzipファイルを選択し、「AIT Create」ボタンで登録します。
 
