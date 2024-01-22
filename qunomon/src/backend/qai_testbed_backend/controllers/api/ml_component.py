@@ -95,7 +95,7 @@ class MLComponentFrontAPI(MLComponentCoreAPI):
         self.service = service
 
     # csfrトークンチェックあり
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self, organizer_id: str):
         # スーパークラスのpostを呼び出す
@@ -108,7 +108,7 @@ class MLComponentDetailAPI(Resource):
     def __init__(self, service: MLComponentService):
         self.service = service
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def delete(self, organizer_id: str, ml_component_id: str):
         try:
@@ -121,7 +121,7 @@ class MLComponentDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='P39999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str):
 
@@ -159,7 +159,7 @@ class MLComponentReportOpinionAPI(Resource):
     def __init__(self, service: MLComponentReportOpinionService):
         self.service = service
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str):
 

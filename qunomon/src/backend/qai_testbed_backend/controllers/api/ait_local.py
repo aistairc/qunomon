@@ -30,7 +30,7 @@ class AITLocalAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='AL0999', message='invalid path request: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self):
         try:

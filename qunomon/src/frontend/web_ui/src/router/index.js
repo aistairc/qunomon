@@ -26,6 +26,7 @@ import Information from '@/components/Information'
 import TestDescriptionAppend2 from '@/components/TestDescriptionAppend2'
 import TestDescriptionEdit2 from '@/components/TestDescriptionEdit2'
 import InventoryAdd from '@/components/InventoryAdd'
+import Setting from '@/components/Setting'
 
 
 Vue.use(Router)
@@ -171,6 +172,11 @@ export default new Router({
       path: '/inventory_add',
       name: 'InventoryAdd',
       component: InventoryAdd
+    },
+    {
+      path: '/setting',
+      name: 'Setting',
+      component: Setting
     },
    ]
 })

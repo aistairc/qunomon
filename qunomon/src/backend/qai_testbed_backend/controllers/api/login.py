@@ -20,8 +20,7 @@ class LoginAPI(Resource):
         # TODO 要DI
         self.service = LoginService()
 
-    # @jwt_required()
-    @jwt_required
+    @jwt_required()
     # @helpers.standardize_api_response
     # TODO 要変換アノテーション
     @log(logger)

@@ -51,6 +51,10 @@
                             <span v-if="this.isActive" :title="$t('common.menuReportTemplate')"><img :src="ReportTemplateIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuReportTemplate")}}</span>
                         </b-list-group-item>
+                        <b-list-group-item to="Setting" variant="success" active-class="active">
+                            <span v-if="this.isActive" :title="$t('common.menuSetting')"><img :src="SettingIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
+                            <span v-else>{{$t("common.menuSetting")}}</span>
+                        </b-list-group-item>
                     </div>
                 </b-list-group>
             </b-sidebar>
@@ -69,6 +73,7 @@ import AITSearchIcon from '@/assets/AITSearching_icon.svg'
 import AITRankingIcon from "@/assets/AITRanking_icon.svg";
 import AITLocalInstallIcon from '@/assets/AITLocalInstall_icon.svg'
 import ReportTemplateIcon from '@/assets/ReportTemplate_icon.svg'
+import SettingIcon from '@/assets/Setting_icon.svg'
 
 
 export default {
@@ -82,6 +87,7 @@ export default {
             AITRankingIcon: AITRankingIcon,
             AITLocalInstallIcon: AITLocalInstallIcon,
             ReportTemplateIcon: ReportTemplateIcon,
+            SettingIcon: SettingIcon,
             isActive: this.setIsActive_SubMenu()
         }
     },

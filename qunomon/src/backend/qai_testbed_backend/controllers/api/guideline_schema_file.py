@@ -23,7 +23,7 @@ class GuidelineSchemaFileAPI(Resource):
     def __init__(self):
         self.service = GuidelineSchemaFileService()
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
 
     def post(self):
@@ -80,7 +80,7 @@ class GuidelineSchemaFileDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G26999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     def put(self, guideline_id: str):
         """
         ガイドラインスキーマファイルからガイドライン更新。
@@ -95,7 +95,7 @@ class GuidelineSchemaFileDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G27999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     def delete(self, guideline_id: str):
         """
         ガイドライン削除。

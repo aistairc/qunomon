@@ -36,7 +36,7 @@ class ReportTemplateAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='R01999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def post(self):
         try:
@@ -56,8 +56,7 @@ class ReportTemplateGenerateAPI(Resource):
         # TODO 要DI
         self.service = ReportTemplateService()
 
-    # @jwt_required()
-    @jwt_required
+    @jwt_required()
     # @helpers.standardize_api_response
     # TODO 要変換アノテーション
     @log(logger)

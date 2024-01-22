@@ -440,7 +440,7 @@ services:
   ait-installer:
     build:
       context: ./src/ait-installer
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     container_name: "ait-installer"
     extra_hosts:
       - "host.docker.internal:host-gateway"

@@ -33,7 +33,7 @@ class SettingDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='V09999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def put(self, key: str):
 

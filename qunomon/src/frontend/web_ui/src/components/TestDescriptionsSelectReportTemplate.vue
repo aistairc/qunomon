@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-    <modal name="rtSelectModal" class="modalContents">
+    <modal name="rtSelectModal" class="modalContents" @before-close="beforeClose">
         <div id="parent">
             <div class="part1">
                 <div class="title_area">
@@ -133,8 +133,10 @@ export default {
             this.$modal.show('rtSelectModal');
         },
         hide() {
-            this.previewer = null;
             this.$modal.hide('rtSelectModal');
+        },
+        beforeClose() {
+            this.previewer = null;
             this.$emit('reset');
         },
 

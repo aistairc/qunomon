@@ -44,7 +44,7 @@ class GuidelineDetailAPI(Resource):
         self.service = GuidelineService()
 
     # TODO 要変換アノテーション
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def delete(self, guideline_id: str):
         try:
@@ -57,7 +57,7 @@ class GuidelineDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G23999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required
+    @jwt_required()
     @log(logger)
     def put(self, guideline_id: str):
         json_input = request.get_json()

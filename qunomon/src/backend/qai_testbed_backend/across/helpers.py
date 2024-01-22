@@ -5,14 +5,14 @@ import json
 import flask
 from passlib import hash
 from flask_restful import Api
-from flask_jwt import JWTError
+from flask_jwt_extended.exceptions import JWTExtendedException
 
 
 class MyApi(Api):
     """A simple class to keep the default flask_jwt.JWTError behaviour."""
 
     def handle_error(self, e):
-        if isinstance(e, JWTError):
+        if isinstance(e, JWTExtendedException):
             return flask.jsonify(
                 collections.OrderedDict([
                     ('status_code', e.status_code),
