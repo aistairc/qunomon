@@ -238,7 +238,7 @@ export default {
                     const url = this.$backendURL +
                         '/' +
                         this.organizationIdCheck +
-                        '/mlComponents/' +
+                        '/mlComponentsFront/' +
                         this.mlComponentId
                     //リクエスト時のオプションの定義
                     const config = {

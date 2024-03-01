@@ -208,7 +208,7 @@ export default {
             // レポート見解を登録
             var url = this.$backendURL + '/'
                         + this.organizationId + '/mlComponents/'
-                        + this.mlComponentId + '/report_opinion'
+                        + this.mlComponentId + '/report_opinion_front'
             this.previewRequestData.ReportOpinion = this.opinion;
             //リクエスト時のオプションの定義
             const config = {

@@ -493,7 +493,7 @@ export default{
                         this.organizationIdCheck +
                         '/mlComponents/' +
                         this.mlComponentId +
-                        '/testDescriotions/' +
+                        '/testDescriotionsFront/' +
                         testDescriptionId,
                         config
                 )

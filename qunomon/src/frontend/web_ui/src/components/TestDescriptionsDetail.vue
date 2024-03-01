@@ -146,7 +146,6 @@
                                                           @on-select-all="onSelectAll"
                                                           @on-row-click="onRowClick"
                                                           @on-selected-rows-change="onSelectedRowsChange"
-                                                          :pagination-options="pagenationSettings"
                                                           @on-per-page-change="onPerPageChange"
                                                           @on-page-change="onPageChange"
                                                           :group-options="groupSettings"
@@ -527,19 +526,6 @@ export default {
             onOffAllFlag: false,
             accordionOnOffFlag: {
                 Panel1_1: false,
-            },
-            pagenationSettings:{
-                enabled: true,
-                mode: 'records',
-                perPage: 5,
-                perPageDropdown: [10, 50, 100],
-                dropdownAllowAll: false,
-                setCurrentPage: 1,
-                nextLabel: this.setTableLanguage("pageNext"),
-                prevLabel: this.setTableLanguage("pagePrev"),
-                rowsPerPageLabel: this.setTableLanguage("rowsPerPageLabel"),
-                ofLabel: 'of',
-                allLabel: 'All',
             },
             groupSettings:{
                 enabled: true,
@@ -1053,7 +1039,7 @@ export default {
                     this.organizationIdCheck +
                     '/mlComponents/' +
                     this.mlComponentId +
-                    '/testDescriotions/' +
+                    '/testDescriotionsFront/' +
                     this.testDescriptionId,
                     config
                 )

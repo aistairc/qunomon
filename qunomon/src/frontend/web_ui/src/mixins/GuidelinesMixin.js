@@ -105,7 +105,7 @@ export const GuidelinesMixin = {
                 });
                 
                 if (aithub_delete_flag && this.guidelineList_Local[i_local].AIThubDeleteFlag != true) {
-                    const url = this.$backendURL + '/guideline/' + this.guidelineList_Local[i_local].Id;
+                    const url = this.$backendURL + '/guidelineFront/' + this.guidelineList_Local[i_local].Id;
                     //リクエスト時のオプションの定義
                     const config = {
                         headers:{
@@ -193,7 +193,7 @@ export const GuidelinesMixin = {
                 fd.append("guideline_schema", g_file);
                 fd.append("guideline_aithub_id", guideline_aithub_id);
 
-                const url = this.$backendURL + '/guidelines/guideline_schema_file';
+                const url = this.$backendURL + '/guidelines/guideline_schema_file_front';
 
                 //リクエスト時のオプションの定義
                 const config = {
@@ -221,7 +221,7 @@ export const GuidelinesMixin = {
             })
         },
         deleteGuidelineCore(params){
-            const url = this.$backendURL + '/guideline/' + params.row.guideline_local_id;
+            const url = this.$backendURL + '/guidelineFront/' + params.row.guideline_local_id;
             //リクエスト時のオプションの定義
             const config = {
                 headers:{

@@ -94,7 +94,8 @@ INSERT INTO public."M_Format" (id, format_) VALUES (18, 'data');
 INSERT INTO public."M_Format" (id, format_) VALUES (19, 'pt');
 INSERT INTO public."M_Format" (id, format_) VALUES (20, 'pth');
 INSERT INTO public."M_Format" (id, format_) VALUES (21, 'DIR');
-INSERT INTO public."M_Format" (id, format_) VALUES (22, '*');
+INSERT INTO public."M_Format" (id, format_) VALUES (22, 'npz');
+INSERT INTO public."M_Format" (id, format_) VALUES (23, '*');
 
 --
 -- Data for Name: M_GraphTemplate; Type: TABLE DATA; Schema: public; Owner: user

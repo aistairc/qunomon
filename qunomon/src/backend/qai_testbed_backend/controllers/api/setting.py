@@ -14,26 +14,12 @@ from ...across.exception import QAIException
 logger = get_logger()
 
 
-class SettingDetailAPI(Resource):
+class SettingDetailCoreAPI(Resource):
 
     def __init__(self):
         # TODO 要DI
         self.service = SettingService()
 
-    # TODO 要変換アノテーション
-    @log(logger)
-    def get(self, key: str):
-        try:
-            res = self.service.get(key)
-            return GetSettingResSchema().dump(res), 200
-        except QAIException as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(e.to_result()), e.status_code
-        except Exception as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(Result(code='V09999', message='internal server error: {}'.format(e))), 500
-
-    @jwt_required()
     @log(logger)
     def put(self, key: str):
 
@@ -64,3 +50,43 @@ class SettingDetailAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='V19999', message='internal server error: {}'.format(e))), 500
+
+
+class SettingDetailAPI(SettingDetailCoreAPI):
+
+    def __init__(self):
+        self.service = SettingService()
+
+    # TODO 要変換アノテーション
+    @log(logger)
+    def get(self, key: str):
+        try:
+            res = self.service.get(key)
+            return GetSettingResSchema().dump(res), 200
+        except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(e.to_result()), e.status_code
+        except Exception as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='V09999', message='internal server error: {}'.format(e))), 500
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, key: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(key)
+        return res
+
+
+class SettingDetailFrontAPI(SettingDetailCoreAPI):
+
+    def __init__(self):
+        self.service = SettingService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, key: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(key)
+        return res

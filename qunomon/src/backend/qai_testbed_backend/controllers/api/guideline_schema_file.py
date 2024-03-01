@@ -18,12 +18,11 @@ import os
 logger = get_logger()
 
 
-class GuidelineSchemaFileAPI(Resource):
+class GuidelineSchemaFileCoreAPI(Resource):
 
     def __init__(self):
         self.service = GuidelineSchemaFileService()
 
-    @jwt_required()
     @log(logger)
 
     def post(self):
@@ -59,28 +58,40 @@ class GuidelineSchemaFileAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G25999', message='internal server error: {}'.format(e))), 500
 
-class GuidelineSchemaFileDetailAPI(Resource):
+class GuidelineSchemaFileAPI(GuidelineSchemaFileCoreAPI):
+
+    def __init__(self):
+        self.service = GuidelineSchemaFileService()
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
+
+
+class GuidelineSchemaFileFrontAPI(GuidelineSchemaFileCoreAPI):
+
+    def __init__(self):
+        self.service = GuidelineSchemaFileService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
+
+
+class GuidelineSchemaFileDetailCoreAPI(Resource):
 
     def __init__(self):
         self.service = GuidelineSchemaFileService()
 
     @log(logger)
 
-    def get(self, guideline_id: str):
-        """
-        ガイドラインスキーマファイル取得。
-        """
-        try:
-            res = self.service.get(int(guideline_id))
-            return GetGuidelineSchemaFileResSchema().dump(res), 200
-        except QAIException as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(e.to_result()), e.status_code
-        except Exception as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(Result(code='G26999', message='internal server error: {}'.format(e))), 500
-
-    @jwt_required()
     def put(self, guideline_id: str):
         """
         ガイドラインスキーマファイルからガイドライン更新。
@@ -95,7 +106,6 @@ class GuidelineSchemaFileDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G27999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required()
     def delete(self, guideline_id: str):
         """
         ガイドライン削除。
@@ -109,6 +119,64 @@ class GuidelineSchemaFileDetailAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G28999', message='internal server error: {}'.format(e))), 500
+
+
+class GuidelineSchemaFileDetailAPI(GuidelineSchemaFileDetailCoreAPI):
+
+    def __init__(self):
+        self.service = GuidelineSchemaFileService()
+
+    @log(logger)
+    def get(self, guideline_id: str):
+        """
+        ガイドラインスキーマファイル取得。
+        """
+        try:
+            res = self.service.get(int(guideline_id))
+            return GetGuidelineSchemaFileResSchema().dump(res), 200
+        except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(e.to_result()), e.status_code
+        except Exception as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='G26999', message='internal server error: {}'.format(e))), 500
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, guideline_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(guideline_id)
+        return res
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def delete(self, guideline_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(guideline_id)
+        return res
+
+
+class GuidelineSchemaFileDetailFrontAPI(GuidelineSchemaFileDetailCoreAPI):
+
+    def __init__(self):
+        self.service = GuidelineSchemaFileService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, guideline_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(guideline_id)
+        return res
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def delete(self, guideline_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(guideline_id)
+        return res
+
 
 class GuidelineSchemaFileEditCheckAPI(Resource):
 

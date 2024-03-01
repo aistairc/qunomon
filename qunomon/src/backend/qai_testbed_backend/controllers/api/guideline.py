@@ -37,14 +37,13 @@ class GuidelineAPI(Resource):
             return ResultSchema().dump(Result(code='G21999', message='internal server error: {}'.format(e))), 500
 
 
-class GuidelineDetailAPI(Resource):
+class GuidelineDetailCoreAPI(Resource):
 
     def __init__(self):
         # TODO 要DI
         self.service = GuidelineService()
 
     # TODO 要変換アノテーション
-    @jwt_required()
     @log(logger)
     def delete(self, guideline_id: str):
         try:
@@ -57,7 +56,6 @@ class GuidelineDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G23999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required()
     @log(logger)
     def put(self, guideline_id: str):
         json_input = request.get_json()
@@ -85,3 +83,47 @@ class GuidelineDetailAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='G24999', message='internal server error: {}'.format(e))), 500
+
+
+class GuidelineDetailAPI(GuidelineDetailCoreAPI):
+
+    def __init__(self):
+        # TODO 要DI
+        self.service = GuidelineService()
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def delete(self, guideline_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(guideline_id)
+        return res
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, guideline_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(guideline_id)
+        return res
+
+
+class GuidelineDetailFrontAPI(GuidelineDetailCoreAPI):
+
+    def __init__(self):
+        # TODO 要DI
+        self.service = GuidelineService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def delete(self, guideline_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(guideline_id)
+        return res
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, guideline_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(guideline_id)
+        return res

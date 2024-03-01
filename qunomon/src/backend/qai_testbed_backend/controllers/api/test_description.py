@@ -94,31 +94,12 @@ class TestDescriptionFrontAPI(TestDescriptionCoreAPI):
         res = super().post(organizer_id, ml_component_id)
         return res
 
-class TestDescriptionDetailAPI(Resource):
+class TestDescriptionDetailCoreAPI(Resource):
 
     @inject
     def __init__(self, service: TestDescriptionService):
         self.service = service
 
-    # @jwt_required()
-    # @helpers.standardize_api_response
-    # TODO 要変換アノテーション
-    @log(logger)
-    def get(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
-        try:
-            res = self.service.get(organizer_id, int(ml_component_id), int(testdescription_id))
-            return GetTestDescriptionDetailResSchema().dump(res), 200
-        except QAIException as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(e.to_result()), e.status_code
-        except ValueError as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(Result(code='T30000', message='Bad Request: {}'.format(e))), 422
-        except Exception as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(Result(code='T39999', message='internal server error: {}'.format(e))), 500
-
-    @jwt_required()
     @log(logger)
     def delete(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
         try:
@@ -134,7 +115,6 @@ class TestDescriptionDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='T59999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
         try:
@@ -160,13 +140,72 @@ class TestDescriptionDetailAPI(Resource):
             return ResultSchema().dump(Result(code='T49999', message='internal server error: {}'.format(e))), 500
 
 
-class TestDescriptionStarAPI(Resource):
+class TestDescriptionDetailAPI(TestDescriptionDetailCoreAPI):
 
     @inject
     def __init__(self, service: TestDescriptionService):
         self.service = service
 
+    # TODO 要変換アノテーション
+    @log(logger)
+    def get(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
+        try:
+            res = self.service.get(organizer_id, int(ml_component_id), int(testdescription_id))
+            return GetTestDescriptionDetailResSchema().dump(res), 200
+        except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(e.to_result()), e.status_code
+        except ValueError as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='T30000', message='Bad Request: {}'.format(e))), 422
+        except Exception as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='T39999', message='internal server error: {}'.format(e))), 500
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(organizer_id, ml_component_id, testdescription_id)
+        return res
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id, testdescription_id)
+        return res
+
+
+class TestDescriptionDetailFrontAPI(TestDescriptionDetailCoreAPI):
+
+    @inject
+    def __init__(self, service: TestDescriptionService):
+        self.service = service
+
+    # csfrトークンチェックあり
     @jwt_required()
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(organizer_id, ml_component_id, testdescription_id)
+        return res
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str, testdescription_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id, testdescription_id)
+        return res
+
+
+class TestDescriptionStarCoreAPI(Resource):
+
+    @inject
+    def __init__(self, service: TestDescriptionService):
+        self.service = service
+
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
         try:
@@ -180,13 +219,41 @@ class TestDescriptionStarAPI(Resource):
             return ResultSchema().dump(Result(code='T69999', message='internal server error: {}'.format(e))), 500
 
 
-class TestDescriptionUnstarAPI(Resource):
+class TestDescriptionStarAPI(TestDescriptionStarCoreAPI):
 
     @inject
     def __init__(self, service: TestDescriptionService):
         self.service = service
 
+    # csfrトークンチェックなし
+    @log(logger)
+    def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
+        # スーパークラスのpostを呼び出す
+        res = super().post(organizer_id, ml_component_id, test_description_id)
+        return res
+
+
+class TestDescriptionStarFrontAPI(TestDescriptionStarCoreAPI):
+
+    @inject
+    def __init__(self, service: TestDescriptionService):
+        self.service = service
+
+    # csfrトークンチェックあり
     @jwt_required()
+    @log(logger)
+    def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
+        # スーパークラスのpostを呼び出す
+        res = super().post(organizer_id, ml_component_id, test_description_id)
+        return res
+
+
+class TestDescriptionUnstarCoreAPI(Resource):
+
+    @inject
+    def __init__(self, service: TestDescriptionService):
+        self.service = service
+
     @log(logger)
     def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
         try:
@@ -198,6 +265,35 @@ class TestDescriptionUnstarAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='T79999', message='internal server error: {}'.format(e))), 500
+
+
+class TestDescriptionUnstarAPI(TestDescriptionUnstarCoreAPI):
+
+    @inject
+    def __init__(self, service: TestDescriptionService):
+        self.service = service
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
+        # スーパークラスのpostを呼び出す
+        res = super().post(organizer_id, ml_component_id, test_description_id)
+        return res
+
+
+class TestDescriptionUnstarFrontAPI(TestDescriptionUnstarCoreAPI):
+
+    @inject
+    def __init__(self, service: TestDescriptionService):
+        self.service = service
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def post(self, organizer_id: str, ml_component_id: str, test_description_id: str):
+        # スーパークラスのpostを呼び出す
+        res = super().post(organizer_id, ml_component_id, test_description_id)
+        return res
 
 
 class TestDescriptionAncestorAPI(Resource):

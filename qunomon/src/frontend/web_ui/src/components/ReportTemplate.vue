@@ -337,7 +337,7 @@ export default {
                 return;
             }
 
-            const url = this.$backendURL + '/reportTemplates/generate';
+            const url = this.$backendURL + '/reportTemplates/generateFront';
             const parms = {GuidelineId: '' + this.create_selected_guideline};
             //リクエスト時のオプションの定義
             const config = {
@@ -417,7 +417,7 @@ export default {
                 return;
             }
 
-            const url = this.$backendURL + '/reportTemplates';
+            const url = this.$backendURL + '/reportTemplatesFront';
             let data = new FormData;
             data.append('GidelineId', '' + this.install_selected_guideline);
             data.append('Name', this.template_name);

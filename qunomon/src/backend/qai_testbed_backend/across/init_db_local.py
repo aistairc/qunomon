@@ -174,6 +174,7 @@ def _init_db_common(config_name):
                FormatMapper(format_='pt'),
                FormatMapper(format_='pth'),
                FormatMapper(format_='DIR'),
+               FormatMapper(format_='npz'),
                FormatMapper(format_='*')]
     extensions.sql_db.session.add_all(format_)
     extensions.sql_db.session.flush()

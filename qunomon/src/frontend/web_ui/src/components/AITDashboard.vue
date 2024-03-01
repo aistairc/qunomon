@@ -221,7 +221,7 @@ export default {
                         },
                         withCredentials:true,
                     }
-                    this.$axios.delete(this.$backendURL + '/testRunners' + '/' + delete_ait_id, config)
+                    this.$axios.delete(this.$backendURL + '/testRunnersFront' + '/' + delete_ait_id, config)
                         .then((response) => {
                             this.deleteList.push(response.data);
                             // 非同期処理の対応のため、ループの最後回のみ実行する

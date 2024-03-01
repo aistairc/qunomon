@@ -48,7 +48,9 @@ export const tdMixin = {
             aitNameFilter: '',
             aitDescriptionFilter: '',
             aitNameFilterDisplay: null,
-            aitDescriptionFilterDisplay: null
+            aitDescriptionFilterDisplay: null,
+            sort_key: "",
+            sort_asc: true
         }
     },
     created(){
@@ -327,7 +329,7 @@ export const tdMixin = {
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
                         + this.mlComponentId + '/testDescriotions/'
-                        + testDescriptionId + '/star'
+                        + testDescriptionId + '/starFront'
             //リクエスト時のオプションの定義
             const config = {
                 headers:{
@@ -348,7 +350,7 @@ export const tdMixin = {
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
                         + this.mlComponentId + '/testDescriotions/'
-                        + testDescriptionId + '/unstar'
+                        + testDescriptionId + '/unstarFront'
             //リクエスト時のオプションの定義
             const config = {
                 headers:{
@@ -413,6 +415,33 @@ export const tdMixin = {
             this.changeTestrunner = null;
             this.changeColorTable();
             this.nextBtnCheck();
+        },
+        sortObjectMethod(sortObject){
+            if(this.sort_key != "") {
+                let set = 1;
+                this.sort_asc ? (set = 1) : (set = -1)
+                sortObject.sort((a, b) => {
+                    if (a[this.sort_key] < b[this.sort_key]) return -1 * set;
+                    if (a[this.sort_key] > b[this.sort_key]) return 1 * set;
+                    return 0;
+                })
+                return sortObject
+            }
+            else {
+                return sortObject
+            }
+        },
+        sortBy(key) {
+            this.sort_key === key
+            ? (this.sort_asc = !this.sort_asc)
+            : (this.sort_asc = true)
+            this.sort_key = key
+        },
+        addClass(key) {
+            return {
+                asc: this.sort_key === key && this.sort_asc,
+                desc: this.sort_key === key && !this.sort_asc
+            }
         }
     }
 }

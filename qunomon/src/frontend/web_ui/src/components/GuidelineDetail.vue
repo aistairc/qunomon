@@ -133,7 +133,7 @@ export default {
                 const fd = new FormData();
                 fd.append("guideline_schema", g_file);
 
-                const url = this.$backendURL + '/guidelines/' + this.guideline_id + '/guideline_schema_file';
+                const url = this.$backendURL + '/guidelines/' + this.guideline_id + '/guideline_schema_file_front';
                 //リクエスト時のオプションの定義
                 const config = {
                     headers:{
