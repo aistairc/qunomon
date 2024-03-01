@@ -63,7 +63,7 @@ export const AITLocalMixin = {
                return;
            }
 
-           const url = this.$backendURL + '/ait_local';
+           const url = this.$backendURL + '/ait_local_front';
            let data = new FormData;
            data.append('ait_zip', this.ait_file);
            //リクエスト時のオプションの定義

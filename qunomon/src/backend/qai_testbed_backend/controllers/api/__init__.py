@@ -20,8 +20,12 @@ api.add_resource(ml_component.MLComponentFrontAPI,
                  '/<organizer_id>/mlComponentsFront')
 api.add_resource(ml_component.MLComponentDetailAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>')
+api.add_resource(ml_component.MLComponentDetailFrontAPI,
+                 '/<organizer_id>/mlComponentsFront/<ml_component_id>')
 api.add_resource(ml_component.MLComponentReportOpinionAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/report_opinion')
+api.add_resource(ml_component.MLComponentReportOpinionFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/report_opinion_front')
 api.add_resource(testrunner.TestRunnerAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/runners')
 api.add_resource(testrunner.TestRunnerFrontAPI,
@@ -38,10 +42,16 @@ api.add_resource(test_description.TestDescriptionFrontAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotionsFront')
 api.add_resource(test_description.TestDescriptionDetailAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<testdescription_id>')
+api.add_resource(test_description.TestDescriptionDetailFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotionsFront/<testdescription_id>')
 api.add_resource(test_description.TestDescriptionStarAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/star')
+api.add_resource(test_description.TestDescriptionStarFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/starFront')
 api.add_resource(test_description.TestDescriptionUnstarAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/unstar')
+api.add_resource(test_description.TestDescriptionUnstarFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/unstarFront')
 api.add_resource(test_description.TestDescriptionAncestorAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/ancestors')
 api.add_resource(test_description.TestDescriptionUsingAPI,
@@ -56,6 +66,8 @@ api.add_resource(testrunner.AITManifestFrontAPI,
                  '/testRunnersFront')
 api.add_resource(testrunner.AITManifestDetailAPI,
                  '/testRunners/<test_runner_id>')
+api.add_resource(testrunner.AITManifestDetailFrontAPI,
+                 '/testRunnersFront/<test_runner_id>')
 api.add_resource(download.DownloadAPI,
                  '/download/<id_>')
 api.add_resource(inventory.InventoryAPI,
@@ -64,6 +76,8 @@ api.add_resource(inventory.InventoryFrontAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/inventoriesFront')
 api.add_resource(inventory.InventoryDetailAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/inventories/<inventory_id>')
+api.add_resource(inventory.InventoryDetailFrontAPI,
+                 '/<organizer_id>/mlComponents/<ml_component_id>/inventoriesFront/<inventory_id>')
 api.add_resource(tag.TagAPI,
                  '/tags')
 api.add_resource(format.FormatAPI,
@@ -80,12 +94,18 @@ api.add_resource(guideline.GuidelineAPI,
                  '/guidelines')
 api.add_resource(guideline.GuidelineDetailAPI,
                  '/guideline/<guideline_id>')
+api.add_resource(guideline.GuidelineDetailFrontAPI,
+                 '/guidelineFront/<guideline_id>')
 api.add_resource(organization.OrganizerAPI,
                  '/organizers')
 api.add_resource(report_template.ReportTemplateAPI,
                  '/reportTemplates')
+api.add_resource(report_template.ReportTemplateFrontAPI,
+                 '/reportTemplatesFront')
 api.add_resource(report_template.ReportTemplateGenerateAPI,
                  '/reportTemplates/generate')
+api.add_resource(report_template.ReportTemplateGenerateFrontAPI,
+                 '/reportTemplates/generateFront')
 api.add_resource(report_template.ReportTemplateZipAPI,
                  '/reportTemplates/<id>/zip')
 api.add_resource(scope.ScopeAPI,
@@ -102,13 +122,21 @@ api.add_resource(quality_dimension_detail.QualityDimensionDetailAPI,
                  '/qualityDimensions/<guideline_name>/<qd_name>')
 api.add_resource(ait_local.AITLocalAPI,
                  '/ait_local')
+api.add_resource(ait_local.AITLocalFrontAPI,
+                 '/ait_local_front')
 api.add_resource(guideline_schema_file.GuidelineSchemaFileAPI,
                  '/guidelines/guideline_schema_file')
+api.add_resource(guideline_schema_file.GuidelineSchemaFileFrontAPI,
+                 '/guidelines/guideline_schema_file_front')
 api.add_resource(guideline_schema_file.GuidelineSchemaFileDetailAPI,
                  '/guidelines/<guideline_id>/guideline_schema_file')
+api.add_resource(guideline_schema_file.GuidelineSchemaFileDetailFrontAPI,
+                 '/guidelines/<guideline_id>/guideline_schema_file_front')
 api.add_resource(guideline_schema_file.GuidelineSchemaFileEditCheckAPI,
                  '/guidelines/<guideline_id>/guideline_schema_file/edit_check')
 api.add_resource(guideline_schema_file.GuidelineSchemaFileDeleteCheckAPI,
                  '/guidelines/<guideline_id>/guideline_schema_file/delete_check')
 api.add_resource(setting.SettingDetailAPI,
                  '/setting/<key>')
+api.add_resource(setting.SettingDetailFrontAPI,
+                 '/settingFront/<key>')

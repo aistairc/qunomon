@@ -128,7 +128,7 @@ export default {
                 fd.append("guideline_schema", g_file);
                 fd.append("guideline_aithub_id", "");
 
-                const url = this.$backendURL + '/guidelines/guideline_schema_file';
+                const url = this.$backendURL + '/guidelines/guideline_schema_file_front';
                 //リクエスト時のオプションの定義
                 const config = {
                     headers:{

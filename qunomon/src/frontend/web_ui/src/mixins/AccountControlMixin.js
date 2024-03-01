@@ -119,7 +119,7 @@ export const AccountControlMixin = {
             } else {
                 aithub_linkage_flag = '0'
             }
-            const url = this.$backendURL + '/setting/' + 'aithub_linkage_flag';
+            const url = this.$backendURL + '/settingFront/' + 'aithub_linkage_flag';
             var requestData = {
                 Value: aithub_linkage_flag
             }

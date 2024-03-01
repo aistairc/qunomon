@@ -13,7 +13,28 @@ from ...usecases.ait_local import AITLocalService
 logger = get_logger()
 
 
-class AITLocalAPI(Resource):
+class AITLocalCoreAPI(Resource):
+
+    def __init__(self):
+        self.service = AITLocalService()
+
+    @log(logger)
+    def post(self):
+        try:
+            res = self.service.post_ait_local_list()
+            status_code = '200'
+            if res.result.code == 'AL1400':
+                status_code = '400'
+            return PostAITLocalListResSchema().dump(res), status_code
+        except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(e.to_result()), e.status_code
+        except Exception as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='AL1999', message='invalid path request: {}'.format(e))), 500
+
+
+class AITLocalAPI(AITLocalCoreAPI):
 
     def __init__(self):
         self.service = AITLocalService()
@@ -30,18 +51,23 @@ class AITLocalAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='AL0999', message='invalid path request: {}'.format(e))), 500
 
+    # csfrトークンチェックなし
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
+
+
+class AITLocalFrontAPI(AITLocalCoreAPI):
+
+    def __init__(self):
+        self.service = AITLocalService()
+
+    # csfrトークンチェックあり
     @jwt_required()
     @log(logger)
     def post(self):
-        try:
-            res = self.service.post_ait_local_list()
-            status_code = '200'
-            if res.result.code == 'AL1400':
-                status_code = '400'
-            return PostAITLocalListResSchema().dump(res), status_code
-        except QAIException as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(e.to_result()), e.status_code
-        except Exception as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(Result(code='AL1999', message='invalid path request: {}'.format(e))), 500
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res

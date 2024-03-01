@@ -140,7 +140,7 @@ export default {
                         this.organizationIdCheck +
                         '/mlComponents/' +
                         this.mlComponentId +
-                        '/inventories/' +
+                        '/inventoriesFront/' +
                         this.inventoryId
                     //リクエスト時のオプションの定義
                     const config = {

@@ -15,28 +15,12 @@ from ...across.exception import QAIException
 logger = get_logger()
 
 
-class ReportTemplateAPI(Resource):
+class ReportTemplateCoreAPI(Resource):
 
     def __init__(self):
         # TODO 要DI
         self.service = ReportTemplateService()
 
-    # @jwt_required()
-    # @helpers.standardize_api_response
-    # TODO 要変換アノテーション
-    @log(logger)
-    def get(self):
-        try:
-            res = self.service.get()
-            return GetReportTemplateResSchema().dump(res), 200
-        except QAIException as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(e.to_result()), e.status_code
-        except Exception as e:
-            logger.exception('Raise Exception: %s', e)
-            return ResultSchema().dump(Result(code='R01999', message='internal server error: {}'.format(e))), 500
-
-    @jwt_required()
     @log(logger)
     def post(self):
         try:
@@ -50,13 +34,53 @@ class ReportTemplateAPI(Resource):
             return ResultSchema().dump(Result(code='R02999', message='internal server error: {}'.format(e))), 500
 
 
-class ReportTemplateGenerateAPI(Resource):
+class ReportTemplateAPI(ReportTemplateCoreAPI):
 
     def __init__(self):
         # TODO 要DI
         self.service = ReportTemplateService()
 
+    @log(logger)
+    def get(self):
+        try:
+            res = self.service.get()
+            return GetReportTemplateResSchema().dump(res), 200
+        except QAIException as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(e.to_result()), e.status_code
+        except Exception as e:
+            logger.exception('Raise Exception: %s', e)
+            return ResultSchema().dump(Result(code='R01999', message='internal server error: {}'.format(e))), 500
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
+
+
+class ReportTemplateFrontAPI(ReportTemplateCoreAPI):
+
+    def __init__(self):
+        # TODO 要DI
+        self.service = ReportTemplateService()
+
+    # csfrトークンチェックあり
     @jwt_required()
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
+
+
+class ReportTemplateGenerateCoreAPI(Resource):
+
+    def __init__(self):
+        # TODO 要DI
+        self.service = ReportTemplateService()
+
     # @helpers.standardize_api_response
     # TODO 要変換アノテーション
     @log(logger)
@@ -78,6 +102,35 @@ class ReportTemplateGenerateAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='R03999', message='internal server error: {}'.format(e))), 500
+
+
+class ReportTemplateGenerateAPI(ReportTemplateGenerateCoreAPI):
+
+    def __init__(self):
+        # TODO 要DI
+        self.service = ReportTemplateService()
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
+
+
+class ReportTemplateGenerateFrontAPI(ReportTemplateGenerateCoreAPI):
+
+    def __init__(self):
+        # TODO 要DI
+        self.service = ReportTemplateService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def post(self):
+        # スーパークラスのpostを呼び出す
+        res = super().post()
+        return res
 
 
 class ReportTemplateZipAPI(Resource):

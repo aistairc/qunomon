@@ -249,12 +249,11 @@ class ReportGeneratorFrontAPI(ReportGeneratorCoreAPI):
         return res
 
 
-class AITManifestDetailAPI(Resource):
+class AITManifestDetailCoreAPI(Resource):
     def __init__(self):
         # TODO 要DI
         self.service = AITManifestService()
 
-    @jwt_required()
     # @helpers.standardize_api_response
     # TODO 要変換アノテーション
     @log(logger)
@@ -271,3 +270,30 @@ class AITManifestDetailAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='A02999', message='internal server error: {}'.format(e))), 500
+
+
+class AITManifestDetailAPI(AITManifestDetailCoreAPI):
+    def __init__(self):
+        # TODO 要DI
+        self.service = AITManifestService()
+
+    # csfrトークンチェックなし 
+    @log(logger)
+    def delete(self, test_runner_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(test_runner_id)
+        return res
+
+
+class AITManifestDetailFrontAPI(AITManifestDetailCoreAPI):
+    def __init__(self):
+        # TODO 要DI
+        self.service = AITManifestService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def delete(self, test_runner_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(test_runner_id)
+        return res

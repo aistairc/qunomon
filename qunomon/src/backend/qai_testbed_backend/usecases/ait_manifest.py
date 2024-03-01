@@ -291,10 +291,7 @@ class AITManifestService:
                 for format_ in inventory.requirement.format:
                     format_mapper = FormatMapper.query.filter(FormatMapper.format_ == format_).first()
                     if format_mapper is None:
-                        # 拡張子からリソースタイプを自動判断することは難しいため、（あらかじめ初期値で登録）
-                        # binaryタイプで登録する
-                        binary_type = ResourceTypeMapper.query.filter(ResourceTypeMapper.type == 'binary').first()
-                        format_mapper = FormatMapper(format_=format_, resource_type_id=binary_type.id)
+                        format_mapper = FormatMapper(format_=format_)
                         sql_db.session.add(format_mapper)
                         sql_db.session.flush()
                     test_inventory_template_mapper_list.append(

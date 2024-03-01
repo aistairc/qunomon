@@ -259,9 +259,7 @@ export default {
             nameCheck: false,
             aitProgramCheck: false,
             test_description_detail: null,
-            setTempTestRunner: null,
-            sort_key: "",
-            sort_asc: true
+            setTempTestRunner: null
         };
     },
     created() {
@@ -281,19 +279,7 @@ export default {
             return this.testRunners;
         },
         sortFilterTestRunners() {
-            if(this.sort_key != "") {
-                let set = 1;
-                this.sort_asc ? (set = 1) : (set = -1)
-                this.filterTestRunners.sort((a, b) => {
-                    if (a[this.sort_key] < b[this.sort_key]) return -1 * set;
-                    if (a[this.sort_key] > b[this.sort_key]) return 1 * set;
-                    return 0;
-                })
-                return this.filterTestRunners
-            }
-            else {
-                return this.filterTestRunners
-            }
+            return this.sortObjectMethod(this.filterTestRunners);
         }
     },
     methods: {
@@ -546,18 +532,6 @@ export default {
                 });
             }
         },
-        sortBy(key) {
-            this.sort_key === key
-            ? (this.sort_asc = !this.sort_asc)
-            : (this.sort_asc = true)
-            this.sort_key = key
-        },
-        addClass(key) {
-            return {
-                asc: this.sort_key === key && this.sort_asc,
-                desc: this.sort_key === key && !this.sort_asc
-            }
-        }
     },
 };
 </script>

@@ -90,13 +90,11 @@ class InventoryFrontAPI(InventoryCoreAPI):
         return res
 
 
-class InventoryDetailAPI(Resource):
+class InventoryDetailCoreAPI(Resource):
     def __init__(self):
         # TODO 要DI
         self.service = InventoryService()
 
-    @jwt_required()
-    # @helpers.standardize_api_response
     # TODO 要変換アノテーション
     @log(logger)
     def delete(self, organizer_id: str, ml_component_id: str, inventory_id: str):
@@ -113,7 +111,6 @@ class InventoryDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='I49999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str, inventory_id: str):
         json_input = request.get_json()
@@ -138,3 +135,46 @@ class InventoryDetailAPI(Resource):
         except Exception as e:
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='I39999', message='internal server error: {}'.format(e))), 500
+
+
+class InventoryDetailAPI(InventoryDetailCoreAPI):
+    def __init__(self):
+        # TODO 要DI
+        self.service = InventoryService()
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str, inventory_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(organizer_id, ml_component_id, inventory_id)
+        return res
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str, inventory_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id, inventory_id)
+        return res
+
+
+class InventoryDetailFrontAPI(InventoryDetailCoreAPI):
+    def __init__(self):
+        # TODO 要DI
+        self.service = InventoryService()
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str, inventory_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(organizer_id, ml_component_id, inventory_id)
+        return res
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str, inventory_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id, inventory_id)
+        return res
+

@@ -303,7 +303,7 @@ export default {
                 const url = this.$backendURL +
                     '/' +
                     this.organizationIdCheck +
-                    '/mlComponents/' +
+                    '/mlComponentsFront/' +
                     params.row.id
                 //リクエスト時のオプションの定義
                 const config = {

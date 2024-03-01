@@ -103,12 +103,11 @@ class MLComponentFrontAPI(MLComponentCoreAPI):
         return res
 
 
-class MLComponentDetailAPI(Resource):
+class MLComponentDetailCoreAPI(Resource):
     @inject
     def __init__(self, service: MLComponentService):
         self.service = service
 
-    @jwt_required()
     @log(logger)
     def delete(self, organizer_id: str, ml_component_id: str):
         try:
@@ -121,7 +120,6 @@ class MLComponentDetailAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='P39999', message='internal server error: {}'.format(e))), 500
 
-    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str):
 
@@ -154,12 +152,53 @@ class MLComponentDetailAPI(Resource):
             return ResultSchema().dump(Result(code='P09999', message='internal server error: {}'.format(e))), 500
 
 
-class MLComponentReportOpinionAPI(Resource):
+class MLComponentDetailAPI(MLComponentDetailCoreAPI):
+    @inject
+    def __init__(self, service: MLComponentService):
+        self.service = service
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(organizer_id, ml_component_id)
+        return res
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id)
+        return res
+
+
+class MLComponentDetailFrontAPI(MLComponentDetailCoreAPI):
+    @inject
+    def __init__(self, service: MLComponentService):
+        self.service = service
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def delete(self, organizer_id: str, ml_component_id: str):
+        # スーパークラスのdeleteを呼び出す
+        res = super().delete(organizer_id, ml_component_id)
+        return res
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id)
+        return res
+
+
+class MLComponentReportOpinionCoreAPI(Resource):
     @inject
     def __init__(self, service: MLComponentReportOpinionService):
         self.service = service
 
-    @jwt_required()
     @log(logger)
     def put(self, organizer_id: str, ml_component_id: str):
 
@@ -191,3 +230,29 @@ class MLComponentReportOpinionAPI(Resource):
             logger.exception('Raise Exception: %s', e)
             return ResultSchema().dump(Result(code='P40999', message='internal server error: {}'.format(e))), 500
 
+
+class MLComponentReportOpinionAPI(MLComponentReportOpinionCoreAPI):
+    @inject
+    def __init__(self, service: MLComponentReportOpinionService):
+        self.service = service
+
+    # csfrトークンチェックなし
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id)
+        return res
+
+
+class MLComponentReportOpinionFrontAPI(MLComponentReportOpinionCoreAPI):
+    @inject
+    def __init__(self, service: MLComponentReportOpinionService):
+        self.service = service
+
+    # csfrトークンチェックあり
+    @jwt_required()
+    @log(logger)
+    def put(self, organizer_id: str, ml_component_id: str):
+        # スーパークラスのputを呼び出す
+        res = super().put(organizer_id, ml_component_id)
+        return res
