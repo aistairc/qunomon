@@ -43,10 +43,12 @@
                 <!-- General -->
                 <div class="eachCard">
                     <label class="subtitleArea">
-                        <span class="subtitle"><strong>{{$t("testDescriptionCopy.general")}}</strong></span>
+                        <span class="subtitle">
+                            <strong>{{$t("testDescriptionCopy.general")}}</strong>
+                        </span>
                         <span class="category_description">
-                                <span>{{$t("testDescriptionCopy.generalExp")}}</span>
-                            </span>
+                            {{$t("testDescriptionCopy.generalExp")}}
+                        </span>
                     </label>
                     <table class="table_block">
                         <tr class="contents-area">
@@ -77,16 +79,17 @@
                 <!-- Acceptance Criteria -->
                 <div class="eachCard">
                     <label class="subtitleArea">
-                        <span class="subtitle"><strong>{{ $t("testDescriptionEdit.qualityMeasurement") }}</strong></span>
+                        <span class="subtitle"><strong>{{ $t("testDescriptionCopy.qualityMeasurement") }}</strong></span>
                         <span class="category_description">
-                                <span>
-                                  {{ $t("testDescriptionEdit.qualityMeasurementExp") }}
-                                </span>
-                              </span>
+                            {{ $t("testDescriptionCopy.qualityMeasurementExp") }}
+                        </span>
+                        <span class="asterisk">
+                            {{ $t("testDescriptionCopy.qualityMeasurementNote") }}
+                        </span>
                     </label>
                     <table class="table_block" v-if="selectedTestrunner">
-                        <tr class="dashed_tr2" v-for="(measure, i) of selectedTestrunner.Report.Measures" :key="measure.Id">
-                            <span v-for="measurementForm of measurementFormsList[i]" :key="measurementForm.Id">
+                        <template v-for="(measure, i) of selectedTestrunner.Report.Measures">
+                            <tr class="dashed_tr2" v-for="measurementForm of measurementFormsList[i]" :key="measurementForm.Id">
                                 <td class="tdQACheck dashed">
                                     <input type="checkbox" class="list_ checkboxCheck" name="listCheck" v-bind:value="measurementForm.Id" v-model="checkedMeasurements" @change="changecheckbox" />
                                 </td>
@@ -118,8 +121,8 @@
                                 <td class="tdQAValue td_margin">
                                     <input type="text" placeholder="0" class="text_mini" name="myText" size="5" v-model="measurementForm.Value">
                                 </td>
-                            </span>
-                        </tr>
+                            </tr>
+                        </template>
                     </table>
                 </div>
                 <hr>
@@ -127,10 +130,12 @@
                 <!-- AIT Parameter -->
                 <div class="eachCard">
                     <label class="subtitleArea">
-                        <span class="subtitle"><strong>{{ $t("testDescriptionEdit.aitParam") }}</strong></span>
+                        <span class="subtitle">
+                            <strong>{{ $t("testDescriptionCopy.aitParam") }}</strong>
+                        </span>
                         <span class="category_description">
-                                <span>{{ $t("testDescriptionEdit.aitParamExp") }}</span>
-                            </span>
+                            {{ $t("testDescriptionCopy.aitParamExp") }}
+                        </span>
                     </label>
                     <table class="table_block">
 
@@ -171,10 +176,12 @@
                 <!-- Inventory Edit -->
                 <div class="eachCard">
                     <label class="subtitleArea">
-                        <span class="subtitle"><strong>{{ $t("testDescriptionEdit.targetInventory") }}</strong></span>
+                        <span class="subtitle">
+                            <strong>{{ $t("testDescriptionCopy.targetInventory") }}</strong>
+                        </span>
                         <span class="category_description">
-                                <span>{{ $t("testDescriptionEdit.taegetInventoryExp") }}</span>
-                            </span>
+                            {{ $t("testDescriptionCopy.taegetInventoryExp") }}
+                        </span>
                     </label>
                     <table class="table_block">
 
@@ -447,7 +454,7 @@ export default {
                         this.organizationIdCheck +
                         '/mlComponents/' +
                         this.mlComponentId +
-                        '/testDescriotionsFront';
+                        '/testDescriptionsFront';
                     //リクエスト時のオプションの定義
                     const config = {
                         headers:{
@@ -482,7 +489,7 @@ export default {
                 this.organizationIdCheck +
                 '/mlComponents/' +
                 this.mlComponentId +
-                '/testDescriotions/' +
+                '/testDescriptions/' +
                 this.testDescriptionId;
                 this.$axios.get(url).then((response) => {
                     this.test_description_detail = response.data.TestDescriptionDetail;
@@ -812,7 +819,7 @@ export default {
     border-top-left-radius: 5px;
     margin: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 4.5rem;
     font-weight: bold;
     display: flex;
     flex-direction: column;
@@ -825,14 +832,9 @@ export default {
     font-weight: bold;
     color: #ffffff;
 }
-.subtitle {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff;
-}
 .category_description {
     font-size: 0.7rem;
-    color: red;
+    color: #7d4aff;
 }
 .table_block .contents-area {
     height: 2rem;
@@ -1043,5 +1045,8 @@ export default {
     width: 10%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+.asterisk{
+    color: red;
 }
 </style>

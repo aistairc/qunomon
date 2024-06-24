@@ -1,4 +1,4 @@
-FROM openresty/openresty:focal
+FROM openresty/openresty:1.25.3.1-3-focal
 
 # install dependencies
 RUN ["luarocks", "install", "lua-resty-session", "3.10-1"]

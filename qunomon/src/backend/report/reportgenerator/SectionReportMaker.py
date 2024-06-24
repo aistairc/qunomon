@@ -4,7 +4,9 @@ import os
 import re
 from bs4 import BeautifulSoup
 from bs4 import element
+from qlib.utils.logging import get_logger, log
 
+logger = get_logger()
 
 class SectionReportMaker:
     WORK_DIR: str
@@ -24,6 +26,7 @@ class SectionReportMaker:
             "<!--%%TEST_ENVIRONMENT%%-->": self.make_testenvironment_EnvironmentOfTest
         }
 
+    @log(logger)
     def collation_replacement_str(self, replace_mark: str):
         print('SectionReportMaker() collation_replacement_str() start')
         try:
@@ -40,7 +43,10 @@ class SectionReportMaker:
                 else:
                     html_iframe = make_method()
         except Exception as e:
+            print("SectionReportMaker.collation_replacement_str.ReportGeneratorException: {}".format(e))
             raise e
+
+        print('SectionReportMaker() collation_replacement_str() end')
         return html_iframe
 
     def make_section_title(self, chapter: str):

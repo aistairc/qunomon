@@ -54,7 +54,9 @@
                                 <span class="rts_modal_subtitle">{{$t("reportTemplateSelect.opinion")}}</span>
                             </label>
                         </div>
-                        <textarea class="z-depth__" name="example" cols="70" rows="15" v-model="opinion" style="overflow:auto;"></textarea>
+                        <div>
+                            <textarea class="z-depth__" name="example" cols="70" rows="15" v-model="opinion" style="overflow:auto; width:100%;"></textarea>
+                        </div>
                         <div id="btn_set2">
                             <template v-if="$i18n.locale === 'en'">
                                 <input type="button" value="Close" class="btn_left" @click="reportCancel">
@@ -146,7 +148,7 @@ export default {
             }
             const url = this.$backendURL + '/'
                         + this.organizationId + '/mlComponents/'
-                        + this.mlComponentId + '/testDescriotions/reportGeneratorFront'
+                        + this.mlComponentId + '/testDescriptions/reportGeneratorFront'
             var request_param = null;
             if (this.select_reportTemplate_id == 0){
                  // レポートテンプレート無しの場合
@@ -224,7 +226,7 @@ export default {
                 // レポート見解登録が終了したら、レポートダウンロード
                 url = this.$backendURL + '/'
                             + this.organizationId + '/mlComponents/'
-                            + this.mlComponentId + '/testDescriotions/reportGeneratorFront'
+                            + this.mlComponentId + '/testDescriptions/reportGeneratorFront'
                 var request_param = null;
                 if (this.select_reportTemplate_id == 0){
                     // レポートテンプレート無しの場合

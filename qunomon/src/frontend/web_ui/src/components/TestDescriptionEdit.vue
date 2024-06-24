@@ -36,9 +36,11 @@
                     <!-- General -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span class="subtitle"><strong>{{$t("testDescriptionEdit.general")}}</strong></span>
+                            <span class="subtitle">
+                                <strong>{{$t("testDescriptionEdit.general")}}</strong>
+                            </span>
                             <span class="category_description">
-                                <span>{{$t("testDescriptionEdit.generalExp")}}</span>
+                                {{$t("testDescriptionEdit.generalExp")}}
                             </span>
                         </label>
                         <table class="table_block">
@@ -62,9 +64,11 @@
                     <!-- AIT Program -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span class="subtitle"><strong>{{$t("testDescriptionEdit.ait")}}</strong></span>
+                            <span class="subtitle">
+                                <strong>{{$t("testDescriptionEdit.ait")}}</strong>
+                            </span>
                             <span class="category_description">
-                                <span>{{$t("testDescriptionEdit.aitExp")}}</span>
+                                {{$t("testDescriptionEdit.aitExp")}}
                             </span>
                         </label>
                         <div style="background: white" v-if="selectedQualityDimension">
@@ -184,9 +188,11 @@
                     <!-- qualityDimension -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span class="subtitle"><strong>{{$t("testDescriptionEdit.qualityDimension")}}</strong></span>
+                            <span class="subtitle">
+                                <strong>{{$t("testDescriptionEdit.qualityDimension")}}</strong>
+                            </span>
                             <span class="category_description">
-                                <span>{{$t("testDescriptionEdit.qualityDimensionExp")}}</span>
+                                {{$t("testDescriptionEdit.qualityDimensionExp")}}
                             </span>
                         </label>
                         <table class="table_block">
@@ -357,7 +363,7 @@ export default {
                 this.organizationIdCheck +
                 "/mlComponents/" +
                 this.mlComponentId +
-                "/testDescriotions/" +
+                "/testDescriptions/" +
                 this.testDescriptionId;
             this.$axios.get(url)
                 .then((response) => {
@@ -571,7 +577,7 @@ export default {
     border-top-left-radius: 5px;
     margin: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 4.5rem;
     font-weight: bold;
     display: flex;
     flex-direction: column;

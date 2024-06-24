@@ -10,6 +10,9 @@ import numpy as np
 import os
 import shutil
 import math
+from qlib.utils.logging import get_logger, log
+
+logger = get_logger()
 
 plt.rcParams['font.family'] = 'Noto Sans CJK JP'
 
@@ -23,6 +26,7 @@ class ResourceManager():
         self.TEMPLATE_PATH = template_path
         self.report_dataset = report_dataset
 
+    @log(logger)
     def make_summary_result(self, workdir_path: str, summarydir_path: str, summaryfile_path: str):
         # サマリ用のレーダーチャートを作成し、SUMMARYディレクトリに格納する
         try:
@@ -35,9 +39,11 @@ class ResourceManager():
             self.__make_summary_radarchart(summarydir_path)  # レーダーチャート作成
             self.__make_summary_overview(summarydir_path)
         except Exception as e:
+            print("ResourceManager.make_summary_result.ReportGeneratorException: {}".format(e))
             raise e
         return 0
 
+    @log(logger)
     def __make_summary_overview(self, summarydir_path: str):
         # 数値目標(ValueTarget)の有無を判定し、有のTDに関しては、目標達成か否か(TestDescriptionResult)も判定
         # 3色グラフで品質目標達成/未達/非該当を描画
@@ -125,8 +131,10 @@ class ResourceManager():
             # Figureウィンドウを閉じる
             plt.close()
         except Exception as e:
+            print("ResourceManager.__make_summary_overview.ReportGeneratorException: {}".format(e))
             raise e
 
+    @log(logger)
     def __make_summary_radarchart(self, summarydir_path: str):
         # 内部品質ごとにテスト実施数をカウント
         try:
@@ -194,10 +202,12 @@ class ResourceManager():
             # Figureウィンドウを閉じる
             plt.close()
         except Exception as e:
+            print("ResourceManager.__make_summary_radarchart.ReportGeneratorException: {}".format(e))
             raise e
         return 0
 
     # 内部品質ディレクトリ単位のhtmlを作成する
+    @log(logger)
     def make_testdescription_result(self, workdir_path: str):
         # アクセス権限がなかったとき（ファイルが編集中とか）のふるまいをどうするか。
         print('ResourceManager() make_testdescription_result() start')
@@ -206,15 +216,6 @@ class ResourceManager():
 
             # グラフデータが存在しなければ、スキップ
             if self.report_dataset['Resources'] is None:
-                return
-
-            # グラフデータが0件(リソース0件のAIT)の場合、TD概要部分のみ作成する
-            if len(self.report_dataset['Resources']) == 0:
-                for detail in self.report_dataset['TestDescriptionDetail'].values():
-                    qd = str(detail['QualityDimension']['Id'])
-                    td = str(detail['Id'])
-                    td_dir = Path(self.WORK_DIR + qd + os.sep + td + os.sep)
-                    self.make_frame_html(td_dir, is_resource_exists=False)
                 return
 
             # メディアファイルのリネーム処理 ← この処理で連番処理でなく、グラフネームにリネームする
@@ -227,28 +228,43 @@ class ResourceManager():
                 qd = resource.get("QualityDimensionId")
                 td = resource.get("TD")
                 pattern = resource.get('Order') + '-*'
-                td_dir_list.append(Path(self.WORK_DIR + qd + os.sep + td + os.sep))
-                file_path = list(td_dir_list[-1].glob(pattern))
-                # Opinionはスキップする
-                if str(file_path[0].name) == self.opinionfile:
-                    continue
-                if file_path[0].suffix.lower() in {'.csv', '.tsv'}:
-                    self.make_table(file_path[0])
-                elif file_path[0].suffix.lower() in {'.png', '.jpg', '.jpeg'}:
-                    self.make_picture(file_path[0])
-                elif file_path[0].suffix.lower() in {'.txt'}:
-                    self.make_document(file_path[0])
-                else:
-                    pass
+                file = resource.get("File")
+
+                # グラフデータが0件(リソース0件のAIT)の場合、TD概要部分のみ作成する
+                if len(str(file)) == 0:
+                    td_dir = Path(self.WORK_DIR + qd + os.sep + td + os.sep)
+                    self.make_frame_html(td_dir, is_resource_exists=False)
+                
+                # グラフデータが1件以上(リソース1件以上のAIT)の場合、グラフデータの件数分を作成
+                else :
+                    td_dir_list.append(Path(self.WORK_DIR + qd + os.sep + td + os.sep))
+                    file_path = list(td_dir_list[-1].glob(pattern))
+                    # Opinionはスキップする
+                    if str(file_path[0].name) == self.opinionfile:
+                        continue
+                    if file_path[0].suffix.lower() in {'.csv', '.tsv'}:
+                        self.make_table(file_path[0])
+                    elif file_path[0].suffix.lower() in {'.png', '.jpg', '.jpeg'}:
+                        self.make_picture(file_path[0])
+                    elif file_path[0].suffix.lower() in {'.txt'}:
+                        self.make_document(file_path[0])
+                    else:
+                        pass
             # TD単位のHTMLを作成
-            td_dir_list = set(td_dir_list)
-            for td_dir in td_dir_list:
-                self.make_frame_html(td_dir)
+            if len(td_dir_list) > 0:
+                td_dir_list = set(td_dir_list)
+                for td_dir in td_dir_list:
+                    self.make_frame_html(td_dir)
+            
         except Exception as e:
+            print("ResourceManager.make_testdescription_result.ReportGeneratorException: {}".format(e))
             raise e
+
+        print('ResourceManager() make_testdescription_result() end')
         return 0
 
     # CSVファイルをiframeに埋め込んだHTMLを作成する
+    @log(logger)
     def make_table(self, file: Path):
         try:
             htmltable = ""
@@ -277,9 +293,11 @@ class ResourceManager():
                 str(file.parent) + os.sep + file.stem + "_table.html",
                 "<!--%%TABLE%%-->")
         except Exception as e:
+            print("ResourceManager.make_table.ReportGeneratorException: {}".format(e))
             raise e
 
     # txtファイルをiframeに埋め込んだHTMLを作成する
+    @log(logger)
     def make_document(self, file: Path):
         # 読み込んだファイルがHTML形式とかjavascriptとかだった場合の対処が必要？
         try:
@@ -304,9 +322,11 @@ class ResourceManager():
                 str(file.parent) + os.sep + file.stem + "_document.html",
                 "<!--%%TEXTAREA%%-->")
         except Exception as e:
+            print("ResourceManager.make_document.ReportGeneratorException: {}".format(e))
             raise e
 
     # ファイルをiframeに埋め込んだHTMLを作成する
+    @log(logger)
     def make_picture(self, file: Path):
         try:
             html_img = ""
@@ -319,6 +339,7 @@ class ResourceManager():
                 str(file.parent) + os.sep + file.stem + "_picture.html",
                 "<!--%%IMAGE%%-->")
         except Exception as e:
+            print("ResourceManager.make_picture.ReportGeneratorException: {}".format(e))
             raise e
 
     def __get_uniqueNumber(self):
@@ -326,6 +347,7 @@ class ResourceManager():
         return str(self.filecount)
 
     # TD内のファイルを{表示順}-{グラフ名}.xxxでリネームする
+    @log(logger)
     def rename_mediafile(self):
         try:
             resources = self.report_dataset['Resources']
@@ -335,11 +357,15 @@ class ResourceManager():
                 td = resource.get("TD")
                 name = resource.get("Name")
                 file = resource.get("File")
-                td_path = Path(self.WORK_DIR + qd + os.sep + td + os.sep)
-                file_pre_path = Path(os.path.join(td_path, Path(file)))
-                file_post_path = Path(os.path.join(td_path, Path(str(order) + '-' + name + file_pre_path.suffix)))
-                os.rename(str(file_pre_path), file_post_path)
+
+                # Resourceが指定された場合のみ実施
+                if len(str(file)) > 0:
+                    td_path = Path(self.WORK_DIR + qd + os.sep + td + os.sep)
+                    file_pre_path = Path(os.path.join(td_path, Path(file)))
+                    file_post_path = Path(os.path.join(td_path, Path(str(order) + '-' + name + file_pre_path.suffix)))
+                    os.rename(str(file_pre_path), file_post_path)
         except Exception as e:
+            print("ResourceManager.rename_mediafile.ReportGeneratorException: {}".format(e))
             raise e
 
     # TD単位のhtmlを作成する

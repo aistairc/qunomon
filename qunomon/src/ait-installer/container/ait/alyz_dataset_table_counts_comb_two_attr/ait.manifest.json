@@ -2,8 +2,8 @@
   "name": "alyz_dataset_table_counts_comb_two_attr",
   "description": "表データ内の不要な（ありえない）属性値の組み合わせを指定し、表データ内にどれだけその不要なデータが含まれているか、属性値のカウントや出現割合を算出する\nAIT利用者はこのサマリ情報を元に、属性値の（出現傾向に着目した）不健全性を把握できる",
   "source_repository": "https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_comb_two_attr",
-  "version": "0.2",
-  "quality": "https://ait-hub.pj.aist.go.jp/ait-hub/api/0.0.1/qualityDimensions/AIQM_Guideline/Coverage_for_distinguished_problem_cases",
+  "version": "0.3",
+  "quality": "https://ait-hub.pj.aist.go.jp/ait-hub/api/0.0.1/qualityDimensions/機械学習品質マネジメントガイドライン第三版/A-2データ設計の十分性",
   "keywords": [
     "BDD100K",
     "recode count"

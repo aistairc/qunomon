@@ -199,7 +199,7 @@ export default {
         this.getMLComponent();
         const url = this.$backendURL + '/' +
             this.organizationIdCheck + '/mlComponents/' +
-            this.mlComponentId + '/testDescriotions/' +
+            this.mlComponentId + '/testDescriptions/' +
             this.testDescriptionId;
         this.$axios.get(url)
             .then((response) => {

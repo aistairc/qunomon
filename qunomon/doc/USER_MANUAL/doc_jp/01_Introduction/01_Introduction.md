@@ -2,20 +2,23 @@
 
 ## Qunomonとは
 
-QunomonはAIシステムの品質評価支援ツールです。
+QunomonはAIシステムの品質評価支援プラットフォームです。
 
-機械学習マネジメントガイドライン に沿ったAIシステムの品質評価とその作業環境を提供します。
+Qunomonは、機械学習コンポーネントの管理、独立したテスト実行環境、ガイドラインや標準と紐づいた体系的な評価結果の管理を通じて、品質評価者の活動を助けます。
+
+本資料では、Qunomonの使用方法を、用語や概念の簡単な解説とともに提供します。
 
 ## Qunomonのダウンロード
-TBD
+
+[Qunomonのランディングページ](https://aistairc.github.io/qunomon/) から、DOWNLOADボタンを押下してQunomonをダウンロードしてください。
 
 ## 必要なソフトウェア
 
 ### dockerのインストール
-
-Windows、Macなら「docker desktop」をインストールしてください。
-
-Linuxなら「docker」をインストールしてください。
+* Docker 19.03 以上が動作可能な環境が必要です。
+  Windowsにおいては、Docker Desktop 2.3.0.3 以降が動作可能な環境が必要です。
+  macOSにおいては、Docker Desktop 4.20.1 以降が動作可能な環境が必要です。
+* Windowsにおいては、動作にGoogle Chromeが必要です。
 
 ## LinuxでQunomonを立ち上げる場合の準備
 
@@ -80,7 +83,7 @@ Qunomonの資材を配置します。
 
 ## Qunomonの起動
 
-～\qunomonディレクトリで以下コマンドを実行してください。
+~\qunomonディレクトリで以下コマンドを実行してください。
 
 * Windows  
   ```sh

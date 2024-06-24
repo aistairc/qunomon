@@ -1,18 +1,20 @@
 # 編集
 
-## MLComponents修正
+本章では、登録したMLComponents, Inventories, TestDescriptionsの各項目の修正手順について解説します。それぞれの設定項目の中身については、3章を参考にしてください。
 
-MLComponents一覧画面から修正対象の「edit」アイコンを押下すると、編集画面に遷移します。
+## MLComponentsの編集
+
+MLComponents一覧画面にて、修正対象の「edit」列に表示されたペンマークのアイコンを押下すると、編集画面に遷移します。
 
 ![0101](01/01.png)
 
-編集し「Update」ボタンを押下すると更新されます。
+登録内容を編集し、「Update」ボタンを押下すると更新されます。
 
 ![0102](01/02.png)
 
-## Inventories修正
+## Inventoriesの編集
 
-Inventories一覧画面から修正対象の「edit」アイコンを押下すると、編集画面に遷移します。
+Inventories一覧画面から修正対象の「edit」列に表示されたペンマークのアイコンを押下すると、編集画面に遷移します。
 
 ![0201](02/01.png)
 
@@ -20,11 +22,11 @@ Inventories一覧画面から修正対象の「edit」アイコンを押下す�
 
 ![0202](02/02.png)
 
-## TestDescriptions修正
+## TestDescriptionsの編集
 
-TestDescriptions一覧画面から修正対象の「edit」アイコンを押下すると、編集画面に遷移します。
+TestDescriptions一覧画面から修正対象の「edit」列に表示されたペンマークのアイコンアイコンを押下すると、編集画面に遷移します。
 
-（実行前かERRになったTestDescriptionしか「edit」アイコンが表示されません。）
+一度評価結果が出たTestDescriptionは証跡として残すことを想定しており、実行前か、結果がエラー（ERR）になったTestDescriptionしか編集できないことにご注意ください。
 
 ![0301](03/01.png)
 

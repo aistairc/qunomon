@@ -613,7 +613,7 @@ export default {
             this.organizationIdCheck +
             '/mlComponents/' +
             this.mlComponentId +
-            '/testDescriotions/' +
+            '/testDescriptions/' +
             this.testDescriptionId;
         this.$axios.get(url)
             .then((response) => {
@@ -906,7 +906,7 @@ export default {
                     this.organizationIdCheck +
                     '/mlComponents/' +
                     this.mlComponentId +
-                    '/testDescriotions/reportGeneratorFront';
+                    '/testDescriptions/reportGeneratorFront';
                 //リクエスト時のオプションの定義
                 const config = {
                     headers:{
@@ -943,7 +943,7 @@ export default {
                     this.organizationIdCheck +
                     '/mlComponents/' +
                     this.mlComponentId +
-                    '/testDescriotions/reportGeneratorFront';
+                    '/testDescriptions/reportGeneratorFront';
                 //リクエスト時のオプションの定義
                 const config = {
                     headers:{
@@ -1039,7 +1039,7 @@ export default {
                     this.organizationIdCheck +
                     '/mlComponents/' +
                     this.mlComponentId +
-                    '/testDescriotionsFront/' +
+                    '/testDescriptionsFront/' +
                     this.testDescriptionId,
                     config
                 )
@@ -1083,7 +1083,7 @@ export default {
                 this.organizationIdCheck +
                 '/mlComponents/' +
                 this.mlComponentId +
-                '/testDescriotions/runnersFront'
+                '/testDescriptions/runnersFront'
             //リクエスト時のオプションの定義
             const config = {
                 headers:{
@@ -1102,13 +1102,13 @@ export default {
                     console.log(response.data);
                     this.intervalId = setInterval(function () {
                         that.checkTestRunnerStatus();
-                    }, 1000)
+                    }, 2000)
                 })
                 .catch((error) => {
                     this.isPush = false;
                     // eslint-disable-next-line no-console
-                    console.log(error.response.data);
-                    alert(error.response.data.Message);
+                    console.log(error.code);
+                    alert(error.code);
                 });
         },
         checkTestRunnerStatus() {
@@ -1117,7 +1117,7 @@ export default {
                 this.organizationIdCheck +
                 '/mlComponents/' +
                 this.mlComponentId +
-                '/testDescriotions/run-status';
+                '/testDescriptions/run-status';
             this.$axios.get(url)
                 .then(response => {
                     // eslint-disable-next-line no-console
@@ -1133,7 +1133,7 @@ export default {
                             this.organizationIdCheck +
                             '/mlComponents/' +
                             this.mlComponentId +
-                            '/testDescriotions/' +
+                            '/testDescriptions/' +
                             this.testDescriptionId;
                         this.$axios.get(url)
                             .then((response) => {
@@ -1164,8 +1164,8 @@ export default {
                 })
                 .catch((error) => {
                     // eslint-disable-next-line no-console
-                    console.log(error.response.data);
-                    alert(error.response.data.Message + '\nPlease push "Run Test" after waiting a moment or canceling the job.');
+                    console.log(error.code);
+                    alert(error.code + '\nPlease push "Run Test" after waiting a moment or canceling the job.');
                     this.isPush = false;
                 });
         },

@@ -27,33 +27,33 @@ api.add_resource(ml_component.MLComponentReportOpinionAPI,
 api.add_resource(ml_component.MLComponentReportOpinionFrontAPI,
                  '/<organizer_id>/mlComponents/<ml_component_id>/report_opinion_front')
 api.add_resource(testrunner.TestRunnerAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/runners')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/runners')
 api.add_resource(testrunner.TestRunnerFrontAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/runnersFront')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/runnersFront')
 api.add_resource(testrunner.TestRunnerStatusAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/run-status')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/run-status')
 api.add_resource(testrunner.ReportGeneratorAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/reportGenerator')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/reportGenerator')
 api.add_resource(testrunner.ReportGeneratorFrontAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/reportGeneratorFront')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/reportGeneratorFront')
 api.add_resource(test_description.TestDescriptionAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions')
 api.add_resource(test_description.TestDescriptionFrontAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotionsFront')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptionsFront')
 api.add_resource(test_description.TestDescriptionDetailAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<testdescription_id>')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/<testdescription_id>')
 api.add_resource(test_description.TestDescriptionDetailFrontAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotionsFront/<testdescription_id>')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptionsFront/<testdescription_id>')
 api.add_resource(test_description.TestDescriptionStarAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/star')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/<test_description_id>/star')
 api.add_resource(test_description.TestDescriptionStarFrontAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/starFront')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/<test_description_id>/starFront')
 api.add_resource(test_description.TestDescriptionUnstarAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/unstar')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/<test_description_id>/unstar')
 api.add_resource(test_description.TestDescriptionUnstarFrontAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/unstarFront')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/<test_description_id>/unstarFront')
 api.add_resource(test_description.TestDescriptionAncestorAPI,
-                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriotions/<test_description_id>/ancestors')
+                 '/<organizer_id>/mlComponents/<ml_component_id>/testDescriptions/<test_description_id>/ancestors')
 api.add_resource(test_description.TestDescriptionUsingAPI,
                  '/testRunners/<test_runner_id>/usingTD')
 api.add_resource(quality_measurement.QualityMeasurementAPI,

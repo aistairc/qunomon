@@ -46,9 +46,11 @@
                     <!-- General -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{ $t("testDescriptionCreate.general") }}</strong></span>
+                            <span class="subtitle">
+                                <strong>{{ $t("testDescriptionCreate.general") }}</strong>
+                            </span>
                             <span class="category_description">
-                                <span>{{ $t("testDescriptionCreate.generalExp") }}</span>
+                                {{ $t("testDescriptionCreate.generalExp") }}
                             </span>
                         </label>
                         <table class="table_block">
@@ -83,16 +85,19 @@
                     <!-- Acceptance Criteria -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{ $t("testDescriptionCreate.qualityMeasurement") }}</strong></span>
-                            <div class="category_description">
-                                        <span>
-                                          {{ $t("testDescriptionCreate.qualityMeasurementExp") }}
-                                        </span>
-                            </div>
+                            <span class="subtitle">
+                                <strong>{{ $t("testDescriptionCreate.qualityMeasurement") }}</strong>
+                            </span>
+                            <span class="category_description">
+                                {{ $t("testDescriptionCreate.qualityMeasurementExp") }}
+                            </span>
+                            <span class="asterisk">
+                                {{ $t("testDescriptionCreate.qualityMeasurementNote") }}
+                            </span>
                         </label>
                         <table class="table_block">
-                            <tr class="dashed_tr2" v-for="(measure, i) in this.report.Measures" :key="measure.Id">
-                                <span v-for="measurementForm in measurementFormsList[i]" :key="measurementForm.Id">
+                            <template v-for="(measure, i) in this.report.Measures">
+                                <tr class="dashed_tr2" v-for="measurementForm in measurementFormsList[i]" :key="measurementForm.Id">
                                     <td class="tdQACheck dashed">
                                         <input type="checkbox" class="list_ checkboxCheck" name="listCheck"
                                                v-bind:value="measurementForm.Id"
@@ -144,8 +149,8 @@
                                               v-model="measurementForm.Value"
                                         />
                                     </td>
-                                </span>
-                            </tr>
+                                </tr>
+                            </template>
                         </table>
                     </div>
                     <hr/>
@@ -153,10 +158,12 @@
                     <!-- AIT Parameter -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{ $t("testDescriptionCreate.aitParam") }}</strong></span>
-                            <div class="category_description">
-                                <span>{{ $t("testDescriptionCreate.aitParamExp") }}</span>
-                            </div>
+                            <span class="subtitle">
+                                <strong>{{ $t("testDescriptionCreate.aitParam") }}</strong>
+                            </span>
+                            <span class="category_description">
+                                {{ $t("testDescriptionCreate.aitParamExp") }}
+                            </span>
                         </label>
                         <table class="table_block">
                             <thead>
@@ -213,10 +220,12 @@
                     <!-- Inventory Edit -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{ $t("testDescriptionCreate.targetInventory") }}</strong></span>
-                            <div class="category_description">
-                                <span>{{ $t("testDescriptionCreate.taegetInventoryExp") }}</span>
-                            </div>
+                            <span class="subtitle">
+                                <strong>{{ $t("testDescriptionCreate.targetInventory") }}</strong>
+                            </span>
+                            <span class="category_description">
+                                {{ $t("testDescriptionCreate.taegetInventoryExp") }}
+                            </span>
                         </label>
                         <table class="table_block">
                             <thead>
@@ -482,7 +491,7 @@ export default {
                         this.organizationIdCheck +
                         "/mlComponents/" +
                         this.mlComponentId +
-                        "/testDescriotionsFront";
+                        "/testDescriptionsFront";
                     //リクエスト時のオプションの定義
                     const config = {
                         headers: {
@@ -837,7 +846,7 @@ export default {
     border-top-left-radius: 5px;
     margin: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 4.5rem;
     font-weight: bold;
     display: flex;
     flex-direction: column;
