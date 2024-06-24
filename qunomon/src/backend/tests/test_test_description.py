@@ -9,7 +9,7 @@ from qai_testbed_backend.controllers.dto.test_description import AppendTestDescr
 from qai_testbed_backend.across.exception import QAIException, QAINotFoundException, QAIInvalidRequestException
 
 
-with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') as it:
+with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriptions') as it:
 
     # テスト実行時に1回実行
     @it.has_setup
@@ -77,7 +77,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
         res = TestDescriptionService().get_list(organizer_id=organizer_id, ml_component_id=ml_component_id)
         return res.test.test_descriptions[-1].id_
 
-    with it.having('GET /<organizer_id>/ml_components/<ml_component_id>/testDescriotions'):
+    with it.having('GET /<organizer_id>/ml_components/<ml_component_id>/testDescriptions'):
         @it.should('should return T12000.')
         def test():
             with app.app_context():
@@ -140,7 +140,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'T14001')
 
-    with it.having('GET /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/<testdescription_id>'):
+    with it.having('GET /<organizer_id>/ml_components/<ml_component_id>/testDescriptions/<testdescription_id>'):
         @it.should('should return T32000.')
         def test():
             with app.app_context():
@@ -157,7 +157,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'I34002')
 
-    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriotions'):
+    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriptions'):
         @it.should('should return T22000.')
         def test():
             post_json = {
@@ -324,7 +324,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
 
                 it.assertFalse(TestDescriptionMapper.query.get(td_id).value_target)
 
-    with it.having('PUT /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/<testdescription_id>'):
+    with it.having('PUT /<organizer_id>/ml_components/<ml_component_id>/testDescriptions/<testdescription_id>'):
         @it.should('should return T42000.')
         def test():
             post_json = {
@@ -852,7 +852,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'T24001')
 
-    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/<testdescription_id>/star'):
+    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriptions/<testdescription_id>/star'):
         @it.should('should return T62000.')
         def test():
             with app.app_context():
@@ -909,7 +909,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'T64001')
 
-    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/<testdescription_id>/unstar'):
+    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriptions/<testdescription_id>/unstar'):
         @it.should('should return T72000.')
         def test():
             with app.app_context():
@@ -970,7 +970,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions') 
                     it.assertTrue(type(e) is QAINotFoundException)
                     it.assertEqual(e.result_code, 'T74001')
 
-    with it.having('GET /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/<testdescription_id>/'
+    with it.having('GET /<organizer_id>/ml_components/<ml_component_id>/testDescriptions/<testdescription_id>/'
                    'ancestors'):
         @it.should('should return T82000.')
         def test():

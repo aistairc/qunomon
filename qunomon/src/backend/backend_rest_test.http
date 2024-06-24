@@ -73,8 +73,8 @@ content-type: application/json
 }
 
 ###
-# API: POST testDescriotions
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions
+# API: POST testDescriptions
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions
 content-type: application/json
 
 {
@@ -99,8 +99,8 @@ content-type: application/json
 }
 
 ###
-# API: PUT testDescriotions
-PUT {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/4
+# API: PUT testDescriptions
+PUT {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/4
 content-type: application/json
 
 {
@@ -124,8 +124,8 @@ content-type: application/json
 }
 
 ###
-# API: PUT testDescriotions change AIT
-PUT {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/4
+# API: PUT testDescriptions change AIT
+PUT {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/4
 content-type: application/json
 
 {
@@ -154,12 +154,12 @@ content-type: application/json
 }
 
 ###
-# API: DELETE testDescriotions
-DELETE {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1
+# API: DELETE testDescriptions
+DELETE {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/1
 
 ###
-# API: testDescriotions/runners
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/runners
+# API: testDescriptions/runners
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/runners
 content-type: application/json
 
 {
@@ -168,32 +168,32 @@ content-type: application/json
 }
 
 ###
-# API: testDescriotions/run-status
-GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/run-status
+# API: testDescriptions/run-status
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/run-status
 
 ###
-# API: testDescriotions
-GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions
+# API: testDescriptions
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriptions
 
 ###
 # API: testDescriotionDetail
-GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/3
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/3
 
 ###
 # API: testDescriotion Star
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1/star
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/1/star
 
 ###
 # API: testDescriotion UnStar
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1/unstar
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/1/unstar
 
 ###
 # API: testDescriotion ancestors
-GET {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/1/ancestors
+GET {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/1/ancestors
 
 ###
-# API: testDescriotions/reportGenerator(set param)
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/reportGenerator
+# API: testDescriptions/reportGenerator(set param)
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/reportGenerator
 content-type: application/json
 
 {
@@ -211,8 +211,8 @@ content-type: application/json
 }
 
 ###
-# API: testDescriotions/reportGenerator(set param)
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/reportGenerator
+# API: testDescriptions/reportGenerator(set param)
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/reportGenerator
 content-type: application/json
 
 {
@@ -230,8 +230,8 @@ content-type: application/json
 }
 
 ###
-# API: testDescriotions/reportGenerator(report generate)
-POST {{baseUrl}}/dep-a/mlComponents/1/testDescriotions/reportGenerator
+# API: testDescriptions/reportGenerator(report generate)
+POST {{baseUrl}}/dep-a/mlComponents/1/testDescriptions/reportGenerator
 content-type: application/json
 
 {

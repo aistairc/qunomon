@@ -278,18 +278,25 @@ class ReportGeneratorService:
                 filter(GraphMapper.report_required == True).\
                 order_by(asc(GraphMapper.report_index)).\
                 all()
-
-            for graph in graphs:
-                file_path_list.append(graph.download.path)
-                type_list.append(graph.graph_template.resource_type.type)
+            
+            # Resourceが0件のAITの場合、GraphMapperにレコードが存在されないため、TDIDとQDIDのみ設定
+            if not graphs:
+                file_path_list.append("")
+                type_list.append("")
                 quality_props_list.append(td.quality_dimension_id)
                 td_id__list.append(str(td_id))
-                required_list.append(graph.report_required)
-                report_name.append(graph.report_name)
-
-        # Resourceが0件のAITの場合、TDIDが未指定になってしまうため、空の場合設定する
-        if len(td_id__list) == 0:
-            td_id__list.extend(target_td_ids)
+                required_list.append("")
+                report_name.append("")
+            
+            # Resourceが1件以上の場合、GraphMapperのレコードの件数分を作成
+            else:
+                for graph in graphs:
+                    file_path_list.append(graph.download.path)
+                    type_list.append(graph.graph_template.resource_type.type)
+                    quality_props_list.append(td.quality_dimension_id)
+                    td_id__list.append(str(td_id))
+                    required_list.append(graph.report_required)
+                    report_name.append(graph.report_name)
 
         in_json['filepath'] = dict(zip(range(len(file_path_list)), file_path_list))
         in_json['type'] = dict(zip(range(len(type_list)), type_list))

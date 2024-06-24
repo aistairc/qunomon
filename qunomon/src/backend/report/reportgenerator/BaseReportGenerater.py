@@ -3,6 +3,9 @@ from pathlib import Path
 import shutil
 
 from jinja2 import Environment, FileSystemLoader
+from qlib.utils.logging import get_logger, log
+
+logger = get_logger()
 
 DEF_TEMPLATE_DIR = "template" + os.sep
 
@@ -17,6 +20,7 @@ class BaseReportGenerater():
         self.template_path = self.home_path + DEF_TEMPLATE_DIR
         self.format_path = format_path
 
+    @log(logger)
     def make_base_report_html(self, report_dataset: dict):
         data = {}
         data['guideline']   = report_dataset['Guideline']
@@ -44,6 +48,7 @@ class BaseReportGenerater():
         except Exception as e:
             raise e
     
+    @log(logger)
     def make_base_report_html_with_user_create_template(self, report_dataset: dict):
         data = {}
         data['guideline']   = report_dataset['Guideline']

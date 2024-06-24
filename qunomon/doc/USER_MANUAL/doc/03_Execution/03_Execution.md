@@ -1,221 +1,219 @@
-# Execution
+# Execution of quality assessment
 
-## Register report template (optional)
+In this chapter, we will explain the steps to execute quality assessments for ML components using Qunomon.
 
-Original report templates can be registered.
+The structure of this chapter is as follows: registering the MLComponent (the unit of asset under assessment), registering the TestDescription (the unit of evaluation in the system), executing the TestDescription, result confirmation, generating the test report.
 
-(This is not a required task, as the report can be output without a template.)
+## Registering the MLComponent
 
-### Create report template
+In Qunomon, evaluations are conducted on a unit called MLComponent.
 
-#### When create your own report template
+MLComponent is the type of components in the system, typically implements a single independent ML-related feature. MLComponent typically consists of one or more models and/or datasets.
 
-A sample template exists in the folder below, please copy, edit and zip it.
-
-qunomon\src\backend\report\templates\1
-
-#### When create a report template from guideline
-
-In the "Create Report Template" portion of the ReportTemplate screen, select a guideline and click the "Create" button.
-
-![0101](01/01.png)
-
-### Register report template
-
-In the "Install Report Template" portion of the ReportTemplate screen, select the guideline to be associated with.
-
-Next, enter a template name, upload the zipped template file, and click the "install" button.
-
-![0102](01/02.png)
-
-## Register MLComponents
-
-MLComponent is a unit that represents one machine learning model.
-
-When you press the "Create" button on the MLComponents screen, the MLComponent new creation screen will be displayed.
+To begin with, press the "Create" button in the MLComponents screen. Then the registration form for new MLComponent will appear.
 
 ![0201](02/01.png)
 
 Enter the necessary items in the MLComponent new creation screen and click the "Create" button.
 
-MLComponentName：Enter MLComponent Name
+Please fill the required fields below and press "Create" button.
 
-Description：Enter MLComponent Description
-
-Domain：Enter MLComponent Domain
-
-Guideline：Select the guideline to be used
-
-Scope：Select the scope to be used in the guideline
+* MLComponentName: Name for the new MLComponent (should be easily distinguishable from others)
+* Description
+* Domain: Problem domain of this MLComponent (e.g. Task, Industrial Domain, Use Case, etc.)
+* Guideline: Choose the guideline/standard used and referred for your assessment
+* Scope: When selected guideline is using different set of quality characteristics for different scope, choose one which is appropriate for this MLComponent.
 
 ![0202](02/02.png)
 
-The created MLComponent will appear in the list on the MLComponents screen, so press the "test" icon.
+After this step, you can see the newly registered MLComponent in the MLComponents screen.
+From here, we will register asset to be evaluated into the inventory of this MLCompomnent, and then define the TestDescription for them.
+
+Please click the icon shown on the "Test" column and move to the detailed-information screen for the MLComponent.
 
 ![0203](02/03.png)
 
 ![0204](02/04.png)
 
-## Register Inventories
+## Register assets into inventories
 
-Inventory is a function that manages information on machine learning models and CSV-like data used in AIT.
+Inventory is the feature to store the asset to be tested by Qunomon. The assets should be registered in the inventory may include ML models (architectures, trained-weights, hyperparameters) and/or datasets (such like tables, files or annotations).
 
-Basically, registration is done from the Inventory registration screen, but it can also be done from the TestDescriptions registration screen.
-
-Click "Inventories" from the submenu to display the Inventory list screen, then press the "Create" button.
+Choose the "Inventories" under the submenu, and then press the "Create" button.
 
 ![0301](03/01.png)
 
-Enter the required fields on the Create New Inventory screen and click the "Create" button.
+Please fill the required field below and press "Create" button.
 
-Name：Enter Inventory name
-
-Path：Enter file path where the Inventory is saved
-
-DataType：Select "dataset", "model" or "attribute set" (Must be the same type of Inventory used by AIT)
-
-Format：Select a file extension (or type directly if not available)
-
-Description：Inventory description
+* Name: Name for the inventory (should be easily distinguishable from others.)
+* Path: Local file path pointed to the asset to be registered (Note that: In other words, the file to be registered and Qunomon must be the same file system.)
+* DataType: Choose one type that AIT requires as input.
+* Format: Choose appropriate file extension or input if the one is not listed.
+* Description
 
 ![0302](03/02.png)
 
-## Register TestDescriptions
+## Register a new TestDescription
 
-TestDescription is the unit of test to be performed on Qunomon.
+TestDescription is the smallest unit of the test, describes one executable evaluation specifications. 
+In this section, we will define which AIT to be applied, which asset (in the iventory) is to be evaluated and execution parameters. 
 
-Click the "Create" button on the TestDescription screen to move to the creation screen.
+Please click the icon displayed on "Create" column and move to the TestDescription creation form.
 
 ![0401](04/01.png)
 
-Enter basic information for TestDescription and click the "Next" button.
+Here is the basic information form for the TestDescription.
+Please fill in the required fields below and press the "Next" button.
 
-General→Name：Enter TestDescription name
-
-AIT Program：Select the AIT to be used (you can filter by "Name" or "Description")
-
-Quality Dimension：Select the quality that AIT measures
+* Name: Identical name for the TestDescription
+* AIT Program: Choose one AIT (Executable Test Package) that is used for this test.
+  * You can filter already installed AITs using some attributes like name and/or description.
+* Quality Dimension: Choose one quality characteristics which is evaluated by the AIT.
+  * Quality dimensions listed here are extracted from guideline you have selected for this MLComponent. Since Qunomon will manage and organize assessment to correspond with quality characteristics defined in the guideline, you should choose appropriate quality dimension here.
 
 ![0402](04/02.png)
 
-Enter detailed information for TestDescription and click the "Create" button.
+Here is the detailed information form for the TestDescription.
+Please fill in the required fields below and press the "Create" button.
 
-Acceptance Criteria：Enter the AIT evaluation value (if all of this formula is satisfied when executing TestDescription, the TestDescription execution result will be OK)
-
-AIT Parameter：Enter AIT parameters
-
-Target Inventories：Select the inventory to be used by AIT (Inventories can also be registered using the "+" icon here)
+* Acceptance Criteria: For each of the evaluation metrics of an AIT, please configure the acceptance criteria (condition).
+  * All metrics to be generated by the AIT are listed here.
+  * If all of the configured condition are met, the test treated as pass and otherwise the test fail.
+  * So you should configure these condition referring the guideline, other documents, requirements for the component, and/or task characteristics.
+* AIT Parameter: These are the execution parameter of chosen AIT. Configure them based on the provided description.
+* Target Inventories: Please select inventories with assets to be tested or used in this TestDescription. 
+  * You can directly register an asset from "+" icon on this form.
 
 ![0403](04/03.png)
 
-If successfully registered, it will be added to the TestDescription list.
+After completing the registration, you can see the registered TestDescription in the list.
 
 ![0404](04/04.png)
 
-## Run TestDescriptions
+## Executing TestDescription
 
-Select the TestDescription to run and execute it with "Run test".
+Please select the TestDescription to be executed and press "Run test" to execute assessment.
 
 ![0501](05/01.png)
 
-When finished, the Status of the selected TestDescription changes.
+After execution, the status field for the TestDescription will change according to the result.
 
-OK：If Acceptance Criteria are satisfied
-
-NG：If Acceptance Criteria cannot be satisfied
-
-ERR：If TestDescription could not be executed
+* OK: All Acceptance Criteria are met.
+* NG: Any of the Acceptance Criteria are not met.
+* ERR: An error is occured during the execution. Result will not be provided in this case.
 
 ![0502](05/02.png)
 
-* How to investigate the cause of ERR
+There are various causes for ERR such like:
+* The AIT contained bugs.
+* The input data type (of asset in the inventory) did not match the expected format.
+* An resource shortage while executing the TestDescription.
 
-(1) Confirm the details of the error on the detail screen of the TestDescription that resulted in an ERR.
+\[How to check the cause of the error\]
+* (1) See the error detail in the detailed information screen of the TestDescription.
+* (2) Check the log file under the `qai-testbed\qunomon\logs` directory.
+* (3) Check the execution logs in the airflow (job management system).
+  * access http://localhost:8180/home and check the execution log of an AIT which is corresponds to the TestDescription.（ID：airflow　PASS：airflow）
 
-(2) Confirm log files in the "qai-testbed\qunomon\logs" directory
+## Check Detailed Result of the TestDescription
 
-(3) Confirm airflow logs
-
-Access "http://localhost:8180/home" and check the log of AIT used in TestDescription.
-
-(ID：airflow　PASS：airflow)
-
-## TestDescriptions Details Display
-
-Click the detail icon for the target TestDescription.
+Press the "Detail" icon of the executed TestDescription to confirm the assessment result.
 
 ![0601](06/01.png)
 
 ![0602](06/02.png)
 
-Once you select the Test Result output file, you can view its contents.
-
-"Report Contents" allows you to set whether to include the output file in the report.
-
-"Opinion" allows you to add a general review to the report.
+* (1) List of the test resource (Test results and supplementary information in image or graph format.) 
+* (2) You can preview the selected resource in (1).
+* (3) You can choose which of the resources are included in the final assessment report.
+* (4) You should write an opinion about result after confirming the test results.
 
 ![0603](06/03.png)
 
-Click "Download" in the submenu or "Click here to download the data" to go to the Download screen.
-
+* You can move to the download screen of the resource by pressing the "Download" in the side bar or "Click here to download the data" link text.
+ 
 ![0604](06/04.png)
 
-## Download Resources
+## Download the test resource
 
-Click the download icon to download the file.
+You can download the test resources like images or graphs via download icon.
 
 ![0701](07/01.png)
 
-## Copy TestDescription
+## Copy existing TestDescription
 
-By pressing the "Copy" icon of TestDescriptions on the TestDescription list screen, you can copy and create the contents.
+You can register the copy of the TestDescription by pressing the "copy" icon. This may be useful for re-executing the failed test case and/or conducting same test against multiple inventories.
 
 ![0801](08/01.png)
 
-Edit "Name", "Acceptance Criteria", "AIT Parameter" and "Target Inventories" and click the "Create" button.
+Configuration items are basically same as creating new one.
+Fill the form and press the "Create" button.
 
 ![0802](08/02.png)
 
-It will be added to the TestDescription list screen.
+Copied TestDescription can be seen in the list.
 
 ![0803](08/03.png)
 
-After executing the copied TestDescription, a "relationsip" icon will appear. 
-
-Click on that icon to view the parent-child relationship of the TestDescription.
+After excuting the copied TestDescription, you can see the icon in the "relationship" column. Press the icon to see the relationships between copy source and copy destination.
 
 ![0804](08/04.png)
 
 ![0805](08/05.png)
 
-## Compare TestDescriptions
+## Compare the TestDescriptions
 
-If you select two TestDescriptions that have a parent-child relationship and click the "Compare" button, you can transition to the comparison screen.
+You can compare execution results of similar TestDescriptions by choosing two TestDescriptions with parent-child relationship and press the "Compare" button. This might be useful to copmpare the models with different architecture, or different versions.
 
 ![0901](09/01.png)
 
 ![0902](09/02.png)
 
-Select an output file to display it on the screen.
+You can compare the test resources from each of the TestDescription side by side by choosing one from the list. 
 
 ![0903](09/03.png)
 
-## Report Output
+## Report Generation
 
-Select TestDescription and click the "Download Report" button to output the report.
+Qunomon manages and organized the TestDescriptions along with quality characteristic defined in the guideline/standard. In this section, we explain how to generate an assessment report as PDF which is compliant to the guideline.
+
+You can see the Report Geenration dialogue with clicking "Download Report" button after choosing the TestDescriptions to be included in the assessment report.
 
 ![1001](10/01.png)
 
-On the report template selection screen, select the template you created and click the "Preview" button to preview the report using the template.
+Press the "Preview" button after choosing appropriate template will display the preview of the report to be generated.
+You can create or register new report template by yourself while the template for the AI Quality Management GUideline is included in the Qunomon from beginning.
 
-Alternatively, select "Do not use ReportTemplate" and click the "Preview" button to preview the report without the template.
+If you don't have any template for the guideline/standard, you can also choose "Do not use ReportTemplate" so that the report with basic feature (but may not be well structured) can be generated.
 
 ![1002](10/02.png)
 
-The string entered in "Report Opinion" will be reflected in the report's overall rating.
-
-Click the "Create" button to download the report in PDF format.
+Review the contents through preview and then describe the general comment in the "Report Opinion" textbox.
+"Create" button generates the report in the PDF format and download will be automatically started.
 
 ![1003](10/03.png)
 
+## Register new Report Template (optional)
 
+As we said previously, we can author and register the original report template.
+There are two ways to create new report template: (1) Generate report template automatically from registered guideline/standards, and (2) Manually writes template from scratch.
+
+### Create the new Report Template
+
+#### Generate Report Template from the registered guideline
+
+Choose desired guideline in the "Create Report Template" part of the ReportTemplate screen and press the "Create" button.
+
+#### Manually writes template from scratch
+
+The example of the template are placed under `qunomon\src\backend\report\templates\1`. Please copy and edit them. To register template, you need to zip the entire directory. Our templates are based on Jinja Framework, so the author should learn how to use Jinja Framework.
+
+![0101](01/01.png)
+
+### Register an Report Template
+
+Choose guideline correspond to the template to be registered at the "Install Report Template" part of the ReportTemplate screen, name the template and upload zipped template folder from Select Upload File inputbox.
+
+Please press the "install" button and then report template will be registered into Qunomon.
+
+![0102](01/02.png)

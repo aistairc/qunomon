@@ -90,7 +90,6 @@
                 dateStart: '',
                 dateEnd: '',
                 checkedItems: [],
-                isPush: false,
                 TestDescriptions: null,
 				columns: [
 					{
@@ -222,7 +221,7 @@
                         + this.organizationIdCheck
                         + '/mlComponents/'
                         + this.mlComponentId
-                        + '/testDescriotions/'
+                        + '/testDescriptions/'
                         + this.testDescriptionId
                         + '/ancestors';
                 this.$axios.get(url)

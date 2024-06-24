@@ -300,7 +300,6 @@ export default{
                 isAsc: true
             },
             checkedItems: [],
-            isPush: false,
             isDisp: true,
             isRunTest: true,
             isCompare: true,
@@ -319,7 +318,7 @@ export default{
         this.getMLComponent();
         const url = this.$backendURL + '/'
                     + this.organizationIdCheck + '/mlComponents/'
-                    + this.mlComponentId + '/testDescriotions';
+                    + this.mlComponentId + '/testDescriptions';
         this.$axios.get(url)
         .then((response) => {
             this.test_descriptions = response.data;
@@ -379,11 +378,10 @@ export default{
         },
         runTest(){
             const that = this;
-            this.isPush = true;
             this.isDisp = false;
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
-                        + this.mlComponentId + '/testDescriotions/runnersFront'
+                        + this.mlComponentId + '/testDescriptions/runnersFront'
             //リクエスト時のオプションの定義
             const config = {
                 headers:{
@@ -397,19 +395,18 @@ export default{
                 this.run_test = response.data;
                 this.intervalId = setInterval(function () {
                     that.checkTestRunnerStatus();
-                }, 1000)
+                }, 2000)
             })
             .catch((error) => {
-                this.isPush = false;
                 // eslint-disable-next-line no-console
-                console.log(error.response.data);
-                alert(error.response.data.Message);
+                console.log(error.code);
+                alert(error.code);
             })
         },
         checkTestRunnerStatus(){
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
-                        + this.mlComponentId + '/testDescriotions/run-status';
+                        + this.mlComponentId + '/testDescriptions/run-status';
             this.$axios.get(url)
                 .then(response => {
                     // eslint-disable-next-line no-console
@@ -428,14 +425,13 @@ export default{
                     const data = response.data;
                     this.updateStatus(data);
                     if(data.Job.Status == 'DONE'){
-                        this.isPush = false;
                         clearInterval(this.intervalId);
                         delete this.intervalId;
                         // eslint-disable-next-line no-console
                         console.log('status check roop fin')
                         const url = this.$backendURL + '/'
                                     + this.organizationIdCheck + '/mlComponents/'
-                                    + this.mlComponentId + '/testDescriotions'
+                                    + this.mlComponentId + '/testDescriptions'
                         this.$axios.get(url)
                         .then((response) => {
                             this.test_descriptions = response.data;
@@ -445,9 +441,8 @@ export default{
                 })
                 .catch((error) => {
                     // eslint-disable-next-line no-console
-                    console.log(error.response.data);
-                    alert(error.response.data.Message + '\nPlease push "Run Test" after waiting a moment or canceling the job.');
-                    this.isPush = false;
+                    console.log(error.code);
+                    alert(error.code + '\nPlease push "Run Test" after waiting a moment or canceling the job.');
                 })
         },
         updateStatus(data){
@@ -493,7 +488,7 @@ export default{
                         this.organizationIdCheck +
                         '/mlComponents/' +
                         this.mlComponentId +
-                        '/testDescriotionsFront/' +
+                        '/testDescriptionsFront/' +
                         testDescriptionId,
                         config
                 )
@@ -766,7 +761,7 @@ export default{
         tableReroad(){
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
-                        + this.mlComponentId + '/testDescriotions'
+                        + this.mlComponentId + '/testDescriptions'
             this.$axios.get(url)
             .then((response) => {
                 this.test_descriptions = response.data;

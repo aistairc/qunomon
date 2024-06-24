@@ -331,7 +331,7 @@ export default {
             this.organizationIdCheck +
             "/mlComponents/" +
             this.mlComponentId +
-            "/testDescriotions/";
+            "/testDescriptions/";
         const url_1 = url + sessionStorage.getItem('testDescriptionId1');
         const url_2 = url + sessionStorage.getItem('testDescriptionId2');
 

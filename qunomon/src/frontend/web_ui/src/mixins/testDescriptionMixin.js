@@ -328,7 +328,7 @@ export const tdMixin = {
         setStar(testDescriptionId) {
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
-                        + this.mlComponentId + '/testDescriotions/'
+                        + this.mlComponentId + '/testDescriptions/'
                         + testDescriptionId + '/starFront'
             //リクエスト時のオプションの定義
             const config = {
@@ -349,7 +349,7 @@ export const tdMixin = {
         setUnStar(testDescriptionId) {
             const url = this.$backendURL + '/'
                         + this.organizationIdCheck + '/mlComponents/'
-                        + this.mlComponentId + '/testDescriotions/'
+                        + this.mlComponentId + '/testDescriptions/'
                         + testDescriptionId + '/unstarFront'
             //リクエスト時のオプションの定義
             const config = {

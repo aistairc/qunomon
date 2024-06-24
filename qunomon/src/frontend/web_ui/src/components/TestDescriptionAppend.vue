@@ -38,8 +38,12 @@
                     <!-- General -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{$t("testDescriptionCreate.general")}}</strong></span>
-                            <span class="category_description">{{$t("testDescriptionCreate.generalExp")}}</span>
+                            <span class="subtitle">
+                                <strong>{{$t("testDescriptionCreate.general")}}</strong>
+                            </span>
+                            <span class="category_description">
+                                {{$t("testDescriptionCreate.generalExp")}}
+                            </span>
                         </label>
                         <table class="table_block">
                             <tr class="contents-area">
@@ -62,8 +66,12 @@
                     <!-- AIT Program -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{$t("testDescriptionCreate.ait")}}</strong></span>
-                            <span class="category_description">{{$t("testDescriptionCreate.aitExp")}}</span>
+                            <span class="subtitle">
+                                <strong>{{$t("testDescriptionCreate.ait")}}</strong>
+                            </span>
+                            <span class="category_description">
+                                {{$t("testDescriptionCreate.aitExp")}}
+                            </span>
                         </label>
                         <table class="table_block">
                             <thead>
@@ -145,8 +153,12 @@
                     <!-- qualityDimension -->
                     <div class="eachCard">
                         <label class="subtitleArea">
-                            <span><strong>{{$t("testDescriptionCreate.qualityDimension")}}</strong></span>
-                            <span class="category_description">{{$t("testDescriptionCreate.qualityDimensionExp")}}</span>
+                            <span class="subtitle">
+                                <strong>{{$t("testDescriptionCreate.qualityDimension")}}</strong>
+                            </span>
+                            <span class="category_description">
+                                {{$t("testDescriptionCreate.qualityDimensionExp")}}
+                            </span>
                         </label>
                         <table class="table_block">
                             <tr class="contents-area">
@@ -391,7 +403,7 @@ export default {
     border-top-left-radius: 5px;
     margin: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 4.5rem;
     font-weight: bold;
     display: flex;
     flex-direction: column;

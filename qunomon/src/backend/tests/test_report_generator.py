@@ -12,7 +12,7 @@ from qai_testbed_backend.across.exception import QAIException
 from qai_testbed_backend.gateways.extensions import sql_db
 
 
-with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions/reportGenerator') as it:
+with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriptions/reportGenerator') as it:
 
     # テスト実行時に1回実行
     @it.has_setup
@@ -70,7 +70,7 @@ with such.A('/<organizer_id>/ml_components/<ml_component_id>/testDescriotions/re
             #     time.sleep(0.5)
 
 
-    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriotions/reportGenerator'):
+    with it.having('POST /<organizer_id>/ml_components/<ml_component_id>/testDescriptions/reportGenerator'):
         @it.should('should return D14000 if ml_component_id is not found.')
         def test():
             req = PostReportGeneratorReq(command='SetParam',

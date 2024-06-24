@@ -11,6 +11,9 @@ from distutils.dir_util import copy_tree, remove_tree
 import reportgenerator.Tools as tools
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from qlib.utils.logging import get_logger, log
+
+logger = get_logger()
 
 DEF_RESOURCE_DIR = "tds_results" + os.sep
 DEF_WORK_DIR = "work" + os.sep
@@ -42,6 +45,7 @@ class ReportGenerator():
         os.mkdir(self.work_path)
         # os.mkdir(self.template_path)
 
+    @log(logger)
     def make_reporthtml(self, report_dataset: dict):
         try:
             # 全リソースからレポート出力用のHTMLを作成
@@ -69,8 +73,10 @@ class ReportGenerator():
                     else:
                         tools.write_file(output_filepath, line, "a")
         except Exception as e:
+            print("ReportGenerator.make_reporthtml.ReportGeneratorException: {}".format(e))
             raise e
 
+    @log(logger)
     def export_pdf(self, pdf_path: str):
         print('ReportGenerator() export_pdf() start')
         # PDF変換
@@ -87,9 +93,11 @@ class ReportGenerator():
             # work_patht直下のbase_report.htmlでPDFを生成する
             pdfkit.from_file(self.work_path + "base_report.html", pdf_path, options=options)
         except Exception as e:
+            print("ReportGenerator.export_pdf.ReportGeneratorException: {}".format(e))
             raise e
         return 1
 
+    @log(logger)
     def report_generate(self, db_info: SQLAlchemy, downloadfiles_json: str, pdf_path: str = "UNSPECIFIED",
                         template_format_path: str = "",
                         target_report_template_flag: Boolean = False,
@@ -125,6 +133,6 @@ class ReportGenerator():
             # exportしたPDFのpathを返す。
             return pdf_path
         except Exception as e:
-            print("ReportGeneratorException: {}".format(e))
+            print("ReportGenerator.report_generate.ReportGeneratorException: {}".format(e))
         return None
 

@@ -12,6 +12,9 @@ import json
 import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from qlib.utils.logging import get_logger, log
+
+logger = get_logger()
 
 # base.pyのあるディレクトリの絶対パスを取得(ReportGenerator単体で実行するときにだけ必要な処理)
 current_dir = Path(__file__).resolve().parent
@@ -27,6 +30,7 @@ class ResourceCollector():
 
     # make_directory, collect_testresult, collect_template, collect_commoninfoを一気通貫で実行する
     # これらの関数は単体で実行する機会がないため、この関数で一括実行してしまって大丈夫なはず?
+    @log(logger)
     def collect(self, app_debug_flg: Flask, dbinfo: SQLAlchemy, stragehome_path: str, downloadfiles_json: str,
                 work_path: str):
         print('ResourceCollector() collect() start')
@@ -48,7 +52,7 @@ class ResourceCollector():
             # テンプレートを<workdir>に配置
             self.collect_template(dbinfo, stragehome_path, downloadfiles_json)
         except Exception as e:
-            print("ReportGeneratorException: {}".format(e))
+            print("ResourceCollector.ReportGeneratorException: {}".format(e))
             raise
         return report_dataset
 
@@ -80,15 +84,18 @@ class ResourceCollector():
         for index, row in df.iterrows():
             filepath = row['filepath']
             # print('copy_to_file:' + str(filepath))
-            copy_to_file = os.path.join(
-                stragehome_path,
-                str(row['quality_props']),
-                str(row['testDescriptionID']),
-                os.path.basename(filepath)
-            )
-            # print('copy_to_file:' + str(copy_to_file))
-            if row['required']:
-                self.__download(filepath, copy_to_file)
+
+            # Resourceが指定された場合のみ実施 
+            if len(str(filepath)) > 0:
+                copy_to_file = os.path.join(
+                    stragehome_path,
+                    str(row['quality_props']),
+                    str(row['testDescriptionID']),
+                    os.path.basename(filepath)
+                )
+                # print('copy_to_file:' + str(copy_to_file))
+                if row['required']:
+                    self.__download(filepath, copy_to_file)
 
     def collect_template(self, dbinfo: SQLAlchemy, stragehome_path: str, downloadfiles_json: str):
         # templateはreportディレクトリに抱えこみ、DBや共通ディレクトリは利用しない
@@ -384,6 +391,7 @@ class ResourceCollector():
 
     # source_file_path: ファイルがもともと置かれている場所
     # destination_file_path: この関数によりダウンロードされ、配置される場所
+    @log(logger)
     def __download(self, source_file_path, destination_file_path):
         # ☆TODO: 2020/03時点ではデータは同一マシン上にあるはずなので、
         # 単なるのファイルコピーで処理を代替します。

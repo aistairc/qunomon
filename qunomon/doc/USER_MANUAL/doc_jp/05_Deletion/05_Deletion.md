@@ -1,35 +1,39 @@
 # 削除
 
-## TestDescriptions削除
+本章では、登録したMLComponents, Inventories, TestDescriptionsの各項目の削除手順について解説します。
 
-TestDescriptions一覧画面から削除対象の「delete」アイコンを押下すると削除できます。
+## TestDescriptionsの削除
+
+TestDescriptions一覧画面から削除対象の「delete」列に表示されたごみ箱アイコンを押下すると、削除できます。
 
 ![0101](01/01.png)
 
-## Inventories削除
+## Inventoriesの削除
 
-Inventories一覧画面から削除対象の「delete」アイコンを押下すると削除できます。
+Inventories一覧画面から削除対象の「delete」列に表示されたごみ箱アイコンを押下すると、削除できます。
 
 ![0201](02/01.png)
 
-## MLComponents削除
+## MLComponentsの削除
 
-MLComponents一覧画面から削除対象の「delete」アイコンを押下すると削除できます。
+MLComponents一覧画面から削除対象の「delete」列に表示されたごみ箱アイコンを押下すると、削除できます。
 
-（削除対象のMLComponent内にTestDescriptionやInventoryが存在すると削除できません。）
+削除対象のMLComponent内にTestDescriptionやInventoryが存在すると削除できません。予め関連付けられたTestDescriptionやInventoryを削除したうえで再実行ください。
 
 ![0301](03/01.png)
 
-## ガイドラインを削除
+## ガイドラインの削除
 
-Guidelines一覧画面から削除対象の「delete」アイコンを押下すると削除できます。
+Guidelines一覧画面から削除対象の「delete」列に表示されたごみ箱アイコンを押下すると、削除できます。
 
 ![0401](04/01.png)
 
-## AITをアンインストール
+## AITのアンインストール
 
-インストール済みAITリスト画面から「AIT Uninstall」ボタンを押下するとアンインストールできます。
+インストール済みAITリスト画面から「AIT Uninstall」ボタンを押下すると当該AITをアンインストールできます。
 
-（ターゲットとなるAITは全てのTestDescriptionの中で使用されていない状態にしてください。）
+評価の再実行性や証跡の管理のため、当該AITが関連付けられたTestDescriptionが一つでもあればアンインストールを実行できません。（TD Using Status列にて、TD unusedとなっていれば削除可能といえます。）
+
+本当に不要な場合は、当該AITを使用するすべてのTestDescriptionを削除した後に、アンインストール操作を再実行ください。
 
 ![0501](05/01.png)
