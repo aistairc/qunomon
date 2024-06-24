@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -14,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -27,10 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -167,33 +170,35 @@
            <div itemprop="articleBody">
             
   <section id="delete">
-<h1><span class="section-number">5.1. </span>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5.1. </span>Delete<a class="headerlink" href="#delete" title="Permalink to this heading">¶</a></h1>
+<p>In this chapter, we will express how to delete the registered entities (MLComponents, Inventories, TestDescriptions).</p>
 <section id="delete-testdescriptions">
-<h2><span class="section-number">5.1.1. </span>Delete TestDescriptions<a class="headerlink" href="#delete-testdescriptions" title="Permalink to this headline">¶</a></h2>
-<p>Click the “delete” icon on the TestDescriptions list screen to delete the target.</p>
-<p><img alt="0101" src="../_images/0114.png" /></p>
+<h2><span class="section-number">5.1.1. </span>Delete TestDescriptions<a class="headerlink" href="#delete-testdescriptions" title="Permalink to this heading">¶</a></h2>
+<p>Clicking the trashbox icon on the “delete” column in the list of TestDescriptions will delete it.</p>
+<p><img alt="0101" src="../_images/0115.png" /></p>
 </section>
 <section id="delete-inventories">
-<h2><span class="section-number">5.1.2. </span>Delete Inventories<a class="headerlink" href="#delete-inventories" title="Permalink to this headline">¶</a></h2>
-<p>Click the “delete” icon on the Inventories list screen to delete the target.</p>
-<p><img alt="0201" src="../_images/0115.png" /></p>
+<h2><span class="section-number">5.1.2. </span>Delete Inventories<a class="headerlink" href="#delete-inventories" title="Permalink to this heading">¶</a></h2>
+<p>Clicking the trashbox icon on the “delete” column in the list of Inventories will delete it.</p>
+<p><img alt="0201" src="../_images/0116.png" /></p>
 </section>
 <section id="delete-mlcomponents">
-<h2><span class="section-number">5.1.3. </span>Delete MLComponents<a class="headerlink" href="#delete-mlcomponents" title="Permalink to this headline">¶</a></h2>
-<p>Click the “delete” icon on the MLComponents list screen to delete the target.</p>
-<p>(If TestDescription or Inventory exists in the MLComponent to be deleted, it cannot be deleted.)</p>
-<p><img alt="0301" src="../_images/0116.png" /></p>
+<h2><span class="section-number">5.1.3. </span>Delete MLComponents<a class="headerlink" href="#delete-mlcomponents" title="Permalink to this heading">¶</a></h2>
+<p>Clicking the trashbox icon on the “delete” column in the list of Inventories will delete it.
+(Note that: When the MLComponent has one or more TestDescription and/or Inventory items, it cannot be deleted.)</p>
+<p><img alt="0301" src="../_images/0117.png" /></p>
 </section>
 <section id="delete-guideline">
-<h2><span class="section-number">5.1.4. </span>Delete Guideline<a class="headerlink" href="#delete-guideline" title="Permalink to this headline">¶</a></h2>
-<p>Click the “delete” icon on the Guidelines list screen to delete the target.</p>
-<p><img alt="0401" src="../_images/0117.png" /></p>
+<h2><span class="section-number">5.1.4. </span>Delete Guideline<a class="headerlink" href="#delete-guideline" title="Permalink to this heading">¶</a></h2>
+<p>Clicking the trashbox icon on the “delete” column in the list of Guidelines will delete it.</p>
+<p><img alt="0401" src="../_images/0118.png" /></p>
 </section>
 <section id="uninstall-ait">
-<h2><span class="section-number">5.1.5. </span>Uninstall AIT<a class="headerlink" href="#uninstall-ait" title="Permalink to this headline">¶</a></h2>
-<p>Click the “AIT Uninstall” button on the “Installed AIT List” screen to uninstall.</p>
-<p>(Make sure that the target AIT is not used in all TestDescriptions.)</p>
-<p><img alt="0501" src="../_images/0118.png" /></p>
+<h2><span class="section-number">5.1.5. </span>Uninstall AIT<a class="headerlink" href="#uninstall-ait" title="Permalink to this heading">¶</a></h2>
+<p>Clicking the “AIT Uninstall” button on the “Installed AIT List” screen will uninstall them.
+(Note that if the AIT are related to any TestDescription cannot be uninstalled to ensure reproducibility and traceability. You can check “TD using status” column to judge whether the AIT is used in any of the TD or not.)</p>
+<p>If the AIT is actually not required for any purposes, please delete all TestDescriptions related to AIT to be installed and then retry uninstall.</p>
+<p><img alt="0501" src="../_images/0119.png" /></p>
 </section>
 </section>
 

@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -14,6 +14,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -27,10 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -154,8 +157,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="section-1">
-<h1>USER MANUAL Documentation<a class="headerlink" href="#section-1" title="Permalink to this headline">¶</a></h1>
+  <section id="id1">
+<h1>USER MANUAL Documentation<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="01_Introduction/index.html">1. Introduction</a><ul>
@@ -166,16 +169,28 @@
 <li class="toctree-l4"><a class="reference internal" href="01_Introduction/01_Introduction.html#installation-of-docker">1.1.3.1. Installation of docker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="01_Introduction/01_Introduction.html#starting-qunomon">1.1.4. Starting Qunomon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_Introduction/01_Introduction.html#preparations-for-launching-qunomon-on-linux">1.1.4. Preparations for launching Qunomon on Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_Introduction/01_Introduction.html#change-permissions-for-docker-sock">1.1.4.1. Change permissions for docker.sock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_Introduction/01_Introduction.html#user-create">1.1.4.2. User create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_Introduction/01_Introduction.html#unpacking-materials">1.1.4.3. Unpacking materials</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_Introduction/01_Introduction.html#starting-qunomon">1.1.5. Starting Qunomon</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="02_Preparation/index.html">2. Preparation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="02_Preparation/02_Preparation.html">2.1. Preparation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="02_Preparation/02_Preparation.html#create-and-register-guidelines-and-ait">2.1.1. Create and register guidelines and AIT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#register-guideline">2.1.1.1. Register Guideline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#register-ait">2.1.1.2. Register AIT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02_Preparation/02_Preparation.html#install-new-packages-through-ait-hub">2.1.1. Install new packages through AIT Hub</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#preparation-establish-a-connection-with-ait-hub">2.1.1.1. Preparation: establish a connection with AIT Hub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#install-and-register-a-new-guideline-definition">2.1.1.2. Install and register a new guideline definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#install-and-register-a-new-ait">2.1.1.3. Install and register a new AIT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02_Preparation/02_Preparation.html#local-installation-without-ait-hub">2.1.2. Local Installation (without AIT Hub)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#register-guideline-not-using-ait-hub">2.1.2.1. Register Guideline (not using AIT-HUB)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_Preparation/02_Preparation.html#register-ait-not-using-ait-hub">2.1.2.2. Register AIT (not using AIT-HUB)</a></li>
 </ul>
 </li>
 </ul>
@@ -183,33 +198,33 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="03_Execution/index.html">3. Execution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution/03_Execution.html">3.1. Execution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-report-template-optional">3.1.1. Register report template (optional)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="03_Execution/03_Execution.html#create-report-template">3.1.1.1. Create report template</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="03_Execution/03_Execution.html#when-create-your-own-report-template">3.1.1.1.1. When create your own report template</a></li>
-<li class="toctree-l5"><a class="reference internal" href="03_Execution/03_Execution.html#when-create-a-report-template-from-guideline">3.1.1.1.2. When create a report template from guideline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution/03_Execution.html">3.1. Execution of quality assessment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#registering-the-mlcomponent">3.1.1. Registering the MLComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-assets-into-inventories">3.1.2. Register assets into inventories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-a-new-testdescription">3.1.3. Register a new TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#executing-testdescription">3.1.4. Executing TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#check-detailed-result-of-the-testdescription">3.1.5. Check Detailed Result of the TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#download-the-test-resource">3.1.6. Download the test resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#copy-existing-testdescription">3.1.7. Copy existing TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#compare-the-testdescriptions">3.1.8. Compare the TestDescriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#report-generation">3.1.9. Report Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-new-report-template-optional">3.1.10. Register new Report Template (optional)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_Execution/03_Execution.html#create-the-new-report-template">3.1.10.1. Create the new Report Template</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="03_Execution/03_Execution.html#generate-report-template-from-the-registered-guideline">3.1.10.1.1. Generate Report Template from the registered guideline</a></li>
+<li class="toctree-l5"><a class="reference internal" href="03_Execution/03_Execution.html#manually-writes-template-from-scratch">3.1.10.1.2. Manually writes template from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="03_Execution/03_Execution.html#register-report-template">3.1.1.2. Register report template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_Execution/03_Execution.html#register-an-report-template">3.1.10.2. Register an Report Template</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-mlcomponents">3.1.2. Register MLComponents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-inventories">3.1.3. Register Inventories</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#register-testdescriptions">3.1.4. Register TestDescriptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#run-testdescriptions">3.1.5. Run TestDescriptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#testdescriptions-details-display">3.1.6. TestDescriptions Details Display</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#download-resources">3.1.7. Download Resources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#copy-testdescription">3.1.8. Copy TestDescription</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#compare-testdescriptions">3.1.9. Compare TestDescriptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution/03_Execution.html#report-output">3.1.10. Report Output</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="04_Modification/index.html">4. Modification</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04_Modification/04_Modification.html">4.1. Modification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="04_Modification/04_Modification.html#modification-mlcomponents">4.1.1. Modification MLComponents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_Modification/04_Modification.html#modification-inventories">4.1.2. Modification Inventories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_Modification/04_Modification.html">4.1. Edit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04_Modification/04_Modification.html#edit-mlcomponents">4.1.1. Edit MLComponents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_Modification/04_Modification.html#edit-inventories">4.1.2. Edit inventories</a></li>
 <li class="toctree-l3"><a class="reference internal" href="04_Modification/04_Modification.html#modification-testdescriptions">4.1.3. Modification TestDescriptions</a></li>
 </ul>
 </li>

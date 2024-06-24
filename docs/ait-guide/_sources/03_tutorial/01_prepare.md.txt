@@ -2,34 +2,42 @@
 After downloading and installing Qunomon, start developing an AIT based on the template.
 
 ## User workflow
+The development of AITs can be categorized into three scenarios: ① creating anew from an AIT template, ② updating an already developed AIT, and ③ having developed an AIT but not retaining the data locally. The workflow for each scenario is as illustrated below.
 ![User Workflow](01/02_user_workflow.png)
 
+``` note:: If you do not intend to publish your created AIT globally, the steps beyond "releasing it on GitHub via a browser" are not necessary.
+``` 
 
 ## Fork the AIT template
-AIT template : `https://github.com/aistairc/ait-template`.
+AIT template is available on `https://github.com/aistairc/ait-template`.
+Please fork this repository for your own AIT development.
 ![Alt template fork](01/03_ait_fork.png)
+
+``` important:: The AIT template repository is set to public. After forking, please review and adjust the visibility settings as necessary.
+``` 
 
 ## Change AIT repository name
 ![Alt rename](01/04_ait_rename.png)
+AIT name (the part `{YourAITName}`), we recommend you to follow the naming convention as below. 
 
 ### Recommended naming convention of AIT
 The recommended naming convention of AIT are as follows.
-* `{prefix}_{target}_{task}_{format}_{measure}`
+* `{prefix}_{target}_{format}_{task}_{measure}`
 
 | name    | mandatory | description                                                                     |
 |---------|-----------|---------------------------------------------------------------------------------|
-| prefix  | Yes       | This represents the type of AIT. There are several reserved types.<br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT. |
+| prefix  | Yes       | This represents the type of AIT. <br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT. |
 | target  | Yes       | Choose either "dataset" or "model" depending on the   evaluation target of AIT. |
-| task    | No        | The problem targeted by AIT.                                                    |
-| format  | No        | The format of the data processed by AIT.                                        |
-| measure | No        | The quality measured by AIT.                                                    |
+| task    | No        | The problem targeted by AIT.<br>Example.image_classifier                        |
+| format  | No        | The format of the data processed by AIT.<br>Example. table                      |
+| measure | No        | The quality measured by AIT.<br>Example. coverage_of_dataset                    |
 
 * restriction
   * The name must be 50 characters or less.
   * The available characters are half-width alphanumeric characters and underscore `_`.
 
 ## Clone the AIT repository
-Follow the URL to clone.
+Fork the AIT template and clone it to your local machine.
 ![Alt clone](01/05_ait_clone.png)
 
 ## Edit readme.md
@@ -49,14 +57,23 @@ After create a directory for new AIT, open `{YourAITName}/readme.md` and edit ti
 We are providing Jupyter Lab environment adjusted to the AIT development purpose as AIT development environment.
 After launching them, they are provided as web application on the localhost. You can use them through your browser.
 
+ Remove docker image
+  * If you want to switch between multiple AIT development environments, you need to delete the AIT development environment docker images created in the past. This is because the dependent software changes depending on AIT, and the AIT development environment also changes the software installation status. We apologize for the inconvenience, but if you want to switch between multiple AITs for development, please use the following command to delete the docker image in the AIT development environment.
+  * Remove docker image command
+    ```
+    docker rmi {ImageId of docker_jupyter}
+    ```
+
 * Launcher
   * Windows:
     ```bat
-    {Qunomon_root}/ait_repository/ait/{YourAITName}/tool/launch_devenv.bat
+    cd {YourAITname}/tool  
+    launch_devenv.bat  
     ```
   * macOS, Linux:
     ```sh
-    sudo bash {YourAITname}/tool/launch_devenv.sh
+    cd {YourAITname}/tool  
+    sudo bash launch_devenv.sh  
     ```
 
 ### Screenshots after launch
@@ -68,10 +85,13 @@ If the launch has succeeded, applications below are displayed automatically.
 
 ### Development work flow
 
-In this tutorial, we assumes following work flow as default development work flow.
+In this tutorial, we assume following work flow as default development work flow.
 
 1. Experiment and development of an AI evaluation program.
-2. Porting AI evaluation program onto the AIT template.
+2. Porting AI evaluation program onto the AIT template (edit my_ait.ipynb).
 3. Perform unit testing of an AI evaluation program.
 4. Preparing registration for Qunomon.
 5. Perform integration testing of an AIT with Qunomon testbed.
+6. Publishing the AIT.
+
+This tutorial follows this sequence and explains the detailed development methods for AITs from Section 3.2 onwards.

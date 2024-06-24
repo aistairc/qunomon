@@ -89,16 +89,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. Port an AI evaluation program to the my_ait.ipynb template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. AIT development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04_unit_test.html">3.4. Unit test</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.5. Preparing registration for Qunomon</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#edit-dockerfile">3.5.1. Edit Dockerfile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-environment-setup-processes-that-do-not-use-the-ait-sdk">3.5.1. Add environment setup processes that do not use the AIT-SDK</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-third-party-notice">3.5.2. Generate Third-party Notice</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#create-zip-file">3.5.3. create zip file</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Push to GITHUB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Publishing AIT</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
@@ -196,18 +196,23 @@
 <div class="section" id="preparing-registration-for-qunomon">
 <h1><span class="section-number">3.5. </span>Preparing registration for Qunomon<a class="headerlink" href="#preparing-registration-for-qunomon" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, the developed AI evaluation program is converted to AIT (as zip file) for registration to Qunomon.</p>
-<div class="section" id="edit-dockerfile">
-<h2><span class="section-number">3.5.1. </span>Edit Dockerfile<a class="headerlink" href="#edit-dockerfile" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-environment-setup-processes-that-do-not-use-the-ait-sdk">
+<h2><span class="section-number">3.5.1. </span>Add environment setup processes that do not use the AIT-SDK<a class="headerlink" href="#add-environment-setup-processes-that-do-not-use-the-ait-sdk" title="Permalink to this headline">¶</a></h2>
 <p>If you have built an environment without using AIT-SDK in the Dependency Management area or Importing Libraries area, edit <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/deploy/container/Dockerfile</span></code>.</p>
+<ul class="simple">
+<li><p>Example of a specialized environment setup process.
+If your AIT depends on the other software or libraries (such as GCC, RDBMS, …), you must include them in your Dockerfile and let them installed on AIT container.</p></li>
+<li><p>apt install</p></li>
+<li><p>applying patches</p></li>
+<li><p>installing Python libraries without using AITRequirementsGenerator</p></li>
+</ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>If your AIT depends on the other software or libraries (such as GCC, RDBMS, …), you must include them in your Dockerfile and let them installed on AIT container.</p>
-<p>Please write installation command in {YOUR_AIT_ROOT}/deploy/container/resolve-dependencies.sh, not in the Dockerfile. The Dockerfile runs the shell and installs dependencies.</p>
-<p>example. apt install, applying patches, installing Python libraries without using AITRequirementsGenerator, etc.</p>
+<p>Please write installation command in {YOUR_AIT_ROOT}/deploy/container/</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Please don’t edit the dockerfile_license file. This item is used for the automatic generation of Third-party notices.</p>
+<p>Please don’t edit the “dockerfile_license” file. This item is used for the automatic generation of Third-party notices.</p>
 </div>
 </div>
 <div class="section" id="generate-third-party-notice">
@@ -241,12 +246,16 @@ You must confirm and ensure that all the depending third party OSS are listed up
 <p>Extract the resources required for AIT from the developed AI evaluation program and compress that into a zip file.
 Run following batch file on the host environment to generate the zip file.</p>
 <ul>
-<li><p>Windows:</p>
+<li><p>Launcher</p>
+<ul class="simple">
+<li><p>Windows:</p></li>
+</ul>
 <div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>{AIT_ROOT}/tool/compress_ait_package.bat
 </pre></div>
 </div>
-</li>
-<li><p>macOS, Linux:</p>
+<ul class="simple">
+<li><p>macOS, Linux:</p></li>
+</ul>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>bash<span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>/tool/compress_ait_package.sh
 </pre></div>
 </div>

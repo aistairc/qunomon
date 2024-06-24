@@ -1,8 +1,24 @@
-# Push to GITHUB
-This chapter describes push GITHUB to publish the verified AIT.
+# Publishing AIT
+This chapter explains the steps to publish the AIT you developed.
 
+``` important:: When you register your developed AIT on platforms like GITHUB or AIT-HUB, it becomes publicly available. Before publishing the AIT, ensure that no personal or confidential information is disclosed and that the publication aligns with your objectives. Please proceed with these precautions.
+```
 
-## Execute batch of push to GITHUB
+``` important:: Disclaimer : 
+The publication of AITs on this platform is the responsibility of the developers. The developers guarantee that the information contained in AIT does not infringe any third-party intellectual property rights and does not include any personal or confidential information.
+
+In the event that developers inadvertently publish confidential information, or if AIT is improperly used by a third party, neither this platform nor its operators shall bear any liability. The developers shall bear full responsibility for any direct or indirect damages that may arise from the use of AIT.
+
+Users of this platform understand the potential risks associated with using AIT and agree to use AIT at their own risk.
+```
+
+The publication of AIT is carried out in the following two steps:
+1. Register on GITHUB
+    * Register and manage the created AIT resources on GITHUB.
+2. Register on AIT-HUB
+    * Register the created AIT on AIT-HUB and make it available to AIT-HUB users.
+
+### Register on GITHUB
 
 Execute the batch file and push to GITHUB.
 
@@ -14,8 +30,8 @@ linux
 {YOUR_AIT_ROOT}/tool/github_push.sh
 ```
 
-## Select upload inventory
-Choose whether to upload inventory for AIT test.
+#### Select upload inventory
+Choose whether to upload the input files used in the unit testing.
 
 Y: Upload.
 
@@ -24,11 +40,26 @@ N : Do not upload.
 
 
 
-## Enter commit comment
+#### Enter commit comment
 ![commit_comment](07/02_commit_comment.png)
 
-※Since authentication to GITHUB is required.
+``` tips:: Depending on the authentication settings for GITHUB, you may need to provide authentication information when registering on GITHUB.
+```
 
-　HTTPS type: token
+#### Check repository URL
+Make a note of batch output repository URL.
 
-　SSH: Public key
+``` important:: To facilitate publishing on AIT-HUB, please ensure that you do not lose the note of the repository URL.
+```
+
+![commit_comment](07/03_repo_url.png)
+
+## Register on AIT-HUB
+Register your developed AIT on AIT-HUB by entering the repository URL on the AIT upload page of AIT-HUB.
+
+``` important:: When registering on AIT-HUB, please set the visibility of your GITHUB repository to public. AIT-HUB assumes that the source code is available publicly on GITHUB in order to review the detailed information about the AIT.
+```
+
+※For details, refer to the AITHUB operation manual.
+
+![aithub_aitupload](07/04_aithub_aitupload.png)

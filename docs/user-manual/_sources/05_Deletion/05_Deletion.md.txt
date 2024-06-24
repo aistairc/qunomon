@@ -1,35 +1,37 @@
 # Delete
 
+In this chapter, we will express how to delete the registered entities (MLComponents, Inventories, TestDescriptions).
+
 ## Delete TestDescriptions
 
-Click the "delete" icon on the TestDescriptions list screen to delete the target.
+Clicking the trashbox icon on the "delete" column in the list of TestDescriptions will delete it.
 
 ![0101](01/01.png)
 
 ## Delete Inventories
 
-Click the "delete" icon on the Inventories list screen to delete the target.
+Clicking the trashbox icon on the "delete" column in the list of Inventories will delete it.
 
 ![0201](02/01.png)
 
 ## Delete MLComponents
 
-Click the "delete" icon on the MLComponents list screen to delete the target.
-
-(If TestDescription or Inventory exists in the MLComponent to be deleted, it cannot be deleted.)
+Clicking the trashbox icon on the "delete" column in the list of Inventories will delete it.
+(Note that: When the MLComponent has one or more TestDescription and/or Inventory items, it cannot be deleted.)
 
 ![0301](03/01.png)
 
 ## Delete Guideline
 
-Click the "delete" icon on the Guidelines list screen to delete the target.
+Clicking the trashbox icon on the "delete" column in the list of Guidelines will delete it.
 
 ![0401](04/01.png)
 
 ## Uninstall AIT
 
-Click the "AIT Uninstall" button on the "Installed AIT List" screen to uninstall.
+Clicking the "AIT Uninstall" button on the "Installed AIT List" screen will uninstall them.
+(Note that if the AIT are related to any TestDescription cannot be uninstalled to ensure reproducibility and traceability. You can check "TD using status" column to judge whether the AIT is used in any of the TD or not.)
 
-(Make sure that the target AIT is not used in all TestDescriptions.)
+If the AIT is actually not required for any purposes, please delete all TestDescriptions related to AIT to be installed and then retry uninstall.
 
 ![0501](05/01.png)

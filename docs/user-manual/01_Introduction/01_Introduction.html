@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -14,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -27,10 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -93,7 +96,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#installation-of-docker">1.1.3.1. Installation of docker</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#starting-qunomon">1.1.4. Starting Qunomon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparations-for-launching-qunomon-on-linux">1.1.4. Preparations for launching Qunomon on Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-permissions-for-docker-sock">1.1.4.1. Change permissions for docker.sock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-create">1.1.4.2. User create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unpacking-materials">1.1.4.3. Unpacking materials</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-qunomon">1.1.5. Starting Qunomon</a></li>
 </ul>
 </li>
 </ul>
@@ -170,27 +179,105 @@
            <div itemprop="articleBody">
             
   <section id="introduction">
-<h1><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
 <section id="qunomon">
-<h2><span class="section-number">1.1.1. </span>Qunomon<a class="headerlink" href="#qunomon" title="Permalink to this headline">¶</a></h2>
-<p>Qunomon is a quality assessment support tool for AI systems.</p>
-<p>qunomon provides quality assessment of AI systems in line with machine learning management guidelines, and working environment.</p>
+<h2><span class="section-number">1.1.1. </span>Qunomon<a class="headerlink" href="#qunomon" title="Permalink to this heading">¶</a></h2>
+<p>Qunomon is a open-sourced platform for quality assessment for AI/ML systems.</p>
+<p>It assist your AI/ML quality management through various features including (1) ML components (models/datasets) management, (2) isolated test execution environment, (3) test package management and (4) systematic report generation along with customizable guideline or standards.</p>
+<p>In this document, we will provide you information about how to use Qunomon, with some explanation of technical terms and concepts.</p>
 </section>
 <section id="download-of-qunomon">
-<h2><span class="section-number">1.1.2. </span>Download of Qunomon<a class="headerlink" href="#download-of-qunomon" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<h2><span class="section-number">1.1.2. </span>Download of Qunomon<a class="headerlink" href="#download-of-qunomon" title="Permalink to this heading">¶</a></h2>
+<p>You can download the Qunomon through our <a class="reference external" href="https://aistairc.github.io/qunomon/">landing page</a>.</p>
 </section>
 <section id="required-software">
-<h2><span class="section-number">1.1.3. </span>Required Software<a class="headerlink" href="#required-software" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1.3. </span>Required Software<a class="headerlink" href="#required-software" title="Permalink to this heading">¶</a></h2>
 <section id="installation-of-docker">
-<h3><span class="section-number">1.1.3.1. </span>Installation of docker<a class="headerlink" href="#installation-of-docker" title="Permalink to this headline">¶</a></h3>
-<p>If you are on Windows or Mac, install “docker desktop”</p>
-<p>If you are on Linux, install “docker”.</p>
+<h3><span class="section-number">1.1.3.1. </span>Installation of docker<a class="headerlink" href="#installation-of-docker" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>An environment capable of running Docker 19.03 or higher is required.</p>
+<ul>
+<li><p>For Windows user, your system also must be capable of Docker Desktop 2.3.0.3 or higher.</p></li>
+<li><p>For Mac user, your system also must be capable of Docker Desktop 4.20.1 or higher.</p></li>
+</ul>
+</li>
+<li><p>Google Chrome may be required for correctly operating Qunomon.</p></li>
+</ul>
+</section>
+</section>
+<section id="preparations-for-launching-qunomon-on-linux">
+<h2><span class="section-number">1.1.4. </span>Preparations for launching Qunomon on Linux<a class="headerlink" href="#preparations-for-launching-qunomon-on-linux" title="Permalink to this heading">¶</a></h2>
+<p>If you are trying to launch Qunomon on Linux environment, you are required to create appropriate group and user in advance and should place the downloaded resource on specified location.</p>
+<p>In this guide, we will create a new group named “qunomon” with group ID of 5000, and then create a new user with user ID of 50000 will be participated to that group.</p>
+<section id="change-permissions-for-docker-sock">
+<h3><span class="section-number">1.1.4.1. </span>Change permissions for docker.sock<a class="headerlink" href="#change-permissions-for-docker-sock" title="Permalink to this heading">¶</a></h3>
+<ul>
+<li><p>After installing “docker”, change the permissions of docker.sock using the following command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="mi">777</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">docker</span><span class="o">.</span><span class="n">sock</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="user-create">
+<h3><span class="section-number">1.1.4.2. </span>User create<a class="headerlink" href="#user-create" title="Permalink to this heading">¶</a></h3>
+<ul>
+<li><p>Create a new group.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">groupadd</span> <span class="o">-</span><span class="n">g</span> <span class="mi">50000</span> <span class="n">qunomon</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a new user assigned to the qunomon and docker group.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">useradd</span> <span class="o">-</span><span class="n">u</span> <span class="mi">50000</span> <span class="o">-</span><span class="n">g</span> <span class="mi">50000</span> <span class="o">-</span><span class="n">G</span> <span class="n">docker</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="n">qunomon</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="unpacking-materials">
+<h3><span class="section-number">1.1.4.3. </span>Unpacking materials<a class="headerlink" href="#unpacking-materials" title="Permalink to this heading">¶</a></h3>
+<p>Unpack and place the required materials.</p>
+<ul>
+<li><p>Change root privileges using the command below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">su</span> <span class="o">-</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a directory with appropriate permission configuration.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="mi">777</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">workspace</span>
+<span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="mi">777</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">workspace</span>
+</pre></div>
+</div>
+</li>
+<li><p>Move to the workspace directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">workspace</span>
+</pre></div>
+</div>
+</li>
+<li><p>If you do not have the unzipping tool, install it. (If you use apt, run the following command.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="nb">zip</span> <span class="n">unzip</span>
+</pre></div>
+</div>
+</li>
+<li><p>Place the zipped material (qunomon.zip) under the {/home/qunomon/workspace} and unzip it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">qunomon</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p>After unpacking, change the permissions for each folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="mi">777</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">qunomon</span>
+<span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">qunomon</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">airflow</span><span class="o">/</span><span class="n">logs</span>
+<span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">qunomon</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">workspace</span><span class="o">/</span><span class="n">qunomon</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">airflow</span><span class="o">/</span><span class="n">dags</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </section>
 </section>
 <section id="starting-qunomon">
-<h2><span class="section-number">1.1.4. </span>Starting Qunomon<a class="headerlink" href="#starting-qunomon" title="Permalink to this headline">¶</a></h2>
-<p>Please execute the following command in the “(root)/qunomon” directory</p>
+<h2><span class="section-number">1.1.5. </span>Starting Qunomon<a class="headerlink" href="#starting-qunomon" title="Permalink to this heading">¶</a></h2>
+<p>After installation, execute the following command under the “~/qunomon” directory.</p>
 <ul>
 <li><p>Windows</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
@@ -208,7 +295,7 @@
 </div>
 </li>
 </ul>
-<p>Please view “https://127.0.0.1” in your browser.</p>
+<p>Please open your browser and access “https://127.0.0.1”.</p>
 </section>
 </section>
 

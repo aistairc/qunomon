@@ -1,5 +1,6 @@
 # Unit test
-In this chapter, we validate the developed AI evaluation program.
+In this chapter, we will verify whether the AIT created up to Section 3.3 operates without using Qunomon. 
+When this verification is complete, AIT execution program that operates on Qunomon will be created.
 
 ## Prepare for unit test
 ### Preparation of input data for unit test
@@ -20,8 +21,8 @@ The directory name is obtained from the `name` argument of the `add_ait_inventor
                    tableconvert_csv_4nryby.csv
     ```
 
-### Register test input (#6 Prepare for the Input area)
-In this area, define the test input and register the parameters required for the unit test.
+### Register test input
+Set up the `value` argument for the input data and parameters defined in the Prepare for the Input area with data for unit testing.
 
 * Example
 ```py
@@ -30,23 +31,20 @@ In this area, define the test input and register the parameters required for the
     input_generator.set_ait_params(name='mean_column_name', value='petal.width')
 ```
 
-For detailed information about `AITInputGenerator` class, see the document [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator).
-
-* `name` argument is associated to the name of the inventory and/or the parameter described in the AIT Manifest generated in the section 3.5 (Area #5).
-  * The function `add_ait_inventories`'s argument `name` must be matched to the one of `inventories/name` in the AIT manifest.
-  * The function `set_ait_params`'s argument `name` must be matched to the one of `parameters/name` in the AIT manifest.
+``` important:: The value defined in this section is used only for unit testing and is not used when running on Qunomon.
+```
 
 ## Running unit test
-### Verify operation of my_ait.ipynb
-ALL RUN `my_ait.ipynb` and fix any errors that occur.
+### Generation of the AIT Execution Program
+Run all cells in `my_ait.ipynb` and confirm that the execution is successful.
 
 ``` tip:: When ALL RUN is completed, an AIT execution program that runs on Qunomon will be automatically generated.
 ```
 
 ### Import local library
-Copy the libraries to be imported from local to ``{YOUR_AIT_ROOT}/deploy/container/repository/`.
+Copy the libraries to be imported from local to `{YOUR_AIT_ROOT}/deploy/container/repository/`.
 
-``` tip:: Local libraries are libraries that are not installed with a Dockerfile, such as methods that you create yourself.
+``` tip:: Local libraries are libraries that are not installed with a Dockerfile, such as python file that you create yourself.
 ```
 
 Open Terminal from Jupyter and invoke the script for initialization.

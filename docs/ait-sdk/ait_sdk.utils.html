@@ -1,87 +1,49 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ait_sdk.utils package &mdash; AIT SDK 0.1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-  
-  
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
 
   
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="ait_sdk.test package" href="ait_sdk.test.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> AIT SDK
           
-
-          
+          <a href="index.html" class="icon icon-home">
+            AIT SDK
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="ait_sdk.html">ait_sdk package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="ait_sdk.html#subpackages">Subpackages</a><ul class="current">
@@ -93,10 +55,10 @@
 <li class="toctree-l3"><a class="reference internal" href="ait_sdk.test.html">ait_sdk.test package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ait_sdk.utils package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ait-sdk-utils-acc-calculator-module">ait_sdk.utils.acc_calculator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.acc_calculator">ait_sdk.utils.acc_calculator module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.exception">ait_sdk.utils.exception module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.logging">ait_sdk.utils.logging module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ait-sdk-utils-mnist-module">ait_sdk.utils.mnist module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.mnist">ait_sdk.utils.mnist module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils.timer">ait_sdk.utils.timer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-ait_sdk.utils">Module contents</a></li>
 </ul>
@@ -108,137 +70,192 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">AIT SDK</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="ait_sdk.html">ait_sdk package</a> &raquo;</li>
-        
-      <li>ait_sdk.utils package</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="ait_sdk.html">ait_sdk package</a></li>
+      <li class="breadcrumb-item active">ait_sdk.utils package</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/ait_sdk.utils.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="ait-sdk-utils-package">
-<h1>ait_sdk.utils package<a class="headerlink" href="#ait-sdk-utils-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="ait-sdk-utils-acc-calculator-module">
-<h2>ait_sdk.utils.acc_calculator module<a class="headerlink" href="#ait-sdk-utils-acc-calculator-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-ait_sdk.utils.exception">
-<span id="ait-sdk-utils-exception-module"></span><h2>ait_sdk.utils.exception module<a class="headerlink" href="#module-ait_sdk.utils.exception" title="Permalink to this headline">¶</a></h2>
+             
+  <section id="ait-sdk-utils-package">
+<h1>ait_sdk.utils package<a class="headerlink" href="#ait-sdk-utils-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-ait_sdk.utils.acc_calculator">
+<span id="ait-sdk-utils-acc-calculator-module"></span><h2>ait_sdk.utils.acc_calculator module<a class="headerlink" href="#module-ait_sdk.utils.acc_calculator" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.acc_calculator.</span></span><span class="sig-name descname"><span class="pre">ACCCalculator</span></span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>精度を計算する</p>
+<p>accuracy calculator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.all_class_accuracy">
+<span class="sig-name descname"><span class="pre">all_class_accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.all_class_accuracy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.all_class_f_measure">
+<span class="sig-name descname"><span class="pre">all_class_f_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.all_class_f_measure" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.all_class_precision">
+<span class="sig-name descname"><span class="pre">all_class_precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.all_class_precision" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.all_class_recall">
+<span class="sig-name descname"><span class="pre">all_class_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.all_class_recall" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.average_accuracy">
+<span class="sig-name descname"><span class="pre">average_accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.average_accuracy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.class_accuracy">
+<span class="sig-name descname"><span class="pre">class_accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.class_accuracy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.class_f_measure">
+<span class="sig-name descname"><span class="pre">class_f_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.class_f_measure" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.class_precision">
+<span class="sig-name descname"><span class="pre">class_precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.class_precision" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.class_recall">
+<span class="sig-name descname"><span class="pre">class_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.class_recall" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.class_true_positive">
+<span class="sig-name descname"><span class="pre">class_true_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.class_true_positive" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.macro_f_measure">
+<span class="sig-name descname"><span class="pre">macro_f_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.macro_f_measure" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.macro_precision">
+<span class="sig-name descname"><span class="pre">macro_precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.macro_precision" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.macro_recall">
+<span class="sig-name descname"><span class="pre">macro_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.macro_recall" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.micro_f_measure">
+<span class="sig-name descname"><span class="pre">micro_f_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.micro_f_measure" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.micro_precision">
+<span class="sig-name descname"><span class="pre">micro_precision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.micro_precision" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.micro_recall">
+<span class="sig-name descname"><span class="pre">micro_recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.micro_recall" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.normalize_y_pred">
+<span class="sig-name descname"><span class="pre">normalize_y_pred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.normalize_y_pred" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.acc_calculator.ACCCalculator.true_positive">
+<span class="sig-name descname"><span class="pre">true_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.acc_calculator.ACCCalculator.true_positive" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ait_sdk.utils.exception">
+<span id="ait-sdk-utils-exception-module"></span><h2>ait_sdk.utils.exception module<a class="headerlink" href="#module-ait_sdk.utils.exception" title="Link to this heading"></a></h2>
 <dl class="py exception">
-<dt id="ait_sdk.utils.exception.InvalidOperationException">
-<em class="property">exception </em><code class="sig-prename descclassname">ait_sdk.utils.exception.</code><code class="sig-name descname">InvalidOperationException</code><a class="headerlink" href="#ait_sdk.utils.exception.InvalidOperationException" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.exception.InvalidOperationException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.exception.</span></span><span class="sig-name descname"><span class="pre">InvalidOperationException</span></span><a class="headerlink" href="#ait_sdk.utils.exception.InvalidOperationException" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>不正な操作を実施したときに発生させる例外</p>
 <p>Exceptions raised when an illegal operation is performed</p>
 </dd></dl>
 
-</div>
-<div class="section" id="module-ait_sdk.utils.logging">
-<span id="ait-sdk-utils-logging-module"></span><h2>ait_sdk.utils.logging module<a class="headerlink" href="#module-ait_sdk.utils.logging" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-ait_sdk.utils.logging">
+<span id="ait-sdk-utils-logging-module"></span><h2>ait_sdk.utils.logging module<a class="headerlink" href="#module-ait_sdk.utils.logging" title="Link to this heading"></a></h2>
 <dl class="py function">
-<dt id="ait_sdk.utils.logging.get_log_path">
-<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">get_log_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#ait_sdk.utils.logging.get_log_path" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.logging.get_log_path">
+<span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.logging.</span></span><span class="sig-name descname"><span class="pre">get_log_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#ait_sdk.utils.logging.get_log_path" title="Link to this definition"></a></dt>
 <dd><p>ログの出力ファイルを取得します。</p>
 <p>Get the output file of the log.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>output file path(str)</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>output file path(str)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ait_sdk.utils.logging.get_logger">
-<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">get_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; logging.Logger<a class="headerlink" href="#ait_sdk.utils.logging.get_logger" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.logging.get_logger">
+<span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.logging.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Logger</span></span></span><a class="headerlink" href="#ait_sdk.utils.logging.get_logger" title="Link to this definition"></a></dt>
 <dd><p>logging.Loggerを作成します。</p>
 <p>Create a logging.Logger.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><p>logging.Loggerのインスタンス</p>
 <p>logging.Logger instance</p>
 </p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>logger (logging.Logger)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ait_sdk.utils.logging.log">
-<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logger</span></em>, <em class="sig-param"><span class="n">log_func_args</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.logging.log" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.logging.log">
+<span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.logging.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_func_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.logging.log" title="Link to this definition"></a></dt>
 <dd><p>デコレーターでloggerを引数にとるためのラッパー関数</p>
 <p>A wrapper function for taking a logger as an argument in the decorator</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>logger</strong> (<em>logging.Logger</em>) – </p></li>
 <li><p><strong>log_func_args</strong> (<em>bool</em>) – </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><p>_decoratorの返り値</p>
 <p>return of _decorator</p>
 </p>
@@ -247,12 +264,12 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="ait_sdk.utils.logging.set_log_dir">
-<code class="sig-prename descclassname">ait_sdk.utils.logging.</code><code class="sig-name descname">set_log_dir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dir</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.utils.logging.set_log_dir" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.logging.set_log_dir">
+<span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.logging.</span></span><span class="sig-name descname"><span class="pre">set_log_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ait_sdk.utils.logging.set_log_dir" title="Link to this definition"></a></dt>
 <dd><p>ログの出力ディレクトリを指定します。</p>
 <p>Specifies the output directory of the log.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>dir</strong> (<em>str</em>) – <p>ログの出力ディレクトリ</p>
 <p>output directory of the log</p>
 </p>
@@ -260,68 +277,115 @@
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="ait-sdk-utils-mnist-module">
-<h2>ait_sdk.utils.mnist module<a class="headerlink" href="#ait-sdk-utils-mnist-module" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-ait_sdk.utils.timer">
-<span id="ait-sdk-utils-timer-module"></span><h2>ait_sdk.utils.timer module<a class="headerlink" href="#module-ait_sdk.utils.timer" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-ait_sdk.utils.mnist">
+<span id="ait-sdk-utils-mnist-module"></span><h2>ait_sdk.utils.mnist module<a class="headerlink" href="#module-ait_sdk.utils.mnist" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt id="ait_sdk.utils.timer.Timer">
-<em class="property">class </em><code class="sig-prename descclassname">ait_sdk.utils.timer.</code><code class="sig-name descname">Timer</code><a class="headerlink" href="#ait_sdk.utils.timer.Timer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.mnist.MNIST">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.mnist.</span></span><span class="sig-name descname"><span class="pre">MNIST</span></span><a class="headerlink" href="#ait_sdk.utils.mnist.MNIST" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>MNISTの画像をラベルを読み込むクラスです。</p>
+<p>Class to read labels from MNIST images.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.mnist.MNIST.load_image">
+<span class="sig-name descname"><span class="pre">load_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#ait_sdk.utils.mnist.MNIST.load_image" title="Link to this definition"></a></dt>
+<dd><p>MNISTの画像を読み込みます。</p>
+<p>Load an MNIST image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – <p>MNISTの画像ファイル(gz)パスを指定します。</p>
+<p>Specify the image file (gz) path for MNIST.</p>
+</p></li>
+<li><p><strong>image_size</strong> (<em>str</em>) – <p>MNISTの1辺の画像ピクセルサイズを指定します。</p>
+<p>Specifies the image pixel size of one side of MNIST.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ait_sdk.utils.mnist.MNIST.load_label">
+<span class="sig-name descname"><span class="pre">load_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#ait_sdk.utils.mnist.MNIST.load_label" title="Link to this definition"></a></dt>
+<dd><p>MNISTのラベルを読み込みます。</p>
+<p>Load an MNIST label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – <p>MNISTのラベルファイル(gz)パスを指定します。</p>
+<p>Specify the label file (gz) path for MNIST.</p>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ait_sdk.utils.timer">
+<span id="ait-sdk-utils-timer-module"></span><h2>ait_sdk.utils.timer module<a class="headerlink" href="#module-ait_sdk.utils.timer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ait_sdk.utils.timer.Timer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.timer.</span></span><span class="sig-name descname"><span class="pre">Timer</span></span><a class="headerlink" href="#ait_sdk.utils.timer.Timer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>AITの実行時間を計測するためのクラス。</p>
 <p>Class for measuring the execution time of AIT.</p>
 <dl class="py method">
-<dt id="ait_sdk.utils.timer.Timer.get_start_dt">
-<code class="sig-name descname">get_start_dt</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; datetime.datetime<a class="headerlink" href="#ait_sdk.utils.timer.Timer.get_start_dt" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.timer.Timer.get_start_dt">
+<span class="sig-name descname"><span class="pre">get_start_dt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datetime</span></span></span><a class="headerlink" href="#ait_sdk.utils.timer.Timer.get_start_dt" title="Link to this definition"></a></dt>
 <dd><p>開始日時を取得します。</p>
 <p>Get the start date and time.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>start date and time</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ait_sdk.utils.timer.Timer.get_stop_dt">
-<code class="sig-name descname">get_stop_dt</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; datetime.datetime<a class="headerlink" href="#ait_sdk.utils.timer.Timer.get_stop_dt" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.timer.Timer.get_stop_dt">
+<span class="sig-name descname"><span class="pre">get_stop_dt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">datetime</span></span></span><a class="headerlink" href="#ait_sdk.utils.timer.Timer.get_stop_dt" title="Link to this definition"></a></dt>
 <dd><p>停止日時を取得します。</p>
 <p>Get the stop date and time.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>stop date and time</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ait_sdk.utils.timer.Timer.start_timer">
-<code class="sig-name descname">start_timer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.utils.timer.Timer.start_timer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.timer.Timer.start_timer">
+<span class="sig-name descname"><span class="pre">start_timer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ait_sdk.utils.timer.Timer.start_timer" title="Link to this definition"></a></dt>
 <dd><p>タイマーを開始します。</p>
 <p>Start the timer.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ait_sdk.utils.timer.Timer.stop_timer">
-<code class="sig-name descname">stop_timer</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#ait_sdk.utils.timer.Timer.stop_timer" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.timer.Timer.stop_timer">
+<span class="sig-name descname"><span class="pre">stop_timer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ait_sdk.utils.timer.Timer.stop_timer" title="Link to this definition"></a></dt>
 <dd><p>タイマーを停止します。</p>
 <p>Stop the timer.</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-ait_sdk.utils">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ait_sdk.utils" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-ait_sdk.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ait_sdk.utils" title="Link to this heading"></a></h2>
 <dl class="py function">
-<dt id="ait_sdk.utils.convert_type">
-<code class="sig-prename descclassname">ait_sdk.utils.</code><code class="sig-name descname">convert_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type_</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#ait_sdk.utils.convert_type" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.convert_type">
+<span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.</span></span><span class="sig-name descname"><span class="pre">convert_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span></span></span><a class="headerlink" href="#ait_sdk.utils.convert_type" title="Link to this definition"></a></dt>
 <dd><p>指定された方で値を変換します。</p>
 <p>Converts the value to the specified one.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>type</strong> (<em>str</em>) – <p>型を指定します。
 型は以下を許容します。</p>
@@ -343,19 +407,19 @@ The type allows for the following</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ait_sdk.utils.get_summary_text">
-<code class="sig-prename descclassname">ait_sdk.utils.</code><code class="sig-name descname">get_summary_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">model</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.get_summary_text" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ait_sdk.utils.get_summary_text">
+<span class="sig-prename descclassname"><span class="pre">ait_sdk.utils.</span></span><span class="sig-name descname"><span class="pre">get_summary_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ait_sdk.utils.get_summary_text" title="Link to this definition"></a></dt>
 <dd><p>モデルのサマリ情報を出力します。</p>
 <p>Outputs the summary information of the model.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>model</strong> – <p>モデル</p>
 <p>model</p>
 </p>
@@ -363,61 +427,37 @@ The type allows for the following</p>
 </dl>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="ait_sdk.test.html" class="btn btn-neutral float-left" title="ait_sdk.test package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ait_sdk.test.html" class="btn btn-neutral float-left" title="ait_sdk.test package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020, AIST
-
-    </p>
+    <p>&#169; Copyright 2020, AIST.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

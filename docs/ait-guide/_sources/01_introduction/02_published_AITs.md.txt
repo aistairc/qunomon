@@ -1,0 +1,54 @@
+# List of published AITs
+
+Qunomon provides readily available AITs on GitHub that are copyright-free. 
+Users can directly utilize these in Qunomon, modify the code to develop new AITs, or prepare for registration in Qunomon by using git clone as per the tutorials.
+
+``` important:: External link to GitHub.
+```
+
+``` note:: For details on the AIT, please check develop/my_ait.ipynb.
+```
+
+* alyz_dataset_table_counts_attr_coverage
+  * Focuses on the number of records for attribute combinations within the data to assess for rare cases or imbalanced trends.
+  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_attr_coverage)
+* alyz_dataset_table_counts_comb_all_attr
+  * Calculate the counts of attribute values and the percentage of occurrences by the combination of attributes in the table data.
+  * Based on this summary information, the distribution trend of the frequency of occurrence of the table data can be inferred.
+  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_comb_all_attr)
+* alyz_dataset_table_counts_comb_two_attr
+  * Specifies unnecessary (improbable) attribute value combinations in table data and calculates how much of this unwanted data is contained, along with the count and proportion of attribute values.
+  * AIT users can use this summary information to understand the unhealthy trends of attribute values based on their occurrences.
+  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_comb_two_attr)
+* alyz_dataset_table_counts_inde_attr_by_chi2
+  * For assessing data validity, calculates the independence of labels and each attribute in a CSV dataset using the chi-squared statistic.
+  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_inde_attr_by_chi2)
+* eval_correctness_image_classifier_pytorch
+  * Splits a dataset randomly and calculates the accuracy of the model for each split dataset.
+  * Low variance in accuracy suggests that the model has acquired a generalizable performance across the dataset.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_correctness_image_classifier_pytorch)
+* eval_dataset_image_diversity_vae
+  * Uses a VAE model, trained on features of training image data, to calculate the feature values of evaluation training data.
+  * Smaller difference in feature values indicates that the evaluation image data comprehensively covers the features of the training data.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_dataset_image_diversity_vae)
+* eval_dataset_image_3features_kld
+  * Inputs two groups of image data and calculates the KLD (KL Divergence, KL information) for the distribution of brightness, contrast, and exposure between them.
+  * KLD close to zero indicates that the two image groups replicate the same features.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_dataset_image_3features_kld)
+* eval_model_image_classify_acc_adversarial_example
+  * Generates adversarial sample images from input images and calculates accuracy information (Accuracy, Precision, Recall, F-value, AUC) for the input model (an image classification model trained on input images).
+  * These accuracy metrics allow the evaluation of the accuracy and stability of machine learning models.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_model_image_classify_acc_adversarial_example)
+* eval_model_peformance_pytorch
+  * Given a dataset and a PyTorch classification model, evaluates the inference accuracy of the model from the dataset's inference results.
+  * Calculates accuracy, AP (average precision), and balanced accuracy for inferences on the dataset, assessing the model's inference precision.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_model_peformance_pytorch)
+* eval_noise_score_aquavs
+  * To evaluate the stability of the model, we will validate with labels that have added noise.
+  * Using the latent representations from the SVAE, we will measure the "noise score" of each sample in the input dataset to detect anomalies.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_noise_score_aquavs)
+* eval_surprise_adequacy
+  * We are calculating the Surprise Adequacy (SA) of the input VAE model.
+  * SA evaluates the activation traces of each neuron for each sample in the input data.
+  * [link](https://github.com/aistairc/Qunomon_AIT_eval_surprise_adequacy)
+
