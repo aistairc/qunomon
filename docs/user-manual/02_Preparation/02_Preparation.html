@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -14,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -27,10 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -88,9 +91,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../01_Introduction/index.html">1. Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">2. Preparation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Preparation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-and-register-guidelines-and-ait">2.1.1. Create and register guidelines and AIT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#register-guideline">2.1.1.1. Register Guideline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#register-ait">2.1.1.2. Register AIT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-new-packages-through-ait-hub">2.1.1. Install new packages through AIT Hub</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preparation-establish-a-connection-with-ait-hub">2.1.1.1. Preparation: establish a connection with AIT Hub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-and-register-a-new-guideline-definition">2.1.1.2. Install and register a new guideline definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-and-register-a-new-ait">2.1.1.3. Install and register a new AIT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#local-installation-without-ait-hub">2.1.2. Local Installation (without AIT Hub)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#register-guideline-not-using-ait-hub">2.1.2.1. Register Guideline (not using AIT-HUB)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-ait-not-using-ait-hub">2.1.2.2. Register AIT (not using AIT-HUB)</a></li>
 </ul>
 </li>
 </ul>
@@ -168,24 +177,51 @@
            <div itemprop="articleBody">
             
   <section id="preparation">
-<h1><span class="section-number">2.1. </span>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h1>
-<p>Before running Qunomon, the guidelines and AIT must be pre-registered.</p>
-<section id="create-and-register-guidelines-and-ait">
-<h2><span class="section-number">2.1.1. </span>Create and register guidelines and AIT<a class="headerlink" href="#create-and-register-guidelines-and-ait" title="Permalink to this headline">¶</a></h2>
-<p>Create and register your own guidelines.</p>
-<p>（This is not necessary when using the guidelines registered by default in qunomon.）</p>
-<p>Create and register your own AIT.</p>
-<section id="register-guideline">
-<h3><span class="section-number">2.1.1.1. </span>Register Guideline<a class="headerlink" href="#register-guideline" title="Permalink to this headline">¶</a></h3>
-<p>Clicking the “Guideline Create” button on the Guidelines screen will take you to the Guideline Create screen.</p>
-<p><img alt="0201" src="../_images/01.png" /></p>
-<p>A sample of guideline schema information is displayed on the guideline creation screen, so modify it accordingly and click the “Register” button to registe.</p>
-<p><img alt="0202" src="../_images/02.png" /></p>
+<h1><span class="section-number">2.1. </span>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading">¶</a></h1>
+<p>Qunomon uses AIT (AI Test package), an executable AI/ML evaluation method, to evaluate and assure the ML components under test according to the guideline/standards adopted by your organization.</p>
+<p>Qunomon comes with several AITs and guideline definitions from the beginning, but you will need to install new AITs and guideline definitions according to your ML components under test and organization’s quality policies.</p>
+<p>To install these new packages, there are two main different ways: (1) Search and install packages through AIT Hub which is hosted by the AIST for sharing AITs and guideline definitions. (2) Locally install manually created AITs and guideline definitions (actually a JSON file).</p>
+<section id="install-new-packages-through-ait-hub">
+<h2><span class="section-number">2.1.1. </span>Install new packages through AIT Hub<a class="headerlink" href="#install-new-packages-through-ait-hub" title="Permalink to this heading">¶</a></h2>
+<section id="preparation-establish-a-connection-with-ait-hub">
+<h3><span class="section-number">2.1.1.1. </span>Preparation: establish a connection with AIT Hub<a class="headerlink" href="#preparation-establish-a-connection-with-ait-hub" title="Permalink to this heading">¶</a></h3>
+<p>Click the “AIT-HUB login” button on the Setting screen on your Qunomon.</p>
+<p><img alt="0101" src="../_images/01.png" /></p>
 </section>
-<section id="register-ait">
-<h3><span class="section-number">2.1.1.2. </span>Register AIT<a class="headerlink" href="#register-ait" title="Permalink to this headline">¶</a></h3>
-<p>On the AITLocalInstall screen, click the “Select Upload File” button to select the AIT zip file and click the “AIT Create” button to register it.</p>
-<p><img alt="0203" src="../_images/03.png" /></p>
+<section id="install-and-register-a-new-guideline-definition">
+<h3><span class="section-number">2.1.1.2. </span>Install and register a new guideline definition<a class="headerlink" href="#install-and-register-a-new-guideline-definition" title="Permalink to this heading">¶</a></h3>
+<p>You can see the list of guideline which can be installed to your Qunomon from the “Guidelines” screen.
+Choose guideline to be installed with radio button, and then click the “Guideline install” button.</p>
+<p><img alt="0102" src="../_images/02.png" /></p>
+</section>
+<section id="install-and-register-a-new-ait">
+<h3><span class="section-number">2.1.1.3. </span>Install and register a new AIT<a class="headerlink" href="#install-and-register-a-new-ait" title="Permalink to this heading">¶</a></h3>
+<p>You can see the list of published AITs through “AITSearch” screen. You can filter the AITs to be listed by search boxes diplayed at top of the screen.</p>
+<p>If you want to know more detailed information (such like authors, detailed description, I/O requirements…) of the AIT, you can press the icon displayed on the “Detail” column on the table to see them.</p>
+<p>If the “×” mark are displayed on the “Installed” column, they are AITs currently not installed. Please check the detail and install them as needed. Choose an AIT to be installed with radio button, and then click the icon on the “Install” column. This will automatically download the selected AIT from AIT Hub and registration to your Qunomon.</p>
+<p><img alt="0103" src="../_images/03.png" /></p>
+<p>Alternatively, you can check and install popular AITs from “AITHub Ranking” screen.</p>
+<p><img alt="0104" src="../_images/04.png" /></p>
+</section>
+</section>
+<section id="local-installation-without-ait-hub">
+<h2><span class="section-number">2.1.2. </span>Local Installation (without AIT Hub)<a class="headerlink" href="#local-installation-without-ait-hub" title="Permalink to this heading">¶</a></h2>
+<p>If you want install AITs and/or guideline definitions locally because you have created the new AIT, your organization adopted a private guideline/standards, etc., please read this section.</p>
+<p>These procedure are for advanced users and may require some computer science knowledge.</p>
+<section id="register-guideline-not-using-ait-hub">
+<h3><span class="section-number">2.1.2.1. </span>Register Guideline (not using AIT-HUB)<a class="headerlink" href="#register-guideline-not-using-ait-hub" title="Permalink to this heading">¶</a></h3>
+<p>You must analyze guideline/standards and identify quality characteristics defined in them. After that, you required to write “Guideline JSON” conform to our <a class="reference external" href="https://github.com/aistairc/qunomon/tree/dev2_schema/schema/doc/guideline_schema/develo">Guideline Schema</a> defined as JSON Schema.</p>
+<p>Click the “Guideline Create” button on the “Guidelines” screen.</p>
+<p><img alt="0201" src="../_images/011.png" /></p>
+<p>A sample of guideline definition compliant with the schema will be displayed on the “guideline creation” screen. Modify them accordingly and click the “Register” button.</p>
+<p><img alt="0202" src="../_images/021.png" /></p>
+<p>If you want modify them over a wide range, it is advised to read guideline schema carefully and edit them on the other editors. We recommend that you test your guideline JSON for schema compliance beforehand.</p>
+</section>
+<section id="register-ait-not-using-ait-hub">
+<h3><span class="section-number">2.1.2.2. </span>Register AIT (not using AIT-HUB)<a class="headerlink" href="#register-ait-not-using-ait-hub" title="Permalink to this heading">¶</a></h3>
+<p>Move to the “AITLocalInstall” screen. Press the “Select Upload File” and then you are choose zipped AIT to be installed. “AIT Create” button will register the AIT into your Qunomon.</p>
+<p>To create AIT and its zipped archive, you should read <a class="reference external" href="https://aistairc.github.io/qunomon/ait-guide/index.html">AIT Development Guide</a> as reference.</p>
+<p><img alt="0203" src="../_images/031.png" /></p>
 </section>
 </section>
 </section>

@@ -189,37 +189,38 @@
 </style>
 <div class="section" id="installation">
 <h1><span class="section-number">2.2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Installation can be done with fork ait-template from GitHub and clone them to any local directory.</p>
+<p>Installation can be done with fork ait-template(<code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/ait-template</span></code>) from GitHub and clone them to any local directory.</p>
 <ul class="simple">
 <li><p>Git must be installed before perform this.</p></li>
 </ul>
-<p>Please be prepare for the environment in which docker installed because Jupyter Lab is run on docker container.</p>
+<p>Please prepare for the environment with docker because Jupyter Lab runs on docker containers.</p>
 <div class="section" id="structure-of-source-files">
 <h2><span class="section-number">2.2.1. </span>Structure of source files.<a class="headerlink" href="#structure-of-source-files" title="Permalink to this headline">¶</a></h2>
 <p>AIT template and AIT development environment are stored under the <code class="docutils literal notranslate"><span class="pre">{YourAITname}</span></code> directory.
-In this guide, we basically perform works under this directory.
-※Pre-installed AITs available at aistairc/{name_of_AIT} on GITHUB.</p>
+In this guide, we basically perform works under this directory.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ait-template     &lt;---- AIT template
    ├─deploy      &lt;---- Files for AIT deployment
    ├─develop     &lt;---- AIT body and meta information
    ├─local_qai   &lt;---- Placement of input to AIT, etc
    ├─tool        &lt;---- Development environment
    ├─LICENSE.txt
-   ├─readme.md
+   ├─README.md
 </pre></div>
 </div>
 </div>
 <div class="section" id="installation-of-docker">
 <h2><span class="section-number">2.2.2. </span>Installation of Docker<a class="headerlink" href="#installation-of-docker" title="Permalink to this headline">¶</a></h2>
 <p>Please install Docker Desktop following guideline below.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>At the time of writing this guide, Docker Desktop has terms of use which restrict free use under limited condition. So it may not be available without problems on the user’s work environment or company. You must read, confirm and compliy to their terms of use.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>At the time of writing this guide, Docker Desktop has terms of use which restrict free use under limited condition. So it may not be available without problems on the user’s work environment or company. You must read, confirm and compliy to their terms of use.
-In addition to this, If you have any problem with using Docker Desktop, you need to introduce Docker environment without Docker Desktop. But in this guide, we don’t support such case.</p>
-<p>Port 9888 is used, but if you want to change it, please change Ports in Docker File as follows.</p>
+<p>Port 9888 is used, but if you want to change it, please change Ports in docker-compose.yml as follows.</p>
 <p>Example: When changing the port from 9888 to 9889</p>
 <p>File Path</p>
-<p>{YourAITname}/tool/docker/docker-compose.yml</p>
+<p>ait-template/tool/docker/docker-compose.yml</p>
 <p>Before change</p>
 <p>ports:　9888:8888</p>
 <p>After change</p>

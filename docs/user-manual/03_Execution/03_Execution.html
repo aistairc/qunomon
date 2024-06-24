@@ -4,16 +4,18 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.1. Execution &mdash; USER MANUAL 0.1.0 documentation</title>
+  <title>3.1. Execution of quality assessment &mdash; USER MANUAL 0.1.0 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -27,10 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -88,21 +91,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../01_Introduction/index.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_Preparation/index.html">2. Preparation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Execution</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Execution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#register-report-template-optional">3.1.1. Register report template (optional)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#create-report-template">3.1.1.1. Create report template</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#register-report-template">3.1.1.2. Register report template</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Execution of quality assessment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#registering-the-mlcomponent">3.1.1. Registering the MLComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register-assets-into-inventories">3.1.2. Register assets into inventories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register-a-new-testdescription">3.1.3. Register a new TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#executing-testdescription">3.1.4. Executing TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-detailed-result-of-the-testdescription">3.1.5. Check Detailed Result of the TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-the-test-resource">3.1.6. Download the test resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-existing-testdescription">3.1.7. Copy existing TestDescription</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compare-the-testdescriptions">3.1.8. Compare the TestDescriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#report-generation">3.1.9. Report Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register-new-report-template-optional">3.1.10. Register new Report Template (optional)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-new-report-template">3.1.10.1. Create the new Report Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-an-report-template">3.1.10.2. Register an Report Template</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#register-mlcomponents">3.1.2. Register MLComponents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#register-inventories">3.1.3. Register Inventories</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#register-testdescriptions">3.1.4. Register TestDescriptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-testdescriptions">3.1.5. Run TestDescriptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#testdescriptions-details-display">3.1.6. TestDescriptions Details Display</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#download-resources">3.1.7. Download Resources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#copy-testdescription">3.1.8. Copy TestDescription</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#compare-testdescriptions">3.1.9. Compare TestDescriptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#report-output">3.1.10. Report Output</a></li>
 </ul>
 </li>
 </ul>
@@ -157,7 +160,7 @@
         
           <li><a href="index.html"><span class="section-number">3. </span>Execution</a> &raquo;</li>
         
-      <li><span class="section-number">3.1. </span>Execution</li>
+      <li><span class="section-number">3.1. </span>Execution of quality assessment</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -176,146 +179,196 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="execution">
-<h1><span class="section-number">3.1. </span>Execution<a class="headerlink" href="#execution" title="Permalink to this headline">¶</a></h1>
-<section id="register-report-template-optional">
-<h2><span class="section-number">3.1.1. </span>Register report template (optional)<a class="headerlink" href="#register-report-template-optional" title="Permalink to this headline">¶</a></h2>
-<p>Original report templates can be registered.</p>
-<p>(This is not a required task, as the report can be output without a template.)</p>
-<section id="create-report-template">
-<h3><span class="section-number">3.1.1.1. </span>Create report template<a class="headerlink" href="#create-report-template" title="Permalink to this headline">¶</a></h3>
-<section id="when-create-your-own-report-template">
-<h4><span class="section-number">3.1.1.1.1. </span>When create your own report template<a class="headerlink" href="#when-create-your-own-report-template" title="Permalink to this headline">¶</a></h4>
-<p>A sample template exists in the folder below, please copy, edit and zip it.</p>
-<p>qunomon\src\backend\report\templates\1</p>
-</section>
-<section id="when-create-a-report-template-from-guideline">
-<h4><span class="section-number">3.1.1.1.2. </span>When create a report template from guideline<a class="headerlink" href="#when-create-a-report-template-from-guideline" title="Permalink to this headline">¶</a></h4>
-<p>In the “Create Report Template” portion of the ReportTemplate screen, select a guideline and click the “Create” button.</p>
-<p><img alt="0101" src="../_images/011.png" /></p>
-</section>
-</section>
-<section id="register-report-template">
-<h3><span class="section-number">3.1.1.2. </span>Register report template<a class="headerlink" href="#register-report-template" title="Permalink to this headline">¶</a></h3>
-<p>In the “Install Report Template” portion of the ReportTemplate screen, select the guideline to be associated with.</p>
-<p>Next, enter a template name, upload the zipped template file, and click the “install” button.</p>
-<p><img alt="0102" src="../_images/021.png" /></p>
-</section>
-</section>
-<section id="register-mlcomponents">
-<h2><span class="section-number">3.1.2. </span>Register MLComponents<a class="headerlink" href="#register-mlcomponents" title="Permalink to this headline">¶</a></h2>
-<p>MLComponent is a unit that represents one machine learning model.</p>
-<p>When you press the “Create” button on the MLComponents screen, the MLComponent new creation screen will be displayed.</p>
+  <section id="execution-of-quality-assessment">
+<h1><span class="section-number">3.1. </span>Execution of quality assessment<a class="headerlink" href="#execution-of-quality-assessment" title="Permalink to this heading">¶</a></h1>
+<p>In this chapter, we will explain the steps to execute quality assessments for ML components using Qunomon.</p>
+<p>The structure of this chapter is as follows: registering the MLComponent (the unit of asset under assessment), registering the TestDescription (the unit of evaluation in the system), executing the TestDescription, result confirmation, generating the test report.</p>
+<section id="registering-the-mlcomponent">
+<h2><span class="section-number">3.1.1. </span>Registering the MLComponent<a class="headerlink" href="#registering-the-mlcomponent" title="Permalink to this heading">¶</a></h2>
+<p>In Qunomon, evaluations are conducted on a unit called MLComponent.</p>
+<p>MLComponent is the type of components in the system, typically implements a single independent ML-related feature. MLComponent typically consists of one or more models and/or datasets.</p>
+<p>To begin with, press the “Create” button in the MLComponents screen. Then the registration form for new MLComponent will appear.</p>
 <p><img alt="0201" src="../_images/012.png" /></p>
 <p>Enter the necessary items in the MLComponent new creation screen and click the “Create” button.</p>
-<p>MLComponentName：Enter MLComponent Name</p>
-<p>Description：Enter MLComponent Description</p>
-<p>Domain：Enter MLComponent Domain</p>
-<p>Guideline：Select the guideline to be used</p>
-<p>Scope：Select the scope to be used in the guideline</p>
+<p>Please fill the required fields below and press “Create” button.</p>
+<ul class="simple">
+<li><p>MLComponentName: Name for the new MLComponent (should be easily distinguishable from others)</p></li>
+<li><p>Description</p></li>
+<li><p>Domain: Problem domain of this MLComponent (e.g. Task, Industrial Domain, Use Case, etc.)</p></li>
+<li><p>Guideline: Choose the guideline/standard used and referred for your assessment</p></li>
+<li><p>Scope: When selected guideline is using different set of quality characteristics for different scope, choose one which is appropriate for this MLComponent.</p></li>
+</ul>
 <p><img alt="0202" src="../_images/022.png" /></p>
-<p>The created MLComponent will appear in the list on the MLComponents screen, so press the “test” icon.</p>
-<p><img alt="0203" src="../_images/031.png" /></p>
-<p><img alt="0204" src="../_images/04.png" /></p>
+<p>After this step, you can see the newly registered MLComponent in the MLComponents screen.
+From here, we will register asset to be evaluated into the inventory of this MLCompomnent, and then define the TestDescription for them.</p>
+<p>Please click the icon shown on the “Test” column and move to the detailed-information screen for the MLComponent.</p>
+<p><img alt="0203" src="../_images/032.png" /></p>
+<p><img alt="0204" src="../_images/041.png" /></p>
 </section>
-<section id="register-inventories">
-<h2><span class="section-number">3.1.3. </span>Register Inventories<a class="headerlink" href="#register-inventories" title="Permalink to this headline">¶</a></h2>
-<p>Inventory is a function that manages information on machine learning models and CSV-like data used in AIT.</p>
-<p>Basically, registration is done from the Inventory registration screen, but it can also be done from the TestDescriptions registration screen.</p>
-<p>Click “Inventories” from the submenu to display the Inventory list screen, then press the “Create” button.</p>
+<section id="register-assets-into-inventories">
+<h2><span class="section-number">3.1.2. </span>Register assets into inventories<a class="headerlink" href="#register-assets-into-inventories" title="Permalink to this heading">¶</a></h2>
+<p>Inventory is the feature to store the asset to be tested by Qunomon. The assets should be registered in the inventory may include ML models (architectures, trained-weights, hyperparameters) and/or datasets (such like tables, files or annotations).</p>
+<p>Choose the “Inventories” under the submenu, and then press the “Create” button.</p>
 <p><img alt="0301" src="../_images/013.png" /></p>
-<p>Enter the required fields on the Create New Inventory screen and click the “Create” button.</p>
-<p>Name：Enter Inventory name</p>
-<p>Path：Enter file path where the Inventory is saved</p>
-<p>DataType：Select “dataset”, “model” or “attribute set” (Must be the same type of Inventory used by AIT)</p>
-<p>Format：Select a file extension (or type directly if not available)</p>
-<p>Description：Inventory description</p>
+<p>Please fill the required field below and press “Create” button.</p>
+<ul class="simple">
+<li><p>Name: Name for the inventory (should be easily distinguishable from others.)</p></li>
+<li><p>Path: Local file path pointed to the asset to be registered (Note that: In other words, the file to be registered and Qunomon must be the same file system.)</p></li>
+<li><p>DataType: Choose one type that AIT requires as input.</p></li>
+<li><p>Format: Choose appropriate file extension or input if the one is not listed.</p></li>
+<li><p>Description</p></li>
+</ul>
 <p><img alt="0302" src="../_images/023.png" /></p>
 </section>
-<section id="register-testdescriptions">
-<h2><span class="section-number">3.1.4. </span>Register TestDescriptions<a class="headerlink" href="#register-testdescriptions" title="Permalink to this headline">¶</a></h2>
-<p>TestDescription is the unit of test to be performed on Qunomon.</p>
-<p>Click the “Create” button on the TestDescription screen to move to the creation screen.</p>
+<section id="register-a-new-testdescription">
+<h2><span class="section-number">3.1.3. </span>Register a new TestDescription<a class="headerlink" href="#register-a-new-testdescription" title="Permalink to this heading">¶</a></h2>
+<p>TestDescription is the smallest unit of the test, describes one executable evaluation specifications.
+In this section, we will define which AIT to be applied, which asset (in the iventory) is to be evaluated and execution parameters.</p>
+<p>Please click the icon displayed on “Create” column and move to the TestDescription creation form.</p>
 <p><img alt="0401" src="../_images/014.png" /></p>
-<p>Enter basic information for TestDescription and click the “Next” button.</p>
-<p>General→Name：Enter TestDescription name</p>
-<p>AIT Program：Select the AIT to be used (you can filter by “Name” or “Description”)</p>
-<p>Quality Dimension：Select the quality that AIT measures</p>
-<p><img alt="0402" src="../_images/024.png" /></p>
-<p>Enter detailed information for TestDescription and click the “Create” button.</p>
-<p>Acceptance Criteria：Enter the AIT evaluation value (if all of this formula is satisfied when executing TestDescription, the TestDescription execution result will be OK)</p>
-<p>AIT Parameter：Enter AIT parameters</p>
-<p>Target Inventories：Select the inventory to be used by AIT (Inventories can also be registered using the “+” icon here)</p>
-<p><img alt="0403" src="../_images/032.png" /></p>
-<p>If successfully registered, it will be added to the TestDescription list.</p>
-<p><img alt="0404" src="../_images/041.png" /></p>
-</section>
-<section id="run-testdescriptions">
-<h2><span class="section-number">3.1.5. </span>Run TestDescriptions<a class="headerlink" href="#run-testdescriptions" title="Permalink to this headline">¶</a></h2>
-<p>Select the TestDescription to run and execute it with “Run test”.</p>
-<p><img alt="0501" src="../_images/015.png" /></p>
-<p>When finished, the Status of the selected TestDescription changes.</p>
-<p>OK：If Acceptance Criteria are satisfied</p>
-<p>NG：If Acceptance Criteria cannot be satisfied</p>
-<p>ERR：If TestDescription could not be executed</p>
-<p><img alt="0502" src="../_images/025.png" /></p>
+<p>Here is the basic information form for the TestDescription.
+Please fill in the required fields below and press the “Next” button.</p>
 <ul class="simple">
-<li><p>How to investigate the cause of ERR</p></li>
+<li><p>Name: Identical name for the TestDescription</p></li>
+<li><p>AIT Program: Choose one AIT (Executable Test Package) that is used for this test.</p>
+<ul>
+<li><p>You can filter already installed AITs using some attributes like name and/or description.</p></li>
 </ul>
-<p>(1) Confirm the details of the error on the detail screen of the TestDescription that resulted in an ERR.</p>
-<p>(2) Confirm log files in the “qai-testbed\qunomon\logs” directory</p>
-<p>(3) Confirm airflow logs</p>
-<p>Access “http://localhost:8180/home” and check the log of AIT used in TestDescription.</p>
-<p>(ID：airflow　PASS：airflow)</p>
+</li>
+<li><p>Quality Dimension: Choose one quality characteristics which is evaluated by the AIT.</p>
+<ul>
+<li><p>Quality dimensions listed here are extracted from guideline you have selected for this MLComponent. Since Qunomon will manage and organize assessment to correspond with quality characteristics defined in the guideline, you should choose appropriate quality dimension here.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="0402" src="../_images/024.png" /></p>
+<p>Here is the detailed information form for the TestDescription.
+Please fill in the required fields below and press the “Create” button.</p>
+<ul class="simple">
+<li><p>Acceptance Criteria: For each of the evaluation metrics of an AIT, please configure the acceptance criteria (condition).</p>
+<ul>
+<li><p>All metrics to be generated by the AIT are listed here.</p></li>
+<li><p>If all of the configured condition are met, the test treated as pass and otherwise the test fail.</p></li>
+<li><p>So you should configure these condition referring the guideline, other documents, requirements for the component, and/or task characteristics.</p></li>
+</ul>
+</li>
+<li><p>AIT Parameter: These are the execution parameter of chosen AIT. Configure them based on the provided description.</p></li>
+<li><p>Target Inventories: Please select inventories with assets to be tested or used in this TestDescription.</p>
+<ul>
+<li><p>You can directly register an asset from “+” icon on this form.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="0403" src="../_images/033.png" /></p>
+<p>After completing the registration, you can see the registered TestDescription in the list.</p>
+<p><img alt="0404" src="../_images/042.png" /></p>
 </section>
-<section id="testdescriptions-details-display">
-<h2><span class="section-number">3.1.6. </span>TestDescriptions Details Display<a class="headerlink" href="#testdescriptions-details-display" title="Permalink to this headline">¶</a></h2>
-<p>Click the detail icon for the target TestDescription.</p>
+<section id="executing-testdescription">
+<h2><span class="section-number">3.1.4. </span>Executing TestDescription<a class="headerlink" href="#executing-testdescription" title="Permalink to this heading">¶</a></h2>
+<p>Please select the TestDescription to be executed and press “Run test” to execute assessment.</p>
+<p><img alt="0501" src="../_images/015.png" /></p>
+<p>After execution, the status field for the TestDescription will change according to the result.</p>
+<ul class="simple">
+<li><p>OK: All Acceptance Criteria are met.</p></li>
+<li><p>NG: Any of the Acceptance Criteria are not met.</p></li>
+<li><p>ERR: An error is occured during the execution. Result will not be provided in this case.</p></li>
+</ul>
+<p><img alt="0502" src="../_images/025.png" /></p>
+<p>There are various causes for ERR such like:</p>
+<ul class="simple">
+<li><p>The AIT contained bugs.</p></li>
+<li><p>The input data type (of asset in the inventory) did not match the expected format.</p></li>
+<li><p>An resource shortage while executing the TestDescription.</p></li>
+</ul>
+<p>[How to check the cause of the error]</p>
+<ul class="simple">
+<li><p>(1) See the error detail in the detailed information screen of the TestDescription.</p></li>
+<li><p>(2) Check the log file under the <code class="docutils literal notranslate"><span class="pre">qai-testbed\qunomon\logs</span></code> directory.</p></li>
+<li><p>(3) Check the execution logs in the airflow (job management system).</p>
+<ul>
+<li><p>access http://localhost:8180/home and check the execution log of an AIT which is corresponds to the TestDescription.（ID：airflow　PASS：airflow）</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="check-detailed-result-of-the-testdescription">
+<h2><span class="section-number">3.1.5. </span>Check Detailed Result of the TestDescription<a class="headerlink" href="#check-detailed-result-of-the-testdescription" title="Permalink to this heading">¶</a></h2>
+<p>Press the “Detail” icon of the executed TestDescription to confirm the assessment result.</p>
 <p><img alt="0601" src="../_images/016.png" /></p>
 <p><img alt="0602" src="../_images/026.png" /></p>
-<p>Once you select the Test Result output file, you can view its contents.</p>
-<p>“Report Contents” allows you to set whether to include the output file in the report.</p>
-<p>“Opinion” allows you to add a general review to the report.</p>
-<p><img alt="0603" src="../_images/033.png" /></p>
-<p>Click “Download” in the submenu or “Click here to download the data” to go to the Download screen.</p>
-<p><img alt="0604" src="../_images/042.png" /></p>
+<ul class="simple">
+<li><p>(1) List of the test resource (Test results and supplementary information in image or graph format.)</p></li>
+<li><p>(2) You can preview the selected resource in (1).</p></li>
+<li><p>(3) You can choose which of the resources are included in the final assessment report.</p></li>
+<li><p>(4) You should write an opinion about result after confirming the test results.</p></li>
+</ul>
+<p><img alt="0603" src="../_images/034.png" /></p>
+<ul class="simple">
+<li><p>You can move to the download screen of the resource by pressing the “Download” in the side bar or “Click here to download the data” link text.</p></li>
+</ul>
+<p><img alt="0604" src="../_images/043.png" /></p>
 </section>
-<section id="download-resources">
-<h2><span class="section-number">3.1.7. </span>Download Resources<a class="headerlink" href="#download-resources" title="Permalink to this headline">¶</a></h2>
-<p>Click the download icon to download the file.</p>
+<section id="download-the-test-resource">
+<h2><span class="section-number">3.1.6. </span>Download the test resource<a class="headerlink" href="#download-the-test-resource" title="Permalink to this heading">¶</a></h2>
+<p>You can download the test resources like images or graphs via download icon.</p>
 <p><img alt="0701" src="../_images/017.png" /></p>
 </section>
-<section id="copy-testdescription">
-<h2><span class="section-number">3.1.8. </span>Copy TestDescription<a class="headerlink" href="#copy-testdescription" title="Permalink to this headline">¶</a></h2>
-<p>By pressing the “Copy” icon of TestDescriptions on the TestDescription list screen, you can copy and create the contents.</p>
+<section id="copy-existing-testdescription">
+<h2><span class="section-number">3.1.7. </span>Copy existing TestDescription<a class="headerlink" href="#copy-existing-testdescription" title="Permalink to this heading">¶</a></h2>
+<p>You can register the copy of the TestDescription by pressing the “copy” icon. This may be useful for re-executing the failed test case and/or conducting same test against multiple inventories.</p>
 <p><img alt="0801" src="../_images/018.png" /></p>
-<p>Edit “Name”, “Acceptance Criteria”, “AIT Parameter” and “Target Inventories” and click the “Create” button.</p>
+<p>Configuration items are basically same as creating new one.
+Fill the form and press the “Create” button.</p>
 <p><img alt="0802" src="../_images/027.png" /></p>
-<p>It will be added to the TestDescription list screen.</p>
-<p><img alt="0803" src="../_images/034.png" /></p>
-<p>After executing the copied TestDescription, a “relationsip” icon will appear.</p>
-<p>Click on that icon to view the parent-child relationship of the TestDescription.</p>
-<p><img alt="0804" src="../_images/043.png" /></p>
+<p>Copied TestDescription can be seen in the list.</p>
+<p><img alt="0803" src="../_images/035.png" /></p>
+<p>After excuting the copied TestDescription, you can see the icon in the “relationship” column. Press the icon to see the relationships between copy source and copy destination.</p>
+<p><img alt="0804" src="../_images/044.png" /></p>
 <p><img alt="0805" src="../_images/05.png" /></p>
 </section>
-<section id="compare-testdescriptions">
-<h2><span class="section-number">3.1.9. </span>Compare TestDescriptions<a class="headerlink" href="#compare-testdescriptions" title="Permalink to this headline">¶</a></h2>
-<p>If you select two TestDescriptions that have a parent-child relationship and click the “Compare” button, you can transition to the comparison screen.</p>
+<section id="compare-the-testdescriptions">
+<h2><span class="section-number">3.1.8. </span>Compare the TestDescriptions<a class="headerlink" href="#compare-the-testdescriptions" title="Permalink to this heading">¶</a></h2>
+<p>You can compare execution results of similar TestDescriptions by choosing two TestDescriptions with parent-child relationship and press the “Compare” button. This might be useful to copmpare the models with different architecture, or different versions.</p>
 <p><img alt="0901" src="../_images/019.png" /></p>
 <p><img alt="0902" src="../_images/028.png" /></p>
-<p>Select an output file to display it on the screen.</p>
-<p><img alt="0903" src="../_images/035.png" /></p>
+<p>You can compare the test resources from each of the TestDescription side by side by choosing one from the list.</p>
+<p><img alt="0903" src="../_images/036.png" /></p>
 </section>
-<section id="report-output">
-<h2><span class="section-number">3.1.10. </span>Report Output<a class="headerlink" href="#report-output" title="Permalink to this headline">¶</a></h2>
-<p>Select TestDescription and click the “Download Report” button to output the report.</p>
+<section id="report-generation">
+<h2><span class="section-number">3.1.9. </span>Report Generation<a class="headerlink" href="#report-generation" title="Permalink to this heading">¶</a></h2>
+<p>Qunomon manages and organized the TestDescriptions along with quality characteristic defined in the guideline/standard. In this section, we explain how to generate an assessment report as PDF which is compliant to the guideline.</p>
+<p>You can see the Report Geenration dialogue with clicking “Download Report” button after choosing the TestDescriptions to be included in the assessment report.</p>
 <p><img alt="1001" src="../_images/0110.png" /></p>
-<p>On the report template selection screen, select the template you created and click the “Preview” button to preview the report using the template.</p>
-<p>Alternatively, select “Do not use ReportTemplate” and click the “Preview” button to preview the report without the template.</p>
+<p>Press the “Preview” button after choosing appropriate template will display the preview of the report to be generated.
+You can create or register new report template by yourself while the template for the AI Quality Management GUideline is included in the Qunomon from beginning.</p>
+<p>If you don’t have any template for the guideline/standard, you can also choose “Do not use ReportTemplate” so that the report with basic feature (but may not be well structured) can be generated.</p>
 <p><img alt="1002" src="../_images/029.png" /></p>
-<p>The string entered in “Report Opinion” will be reflected in the report’s overall rating.</p>
-<p>Click the “Create” button to download the report in PDF format.</p>
-<p><img alt="1003" src="../_images/036.png" /></p>
+<p>Review the contents through preview and then describe the general comment in the “Report Opinion” textbox.
+“Create” button generates the report in the PDF format and download will be automatically started.</p>
+<p><img alt="1003" src="../_images/037.png" /></p>
+</section>
+<section id="register-new-report-template-optional">
+<h2><span class="section-number">3.1.10. </span>Register new Report Template (optional)<a class="headerlink" href="#register-new-report-template-optional" title="Permalink to this heading">¶</a></h2>
+<p>As we said previously, we can author and register the original report template.
+There are two ways to create new report template: (1) Generate report template automatically from registered guideline/standards, and (2) Manually writes template from scratch.</p>
+<section id="create-the-new-report-template">
+<h3><span class="section-number">3.1.10.1. </span>Create the new Report Template<a class="headerlink" href="#create-the-new-report-template" title="Permalink to this heading">¶</a></h3>
+<section id="generate-report-template-from-the-registered-guideline">
+<h4><span class="section-number">3.1.10.1.1. </span>Generate Report Template from the registered guideline<a class="headerlink" href="#generate-report-template-from-the-registered-guideline" title="Permalink to this heading">¶</a></h4>
+<p>Choose desired guideline in the “Create Report Template” part of the ReportTemplate screen and press the “Create” button.</p>
+</section>
+<section id="manually-writes-template-from-scratch">
+<h4><span class="section-number">3.1.10.1.2. </span>Manually writes template from scratch<a class="headerlink" href="#manually-writes-template-from-scratch" title="Permalink to this heading">¶</a></h4>
+<p>The example of the template are placed under <code class="docutils literal notranslate"><span class="pre">qunomon\src\backend\report\templates\1</span></code>. Please copy and edit them. To register template, you need to zip the entire directory. Our templates are based on Jinja Framework, so the author should learn how to use Jinja Framework.</p>
+<p><img alt="0101" src="../_images/0111.png" /></p>
+</section>
+</section>
+<section id="register-an-report-template">
+<h3><span class="section-number">3.1.10.2. </span>Register an Report Template<a class="headerlink" href="#register-an-report-template" title="Permalink to this heading">¶</a></h3>
+<p>Choose guideline correspond to the template to be registered at the “Install Report Template” part of the ReportTemplate screen, name the template and upload zipped template folder from Select Upload File inputbox.</p>
+<p>Please press the “install” button and then report template will be registered into Qunomon.</p>
+<p><img alt="0102" src="../_images/0210.png" /></p>
+</section>
 </section>
 </section>
 

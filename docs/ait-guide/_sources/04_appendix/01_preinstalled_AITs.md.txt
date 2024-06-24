@@ -1,0 +1,13 @@
+## Pre-installed AITs
+
+Qunomon includes pre-installed AITs that are ready to use. While the quality metrics that can be measured with AITs are not limited to these, reviewing their configurations and implementations may serve as a reference for developing new AITs. 
+The repository is located at `https://github.com/aistairc/{name_of_AIT}`. Please refer to Section 2. Operating Conditions and Installation for details on downloading methods and directory structure.
+
+
+* alyz_dataset_table_counts_comb_two_attr
+  * Specifies unnecessary (impossible) attribute value combinations in tabular data, and calculates the count and proportion of these unwanted data present in the table.
+  * AIT users can use this summary information to understand the unhealthiness of attribute values based on their occurrence trends.
+
+* eval_dataset_image_diversity_vae  
+  * Calculates the feature metrics of evaluation image data using a VAE model trained on features of training image data.
+  * The closer these feature differences are to zero, the more comprehensively the evaluation image data is considered to encompass the features of the training data.

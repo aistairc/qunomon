@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.7. Push to GITHUB &mdash; AIT Guide 0.1.0 documentation</title>
+  <title>3.7. Publishing AIT &mdash; AIT Guide 0.1.0 documentation</title>
   
 
   
@@ -89,14 +89,18 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. Port an AI evaluation program to the my_ait.ipynb template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. AIT development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04_unit_test.html">3.4. Unit test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html">3.5. Preparing registration for Qunomon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.7. Push to GITHUB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#execute-batch-of-push-to-github">3.7.1. Execute batch of push to GITHUB</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#select-upload-inventory">3.7.2. Select upload inventory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#enter-commit-comment">3.7.3. Enter commit comment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.7. Publishing AIT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#register-on-github">3.7.1. Register on GITHUB</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#select-upload-inventory">3.7.1.1. Select upload inventory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enter-commit-comment">3.7.1.2. Enter commit comment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-repository-url">3.7.1.3. Check repository URL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#register-on-ait-hub">3.7.2. Register on AIT-HUB</a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +154,7 @@
         
           <li><a href="index.html"><span class="section-number">3. </span>Tutorial</a> &raquo;</li>
         
-      <li><span class="section-number">3.7. </span>Push to GITHUB</li>
+      <li><span class="section-number">3.7. </span>Publishing AIT</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -193,11 +197,35 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="push-to-github">
-<h1><span class="section-number">3.7. </span>Push to GITHUB<a class="headerlink" href="#push-to-github" title="Permalink to this headline">¶</a></h1>
-<p>This chapter describes push GITHUB to publish the verified AIT.</p>
-<div class="section" id="execute-batch-of-push-to-github">
-<h2><span class="section-number">3.7.1. </span>Execute batch of push to GITHUB<a class="headerlink" href="#execute-batch-of-push-to-github" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="publishing-ait">
+<h1><span class="section-number">3.7. </span>Publishing AIT<a class="headerlink" href="#publishing-ait" title="Permalink to this headline">¶</a></h1>
+<p>This chapter explains the steps to publish the AIT you developed.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When you register your developed AIT on platforms like GITHUB or AIT-HUB, it becomes publicly available. Before publishing the AIT, ensure that no personal or confidential information is disclosed and that the publication aligns with your objectives. Please proceed with these precautions.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Disclaimer :</p>
+</div>
+<p>The publication of AITs on this platform is the responsibility of the developers. The developers guarantee that the information contained in AIT does not infringe any third-party intellectual property rights and does not include any personal or confidential information.</p>
+<p>In the event that developers inadvertently publish confidential information, or if AIT is improperly used by a third party, neither this platform nor its operators shall bear any liability. The developers shall bear full responsibility for any direct or indirect damages that may arise from the use of AIT.</p>
+<p>Users of this platform understand the potential risks associated with using AIT and agree to use AIT at their own risk.</p>
+<p>The publication of AIT is carried out in the following two steps:</p>
+<ol class="simple">
+<li><p>Register on GITHUB</p>
+<ul class="simple">
+<li><p>Register and manage the created AIT resources on GITHUB.</p></li>
+</ul>
+</li>
+<li><p>Register on AIT-HUB</p>
+<ul class="simple">
+<li><p>Register the created AIT on AIT-HUB and make it available to AIT-HUB users.</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="register-on-github">
+<h2><span class="section-number">3.7.1. </span>Register on GITHUB<a class="headerlink" href="#register-on-github" title="Permalink to this headline">¶</a></h2>
 <p>Execute the batch file and push to GITHUB.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Windows</span>
 <span class="p">{</span><span class="n">YOUR_AIT_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">tool</span><span class="o">/</span><span class="n">github_push</span><span class="o">.</span><span class="n">bat</span>
@@ -206,20 +234,36 @@
 <span class="p">{</span><span class="n">YOUR_AIT_ROOT</span><span class="p">}</span><span class="o">/</span><span class="n">tool</span><span class="o">/</span><span class="n">github_push</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-</div>
 <div class="section" id="select-upload-inventory">
-<h2><span class="section-number">3.7.2. </span>Select upload inventory<a class="headerlink" href="#select-upload-inventory" title="Permalink to this headline">¶</a></h2>
-<p>Choose whether to upload inventory for AIT test.</p>
+<h3><span class="section-number">3.7.1.1. </span>Select upload inventory<a class="headerlink" href="#select-upload-inventory" title="Permalink to this headline">¶</a></h3>
+<p>Choose whether to upload the input files used in the unit testing.</p>
 <p>Y: Upload.</p>
 <p>N : Do not upload.
 <img alt="inventory_upload" src="../_images/01_inventory_upload.png" /></p>
 </div>
 <div class="section" id="enter-commit-comment">
-<h2><span class="section-number">3.7.3. </span>Enter commit comment<a class="headerlink" href="#enter-commit-comment" title="Permalink to this headline">¶</a></h2>
+<h3><span class="section-number">3.7.1.2. </span>Enter commit comment<a class="headerlink" href="#enter-commit-comment" title="Permalink to this headline">¶</a></h3>
 <p><img alt="commit_comment" src="../_images/02_commit_comment.png" /></p>
-<p>※Since authentication to GITHUB is required.</p>
-<p>HTTPS type: token</p>
-<p>SSH: Public key</p>
+</div>
+<div class="section" id="check-repository-url">
+<h3><span class="section-number">3.7.1.3. </span>Check repository URL<a class="headerlink" href="#check-repository-url" title="Permalink to this headline">¶</a></h3>
+<p>Make a note of batch output repository URL.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To facilitate publishing on AIT-HUB, please ensure that you do not lose the note of the repository URL.</p>
+</div>
+<p><img alt="commit_comment" src="../_images/03_repo_url.png" /></p>
+</div>
+</div>
+<div class="section" id="register-on-ait-hub">
+<h2><span class="section-number">3.7.2. </span>Register on AIT-HUB<a class="headerlink" href="#register-on-ait-hub" title="Permalink to this headline">¶</a></h2>
+<p>Register your developed AIT on AIT-HUB by entering the repository URL on the AIT upload page of AIT-HUB.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When registering on AIT-HUB, please set the visibility of your GITHUB repository to public. AIT-HUB assumes that the source code is available publicly on GITHUB in order to review the detailed information about the AIT.</p>
+</div>
+<p>※For details, refer to the AITHUB operation manual.</p>
+<p><img alt="aithub_aitupload" src="../_images/04_aithub_aitupload.png" /></p>
 </div>
 </div>
 

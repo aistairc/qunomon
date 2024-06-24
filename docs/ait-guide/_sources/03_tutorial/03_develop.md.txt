@@ -1,28 +1,28 @@
-# Port an AI evaluation program to the my_ait.ipynb template
-After completing the experiment and deciding the purpose, functionality, I/O specifications of an AIT, move the part of the codes to the AIT template (`my_ait.ipynb`) and prepare for packaging.
-`my_ait.ipynb` template contains codes to ensure reusability in other environment and codes which enable interaction with Qunomon.
+# AIT development 
+After completing the experiment and deciding the purpose, functionality, I/O specifications of an AIT, move the part of the codes to (`my_ait.ipynb`) and prepare for packaging.
+`my_ait.ipynb` contains codes to ensure reusability in other environment and codes which enable interaction with Qunomon.
 Even if you don't know the specification of Qunomon in detail, you can develop AIT by editing some cells in the template while following the rules.
 
 ## Edit my_ait.ipynb
-Open `my_ait.ipynb' in the AIT development environment (Jupyter Lab) and port your AI evaluation program onto this template.
+Open `my_ait.ipynb` in the AIT development environment (Jupyter Lab) and port your AI evaluation program onto this template.
 Please refer 3.3.3 The strcure of my_ait.ipynb for detailed procedure.
 
-``` tip:: This file is mounted on the docker container, you can refer them both from AIT development environment and host environment.
+``` tip:: This file is mounted on the docker container, you can refer them both from  host environment.
+
     - Path to the template seen from the host : `{YOUR_AIT_ROOT}/develop/my_ait.ipynb`
     - Path to the template seen from the Jupyter Lab: `/root/develop/my_ait.ipynb`
-
-    Actually, the correct filepath seen from the container which runs Jupyter is "/workdir/root/develop/my_ait.ipynb", but the Jupyter Lab configured to refer /workdir/ as its root directory in its file explorer.
 ```
 
 The rest of the section describes the detailed strcuture of 'my_ait.ipynb'.
 
 ## The structure of my_ait.ipynb
 The `my_ait.ipynb` consists of multiple *area*s; and each *area* consists of multiple *cell*s.
-You can edit these areas and cells or port your codes from experimentation notebook to develop an AIT.
-But some areas and cells are uneditable because they contain the codes that must be included for the packaging.
+AIT development involves breaking down the AI evaluation program created during the experimental phase according to *area*s, and then transferring it into each respective *area*.
 
-```tip:: If you edit the uneditable cells by opening them in other text editors, then the AIT may be corrupted.
-   On the other hand, some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.
+```Note:: Some cells contain essential information and code for packaging and are not editable in Jupyter Lab. Please do not edit these cells.
+```
+
+```tip:: Some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.
 ```
 
 The table below is the structure of my_ait.ipynb.
@@ -40,8 +40,8 @@ The table below is the structure of my_ait.ipynb.
 | 2|Preparing AIT SDK    |     1|    Yes|uneditable|download and install AIT SDK|
 | 3|Dependency Management|     3|    Yes|required(cell #2))|generate requirements.txt for Docker container|
 | 4|Importing Libraries  |     2|    Yes|required(cell #1))|import required libraries|
-| 5|Manifest Generation  |     1|    Yes|  required|generate AIT Manifest|
-| 6|Prepare for the Input|     1|    Yes|  required|generate AIT Input JSON (inventory mapper)|
+| 5|Manifest Generation  |     1|    Yes|  required|AIT Manifest definition|
+| 6|Prepare for the Input|     1|    Yes|  required|AIT Input JSON definition(inventory mapper)|
 | 7|Initialization       |     1|     No|uneditable|initialization for AIT execution|
 | 8|Function definitions |     N|     No|  required|define functions invoked from Main area.<br>also define output functions.|
 | 9|Main Algorithms      |     1|     No|  required|area for main algorithms of an AIT|
@@ -51,9 +51,11 @@ The table below is the structure of my_ait.ipynb.
 
 ### #3 Dependency Management area
 Since an AIT will be executed on the Docker container, there is a need for prepare requirements.txt to successfully install dependencies on the container.
-In this area, we automatically generates a requirements.txt and place them to the appropriate locations by using `AITRequirementsGenerator` class in the AIT SDK.
+In this area, we automatically generates a requirements.txt and place them to the appropriate locations by using `AITRequirementsGenerator` class in the AIT SDK. You should write down all required dependencies in this area.
 Please write the OSS name in the first argument and the version in the second argument to `add_package`.
-It is possible to generate requirements.txt by omitting the second argument of `add_package` and using only the OSS name, but this is not recommended as there is a concern that the dependencies may break down as the OSS version is updated.
+
+```Note::  It is possible to generate requirements.txt by omitting the second argument of add_package and using only the OSS name, but this is not recommended as there is a concern that the dependencies may break down as the OSS version is updated.
+```
 
 * Example
     * When your AIT depends on the tensorflow 2.5.0 and numpy 1.19.2:
@@ -70,7 +72,7 @@ For detailed information about `AITRequirementsGenerator`, please see [here](htt
 ``` important:: The AIT SDK itself are automatically added to the requirements.txt. Don't explicitly add them in this area.
 ```
 
-``` tip:: is_ait_launch is False when experimenting on Jupyter Lab.
+``` tip:: "is_ait_launch" is False when experimenting on Jupyter Lab.
     Commands that you want to execute only in Jupyter Lab experiments (AITRequirementsGenerator etc) should be enclosed in if not is_ait_launch:.
 ```
 
@@ -83,19 +85,67 @@ Import classes, functions and/or other entities from libraries used in your AIT 
 AIT Manifest contains metadata such as name, author, description and/or I/O definitions of an AIT for ensure reusability and searchability of it.
 In this area, we automatically generates ait.manifest.json file and place them to the appropriate locations by using `AITManifestGenerator` class in the AIT SDK.
 
+| #|Method name |Details |Possibility of multiple definitions |Submethod |Code sample |
+|--|--------------------|--------------------|----------------|----------------------------------------|------------------------------------------------------------|
+| 1| set_ait_name | Set AIT name | × | None | ``` manifest_genenerator.set_ait_name('Name') ``` |
+| 2| set_ait_description | Set AIT description | × | None | ``` manifest_genenerator.set_ait_description('Description') ``` |
+| 3| set_ait_source_repository | Set AIT source repository URL | × | None | ``` manifest_genenerator.set_ait_source_repository('URL') ``` |
+| 4| set_ait_version | Set AIT version | × | None | ``` manifest_genenerator.set_ait_version('Version') ``` |
+| 5| set_ait_quality | Set quality URL for AIT | × | None | ``` manifest_genenerator.set_ait_quality('Quality_URL') ``` |
+| 6| add_ait_keywords | Add AIT keyword | 〇 | None | ``` manifest_genenerator.add_ait_keywords('Keyword_1') ```<br> ```manifest_genenerator.add_ait_keywords('Keyword_2') ``` |
+| 7| add_ait_references | Add AIT reference  | 〇 | None | # Pattern that sets all arguments<br> ``` manifest_genenerator.add_ait_references(bib_info='bib_info_1', additional_info='additional_info_1',url='URL_1')``` <br># Pattern that only sets required arguments<br> ```manifest_genenerator.add_ait_references(bib_info='bib_info_2') ``` |
+| 8| add_ait_licenses | Add AIT license | 〇 | None | ``` manifest_genenerator.add_ait_licenses('License_1') ```<br> ```manifest_genenerator.add_ait_licenses('License_2') ``` |
+| 9| add_ait_inventories | Add AIT inventory <br>* Requirement variable must be generated using the format_ait_inventory_requirement submethod in advance | 〇 | - format_ait_inventory_requirement | # Pattern that sets all arguments<br> ```  manifest_genenerator.add_ait_inventories(name='Name_1', type_='Type_1', description='Description_1', requirement=inventory_requirement_1, depends_on_parameter='Parameter_1')``` <br># Pattern that only sets required arguments<br> ```manifest_genenerator.add_ait_inventories(name='Name_2', type_='Type_2', description='Description_2', requirement=inventory_requirement_2) ``` |
+|10|   - format_ait_inventory_requirement | Format inventory requirement items | 〇 | - create_inv_req_compatible_packages<br>- create_inv_req_additional_info | # Pattern that sets all arguments<br> ``` inventory_requirement_1 = manifest_genenerator.format_ait_inventory_requirement(format_=['Format_1', 'Format_2'], compatible_packages=compatible_package_1, additional_info=additional_info_1, min='min_1', max='max_1') ``` <br># Pattern that only sets required arguments<br> ``` inventory_requirement_2 = manifest_genenerator.format_ait_inventory_requirement(format_=['Format_1']) ```|
+|11|     -- create_inv_req_compatible_packages | Create compatible_packages item for inventory requirements | 〇 | None | # Pattern that sets all arguments<br> ``` compatible_package_1 = manifest_genenerator.create_inv_req_compatible_packages(name='Name_1', version='Version_1', additional_info='additional_info_1') ``` <br># Pattern that only sets required arguments<br> ``` compatible_package_2 = manifest_genenerator.create_inv_req_compatible_packages(name='Name_2') ```|
+|12|     -- create_inv_req_additional_info | Create additional_info item for inventory requirement | 〇 | None | ``` inv_req_additional_info_1 = manifest_genenerator.create_inv_req_additional_info(key='Key_1', value=['Value_1', 'Value_2']) ``` |
+|13| add_ait_parameters | Add AIT parameter | 〇 | None | # Pattern that sets all arguments<br> ```  manifest_genenerator.add_ait_parameters(name='Name_1', type_='Type_1', description='Description_1', default_val='Default_val_1', min_value='Min_value_1', max_value='Max_value_1', depends_on_parameter='parameter_1')``` <br># Pattern that only sets required arguments<br> ```  manifest_genenerator.add_ait_parameters(name='Name_2', type_='Type_2', description='Description_2') ``` |
+|14| add_ait_measures | Add AIT measure | 〇 | None | # Pattern that sets all arguments<br> ```  manifest_genenerator.add_ait_measures(name='Name_1', type_='Type_1', description='Description_1', structure='Structure_1', min='Min_1', max='Max_1')``` <br># Pattern that only sets required arguments<br>  ```  manifest_genenerator.add_ait_measures(name='Name_2', type_='Type_2', description='Description_2', structure='Structure_2')``` |
+|15| add_ait_resources | Add AIT resource | 〇 | None | ```  manifest_genenerator.add_ait_resources(name='Name_1', type_='Type_1', description='Description_1')```<br> ```  manifest_genenerator.add_ait_resources(name='Name_2', type_='Type_2', description='Description_2')``` |
+|16| add_ait_downloads | Add AIT download | 〇 | None | ```  manifest_genenerator.add_ait_downloads(name='Name_1', description='Description_1')```<br> ```  manifest_genenerator.add_ait_downloads(name='Name_2', description='Description_2')``` |
+
+
 * Example
-    * To set the name of the AIT:
     ```py
         manifest_genenerator = AITManifestGenerator(current_dir)
+
+        # To set the name of the AIT
         manifest_genenerator.set_ait_name('eval_mnist_acc_tf2.3')
+
+        # To set the inventory of the AIT
+        inventory_requirement_iris_data = manifest_genenerator.format_ait_inventory_requirement(format_=['csv'])
+        manifest_genenerator.add_ait_inventories(name='iris_data', 
+                                                type_='dataset', 
+                                                description='Iris classification data', 
+                                                requirement=inventory_requirement_iris_data)
     ```
 
 `AITManifestGenerator` can validate the format of attributes and check whether required attributes are set. So if there're missing or wrong attributes in this area, execution of `my_ait.ipynb` may fail at that time.
-For detailed information about `AITManifestGenerator` class, please see the document [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator).
+For detailed information about `AITManifestGenerator` class, please see the document [AIT_SDK_API Specification](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator).
 
-``` tip:: Please refer to my_ait.ipynb and ait.manifest.json in "1.2. Preinstalled AIT" for registration information of AIT manifest. 
+``` tip:: The defined AIT manifest is saved as ait.manifest.json.
+```
+
+``` tip:: Please refer to my_ait.ipynb and ait.manifest.json in "1.3. Published AIT" for registration information of AIT manifest. 
     Because it depends on the characteristics and purpose of the AI evaluation program.
 ```
+
+### #6 Prepare for the Input area
+Define the input data (data to be evaluated by the AIT) and parameters (settings for executing the AIT).
+
+* Example of input data settings
+```py
+    input_generator = AITInputGenerator(manifest_path)
+    input_generator.add_ait_inventories(name='iris_data', value='iris_data/tableconvert_csv_4nryby.csv')
+    input_generator.set_ait_params(name='mean_column_name', value='petal.width')
+```
+
+`AITInputGenerator`For details about the class, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator).
+* The `name` argument specified to the function is linked to the inventory parameter name in the AIT manifest generated in #5 Manifest Generation Area.
+  * The `name` argument of the `add_ait_inventories` function should be the same as the `inventories/name` attribute in the AIT manifest.
+  * The `name` argument of the `set_ait_params` function should be the same as the `parameters/name` attribute in the AIT manifest.
+  * Set the `value` argument of the `add_ait_inventories` and `set_ait_params` functions by referring to the Unit Testing chapter.
+
 ### #8 Functions definitions area
 In Function definitions area, you can define any number of user defined functions which is invoked from the following main algorithms area (#9).
 Of the user defined functions, the functions that output the execution results of AIT are annotated and defined as result output functions.
@@ -105,7 +155,7 @@ Of the user defined functions, the functions that output the execution results o
 
 The format of the user-defined function is arbitrary.
 There are three types of output functions:
-* Report/Measures (Output evaluation/analysis results as singular value)
+* Report/Measures (Output evaluation/analysis results as measured value)
 * Report/Resources (Output evaluation/analysis results as image, graphs or specified file format)
 * Download (Output supplemental and/or intermediate results as image, graphs or specified file format)
 
@@ -119,7 +169,7 @@ You must add following two annotations to your output function.
   * {NAME_OF_REPORT/MEASURE} must be matched to the one of the name in the `report/measures` defined in the AIT Manifest.
 
 ``` important:: The return value of this function will be treated as an evaluation value of {NAME_OF_REPORT/MEASURE}.  
-    So the function must return a singular value.
+    So the function must return a value.
 ```
 
 * When your AIT output AUC (Area Under the Curve) value as a result:
@@ -219,8 +269,8 @@ In this area, you should write the main algorithms of the AIT while reffering I/
 This area has some rules to follow.
 * you must add following two annotations to your output function.
   * `@log(logger)` annotation
-  * `@ait_main(ait_output, path_helper)` annotation
-* The name of the function must be `main()` because this function is invoked by the following area (#10 Entry point).
+  * `@ait_main(ait_output, path_helper, is_ait_launch)` annotation
+* The name of the function must be `main()` 
 * Paremetes must be got from the `get_method_param_value` method of `ait_input` variable (`AITInput` class).
 * Path to the inventory mus be got from the `get_inventory_path` method `ait_input` variable (`AITInput` class).
 <br>
@@ -228,7 +278,7 @@ This area has some rules to follow.
 * Example of the main algorithms area
     ```py
     @log(logger)
-    @ait_main(ait_output, path_helper)
+    @ait_main(ait_output, path_helper, is_ait_launch)
     def main() -> None:
         image_px_size = ait_input.get_method_param_value('image_px_size')
 
@@ -283,8 +333,11 @@ This area has some rules to follow.
 Some attributes must be set for automatic generation of your AIT license information.
 Currently you must set the value to the `ait_owner` attribute and the `ait_creation_year` attribute.
 
+``` important:: The AIT template applies the Apache 2.0 license by default. While Apache 2.0 is recommended, modify or replace the LICENSE.txt as necessary.
+```
+
 ## Check program execution
-Execute the my_ait.ipynb file and check that the ported program works properly.
+Execute the `my_ait.ipynb` and check that the ported program works properly.
 
 The Output stored in `/root/top_dir/local_qai/mnt/ip/job_result/1/1`.
 AIT manifest stored in `/root/develop/ait.manifest.json`

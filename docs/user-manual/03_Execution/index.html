@@ -4,7 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -14,6 +14,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -27,10 +29,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -38,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Execution" href="03_Execution.html" />
+    <link rel="next" title="3.1. Execution of quality assessment" href="03_Execution.html" />
     <link rel="prev" title="2.1. Preparation" href="../02_Preparation/02_Preparation.html" /> 
 </head>
 
@@ -88,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../01_Introduction/index.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_Preparation/index.html">2. Preparation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">3. Execution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html">3.1. Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html">3.1. Execution of quality assessment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../04_Modification/index.html">4. Modification</a></li>
@@ -158,29 +161,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="section-1">
-<h1><span class="section-number">3. </span>Execution<a class="headerlink" href="#section-1" title="Permalink to this headline">¶</a></h1>
+  <section id="id1">
+<h1><span class="section-number">3. </span>Execution<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="03_Execution.html">3.1. Execution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-report-template-optional">3.1.1. Register report template (optional)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution.html#create-report-template">3.1.1.1. Create report template</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="03_Execution.html#when-create-your-own-report-template">3.1.1.1.1. When create your own report template</a></li>
-<li class="toctree-l4"><a class="reference internal" href="03_Execution.html#when-create-a-report-template-from-guideline">3.1.1.1.2. When create a report template from guideline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Execution.html">3.1. Execution of quality assessment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#registering-the-mlcomponent">3.1.1. Registering the MLComponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-assets-into-inventories">3.1.2. Register assets into inventories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-a-new-testdescription">3.1.3. Register a new TestDescription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#executing-testdescription">3.1.4. Executing TestDescription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#check-detailed-result-of-the-testdescription">3.1.5. Check Detailed Result of the TestDescription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#download-the-test-resource">3.1.6. Download the test resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#copy-existing-testdescription">3.1.7. Copy existing TestDescription</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#compare-the-testdescriptions">3.1.8. Compare the TestDescriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#report-generation">3.1.9. Report Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-new-report-template-optional">3.1.10. Register new Report Template (optional)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution.html#create-the-new-report-template">3.1.10.1. Create the new Report Template</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_Execution.html#generate-report-template-from-the-registered-guideline">3.1.10.1.1. Generate Report Template from the registered guideline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_Execution.html#manually-writes-template-from-scratch">3.1.10.1.2. Manually writes template from scratch</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="03_Execution.html#register-report-template">3.1.1.2. Register report template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_Execution.html#register-an-report-template">3.1.10.2. Register an Report Template</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-mlcomponents">3.1.2. Register MLComponents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-inventories">3.1.3. Register Inventories</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#register-testdescriptions">3.1.4. Register TestDescriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#run-testdescriptions">3.1.5. Run TestDescriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#testdescriptions-details-display">3.1.6. TestDescriptions Details Display</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#download-resources">3.1.7. Download Resources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#copy-testdescription">3.1.8. Copy TestDescription</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#compare-testdescriptions">3.1.9. Compare TestDescriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_Execution.html#report-output">3.1.10. Report Output</a></li>
 </ul>
 </li>
 </ul>
@@ -195,7 +198,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="03_Execution.html" class="btn btn-neutral float-right" title="3.1. Execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="03_Execution.html" class="btn btn-neutral float-right" title="3.1. Execution of quality assessment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../02_Preparation/02_Preparation.html" class="btn btn-neutral float-left" title="2.1. Preparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

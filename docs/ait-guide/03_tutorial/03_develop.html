@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3.3. Port an AI evaluation program to the my_ait.ipynb template &mdash; AIT Guide 0.1.0 documentation</title>
+  <title>3.3. AIT development &mdash; AIT Guide 0.1.0 documentation</title>
   
 
   
@@ -89,15 +89,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. Port an AI evaluation program to the my_ait.ipynb template</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.3. AIT development</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#edit-my-ait-ipynb">3.3.1. Edit my_ait.ipynb</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-structure-of-my-ait-ipynb">3.3.2. The structure of my_ait.ipynb</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dependency-management-area">3.3.2.1. #3 Dependency Management area</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#importing-libraries-area">3.3.2.2. #4 Importing Libraries area</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#manifest-generation-area">3.3.2.3. #5 Manifest Generation area</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#functions-definitions-area">3.3.2.4. #8 Functions definitions area</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#main-algorithms-area">3.3.2.5. #9 Main Algorithms area</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#license-area">3.3.2.6. #11 License area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-for-the-input-area">3.3.2.4. #6 Prepare for the Input area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions-definitions-area">3.3.2.5. #8 Functions definitions area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#main-algorithms-area">3.3.2.6. #9 Main Algorithms area</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#license-area">3.3.2.7. #11 License area</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#check-program-execution">3.3.3. Check program execution</a></li>
@@ -106,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="04_unit_test.html">3.4. Unit test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html">3.5. Preparing registration for Qunomon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Push to GITHUB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Publishing AIT</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
@@ -158,7 +159,7 @@
         
           <li><a href="index.html"><span class="section-number">3. </span>Tutorial</a> &raquo;</li>
         
-      <li><span class="section-number">3.3. </span>Port an AI evaluation program to the my_ait.ipynb template</li>
+      <li><span class="section-number">3.3. </span>AIT development</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -201,33 +202,36 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="port-an-ai-evaluation-program-to-the-my-ait-ipynb-template">
-<h1><span class="section-number">3.3. </span>Port an AI evaluation program to the my_ait.ipynb template<a class="headerlink" href="#port-an-ai-evaluation-program-to-the-my-ait-ipynb-template" title="Permalink to this headline">¶</a></h1>
-<p>After completing the experiment and deciding the purpose, functionality, I/O specifications of an AIT, move the part of the codes to the AIT template (<code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code>) and prepare for packaging.
-<code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> template contains codes to ensure reusability in other environment and codes which enable interaction with Qunomon.
+<div class="section" id="ait-development">
+<h1><span class="section-number">3.3. </span>AIT development<a class="headerlink" href="#ait-development" title="Permalink to this headline">¶</a></h1>
+<p>After completing the experiment and deciding the purpose, functionality, I/O specifications of an AIT, move the part of the codes to (<code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code>) and prepare for packaging.
+<code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> contains codes to ensure reusability in other environment and codes which enable interaction with Qunomon.
 Even if you don’t know the specification of Qunomon in detail, you can develop AIT by editing some cells in the template while following the rules.</p>
 <div class="section" id="edit-my-ait-ipynb">
 <h2><span class="section-number">3.3.1. </span>Edit my_ait.ipynb<a class="headerlink" href="#edit-my-ait-ipynb" title="Permalink to this headline">¶</a></h2>
-<p>Open `my_ait.ipynb’ in the AIT development environment (Jupyter Lab) and port your AI evaluation program onto this template.
+<p>Open <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> in the AIT development environment (Jupyter Lab) and port your AI evaluation program onto this template.
 Please refer 3.3.3 The strcure of my_ait.ipynb for detailed procedure.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>This file is mounted on the docker container, you can refer them both from AIT development environment and host environment.
-- Path to the template seen from the host : <cite>{YOUR_AIT_ROOT}/develop/my_ait.ipynb</cite>
-- Path to the template seen from the Jupyter Lab: <cite>/root/develop/my_ait.ipynb</cite></p>
-<p>Actually, the correct filepath seen from the container which runs Jupyter is “/workdir/root/develop/my_ait.ipynb”, but the Jupyter Lab configured to refer /workdir/ as its root directory in its file explorer.</p>
+<p>This file is mounted on the docker container, you can refer them both from  host environment.</p>
+<ul class="simple">
+<li><p>Path to the template seen from the host : <cite>{YOUR_AIT_ROOT}/develop/my_ait.ipynb</cite></p></li>
+<li><p>Path to the template seen from the Jupyter Lab: <cite>/root/develop/my_ait.ipynb</cite></p></li>
+</ul>
 </div>
 <p>The rest of the section describes the detailed strcuture of ‘my_ait.ipynb’.</p>
 </div>
 <div class="section" id="the-structure-of-my-ait-ipynb">
 <h2><span class="section-number">3.3.2. </span>The structure of my_ait.ipynb<a class="headerlink" href="#the-structure-of-my-ait-ipynb" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> consists of multiple <em>area</em>s; and each <em>area</em> consists of multiple <em>cell</em>s.
-You can edit these areas and cells or port your codes from experimentation notebook to develop an AIT.
-But some areas and cells are uneditable because they contain the codes that must be included for the packaging.</p>
+AIT development involves breaking down the AI evaluation program created during the experimental phase according to <em>area</em>s, and then transferring it into each respective <em>area</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some cells contain essential information and code for packaging and are not editable in Jupyter Lab. Please do not edit these cells.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you edit the uneditable cells by opening them in other text editors, then the AIT may be corrupted.
-On the other hand, some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.</p>
+<p>Some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.</p>
 </div>
 <p>The table below is the structure of my_ait.ipynb.</p>
 <ul class="simple">
@@ -292,7 +296,7 @@ On the other hand, some of the areas and cell are devided for understandability 
 <td>1</td>
 <td>Yes</td>
 <td>required</td>
-<td>generate AIT Manifest</td>
+<td>AIT Manifest definition</td>
 </tr>
 <tr>
 <td>6</td>
@@ -300,7 +304,7 @@ On the other hand, some of the areas and cell are devided for understandability 
 <td>1</td>
 <td>Yes</td>
 <td>required</td>
-<td>generate AIT Input JSON (inventory mapper)</td>
+<td>AIT Input JSON definition(inventory mapper)</td>
 </tr>
 <tr>
 <td>7</td>
@@ -354,9 +358,12 @@ On the other hand, some of the areas and cell are devided for understandability 
 </table><div class="section" id="dependency-management-area">
 <h3><span class="section-number">3.3.2.1. </span>#3 Dependency Management area<a class="headerlink" href="#dependency-management-area" title="Permalink to this headline">¶</a></h3>
 <p>Since an AIT will be executed on the Docker container, there is a need for prepare requirements.txt to successfully install dependencies on the container.
-In this area, we automatically generates a requirements.txt and place them to the appropriate locations by using <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code> class in the AIT SDK.
-Please write the OSS name in the first argument and the version in the second argument to <code class="docutils literal notranslate"><span class="pre">add_package</span></code>.
-It is possible to generate requirements.txt by omitting the second argument of <code class="docutils literal notranslate"><span class="pre">add_package</span></code> and using only the OSS name, but this is not recommended as there is a concern that the dependencies may break down as the OSS version is updated.</p>
+In this area, we automatically generates a requirements.txt and place them to the appropriate locations by using <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code> class in the AIT SDK. You should write down all required dependencies in this area.
+Please write the OSS name in the first argument and the version in the second argument to <code class="docutils literal notranslate"><span class="pre">add_package</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to generate requirements.txt by omitting the second argument of add_package and using only the OSS name, but this is not recommended as there is a concern that the dependencies may break down as the OSS version is updated.</p>
+</div>
 <ul>
 <li><p>Example</p>
 <ul class="simple">
@@ -378,7 +385,7 @@ It is possible to generate requirements.txt by omitting the second argument of <
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>is_ait_launch is False when experimenting on Jupyter Lab.
+<p>“is_ait_launch” is False when experimenting on Jupyter Lab.
 Commands that you want to execute only in Jupyter Lab experiments (AITRequirementsGenerator etc) should be enclosed in if not is_ait_launch:.</p>
 </div>
 </div>
@@ -390,27 +397,200 @@ Commands that you want to execute only in Jupyter Lab experiments (AITRequiremen
 <h3><span class="section-number">3.3.2.3. </span>#5 Manifest Generation area<a class="headerlink" href="#manifest-generation-area" title="Permalink to this headline">¶</a></h3>
 <p>AIT Manifest contains metadata such as name, author, description and/or I/O definitions of an AIT for ensure reusability and searchability of it.
 In this area, we automatically generates ait.manifest.json file and place them to the appropriate locations by using <code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> class in the AIT SDK.</p>
-<ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>#</th>
+<th>Method name</th>
+<th>Details</th>
+<th>Possibility of multiple definitions</th>
+<th>Submethod</th>
+<th>Code sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>set_ait_name</td>
+<td>Set AIT name</td>
+<td>×</td>
+<td>None</td>
+<td><code>manifest_genenerator.set_ait_name('Name')</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>set_ait_description</td>
+<td>Set AIT description</td>
+<td>×</td>
+<td>None</td>
+<td><code>manifest_genenerator.set_ait_description('Description')</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>set_ait_source_repository</td>
+<td>Set AIT source repository URL</td>
+<td>×</td>
+<td>None</td>
+<td><code>manifest_genenerator.set_ait_source_repository('URL')</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>set_ait_version</td>
+<td>Set AIT version</td>
+<td>×</td>
+<td>None</td>
+<td><code>manifest_genenerator.set_ait_version('Version')</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>set_ait_quality</td>
+<td>Set quality URL for AIT</td>
+<td>×</td>
+<td>None</td>
+<td><code>manifest_genenerator.set_ait_quality('Quality_URL')</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>add_ait_keywords</td>
+<td>Add AIT keyword</td>
+<td>〇</td>
+<td>None</td>
+<td><code>manifest_genenerator.add_ait_keywords('Keyword_1')</code><br> <code>manifest_genenerator.add_ait_keywords('Keyword_2')</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>add_ait_references</td>
+<td>Add AIT reference</td>
+<td>〇</td>
+<td>None</td>
+<td># Pattern that sets all arguments<br> <code>manifest_genenerator.add_ait_references(bib_info='bib_info_1', additional_info='additional_info_1',url='URL_1')</code> <br># Pattern that only sets required arguments<br> <code>manifest_genenerator.add_ait_references(bib_info='bib_info_2')</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>add_ait_licenses</td>
+<td>Add AIT license</td>
+<td>〇</td>
+<td>None</td>
+<td><code>manifest_genenerator.add_ait_licenses('License_1')</code><br> <code>manifest_genenerator.add_ait_licenses('License_2')</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>add_ait_inventories</td>
+<td>Add AIT inventory <br>* Requirement variable must be generated using the format_ait_inventory_requirement submethod in advance</td>
+<td>〇</td>
+<td>- format_ait_inventory_requirement</td>
+<td># Pattern that sets all arguments<br> <code>manifest_genenerator.add_ait_inventories(name='Name_1', type_='Type_1', description='Description_1', requirement=inventory_requirement_1, depends_on_parameter='Parameter_1')</code> <br># Pattern that only sets required arguments<br> <code>manifest_genenerator.add_ait_inventories(name='Name_2', type_='Type_2', description='Description_2', requirement=inventory_requirement_2)</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>- format_ait_inventory_requirement</td>
+<td>Format inventory requirement items</td>
+<td>〇</td>
+<td>- create_inv_req_compatible_packages<br>- create_inv_req_additional_info</td>
+<td># Pattern that sets all arguments<br> <code>inventory_requirement_1 = manifest_genenerator.format_ait_inventory_requirement(format_=['Format_1', 'Format_2'], compatible_packages=compatible_package_1, additional_info=additional_info_1, min='min_1', max='max_1')</code> <br># Pattern that only sets required arguments<br> <code>inventory_requirement_2 = manifest_genenerator.format_ait_inventory_requirement(format_=['Format_1'])</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td>-- create_inv_req_compatible_packages</td>
+<td>Create compatible_packages item for inventory requirements</td>
+<td>〇</td>
+<td>None</td>
+<td># Pattern that sets all arguments<br> <code>compatible_package_1 = manifest_genenerator.create_inv_req_compatible_packages(name='Name_1', version='Version_1', additional_info='additional_info_1')</code> <br># Pattern that only sets required arguments<br> <code>compatible_package_2 = manifest_genenerator.create_inv_req_compatible_packages(name='Name_2')</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td>-- create_inv_req_additional_info</td>
+<td>Create additional_info item for inventory requirement</td>
+<td>〇</td>
+<td>None</td>
+<td><code>inv_req_additional_info_1 = manifest_genenerator.create_inv_req_additional_info(key='Key_1', value=['Value_1', 'Value_2'])</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>add_ait_parameters</td>
+<td>Add AIT parameter</td>
+<td>〇</td>
+<td>None</td>
+<td># Pattern that sets all arguments<br> <code>manifest_genenerator.add_ait_parameters(name='Name_1', type_='Type_1', description='Description_1', default_val='Default_val_1', min_value='Min_value_1', max_value='Max_value_1', depends_on_parameter='parameter_1')</code> <br># Pattern that only sets required arguments<br> <code>manifest_genenerator.add_ait_parameters(name='Name_2', type_='Type_2', description='Description_2')</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>add_ait_measures</td>
+<td>Add AIT measure</td>
+<td>〇</td>
+<td>None</td>
+<td># Pattern that sets all arguments<br> <code>manifest_genenerator.add_ait_measures(name='Name_1', type_='Type_1', description='Description_1', structure='Structure_1', min='Min_1', max='Max_1')</code> <br># Pattern that only sets required arguments<br>  <code>manifest_genenerator.add_ait_measures(name='Name_2', type_='Type_2', description='Description_2', structure='Structure_2')</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td>add_ait_resources</td>
+<td>Add AIT resource</td>
+<td>〇</td>
+<td>None</td>
+<td><code>manifest_genenerator.add_ait_resources(name='Name_1', type_='Type_1', description='Description_1')</code><br> <code>manifest_genenerator.add_ait_resources(name='Name_2', type_='Type_2', description='Description_2')</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td>add_ait_downloads</td>
+<td>Add AIT download</td>
+<td>〇</td>
+<td>None</td>
+<td><code>manifest_genenerator.add_ait_downloads(name='Name_1', description='Description_1')</code><br> <code>manifest_genenerator.add_ait_downloads(name='Name_2', description='Description_2')</code></td>
+</tr>
+</tbody>
+</table><ul>
 <li><p>Example</p>
-<ul class="simple">
-<li><p>To set the name of the AIT:</p></li>
-</ul>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span> <span class="o">=</span> <span class="n">AITManifestGenerator</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span>
+
+    <span class="c1"># To set the name of the AIT</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_name</span><span class="p">(</span><span class="s1">&#39;eval_mnist_acc_tf2.3&#39;</span><span class="p">)</span>
+
+    <span class="c1"># To set the inventory of the AIT</span>
+    <span class="n">inventory_requirement_iris_data</span> <span class="o">=</span> <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">format_ait_inventory_requirement</span><span class="p">(</span><span class="n">format_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;csv&#39;</span><span class="p">])</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span> 
+                                            <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> 
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Iris classification data&#39;</span><span class="p">,</span> 
+                                            <span class="n">requirement</span><span class="o">=</span><span class="n">inventory_requirement_iris_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> can validate the format of attributes and check whether required attributes are set. So if there’re missing or wrong attributes in this area, execution of <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> may fail at that time.
-For detailed information about <code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> class, please see the document <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator">here</a>.</p>
+For detailed information about <code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> class, please see the document <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator">AIT_SDK_API Specification</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Please refer to my_ait.ipynb and ait.manifest.json in “1.2. Preinstalled AIT” for registration information of AIT manifest.
+<p>The defined AIT manifest is saved as ait.manifest.json.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Please refer to my_ait.ipynb and ait.manifest.json in “1.3. Published AIT” for registration information of AIT manifest.
 Because it depends on the characteristics and purpose of the AI evaluation program.</p>
 </div>
 </div>
+<div class="section" id="prepare-for-the-input-area">
+<h3><span class="section-number">3.3.2.4. </span>#6 Prepare for the Input area<a class="headerlink" href="#prepare-for-the-input-area" title="Permalink to this headline">¶</a></h3>
+<p>Define the input data (data to be evaluated by the AIT) and parameters (settings for executing the AIT).</p>
+<ul class="simple">
+<li><p>Example of input data settings</p></li>
+</ul>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">input_generator</span> <span class="o">=</span> <span class="n">AITInputGenerator</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
+    <span class="n">input_generator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;iris_data/tableconvert_csv_4nryby.csv&#39;</span><span class="p">)</span>
+    <span class="n">input_generator</span><span class="o">.</span><span class="n">set_ait_params</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean_column_name&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;petal.width&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">AITInputGenerator</span></code>For details about the class, please see <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator">here</a>.</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> argument specified to the function is linked to the inventory parameter name in the AIT manifest generated in #5 Manifest Generation Area.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">add_ait_inventories</span></code> function should be the same as the <code class="docutils literal notranslate"><span class="pre">inventories/name</span></code> attribute in the AIT manifest.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">set_ait_params</span></code> function should be the same as the <code class="docutils literal notranslate"><span class="pre">parameters/name</span></code> attribute in the AIT manifest.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">value</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">add_ait_inventories</span></code> and <code class="docutils literal notranslate"><span class="pre">set_ait_params</span></code> functions by referring to the Unit Testing chapter.</p></li>
+</ul>
+</li>
+</ul>
+</div>
 <div class="section" id="functions-definitions-area">
-<h3><span class="section-number">3.3.2.4. </span>#8 Functions definitions area<a class="headerlink" href="#functions-definitions-area" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.2.5. </span>#8 Functions definitions area<a class="headerlink" href="#functions-definitions-area" title="Permalink to this headline">¶</a></h3>
 <p>In Function definitions area, you can define any number of user defined functions which is invoked from the following main algorithms area (#9).
 Of the user defined functions, the functions that output the execution results of AIT are annotated and defined as result output functions.</p>
 <div class="admonition tip">
@@ -420,13 +600,13 @@ Of the user defined functions, the functions that output the execution results o
 <p>The format of the user-defined function is arbitrary.
 There are three types of output functions:</p>
 <ul class="simple">
-<li><p>Report/Measures (Output evaluation/analysis results as singular value)</p></li>
+<li><p>Report/Measures (Output evaluation/analysis results as measured value)</p></li>
 <li><p>Report/Resources (Output evaluation/analysis results as image, graphs or specified file format)</p></li>
 <li><p>Download (Output supplemental and/or intermediate results as image, graphs or specified file format)</p></li>
 </ul>
 <p>Each result output function is described in detail below.</p>
 <div class="section" id="result-output-functions-report-measures">
-<h4><span class="section-number">3.3.2.4.1. </span>result output functions: Report/Measures<a class="headerlink" href="#result-output-functions-report-measures" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.3.2.5.1. </span>result output functions: Report/Measures<a class="headerlink" href="#result-output-functions-report-measures" title="Permalink to this headline">¶</a></h4>
 <p>You can define the execution result of the user-defined function as the AIT measurement value.
 You must add following two annotations to your output function.</p>
 <ul class="simple">
@@ -440,7 +620,7 @@ You must add following two annotations to your output function.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The return value of this function will be treated as an evaluation value of {NAME_OF_REPORT/MEASURE}.
-So the function must return a singular value.</p>
+So the function must return a value.</p>
 </div>
 <ul>
 <li><p>When your AIT output AUC (Area Under the Curve) value as a result:</p>
@@ -470,7 +650,7 @@ So the function must return a singular value.</p>
 </ul>
 </div>
 <div class="section" id="result-output-functions-report-resources">
-<h4><span class="section-number">3.3.2.4.2. </span>result output functions: Report/Resources<a class="headerlink" href="#result-output-functions-report-resources" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.3.2.5.2. </span>result output functions: Report/Resources<a class="headerlink" href="#result-output-functions-report-resources" title="Permalink to this headline">¶</a></h4>
 <p>You can define an output resource (e.g. image file) generated by a user-defined function as an AIT resource.
 you must add following two annotations to your output function.</p>
 <ul class="simple">
@@ -521,7 +701,7 @@ you must add following two annotations to your output function.</p>
 </ul>
 </div>
 <div class="section" id="result-output-functions-downloads">
-<h4><span class="section-number">3.3.2.4.3. </span>result output functions: downloads<a class="headerlink" href="#result-output-functions-downloads" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.3.2.5.3. </span>result output functions: downloads<a class="headerlink" href="#result-output-functions-downloads" title="Permalink to this headline">¶</a></h4>
 <p>In addition to user-defined function resources and measures, you can define user-defined function supplemental and/or results as download files.
 you must add following two annotations to your output function.</p>
 <ul class="simple">
@@ -560,24 +740,24 @@ you must add following two annotations to your output function.</p>
 </div>
 </div>
 <div class="section" id="main-algorithms-area">
-<h3><span class="section-number">3.3.2.5. </span>#9 Main Algorithms area<a class="headerlink" href="#main-algorithms-area" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.2.6. </span>#9 Main Algorithms area<a class="headerlink" href="#main-algorithms-area" title="Permalink to this headline">¶</a></h3>
 <p>In this area, you should write the main algorithms of the AIT while reffering I/O and/or functions defined before this area.
 This area has some rules to follow.</p>
 <ul class="simple">
 <li><p>you must add following two annotations to your output function.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">&#64;log(logger)</span></code> annotation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&#64;ait_main(ait_output,</span> <span class="pre">path_helper)</span></code> annotation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;ait_main(ait_output,</span> <span class="pre">path_helper,</span> <span class="pre">is_ait_launch)</span></code> annotation</p></li>
 </ul>
 </li>
-<li><p>The name of the function must be <code class="docutils literal notranslate"><span class="pre">main()</span></code> because this function is invoked by the following area (#10 Entry point).</p></li>
+<li><p>The name of the function must be <code class="docutils literal notranslate"><span class="pre">main()</span></code></p></li>
 <li><p>Paremetes must be got from the <code class="docutils literal notranslate"><span class="pre">get_method_param_value</span></code> method of <code class="docutils literal notranslate"><span class="pre">ait_input</span></code> variable (<code class="docutils literal notranslate"><span class="pre">AITInput</span></code> class).</p></li>
 <li><p>Path to the inventory mus be got from the <code class="docutils literal notranslate"><span class="pre">get_inventory_path</span></code> method <code class="docutils literal notranslate"><span class="pre">ait_input</span></code> variable (<code class="docutils literal notranslate"><span class="pre">AITInput</span></code> class).</p></li>
 </ul>
 <br><ul>
 <li><p>Example of the main algorithms area</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
-<span class="nd">@ait_main</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">)</span>
+<span class="nd">@ait_main</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="n">is_ait_launch</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">image_px_size</span> <span class="o">=</span> <span class="n">ait_input</span><span class="o">.</span><span class="n">get_method_param_value</span><span class="p">(</span><span class="s1">&#39;image_px_size&#39;</span><span class="p">)</span>
 
@@ -632,14 +812,18 @@ This area has some rules to follow.</p>
 </ul>
 </div>
 <div class="section" id="license-area">
-<h3><span class="section-number">3.3.2.6. </span>#11 License area<a class="headerlink" href="#license-area" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.2.7. </span>#11 License area<a class="headerlink" href="#license-area" title="Permalink to this headline">¶</a></h3>
 <p>Some attributes must be set for automatic generation of your AIT license information.
 Currently you must set the value to the <code class="docutils literal notranslate"><span class="pre">ait_owner</span></code> attribute and the <code class="docutils literal notranslate"><span class="pre">ait_creation_year</span></code> attribute.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The AIT template applies the Apache 2.0 license by default. While Apache 2.0 is recommended, modify or replace the LICENSE.txt as necessary.</p>
+</div>
 </div>
 </div>
 <div class="section" id="check-program-execution">
 <h2><span class="section-number">3.3.3. </span>Check program execution<a class="headerlink" href="#check-program-execution" title="Permalink to this headline">¶</a></h2>
-<p>Execute the my_ait.ipynb file and check that the ported program works properly.</p>
+<p>Execute the <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> and check that the ported program works properly.</p>
 <p>The Output stored in <code class="docutils literal notranslate"><span class="pre">/root/top_dir/local_qai/mnt/ip/job_result/1/1</span></code>.
 AIT manifest stored in <code class="docutils literal notranslate"><span class="pre">/root/develop/ait.manifest.json</span></code></p>
 </div>

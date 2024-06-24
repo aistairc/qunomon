@@ -104,11 +104,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="02_experiment.html">3.2. Experimentation within Jupyter Lab.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. Port an AI evaluation program to the my_ait.ipynb template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. AIT development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04_unit_test.html">3.4. Unit test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="05_prepare_upload.html">3.5. Preparing registration for Qunomon</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06_integration_test.html">3.6. Integration test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Push to GITHUB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_github_push.html">3.7. Publishing AIT</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../04_appendix/index.html">4. Appendix</a></li>
@@ -208,21 +208,32 @@
 <p>After downloading and installing Qunomon, start developing an AIT based on the template.</p>
 <div class="section" id="user-workflow">
 <h2><span class="section-number">3.1.1. </span>User workflow<a class="headerlink" href="#user-workflow" title="Permalink to this headline">¶</a></h2>
-<p><img alt="User Workflow" src="../_images/02_user_workflow.png" /></p>
+<p>The development of AITs can be categorized into three scenarios: ① creating anew from an AIT template, ② updating an already developed AIT, and ③ having developed an AIT but not retaining the data locally. The workflow for each scenario is as illustrated below.
+<img alt="User Workflow" src="../_images/02_user_workflow.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not intend to publish your created AIT globally, the steps beyond “releasing it on GitHub via a browser” are not necessary.</p>
+</div>
 </div>
 <div class="section" id="fork-the-ait-template">
 <h2><span class="section-number">3.1.2. </span>Fork the AIT template<a class="headerlink" href="#fork-the-ait-template" title="Permalink to this headline">¶</a></h2>
-<p>AIT template : <code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/ait-template</span></code>.
+<p>AIT template is available on <code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/ait-template</span></code>.
+Please fork this repository for your own AIT development.
 <img alt="Alt template fork" src="../_images/03_ait_fork.png" /></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The AIT template repository is set to public. After forking, please review and adjust the visibility settings as necessary.</p>
+</div>
 </div>
 <div class="section" id="change-ait-repository-name">
 <h2><span class="section-number">3.1.3. </span>Change AIT repository name<a class="headerlink" href="#change-ait-repository-name" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Alt rename" src="../_images/04_ait_rename.png" /></p>
+<p><img alt="Alt rename" src="../_images/04_ait_rename.png" />
+AIT name (the part <code class="docutils literal notranslate"><span class="pre">{YourAITName}</span></code>), we recommend you to follow the naming convention as below.</p>
 <div class="section" id="recommended-naming-convention-of-ait">
 <h3><span class="section-number">3.1.3.1. </span>Recommended naming convention of AIT<a class="headerlink" href="#recommended-naming-convention-of-ait" title="Permalink to this headline">¶</a></h3>
 <p>The recommended naming convention of AIT are as follows.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">{prefix}_{target}_{task}_{format}_{measure}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{prefix}_{target}_{format}_{task}_{measure}</span></code></p></li>
 </ul>
 <table border="1" class="docutils">
 <thead>
@@ -236,7 +247,7 @@
 <tr>
 <td>prefix</td>
 <td>Yes</td>
-<td>This represents the type of AIT. There are several reserved types.<br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT.</td>
+<td>This represents the type of AIT. <br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT.</td>
 </tr>
 <tr>
 <td>target</td>
@@ -246,17 +257,17 @@
 <tr>
 <td>task</td>
 <td>No</td>
-<td>The problem targeted by AIT.</td>
+<td>The problem targeted by AIT.<br>Example.image_classifier</td>
 </tr>
 <tr>
 <td>format</td>
 <td>No</td>
-<td>The format of the data processed by AIT.</td>
+<td>The format of the data processed by AIT.<br>Example. table</td>
 </tr>
 <tr>
 <td>measure</td>
 <td>No</td>
-<td>The quality measured by AIT.</td>
+<td>The quality measured by AIT.<br>Example. coverage_of_dataset</td>
 </tr>
 </tbody>
 </table><ul class="simple">
@@ -271,7 +282,7 @@
 </div>
 <div class="section" id="clone-the-ait-repository">
 <h2><span class="section-number">3.1.4. </span>Clone the AIT repository<a class="headerlink" href="#clone-the-ait-repository" title="Permalink to this headline">¶</a></h2>
-<p>Follow the URL to clone.
+<p>Fork the AIT template and clone it to your local machine.
 <img alt="Alt clone" src="../_images/05_ait_clone.png" /></p>
 </div>
 <div class="section" id="edit-readme-md">
@@ -295,16 +306,25 @@
 <h2><span class="section-number">3.1.6. </span>Launch development envionment<a class="headerlink" href="#launch-development-envionment" title="Permalink to this headline">¶</a></h2>
 <p>We are providing Jupyter Lab environment adjusted to the AIT development purpose as AIT development environment.
 After launching them, they are provided as web application on the localhost. You can use them through your browser.</p>
+<p>Remove docker image</p>
 <ul>
+<li><p>If you want to switch between multiple AIT development environments, you need to delete the AIT development environment docker images created in the past. This is because the dependent software changes depending on AIT, and the AIT development environment also changes the software installation status. We apologize for the inconvenience, but if you want to switch between multiple AITs for development, please use the following command to delete the docker image in the AIT development environment.</p></li>
+<li><p>Remove docker image command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">rmi</span> <span class="p">{</span><span class="n">ImageId</span> <span class="n">of</span> <span class="n">docker_jupyter</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
 <li><p>Launcher</p>
 <ul>
 <li><p>Windows:</p>
-<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>{Qunomon_root}/ait_repository/ait/{YourAITName}/tool/launch_devenv.bat
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> {YourAITname}/tool  
+launch_devenv.bat  
 </pre></div>
 </div>
 </li>
 <li><p>macOS, Linux:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>bash<span class="w"> </span><span class="o">{</span>YourAITname<span class="o">}</span>/tool/launch_devenv.sh
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>YourAITname<span class="o">}</span>/tool<span class="w">  </span>
+sudo<span class="w"> </span>bash<span class="w"> </span>launch_devenv.sh<span class="w">  </span>
 </pre></div>
 </div>
 </li>
@@ -321,14 +341,16 @@ After launching them, they are provided as web application on the localhost. You
 <br></div>
 <div class="section" id="development-work-flow">
 <h3><span class="section-number">3.1.6.2. </span>Development work flow<a class="headerlink" href="#development-work-flow" title="Permalink to this headline">¶</a></h3>
-<p>In this tutorial, we assumes following work flow as default development work flow.</p>
+<p>In this tutorial, we assume following work flow as default development work flow.</p>
 <ol class="simple">
 <li><p>Experiment and development of an AI evaluation program.</p></li>
-<li><p>Porting AI evaluation program onto the AIT template.</p></li>
+<li><p>Porting AI evaluation program onto the AIT template (edit my_ait.ipynb).</p></li>
 <li><p>Perform unit testing of an AI evaluation program.</p></li>
 <li><p>Preparing registration for Qunomon.</p></li>
 <li><p>Perform integration testing of an AIT with Qunomon testbed.</p></li>
+<li><p>Publishing the AIT.</p></li>
 </ol>
+<p>This tutorial follows this sequence and explains the detailed development methods for AITs from Section 3.2 onwards.</p>
 </div>
 </div>
 </div>

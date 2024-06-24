@@ -1,20 +1,27 @@
+# Assumed User
+This document is intended for users who have some experience using commonly used tools in AI development, such as Python, Jupyter notebooks, Docker, Git, and Airflow.
+Although this AI development environment is designed so that users do not need to directly operate Docker, Git, or Airflow, there may be occasions when it is necessary to check these background tools in case of any issues.
+
+
 # What is AIT?
 
 AIT(AI system test package) is the package of a test program to be installed and executed on Qunomon testbed. It measures the concrete quality metrics of target ML components under test such as datasets and/or machine learning model.
+
+For example, when developing a classification model and evaluating its quality, classification accuracy is often used as one of the quality metrics. In this case, the classification accuracy is calculated using test data and classification results, and the quality is measured based on whether the classification accuracy meets a certain standard. Automating this quality evaluation process can enable it to be used for ML quality assessment using Qunomon.
 
 AIT can be developed by capsuling evaluation programs (written in python) and meta-data (which describes the charactersitics of that AIT) as an Docker image.
 This enables users to search, download, utilize that AIT without knowing the details of specification or implementation of an AIT. Since all AITs are running on the Docker container, Users can also avoid the conflict of the execution environment.
 
 Qunomon is an open-sourced platform (testbed) for quality assessment of AI systems.
-Qunomon has some pre-installed AITs initially so that users can develop their own AIT based on them and install third-party AITs on their local Qunomon instance.
+Qunomon is equipped with several pre-installed AITs and also provides access to AITs that have been made publicly available on GitHub. Users (such as those evaluating AI systems with Qunomon, or those involved in researching and developing assessment metrics) can develop their own AITs based on these resources.
 
 We have prepared the AIT development environment which contains some necessary templates and test execution environment to develop and deploy your own (new) AIT in the Qunomon.
-In this guide, we provide some information about development process and technical details of the AIT required to develop your own one.
+This guide provides developers of AI evaluation programs with information on how to develop AITs using the AIT development environment, as well as technical specifications for AITs.
 
 ## What is AIT development environment?
 
 We provide AIT development environment as initially included component of Qunomon platform. 
-Users (such as QA engineer of AI/ML sysmtes or developer/researcher working on novel quality assessment techniques or methods) can develop their own AIT using this environment.
+Users (such as QA engineer of AI/ML systems or developer/researcher working on novel quality assessment techniques or methods) can develop their own AIT using this environment.
 
 This environment consist of: (1) **Docker images for AIT developers** which can launch Jupyter Notebook in the isolated containers on your local machine, and (2) **AIT template** which includes all required components of the AIT from the beginning.
 
@@ -29,20 +36,25 @@ By using this, developers can concentrate on implementing algorithmic part of th
 
 Following components are contained in the template so that developers can create a new AIT with only partial modification.
 
-* Dockerfile and an execution pipeline definition of an AIT.
-  * Each AIT is isolated in individual containers to avoid conflict with other AITs or user's environments using Docker.
+* Dockerfile
+  * Information for setting up an execution environment to isolate AI evaluation programs on Docker containers.
+* Pipeline Definition
   * AITs are executed via Qunomon's pipeline execution engine (Airflow) after deployment.
 * AIT Manifest (Meta data of an AIT)
   * Each AIT must have AIT Manifest to coordinate with Qunomon's other components smoothly so that guarantee portability and reusability of itself.
 * Basic design elements of an AIT
-  * Pre-defined directory structure suitable for experimentation and implementation, license information and third party notices.
+  * Pre-defined directory structure suitable for experimentation and implementation
+  * License information
+  * Third party notices
 * Docker images for AIT developers.
   * Scripts and the execution environment to capsulize an AIT as Docker image.
 
-### Prerequisites for work
+### Prerequisites
 These are the prerequisites for working in the AIT development environment.
   * The programming language used is Python3.9.
-  * TensorFlow version 2.9.1 shipped with Jupyter Notebook.
-  * Jupyter Notebook uses port 9888. Please do not use this port with other applications while Jupyter Notebook is running.
+  * Machine learning framework is not installed.
+    * If you want to need it, please install in [Dependency Management area](../03_tutorial/03_develop.html#dependency-management-area)
+
+  * In the AIT development environment, Jupyter Notebook is used on port 9888. Please ensure that this port is not used by other applications while the AIT development environment is running.
 
     *  If you want to change it, please refer to [Installation of Docker](../02_get_started/02_install.html#installation-of-docker)

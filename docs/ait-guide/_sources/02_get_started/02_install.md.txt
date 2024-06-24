@@ -1,14 +1,13 @@
 # Installation
-Installation can be done with fork ait-template from GitHub and clone them to any local directory.
+Installation can be done with fork ait-template(`https://github.com/aistairc/ait-template`) from GitHub and clone them to any local directory.
 
   * Git must be installed before perform this.
 
-Please be prepare for the environment in which docker installed because Jupyter Lab is run on docker container.
+Please prepare for the environment with docker because Jupyter Lab runs on docker containers.
 
 ### Structure of source files.
 AIT template and AIT development environment are stored under the `{YourAITname}` directory.
 In this guide, we basically perform works under this directory.
-※Pre-installed AITs available at aistairc/{name_of_AIT} on GITHUB.
 
 ```
 ait-template     <---- AIT template
@@ -17,22 +16,24 @@ ait-template     <---- AIT template
    ├─local_qai   <---- Placement of input to AIT, etc
    ├─tool        <---- Development environment
    ├─LICENSE.txt
-   ├─readme.md
+   ├─README.md
 ```
 ## Installation of Docker
 
 Please install Docker Desktop following guideline below.
 
-``` note:: At the time of writing this guide, Docker Desktop has terms of use which restrict free use under limited condition. So it may not be available without problems on the user's work environment or company. You must read, confirm and compliy to their terms of use.
-    In addition to this, If you have any problem with using Docker Desktop, you need to introduce Docker environment without Docker Desktop. But in this guide, we don't support such case.
+``` important:: At the time of writing this guide, Docker Desktop has terms of use which restrict free use under limited condition. So it may not be available without problems on the user's work environment or company. You must read, confirm and compliy to their terms of use.
+```
+
+``` note:: 
     
-    Port 9888 is used, but if you want to change it, please change Ports in Docker File as follows.
+    Port 9888 is used, but if you want to change it, please change Ports in docker-compose.yml as follows.
 
     Example: When changing the port from 9888 to 9889
 
     File Path
     
-    {YourAITname}/tool/docker/docker-compose.yml
+    ait-template/tool/docker/docker-compose.yml
 
     Before change
     
