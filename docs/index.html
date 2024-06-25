@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
 
@@ -12,21 +12,21 @@
     <title>Qunomon</title>
 
     <!-- favicon -->
-    <link rel="icon" href="/img/icon2.ico" type="image/x-icon" />
+    <link rel="icon" href="img/icon2.ico" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="/css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,15 +43,11 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <a class="nav-transition page-scroll" href="#page-top">
-            <img class="nav_qunomon" src="/img/qunomon_logo_type.svg">
+            <img class="nav_qunomon" src="img/qunomon_logo_type.svg">
         </a>
-        
         <a class="nav-transition" href="https://www.aist.go.jp/">
-            <img class="nav_aist_logo" src="/img/aist_logo.png">
+            <img class="nav_aist_logo" src="img/aist_logo.png">
         </a>
-
-        
-
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -63,23 +59,22 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-top: -20px; margin-right: 10px; float:right">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="page-scroll" id="nav_usermamual" href="/user-manual/index.html" target="_blank">USER MANUAL</a>
+                    <a class="page-scroll" id="nav_usermamual" href="user-manual/index.html" target="_blank">USER MANUAL</a>
                 </li>
                 <li>
-                    <a class="page-scroll" id="nav_aitguide" href="/ait-guide/index.html" target="_blank">AIT GUIDE</a>
+                    <a class="page-scroll" id="nav_aitguide" href="ait-guide/index.html" target="_blank">AIT GUIDE</a>
                 </li>
                 <li>
-                    <a class="page-scroll" id="nav_aitsdk" href="/ait-sdk/index.html" target="_blank">AIT SDK Reference</a>
+                    <a class="page-scroll" id="nav_aitsdk" href="ait-sdk/index.html" target="_blank">AIT SDK Reference</a>
                 </li>
                 <li>
-                    <a class="page-scroll" id="nav_restapi" href="/api-spec/index.html" target="_blank">REST API Specification</a>
+                    <a class="page-scroll" id="nav_restapi" href="api-spec/index.html" target="_blank">REST API Specification</a>
                 </li>
                 <li>
                     <a class="page-scroll" id="nav_contact" href="#contact" target="_blank">Contact</a>
                 </li>
                 <li>
-                    
-                    <a id="nav_translate" href="/en/">
+                    <a class="page-scroll" id="nav_restapi" href="index_en.html">
                         <i class="fa fa-globe"></i> English
                     </a>
                 </li>
@@ -92,13 +87,13 @@
 
   <header>
     <div class="header-content">
-        <img class="header_qunomon" src="/img/qunomon_type.svg">
+        <img class="header_qunomon" src="img/qunomon_type.svg">
         <hr>
 
         <div class="container">
             <div class="row row-center va-middle">
+
                 <div class="col-lg-7 col-md-12  col-sm-12 col-xs-12 header-content-inner">
-                    
                     <p class="sentence">
                         QunomonはAIシステムの品質評価支援ツールです。</br>
                         <a href="https://www.cpsec.aist.go.jp/achievements/aiqm/AIQM-Guideline-1.0.1.pdf" target="_blank" rel="noopener noreferrer">
@@ -106,15 +101,12 @@
                         </a>
                         に沿ったAIシステムの品質評価とその作業環境を提供します。
                     </p>
-
-                    
-
                     <a href="https://github.com/aistairc/qunomon/archive/main.zip" class="btn btn-primary btn-xl page-scroll">Download (Free)</a>
                 </div>
 
                 <div class="col-lg-5 col-md-6 col-sm-6 col-xs-6">
-                    <video class="header-video" controls loop>
-                        <source src="/media/promotionalvideo.mp4">
+                    <video class="header-video" controls autoplay loop>
+                        <source src="./media/promotionalvideo.mp4">
                     </video>
                 </div>
                 
@@ -124,6 +116,7 @@
     </div>
 </header>
 
+</br></br>
   <section class="bg-primary pickup">
     <div class="container">
         <div class="row">
@@ -131,7 +124,6 @@
                         col-md-10 col-md-offset-1
                         col-sm-10 col-sm-offset-1 
                         col-xs-12 col-sx-offset-0">
-                
                 <div class="text-center sentence">
                     <h2 class="section-heading">機械学習品質ガイドラインを踏襲したテスト管理の共通基盤</h2>
                     <hr class="light">
@@ -141,13 +133,12 @@ AIシステムの品質について定量的に評価するとともに、開発
 品質に関する不透明性の解消やビジネス活用の加速が期待できます。
                     </p>
                 </div>
-
-                
             </div>
         </div>
     </div>
 </section>
 
+</br></br>
   <section class="bg-primary pickup">
     <div class="container">
         <div class="row">
@@ -155,7 +146,6 @@ AIシステムの品質について定量的に評価するとともに、開発
                         col-md-10 col-md-offset-1
                         col-sm-10 col-sm-offset-1 
                         col-xs-12 col-sx-offset-0">
-                
                 <div class="text-center sentence">
                     <h2 class="section-heading">品質要件による機械学習モデルの品質評価に関するレポートの自動生成</h2>
                     <hr class="light">
@@ -164,12 +154,11 @@ AIシステムに必要な機械学習モデルやデータセットの品質を
 AIシステムをガイドラインに準拠した品質観点でチェックし、その結果を第三者に提供できる資料として簡単に作成できます。
                     </p>
                 </div>
-
-                
             </div>
         </div>
     </div>
 </section>
+</br></br>
   <section class="bg-primary pickup">
     <div class="container">
         <div class="row">
@@ -177,7 +166,6 @@ AIシステムをガイドラインに準拠した品質観点でチェックし
                         col-md-10 col-md-offset-1
                         col-sm-10 col-sm-offset-1 
                         col-xs-12 col-sx-offset-0">
-                
                 <div class="text-center sentence">
                     <h2 class="section-heading">豊富なAIシステム評価パッケージ（AIT: AI system Test package）をプレインストール</h2>
                     <hr class="light">
@@ -190,13 +178,15 @@ AIT_SDKを用いることで、AI開発者が様々なテスト資産をAITと�
 
 自社用のテストコードを資産管理したり、第三者の作成したAITを利用することで、AIシステムの品質要件に合った評価環境にカスタマイズできます。
                     </p>
+                    <div class="text-faded" style="text-align: right;">
+                        ※AITの公開・カスタマイズ機能はα版では未公開となります
+                    </div>
                 </div>
-
-                
             </div>
         </div>
     </div>
 </section>
+</br></br>
   <section class="bg-primary pickup">
     <div class="container">
         <div class="row">
@@ -204,7 +194,6 @@ AIT_SDKを用いることで、AI開発者が様々なテスト資産をAITと�
                         col-md-10 col-md-offset-1
                         col-sm-10 col-sm-offset-1 
                         col-xs-12 col-sx-offset-0">
-                
                 <div class="text-center sentence">
                     <h2 class="section-heading">柔軟なシステムの拡張性</h2>
                     <hr class="light">
@@ -213,66 +202,56 @@ AIT_SDKを用いることで、AI開発者が様々なテスト資産をAITと�
 開発プロセス支援と評価記録・検証とを両立させる一元的な作業環境のオープンソフトウエア群を提供します。
                     </p>
                 </div>
-
-                
             </div>
         </div>
     </div>
 </section>
+</br></br>
   <section id="contact">
     <div class="container">
         <div class="contact_row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                
-                <h2 class="section-heading where-bg-white">お問い合せ</h2>
+                <h2 class="section-heading">お問い合せ</h2>
                 <hr class="primary">
                 <p>ご質問・ご要望があれば下記までご連絡ください</p>
-
-                
             </div>
-        <div class="text-center">
-            <img class="nav_aist_logo" src="/img/mail_address.jpg">
-        </div>
-    </div>
-
-    <div class="col-lg-8 col-lg-offset-2 text-center">
-        <h2 class="section-heading where-bg-white">GitHub Repository</h2>
-        <hr class="primary">
-
-        <div class="text-center">
-            <a href="https://github.com/aistairc/qunomon" target="_blank">
-            <i class="fa fa-github fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+        <div class="col-lg-2 col-lg-offset-3 text-center">
+            <a href="mailto:user@dammy.com?subject=Inquiry About QUNOMON">
+            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <!-- <p></p> -->
             </a>
         </div>
+        <div class="col-lg-2 col-lg-offset-2 text-center">
+            <a href="https://github.com/aistairc/qunomon" target="_blank">
+            <i class="fa fa-github fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <!-- <p></p> -->
+            </a>
+        </div>
+
     </div>
-    <br>
 </section>
 
-
   <!-- jQuery -->
-<script src="/js/jquery.js"></script>
+<script src="js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
-<script src="/js/jquery.easing.min.js"></script>
-<script src="/js/jquery.fittext.js"></script>
-<script src="/js/wow.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.fittext.js"></script>
+<script src="js/wow.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/js/creative.js"></script>
+<script src="js/creative.js"></script>
 
-  <div id="footer">
-    
+  <div style="text-align: center;">
     国立研究開発法人 産業技術総合研究所<br>
     <center>
         <a href="https://www.aist.go.jp/aist_j/progressive/progressive.html">ご利用条件</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="https://www.aist.go.jp/aist_j/privacy_policy/index.html">プライバシーポリシー</a>
     </center><br>
-
-    
     Copyright © National Institute of Advanced Industrial Science and Technology (AIST)<br>
     (Japan Corporate Number 7010005005425). All rights reserved.
 </div>
