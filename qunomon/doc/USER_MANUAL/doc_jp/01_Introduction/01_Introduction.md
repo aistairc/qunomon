@@ -64,6 +64,9 @@ Qunomonの資材を配置します。
   cd /home/qunomon/workspace
   ```
 
+``` note:: /home/qunomon/workspaceの下に既にα版qunomonフォルダが存在する場合は全て削除してください。
+```
+
 * 解凍ツールがなければ、以下コマンドでインストールしてください。
   ```
   sudo apt-get install zip unzip

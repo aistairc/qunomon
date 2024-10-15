@@ -86,7 +86,6 @@ def register_extensions(app):
     :app: flask.Flask object
     :returns: None
     """
-    extensions.nosql_db.init_app(app)
     # extensions.jwt.init_app(app)
     extensions.sql_db.init_app(app)
     extensions.ma.init_app(app)

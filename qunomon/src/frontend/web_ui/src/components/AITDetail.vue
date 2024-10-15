@@ -674,10 +674,8 @@ export default {
                     this.ait_hub_properties.views = ait_Detail.views;
                 })
                 .catch((error) => {
-                    this.$router.push({
-                        name: 'Information',
-                        params: {error}
-                    })
+                    this.signOutAitHubWhitErr();
+                    this.triggerMessage('aithub_E02', error)
                 });
 
             } else {

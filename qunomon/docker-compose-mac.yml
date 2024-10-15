@@ -11,8 +11,8 @@ services:
     platform: linux/amd64
   airflow-worker:
     platform: linux/amd64
-  ait-installer:
-    platform: linux/amd64
+#   ait-installer:
+#     platform: linux/amd64
   app:
     platform: linux/amd64
   flower:

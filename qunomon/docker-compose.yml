@@ -437,16 +437,16 @@ services:
   #   ports:
   #     - 8001:80
 
-  ait-installer:
-    build:
-      context: ./src/ait-installer
-      dockerfile: Dockerfile
-    container_name: "ait-installer"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    depends_on: 
-      - app
-      - ip
+  # ait-installer:
+  #   build:
+  #     context: ./src/ait-installer
+  #     dockerfile: Dockerfile
+  #   container_name: "ait-installer"
+  #   extra_hosts:
+  #     - "host.docker.internal:host-gateway"
+  #   depends_on: 
+  #     - app
+  #     - ip
 
 volumes:
   node_modules: {}

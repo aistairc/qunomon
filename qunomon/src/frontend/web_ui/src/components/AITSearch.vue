@@ -318,10 +318,8 @@ export default {
                     });
                 })
                 .catch((error) => {
-                    this.$router.push({
-                        name: 'Information',
-                        params: {error}
-                    })
+                    this.signOutAitHubWhitErr();
+                    this.triggerMessage('aithub_E02', error)
                 })
         },
         deleteSearchCategory(index){

@@ -95,11 +95,12 @@ export default {
         pageMixin.$on('classToggled', isActive => {
             this.isActive = isActive;
         })
-        await this.setAithubUsing();
-        await this.setAITHubLinkageMode();
     },
     mounted: async function () {
         await this.getCsrfToken();
+        setTimeout(() => {
+            this.setAITHubLinkageMode();
+        }, 500); 
     },
     methods: {
         setIsActive_SubMenu(){

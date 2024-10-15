@@ -27,7 +27,7 @@ import TestDescriptionAppend2 from '@/components/TestDescriptionAppend2'
 import TestDescriptionEdit2 from '@/components/TestDescriptionEdit2'
 import InventoryAdd from '@/components/InventoryAdd'
 import Setting from '@/components/Setting'
-
+import Message from '@/components/Message'
 
 Vue.use(Router)
 Vue.prototype.$backendURL = process.env.VUE_APP_BACKENDURL
@@ -177,6 +177,11 @@ export default new Router({
       path: '/setting',
       name: 'Setting',
       component: Setting
+    },
+    {
+      path: '/message',
+      name: 'Message',
+      component: Message
     },
    ]
 })

@@ -35,6 +35,14 @@
             "require": "必須",
             "defaultPulldown": "--選択してください--"
         },
+        "message": {
+            "title": "メッセージ",
+            "aithub_logout": "AITHUBからログアウトしました。",
+            "aithub_logout_whit_error": "AITHUBからログアウトしましたが、下記エラーが発生しました。",
+            "aithub_E01_unableToConnect": "現在、AITHUBへアクセス不可となるため、AITHUBの運用管理チームにお問い合わせください。",
+            "aithub_E02_reLogin": "AITHUBでエラーが発生しました。セッティング画面でAITHUBに再ログインしてください。",
+            "aithub_E99_unexpectedErr": "予期せぬエラーが発生しました。AITHUBの運用管理チームにお問い合わせください。"
+        },
         "mlComponents": {
             "searchTable": "コンポーネント検索",
             "create": "新規作成",
@@ -560,6 +568,14 @@
             "menuSetting": "Setting",
             "require": "require",
             "defaultPulldown": "--Please Select--"
+        },
+        "message": {
+            "title": "Message",
+            "aithub_logout": "AITHUB is logged out.",
+            "aithub_logout_whit_error": "Logged out of AITHUB, but the following error occurred.",
+            "aithub_E01_unableToConnect": "Currently, access to AITHUB is unavailable. Please contact the AITHUB operations and management team for assistance.",
+            "aithub_E02_reLogin": "An error has occurred on the AITHUB side. Please log in to AITHUB again from the settings screen.",
+            "aithub_E99_unexpectedErr": "An unexpected error has occurred. Please contact the AITHUB operations and management team for assistance."
         },
         "mlComponents": {
             "searchTable": "Search Table",

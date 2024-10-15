@@ -144,13 +144,10 @@ export default {
             screenName: 'aitDashboard'
         }
     },
-    mounted: async function () {
-        // SubMenu側でもsetAithubUsingを呼び出しているが、
-        // VUEコンポーネント間の処理順番が制御できなくて、
-        // Guidelines画面の初期化処理に再呼び出す処理を追加
-        await this.setAithubUsing();
-        await this.setAITHubLinkageMode();
+    mounted: function () {
+        this.setAITHubLinkageMode();
         this.getAITListFromLocal(this.screenName);
+
     },
     components: {
         SubMenu,

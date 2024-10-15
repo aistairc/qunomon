@@ -71,6 +71,9 @@ Unpack and place the required materials.
   cd /home/qunomon/workspace
   ```
 
+``` note:: If the alpha version qunomon folder already exists under /home/qunomon/workspace, please delete it all.
+```
+
 * If you do not have the unzipping tool, install it. (If you use apt, run the following command.)
   ```
   sudo apt-get install zip unzip

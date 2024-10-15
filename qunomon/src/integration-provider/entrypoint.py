@@ -3,7 +3,6 @@ import os
 from flask_script import Manager, Shell, Server
 
 from qai_testbed_integration_provider import create_app
-from qai_testbed_integration_provider.gateways.extensions import nosql_db
 
 
 if 'CONTAINER_DEBUG_FLAG' in os.environ:
@@ -20,10 +19,6 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 
 manager = Manager(app)
 
-# access python shell with context
-manager.add_command(
-    "shell",
-    Shell(make_context=lambda: {'app': app, 'db': nosql_db}), use_ipython=True)
 
 # run the app
 manager.add_command(

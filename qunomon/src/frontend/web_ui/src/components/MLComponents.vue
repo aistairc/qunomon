@@ -151,7 +151,6 @@ export default {
         }
     },
     mounted: function () {
-        this.signIn();
         this.organizationIdCheck_method();
         this.organizationIdCheck = sessionStorage.getItem('organizationId');
         this.getMLComponents();
