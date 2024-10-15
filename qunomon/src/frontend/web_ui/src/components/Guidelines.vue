@@ -177,12 +177,8 @@ export default {
         }
     },
     mounted: async function () {
-        // SubMenu側でもsetAithubUsingを呼び出しているが、
-        // VUEコンポーネント間の処理順番が制御できなくて、
-        // Guidelines画面の初期化処理に再呼び出す処理を追加
-        await this.setAithubUsing();
         await this.setAITHubLinkageMode();
-        if (this.aithub_linkage_mode) {
+        if (sessionStorage.getItem('aithub_linkage_mode') == '1') {
             await this.getGuidelineListFromAIThub();
             await this.getGuidelineListFromLocal();
             await this.setGuidelineRows_AITHubLinkageMode()

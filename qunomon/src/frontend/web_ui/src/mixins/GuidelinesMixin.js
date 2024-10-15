@@ -52,7 +52,8 @@ export const GuidelinesMixin = {
                 this.guidelineList_AITHub =  response.data.Guidelines;
             })
             .catch((error) => {
-                this.errorTransition(error);
+                this.signOutAitHubWhitErr();
+                this.triggerMessage('aithub_E02', error)
             })
         },
         async getGuidelineListFromLocal(){
@@ -217,7 +218,8 @@ export const GuidelinesMixin = {
                 })
             })
             .catch((error) => {
-                this.errorTransition(error);
+                this.signOutAitHubWhitErr();
+                this.triggerMessage('aithub_E02', error)
             })
         },
         deleteGuidelineCore(params){
@@ -240,51 +242,60 @@ export const GuidelinesMixin = {
             })
             
         },
-        async getQDList(guideline_id, install_flag){
-            var url = ''
-            if (install_flag) {
-                url = this.$backendURL + '/guidelines/' + guideline_id + '/quality_dimensions'
-            } else {
-                url = this.$aithubURL + '/' + guideline_id + '/quality_dimensions'
-            }
-            await this.$axios.get(url)
-            .then((response) => {
-                this.qdList_AITHub = response.data.QualityDimensions;
-            })
-            .catch((error) => {
-                this.errorTransition(error);
-            })
-        },
-        async getScopeList(guideline_id, install_flag){
-            var url = ''
-            if (install_flag) {
-                url = this.$backendURL + '/guidelines/' + guideline_id + '/scopes'
-            } else {
-                url = this.$aithubURL + '/' + guideline_id + '/scopes'
-            }
-            await this.$axios.get(url)
-            .then((response) => {
-                this.scopeList_AITHub = response.data.Scopes;
-            })
-            .catch((error) => {
-                this.errorTransition(error);
-            })
-        },
-        async getScopeQDList(guideline_id, install_flag){
-            var url = ''
-            if (install_flag) {
-                url = this.$backendURL + '/guidelines/' + guideline_id + '/scope_quality_dimensions'
-            } else {
-                url = this.$aithubURL + '/' + guideline_id + '/scope_quality_dimensions'
-            }
-            await this.$axios.get(url)
-            .then((response) => {
-                this.scopeQDList_AITHub = response.data.ScopeQualityDimensions;
-            })
-            .catch((error) => {
-                this.errorTransition(error);
-            })
-        },
+        
+        // ガイドライン所属の品質特性リストを取得するメソッドが廃止されたため、コメントアウト
+        // async getQDList(guideline_id, install_flag){
+        //     var url = ''
+        //     if (install_flag) {
+        //         url = this.$backendURL + '/guidelines/' + guideline_id + '/quality_dimensions'
+        //     } else {
+        //         url = this.$aithubURL + '/' + guideline_id + '/quality_dimensions'
+        //     }
+        //     await this.$axios.get(url)
+        //     .then((response) => {
+        //         this.qdList_AITHub = response.data.QualityDimensions;
+        //     })
+        //     .catch((error) => {
+        //         this.signOutAitHubWhitErr();
+        //         this.triggerMessage('aithub_E02', error)
+        //     })
+        // },
+
+        // ガイドライン所属のスコープリストを取得するメソッドが廃止されたため、コメントアウト
+        // async getScopeList(guideline_id, install_flag){
+        //     var url = ''
+        //     if (install_flag) {
+        //         url = this.$backendURL + '/guidelines/' + guideline_id + '/scopes'
+        //     } else {
+        //         url = this.$aithubURL + '/' + guideline_id + '/scopes'
+        //     }
+        //     await this.$axios.get(url)
+        //     .then((response) => {
+        //         this.scopeList_AITHub = response.data.Scopes;
+        //     })
+        //     .catch((error) => {
+        //         this.signOutAitHubWhitErr();
+        //         this.triggerMessage('aithub_E02', error)
+        //     })
+        // },
+
+        // ガイドライン所属のスコープと品質特性の紐づけリストを取得するメソッドが廃止されたため、コメントアウト
+        // async getScopeQDList(guideline_id, install_flag){
+        //     var url = ''
+        //     if (install_flag) {
+        //         url = this.$backendURL + '/guidelines/' + guideline_id + '/scope_quality_dimensions'
+        //     } else {
+        //         url = this.$aithubURL + '/' + guideline_id + '/scope_quality_dimensions'
+        //     }
+        //     await this.$axios.get(url)
+        //     .then((response) => {
+        //         this.scopeQDList_AITHub = response.data.ScopeQualityDimensions;
+        //     })
+        //     .catch((error) => {
+        //         this.signOutAitHubWhitErr();
+        //         this.triggerMessage('aithub_E02', error)
+        //     })
+        // },
         async setQDRows(){
             for (let i in this.qdList_AITHub) {
                 this.qd_rows.push({
@@ -342,7 +353,8 @@ export const GuidelinesMixin = {
                 this.json_date = response.data.GuidelineSchemaFile;
             })
             .catch((error) => {
-                this.errorTransition(error);
+                this.signOutAitHubWhitErr();
+                this.triggerMessage('aithub_E02', error)
             })
         },
         guidelineValidationCheck(jsonDate, errorMessages){

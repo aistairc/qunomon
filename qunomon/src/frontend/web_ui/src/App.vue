@@ -7,9 +7,181 @@
             <router-link to="/about">About</router-link>
             -->
         </div>
+        <Message ref="ref_message" />
         <router-view/>
+        <div v-if="loading" class="loader-overlay">
+            <div class="loader"></div>
+        </div>
     </div>
 </template>
+
+<script>
+import Message from './components/Message.vue';
+import { EventBus } from './eventBus';
+
+export default {
+    data() {
+        return {
+            loading: false
+        };
+    },
+    components: {
+        Message
+    },
+    created() {
+        // organizationIdを設定する
+        sessionStorage.setItem('organizationId', this.postLoginData());
+    },
+    mounted() {
+        // APP共通メソッド
+        EventBus.$on('show-message', this.showMessage);
+        EventBus.$on('set-aithub-using', this.setAithubUsing);
+
+        // 遷移パターンの判断
+        if (this.$route.query.err) {
+            this.showMessage('aithub_E01');
+        } else if (sessionStorage.hasOwnProperty('aithub_logout')) {
+            sessionStorage.removeItem('aithub_logout');
+            sessionStorage.setItem('aithub_network_status', 'logout')
+            this.showMessage('aithub_logout');
+        } else if (sessionStorage.hasOwnProperty('aithub_logout_whit_error')) {
+            sessionStorage.removeItem('aithub_logout_whit_error');
+            sessionStorage.setItem('aithub_network_status', 'logout')
+            this.showMessage('aithub_logout_whit_error', );
+        }
+
+        // ログイン処理
+        this.signIn();
+
+        // AITHUB使用状態を設定する
+        this.setAithubUsing();
+    },
+    methods: {
+        postLoginData(){
+            // TODO: ログイン処理
+            return 'dep-a'
+        },
+        signIn(){
+            // SESSION側でログインフラグが設定されない場合のみ初期処理を実施する
+            if (!sessionStorage.hasOwnProperty('session_signIn_flag')) {
+                // SESSIONにサインインフラグを設定する
+                sessionStorage.setItem('session_signIn_flag', true);
+
+
+                // // TODO アカウント実装時に再開する予定
+                // const url = this.$backendURL + '/login';
+                // var requestData = {
+                //     AccountId: '',
+                //     Password: ''
+                // }
+                // //リクエスト時のオプションの定義
+                // const config = {
+                //     headers:{
+                //         'X-Requested-With': 'XMLHttpRequest',
+                //         'X-CSRF-TOKEN' : this.getCookie("csrf_access_token")
+                //     },
+                //     withCredentials:true,
+                // }
+                // this.$axios.post(url, requestData, config)
+                // .then(() => {
+                //     // 正常処理
+                    
+                // })
+                // .catch((error) => {
+                //     // 異常時にorganizationIdをクリアする
+                //     sessionStorage.removeItem('organizationId');
+
+                //     // 異常処理
+                //     this.$router.push({
+                //         name: 'Information',
+                //         params: {error}
+                //     })
+                // })
+            }
+        },
+        setAithubUsing() {
+            // ローディングスピナーが表示
+            this.loading = true;
+
+            // DB設定値（AIT-HUB使用／不使用）チェック
+            const url = this.$backendURL + '/setting/' + 'aithub_linkage_flag';
+            this.$axios.get(url)
+            .then((response) => {
+                // AIT-HUB使用フラグの設定
+                if (response.data.Value == '1') {
+                    sessionStorage.setItem('aithub_setting_flag', '1');
+
+                    // AIT-HUBとの接続チェック（health-checkは認証無しで動くので、他のAPIにする）
+                    var aithub_url = this.$aithubURL + '/health-check';
+                    this.$axios.get(aithub_url)
+                    .then((response) => {
+                        // AWS版 response.status == 200
+                        if (response.statusText == 'OK' ) {
+                            // 接続OK
+                            sessionStorage.setItem('aithub_network_status', '1');
+                            // AIT-HUBを使用するか否かの最終決定フラグの設定
+                            // (AITHUBへ接続OK、かつ、AIT-HUB使用フラグがOnの場合のみ使用可能に設定)
+                            sessionStorage.setItem('aithub_linkage_mode', '1');
+                        } else {
+                            // 接続NG
+                            if (sessionStorage.getItem('aithub_network_status') === '1') {
+                                this.showMessage('aithub_E01');
+                            }
+                            sessionStorage.setItem('aithub_network_status', '0');
+                            // AIT-HUBを使用するか否かの最終決定フラグの設定(AITHUBへ接続NGのため使用不可に設定)
+                            sessionStorage.setItem('aithub_linkage_mode', '0');
+                        }
+                        //  ローディングスピナーが非表示
+                        this.loading = false;
+                    })
+                    .catch((error) => {
+                        // 接続NG
+                        if (sessionStorage.getItem('aithub_network_status') === '1') {
+                            this.showMessage('aithub_E01');
+                        }
+                        sessionStorage.setItem('aithub_network_status', '0');
+                        // AIT-HUBを使用するか否かの最終決定フラグの設定(AITHUBネットワークエラーのため使用不可に設定)
+                        sessionStorage.setItem('aithub_linkage_mode', '0');
+                        //  ローディングスピナーが非表示
+                        this.loading = false;
+                        // eslint-disable-next-line no-console
+                        console.log(error);
+                    });
+
+                } else {
+                    sessionStorage.setItem('aithub_setting_flag', '0');
+                    sessionStorage.setItem('aithub_network_status', '0');
+                    sessionStorage.setItem('aithub_linkage_mode', '0');
+                    this.loading = false;
+                }
+            })
+            .catch((error) => {
+                this.$router.push({
+                    name: 'Information',
+                    params: { error }
+                });
+                //  ローディングスピナーが非表示
+                this.loading = false;
+            });
+        },
+        showMessage(messageCode, messageText) {
+            this.$refs.ref_message.show(messageCode, messageText);
+        }
+    },
+    watch: {
+        // 画面遷移時の$routeオブジェクトを監視
+        '$route'(to, from) {
+            // eslint-disable-next-line no-console
+            console.log(`Route changed from ${from.fullPath} to ${to.fullPath}`);
+            //  DB設定値（AIT-HUB使用）時、かつ、Setting画面以外の場合のみチェック
+            if (sessionStorage.getItem('aithub_setting_flag') == '1' &&
+                to.fullPath !== '/Setting') {
+                this.setAithubUsing();
+            }
+        }
+    }
+}
+</script>
 
 
 <style>
@@ -121,7 +293,6 @@ html, body {
 
 #submenu a {
     font-size: 1rem;
-//font-weight: bold;
 }
 /*水平ライン*/
 #submenu hr {
@@ -183,12 +354,10 @@ html, body {
     text-align: center;
     display: inline-block;
     text-decoration: none;
-//color: #000066;		/*文字色*/
     color: indianred;		/*文字色*/
     margin:0px 5px;
     pointer-events: none;
     font-weight: bold;
-//background: #000066;	;
 }
 .btn_unselect {
     text-align: center;
@@ -197,7 +366,6 @@ html, body {
     margin:0px 5px;
     border: none;
     text-decoration-line: none;
-//background: silver;
 }
 
 /*ログアウト*/
@@ -330,7 +498,6 @@ address {
     &.un_btn{
         background: silver;
         pointer-events: none;
-    //box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.29);
     }
     &:active {
         box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
@@ -544,6 +711,34 @@ dt{
     cursor: pointer;
     color: white;
     font-size: 2rem;
+}
+
+/* ローディングスピナーのスタイル */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 高いz-indexで他の要素の上に表示 */
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 </style>

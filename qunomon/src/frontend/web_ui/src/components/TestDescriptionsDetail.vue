@@ -277,15 +277,22 @@
                                             <span class="message">{{$t("testDescriptionDetail.graphsNote")}}</span>
                                         </div>
                                     </div>
-                                    <div id="grid">
-                                        <AgGridVue class="ag-theme-fresh"
-                                                   :columnDefs="columnDefs"
-                                                   :rowData="rowData"
-                                                   :gridOptions="gridOptions"
-                                                   :tooltipShowDelay="tooltipShowDelay" @row-drag-end="sortChange"
+                                    <div id="other-table">
+                                        <VueGoodTable style-class="vgt-table"
+                                                   :columns="columnDefs"
+                                                   :rows="rowData"
                                         >
-                                        </AgGridVue>
-                                        <!-- 削除ボタン -->
+                                        <template slot="table-row" slot-scope="props">
+                                            <template v-if="props.column.field == 'remove'">
+                                                <button @click="onRemoveSelected(props.row.remove.id)" class="remove-button">
+                                                    -
+                                                </button>
+                                            </template>
+                                            <template v-else-if="props.column.field == 'reportName'">
+                                                <input type="text" :value="props.row.reportName"  @blur="handleBlur(props.row, $event)" />
+                                            </template>
+                                        </template>
+                                        </VueGoodTable>
                                     </div>
                                     <div id="btn_del_all">
                                         <template v-if="$i18n.locale === 'en'">
@@ -441,10 +448,6 @@ import { tdMixin } from '../mixins/testDescriptionMixin';
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-//ag-grid インポート
-import '../../node_modules/ag-grid-community/dist/styles/ag-grid.css';
-import '../../node_modules/ag-grid-community/dist/styles/ag-theme-fresh.css';
-import { AgGridVue } from 'ag-grid-vue';
 import 'vue-good-table/dist/vue-good-table.css';
 import { VueGoodTable } from 'vue-good-table';
 import DownloadIcon from '@/assets/download.svg'
@@ -455,7 +458,6 @@ export default {
     mixins: [subMenuMixin, tdMixin, urlParameterMixin, AccountControlMixin, csrfMixin],
     components: {
         SubMenuMLComponent,
-        AgGridVue,
         VueGoodTable
     },
     data() {
@@ -488,7 +490,6 @@ export default {
             outputElement: null,
             columnDefs: null,
             rowData: null,
-            gridOptions: null,
             name: "dgDetail",
             languagedata: null,
             columns: [{
@@ -544,63 +545,31 @@ export default {
     },
 
     beforeMount() {
-        //ag-grid用のヘッダー定義
         this.columnDefs = [
             {
-                headerName: this.setReportTableLanguage("id"),
+                label: this.setReportTableLanguage("id"),
                 field: "viewId",
-                width: 60,
-                rowDrag: true,
+                width: "5%",
             },
             {
-                headerName: this.setReportTableLanguage("name"),
+                label: this.setReportTableLanguage("name"),
                 field: "name",
                 flex: 4,
-                tooltipField: 'name',
+                width: "35%",
             },
             {
-                headerName: this.setReportTableLanguage("reportName"),
+                label: this.setReportTableLanguage("reportName"),
                 field: "reportName",
-                editable: true,
-                cellEditorSelector: function (params) {
-                    if(params.data.type === 'reportName')
-                        return {
-                            component: 'reportName'
-                        }
-                },
                 flex: 5,
+                width: "45%",
             },
             {
-                field: "no",
-                hide: true,
-            },
-            {
-                headerName: this.setReportTableLanguage("remove"),
+                label: this.setReportTableLanguage("remove"),
                 field: "remove",
-                cellRenderer: (params) => {
-                    const element = document.createElement('button');
-                    element.classList.add('minusBtn');
-                    element.innerHTML = params.value.value;
-                    element.addEventListener('click', () => {
-                        this.onRemoveSelected(params.value.id);
-                    });
-                    return element;
-                },
-                width: 22,
+                width: "5%",
             }
         ];
-        //ag-grid用の行定義
         this.rowData = [];
-        //ag-gridの設定
-        this.gridOptions = {
-            domLayout: 'autoHeight',
-            headerHeight: 40,
-            rowHeight: 32,
-            rowDragManaged: true,
-            animateRows: true,
-        }
-
-        this.tooltipShowDelay = 0;
     },
     mounted: function () {
         this.mlComponentIdCheck();
@@ -1260,31 +1229,39 @@ export default {
             }
             return expression;
         },
-        //-ボタンで表を削除するメソッド。変更不要。
-        onRemoveSelected: function (id) {
+        handleBlur(row, event) {
+            const index = this.rowData.findIndex(item => item.graphId === row.graphId);
+            if (index !== -1) {
+                this.rowData[index].reportName = event.target.value;
+            }
+        },
+        //ボタンで表を削除するメソッド。変更不要。
+        onRemoveSelected(id) {
+            // const selected_id = params.row.remove.id;
             //RowDataをculRowDataへディープコピー
-            var culRowData = [];
-            this.gridOptions.api.forEachNode(node => culRowData.push(node.data));
+            const culRowData = this.rowData.map(row => ({ ...row }));
             //作業変数定義
             var newNo = 1; //上から順に振られる番号(順序番号)を振り直すための変数
-            var removeRow = -1; //削除対象の順序番号
+            var removeRowIndex = -1; //削除対象の順序番号
+            
             //削除対象を配列から削除
-            for (var row in culRowData) {
-                if (culRowData[row].remove.id == id) {
-                    //削除対象の順序番号を控えておく
-                    removeRow = row;
+            culRowData.forEach((row, index) => {
+                if (row.remove.id === id) {
+                    //削除対象のIndexを記録
+                    removeRowIndex = index;
                 }else{
                     //順序番号の振り直し
-                    culRowData[row].no = newNo;
+                    culRowData[index].no = newNo;
                     newNo += 1;
                 }
+            });
+            //削除対象見つかったら删除実行
+            if (removeRowIndex !== -1) {
+                culRowData.splice(removeRowIndex, 1);
             }
-            culRowData.splice(removeRow, 1) //控えていた削除対象番号を用いて削除
-
-            // 更新処理
-            this.gridOptions.api.setRowData(culRowData);
+            
+            //行データ更新
             this.rowData = culRowData;
-            this.sortChange();
             if (this.rowData.length == 0){
                 this.isRemoveAllRowActive = true;
             }
@@ -1306,52 +1283,41 @@ export default {
             }
 
             var newRowData = [];
-            this.gridOptions.api.forEachNode(node => newRowData.push(node.data));
+            const existingGraphIds = new Set(this.rowData.map(row => row.graphId));
 
-            for(let i=0; i<this.graph_list.length; i++){
-                var graph = this.graph_list[i];
-                graph.vgtSelected = false;
-
+            var newNo = this.rowData.length
+            for (const graph of this.graph_list) {
                 // 登録済みなら追加しない
-                var registered = false;
-                for (var r_id in this.rowData) {
-                    if (graph.graph_id == this.rowData[r_id].graphId) {
-                        registered = true;
-                        break;
-                    }
-                }
-                if(registered){
+                if(existingGraphIds.has(graph.graph_id)){
                     continue;
                 }
 
                 // 未登録なら新規追加
+                newNo = newNo + 1;
                 var newRow = {
-                    no: graph.index,
+                    no: newNo,
                     viewId: graph.index,
                     name: graph.name,
                     reportName: graph.name,
                     graphId: graph.graph_id,
                     remove: {
                         value: '',
-                        id: this.setRowId()
+                        id: graph.index
                     }
                 }
                 newRowData.push(newRow);
             }
+
+            // VueGoodTableのrowDataを直接設定
+            this.rowData = [...this.rowData, ...newRowData];
             this.preview_order = [];
             this.preview_row_index = -1;
-
-            this.gridOptions.api.setRowData(newRowData);
-            this.rowData = newRowData;
-
-            this.sortChange();
             this.updateUsedRowStyle();
             this.checkAddBTNActive();
             this.isRemoveAllRowActive = false;
         },
         removeAllRowData: function () {
             this.rowData = [];
-            this.gridOptions.api.setRowData(this.rowData);
             // 選択対象があれば追加ボタン活性、なければ非活性
             if (this.selectedType != ''){
                 this.isActivated = false;
@@ -1410,15 +1376,6 @@ export default {
                 this.isRemoveAllRowActive = true;
             }
         },
-        //行のソート用のメソッド
-        sortChange: function () {
-            var culRowData = [];
-            this.gridOptions.api.forEachNode(node => culRowData.push(node.data));
-            for (var row in culRowData) {
-                culRowData[row].no = (Number(row) + 1);
-            }
-            this.gridOptions.api.setRowData(culRowData);
-        },
 
         download() {
             sessionStorage.setItem('testDescriptionId', this.test_description_details.TestDescriptionDetail.Id)
@@ -1434,32 +1391,6 @@ export default {
                 this.setStar(testDescription.Id);
             }
             testDescription.Star = !testDescription.Star;
-        },
-
-        //表削除用のidを設定するメソッド。
-        setRowId() {
-            //これはculRowDataに現在表に登録されているデータ群を配列として追加する。
-            //saveやコンプリートボタン時に使うことも出来る。
-            var culRowData = [];
-            this.gridOptions.api.forEachNode(node =>{
-                culRowData.push(node.data)
-            });
-            /////////////////////////////////////////////////////////////////////////
-            //ここから下がID設定用メソッド。
-
-            if(culRowData == ""){
-                return 1;
-            }else {
-                var idList = [];
-                for(var ro in culRowData){
-                    // idListにculRowData[row].remove.idの値を収集
-                    idList.push(Number(culRowData[ro].remove.id))
-                }
-                //idListの最大値を取得
-                const aryMax = function (a, b) {return Math.max(a, b);}
-                var MaxId = idList.reduce(aryMax);
-                return MaxId + 1;
-            }
         },
         clearUsedRowStyle(){
             var tdTable = this.$refs.tdTable;
@@ -1982,27 +1913,142 @@ input[type="checkbox"].on_off:checked+ul {
 .un_btn .add_count{
     background: silver;
 }
-/*---------------
-ag-gridスタイル
----------------*/
-/* ポップアップ */
-#grid {
-    margin-top: 0.3rem;
+/* other-table style*/
+#other-table {
     height: 90%;
     z-index: 10;
     background-color: #f0f0f0;
+    text-align: center !important;
 }
-#grid>>>.ag-theme-fresh{
+
+#other-table>>>.vgt-table {
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    background-color: unset;
+    border: none;
     width: 100%;
+}
+#other-table>>>.vgt-table thead th {
+    color: white;
+    background: #dc722b;
+    text-align: center;
+    border: none;
+    width: 1rem;
+    height: 2.5rem;
+    padding: unset;
+    vertical-align: middle;
+    text-align: center !important;
+}
+
+#other-table>>>.vgt-fixed-header .vgt-table {
+    position: absolute !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+}
+
+#other-table>>>.vgt-table tbody {
+    text-align: center !important;
     font-size: 0.85rem;
 }
-#grid>>>.ag-theme-fresh .ag-header-cell{
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
+#other-table>>>.vgt-table tbody tr th {
+    background: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
-#grid>>>button.minusBtn {
-    width: 20px;
+#other-table>>>.vgt-table tbody tr th:last-child {
+    background: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#other-table>>>.vgt-table td {
+    padding: unset;
+    height: 2rem;
+    text-align: center !important;
+}
+#other-table>>>.vgt-table tbody tr td:nth-child(0) {
+    background: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#other-table>>>.vgt-table tbody tr td:last-child {
+    background: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#other-table>>>.vgt-table tbody tr {
+    background-color: #fff; /* Set row background color */
+    border-radius: 5px;
+    height: 2rem;
+    vertical-align: middle;
+}
+
+#other-table>>>.vgt-table tbody tr:hover{
+    border-radius: 5px;
+    background: #a9c7aa !important;
+}
+
+#other-table>>>.vgt-table tr td{
+    border: none;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+}
+
+#other-table>>>.vgt-table .expanded td, th {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    max-width: 10%;
+}
+#other-table>>>.vgt-inner-wrap {
+    border-radius: unset;
+    box-shadow: unset;
+    background: none;
+}
+.vgt-wrap>>>.vgt-wrap__footer {
+    padding: 0.5rem;
+    border: none;
+    background: unset;
+}
+#other-table>>>.vgt-table tbody th,
+#other-table>>>.vgt-table tbody td{
+    cursor:pointer;
+}
+#other-table>>>.vgt-table th.vgt-row-header>span{
+    display: block;
+}
+
+#other-table>>>.vgt-table tr.clickable.graph_used {
+    background-color: #8cfff9;
+}
+#other-table>>>.vgt-table tr.clickable.graph_previewed {
+    background-color: #faf500 !important;
+}
+#other-table>>>.vgt-table th.vgt-row-header{
+    color: black !important;
+}
+#other-table>>>.vgt-left-align {
+    text-align: left !important;
+    vertical-align: middle !important;
+}
+#other-table>>>.vgt-table th.sortable:after,
+#other-table>>>.vgt-table th.sortable::before {
+    right: 40px !important;
+}
+#other-table>>>.vgt-table th.sortable button {
+    display: none;
+}
+#other-table input {
+    text-align: center !important;
+}
+.remove-button {
+	width: 20px;
     height: 20px;
     font-weight: bold;
     border: 1px solid #ccc;
@@ -2014,66 +2060,5 @@ ag-gridスタイル
     line-height: normal;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
     cursor:pointer;
-}
-
-#grid>>>button.minusBtn:after {
-    font-family: 'Material Icons';
-    font-size: 18px;
-    content: "\e15b";
-}
-#grid>>>.ag-popup-child {
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    background-color: var(--ag-control-panel-background-color, #fafafa);
-}
-
-#grid>>>.ag-theme-fresh .ag-root-wrapper {
-    position: relative;
-}
-#grid>>>.ag-theme-fresh .ag-header-cell-label {
-    justify-content: center;
-}
-#grid>>>.ag-header-cell-text{
-    font-size: 1rem;
-    font-weight: bold;
-}
-#grid>>>.ag-theme-fresh .ag-header-cell::after,
-.ag-theme-fresh .ag-header-group-cell::after {
-    width: 0px;
-}
-
-#grid>>>.ag-theme-fresh .ag-header-cell,
-.ag-theme-fresh .ag-header-group-cell {
-    color: white;
-    background-color: #dc722b;
-}
-
-#grid>>>.ag-drag-handle.ag-row-drag {
-    margin-right: 2px !important;
-}
-
-#grid>>>.ag-theme-fresh .ag-cell{
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    justify-content: center;
-    vertical-align: middle;
-}
-
-#grid>>>.ag-header-cell-label.ag-header-cell-text {
-    text-align: center !important;
-}
-#grid>>>.ag-theme-fresh .ag-ltr .ag-cell {
-    border-right: none;
-    font-size: 0.85rem;
-    color: black;
-}
-
-#grid>>>.ag-cell{
-    color: #000066;
-    justify-content: center;
-    vertical-align: middle;
-}
-
-#grid>>>.ag-theme-fresh .ag-row-odd {
-    background-color: white;
 }
 </style>

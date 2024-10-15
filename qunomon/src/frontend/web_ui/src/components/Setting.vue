@@ -109,24 +109,30 @@ export default {
             aithub_using_permission: false
         }
     },
-    mounted: async function () {
-        // SubMenu側でもsetAithubUsingを呼び出しているが、
-        // VUEコンポーネント間の処理順番が制御できなくて、
-        // Setting画面の初期化処理に再呼び出す処理を追加
-        await this.setAithubUsing();
-        await this.setAITHubLinkageMode();
+    mounted() {
         this.setLanguageData();
-        if (sessionStorage.getItem('aithub_linkage_mode') == '1') {
-            this.aithub_using_status = true;
-        }
-        if (sessionStorage.getItem('aithub_network_status') == '1') {
-            this.aithub_network_using_status = true;
-        }
-        if (sessionStorage.getItem('aithub_setting_flag') == '1') {
-            this.aithub_using_permission = true;
-        }
+        this.triggerAithubUsing();
+        setTimeout(() => {
+            this.setAITHubLinkageMode();
+            this.getSessionItems();
+        }, 500); 
     },
     methods: {
+        getSessionItems() {
+            // alert('getSessionItems:' + sessionStorage.getItem('aithub_network_status'))
+            // AIT-HUBを使用するか否かの最終決定フラグの判断
+            if (sessionStorage.getItem('aithub_linkage_mode') == '1') {
+                this.aithub_using_status = true;
+            }
+            // AIT-HUBとのネットワークが正常か異常かの判断
+            if (sessionStorage.getItem('aithub_network_status') == '1') {
+                this.aithub_network_using_status = true;
+            }
+            // DB設定値（AIT-HUB使用／不使用）の判断
+            if (sessionStorage.getItem('aithub_setting_flag') == '1') {
+                this.aithub_using_permission = true;
+            }
+        },
         //言語データ読み込み
         setLanguageData() {
             // 画面遷移時にセッションから言語情報を取得する。

@@ -1,18 +1,10 @@
 # Copyright © 2019 National Institute of Advanced Industrial Science and Technology （AIST）. All rights reserved.
 # !/usr/bin/env python3.6
 # coding=utf-8
-import bson
 import re
 from urllib.parse import urlparse
 
 
-def is_a_valid_object_id(object_id):
-    """Verify if the value is valid as an object id.
-    :object_id: a string object
-    :returns: True or False
-
-    """
-    return bson.objectid.ObjectId.is_valid(object_id)
 
 
 def is_num(input_str: str):
