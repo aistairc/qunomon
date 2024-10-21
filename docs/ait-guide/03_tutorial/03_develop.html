@@ -233,6 +233,10 @@ AIT development involves breaking down the AI evaluation program created during 
 <p class="admonition-title">Tip</p>
 <p>Some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The python code on this page is identical to <a class="reference external" href="https://github.com/aistairc/ait-template/blob/main/develop/my_ait.ipynb">https://github.com/aistairc/ait-template/blob/main/develop/my_ait.ipynb</a>.</p>
+</div>
 <p>The table below is the structure of my_ait.ipynb.</p>
 <ul class="simple">
 <li><p>The meaning of columns:</p>
@@ -367,18 +371,18 @@ Please write the OSS name in the first argument and the version in the second ar
 <ul>
 <li><p>Example</p>
 <ul class="simple">
-<li><p>When your AIT depends on the tensorflow 2.5.0 and numpy 1.19.2:</p></li>
+<li><p>When your AIT depends on the pandas 2.0.3 and seaborn 0.13.2 and numpy 1.26.4:</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ait_launch</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">ait_sdk.common.files.ait_requirements_generator</span> <span class="kn">import</span> <span class="n">AITRequirementsGenerator</span>
-        <span class="n">requirements_generator</span> <span class="o">=</span> <span class="n">AITRequirementsGenerator</span><span class="p">()</span>
-        <span class="n">requirements_generator</span><span class="o">.</span><span class="n">add_package</span><span class="p">(</span><span class="s1">&#39;tensorflow&#39;</span><span class="p">,</span> <span class="s1">&#39;2.3.0&#39;</span><span class="p">)</span>
-        <span class="n">requirements_generator</span><span class="o">.</span><span class="n">add_package</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="s1">&#39;1.19.2&#39;</span><span class="p">)</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_ait_launch</span><span class="p">:</span>
+<span class="c1">## sample ##</span>
+    <span class="n">requirements_generator</span><span class="o">.</span><span class="n">add_package</span><span class="p">(</span><span class="s1">&#39;pandas&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0.3&#39;</span><span class="p">)</span>
+    <span class="n">requirements_generator</span><span class="o">.</span><span class="n">add_package</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">,</span><span class="s1">&#39;0.13.2&#39;</span><span class="p">)</span>
+    <span class="n">requirements_generator</span><span class="o">.</span><span class="n">add_package</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span><span class="s1">&#39;1.26.4&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
-<p>For detailed information about <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code>, please see <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">requirements_generator</span></code> is an instance of the <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code> class. For detailed information about <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code>, please see <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator">here</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The AIT SDK itself are automatically added to the requirements.txt. Don’t explicitly add them in this area.</p>
@@ -540,17 +544,37 @@ In this area, we automatically generates ait.manifest.json file and place them t
 </tbody>
 </table><ul>
 <li><p>Example</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span> <span class="o">=</span> <span class="n">AITManifestGenerator</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span>
-
-    <span class="c1"># To set the name of the AIT</span>
-    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_name</span><span class="p">(</span><span class="s1">&#39;eval_mnist_acc_tf2.3&#39;</span><span class="p">)</span>
-
-    <span class="c1"># To set the inventory of the AIT</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_ait_launch</span><span class="p">:</span>
+<span class="c1">## sample ##</span>
+    <span class="kn">from</span> <span class="nn">ait_sdk.common.files.ait_manifest_generator</span> <span class="kn">import</span> <span class="n">AITManifestGenerator</span>
+    <span class="n">manifest_genenerator</span> <span class="o">=</span> <span class="n">AITManifestGenerator</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_name</span><span class="p">(</span><span class="s1">&#39;dev_ait_template_for_aithub&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_description</span><span class="p">(</span><span class="s1">&#39;アヤメの分類精度(sample)&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_source_repository</span><span class="p">(</span><span class="s1">&#39;https://github.com/aistairc/ait-template&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_version</span><span class="p">(</span><span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_licenses</span><span class="p">(</span><span class="s1">&#39;Apache License Version 2.0&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_keywords</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_quality</span><span class="p">(</span><span class="s1">&#39;https://ait-hub.pj.aist.go.jp/ait-hub/api/0.0.1/qualityDimensions/機械学習品質マネジメントガイドライン第三版/A-2データ設計の十分性&#39;</span><span class="p">)</span>
     <span class="n">inventory_requirement_iris_data</span> <span class="o">=</span> <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">format_ait_inventory_requirement</span><span class="p">(</span><span class="n">format_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;csv&#39;</span><span class="p">])</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span> 
                                             <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> 
-                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Iris classification data&#39;</span><span class="p">,</span> 
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;アヤメの分類データです&#39;</span><span class="p">,</span> 
                                             <span class="n">requirement</span><span class="o">=</span><span class="n">inventory_requirement_iris_data</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_parameters</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean_column_name&#39;</span><span class="p">,</span> 
+                                            <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;str&#39;</span><span class="p">,</span> 
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;sepal.width</span><span class="se">\n</span><span class="s1">sepal.length</span><span class="se">\n</span><span class="s1">petal.width</span><span class="se">\n</span><span class="s1">petal.length&#39;</span><span class="p">,</span> 
+                                            <span class="n">default_val</span><span class="o">=</span><span class="s1">&#39;sepal.width&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_measures</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> 
+                                        <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> 
+                                        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;mean of select column&#39;</span><span class="p">,</span> 
+                                        <span class="n">structure</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span>
+                                        <span class="nb">min</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_resources</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;pairplot&#39;</span><span class="p">,</span> 
+                                            <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;picture&#39;</span><span class="p">,</span> 
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;pairplot&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_downloads</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Log&#39;</span><span class="p">,</span> 
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;AIT実行ログ&#39;</span><span class="p">)</span>
+    <span class="n">manifest_path</span> <span class="o">=</span> <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
@@ -573,9 +597,15 @@ Because it depends on the characteristics and purpose of the AI evaluation progr
 <ul class="simple">
 <li><p>Example of input data settings</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">input_generator</span> <span class="o">=</span> <span class="n">AITInputGenerator</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
-    <span class="n">input_generator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;iris_data/tableconvert_csv_4nryby.csv&#39;</span><span class="p">)</span>
-    <span class="n">input_generator</span><span class="o">.</span><span class="n">set_ait_params</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean_column_name&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;petal.width&#39;</span><span class="p">)</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ait_launch</span><span class="p">:</span>
+    <span class="c1">## sample ##</span>
+        <span class="kn">from</span> <span class="nn">ait_sdk.common.files.ait_input_generator</span> <span class="kn">import</span> <span class="n">AITInputGenerator</span>
+        <span class="n">input_generator</span> <span class="o">=</span> <span class="n">AITInputGenerator</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
+        <span class="n">input_generator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span>
+                                            <span class="n">value</span><span class="o">=</span><span class="s1">&#39;iris_data/tableconvert_csv_4nryby.csv&#39;</span><span class="p">)</span>
+        <span class="n">input_generator</span><span class="o">.</span><span class="n">set_ait_params</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean_column_name&#39;</span><span class="p">,</span>
+                                        <span class="n">value</span><span class="o">=</span><span class="s1">&#39;petal.width&#39;</span><span class="p">)</span>
+        <span class="n">input_generator</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">AITInputGenerator</span></code>For details about the class, please see <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator">here</a>.</p>
@@ -623,27 +653,22 @@ You must add following two annotations to your output function.</p>
 So the function must return a value.</p>
 </div>
 <ul>
-<li><p>When your AIT output AUC (Area Under the Curve) value as a result:</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
-<span class="nd">@measures</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="s1">&#39;AUC&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">calc_auc</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">multi_class</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">average</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="n">y_true</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
-    <span class="n">y_score</span> <span class="o">=</span> <span class="n">y_pred</span>
-
-    <span class="k">return</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">,</span>
-                        <span class="n">multi_class</span><span class="o">=</span><span class="n">multi_class</span><span class="p">,</span>
-                        <span class="n">average</span><span class="o">=</span><span class="n">average</span><span class="p">)</span>
+<li><p>When your AIT output mean value as a result:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1">## sample ##</span>
+<span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+<span class="nd">@measures</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">calc_mean</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">iris_data</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>In the #5 Manifest Generation area, predefine the AIT manifest(<code class="docutils literal notranslate"><span class="pre">report/measures</span></code>) corresponding to the annotation.</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_measures</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;AUC&#39;</span><span class="p">,</span> 
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_measures</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> 
                                         <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> 
-                                        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Compute Area Under the Receiver Operating Characteristic Curve (ROC AUC) from prediction scores.&#39;</span><span class="p">,</span> 
+                                        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;mean of select column&#39;</span><span class="p">,</span> 
                                         <span class="n">structure</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span>
-                                        <span class="nb">min</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span>
-                                        <span class="nb">max</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+                                        <span class="nb">min</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -667,34 +692,21 @@ you must add following two annotations to your output function.</p>
 <p>This function requires a file_path argument because the resource file path is automatically specified in the file_path argument of the result output function.</p>
 </div>
 <ul>
-<li><p>When your AIT outputs confusion matrix as heatmap image (ConfusionMatrixHeatmap):</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
-<span class="nd">@resources</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="s1">&#39;ConfusionMatrixHeatmap&#39;</span><span class="p">,</span> <span class="s1">&#39;confusion_matrix.png&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">save_confusion_matrix_heatmap</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">makedirs</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
-
-    <span class="n">labels</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
-    <span class="n">cmx_data</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
-
-    <span class="n">df_cmx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cmx_data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
-
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-    <span class="n">sn</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_cmx</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;g&#39;</span> <span class="p">,</span><span class="n">square</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted class&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Actual class&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Plot of Confusion Matrix&#39;</span><span class="p">)</span>
-
-    <span class="c1"># save as png</span>
+<li><p>When your AIT outputs pairplot image:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1">## sample ##</span>
+<span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+<span class="nd">@resources</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="s1">&#39;pairplot&#39;</span><span class="p">,</span> <span class="s1">&#39;pairplot.png&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_pair_plot</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>    
+    <span class="n">sn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;variety&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>In the #5 Manifest Generation area, predefine the AIT manifest(<code class="docutils literal notranslate"><span class="pre">report/resources</span></code>) corresponding to the annotation.</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_resources</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ConfusionMatrixHeatmap&#39;</span><span class="p">,</span> <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;picture&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Confusion matrix heatmap.&#39;</span><span class="p">)</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_resources</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;pairplot&#39;</span><span class="p">,</span> 
+                                        <span class="n">type_</span><span class="o">=</span><span class="s1">&#39;picture&#39;</span><span class="p">,</span> 
+                                        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;pairplot&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -718,21 +730,19 @@ you must add following two annotations to your output function.</p>
 <p>This function requires a file_path argument because the resource file path is automatically specified in the file_path argument of the result output function.</p>
 </div>
 <ul>
-<li><p>When your AIT outputs confusion matrix as CSV data (ConfusionMatrixCSV) as a supplemental information.</p>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
-<span class="nd">@downloads</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="s1">&#39;ConfusionMatrixCSV&#39;</span><span class="p">,</span> <span class="s1">&#39;confusion_matrix.csv&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">save_confusion_matrix_csv</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">makedirs</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="n">cmx_data</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">))</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">cmx_data</span><span class="p">)</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">cmx_data</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<li><p>Example of function definition when outputting the execution log of the AIT as a reference.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1">## sample ##</span>
+<span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
+<span class="nd">@downloads</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="s1">&#39;Log&#39;</span><span class="p">,</span> <span class="s1">&#39;ait.log&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">move_log</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">get_log_path</span><span class="p">(),</span> <span class="n">file_path</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>In the #5 Manifest Generation area, predefine the AIT manifest(<code class="docutils literal notranslate"><span class="pre">downloads</span></code>) corresponding to the annotation.</p></li>
 </ul>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_downloads</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ConfusionMatrixCSV&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Confusion matrix csv.&#39;</span><span class="p">)</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_downloads</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Log&#39;</span><span class="p">,</span> 
+                                            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;AIT実行ログ&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -759,57 +769,33 @@ This area has some rules to follow.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
 <span class="nd">@ait_main</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="n">is_ait_launch</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">image_px_size</span> <span class="o">=</span> <span class="n">ait_input</span><span class="o">.</span><span class="n">get_method_param_value</span><span class="p">(</span><span class="s1">&#39;image_px_size&#39;</span><span class="p">)</span>
-
-    <span class="c1"># load MNIST image and label from inventory</span>
-    <span class="n">mnist</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">()</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_image</span><span class="p">(</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_inventory_path</span><span class="p">(</span><span class="s1">&#39;test_set_images&#39;</span><span class="p">),</span> <span class="n">image_px_size</span><span class="p">)</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_label</span><span class="p">(</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_inventory_path</span><span class="p">(</span><span class="s1">&#39;test_set_labels&#39;</span><span class="p">))</span>
-
-    <span class="c1"># preprocess normarize</span>
-    <span class="n">X_test_normalize</span> <span class="o">=</span> <span class="n">X_test</span> <span class="o">/</span> <span class="mi">255</span>
-
-    <span class="c1"># load model</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_inventory_path</span><span class="p">(</span><span class="s1">&#39;trained_model&#39;</span><span class="p">))</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">get_summary_text</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
-
-    <span class="c1"># predoction</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_normalize</span><span class="p">)</span>
-
-    <span class="c1"># Total accuracy evaluation value(measure)</span>
-    <span class="n">calc_acc_all</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
-
-    <span class="c1"># Accuracy Rating by Class(measure)</span>
-    <span class="n">calc_acc_by_class</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
-
-    <span class="c1"># Confusion matrix(CSV)</span>
-    <span class="n">save_confusion_matrix_csv</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
-
-    <span class="c1"># Confusion matrix(PNG)</span>
-    <span class="n">save_confusion_matrix_heatmap</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
-
-    <span class="c1"># ROC curve(PNG)</span>
-    <span class="n">save_roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span> 
-                    <span class="n">n_classes</span><span class="o">=</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_method_param_value</span><span class="p">(</span><span class="s1">&#39;class_count&#39;</span><span class="p">))</span>
-
-    <span class="c1"># AUC(measure)</span>
-    <span class="n">calc_auc</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span>
-            <span class="n">multi_class</span><span class="o">=</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_method_param_value</span><span class="p">(</span><span class="s1">&#39;auc_multi_class&#39;</span><span class="p">),</span>
-            <span class="n">average</span><span class="o">=</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_method_param_value</span><span class="p">(</span><span class="s1">&#39;auc_average&#39;</span><span class="p">))</span>
-
-    <span class="c1"># NG predictions(PNG)</span>
-    <span class="n">save_ng_predicts</span><span class="p">(</span><span class="n">X_test</span><span class="o">=</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">,</span> 
-                    <span class="n">n_classes</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ait_input</span><span class="o">.</span><span class="n">get_method_param_value</span><span class="p">(</span><span class="s1">&#39;class_count&#39;</span><span class="p">)))</span>
-
-    <span class="c1"># PredictionResult(CSV)</span>
-    <span class="n">save_prediction_result</span><span class="p">(</span><span class="n">y_test</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">y_pred</span><span class="p">)</span>
-
-    <span class="c1"># log(Text)</span>
-    <span class="n">move_log</span><span class="p">()</span>
+    <span class="k">pass</span>
+<span class="c1">## sample ##</span>
+    <span class="c1"># インベントリを読み込み</span>
+<span class="c1">#     iris_data = pd.read_csv(ait_input.get_inventory_path(&#39;iris_data&#39;))</span>
+<span class="c1">#     calc_mean(iris_data, ait_input.get_method_param_value(&#39;mean_column_name&#39;))</span>
+<span class="c1">#     save_pair_plot(iris_data)</span>
+<span class="c1">#     move_log()</span>
 </pre></div>
 </div>
 </li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In the example of the main algorithms area,
+the actual processing of the <code class="docutils literal notranslate"><span class="pre">main</span></code> function is commented out.</p>
+<p>If you want to try it uncommented out, create a <code class="docutils literal notranslate"><span class="pre">iris_data</span></code> directory under <code class="docutils literal notranslate"><span class="pre">/root/local_qai/inventory</span></code> and create `` Create <code class="docutils literal notranslate"><span class="pre">tableconvert_csv_4nryby.csv</span></code> under <code class="docutils literal notranslate"><span class="pre">/root/local_qai/inventory</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tableconvert_csv_4nryby.csv</span></code> should follow <strong>the following format</strong>.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;sepal.length&quot;</span><span class="p">,</span><span class="s2">&quot;sepal.width&quot;</span><span class="p">,</span><span class="s2">&quot;petal.length&quot;</span><span class="p">,</span><span class="s2">&quot;petal.width&quot;</span><span class="p">,</span><span class="s2">&quot;variety&quot;</span>  
+<span class="mf">1.0</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="s2">&quot;Setosa&quot;</span>  
+<span class="mf">2.0</span><span class="p">,</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">2.2</span><span class="p">,</span><span class="mf">2.3</span><span class="p">,</span><span class="s2">&quot;Versicolor&quot;</span>  
+<span class="mf">3.0</span><span class="p">,</span><span class="mf">3.1</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">3.3</span><span class="p">,</span><span class="s2">&quot;Virginica&quot;</span>  
+<span class="o">.......</span>  
+<span class="o">.......</span>  
+<span class="o">.......</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="license-area">
 <h3><span class="section-number">3.3.2.7. </span>#11 License area<a class="headerlink" href="#license-area" title="Permalink to this headline">¶</a></h3>

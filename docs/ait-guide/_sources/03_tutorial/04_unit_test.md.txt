@@ -41,11 +41,14 @@ Run all cells in `my_ait.ipynb` and confirm that the execution is successful.
 ``` tip:: When ALL RUN is completed, an AIT execution program that runs on Qunomon will be automatically generated.
 ```
 
-### Import local library
-Copy the libraries to be imported from local to `{YOUR_AIT_ROOT}/deploy/container/repository/`.
+### Copying your own python modules (optional)
+If you have imported your own python module with Jupyter Lab, copy the module to `{YOUR_AIT_ROOT}/deploy/container/repository/`.
 
-``` tip:: Local libraries are libraries that are not installed with a Dockerfile, such as python file that you create yourself.
+``` note:: If you have not created any files other than 
+    the ``my_ait.ipynb`` Jupyter file, this operation is not necessary.
 ```
+
+### Preparation for unit test execution
 
 Open Terminal from Jupyter and invoke the script for initialization.
 

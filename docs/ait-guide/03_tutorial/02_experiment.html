@@ -90,7 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="01_prepare.html">3.1. Preparation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. Experimentation within Jupyter Lab.</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#environmental-information">3.2.1. Environmental information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage">3.2.2. Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-lab-usage">3.2.2. Jupyter Lab Usage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="03_develop.html">3.3. AIT development</a></li>
@@ -237,25 +237,25 @@
 <p>The environment information may change with updates to the AIT template. Before use, please ensure to check the latest AIT template Dockerfile.</p>
 </div>
 </div>
-<div class="section" id="usage">
-<h2><span class="section-number">3.2.2. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jupyter-lab-usage">
+<h2><span class="section-number">3.2.2. </span>Jupyter Lab Usage<a class="headerlink" href="#jupyter-lab-usage" title="Permalink to this headline">¶</a></h2>
 <p>Access “http://localhost:9888/” from a browser like Chrome.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>To save input and output data for experimentation, we prepare the directory below.
-- <cite>qunomon/ait_repository/ait/{YourAITname}/exp</cite></p>
+<p>For the location of input/output data for Jupyter Lab notebooks and Jupyter Lab notebooks, please use the location directly under the root directory.</p>
+<ul class="simple">
+<li><p>Path to the template seen from the host: <cite>qunomon/ait_repository/ait/{YOUR_AIT_ROOT}/</cite></p></li>
+<li><p>Path to the template seen from the Jupyter Lab: <cite>/root/</cite></p></li>
+</ul>
 </div>
 <ul class="simple">
 <li><p>You can create and run excutable notebook like normal jupyter notebook or jupyter lab.</p></li>
 </ul>
-<p>Open the working directory by selecting <code class="docutils literal notranslate"><span class="pre">root</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code> from the directory pane on the left side of the window.</p>
-<p><img alt="move dir" src="../_images/01_link_exp.png" />
-<br></p>
-<p>Then create a new Python3 notebook by selecting <code class="docutils literal notranslate"><span class="pre">Python3</span></code> in the <code class="docutils literal notranslate"><span class="pre">Notebook</span></code> category located on the launcher tab.</p>
-<p><img alt="create notebook" src="../_images/02_create.png" />
+<p>Create a new Python3 notebook by selecting <code class="docutils literal notranslate"><span class="pre">Python3</span></code> in the <code class="docutils literal notranslate"><span class="pre">Notebook</span></code> category located on the launcher tab.</p>
+<p><img alt="create notebook" src="../_images/01_create.png" />
 <br></p>
 <p>Then the new notebook is opening at the right pane, and now you are able to do some experiments and implementation freely.
-<img alt="write notebook" src="../_images/03_write_notebook.png" /></p>
+<img alt="write notebook" src="../_images/02_write_notebook.png" /></p>
 <ul class="simple">
 <li><p>Environment &amp; Version Information:</p>
 <ul>

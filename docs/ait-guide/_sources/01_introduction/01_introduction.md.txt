@@ -58,3 +58,6 @@ These are the prerequisites for working in the AIT development environment.
   * In the AIT development environment, Jupyter Notebook is used on port 9888. Please ensure that this port is not used by other applications while the AIT development environment is running.
 
     *  If you want to change it, please refer to [Installation of Docker](../02_get_started/02_install.html#installation-of-docker)
+  * AIT can access external networks. Please implement functions with security risks in mind.
+  * We recommend that the amount of memory used by AIT is approximately 8GB or less, although this may be due to containerization. Please keep in mind that memory usage depends on the execution environment.
+  * AIT can use GPU. However, depending on GPU usage, shared memory is used, so there is a concern that more memory will be used.

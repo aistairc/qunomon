@@ -60,6 +60,6 @@ Register your developed AIT on AIT-HUB by entering the repository URL on the AIT
 ``` important:: When registering on AIT-HUB, please set the visibility of your GITHUB repository to public. AIT-HUB assumes that the source code is available publicly on GITHUB in order to review the detailed information about the AIT.
 ```
 
-※For details, refer to the AITHUB operation manual.
+※For details, refer to the [AITHUB operation manual](https://ait-hub.pj.aist.go.jp/qai/assets/user_manual_doc/en/index.html).
 
 ![aithub_aitupload](07/04_aithub_aitupload.png)
