@@ -98,8 +98,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#running-unit-test">3.4.2. Running unit test</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#generation-of-the-ait-execution-program">3.4.2.1. Generation of the AIT Execution Program</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#import-local-library">3.4.2.2. Import local library</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#execute-unit-test">3.4.2.3. Execute unit test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copying-your-own-python-modules-optional">3.4.2.2. Copying your own python modules (optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preparation-for-unit-test-execution">3.4.2.3. Preparation for unit test execution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execute-unit-test">3.4.2.4. Execute unit test</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#evaluate-unit-test">3.4.3. Evaluate unit test</a></li>
@@ -258,13 +259,17 @@ The directory name is obtained from the <code class="docutils literal notranslat
 <p>When ALL RUN is completed, an AIT execution program that runs on Qunomon will be automatically generated.</p>
 </div>
 </div>
-<div class="section" id="import-local-library">
-<h3><span class="section-number">3.4.2.2. </span>Import local library<a class="headerlink" href="#import-local-library" title="Permalink to this headline">¶</a></h3>
-<p>Copy the libraries to be imported from local to <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/deploy/container/repository/</span></code>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Local libraries are libraries that are not installed with a Dockerfile, such as python file that you create yourself.</p>
+<div class="section" id="copying-your-own-python-modules-optional">
+<h3><span class="section-number">3.4.2.2. </span>Copying your own python modules (optional)<a class="headerlink" href="#copying-your-own-python-modules-optional" title="Permalink to this headline">¶</a></h3>
+<p>If you have imported your own python module with Jupyter Lab, copy the module to <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/deploy/container/repository/</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not created any files other than
+the <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> Jupyter file, this operation is not necessary.</p>
 </div>
+</div>
+<div class="section" id="preparation-for-unit-test-execution">
+<h3><span class="section-number">3.4.2.3. </span>Preparation for unit test execution<a class="headerlink" href="#preparation-for-unit-test-execution" title="Permalink to this headline">¶</a></h3>
 <p>Open Terminal from Jupyter and invoke the script for initialization.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -282,7 +287,7 @@ The directory name is obtained from the <code class="docutils literal notranslat
 </div>
 </div>
 <div class="section" id="execute-unit-test">
-<h3><span class="section-number">3.4.2.3. </span>Execute unit test<a class="headerlink" href="#execute-unit-test" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4.2.4. </span>Execute unit test<a class="headerlink" href="#execute-unit-test" title="Permalink to this headline">¶</a></h3>
 <p>Open Terminal from Jupyter and invoke the script which execute a unit test.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/workdir/root/tool/local_test/
 ./run.sh

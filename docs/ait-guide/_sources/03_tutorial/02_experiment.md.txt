@@ -28,27 +28,24 @@ Development environment information:
 ``` important:: The environment information may change with updates to the AIT template. Before use, please ensure to check the latest AIT template Dockerfile.
 ```
 
-## Usage
+## Jupyter Lab Usage
 Access "http://localhost:9888/" from a browser like Chrome.
 
-``` important:: To save input and output data for experimentation, we prepare the directory below.
-    - `qunomon/ait_repository/ait/{YourAITname}/exp`
+``` important:: For the location of input/output data for Jupyter Lab notebooks and Jupyter Lab notebooks, please use the location directly under the root directory.
+
+    - Path to the template seen from the host: `qunomon/ait_repository/ait/{YOUR_AIT_ROOT}/`
+    - Path to the template seen from the Jupyter Lab: `/root/`
 ```
 
 * You can create and run excutable notebook like normal jupyter notebook or jupyter lab.
 
-Open the working directory by selecting `root` and `exp` from the directory pane on the left side of the window.
+Create a new Python3 notebook by selecting `Python3` in the `Notebook` category located on the launcher tab.
 
-![move dir](02/01_link_exp.png)
-<br>
-
-Then create a new Python3 notebook by selecting `Python3` in the `Notebook` category located on the launcher tab.
-
-![create notebook](02/02_create.png)
+![create notebook](02/01_create.png)
 <br>
 
 Then the new notebook is opening at the right pane, and now you are able to do some experiments and implementation freely.
-![write notebook](02/03_write_notebook.png)
+![write notebook](02/02_write_notebook.png)
 
 * Environment & Version Information:
   * JupyterLab 2.2.9 running on Python 3.9.13 Docker image.

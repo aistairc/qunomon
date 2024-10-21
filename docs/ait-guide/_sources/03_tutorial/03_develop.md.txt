@@ -25,6 +25,9 @@ AIT development involves breaking down the AI evaluation program created during 
 ```tip:: Some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.
 ```
 
+```tip:: The python code on this page is identical to https://github.com/aistairc/ait-template/blob/main/develop/my_ait.ipynb.
+```
+
 The table below is the structure of my_ait.ipynb.
 - The meaning of columns:
   - `#`: Number of the area.
@@ -58,16 +61,16 @@ Please write the OSS name in the first argument and the version in the second ar
 ```
 
 * Example
-    * When your AIT depends on the tensorflow 2.5.0 and numpy 1.19.2:
+    * When your AIT depends on the pandas 2.0.3 and seaborn 0.13.2 and numpy 1.26.4:
     ```py
-        if not is_ait_launch:
-            from ait_sdk.common.files.ait_requirements_generator import AITRequirementsGenerator
-            requirements_generator = AITRequirementsGenerator()
-            requirements_generator.add_package('tensorflow', '2.3.0')
-            requirements_generator.add_package('numpy', '1.19.2')
+    if not is_ait_launch:
+    ## sample ##
+        requirements_generator.add_package('pandas', '2.0.3')
+        requirements_generator.add_package('seaborn','0.13.2')
+        requirements_generator.add_package('numpy','1.26.4')
     ```
 
-For detailed information about `AITRequirementsGenerator`, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator).
+`requirements_generator` is an instance of the `AITRequirementsGenerator` class. For detailed information about `AITRequirementsGenerator`, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator).
 
 ``` important:: The AIT SDK itself are automatically added to the requirements.txt. Don't explicitly add them in this area.
 ```
@@ -107,17 +110,37 @@ In this area, we automatically generates ait.manifest.json file and place them t
 
 * Example
     ```py
+    if not is_ait_launch:
+    ## sample ##
+        from ait_sdk.common.files.ait_manifest_generator import AITManifestGenerator
         manifest_genenerator = AITManifestGenerator(current_dir)
-
-        # To set the name of the AIT
-        manifest_genenerator.set_ait_name('eval_mnist_acc_tf2.3')
-
-        # To set the inventory of the AIT
+        manifest_genenerator.set_ait_name('dev_ait_template_for_aithub')
+        manifest_genenerator.set_ait_description('アヤメの分類精度(sample)')
+        manifest_genenerator.set_ait_source_repository('https://github.com/aistairc/ait-template')
+        manifest_genenerator.set_ait_version('0.1')
+        manifest_genenerator.add_ait_licenses('Apache License Version 2.0')
+        manifest_genenerator.add_ait_keywords('Template')
+        manifest_genenerator.set_ait_quality('https://ait-hub.pj.aist.go.jp/ait-hub/api/0.0.1/qualityDimensions/機械学習品質マネジメントガイドライン第三版/A-2データ設計の十分性')
         inventory_requirement_iris_data = manifest_genenerator.format_ait_inventory_requirement(format_=['csv'])
         manifest_genenerator.add_ait_inventories(name='iris_data', 
                                                 type_='dataset', 
-                                                description='Iris classification data', 
+                                                description='アヤメの分類データです', 
                                                 requirement=inventory_requirement_iris_data)
+        manifest_genenerator.add_ait_parameters(name='mean_column_name', 
+                                                type_='str', 
+                                                description='sepal.width\nsepal.length\npetal.width\npetal.length', 
+                                                default_val='sepal.width')
+        manifest_genenerator.add_ait_measures(name='mean', 
+                                            type_='float', 
+                                            description='mean of select column', 
+                                            structure='single',
+                                            min='0')
+        manifest_genenerator.add_ait_resources(name='pairplot', 
+                                                type_='picture', 
+                                                description='pairplot')
+        manifest_genenerator.add_ait_downloads(name='Log', 
+                                                description='AIT実行ログ')
+        manifest_path = manifest_genenerator.write()
     ```
 
 `AITManifestGenerator` can validate the format of attributes and check whether required attributes are set. So if there're missing or wrong attributes in this area, execution of `my_ait.ipynb` may fail at that time.
@@ -135,9 +158,15 @@ Define the input data (data to be evaluated by the AIT) and parameters (settings
 
 * Example of input data settings
 ```py
-    input_generator = AITInputGenerator(manifest_path)
-    input_generator.add_ait_inventories(name='iris_data', value='iris_data/tableconvert_csv_4nryby.csv')
-    input_generator.set_ait_params(name='mean_column_name', value='petal.width')
+    if not is_ait_launch:
+    ## sample ##
+        from ait_sdk.common.files.ait_input_generator import AITInputGenerator
+        input_generator = AITInputGenerator(manifest_path)
+        input_generator.add_ait_inventories(name='iris_data',
+                                            value='iris_data/tableconvert_csv_4nryby.csv')
+        input_generator.set_ait_params(name='mean_column_name',
+                                        value='petal.width')
+        input_generator.write()
 ```
 
 `AITInputGenerator`For details about the class, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator).
@@ -172,27 +201,22 @@ You must add following two annotations to your output function.
     So the function must return a value.
 ```
 
-* When your AIT output AUC (Area Under the Curve) value as a result:
+* When your AIT output mean value as a result:
     ```py
+    ## sample ##
     @log(logger)
-    @measures(ait_output, 'AUC')
-    def calc_auc(y_test, y_pred, multi_class: str, average: str) -> float:
-        y_true = to_categorical(y_test)
-        y_score = y_pred
-
-        return roc_auc_score(y_true, y_score,
-                            multi_class=multi_class,
-                            average=average)
+    @measures(ait_output, 'mean')
+    def calc_mean(iris_data, col_name):
+        return iris_data[col_name].mean()
     ```
 
     * In the #5 Manifest Generation area, predefine the AIT manifest(`report/measures`) corresponding to the annotation.
     ```py
-        manifest_genenerator.add_ait_measures(name='AUC', 
+        manifest_genenerator.add_ait_measures(name='mean', 
                                             type_='float', 
-                                            description='Compute Area Under the Receiver Operating Characteristic Curve (ROC AUC) from prediction scores.', 
+                                            description='mean of select column', 
                                             structure='single',
-                                            min='0',
-                                            max='1')
+                                            min='0')
     ```
 
 #### result output functions: Report/Resources
@@ -206,34 +230,21 @@ you must add following two annotations to your output function.
 ``` important:: This function requires a file_path argument because the resource file path is automatically specified in the file_path argument of the result output function.
 ```
 
-* When your AIT outputs confusion matrix as heatmap image (ConfusionMatrixHeatmap):
+* When your AIT outputs pairplot image:
     ```py
+    ## sample ##
     @log(logger)
-    @resources(ait_output, path_helper, 'ConfusionMatrixHeatmap', 'confusion_matrix.png')
-    def save_confusion_matrix_heatmap(y_test, y_pred, file_path: str=None) -> None:
-        makedirs(str(Path(file_path).parent), exist_ok=True)
-
-        y_pred = K.argmax(y_pred)
-
-        labels = sorted(list(set(y_test)))
-        cmx_data = confusion_matrix(y_test, y_pred, labels=labels)
-
-        df_cmx = pd.DataFrame(cmx_data, index=labels, columns=labels)
-
-        fig = plt.figure(dpi=100, figsize=(8,6))
-        sn.heatmap(df_cmx, annot=True, fmt='g' ,square = True)
-        ax = fig.add_subplot(1, 1, 1)
-        ax.set_xlabel('Predicted class')
-        ax.set_ylabel('Actual class')
-        ax.set_title('Plot of Confusion Matrix')
-
-        # save as png
+    @resources(ait_output, path_helper, 'pairplot', 'pairplot.png')
+    def save_pair_plot(iris_data, file_path: str=None) -> str:    
+        sn.pairplot(iris_data, hue='variety')
         plt.savefig(file_path)
     ```
 
     * In the #5 Manifest Generation area, predefine the AIT manifest(`report/resources`) corresponding to the annotation.
     ```py
-        manifest_genenerator.add_ait_resources(name='ConfusionMatrixHeatmap', type_='picture', description='Confusion matrix heatmap.')
+        manifest_genenerator.add_ait_resources(name='pairplot', 
+                                            type_='picture', 
+                                            description='pairplot')
     ```
 
 #### result output functions: downloads
@@ -247,21 +258,19 @@ you must add following two annotations to your output function.
 ``` important:: This function requires a file_path argument because the resource file path is automatically specified in the file_path argument of the result output function.
 ```
 
-*  When your AIT outputs confusion matrix as CSV data (ConfusionMatrixCSV) as a supplemental information.
+*  Example of function definition when outputting the execution log of the AIT as a reference.
     ```py
+    ## sample ##
     @log(logger)
-    @downloads(ait_output, path_helper, 'ConfusionMatrixCSV', 'confusion_matrix.csv')
-    def save_confusion_matrix_csv(y_test, y_pred, file_path: str=None) -> None:
-        makedirs(str(Path(file_path).parent), exist_ok=True)
-
-        cmx_data = confusion_matrix(y_test, K.argmax(y_pred))
-        logger.info(cmx_data)
-        np.savetxt(file_path, cmx_data, fmt='%d', delimiter=',')
+    @downloads(ait_output, path_helper, 'Log', 'ait.log')
+    def move_log(file_path: str=None) -> str:
+        shutil.move(get_log_path(), file_path)
     ```
 
     * In the #5 Manifest Generation area, predefine the AIT manifest(`downloads`) corresponding to the annotation.
     ```py
-        manifest_genenerator.add_ait_downloads(name='ConfusionMatrixCSV', description='Confusion matrix csv.')
+        manifest_genenerator.add_ait_downloads(name='Log', 
+                                                description='AIT実行ログ')
     ```
 
 ### #9 Main Algorithms area
@@ -280,54 +289,32 @@ This area has some rules to follow.
     @log(logger)
     @ait_main(ait_output, path_helper, is_ait_launch)
     def main() -> None:
-        image_px_size = ait_input.get_method_param_value('image_px_size')
-
-        # load MNIST image and label from inventory
-        mnist = MNIST()
-        X_test = mnist.load_image(ait_input.get_inventory_path('test_set_images'), image_px_size)
-        y_test = mnist.load_label(ait_input.get_inventory_path('test_set_labels'))
-
-        # preprocess normarize
-        X_test_normalize = X_test / 255
-
-        # load model
-        model = tf.keras.models.load_model(ait_input.get_inventory_path('trained_model'))
-        logger.info(get_summary_text(model))
-
-        # predoction
-        y_pred = model.predict(X_test_normalize)
-
-        # Total accuracy evaluation value(measure)
-        calc_acc_all(y_test=y_test, y_pred=y_pred)
-
-        # Accuracy Rating by Class(measure)
-        calc_acc_by_class(y_test=y_test, y_pred=y_pred)
-
-        # Confusion matrix(CSV)
-        save_confusion_matrix_csv(y_test=y_test, y_pred=y_pred)
-
-        # Confusion matrix(PNG)
-        save_confusion_matrix_heatmap(y_test=y_test, y_pred=y_pred)
-
-        # ROC curve(PNG)
-        save_roc_curve(y_test=y_test, y_pred=y_pred, 
-                        n_classes=ait_input.get_method_param_value('class_count'))
-
-        # AUC(measure)
-        calc_auc(y_test=y_test, y_pred=y_pred,
-                multi_class=ait_input.get_method_param_value('auc_multi_class'),
-                average=ait_input.get_method_param_value('auc_average'))
-
-        # NG predictions(PNG)
-        save_ng_predicts(X_test=X_test, y_test=y_test, y_pred=y_pred, 
-                        n_classes= int(ait_input.get_method_param_value('class_count')))
-
-        # PredictionResult(CSV)
-        save_prediction_result(y_test=y_test, y_pred=y_pred)
-
-        # log(Text)
-        move_log()
+        pass
+    ## sample ##
+        # インベントリを読み込み
+    #     iris_data = pd.read_csv(ait_input.get_inventory_path('iris_data'))
+    #     calc_mean(iris_data, ait_input.get_method_param_value('mean_column_name'))
+    #     save_pair_plot(iris_data)
+    #     move_log()
     ```
+
+```important:: In the example of the main algorithms area, 
+    the actual processing of the ``main`` function is commented out.
+
+    If you want to try it uncommented out, create a ``iris_data`` directory under ``/root/local_qai/inventory`` and create `` Create ``tableconvert_csv_4nryby.csv`` under ``/root/local_qai/inventory``. 
+
+    ``tableconvert_csv_4nryby.csv`` should follow **the following format**.
+```
+
+```
+"sepal.length","sepal.width","petal.length","petal.width","variety"  
+1.0,1.1,1.2,1.3,"Setosa"  
+2.0,2.1,2.2,2.3,"Versicolor"  
+3.0,3.1,3.2,3.3,"Virginica"  
+.......  
+.......  
+.......
+```
 
 ### #11 License area
 Some attributes must be set for automatic generation of your AIT license information.
