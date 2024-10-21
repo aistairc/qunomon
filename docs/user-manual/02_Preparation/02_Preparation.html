@@ -192,13 +192,15 @@
 <h3><span class="section-number">2.1.1.2. </span>Install and register a new guideline definition<a class="headerlink" href="#install-and-register-a-new-guideline-definition" title="Permalink to this heading">¶</a></h3>
 <p>You can see the list of guideline which can be installed to your Qunomon from the “Guidelines” screen.
 Choose guideline to be installed with radio button, and then click the “Guideline install” button.</p>
+<p>※Guideline that have already been installed cannot be reinstalled.If necessary, click the delete icon in the “Install” column to delete the guideline, and reinstall it.</p>
 <p><img alt="0102" src="../_images/02.png" /></p>
 </section>
 <section id="install-and-register-a-new-ait">
 <h3><span class="section-number">2.1.1.3. </span>Install and register a new AIT<a class="headerlink" href="#install-and-register-a-new-ait" title="Permalink to this heading">¶</a></h3>
 <p>You can see the list of published AITs through “AITSearch” screen. You can filter the AITs to be listed by search boxes diplayed at top of the screen.</p>
 <p>If you want to know more detailed information (such like authors, detailed description, I/O requirements…) of the AIT, you can press the icon displayed on the “Detail” column on the table to see them.</p>
-<p>If the “×” mark are displayed on the “Installed” column, they are AITs currently not installed. Please check the detail and install them as needed. Choose an AIT to be installed with radio button, and then click the icon on the “Install” column. This will automatically download the selected AIT from AIT Hub and registration to your Qunomon.</p>
+<p>If the “×” mark are displayed on the “Installed” column, they are AITs currently not installed. Please check the detail and install them as needed. Click the icon in the “Install” column of the AIT you wish to install. This will automatically download the selected AIT from AIT Hub and registration to your Qunomon.</p>
+<p>※AIT that have already been installed cannot be reinstalled. If necessary, please go to the Installed AITs screen, remove it, and reinstall it.</p>
 <p><img alt="0103" src="../_images/03.png" /></p>
 <p>Alternatively, you can check and install popular AITs from “AITHub Ranking” screen.</p>
 <p><img alt="0104" src="../_images/04.png" /></p>
@@ -210,18 +212,25 @@ Choose guideline to be installed with radio button, and then click the “Guidel
 <p>These procedure are for advanced users and may require some computer science knowledge.</p>
 <section id="register-guideline-not-using-ait-hub">
 <h3><span class="section-number">2.1.2.1. </span>Register Guideline (not using AIT-HUB)<a class="headerlink" href="#register-guideline-not-using-ait-hub" title="Permalink to this heading">¶</a></h3>
-<p>You must analyze guideline/standards and identify quality characteristics defined in them. After that, you required to write “Guideline JSON” conform to our <a class="reference external" href="https://github.com/aistairc/qunomon/tree/dev2_schema/schema/doc/guideline_schema/develo">Guideline Schema</a> defined as JSON Schema.</p>
+<p>You must analyze guideline/standards and identify quality characteristics defined in them. After that, you required to write “Guideline JSON” conform to our <a class="reference external" href="https://github.com/aistairc/qunomon/tree/dev2_schema/schema/doc/guideline_schema/develop">Guideline Schema</a> defined as JSON Schema.</p>
 <p>Click the “Guideline Create” button on the “Guidelines” screen.</p>
 <p><img alt="0201" src="../_images/011.png" /></p>
 <p>A sample of guideline definition compliant with the schema will be displayed on the “guideline creation” screen. Modify them accordingly and click the “Register” button.</p>
 <p><img alt="0202" src="../_images/021.png" /></p>
 <p>If you want modify them over a wide range, it is advised to read guideline schema carefully and edit them on the other editors. We recommend that you test your guideline JSON for schema compliance beforehand.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the JSON format is not correct, an “x” mark will appear to the left of the line number. Please correct the area around the “x” mark and register the data with all the “x” marks gone.</p>
+</div>
+<p><img alt="0301" src="../_images/0120.png" /></p>
 </section>
 <section id="register-ait-not-using-ait-hub">
 <h3><span class="section-number">2.1.2.2. </span>Register AIT (not using AIT-HUB)<a class="headerlink" href="#register-ait-not-using-ait-hub" title="Permalink to this heading">¶</a></h3>
 <p>Move to the “AITLocalInstall” screen. Press the “Select Upload File” and then you are choose zipped AIT to be installed. “AIT Create” button will register the AIT into your Qunomon.</p>
 <p>To create AIT and its zipped archive, you should read <a class="reference external" href="https://aistairc.github.io/qunomon/ait-guide/index.html">AIT Development Guide</a> as reference.</p>
 <p><img alt="0203" src="../_images/031.png" /></p>
+<p>※AIT registration from local will take some time. Please wait for a while and make sure that the “Status” column becomes “Registered” before using it for the TestDescription. If the “Status” column  does not change from “Processing” after a while, please reload the screen.</p>
+<p><img alt="0302" src="../_images/0214.png" /></p>
 </section>
 </section>
 </section>
