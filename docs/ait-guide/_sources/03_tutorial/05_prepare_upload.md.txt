@@ -22,14 +22,21 @@ If you have built an environment without using AIT-SDK in the Dependency Managem
 Run following batch file on the host environment to generate third-party notice.
 Thirdparty Notices are generated under `{YOUR_AIT_ROOT}`.
 
+* ait-cli command
+  ```sh
+  cd {YOUR_AIT_ROOT}
+  ait-cli thirdparty-notice
+  ```
 * Launcher
   * Windows:
     ```bat
-    {YOUR_AIT_ROOT}/tool/generate_thirdparty_notices.bat
+    cd {YOUR_AIT_ROOT}/tool
+    generate_thirdparty_notices.bat
     ```
   * macOS, Linux:
     ```sh
-    sudo bash {YOUR_AIT_ROOT}/tool/generate_thirdparty_notices.sh
+    cd {YOUR_AIT_ROOT}/tool
+    sudo bash generate_thirdparty_notices.sh
     ```
 
 ``` important:: This script will not work perfectly.
@@ -39,20 +46,28 @@ Thirdparty Notices are generated under `{YOUR_AIT_ROOT}`.
 ## create zip file
 Extract the resources required for AIT from the developed AI evaluation program and compress that into a zip file.
 Run following batch file on the host environment to generate the zip file.
+
+* ait-cli command
+  ```sh
+  cd {YOUR_AIT_ROOT}
+  ait-cli zip
+  ```
 * Launcher
   * Windows:
-  ```bat
-  {AIT_ROOT}/tool/compress_ait_package.bat
-  ```
+    ```bat
+    cd {YOUR_AIT_ROOT}/tool
+    compress_ait_package.bat
+    ```
   * macOS, Linux:
-  ```sh
-  sudo bash {YOUR_AIT_ROOT}/tool/compress_ait_package.sh
-  ```
+    ```sh
+    cd {YOUR_AIT_ROOT}/tool
+    sudo bash compress_ait_package.sh
+    ```
 
 This command compresses `{YOUR_AIT_ROOT}/deploy/container/` as zip file.
 
 ``` tip:: Test inputs and test results are not included in the zip file.
 ```
 
-The generated zip file will be stored in `{YOUR_AIT_ROOT}/{YourAITName}.zip`.
+The generated zip file will be stored in `{YOUR_AIT_ROOT}/tool/{YourAITName}.zip`.
 The next chapter will cover integration test with Qunomon.

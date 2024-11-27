@@ -89,16 +89,21 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Tutorial</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Preparation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#user-workflow">3.1.1. User workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fork-the-ait-template">3.1.2. Fork the AIT template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#change-ait-repository-name">3.1.3. Change AIT repository name</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-proceed-in-this-tutorial">3.1.2. How to proceed in this tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-ait-templates-using-ait-cli">3.1.3. Set up AIT templates using ait-cli</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#recommended-naming-convention-of-ait">3.1.3.1. Recommended naming convention of AIT</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#clone-the-ait-repository">3.1.4. Clone the AIT repository</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#edit-readme-md">3.1.5. Edit readme.md</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#launch-development-envionment">3.1.6. Launch development envionment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#screenshots-after-launch">3.1.6.1. Screenshots after launch</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#development-work-flow">3.1.6.2. Development work flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fork-the-ait-template">3.1.4. Fork the AIT template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-ait-repository-name">3.1.5. Change AIT repository name</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">3.1.5.1. Recommended naming convention of AIT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-ait-repository">3.1.6. Clone the AIT repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-readme-md">3.1.7. Edit readme.md</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-development-envionment">3.1.8. Launch development envionment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#screenshots-after-launch">3.1.8.1. Screenshots after launch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#development-work-flow">3.1.8.2. Development work flow</a></li>
 </ul>
 </li>
 </ul>
@@ -215,20 +220,55 @@
 <p>If you do not intend to publish your created AIT globally, the steps beyond “releasing it on GitHub via a browser” are not necessary.</p>
 </div>
 </div>
-<div class="section" id="fork-the-ait-template">
-<h2><span class="section-number">3.1.2. </span>Fork the AIT template<a class="headerlink" href="#fork-the-ait-template" title="Permalink to this headline">¶</a></h2>
-<p>AIT template is available on <code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/ait-template</span></code>.
-Please fork this repository for your own AIT development.
-<img alt="Alt template fork" src="../_images/03_ait_fork.png" /></p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>The AIT template repository is set to public. After forking, please review and adjust the visibility settings as necessary.</p>
+<div class="section" id="how-to-proceed-in-this-tutorial">
+<h2><span class="section-number">3.1.2. </span>How to proceed in this tutorial<a class="headerlink" href="#how-to-proceed-in-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, you will need to execute commands as shown in the following example.</p>
+<p><strong>example:</strong></p>
+<blockquote>
+<div><ul>
+<li><p>ait-cli command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>sample<span class="o">}</span>
+ait-cli<span class="w"> </span>sample
+</pre></div>
 </div>
+</li>
+<li><p>Launcher</p>
+<ul>
+<li><p>windows:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> {sample}/tool  
+sample.bat  
+</pre></div>
 </div>
-<div class="section" id="change-ait-repository-name">
-<h2><span class="section-number">3.1.3. </span>Change AIT repository name<a class="headerlink" href="#change-ait-repository-name" title="Permalink to this headline">¶</a></h2>
-<p><img alt="Alt rename" src="../_images/04_ait_rename.png" />
-AIT name (the part <code class="docutils literal notranslate"><span class="pre">{YourAITName}</span></code>), we recommend you to follow the naming convention as below.</p>
+</li>
+<li><p>macOS, Linux:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>sample<span class="o">}</span>/tool<span class="w">  </span>
+sample.sh<span class="w">  </span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">ait-cli</span></code> is a command line tool to support AIT development. Installation is not required, but recommended.<br />If you have installed <code class="docutils literal notranslate"><span class="pre">ait-cli</span></code>, please follow the “ait-cli command” command in future procedures. If you have not installed <code class="docutils literal notranslate"><span class="pre">ait-cli</span></code>, please follow the “Launcher”.</p>
+<p>You can install <code class="docutils literal notranslate"><span class="pre">ait-cli</span></code> with pip.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ait-cli
+</pre></div>
+</div>
+<p>Detailed installation and usage instructions can be found at the link.<br /><code class="docutils literal notranslate"><span class="pre">https://pypi.org/project/ait-cli/</span></code></p>
+</div>
+<div class="section" id="set-up-ait-templates-using-ait-cli">
+<h2><span class="section-number">3.1.3. </span>Set up AIT templates using ait-cli<a class="headerlink" href="#set-up-ait-templates-using-ait-cli" title="Permalink to this headline">¶</a></h2>
+<p>Only those who have installed <code class="docutils literal notranslate"><span class="pre">ait-cli</span></code> should follow this procedure.<br />After performing this procedure, you do not need to perform the following procedures: <code class="docutils literal notranslate"><span class="pre">Fork</span> <span class="pre">the</span> <span class="pre">AIT</span> <span class="pre">template</span></code>, <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">AIT</span> <span class="pre">repository</span> <span class="pre">name</span></code>, and <code class="docutils literal notranslate"><span class="pre">clone</span> <span class="pre">the</span> <span class="pre">AIT</span> <span class="pre">repository</span></code>.</p>
+<p>First, prepare the template for AIT development.<br />Go to the directory where you want to place the AIT template, and execute the following command.</p>
+<ul>
+<li><p>ait-cli command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ait-cli<span class="w"> </span>create<span class="w"> </span>--ait_name<span class="w"> </span><span class="o">{</span>YourAITName<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>AIT name (the part <code class="docutils literal notranslate"><span class="pre">{YourAITName}</span></code>), we recommend you to follow the naming convention as below.</p>
 <div class="section" id="recommended-naming-convention-of-ait">
 <h3><span class="section-number">3.1.3.1. </span>Recommended naming convention of AIT<a class="headerlink" href="#recommended-naming-convention-of-ait" title="Permalink to this headline">¶</a></h3>
 <p>The recommended naming convention of AIT are as follows.</p>
@@ -280,13 +320,78 @@ AIT name (the part <code class="docutils literal notranslate"><span class="pre">
 </ul>
 </div>
 </div>
+<div class="section" id="fork-the-ait-template">
+<h2><span class="section-number">3.1.4. </span>Fork the AIT template<a class="headerlink" href="#fork-the-ait-template" title="Permalink to this headline">¶</a></h2>
+<p>AIT template is available on <code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/ait-template</span></code>.
+Please fork this repository for your own AIT development.
+<img alt="Alt template fork" src="../_images/03_ait_fork.png" /></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The AIT template repository is set to public. After forking, please review and adjust the visibility settings as necessary.</p>
+</div>
+</div>
+<div class="section" id="change-ait-repository-name">
+<h2><span class="section-number">3.1.5. </span>Change AIT repository name<a class="headerlink" href="#change-ait-repository-name" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Alt rename" src="../_images/04_ait_rename.png" />
+AIT name (the part <code class="docutils literal notranslate"><span class="pre">{YourAITName}</span></code>), we recommend you to follow the naming convention as below.</p>
+<div class="section" id="id1">
+<h3><span class="section-number">3.1.5.1. </span>Recommended naming convention of AIT<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The recommended naming convention of AIT are as follows.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{prefix}_{target}_{format}_{task}_{measure}</span></code></p></li>
+</ul>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>name</th>
+<th>mandatory</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefix</td>
+<td>Yes</td>
+<td>This represents the type of AIT. <br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT.</td>
+</tr>
+<tr>
+<td>target</td>
+<td>Yes</td>
+<td>Choose either "dataset" or "model" depending on the   evaluation target of AIT.</td>
+</tr>
+<tr>
+<td>task</td>
+<td>No</td>
+<td>The problem targeted by AIT.<br>Example.image_classifier</td>
+</tr>
+<tr>
+<td>format</td>
+<td>No</td>
+<td>The format of the data processed by AIT.<br>Example. table</td>
+</tr>
+<tr>
+<td>measure</td>
+<td>No</td>
+<td>The quality measured by AIT.<br>Example. coverage_of_dataset</td>
+</tr>
+</tbody>
+</table><ul class="simple">
+<li><p>restriction</p>
+<ul>
+<li><p>The name must be 50 characters or less.</p></li>
+<li><p>The available characters are half-width alphanumeric characters and underscore <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="clone-the-ait-repository">
-<h2><span class="section-number">3.1.4. </span>Clone the AIT repository<a class="headerlink" href="#clone-the-ait-repository" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.6. </span>Clone the AIT repository<a class="headerlink" href="#clone-the-ait-repository" title="Permalink to this headline">¶</a></h2>
 <p>Fork the AIT template and clone it to your local machine.
 <img alt="Alt clone" src="../_images/05_ait_clone.png" /></p>
 </div>
 <div class="section" id="edit-readme-md">
-<h2><span class="section-number">3.1.5. </span>Edit readme.md<a class="headerlink" href="#edit-readme-md" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.7. </span>Edit readme.md<a class="headerlink" href="#edit-readme-md" title="Permalink to this headline">¶</a></h2>
 <p>After create a directory for new AIT, open <code class="docutils literal notranslate"><span class="pre">{YourAITName}/readme.md</span></code> and edit title.</p>
 <ul>
 <li><p>Before</p>
@@ -303,7 +408,7 @@ AIT name (the part <code class="docutils literal notranslate"><span class="pre">
 </ul>
 </div>
 <div class="section" id="launch-development-envionment">
-<h2><span class="section-number">3.1.6. </span>Launch development envionment<a class="headerlink" href="#launch-development-envionment" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.8. </span>Launch development envionment<a class="headerlink" href="#launch-development-envionment" title="Permalink to this headline">¶</a></h2>
 <p>We are providing Jupyter Lab environment adjusted to the AIT development purpose as AIT development environment.
 After launching them, they are provided as web application on the localhost. You can use them through your browser.</p>
 <p>Remove docker image</p>
@@ -332,7 +437,7 @@ sudo<span class="w"> </span>bash<span class="w"> </span>launch_devenv.sh<span cl
 </li>
 </ul>
 <div class="section" id="screenshots-after-launch">
-<h3><span class="section-number">3.1.6.1. </span>Screenshots after launch<a class="headerlink" href="#screenshots-after-launch" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.8.1. </span>Screenshots after launch<a class="headerlink" href="#screenshots-after-launch" title="Permalink to this headline">¶</a></h3>
 <p>If the launch has succeeded, applications below are displayed automatically.</p>
 <ul class="simple">
 <li><p>Jupyter lab
@@ -340,7 +445,7 @@ sudo<span class="w"> </span>bash<span class="w"> </span>launch_devenv.sh<span cl
 </ul>
 <br></div>
 <div class="section" id="development-work-flow">
-<h3><span class="section-number">3.1.6.2. </span>Development work flow<a class="headerlink" href="#development-work-flow" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.8.2. </span>Development work flow<a class="headerlink" href="#development-work-flow" title="Permalink to this headline">¶</a></h3>
 <p>In this tutorial, we assume following work flow as default development work flow.</p>
 <ol class="simple">
 <li><p>Experiment and development of an AI evaluation program.</p></li>

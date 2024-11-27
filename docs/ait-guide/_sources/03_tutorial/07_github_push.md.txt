@@ -5,11 +5,12 @@ This chapter explains the steps to publish the AIT you developed.
 ```
 
 ``` important:: Disclaimer : 
-The publication of AITs on this platform is the responsibility of the developers. The developers guarantee that the information contained in AIT does not infringe any third-party intellectual property rights and does not include any personal or confidential information.
-
-In the event that developers inadvertently publish confidential information, or if AIT is improperly used by a third party, neither this platform nor its operators shall bear any liability. The developers shall bear full responsibility for any direct or indirect damages that may arise from the use of AIT.
-
-Users of this platform understand the potential risks associated with using AIT and agree to use AIT at their own risk.
+  
+  The publication of AITs on this platform is the responsibility of the developers. The developers guarantee that the information contained in AIT does not infringe any third-party intellectual property rights and does not include any personal or confidential information.
+  
+  In the event that developers inadvertently publish confidential information, or if AIT is improperly used by a third party, neither this platform nor its operators shall bear any liability. The developers shall bear full responsibility for any direct or indirect damages that may arise from the use of AIT.
+  
+  Users of this platform understand the potential risks associated with using AIT and agree to use AIT at their own risk.
 ```
 
 The publication of AIT is carried out in the following two steps:
@@ -20,15 +21,24 @@ The publication of AIT is carried out in the following two steps:
 
 ### Register on GITHUB
 
-Execute the batch file and push to GITHUB.
+Execute the following command to push to GITHUB.
 
-```
-Windows
-{YOUR_AIT_ROOT}/tool/github_push.bat
-
-linux
-{YOUR_AIT_ROOT}/tool/github_push.sh
-```
+* ait-cli command
+  ```sh
+  cd {YOUR_AIT_ROOT}
+  ait-cli git-push --github_repository {Your GitHub repository URL}
+  ```
+* Launcher
+  * Windows:
+    ```bat
+    cd {YOUR_AIT_ROOT}/tool
+    github_push.bat
+    ```
+  * macOS, Linux:
+    ```sh
+    cd {YOUR_AIT_ROOT}/tool
+    sudo bash github_push.sh
+    ```
 
 #### Select upload inventory
 Choose whether to upload the input files used in the unit testing.
@@ -41,6 +51,8 @@ N : Do not upload.
 
 
 #### Enter commit comment
+Enter a comment when committing.  
+Comments should not contain **spaces or line breaks**.
 ![commit_comment](07/02_commit_comment.png)
 
 ``` tips:: Depending on the authentication settings for GITHUB, you may need to provide authentication information when registering on GITHUB.
