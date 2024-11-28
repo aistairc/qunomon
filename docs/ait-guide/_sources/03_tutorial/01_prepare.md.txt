@@ -8,6 +8,67 @@ The development of AITs can be categorized into three scenarios: ① creating an
 ``` note:: If you do not intend to publish your created AIT globally, the steps beyond "releasing it on GitHub via a browser" are not necessary.
 ``` 
 
+## How to proceed in this tutorial
+In this tutorial, you will need to execute commands as shown in the following example.  
+
+**example:**    
+> * ait-cli command
+>   ```sh
+>   cd {sample}
+>   ait-cli sample
+>   ```
+> 
+> * Launcher
+>   * windows:  
+>     ```bat
+>     cd {sample}/tool  
+>     sample.bat  
+>     ```
+>   * macOS, Linux:  
+>     ```sh
+>     cd {sample}/tool  
+>     sample.sh  
+>     ```
+
+`ait-cli` is a command line tool to support AIT development. Installation is not required, but recommended.  
+If you have installed `ait-cli`, please follow the "ait-cli command" command in future procedures. If you have not installed `ait-cli`, please follow the "Launcher".
+
+You can install `ait-cli` with pip.
+```sh
+pip install ait-cli
+```
+Detailed installation and usage instructions can be found at the link.  
+`https://pypi.org/project/ait-cli/`
+
+
+## Set up AIT templates using ait-cli
+Only those who have installed `ait-cli` should follow this procedure.  
+After performing this procedure, you do not need to perform the following procedures: `Fork the AIT template`, `Change AIT repository name`, and `clone the AIT repository`.
+
+First, prepare the template for AIT development.  
+Go to the directory where you want to place the AIT template, and execute the following command.
+* ait-cli command
+  ```sh
+  ait-cli create --ait_name {YourAITName}
+  ```
+AIT name (the part `{YourAITName}`), we recommend you to follow the naming convention as below. 
+
+### Recommended naming convention of AIT
+The recommended naming convention of AIT are as follows.
+* `{prefix}_{target}_{format}_{task}_{measure}`
+
+| name    | mandatory | description                                                                     |
+|---------|-----------|---------------------------------------------------------------------------------|
+| prefix  | Yes       | This represents the type of AIT. <br>- eval: Quality evaluation<br>- alyz: Analysis<br>- misc: Miscellaneous<br>- generate: Used for AIT that generates data to be input to AIT. |
+| target  | Yes       | Choose either "dataset" or "model" depending on the   evaluation target of AIT. |
+| task    | No        | The problem targeted by AIT.<br>Example.image_classifier                        |
+| format  | No        | The format of the data processed by AIT.<br>Example. table                      |
+| measure | No        | The quality measured by AIT.<br>Example. coverage_of_dataset                    |
+
+* restriction
+  * The name must be 50 characters or less.
+  * The available characters are half-width alphanumeric characters and underscore `_`.  
+
 ## Fork the AIT template
 AIT template is available on `https://github.com/aistairc/ait-template`.
 Please fork this repository for your own AIT development.

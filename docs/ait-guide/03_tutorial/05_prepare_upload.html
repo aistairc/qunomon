@@ -220,15 +220,23 @@ If your AIT depends on the other software or libraries (such as GCC, RDBMS, …)
 <p>Run following batch file on the host environment to generate third-party notice.
 Thirdparty Notices are generated under <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}</span></code>.</p>
 <ul>
+<li><p>ait-cli command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>
+ait-cli<span class="w"> </span>thirdparty-notice
+</pre></div>
+</div>
+</li>
 <li><p>Launcher</p>
 <ul>
 <li><p>Windows:</p>
-<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>{YOUR_AIT_ROOT}/tool/generate_thirdparty_notices.bat
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> {YOUR_AIT_ROOT}/tool
+generate_thirdparty_notices.bat
 </pre></div>
 </div>
 </li>
 <li><p>macOS, Linux:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>bash<span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>/tool/generate_thirdparty_notices.sh
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>/tool
+sudo<span class="w"> </span>bash<span class="w"> </span>generate_thirdparty_notices.sh
 </pre></div>
 </div>
 </li>
@@ -246,19 +254,27 @@ You must confirm and ensure that all the depending third party OSS are listed up
 <p>Extract the resources required for AIT from the developed AI evaluation program and compress that into a zip file.
 Run following batch file on the host environment to generate the zip file.</p>
 <ul>
+<li><p>ait-cli command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>
+ait-cli<span class="w"> </span>zip
+</pre></div>
+</div>
+</li>
 <li><p>Launcher</p>
-<ul class="simple">
-<li><p>Windows:</p></li>
-</ul>
-<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>{AIT_ROOT}/tool/compress_ait_package.bat
+<ul>
+<li><p>Windows:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> {YOUR_AIT_ROOT}/tool
+compress_ait_package.bat
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>macOS, Linux:</p></li>
-</ul>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>bash<span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>/tool/compress_ait_package.sh
+</li>
+<li><p>macOS, Linux:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>YOUR_AIT_ROOT<span class="o">}</span>/tool
+sudo<span class="w"> </span>bash<span class="w"> </span>compress_ait_package.sh
 </pre></div>
 </div>
+</li>
+</ul>
 </li>
 </ul>
 <p>This command compresses <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/deploy/container/</span></code> as zip file.</p>
@@ -266,7 +282,7 @@ Run following batch file on the host environment to generate the zip file.</p>
 <p class="admonition-title">Tip</p>
 <p>Test inputs and test results are not included in the zip file.</p>
 </div>
-<p>The generated zip file will be stored in <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/{YourAITName}.zip</span></code>.
+<p>The generated zip file will be stored in <code class="docutils literal notranslate"><span class="pre">{YOUR_AIT_ROOT}/tool/{YourAITName}.zip</span></code>.
 The next chapter will cover integration test with Qunomon.</p>
 </div>
 </div>
