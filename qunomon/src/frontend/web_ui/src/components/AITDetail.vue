@@ -33,14 +33,12 @@
             <div class="ait_install t_center">
                 <div class="ait_install_btn">
                     <template v-if="$i18n.locale === 'en'">
-                        <input type="button" value="AIT Install" class="btn_single btn_inline_left" 
-                                @click="aitInstall" v-bind:disabled="ait_local_installed_flag == 'true'"
-                                v-bind:class="{'un_btn' : ait_local_installed_flag == 'true'}" />
+                        <input v-bind:disabled="ait_local_installed_flag == 'true'" v-bind:class="{'un_btn' : ait_local_installed_flag == 'true'}" type="button" value="AIT Install" class="btn_single btn_inline_left" 
+                                @click="aitInstall" />
                     </template>
                     <template v-else>
-                        <input type="button" value="AITインストール" class="btn_single btn_inline_left"  
-                                @click="aitInstall" v-bind:disabled="ait_local_installed_flag == 'true'"
-                                v-bind:class="{'un_btn' : ait_local_installed_flag == 'true'}" />
+                        <input v-bind:disabled="ait_local_installed_flag == 'true'" v-bind:class="{'un_btn' : ait_local_installed_flag == 'true'}" type="button" value="AITインストール" class="btn_single btn_inline_left"  
+                                @click="aitInstall" />
                     </template>
                 </div>
                 <div class="ait_install_text">
@@ -90,14 +88,14 @@
                                 <tr>
                                     <td valign="top">{{$t("aitDetail.references")}}</td>
                                     <td>
-                                        <template v-for="(reference, index) in ait_properties.references">
-                                            <div class="sub_accordion_level3" :key="index">
+                                        <template v-for="(reference, index) in ait_properties.references" :key="index">
+                                            <div class="sub_accordion_level3">
                                                 <label v-bind:for="0 + index">
                                                     <span v-if="referencesOnOffFlag[index]"><img class="icon" title="unfold" :src="lessInfo"></span>
                                                     <span v-else><img class="icon" :src="moreInfo"></span>
                                                     {{$t("aitDetail.reference")}} - {{index + 1}}
                                                 </label>
-                                                <input type="checkbox" v-bind:id="0 + index" class="on_off" v-model="referencesOnOffFlag[index]"/>
+                                                <input v-bind:id="0 + index" type="checkbox" class="on_off" v-model="referencesOnOffFlag[index]"/>
                                                 <ul>
                                                     <li>
                                                         <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -143,14 +141,14 @@
                     <input type="checkbox" id="panel_inventories" class="on_off" v-model="accordionOnOffFlag.inventories"/>
                     <ul>
                         <li>
-                            <template v-for="(inventory, index_1) in inventories">
-                                <div class="sub_accordion_level1" :key="index_1">
+                            <template v-for="(inventory, index_1) in inventories" :key="index_1">
+                                <div class="sub_accordion_level1">
                                     <label v-bind:for="1000 + index_1">
                                         <span v-if="inventoriesOnOffFlag[index_1]"><img class="icon" title="unfold" :src="lessInfo"></span>
                                         <span v-else><img class="icon" :src="moreInfo"></span>
                                         {{$t("aitDetail.inventory")}} - {{index_1 + 1}}
                                     </label>
-                                    <input type="checkbox" v-bind:id="1000 + index_1" class="on_off" v-model="inventoriesOnOffFlag[index_1]"/>
+                                    <input v-bind:id="1000 + index_1" type="checkbox" class="on_off" v-model="inventoriesOnOffFlag[index_1]"/>
                                     <ul>
                                         <li>
                                             <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -173,14 +171,14 @@
                                                 <tr>
                                                     <td valign="top">{{$t("aitDetail.requirements")}}</td>
                                                     <td>
-                                                        <template v-for="(requirement, index_2) in inventory.inventory_requirements">
-                                                            <div class="sub_accordion_level3" :key="index_2">
+                                                        <template v-for="(requirement, index_2) in inventory.inventory_requirements" :key="index_2">
+                                                            <div class="sub_accordion_level3">
                                                                 <label v-bind:for="1500 + index_1 + index_2">
                                                                     <span v-if="inventoryRequirementsOnOffFlag[index_1][index_2]"><img class="icon" title="unfold"  :src="lessInfo"></span>
                                                                     <span v-else><img class="icon" :src="moreInfo"></span>
                                                                     {{$t("aitDetail.requirement")}} - {{index_2 + 1}}
                                                                 </label>
-                                                                <input type="checkbox" v-bind:id="1500 + index_1 + index_2" class="on_off" v-model="inventoryRequirementsOnOffFlag[index_1][index_2]"/>
+                                                                <input v-bind:id="1500 + index_1 + index_2" type="checkbox" class="on_off" v-model="inventoryRequirementsOnOffFlag[index_1][index_2]"/>
                                                                 <ul>
                                                                     <li>
                                                                         <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -191,14 +189,14 @@
                                                                             <tr>
                                                                                 <td valign="top">{{$t("aitDetail.inventory_compatible_packages")}}</td>
                                                                                 <td>
-                                                                                    <template v-for="(compatible_package, index_3) in requirement.inventory_compatible_packages">
-                                                                                        <div class="sub_accordion_level4" :key="index_3">
+                                                                                    <template v-for="(compatible_package, index_3) in requirement.inventory_compatible_packages" :key="index_3">
+                                                                                        <div class="sub_accordion_level4">
                                                                                             <label v-bind:for="2000 + index_2 + index_3">
                                                                                                 <span v-if="inventoryCompatiblePackagesOnOffFlag[index_2][index_3]"><img class="icon" title="unfold"  :src="lessInfo"></span>
                                                                                                 <span v-else><img class="icon" :src="moreInfo"></span>
                                                                                                 {{$t("aitDetail.compatible_package")}} - {{index_3 + 1}}
                                                                                             </label>
-                                                                                            <input type="checkbox" v-bind:id="2000 + index_2 + index_3" class="on_off" v-model="inventoryCompatiblePackagesOnOffFlag[index_2][index_3]"/>
+                                                                                            <input v-bind:id="2000 + index_2 + index_3" type="checkbox" class="on_off" v-model="inventoryCompatiblePackagesOnOffFlag[index_2][index_3]"/>
                                                                                             <ul>
                                                                                                 <li>
                                                                                                     <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -229,8 +227,8 @@
 <!--                                                                                    {{addi.key}}&nbsp; : &nbsp;{{addi.value}}-->
 <!--                                                                                    <br :key="index_4">-->
                                                                                     <table class="dataTable left_padding" >
-                                                                                        <template v-for="(addi, index_4) in requirement.inventory_additional_info">
-                                                                                            <tr :key="index_4">
+                                                                                        <template v-for="(addi, index_4) in requirement.inventory_additional_info" :key="index_4">
+                                                                                            <tr>
                                                                                                 <td>{{addi.key}}</td>
                                                                                                 <td>{{addi.value}}</td>
                                                                                             </tr>
@@ -271,14 +269,14 @@
                     <input type="checkbox" id="panel_parameters" class="on_off" v-model="accordionOnOffFlag.parameters"/>
                     <ul>
                         <li>
-                            <template v-for="(parameter, index) in parameters">
-                                <div class="sub_accordion_level1" :key="index">
+                            <template v-for="(parameter, index) in parameters" :key="index">
+                                <div class="sub_accordion_level1">
                                     <label v-bind:for="3000 + index">
                                         <span v-if="parametersOnOffFlag[index]"><img class="icon" title="unfold"  :src="lessInfo"></span>
                                         <span v-else><img class="icon" :src="moreInfo"></span>
                                         {{$t("aitDetail.parameter")}} - {{index + 1}}
                                     </label>
-                                    <input type="checkbox" v-bind:id="3000 + index" class="on_off" v-model="parametersOnOffFlag[index]"/>
+                                    <input v-bind:id="3000 + index" type="checkbox" class="on_off" v-model="parametersOnOffFlag[index]"/>
                                     <ul>
                                         <li>
                                             <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -336,14 +334,14 @@
                                 <input type="checkbox" id="panel_measures" class="on_off" v-model="accordionOnOffFlag.measures"/>
                                 <ul>
                                     <li>
-                                        <template v-for="(measure, index) in measures">
-                                            <div class="sub_accordion_level2" :key="index">
+                                        <template v-for="(measure, index) in measures" :key="index">
+                                            <div class="sub_accordion_level2">
                                                 <label v-bind:for="4000 + index">
                                                     <span v-if="measuresOnOffFlag[index]"><img class="icon" title="unfold" :src="lessInfo"></span>
                                                     <span v-else><img class="icon" :src="moreInfo"></span>
                                                     {{$t("aitDetail.measure")}} - {{index + 1}}
                                                 </label>
-                                                <input type="checkbox" v-bind:id="4000 + index" class="on_off" v-model="measuresOnOffFlag[index]"/>
+                                                <input v-bind:id="4000 + index" type="checkbox" class="on_off" v-model="measuresOnOffFlag[index]"/>
                                                 <ul>
                                                     <li>
                                                         <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -374,14 +372,14 @@
                                 <input type="checkbox" id="panel_resources" class="on_off" v-model="accordionOnOffFlag.resources"/>
                                 <ul>
                                     <li>
-                                        <template v-for="(resource, index) in resources">
-                                            <div class="sub_accordion_level2" :key="index">
+                                        <template v-for="(resource, index) in resources" :key="index">
+                                            <div class="sub_accordion_level2">
                                                 <label v-bind:for="5000 + index">
                                                     <span v-if="resourcesOnOffFlag[index]"><img class="icon" title="unfold" :src="lessInfo"></span>
                                                     <span v-else><img class="icon" :src="moreInfo"></span>
                                                     {{$t("aitDetail.resource")}} - {{index + 1}}
                                                 </label>
-                                                <input type="checkbox" v-bind:id="5000 + index" class="on_off" v-model="resourcesOnOffFlag[index]"/>
+                                                <input v-bind:id="5000 + index" type="checkbox" class="on_off" v-model="resourcesOnOffFlag[index]"/>
                                                 <ul>
                                                     <li>
                                                         <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -412,14 +410,14 @@
                     <input type="checkbox" id="panel_downloads" class="on_off" v-model="accordionOnOffFlag.downloads"/>
                     <ul>
                         <li>
-                            <template v-for="(download, index) in downloads">
-                                <div class="sub_accordion_level2" :key="index">
+                            <template v-for="(download, index) in downloads" :key="index">
+                                <div class="sub_accordion_level2">
                                     <label v-bind:for="6000 + index">
                                         <span v-if="downloadsOnOffFlag[index]"><img class="icon" title="unfold" :src="lessInfo"></span>
                                         <span v-else><img class="icon" :src="moreInfo"></span>
                                         {{$t("aitDetail.download")}} - {{index + 1}}
                                     </label>
-                                    <input type="checkbox" v-bind:id="6000 + index" class="on_off" v-model="downloadsOnOffFlag[index]"/>
+                                    <input v-bind:id="6000 + index" type="checkbox" class="on_off" v-model="downloadsOnOffFlag[index]"/>
                                     <ul>
                                         <li>
                                             <table class="dataTable" @click="$event.target.parentElement.classList.toggle('expanded')">
@@ -910,12 +908,12 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     vertical-align: middle;
-    background-color: #f1f1f1;
+    background-color: #fff;
     border-radius: 5px;
 }
 
 .eachCard label {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     padding: 2px 8px;
     height: 2.5rem;
@@ -933,6 +931,7 @@ export default {
     border-spacing: 0 1rem;
     border-collapse: separate;
     border: none;
+    background-color: #fff;
 }
 
 .dataTable {
@@ -940,6 +939,8 @@ export default {
     border-spacing: 0 5px;
     border-collapse: separate;
     border: none;
+    padding-top: 0.3rem;
+    background-color: #fff;
 }
 .dataTable td{
     text-overflow: ellipsis;
@@ -964,21 +965,17 @@ export default {
     text-align: center;
     width: 30%;
     font-weight: bold;
-    color: black;
-    background: #a9c7aa;
+    color: #fff;
+    background: var(--primary-color);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    &:hover {
-        background-color: #43645b;
-        color: white;
-    }
 }
 .dataTable td:last-child{
     border: 1px solid;
-    border-color: #a9c7aa;
+    border-color: var(--primary-color);
     text-align: center;
-    color: black;
-    background: white;
+    color: #000;
+    background-color: var(--gray-thema);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -1033,7 +1030,7 @@ input[type="checkbox"].on_off:checked+ul{
 .ait_install {
     position: fixed;
     width: 100%;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
 .ait_install_btn {

@@ -4,6 +4,8 @@ import json
 import shutil
 import requests
 import docker
+import os
+import asyncio
 
 from injector import singleton
 import werkzeug
@@ -37,9 +39,13 @@ from sqlalchemy.exc import SQLAlchemyError
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
+from docker.errors import ImageNotFound
+from threading import Thread
+from threading import BoundedSemaphore
 
 logger = get_logger()
 
+semaphore = BoundedSemaphore(1)
 
 @singleton
 class AITManifestService:
@@ -67,6 +73,7 @@ class AITManifestService:
         create_user_account = ''
         create_user_name = ''
         install_mode = ''
+        token = ''
 
         json_input = {}
         json_type_flag = False
@@ -83,6 +90,9 @@ class AITManifestService:
                 # フロントエンドからAITHUBの登録ユーザアカウントを設定
                 create_user_account = json_input["create_user_account"]
                 create_user_name = json_input["create_user_name"]
+
+                # フロントエンドからトークン取得
+                token = json_input["token"]
 
                 # インストールモードに'2'(AITHUB)を設定
                 install_mode = '2'
@@ -133,6 +143,21 @@ class AITManifestService:
         # DB登録
         test_runner_id_ = self._add_ait(manifest, create_user_account, create_user_name, install_mode)
 
+        if json_type_flag:
+            # AIT-HUBからの処理
+            # 非同期処理
+            loop = asyncio.new_event_loop()
+            thread = Thread(target=self.__thread_worker, args=(manifest, test_runner_id_, create_user_account.lower(), token, loop))
+            thread.start()
+        else:
+            # TOD:プリインストールの時の処理
+            ## プリインストールは現在は実行しないので、この処理は通らないが、復活する可能性を考慮して残しておく
+            ## プリインストール時にはAIT-HUBにログインできずpullできないためステータスをOKにしておく
+            reg_ait_mapper = TestRunnerMapper.query.get(test_runner_id_)
+            reg_ait_mapper.install_status = 'OK'
+            sql_db.session.add(reg_ait_mapper)
+            sql_db.session.commit()
+        
         return PostAITManifestRes(
                 result=Result(code='A01000', message='Add AIT manifest success'), 
                 test_runner_id=test_runner_id_)
@@ -193,9 +218,9 @@ class AITManifestService:
                                                   quality=manifest.quality,
                                                   keywords=','.join(manifest.keywords),
                                                   licenses=','.join(manifest.licenses),
-                                                  landing_page='',
+                                                  landing_page=manifest.source_repository,
                                                   install_mode=install_mode,
-                                                  install_status='OK')
+                                                  install_status='registration in progress')
             sql_db.session.add(test_runner_mapper)
             sql_db.session.flush()
 
@@ -334,6 +359,66 @@ class AITManifestService:
             raise QAIInvalidRequestException('A09999', 'database error: {}'.format(e))
 
     @log(logger)
+    def __thread_worker(self, mnf, ait_id, create_user_account, token, loop):
+        
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(self._pull_ait(mnf, ait_id, create_user_account, token))
+
+    @log(logger)
+    async def _pull_ait(self, manifest, ait_id, create_user_account, token):
+
+        import entrypoint
+
+        with entrypoint.app.app_context():
+            # ECRからイメージを取得する
+            if os.name == 'nt':
+                client = docker.from_env()
+            else:  # コンテナ起動の場合ソケット指定
+                client = docker.DockerClient(base_url='unix://var/run/docker.sock')
+            try:
+                # dockerイメージ名
+                docker_host = SettingMapper.query.get('docker_host_name').value
+                ait_name = manifest.name.lower()
+                ait_version = manifest.version.lower()
+                docker_remote_image_name = docker_host + '/' + \
+                                    ait_name + '-' + \
+                                    create_user_account + ':' + \
+                                    ait_version
+
+                # ローカルレジストリに同名のイメージがあればpullする前に削除しておく
+                if 0 < len(client.api.images(name=docker_remote_image_name,quiet=True)):
+                    client.images.remove(docker_remote_image_name)
+
+                # ECRへのdockerログイン
+                aws_name="AWS"
+                client.login(username=aws_name, password=token, registry=docker_host)
+
+                # セマフォにより排他制御
+                with semaphore:
+                    client.images.pull(docker_remote_image_name)
+                    # イベント情報登録
+                    reg_ait_mapper = TestRunnerMapper.query.get(ait_id)
+                    reg_ait_mapper.install_status = 'OK'
+                    sql_db.session.add(reg_ait_mapper)
+                    sql_db.session.commit()
+
+            except ImageNotFound:
+                sql_db.session.rollback()
+                self.__event_failed(ait_id)
+                logger.exception(f'{docker_remote_image_name} failed pull.')
+            except Exception:
+                sql_db.session.rollback()
+                self.__event_failed(ait_id)
+                logger.exception("An error occurred in function _pull_ait.")
+
+    @log(logger)
+    def __event_failed(self, ait_id):
+        # failedにして登録
+        ait_mapper = TestRunnerMapper.query.get(ait_id)
+        ait_mapper.install_status = 'registration failed'
+        sql_db.session.commit()
+
+    @log(logger)
     def delete(self, test_runner_id: int) -> Result:
         try:
             # 削除対象のAITが存在するか確認
@@ -356,7 +441,7 @@ class AITManifestService:
             ait_ver = target_ait.version
             ait_acc = target_ait.create_user_account
             client = docker.from_env()
-            if target_ait.install_mode == '1':
+            if target_ait.install_mode == '1' or target_ait.install_mode == '2':
                 tag = f'{docker_host}/{ait_nm}-{ait_acc}:{ait_ver}'
                 if 0 < len(client.api.images(name=tag,quiet=True)):
                     client.images.remove(tag)

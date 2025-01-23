@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 import MLComponents from '@/components/MLComponents'
 import Guidelines from '@/components/Guidelines'
 import GuidelineDetail from '@/components/GuidelineDetail'
@@ -29,13 +28,8 @@ import InventoryAdd from '@/components/InventoryAdd'
 import Setting from '@/components/Setting'
 import Message from '@/components/Message'
 
-Vue.use(Router)
-Vue.prototype.$backendURL = process.env.VUE_APP_BACKENDURL
-Vue.prototype.$frontendURL = process.env.VUE_APP_FRONTENDURL
-Vue.prototype.$aithubURL = process.env.VUE_APP_AITHUBURL
-
-export default new Router({
-   mode: 'history', // ルートのURLから自動で入る'#'を取り除く
+const router = createRouter({
+   history: createWebHistory(), // ルートのURLから自動で入る'#'を取り除く
    routes: [
     {
       path: '/',
@@ -185,3 +179,5 @@ export default new Router({
     },
    ]
 })
+
+export default router;

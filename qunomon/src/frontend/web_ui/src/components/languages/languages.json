@@ -67,10 +67,12 @@
             "installedGuidelineError": "該当ガイドラインがインストール済みです。"
         },
         "guidelineCreate": {
-            "guidelineSample": "ガイドラインのサンプルです。編集して登録してください。"
+            "guidelineSample": "ガイドラインのサンプルです。編集して登録してください。",
+            "errorMessage": "JSONの構文に誤りがあります。"
         },
         "guidelineDetail": {
-            "description": "ガイドライン情報を編集して更新できます（ローカルガイドラインのみ）。"
+            "description": "ガイドライン情報を編集して更新できます（ローカルガイドラインのみ）。",
+            "errorMessage": "JSONの構文に誤りがあります。"
         },
         "mlComponentCreate": {
             "title": "機械学習コンポーネント",
@@ -601,10 +603,12 @@
             "installedGuidelineError": "Guideline is already installed."
         },
         "guidelineCreate": {
-            "guidelineSample": "This is a sample guideline. Please edit and register."
+            "guidelineSample": "This is a sample guideline. Please edit and register.",
+            "errorMessage": "JSON syntax error."
         },
         "guidelineDetail": {
-            "description": "Edit and update guideline information (local guideline only)."
+            "description": "Edit and update guideline information (local guideline only).",
+            "errorMessage": "JSON syntax error."
         },
         "mlComponentCreate": {
             "title": "MLComponent",

@@ -1,7 +1,14 @@
 module.exports = {
-    publicPath: './',
     devServer: {
         host: '0.0.0.0',
-        disableHostCheck: true
-      }
+        allowedHosts: 'all', 
+        client: {
+            webSocketURL: 'auto://0.0.0.0/ws'
+        },
+    },
+    
+    chainWebpack: (config) => {
+        config.resolve.alias.set('vue', '@vue/compat')
+    }
+      
 }

@@ -196,7 +196,7 @@ export default {
 
 .option-menu div table {
     width: 95%;
-    margin: auto;
+    margin: 0.5rem auto 0.8rem auto;
     vertical-align: middle;
     position: relative;
     border-collapse: separate;
@@ -209,34 +209,30 @@ export default {
 }
 
 .option-menu div table td:nth-child(1) {
-    background-color: #a9c7aa;
-    color: black;
+    background-color: var(--primary-color);
+    color: #fff;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     text-align: center;
     font-weight: bold;
-    &:hover {
-        background-color: #43645b;
-        color: white;
-    }
 }
 .option-menu div table td:nth-child(2) {
     border: 1px solid;
-    border-color: #a9c7aa;
-    background-color: #f0f0f0;
+    border-color: var(--primary-color);
+    background-color: var(--gray-thema);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     text-align: center;
 }
 .option-menu div table td:nth-child(2) input {
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 .option-menu div table td:nth-child(3), td:last-child {
     padding-left: 1rem;
 }
 
 .option-menu div .cardTitle {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -303,11 +299,10 @@ export default {
     border: none;
     font-size: 0.85rem;
     color: black;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     &:hover {
         color: white;
-        background-color: #43645b;
+        background-color: var(--primary-color);
     }
 }
-
 </style>

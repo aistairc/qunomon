@@ -29,23 +29,24 @@ function adjust_frame_css(F){
 	<div class="result_img">
 		<!--%%IMAGE%%-->
   </div>
-  
+
   <script type="text/javascript">
+    // テスト結果のグラフが固定レイアウトをはみ出した場合に、縦横比を維持しながらサイズを変更する処理
     window.onload = function() {
       var targetImgs = document.getElementsByTagName('img');
       var targetImg = targetImgs[0];
       var orgWidth  = targetImg.width;  // 元の横幅を保存
       var orgHeight = targetImg.height; // 元の高さを保存
-      if (orgWidth > 450) {
-        targetImg.width = 450;  // 横幅を450pxにリサイズ
+      if (orgWidth > 726) {
+        targetImg.width = 726;  // 横幅を726pxにリサイズ
         targetImg.height = orgHeight * (targetImg.width / orgWidth); // 高さを横幅の変化割合に合わせる
-        if (targetImg.height > 430) {
+        if (targetImg.height > 672) {
           var reOrgHeight = targetImg.height; //リサイズ後の高さ保存
-          targetImg.height = 430; //高さを450pxにする
-          target.width = 450 * (targetImg.height / reOrgHeight);　//横幅を高さの変化割合に合わせる
+          targetImg.height = 672; //高さを672pxにする
+          target.width = 726 * (targetImg.height / reOrgHeight);　//横幅を高さの変化割合に合わせる
         }
-      } else if (orgHeight > 430) {
-        targetImg.height = 430;  // 高さを450pxにリサイズ
+      } else if (orgHeight > 672) {
+        targetImg.height = 672;  // 高さを672pxにリサイズ
         targetImg.width = orgWidth * (targetImg.height / orgHeight); // 横幅を高さの変化割合に合わせる
       }
     }

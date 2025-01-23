@@ -6,12 +6,14 @@ from . import Result, ResultSchema
 
 
 class PostJobReq:
-    def __init__(self, test_description_ids: []) -> None:
+    def __init__(self, test_description_ids: [], aithub_token: str) -> None:
         self.test_description_ids = test_description_ids
+        self.aithub_token = aithub_token
 
 
 class PostJobReqSchema(Schema):
     test_description_ids = fields.List(fields.Integer(), data_key='TestDescriptionIds', required=True, many=True)
+    aithub_token = fields.Str(data_key='AithubToken', required=False)
 
     @post_load
     def to_dto(self, data, **_):

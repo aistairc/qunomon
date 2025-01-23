@@ -28,10 +28,10 @@
         <template v-slot:TestDescriptionDetail>
             <ul id="submenu_body">
                 <li class="un_place submenu_detail">
-                    <b-list-group-item :to="{ name: 'TestDescriptionsDetail', params: {testDescriptionId: testDescriptionId}}" variant="info" active-class="active">
+                    <BListGroupItem :to="{ name: 'TestDescriptionsDetail', params: {testDescriptionId: testDescriptionId}}" variant="info" active-class="active">
                         <span v-if="!isActive">{{$t("testDescriptionDetail.detail")}}</span>
                         <img v-else :src="DetailIcon" alt="Image" class="imageBtn" width="30" height="auto">
-                    </b-list-group-item>
+                    </BListGroupItem>
                 </li>
             </ul>
         </template>
@@ -59,20 +59,21 @@
                     <div id="table_frame">
                         <div id="table">
                             <!-- 取得グラフ -->
-                            <VueGoodTable ref="tdTable"
+                            <vue-good-table ref="tdTable"
                                           :columns="columns"
                                           :rows="rows"
                                           max-height="300px"
                                           :fixed-header="true"
                                           align="center"
-                                          style-class="vgt-table"
+                                          styleClass="vgt-table"
                                           :sort-options="{enabled: false,}"
-                                          @on-row-click="onRowClick"
+                                          v-on:row-click="onRowClick"
                                           :pagination-options="pagenationSettings"
-                                          @on-per-page-change="onPerPageChange"
+                                          v-on:per-page-change="onPerPageChange"
                                           :group-options="groupSettings"
-                                          :select-options="selectSettings">
-                                <template slot="table-row" slot-scope="props">
+                                          :select-options="selectSettings"
+                                          :row-style-class="rowClass">
+                                <template v-slot:table-row="props">
                                     <!--ダウンロードアイコン-->
                                     <span v-if="props.column.field == 'download'">
                                         <img src="~@/assets/download.svg" alt="download" title="download" class="icon" @click="fileDownload(props.row.file_log)">
@@ -82,7 +83,7 @@
                                         {{props.formattedRow[props.column.field]}}
                                     </span>
                                 </template>
-                            </VueGoodTable>
+                            </vue-good-table>
                         </div>
                     </div>
                     <!-- グラフ -->
@@ -113,14 +114,16 @@ import { subMenuMixin } from "../mixins/subMenuMixin";
 import { tdMixin } from '../mixins/testDescriptionMixin';
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 import DetailIcon from '@/assets/google_icon_detail.svg';
+import { BListGroupItem } from 'bootstrap-vue-next'
 
 export default {
     components: {
         SubMenuMLComponent,
         VueGoodTable,
+        BListGroupItem
     },
     mixins: [subMenuMixin, tdMixin, urlParameterMixin, AccountControlMixin],
     data() {
@@ -189,6 +192,7 @@ export default {
                 selectAllByGroup: false
             },
             isExpanded: false,
+            selectedRow: null,
         }
     },
     mounted: function () {
@@ -211,9 +215,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {
-                        error
-                    }
+                    params: {error: JSON.stringify({...error, response: error.response})}
                 })
             });
     },
@@ -339,51 +341,13 @@ export default {
             }
         },
         onRowClick(params) {
-            //選択されている行数を取得
-            var row_num = params.row.index - 1;
-            this.selectedType = '';
+            this.selectedRow = params.row;
+            this.selectedType = params.row.graph_format;
 
-            // クリック対象の行を取得
-            var rowElement = undefined
-            var composedPath = params.event.composedPath()
-            for(var i in composedPath){
-                if(composedPath[i].className=='clickable' || composedPath[i].className=='clickable checked'){
-                    rowElement = composedPath[i];
-                    break;
-                }
-            }
-            var target_graph_element = rowElement.childNodes[7].childNodes[0].childNodes[1]
-
-            //全行を取得し、ループ
-            var tdTable = this.$refs.tdTable;
-            var pageRemain = tdTable.currentPerPage
-
-            for (var j = 0; j < pageRemain; j++) {
-                var graph_element = document.getElementsByName('graph')[j]
-                if (graph_element == undefined){
-                    break;
-                }
-                //選択された行の場合
-                if (graph_element == target_graph_element) {
-                    if(graph_element.checked){
-                        graph_element.checked = false;
-                        graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
-                        this.selectedType = '';
-                    } else {
-                        this.selectedType = params.row.graph_format;
-                        graph_element.checked = true;
-                        graph_element.parentNode.parentNode.parentNode.classList.add('checked')
-                        if (this.selectedType === "picture") {
-                            this.getImage(this.tdRsc.Graphs[row_num].Graph);
-                        }else if(this.selectedType === 'table'){
-                            this.getTableData(this.tdRsc.Graphs[row_num].Graph);
-                        }
-                    }
-                    //選択されていない行の場合
-                } else {
-                    graph_element.checked = false;
-                    graph_element.parentNode.parentNode.parentNode.classList.remove('checked');
-                }
+            if (this.selectedType === "picture") {
+                this.getImage(this.tdRsc.Graphs[params.row.index - 1].Graph);
+            } else if(this.selectedType === 'table') {
+                this.getTableData(this.tdRsc.Graphs[params.row.index - 1].Graph);
             }
         },
         getImage(path) {
@@ -412,17 +376,13 @@ export default {
             request.send();
         },
         convertArray(data) {
-            const dataArray = [];
+            let dataArray;
             const dataString = data.replace( /^(\n+)|(\n+)$/g , "" ).split('\n');
             if(data.indexOf('\t') != -1){
-                for (let i = 0; i < dataString.length; i++) {
-                    dataArray[i] = dataString[i].split('\t');
-                }
+                dataArray = this.splitTableItem(dataString, /"(.*?)"|([^\t]+)/g);
             }
-            else{
-                for (let i = 0; i < dataString.length; i++) {
-                    dataArray[i] = dataString[i].split(',');
-                }
+            else {
+                dataArray = this.splitTableItem(dataString, /"(.*?)"|([^,]+)/g);
             }
             let insertElement = '';
             for(var tr=0; tr<dataArray.length; tr++){
@@ -442,6 +402,18 @@ export default {
             }
             this.outputElement.innerHTML = insertElement;
         },
+        splitTableItem(dataString, regex) {
+            const dataArray = [];
+            for (let i = 0; i < dataString.length; i++) {
+                const row = [];
+                let match;
+                while ((match = regex.exec(dataString[i])) !== null) {
+                    row.push(match[1] || match[2].trim());
+                }
+                dataArray.push(row);
+            }
+            return dataArray;
+        },
         fileDownload(value) {
             if (value != null) {
                 const link = document.createElement('a');
@@ -458,9 +430,10 @@ export default {
             tdTable.currentPage = 1;
             this.selectedType = '';
         },
-    },
-    computed: {},
-    filters: {}
+        rowClass(row) {
+            return row === this.selectedRow ? 'selected_row' : '';
+        },
+    }
 }
 </script>
 
@@ -490,9 +463,9 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -500,9 +473,9 @@ export default {
     border: none;
     width: 100%;
 }
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -510,29 +483,35 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -540,19 +519,19 @@ export default {
     text-overflow: ellipsis;
     max-width: 140px;
 }
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;
 }
 
-#table>>>.t_center {
+#table :deep(.t_center) {
     text-align: center !important;
     vertical-align: middle !important;
 }
@@ -561,13 +540,13 @@ export default {
 }
 
 /* table footer*/
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
@@ -585,7 +564,7 @@ csvグラフ
   max-width: 90%;
 }
 
-#result_tbl>>>.get_table {
+#result_tbl :deep(.get_table) {
     background-color: #666666 !important;
     font-weight: normal !important;
     padding: .11em .2em !important;
@@ -612,14 +591,14 @@ csvグラフ
 TestDescriptionName
 ----------------*/
 #testdescriptions {
-    background: #43645b;
+    background: var(--primary-color);
     color: white;
 }
 #testdescriptions #status{
     font-size: 0.85rem;
 }
 #result label {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -646,14 +625,13 @@ status
     font-size: 20px;
     margin: 10px 0;
     font-weight: bold;
-    border-bottom: #000066 2px dashed;
 }
 
 /*----------------
 一覧表
 ----------------*/
-#table>>>.vgt-table tr.checked {
-    background-color: #d1ff8c;
+:deep(.selected_row) {
+    background-color: #d1ff8c !important;
 }
 
 /*----------------

@@ -7,15 +7,17 @@ from . import Result, ResultSchema, BaseSchema
 
 
 class PostTestRunnerReq:
-    def __init__(self, command: str, test_description_ids: []) -> None:
+    def __init__(self, command: str, test_description_ids: [], aithub_token: str) -> None:
         self.command = command
         self.test_description_ids = test_description_ids
+        self.aithub_token = aithub_token
 
 
 class PostTestRunnerReqSchema(BaseSchema):
     __model__ = PostTestRunnerReq
     command = fields.Str(data_key='Command', required=True)
     test_description_ids = fields.List(fields.Int, data_key='TestDescriptionIds', required=True)
+    aithub_token = fields.Str(data_key='AithubToken', required=False)
 
 
 class Job:

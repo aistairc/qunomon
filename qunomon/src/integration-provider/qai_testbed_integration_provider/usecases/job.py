@@ -17,7 +17,7 @@ import docker
 from docker.errors import ImageNotFound
 
 from ..across.exception import QAIException, QAINotFoundException, QAIInternalServerException,\
-    QAIInvalidRequestException
+    QAIInvalidRequestException, QAIUnauthoredException
 from ..controllers.dto import Result
 from ..controllers.dto.job import PostJobReq, PostJobRes
 from ..entities.ml_component import MLComponentMapper
@@ -117,9 +117,11 @@ class JobService:
 
             job.status = 'RUNNING'
 
+            aithub_token = request.aithub_token
+
             for td_id in request.test_description_ids:
                 try:
-                    self._exec_run(job, organizer_id, ml_component_id, td_id)
+                    self._exec_run(job, organizer_id, ml_component_id, td_id, aithub_token)
                     sql_db.session.commit()
                 except QAIException as e:
                     self._update_error(job_id, request.test_description_ids, td_id,
@@ -147,7 +149,7 @@ class JobService:
             job_id=job.id
         )
 
-    def _exec_run(self, job, organizer_id, ml_component_id, td_id):
+    def _exec_run(self, job, organizer_id, ml_component_id, td_id, aithub_token):
         td = TestDescriptionMapper.query.get(td_id)
         ait_name = td.test_runner.name.lower()
         create_user_account = td.test_runner.create_user_account.lower()
@@ -225,7 +227,7 @@ class JobService:
                 except ImageNotFound as ex:
                     logger.debug(f'{docker_local_image_name} failed pull.')
         else: 
-            # リモートモード：dockerhubからimage pull
+            # リモートモード：aithubからimage pull
             # 本来はairflow内でpullされるはずだが、イメージ取得失敗するため、このタイミングでpullするように変更
             docker_host = SettingMapper.query.get('docker_host_name').value
             docker_remote_image_name = docker_host + '/' + \
@@ -242,6 +244,11 @@ class JobService:
                 client.images.get(docker_remote_image_name)
             except ImageNotFound:
                 try:
+                    # ECRへのdockerログイン
+                    aws_name="AWS"
+                    docker_host = SettingMapper.query.get('docker_host_name').value
+                    client.login(username=aws_name, password=aithub_token, registry=docker_host)
+
                     client.images.pull(docker_remote_image_name)
                 except ImageNotFound as ex:
                     # localで作成したイメージはこのルートに入る。ログ出力して継続。

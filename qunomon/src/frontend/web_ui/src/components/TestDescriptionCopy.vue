@@ -33,12 +33,6 @@
     <div id="main" :class="{ active: this.isActive }">
         <div id="main_body">
             <div id="search_table">
-                <!-- errorMessage -->
-                <span v-if="errorMessages">
-                    <span class="error_message" v-for="errorMessage in errorMessages" :key="errorMessage">
-                        {{ errorMessage }}<br />
-                    </span>
-                </span>
 
                 <!-- General -->
                 <div class="eachCard">
@@ -91,7 +85,7 @@
                         <template v-for="(measure, i) of selectedTestrunner.Report.Measures">
                             <tr class="dashed_tr2" v-for="measurementForm of measurementFormsList[i]" :key="measurementForm.Id">
                                 <td class="tdQACheck dashed">
-                                    <input type="checkbox" class="list_ checkboxCheck" name="listCheck" v-bind:value="measurementForm.Id" v-model="checkedMeasurements" @change="changecheckbox" />
+                                    <input v-bind:value="measurementForm.Id" type="checkbox" class="list_ checkboxCheck" name="listCheck" v-model="checkedMeasurements" @change="changecheckbox" />
                                 </td>
                                 <td class="tdQAName dashed" id="checkbox">
                                     <span> {{ measure.Name }}</span>
@@ -115,7 +109,7 @@
                                 </td>
                                 <td class="tdQARelationalOperator td_margin">
                                     <select class="select_mini" name="myText" v-model="measurementForm.RelationalOperatorId" v-if="relationalOperators">
-                                        <option v-for="relationalOperator of relationalOperators.RelationalOperator" :key="relationalOperator.Id" v-bind:value="relationalOperator.Id">{{ relationalOperator.Expression }}</option>
+                                        <option v-for="relationalOperator of relationalOperators.RelationalOperator" v-bind:value="relationalOperator.Id" :key="relationalOperator.Id">{{ relationalOperator.Expression }}</option>
                                     </select>
                                 </td>
                                 <td class="tdQAValue td_margin">
@@ -157,14 +151,13 @@
                                 <td class="ait_terms">
                                     <span v-bind:class="{disabledStyle: paramTemplateDisableList[i]}">{{ param.Name }}</span>
                                     <span class="asterisk" v-if="paramTemplateRequiredList[i]">&#042;</span>
-                                    <span class="type" v-bind:class="{disabledStyle: paramTemplateDisableList[i]}">&#058; {{ param.Type }}</span>
+                                    <span v-bind:class="{disabledStyle: paramTemplateDisableList[i]}" class="type">&#058; {{ param.Type }}</span>
                                 </td>
                                 <td class="ait_description">
                                     <span v-bind:class="{disabledStyle: paramTemplateDisableList[i]}">{{ param.Description }}</span>
                                 </td>
                                 <td class="ait_input">
-                                    <input type="text" name="myText" v-model="param.DefaultVal"
-                                           v-bind:disabled="paramTemplateDisableList[i]"
+                                    <input v-bind:disabled="paramTemplateDisableList[i]" type="text" name="myText" v-model="param.DefaultVal"
                                            @change="setDependencyParamNameDisable">
                                 </td>
                             </tr>
@@ -225,7 +218,7 @@
                                     <span v-bind:class="{disabledStyle: targetInventoryDisableList[i]}">{{TargetInventory.Description}}</span>
                                 </td>
                                 <template v-if="TargetInventory.Max != '1'">
-                                    <template v-if="filterInventories(TargetInventory.DataType.Id, TargetInventory.Formats).length" class="single_btn">
+                                    <template v-if="filterInventories(TargetInventory.DataType.Id, TargetInventory.Formats).length">
                                         <td class="inventory_input" colspan="2">
                                         <table class="inv_tbl">
                                             <tr>
@@ -249,14 +242,12 @@
                                             </td>
                                             <td class="inventory_add">
                                                 <template v-if="$i18n.locale === 'en'">
-                                                    <button class="btnImg" alt="add" title="add"
-                                                            v-bind:disabled="targetInventoryDisableList[i]"
+                                                    <button v-bind:disabled="targetInventoryDisableList[i]" class="btnImg" alt="add" title="add"
                                                             @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
                                                     </button>
                                                 </template>
                                                 <template v-else>
-                                                    <button class="btnImg" alt="追加" title="追加"
-                                                            v-bind:disabled="targetInventoryDisableList[i]"
+                                                    <button v-bind:disabled="targetInventoryDisableList[i]" class="btnImg" alt="追加" title="追加"
                                                             @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
                                                     </button>
                                                 </template>
@@ -265,25 +256,24 @@
                                             <tr v-for="(selectedInventory, invindex) in selectedInventories[i].value_list" :key="selectedInventory">
                                             <td colspan="2">
                                                 <select
-                                                v-model="
-                                                    selectedInventories[i].value_list[invindex]
-                                                "
-                                                class="select_multi_inv"
                                                 v-bind:disabled="targetInventoryDisableList[i]"
+                                                v-model="selectedInventories[i].value_list[invindex]"
+                                                class="select_multi_inv"
                                                 >
                                                 <option
                                                     v-for="inventory in filterInventories(TargetInventory.DataType.Id,TargetInventory.Formats)"
+                                                    v-bind:value="inventory.Id"
                                                     :key="inventory.Id"
-                                                    v-bind:value="inventory.Id">
+                                                    >
                                                     {{ inventory.Name }}
                                                 </option>
                                                 </select>
                                             </td>
                                             <td class="inv_btn">
                                                 <template v-if="selectedInventories[i].display_flag_list[invindex] == true">
-                                                <input type="button" value="－" class="btn_single inv_btn"
+                                                <input v-bind:disabled="targetInventoryDisableList[i]" type="button" value="－" class="btn_single inv_btn"
                                                     @click="deleteSelectedInventory(i, invindex)"
-                                                    v-bind:disabled="targetInventoryDisableList[i]"/>
+                                                    />
                                                 </template>
                                             </td>
                                             </tr>
@@ -292,9 +282,9 @@
                                             </td>
                                             <td class="inv_btn">
                                                 <template v-if="selectedInventories[i].value_list.length < TargetInventory.Max">
-                                                <input type="button" value="＋" class="btn_single inv_btn"
+                                                <input v-bind:disabled="targetInventoryDisableList[i]" type="button" value="＋" class="btn_single inv_btn"
                                                     @click="addSelectedInventory(i)"
-                                                    v-bind:disabled="targetInventoryDisableList[i]"/>
+                                                    />
                                                 </template>
                                             </td>
                                             </tr>
@@ -310,14 +300,12 @@
                                         </td>
                                         <td class="inventory_add">
                                         <template v-if="$i18n.locale === 'en'">
-                                            <button class="btnImg" alt="add" title="add"
-                                                    v-bind:disabled="targetInventoryDisableList[i]"
+                                            <button v-bind:disabled="targetInventoryDisableList[i]" class="btnImg" alt="add" title="add"
                                                     @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
                                             </button>
                                         </template>
                                         <template v-else>
-                                            <button class="btnImg" alt="追加" title="追加"
-                                                    v-bind:disabled="targetInventoryDisableList[i]"
+                                            <button v-bind:disabled="targetInventoryDisableList[i]" class="btnImg" alt="追加" title="追加"
                                                     @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
                                             </button>
                                         </template>
@@ -326,18 +314,17 @@
                                     </template>
                                     <template v-else>
                                     <td class="inventory_input">
-                                        <span v-if="filterInventories(TargetInventory.DataType.Id, TargetInventory.Formats).length" class="single_btn">
+                                        <span v-if="filterInventories(TargetInventory.DataType.Id, TargetInventory.Formats).length">
                                         <select
-                                            v-model="
-                                            selectedInventories[i].value_list[0]
-                                            "
-                                            class="select"
                                             v-bind:disabled="targetInventoryDisableList[i]"
+                                            v-model="selectedInventories[i].value_list[0]"
+                                            class="select"
                                         >
                                             <option
                                             v-for="inventory in filterInventories(TargetInventory.DataType.Id,TargetInventory.Formats)"
+                                            v-bind:value="inventory.Id"
                                             :key="inventory.Id"
-                                            v-bind:value="inventory.Id">
+                                            >
                                             {{ inventory.Name }}
                                             </option>
                                         </select>
@@ -351,14 +338,12 @@
                                     </td>
                                     <td class="inventory_add">
                                         <template v-if="$i18n.locale === 'en'">
-                                            <button class="btnImg" alt="add" title="add"
-                                                    v-bind:disabled="targetInventoryDisableList[i]"
+                                            <button v-bind:disabled="targetInventoryDisableList[i]" class="btnImg" alt="add" title="add"
                                                     @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
                                             </button>
                                         </template>
                                         <template v-else>
-                                            <button class="btnImg" alt="追加" title="追加"
-                                                    v-bind:disabled="targetInventoryDisableList[i]"
+                                            <button v-bind:disabled="targetInventoryDisableList[i]" class="btnImg" alt="追加" title="追加"
                                                     @click="inventoryAdd($route.path, TargetInventory.DataType.Id, TargetInventory.Formats[0].Format)">
                                             </button>
                                         </template>
@@ -370,6 +355,13 @@
                     </table>
                 </div>
                 <hr>
+
+                <!-- errorMessage -->
+                <span v-if="errorMessages">
+                    <span class="error_message" v-for="errorMessage in errorMessages" :key="errorMessage">
+                        {{ errorMessage }}<br />
+                    </span>
+                </span>
 
                 <!-- submit -->
                 <div id="btn_set">
@@ -399,7 +391,7 @@ import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { tdMixin } from '../mixins/testDescriptionMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import inventoryAdd from "./InventoryAdd";
+import inventoryAdd from "./InventoryAdd.vue";
 
 export default {
     components: {
@@ -473,9 +465,7 @@ export default {
                         .catch((error) => {
                             this.$router.push({
                                 name: 'Information',
-                                params: {
-                                    error
-                                }
+                                query: {error: JSON.stringify({...error, response: error.response})}
                             })
                         })
                 }
@@ -503,9 +493,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {
-                        error
-                    }
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 })
             })
         },
@@ -559,10 +547,8 @@ export default {
         },
         cancel() {
             this.$router.push({
-                name: this.$route.params.history,
-                params: {
-                    testDescriptionId: this.$route.params.testDescriptionId
-                }
+                name: this.$route.query.history,
+                query: {testDescriptionId: this.$route.query.testDescriptionId}
             })
         },
         //キャンセルボタン
@@ -806,14 +792,14 @@ export default {
 
 .eachCard {
     width: 100%;
-    background: white;
+    background: #fff;
     border-radius: 5px;
     max-height: 30rem;
     overflow: auto
 }
 
 .subtitleArea {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -832,9 +818,12 @@ export default {
     font-weight: bold;
     color: #ffffff;
 }
+.subtitle{
+    color: #fff;
+}
 .category_description {
-    font-size: 0.7rem;
-    color: #7d4aff;
+    font-size: 0.8rem;
+    color: var(--text-color-black);
 }
 .table_block .contents-area {
     height: 2rem;
@@ -846,7 +835,7 @@ export default {
 }
 .table_block {
     width: 95%;
-    margin: auto;
+    margin: 0.5rem auto;
     vertical-align: middle;
     position: relative;
     border-collapse: separate;
@@ -855,7 +844,7 @@ export default {
 }
 
 .table_block .left {
-    background: #43645b;
+    background: var(--primary-color);
     color: white;
     width: 100%;
     font-weight: bold;
@@ -865,8 +854,8 @@ export default {
 
 .table_block .right {
     border: 1px solid;
-    border-color: #43645b;
-    background: #f0f0f0;
+    border-color: var(--primary-color);
+    background: var(--gray-thema);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -874,20 +863,18 @@ export default {
 .table_block .right input {
     width: 100%;
     height: 2rem;
-    background: #f0f0f0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 .table_block .right select {
     width: 100%;
     height: 2rem;
-    background: #f0f0f0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 .table_block thead{
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -898,7 +885,6 @@ export default {
 }
 .table_block tbody tr td input{
     width: 100%;
-    background: #f0f0f0;
     border-radius: 5px;
 }
 
@@ -916,7 +902,7 @@ export default {
     text-overflow: unset;
 }
 .table_block tbody tr {
-    background-color: #f0f0f0; /* Set row background color */
+    background-color: var(--gray-thema); /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
@@ -936,7 +922,7 @@ export default {
     border-radius: 5px;
 }
 .table_block tbody tr:hover{
-    background: #a9c7aa !important;
+    background: var(--primary-color-light) !important;
 }
 .inv_tbl {
     width: 188px;
@@ -960,7 +946,7 @@ export default {
     background: none;
 }
 .dashed_tr {
-    background-color: #f0f0f0; /* Set row background color */
+    background-color: var(--gray-thema); /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 10px;
@@ -993,13 +979,13 @@ export default {
     width: 20%;
 }
 .dashed_tr:hover {
-    background: #a9c7aa !important;
+    background: var(--primary-color-light) !important;
 }
 .dashed_tr:last-child .dashed {
     border-bottom: none;
 }
 .table_block .dashed_tr2 {
-    background-color: #f0f0f0; /* Set row background color */
+    background-color: var(--gray-thema); /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
@@ -1047,6 +1033,9 @@ export default {
     border-bottom-right-radius: 5px;
 }
 .asterisk{
-    color: red;
+    color: #ff0000;
+}
+.error_message{
+    color: #ff0000;
 }
 </style>

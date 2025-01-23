@@ -23,7 +23,7 @@ export const urlParameterMixin = {
             if (!sessionStorage.hasOwnProperty('organizationId')) {
                 this.$router.push({
                     name: 'Information',
-                    params: {error: this.organizationIdNotFoundError}
+                    query: {error: JSON.stringify(this.organizationIdNotFoundError)}
                 })
             }
         },
@@ -37,7 +37,7 @@ export const urlParameterMixin = {
                 else{
                     this.$router.push({
                         name: 'Information',
-                        params: {error: this.organizationIdNotFoundError}
+                        query: {error: JSON.stringify(this.organizationIdNotFoundError)}
                     })
                 }
             }
@@ -55,7 +55,7 @@ export const urlParameterMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 }).catch(error => {
                     // eslint-disable-next-line no-console
                     console.log(error)

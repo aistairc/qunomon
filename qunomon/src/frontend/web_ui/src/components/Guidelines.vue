@@ -31,18 +31,18 @@
                     <div class="btnArea">
                         <div class="search_table_option">
                             <template v-if="$i18n.locale === 'en'">
-                                <button type="button" value="Guideline Install" @click="installGuideline" v-bind:class="{'un_btn' : !aithub_linkage_mode}">Guideline Install</button>
+                                <button v-bind:class="{'un_btn' : !aithub_linkage_mode}" type="button" value="Guideline Install" @click="installGuideline">Guideline Install</button>
                                 <button type="button" value="Guideline Create" @click="guidelineCreate">Guideline Create</button>
                             </template>
                             <template v-else>
-                                <button type="button" value="ガイドライン インストール" @click="installGuideline" v-bind:class="{'un_btn' : !aithub_linkage_mode}">ガイドライン インストール</button>
+                                <button v-bind:class="{'un_btn' : !aithub_linkage_mode}" type="button" value="ガイドライン インストール" @click="installGuideline">ガイドライン インストール</button>
                                 <button type="button" value="ガイドライン作成" @click="guidelineCreate">ガイドライン作成</button>
                             </template>
                         </div>
                     </div>
                     <!--表-->
                     <div id="table" align="center">
-                        <VueGoodTable
+                        <vue-good-table
                             ref="mlTable"
                             :columns="guideline_columns"
                             :rows="guideline_rows"
@@ -52,11 +52,11 @@
                             align="center"
                             :search-options="{enabled: true}"
                             :pagination-options="{enabled: true, mode: 'pages'}"
-                            @on-row-click="onRowClick"
+                            v-on:row-click="onRowClick"
                         >
-                            <template slot="table-row" slot-scope="props">
+                            <template v-slot:table-row="props">
                                 <template v-if="props.column.field == 'guideline_display_id'">
-                                    <input type="radio" v-bind:value="props.row.guideline_display_id" name="radio" v-model="selected_guideline"/>
+                                    <input v-bind:value="props.row.guideline_display_id" type="radio" name="radio" v-model="selected_guideline"/>
                                 </template>
                                 <template v-else-if="props.column.field == 'install'">
                                     <template v-if="props.row.install == true">
@@ -82,7 +82,7 @@
                                 </span>
                                 </template>
                             </template>
-                        </VueGoodTable>
+                        </vue-good-table>
                     </div>
 
                     <!-- button -->
@@ -102,8 +102,8 @@ import { subMenuMixin } from "../mixins/subMenuMixin";
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { GuidelinesMixin } from '../mixins/GuidelinesMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 
 
 export default {
@@ -294,11 +294,11 @@ export default {
 表
 ----------------*/
 
-#table>>>.vgt-input, .vgt-select {
+#table :deep(.vgt-input, .vgt-select) {
     width: 100% !important;
     float: left;
 }
-#table>>>.vgt-inner-wrap .vgt-global-search {
+#table :deep(.vgt-inner-wrap .vgt-global-search) {
     background: unset;
     border: unset;
     padding: unset;
@@ -307,16 +307,16 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
 
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -325,22 +325,22 @@ export default {
     width: 100%;
 }
 
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -348,29 +348,35 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -378,13 +384,13 @@ export default {
     text-overflow: ellipsis;
     max-width: 140px;
 }
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;
@@ -430,7 +436,7 @@ export default {
     float: right;
 }
 .search_table_option button {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     float: right;
     border: none;
@@ -445,7 +451,7 @@ export default {
     border-radius: 5px;
     z-index: 10;
     &:hover {
-        background: #43645b !important;
+        background: var(--primary-color) !important;
         color: white;
     }
     &.un_btn{

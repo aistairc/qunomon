@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal name="messageModal" class="modalContents">
+        <BModal v-model="showModal" name="messageModal" class="modalContents" no-footer no-header>
             <div class="subtitleArea">
                 <span class="subtitle">{{$t("message.title")}}</span>
             </div>
@@ -28,17 +28,23 @@
             <div id="closeModal" class="closeModal" @click="close">
                 ×
             </div>
-        </modal>
+        </BModal>
     </div>
 </template>
 
 <script>
+import { BModal } from 'bootstrap-vue-next';
+
 export default {
     data() {
         return {
             messageCode: '',
-            messageText: ''
+            messageText: '',
+            showModal: false
         }
+    },
+    components: {
+        BModal
     },
     methods: {
         show(messageCode, messageText) {
@@ -48,10 +54,10 @@ export default {
             if (messageText !== undefined) {
                 this.messageCode = messageText;
             }
-            this.$modal.show("messageModal");
+            this.showModal = true;
         },
         hide() {
-            this.$modal.hide("messageModal");
+            this.showModal = false;
         },
         close() {
             this.hide();
@@ -62,7 +68,7 @@ export default {
 
 <style scoped>
 .subtitleArea {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -82,12 +88,12 @@ export default {
     width: 80%;
 }
 
-.modalContents>>>.vm--modal {
+.modalContents :deep(.vm--modal) {
     position: absolute !important;
     top: 10% !important;
     width: 32% !important;
     height: 52% !important;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     border-radius: 10px;
     overflow-y: auto;
 }

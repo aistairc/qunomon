@@ -17,7 +17,7 @@
 
 <script>
 import Message from './components/Message.vue';
-import { EventBus } from './eventBus';
+import EventBus from './eventBus';
 
 export default {
     data() {
@@ -34,8 +34,8 @@ export default {
     },
     mounted() {
         // APP共通メソッド
-        EventBus.$on('show-message', this.showMessage);
-        EventBus.$on('set-aithub-using', this.setAithubUsing);
+        EventBus.on('show-message', this.showMessage);
+        EventBus.on('set-aithub-using', this.setAithubUsing);
 
         // 遷移パターンの判断
         if (this.$route.query.err) {
@@ -94,7 +94,7 @@ export default {
                 //     // 異常処理
                 //     this.$router.push({
                 //         name: 'Information',
-                //         params: {error}
+                //         query: {error: JSON.stringify({...error, response: error.response})}
                 //     })
                 // })
             }
@@ -158,7 +158,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: { error }
+                    query: {error: JSON.stringify({...error, response: error.response}) }
                 });
                 //  ローディングスピナーが非表示
                 this.loading = false;
@@ -169,15 +169,17 @@ export default {
         }
     },
     watch: {
-        // 画面遷移時の$routeオブジェクトを監視
-        '$route'(to, from) {
-            // eslint-disable-next-line no-console
-            console.log(`Route changed from ${from.fullPath} to ${to.fullPath}`);
-            //  DB設定値（AIT-HUB使用）時、かつ、Setting画面以外の場合のみチェック
-            if (sessionStorage.getItem('aithub_setting_flag') == '1' &&
-                to.fullPath !== '/Setting') {
-                this.setAithubUsing();
-            }
+        '$route': {
+            handler(to, from) {
+                // eslint-disable-next-line no-console
+                console.log(`Route changed from ${from.fullPath} to ${to.fullPath}`);
+                // DB設定値（AIT-HUB使用）時、かつ、Setting画面以外の場合のみチェック
+                if (sessionStorage.getItem('aithub_setting_flag') == '1' &&
+                    to.fullPath !== '/Setting') {
+                    this.setAithubUsing();
+                }
+            },
+            deep: true
         }
     }
 }
@@ -192,10 +194,16 @@ export default {
 * {
     margin:0; padding:0; 	/*全要素のマージン・パディングをリセット*/
     line-height:1.5;	/*全要素の行の高さを1.5倍にする*/
+    /* 主要な色のカスタムプロパティ */
+    --gray-thema: #f0f0f0;
+    --primary-color: #43645b;
+    --primary-color-light: #a9c7aa;
+    --secondary-color: #dc722b;
+    --text-color-black: #000066;
 }
 body {
-    color:#000066;		/*文字色*/
-    background-color: #f0f0f0;
+    color:var(--text-color-black);		/*文字色*/
+    background-color: var(--gray-thema);
     font-size: 1rem;
     font-family:Meiryo;			/*フォント*/
 }
@@ -213,12 +221,12 @@ html, body {
 ----------------*/
 .title_2{
     font-size: 40px;
-    color:#000066;
+    color:var(--text-color-black);
 }
 
 .subtitle {
     font-size: 20px;
-    color:#000066;
+    color:var(--text-color-black);
 }
 
 .error {
@@ -244,7 +252,7 @@ html, body {
 ----------------*/
 #head {
     height:3rem;
-    background: #43645b;	/*背景色*/
+    background: var(--primary-color);	/*背景色*/
     color: #fff;		/*文字色*/
     width: 100%;
     align-items: center;
@@ -252,6 +260,7 @@ html, body {
     position: fixed;
     text-align: left;
     margin: 0;
+    background-color: var(--primary-color);
 }
 #head .head_title {
     margin-left: 4rem;
@@ -274,11 +283,11 @@ html, body {
     top: 3rem;
     position: fixed;
     height: 100%;
-    background-color: #203e3b;
     width: 12.5rem;			/*幅の指定*/
     display:inline;			/*IE6のマージン算出のバグ対策*/
     float:left;			/*サブメニューのカラムを左寄せにする*/
     transition: width 0.3s;
+    background-color: #203e3b;
 }
 #submenu.active {
     width: 6.25rem;
@@ -362,7 +371,7 @@ html, body {
 .btn_unselect {
     text-align: center;
     display: inline-block;
-    color: white;		/*アクセントカラー*/
+    color: #c5c5c5;
     margin:0px 5px;
     border: none;
     text-decoration-line: none;
@@ -375,12 +384,13 @@ html, body {
     left: 10px;
     margin: 0;
     padding: 0;
-    color: #000066;
+    color: var(--text-color-black);
 }
 
 /*サブメニューのボディ部分（余白調整・背景画像・背景色）*/
 #submenu_body {
     padding-bottom:6px;
+    margin: 0;
 }
 
 /*メニュー切り替え*/
@@ -411,9 +421,9 @@ html, body {
     display:block;			/*リンクをブロック表示にする*/
     padding: 5px 15px;	/*サブメニュー項目のパディング*/
     text-decoration:none;		/*リンクの下線を無くす*/
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     pointer-events: none;
-    color: #000066;
+    color: var(--text-color-black);
 }
 
 .un_place span{
@@ -425,7 +435,7 @@ html, body {
 
 .un_place a:hover{
     color: #b2b2c0;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     opacity: 0.5;	/*リンクにマウスが乗ったら色を変える*/
 }
 
@@ -451,8 +461,8 @@ html, body {
 #main_body {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 55px);
-    background-color: #f0f0f0;
+    min-height: calc(100vh - 3rem);
+    background-color: var(--gray-thema);
 }
 
 
@@ -461,7 +471,7 @@ html, body {
 ============================================*/
 #footer {
     margin-top: auto;
-    background: #f0f0f0;
+    background: var(--gray-thema);
     margin-bottom: 10px;
     text-align: center;
 }
@@ -478,7 +488,7 @@ address {
     text-align: center;
 }
 .btn_single{
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -492,7 +502,7 @@ address {
     border-radius: 5px;
     z-index: 10;
     &:hover {
-        background: #43645b !important;
+        background-color: var(--primary-color) !important;
         color: white;
     }
     &.un_btn{
@@ -542,6 +552,7 @@ input[type="text"]:hover{
 textarea{
     background-color: #fff;	/*部品内の背景色*/
     border: none;
+    padding: 0.4rem;
 }
 
 textarea:hover{
@@ -616,7 +627,7 @@ dt{
     text-align: center;
     display: inline-block;
     text-decoration: none;
-    background-color: #a9c7aa;		/*アクセントカラー*/
+    background-color: var(--primary-color-light);		/*アクセントカラー*/
     color: black;		/*文字色*/
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
@@ -627,7 +638,7 @@ dt{
     font-size: 15px;
 }
 .btn_right:hover {
-    background: #43645b !important;
+    background: var(--primary-color) !important;
     color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Add a box shadow for depth */
 }
@@ -641,7 +652,7 @@ dt{
     text-align: center;
     display: inline-block;
     text-decoration: none;
-    background-color: #a9c7aa;		/*背景色*/
+    background-color: var(--primary-color-light);		/*背景色*/
     color: black;		/*アクセントカラー*/
     font-weight: bold;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
@@ -652,7 +663,7 @@ dt{
     font-size: 0.85rem;
 }
 .btn_left:hover {
-    background: #43645b !important;
+    background-color: var(--primary-color) !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Add a box shadow for depth */
     color: white;
 }
@@ -699,15 +710,15 @@ dt{
     transform:translate(-50%,-50%);
     max-width: 1000px;
     padding: 30px 30px;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     height: 90%;       /*モーダルウィンドウのサイズ*/
     width: auto;
     overflow: auto;
 }
 .closeModal {
     position: absolute;
-    top: -0.5rem;
-    right: 1rem;
+    top: 0.1rem;
+    right: 1.5rem;
     cursor: pointer;
     color: white;
     font-size: 2rem;

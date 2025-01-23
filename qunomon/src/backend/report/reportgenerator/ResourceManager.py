@@ -27,23 +27,6 @@ class ResourceManager():
         self.report_dataset = report_dataset
 
     @log(logger)
-    def make_summary_result(self, workdir_path: str, summarydir_path: str, summaryfile_path: str):
-        # サマリ用のレーダーチャートを作成し、SUMMARYディレクトリに格納する
-        try:
-            print('ResourceManager() make_summary_result() start')
-            if not (os.path.exists(summarydir_path)):
-                os.makedirs(summarydir_path)
-
-            shutil.copyfile(self.TEMPLATE_PATH + "frame_summary.html",
-                            summaryfile_path)
-            self.__make_summary_radarchart(summarydir_path)  # レーダーチャート作成
-            self.__make_summary_overview(summarydir_path)
-        except Exception as e:
-            print("ResourceManager.make_summary_result.ReportGeneratorException: {}".format(e))
-            raise e
-        return 0
-
-    @log(logger)
     def __make_summary_overview(self, summarydir_path: str):
         # 数値目標(ValueTarget)の有無を判定し、有のTDに関しては、目標達成か否か(TestDescriptionResult)も判定
         # 3色グラフで品質目標達成/未達/非該当を描画
@@ -417,6 +400,7 @@ class ResourceManager():
         td = test_descriptions[output_path.name]
         td_inventory_dict = self.report_dataset['TDInventoryDict']
         inventory_list = td_inventory_dict[output_path.name]
+        td_measurement_dict = self.report_dataset['TDMeasurementDict']
 
         # TD_NAME
         html_code = 'None' if td['Name'] is None else td['Name']
@@ -441,10 +425,10 @@ class ResourceManager():
             "<!--%%TD_INFOMATION%%-->",
         )
         # TD_INVENTORY
-        html_code = '<ul>'
+        html_code = ''
         for inv in inventory_list:
-            html_code += '<li><a href="#{0}">{0}</a></li>'.format(inv['name'])
-        html_code += '</ul>'
+            html_code += f"<li><span>{inv['name']}{':' if inv['description'] != '' else ''}{inv['description']}</span></li>"
+        html_code += ''
         tools.replace_html(
             output_file,
             html_code,
@@ -464,6 +448,21 @@ class ResourceManager():
             html_code,
             output_file,
             "<!--%%TD_RESULT%%-->",
+        )
+        # TD_MEASUREMENT
+        html_code = ''
+        td_id=td['Id']
+        td_id=str(td_id)
+        for qm in td['QualityMeasurements']:
+            key_name= qm['Name']
+            if key_name in td_measurement_dict[td_id].keys():
+                html_code += key_name + '(' + td_measurement_dict[td_id][key_name] +')' + ' & '
+        html_code = html_code[0:len(html_code) - 2]
+        tools.replace_html(
+            output_file,
+            html_code,
+            output_file,
+            "<!--%%TD_MEASUREMENT%%-->",
         )
         # TD_CONDITIONAL_EXPRESSION
         html_code = ''

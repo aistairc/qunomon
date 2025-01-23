@@ -112,7 +112,7 @@ export const tdMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             });
         },
@@ -124,7 +124,7 @@ export const tdMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             });
         },
@@ -141,7 +141,7 @@ export const tdMixin = {
             .catch((error) => {
                this.$router.push({
                    name: 'Information',
-                   params: {error}
+                   query: {error:JSON.stringify({...error, response: error.response})}
                })
             });
         },
@@ -156,7 +156,7 @@ export const tdMixin = {
             .catch((error) => {
                this.$router.push({
                    name: 'Information',
-                   params: {error}
+                   query: {error:JSON.stringify({...error, response: error.response})}
                })
             });
         },
@@ -168,9 +168,25 @@ export const tdMixin = {
             .catch((error) => {
                this.$router.push({
                    name: 'Information',
-                   params: {error}
+                   query: {error:JSON.stringify({...error, response: error.response})}
                })
             });
+        },
+        async getAithubToken(){
+            // token取得処理
+            const aithub_url = this.$aithubURL + '/pull_authorization';
+            // TD実行時に、AITHubへアクセスできない場合は、dummyを返す
+            var token = 'dummy';
+            await this.$axios.get(aithub_url)
+            .then((response) => {
+                if(response.data.Token !== undefined){
+                    token = response.data.Token;
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+            return token;
         },
         clearForm() {
             this.selectedSpecificationAttribute = null;
@@ -205,14 +221,14 @@ export const tdMixin = {
             this.setTestDescription(testDescriptionId);
             this.$router.push({
                 name: 'TestDescriptionEdit',
-                params: {history: history}
+                query: {history: history}
             })
         },
         postHistory_testDescriptionCopy(history,testDescriptionId) {
             this.setTestDescription(testDescriptionId);
             this.$router.push({
                 name: 'TestDescriptionCopy',
-                params: {history: history}
+                query: {history: history}
             })
         },
         setMeasurementForms(){
@@ -342,7 +358,7 @@ export const tdMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             });
         },
@@ -363,7 +379,7 @@ export const tdMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             });
         }, 

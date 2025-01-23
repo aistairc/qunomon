@@ -1,15 +1,15 @@
 <template>
 <div>
-    <modal name="inventoryEditModal" class="modalContents" @before-close="reset">
+    <BModal v-model="showModal" name="inventoryEditModal" class="modalContents" @hide="reset" no-footer no-header>
         <!--言語切り替えを実装する-->
         <div class="subtitleArea">
             <span class="subtitle">{{$t("inventoryEdit.mes")}}</span>
-            <span class="asterisk"><span class="error">&#042;</span> {{$t("common.require")}}</span>
+            <span id="asterisk" class="asterisk">&#042; {{$t("common.require")}}</span>
         </div>
         <div class="error">
-            <ui v-for="errorMessage in errorMessages" v-bind:key="errorMessage.text">
+            <ul v-for="errorMessage in errorMessages" v-bind:key="errorMessage.text">
                 <li class="error_message">{{ errorMessage }}</li>
-            </ui>
+            </ul>
         </div>
         <!--テキストボックス-->
         <div class="input">
@@ -44,7 +44,7 @@
                                 <option value="" hidden style="color: gray">
                                     {{$t("common.defaultPulldown")}}
                                 </option>
-                                <option v-for="dataType in dataTypes" :key="dataType.Id" v-bind:value="dataType.Id">
+                                <option v-for="dataType in dataTypes" v-bind:value="dataType.Id" :key="dataType.Id">
                                     {{ dataType.Name }}
                                 </option>
                             </select>
@@ -53,12 +53,11 @@
                     <dl>
                         <dt class="label">{{$t("inventoryEdit.format")}}<span class="error">&#042;</span></dt>
                         <dd>
-                            <VueSelect  class="vueselect"
-                                        :options="formats"
-                                        v-model="selectedFormat"
-                                        taggable
-                                        >
-                            </VueSelect>
+                            <multiselect :options="formats"
+                                         v-model="selectedFormat"
+                                         :taggable="true"
+                                         >
+                            </multiselect>
                         </dd>
                     </dl>
                     <dl>
@@ -83,7 +82,7 @@
         <div id="closeModal" class="closeModal" @click="postInventoryCancel">
             ×
         </div>
-    </modal>
+    </BModal>
 </div>
 </template>
 
@@ -95,15 +94,16 @@ import {
     urlParameterMixin
 } from '../mixins/urlParameterMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import { VueSelect } from "vue-select";
-import "vue-select/dist/vue-select.css";
+import Multiselect from 'vue-multiselect';
+import { BModal } from 'bootstrap-vue-next';
 
 export default {
     mixins: [inventoryMixin, urlParameterMixin, csrfMixin],
     data() {
         return {
             targetInventory: null,
-            inventoryId: null
+            inventoryId: null,
+            showModal: false
         }
     },
     mounted() {
@@ -115,16 +115,17 @@ export default {
         this.getFormats();
     },
     components: {
-        VueSelect
+        Multiselect,
+        BModal
     },
     methods: {
         show(inventoryId) {
             this.inventoryId = inventoryId;
             this.getInventory();
-            this.$modal.show("inventoryEditModal");
+            this.showModal = true;
         },
         hide() {
-            this.$modal.hide("inventoryEditModal");
+            this.showModal = false;
         },
         reset() {
             this.$emit("reset");
@@ -163,9 +164,7 @@ export default {
 
                             this.$router.push({
                                 name: 'Information',
-                                params: {
-                                    error
-                                }
+                                query: {error: JSON.stringify({...error, response: error.response})}
                             })
                         })
                 }
@@ -211,9 +210,11 @@ export default {
 }
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style scoped>
 .subtitleArea {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -226,9 +227,11 @@ export default {
     align-items: center;
     justify-content: center;
 }
+.subtitle{
+    color: #fff;
+}
 .asterisk {
     color: #ff0000;
-    font-size: 0.7rem;
 }
 
 .formDetail {
@@ -249,7 +252,7 @@ export default {
     font-size: 0.85rem;
     font-weight: bold;
     flex-basis: 30%;
-    background: #43645b;
+    background: var(--primary-color);
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -267,7 +270,7 @@ export default {
     width: 100%;
     border: 1px solid;
     min-height: 2rem;
-    border-color: #43645b;
+    border-color: var(--primary-color);
 }
 .formDetail dl dd textarea {
     width: 100%;
@@ -277,14 +280,14 @@ export default {
 }
 
 
-.modalContents>>>.vm--modal {
+.modalContents :deep(.vm--modal) {
     position: absolute !important;
     top: 10% !important;
     /*left: 22% !important;*/
     width: 32% !important;
     height: 52% !important;
     /*padding: 15px 0px !important;*/
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     border-radius: 10px;
     overflow-y: auto;
 }
@@ -294,12 +297,6 @@ export default {
     margin-bottom: 10px;
 }
 
-.vueselect {
-    width: 100%;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border:none;
-}
 .search_table_option {
     display: flex;
     float: right;
@@ -307,7 +304,7 @@ export default {
 
 
 .search_table_option input {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -326,7 +323,7 @@ export default {
 
 .search_table_option input:hover {
     color: white;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
 }
 @media ( max-width: 767px ){
     .defaultStyleInput {

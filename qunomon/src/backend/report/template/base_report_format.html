@@ -21,16 +21,13 @@
 {% endif %}
 {% endfor %}
 {% set namespace.section_count = 1 %}
-{% set namespace.datatype_list = [] %}
-{% for inventory in inventories %}
-<div style="display:none;">{{ namespace.datatype_list.append(inventory.data_type) }}</div>
-{% endfor %}
+
 
 <div id="top_page">
     <div id="back_ground">
     <div id="title_block">
         <span>AIシステム品質レポート</span><br/>
-        <h1 id="title">～<!--%%MLCOMPONENT_NAME%%-->～</h1>
+        <h1 id="title"><!--%%MLCOMPONENT_NAME%%--></h1>
 {% for item in guideline.metainfo %}
 {% if item.property=="identifier" %}
             <p>
@@ -50,7 +47,7 @@
 </div>
 
 <div id="contentslist_page" class="page-break-before">
-    <h2>● 目次</h2>
+    <h2>■&nbsp;目次</h2>
     <div id="contents">
         <ol>
             <li>サマリ
@@ -116,21 +113,26 @@
         本レポートで評価される評価対象は下記のとおりである。
     </p>
     <div class="section_area">
-        <ul>
-{% for data_type in namespace.datatype_list|unique %}
-            <li>{{ data_type }}</li>
-            <ul>
-{% for inventory in inventories %}
-{% if inventory.data_type==data_type %}
-                <li>
-                    <span id="{{ inventory.name }}">{{ inventory.name }}</span>: <br>
-                    {{ inventory.description }}
-                </li>
-{% endif %}
-{% endfor %}
-            </ul>
-{% endfor %}
-        </ul>
+        <table class="table inventory_table">
+            <thead>
+                <tr>
+                    <th class="inventory_datatype_column">データ形式</th>
+                    <th class="inventory_name_column">インベントリ名</th>
+                    <th class="inventory_description_column">インベントリ概要</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inventory in inventories %}
+                        <tr>
+                            <td>{{ inventory.data_type }}</td>
+                            <td>
+                                <span id="{{ inventory.name }}">{{ inventory.name }}</span>
+                            </td>
+                            <td>{{ inventory.description }}</td>
+                        </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
     <h3>{{ namespace.section_count }}.3 Quality Dimension別のテストの合格/実行数</h3>
     <p>
@@ -175,6 +177,7 @@
     </p>
 {% set namespace._i = 0 %}
 {% for qd in guideline.quality_dimensions %}
+    <hr>
     <h3 id="{{ qd.id }}">
         {{ namespace.section_count }}.{{ namespace._i+1 }} {{ qd.name }}
     </h3>
@@ -216,7 +219,7 @@
         本章では、本レポート内で使われるQunomon固有の用語について説明する。
         ガイドライン固有の用語やQunomonのその他の用語についてはそれぞれのドキュメントを参照されたい。
     </p>
-    <div class="section_area">
+    <div class="section_area term_table">
         <table border="1" class="table">
             <tr>
                 <th class="term_name_column">用語名</th>
@@ -335,14 +338,5 @@
 {% set namespace.section_count = namespace.section_count+1 %}
 </div>
 
-<script>
-$('#summary_frame').on('load', function(){
-    try {
-        $(this).height(0);
-        $(this).height(this.contentWindow.document.documentElement.scrollHeight);
-    } catch (e) {
-    }
-}).trigger('load');
-</script>
 </body>
 </html>

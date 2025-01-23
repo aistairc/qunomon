@@ -28,12 +28,12 @@ export const subMenuMixin = {
             }
         },
         updateIsActive(checkIsActive){
-            pageMixin.$emit('classToggled', checkIsActive);
+            pageMixin.emit('classToggled', checkIsActive);
         },
         toggleSubmenu(isActive) {
             this.isActive= !isActive;
             sessionStorage.setItem('isActive', (!isActive).toString());
-            pageMixin.$emit('classToggled', !isActive);
+            pageMixin.emit('classToggled', !isActive);
         }
     }
 }

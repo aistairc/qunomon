@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-    <modal name="rtSelectModal" class="modalContents" @before-close="beforeClose">
+    <BModal v-model="showModal" name="rtSelectModal" id="rtSelectModal" class="modalContents" @hide="beforeClose" no-footer no-header>
         <div id="parent">
             <div class="part1">
                 <div class="title_area">
@@ -19,7 +19,7 @@
                                 <td>
                                     <select class="rt_select" v-model="select_reportTemplate_id">
                                         <option value="" hidden style="color:gray">--Please Select--</option>
-                                        <option v-for="reportTemplate in reportTemplates" :key="reportTemplate.Id" v-bind:value="reportTemplate.Id">
+                                        <option v-for="reportTemplate in reportTemplates" v-bind:value="reportTemplate.Id" :key="reportTemplate.Id">
                                             {{reportTemplate.Name}}
                                         </option>
                                     </select>
@@ -72,12 +72,7 @@
                 <div id="child2">
                     <template v-if="previewer">
                         <div id="pdf_wrapper">
-                            <pdf
-                                    :src="previewer.src"
-                                    @num-pages="previewer.page_end = $event"
-                                    :page="previewer.page_current"
-
-                            ></pdf>
+                            <VuePDF :pdf="pdf" :page="previewer.page_current" />
                         </div>
                         <div id="btn_set2">
                             <template v-if="$i18n.locale === 'en'">
@@ -95,7 +90,7 @@
                 </div>
             </div>
         </div>
-    </modal>
+    </BModal>
 </div>
 </template>
 
@@ -103,11 +98,13 @@
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import pdf from 'vue-pdf';
+import { VuePDF, usePDF } from '@tato30/vue-pdf'
+import { BModal } from 'bootstrap-vue-next';
 
 export default {
     components: {
-        pdf
+        VuePDF,
+        BModal
     },
     data() {
         return {
@@ -120,7 +117,10 @@ export default {
             {
                 ReportOpinion: '',
             },
-            opinion: ''
+            opinion: '',
+            pdf: null,
+            pages: [],
+            showModal: false
         }
     },
     mixins: [urlParameterMixin, AccountControlMixin, csrfMixin],
@@ -132,20 +132,51 @@ export default {
         show(checkedItems_str, reportTemplates) {
             this.checkedItems_str = checkedItems_str;
             this.reportTemplates = reportTemplates;
-            this.$modal.show('rtSelectModal');
+            this.showModal = true;
         },
         hide() {
-            this.$modal.hide('rtSelectModal');
+            this.showModal = false;
         },
+        /**
+         * モーダルを閉じる前の処理
+         */
         beforeClose() {
             this.previewer = null;
             this.$emit('reset');
+            
+            // モーダルを閉じる前にモーダルの大きさを元に戻す
+            let elem_parent = document.getElementById("parent");
+            if (elem_parent) {
+                elem_parent.style.width = "";
+            }
+            
+            let elem_child1 = document.getElementById("child1");
+            if (elem_child1) {
+                elem_child1.style.width = "";
+            }
+            
+            let elem_child2 = document.getElementById("child2");
+            if (elem_child2) {
+                elem_child2.style.width = "";
+            }
+            
+            let elem_modal = document.getElementById("rtSelectModal");
+            if (elem_modal) {
+                let modalDialog = elem_modal.getElementsByClassName("modal-dialog");
+                if (modalDialog.length > 0) {
+                    modalDialog[0].style.maxWidth = "";
+                    modalDialog[0].style.width = "";
+                }
+            }
         },
 
         selectReportTemplate() {
             if (!confirm(this.$t("confirm.create"))) {
                 this.hide();
             }
+            
+            this.resizeModalForReport();
+
             const url = this.$backendURL + '/'
                         + this.organizationId + '/mlComponents/'
                         + this.mlComponentId + '/testDescriptions/reportGeneratorFront'
@@ -165,18 +196,6 @@ export default {
                 this.opinion = sessionStorage.getItem('reportOpinion');
             }
 
-            // 画面サイズ変更
-            var elem_parent = document.getElementById("parent");
-            elem_parent.style.width = "1200px"
-            var elem_child1 = document.getElementById("child1");
-            elem_child1.style.width = "600px"
-            var elem_child2 = document.getElementById("child2");
-            elem_child2.style.width = "600px"
-            var elem_modal = document.getElementsByClassName("vm--modal");
-            if (!elem_modal.item(0).classList.contains("preview")) {
-                elem_modal.item(0).classList.add("preview");
-            } 
-
             //リクエスト時のオプションの定義
             const config = {
                 headers:{
@@ -195,18 +214,53 @@ export default {
                     page_current: 1,
                     page_end: null,
                 };
+                // PDFの読み込み
+                const { pdf, pages } = usePDF(this.previewer.src)
+                this.pdf = pdf
+                this.pages = pages
+                this.previewer.page_end = pages
             })
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 })
             })
+        },
+        /**
+         * テンプレート作成時にモーダルの大きさを変更する処理
+         */
+        resizeModalForReport() {
+            let elem_parent = document.getElementById("parent");
+            if (elem_parent) {
+                elem_parent.style.width = "1200px";
+            }
+            
+            let elem_child1 = document.getElementById("child1");
+            if (elem_child1) {
+                elem_child1.style.width = "600px";
+            }
+            
+            let elem_child2 = document.getElementById("child2");
+            if (elem_child2) {
+                elem_child2.style.width = "600px";
+            }
+            
+            let elem_modal = document.getElementById("rtSelectModal");
+            if (elem_modal) {
+                let modalDialog = elem_modal.getElementsByClassName("modal-dialog");
+                if (modalDialog.length > 0) {
+                    modalDialog[0].style.maxWidth = "1230px";
+                    modalDialog[0].style.width = "1230px";
+                }
+            }
         },
         downloadReport(){
             if (!confirm(this.$t("confirm.create"))) {
                 this.hide();
+                return;
             }
+
             // レポート見解を登録
             var url = this.$backendURL + '/'
                         + this.organizationId + '/mlComponents/'
@@ -253,6 +307,11 @@ export default {
                         page_current: 1,
                         page_end: null,
                     };
+                    // PDFの読み込み
+                    const { pdf, pages } = usePDF(this.previewer.src)
+                    this.pdf = pdf
+                    this.pages = pages
+                    this.previewer.page_end = pages
                     const link = document.createElement('a');
                     link.href = this.generateReport.OutParams.ReportUrl;
                     link.click();
@@ -260,7 +319,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
 
@@ -268,7 +327,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 })
             })
         },
@@ -292,13 +351,13 @@ export default {
 
 <style scoped>
 
-.modalContents>>>.vm--modal {
+.modalContents :deep(.vm--modal) {
     position: absolute !important;
     top: 5% !important;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     border-radius: 5px;
 }
-.modalContents>>>.vm--modal.preview {
+.modalContents :deep(.vm--modal.preview) {
     left: 15% !important;
     width: auto !important;
     height: 92% !important;
@@ -321,17 +380,21 @@ export default {
     border-radius: 5px;
 }
 .title_area{
-    background: #dc722b;
+    background: var(--secondary-color);
     width: 100%;
+    border-radius: 5px;
 }
 .title_area label {
     height: 2.5rem;
     font-weight: bold;
     font-size: 1rem;
     color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
 }
 .title_area2{
-    background: #dc722b;
+    background: var(--secondary-color);
     width: 100%;
     border-radius: 5px;
 }
@@ -363,6 +426,9 @@ export default {
     flex-grow: 1;
     height: 95%;
 }
+#pdf_wrapper {
+    border: 1px solid #ccc;
+}
 .annotationLayer {
     overflow: auto;
 }
@@ -381,7 +447,7 @@ export default {
 .part1 table tr td:nth-child(1){
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
     min-height: 2rem;
     color: white;
 }
@@ -404,7 +470,9 @@ export default {
     border-radius: 5px;
 }
 #btn_set2 {
-    margin-bottom: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 

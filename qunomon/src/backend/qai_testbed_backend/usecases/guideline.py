@@ -31,10 +31,6 @@ class GuidelineService:
         guidelines = GuidelineMapper.query. \
             filter(GuidelineMapper.delete_flag == False).all()
 
-        if guidelines is None or len(guidelines) == 0:
-            raise QAINotFoundException(result_code='G21404',
-                                       result_msg='Not found Guideline')
-
         return GetGuidelinesRes(
             result=Result(code='G21000', message="get list success."),
             guidelines=[d.to_dto() for d in guidelines]

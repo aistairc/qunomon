@@ -113,3 +113,13 @@ After installation, execute the following command under the "~/qunomon" director
 
 Please open your browser and access "https://127.0.0.1".
 
+The following port is used to run Qunomon. Do not use the following ports for other applications.  
+・443  
+・5050  
+・5051  
+・5432  
+・5433  
+・6000  
+・8000  
+・8180  
+・8888  

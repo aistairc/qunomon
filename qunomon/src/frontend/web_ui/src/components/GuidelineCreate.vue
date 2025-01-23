@@ -33,26 +33,26 @@
 
                 </div>
                 <div class="accordion">
-                    <template>
                         <div>
                             <p>{{$t("guidelineCreate.guidelineSample")}}</p>
 
                             <div class="error">
-                                <ui v-for="errorMessage in errorMessages" v-bind:key="errorMessage">
+                                <ul v-for="errorMessage in errorMessages" v-bind:key="errorMessage">
                                     <li class="error_message">{{ errorMessage }}</li>
-                                </ui>
+                                </ul>
                             </div>
 
-                            <vue-json-editor
+                            <Vue3JsonEditor
                                 v-model="json"
                                 :show-btns="false"
                                 :expandedOnStart="true"
-                                :mode="'code'" >
-                            </vue-json-editor>
+                                :mode="'code'"
+                                @json-change="onJsonChange"
+                                @has-error="onHasError" />
 
                         </div>
-                    </template>
                 </div>
+                <div v-if="jsonErrorMessage" class="json_error_message">{{ jsonErrorMessage }}</div>
 
                 <!-- button -->
                 <div class="btn_area">
@@ -86,13 +86,13 @@ import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { GuidelinesMixin } from '../mixins/GuidelinesMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import vueJsonEditor from 'vue-json-editor';
+import { Vue3JsonEditor } from 'vue3-json-editor'
 
 export default {
     mixins: [subMenuMixin, urlParameterMixin, GuidelinesMixin, AccountControlMixin, csrfMixin],
     components: {
         SubMenu,
-        vueJsonEditor
+        Vue3JsonEditor
     },
     data() {
         return {
@@ -101,6 +101,7 @@ export default {
                 msg: 'demo of jsoneditor'
             },
             errorMessages : [],
+            jsonErrorMessage: "",
         }
     },
     mounted: function () {
@@ -147,7 +148,7 @@ export default {
                     .catch((error) => {
                         this.$router.push({
                             name: 'Information',
-                            params: {error}
+                            query: {error: JSON.stringify({...error, response: error.response})}
                         })
                     })
             } else {
@@ -159,7 +160,20 @@ export default {
                 name: "Guidelines"
             });
         },
-
+        /**
+         * JSONの値が変更された場合の処理
+         * @param json JSONの値
+         */
+        onJsonChange(json){
+            this.json = json;
+            this.jsonErrorMessage = "";
+        },
+        /**
+         * JSONの構文に誤りがある場合の処理
+         */
+        onHasError(){
+            this.jsonErrorMessage = this.$t("guidelineCreate.errorMessage");
+        }
     },
 }
 </script>
@@ -197,6 +211,13 @@ export default {
     /*background-color: red;*/
     margin-top: 2rem;
     text-align: center;
+}
+
+/* JSONの構文に誤りがある場合のエラーメッセージ */
+.json_error_message {
+    text-align: center;
+    word-break: break-all;
+    color: #ff0000;
 }
 
 /*エラーメッセージ*/

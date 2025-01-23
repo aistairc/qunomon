@@ -11,16 +11,14 @@ logger = get_logger()
 class SectionReportMaker:
     WORK_DIR: str
 
-    def __init__(self, work_dir: str, summary_file: str, report_dataset: dict):
+    def __init__(self, work_dir: str, report_dataset: dict):
         self.WORK_DIR = work_dir
-        self.SUMMARY_FILE = summary_file
         self.report_dataset = report_dataset
 
         self.REPLACE_STRING = {
             "<!--%%AUTHOR%%-->": self.make_author_AuthorOfReport,
             "<!--%%SECTION_TITLE_%%-->": self.make_section_title,
             "<!--%%SECTION_%%-->": self.make_section,
-            "<!--%%SUMMARY%%-->": self.make_summary_SummaryOfTestResult,
             "<!--%%DATE%%-->": self.make_date_DateOfReportGenerated,
             "<!--%%MLCOMPONENT_NAME%%-->": self.make_ml_component_name_NameOfProduct,
             "<!--%%TEST_ENVIRONMENT%%-->": self.make_testenvironment_EnvironmentOfTest
@@ -51,25 +49,12 @@ class SectionReportMaker:
 
     def make_section_title(self, chapter: str):
         qd_value = self.report_dataset['QualityDimension'][chapter]
-        # TODO:QualityDimensionのリンクを管理するカラムが存在しない(M_TestRunnerのqualityを見ればわかる)が固定でも問題ないか
-        # TODO:QualityDimensionのリンクをレポートに出力するフォーマットは要検討
-        # landing_page = 'https://airc.aist.go.jp/aiqm/quality/internal/' + qd_value
-        # html_iframe = "<span> " + qd_value + " " + landing_page + " </span>\n"
         html_iframe = "<span> " + qd_value + " </span>\n"
         return html_iframe
 
     def make_author_AuthorOfReport(self):
         html_iframe = \
             "<span> " + self.report_dataset['Author'] + "</span>\n"
-        return html_iframe
-
-    def make_summary_SummaryOfTestResult(self):
-        html_iframe = ""
-        path = Path(self.SUMMARY_FILE)
-        relative_path = str(path.relative_to(path.parent.parent))
-        html_iframe += \
-            "<iframe id=\"summary_frame\" src=" + relative_path + \
-            " scrolling=\"no\" frameborder=\"0\" class=\"frame\"></iframe>\n"
         return html_iframe
 
     def make_date_DateOfReportGenerated(self):

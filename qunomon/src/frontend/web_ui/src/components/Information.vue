@@ -26,19 +26,19 @@
     <!-- ニュース（中央カラム） -->
     <div id="main" :class="{ active: this.isActive }">
         <div id="main_body">
-            <table class="error" v-if="this.$route.params.error">
-                <tbody v-if="this.$route.params.error.response && this.$route.params.error.response.data">
+            <table class="error" v-if="error">
+                <tbody v-if="error.response && error.response.data">
                     <tr>
                         <td class="td1">
                             <p class="error_message">{{$t("infomation.errorCode")}}:</p>
                         </td>
                         <td class="td2">
                             <p class="error_message">
-                                <template  v-if="this.$route.params.error.response.data.Result">
-                                    {{this.$route.params.error.response.data.Result.Code}}
+                                <template  v-if="error.response.data.Result">
+                                    {{error.response.data.Result.Code}}
                                 </template>
                                 <template v-else>
-                                    {{this.$route.params.error.response.data.Code}}
+                                    {{error.response.data.Code}}
                                 </template>
                             </p>
                         </td>
@@ -49,14 +49,14 @@
                         </td>
                         <td>
                             <p class="error_message">
-                                <template  v-if="this.$route.params.error.response.data.Result">
-                                    {{this.$route.params.error.response.data.Result.Message}}
+                                <template  v-if="error.response.data.Result">
+                                    {{error.response.data.Result.Message}}
                                 </template>
-                                <template v-else-if="this.$route.params.error.response.data.Message">
-                                    {{this.$route.params.error.response.data.Message}}
+                                <template v-else-if="error.response.data.Message">
+                                    {{error.response.data.Message}}
                                 </template>
-                                <template v-else-if="this.$route.params.error.response.data.message">
-                                    {{this.$route.params.error.response.data.message}}
+                                <template v-else-if="error.response.data.message">
+                                    {{error.response.data.message}}
                                 </template>
                                 <template v-else>
                                     {{$t("infomation.frontErrorMessage1")}}
@@ -69,7 +69,7 @@
                 <tbody v-else>
                     <tr>
                         <td colspan="2">
-                            {{this.$route.params.error}}
+                            {{error}}
                         </td>
                     </tr>
                 </tbody>
@@ -107,6 +107,7 @@ export default {
     mixins: [subMenuMixin, AccountControlMixin],
     data() {
         return {
+            error: this.$route.query.error === undefined ? undefined : JSON.parse(this.$route.query.error)
         }
     },
     mounted: function () {

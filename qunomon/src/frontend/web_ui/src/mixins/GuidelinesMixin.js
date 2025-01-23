@@ -213,7 +213,7 @@ export const GuidelinesMixin = {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error:JSON.stringify({...error, response: error.response})}
                     })
                 })
             })
@@ -338,7 +338,7 @@ export const GuidelinesMixin = {
         errorTransition(error){
             this.$router.push({
                 name: 'Information',
-                params: {error}
+                query: {error:JSON.stringify({...error, response: error.response})}
             })
         },
         async getGuidelineJsonData(guideline_id, install_flag){

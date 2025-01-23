@@ -97,7 +97,8 @@ class TestRunnerService:
 
         res = post(url=self.ip_entry_point + '/' + organizer_id + '/mlComponents/' + str(ml_component_id) + '/job',
                    headers={'content-type': 'application/json'},
-                   json={'TestDescriptionIds': td_ids})
+                   json={'TestDescriptionIds': td_ids,
+                         'AithubToken': request.aithub_token})
         # レスポンスエラーチェック
         if res.status_code != 200:
             raise QAIInvalidRequestException('R19999', 'testrunner error: {}'.format(res.text))

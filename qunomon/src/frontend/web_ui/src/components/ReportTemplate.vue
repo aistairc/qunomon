@@ -41,9 +41,7 @@
                                         <option value=null style="color: gray">
                                             {{$t("common.defaultPulldown")}}
                                         </option>
-                                        <option v-for="guideline in guidelines"
-                                                :key="guideline.Id"
-                                                v-bind:value="guideline.Id">
+                                        <option v-for="guideline in guidelines" v-bind:value="guideline.Id" :key="guideline.Id">
                                             {{ guideline.Name }}
                                         </option>
                                     </select>
@@ -71,9 +69,7 @@
                                         <option value=null style="color: gray">
                                             {{$t("common.defaultPulldown")}}
                                         </option>
-                                        <option v-for="guideline in guidelines"
-                                                :key="guideline.Id"
-                                                v-bind:value="guideline.Id">
+                                        <option v-for="guideline in guidelines" v-bind:value="guideline.Id" :key="guideline.Id">
                                             {{ guideline.Name }}
                                         </option>
                                     </select>
@@ -92,13 +88,13 @@
                                 <td ></td>
                             </tr>
                             <tr>
-                                <td >
-                                    <label  for="fileUpload">
+                                <td>
+                                    <label class="uploadBTN" for="fileUpload">
                                         {{$t("reportTemplate.fileSelect")}}
                                         <input class="file_input" type="file" id="fileUpload" @change="fileSelected" />
                                     </label>
                                 </td>
-                                <td >
+                                <td class="file_name">
                                 <span v-if="template_file == null">
                                     {{$t("reportTemplate.fileUnselected")}}
                                 </span>
@@ -124,7 +120,7 @@
                 <!-- Download -->
                 <div class="accordion">
                     <div id="table" align="center">
-                        <VueGoodTable
+                        <vue-good-table
                             ref="templateTable"
                             :columns="columns"
                             :rows="rows"
@@ -133,9 +129,9 @@
                             max-height="700px"
                             :search-options="{ enabled: true }"
                             :pagination-options="{enabled: true, mode: 'pages'}"
-                            @on-row-click="onRowClick"
+                            v-on:row-click="onRowClick"
                         >
-                            <template slot="table-row" slot-scope="props">
+                            <template v-slot:table-row="props">
                                 <!--EditOptions-->
                                 <template v-if="props.column.field == 'download'">
                                     <span v-if="$i18n.locale === 'en'">
@@ -146,7 +142,7 @@
                                     </span>
                                 </template>
                             </template>
-                        </VueGoodTable>
+                        </vue-good-table>
                     </div>
                 </div>
 
@@ -165,8 +161,8 @@ import SubMenu from './SubMenu.vue';
 import { subMenuMixin } from "../mixins/subMenuMixin";
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 import { csrfMixin } from '../mixins/csrfMixin';
 
 export default {
@@ -305,7 +301,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
         },
@@ -327,7 +323,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
         },
@@ -361,7 +357,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
         },
@@ -385,7 +381,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
         },
@@ -440,7 +436,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
         },
@@ -475,11 +471,11 @@ export default {
 表
 ----------------*/
 
-#table>>>.vgt-input, .vgt-select {
+#table :deep(.vgt-input, .vgt-select) {
     width: 50% !important;
     float: left;
 }
-#table>>>.vgt-inner-wrap .vgt-global-search {
+#table :deep(.vgt-inner-wrap .vgt-global-search) {
     background: unset;
     border: unset;
     padding: unset;
@@ -488,16 +484,16 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
 
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -506,22 +502,22 @@ export default {
     width: 100%;
 }
 
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -529,29 +525,31 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
-}
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -559,13 +557,13 @@ export default {
     text-overflow: ellipsis;
     max-width: 140px;
 }
-#table>>>.vgt-table .expanded td {
+#table :deep(.vgt-table .expanded td) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;
@@ -588,7 +586,7 @@ export default {
 
 input[type="text"]:focus,
 select:focus {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
 }
 
 .accordion {
@@ -620,7 +618,7 @@ select:focus {
 
 .cardTable  {
     width: 95%;
-    margin: auto;
+    margin: 0.3rem auto;
     vertical-align: middle;
     text-align: center;
     position: relative;
@@ -633,36 +631,37 @@ select:focus {
 }
 
 .cardTable td:nth-child(1) {
-
     width: 30%;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     text-align: center;
-    background-color: #a9c7aa;
-    color: black;
+    background-color: var(--primary-color);
+    color: #fff;
     font-weight: bold;
-    &:hover {
-        background-color: #43645b;
-        color: white;
-    }
 }
+.cardTable tr .file_input_label {
+    background-color: var(--primary-color-light);
+    color: #000;
+}
+
+.cardTable tr .file_input_label:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
 .cardTable  td:nth-child(2) {
     width: 50%;
     border: 1px solid;
-    border-color: #a9c7aa;
-    background-color: #f0f0f0;
+    border-color: var(--primary-color);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     text-align: left;
-}
-.cardTable td:nth-child(2) input {
-    background-color: #f0f0f0;
 }
 .cardTable td:last-child {
     padding-left: 1rem;
 }
 .option-menu div .cardTitle {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -687,16 +686,18 @@ select:focus {
     border: none;
     width: 100%;
     height: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
     color: black;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     font-size: 0.85rem;
     font-weight: bold;
     &:hover {
         color: white;
-        background-color: #43645b;
+        background-color: var(--primary-color);
     }
 }
 .downloadBTN {
@@ -717,7 +718,8 @@ select:focus {
 
 .template_name{
     height: 28px;
-    width: 300px;
+    width: 100%;
+    padding-left: 0.5rem;
 }
 
 .file_label {
@@ -727,6 +729,11 @@ select:focus {
 
 .file_input {
     display: none;
+    padding-left: 0.5rem;
+}
+
+.file_name{
+    padding-left: 0.5rem;
 }
 
 .labelBtn {

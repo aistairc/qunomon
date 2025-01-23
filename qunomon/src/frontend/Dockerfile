@@ -1,4 +1,4 @@
-FROM node:12.18.0-alpine3.11
+FROM node:22-alpine3.19
 
 ENV PROJECT_ROOTDIR /app/web_ui/
 

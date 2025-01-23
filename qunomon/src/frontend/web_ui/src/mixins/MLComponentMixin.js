@@ -29,7 +29,7 @@ export const MLComponentMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             })
         },
@@ -41,7 +41,7 @@ export const MLComponentMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             })
         },

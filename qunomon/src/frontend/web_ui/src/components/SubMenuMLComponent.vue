@@ -2,16 +2,12 @@
 <template>
     <div id="sidebar-main">
         <aside>
-            <b-sidebar
+            <BNavbar   
                 id="sidebar-backdrop"
-                backdrop
-                shadow
-                no-header
-                bg-variant="#f0f0f0"
-                sidebar-class="border-right"
-                width="200px"
+                width="12.5rem"
+                container="'Breakpoint'"
             >
-                <b-list-group flush>
+                <BListGroup flush>
                     <div id="submenu" :class="{'active': this.isActive}">
                         <div id="logo">
                             <img src="~@/assets/logo.svg" alt="logo" class="logo">
@@ -19,36 +15,36 @@
 
                         <slot name="language"></slot><!--ここに言語切替要素が入ってくる-->
 
-                        <b-list-group-item to="test_descriptions" variant="success" active-class="active" exact>
+                        <BListGroupItem to="test_descriptions" variant="success" active-class="active" exact :active="$route.path === '/test_descriptions'">
                             <span v-if="this.isActive" :title="$t('common.menuTestDescriptions')">
                                 <img :src="TestDescriptionIcon" alt="Image" class="imageBtn" width="30" height="auto">
                             </span>
                             <span v-else>{{$t("common.menuTestDescriptions")}}</span>
 
-                        </b-list-group-item>
+                        </BListGroupItem>
 
                         <slot name="TestDescriptionDetail"></slot><!--ここにTestDescriptionDetail要素が入ってくる-->
                         <slot name="download"></slot><!--ここにdownload要素が入ってくる-->
 
-                        <b-list-group-item to="Inventories" variant="success" active-class="active">
+                        <BListGroupItem to="Inventories" variant="success" active-class="active" :active="$route.path === '/Inventories'">
                             <span v-if="this.isActive" :title="$t('common.menuInventories')">
                                 <img :src="InventoryIcon" alt="Image" class="imageBtn" width="30" height="auto">
                             </span>
                             <span v-else>{{$t("common.menuInventories")}}</span>
 
-                        </b-list-group-item>
+                        </BListGroupItem>
                         <li class="mlcomponent un_place">
-                            <b-list-group-item to="MLComponents" variant="success" active-class="active">
+                            <BListGroupItem to="MLComponents" variant="success" active-class="active" :active="$route.path === '/mLcomponents'">
                                 <span v-if="this.isActive" :title="$t('common.menuMLComponents')">
                                     <img :src="MLComponentIcon" alt="Image" class="imageBtn" width="30" height="auto">
                                 </span>
                                 <span v-else>{{$t("common.menuMLComponents")}}</span>
 
-                            </b-list-group-item>
+                            </BListGroupItem>
                         </li>
                     </div>
-                </b-list-group>
-            </b-sidebar>
+                </BListGroup>
+            </BNavbar>
         </aside>
     </div>
 </template>
@@ -60,9 +56,14 @@ import MLComponentIcon from "@/assets/MLComponents_icon.svg";
 import TestDescriptionIcon from "@/assets/TestDescription_icon.svg";
 import InventoryIcon from "@/assets/Inventory_icon.svg";
 import pageMixin from "@/mixins/pageMixin";
-
+import { BNavbar, BListGroup, BListGroupItem } from 'bootstrap-vue-next'
 export default {
     mixins: [AccountControlMixin, csrfMixin],
+    components: {
+        BNavbar,
+        BListGroup,
+        BListGroupItem
+    },
     data() {
         return {
             MLComponentIcon: MLComponentIcon,
@@ -76,7 +77,7 @@ export default {
         await this.getCsrfToken();
     },
     created() {
-        pageMixin.$on('classToggled', isActive => {
+        pageMixin.on('classToggled', isActive => {
             this.isActive = isActive;
         })
     },
@@ -107,7 +108,7 @@ export default {
   margin-top: 56px;
   min-height: calc(100vh - 56px);
   padding-bottom: 30px;
-    background: #f0f0f0;
+    background: var(--gray-thema);
 
 }
 

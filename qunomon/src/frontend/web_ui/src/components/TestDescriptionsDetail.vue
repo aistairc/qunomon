@@ -30,10 +30,10 @@
                     <!-- テストディスクリプションのテスト結果がOKかNGの場合のみ表示↓ -->
                     <template v-if="tdDtl.TestDescriptionResult">
                         <li class="un_place submenu_detail" v-if="tdDtl.TestDescriptionResult.Summary ==='OK' || tdDtl.TestDescriptionResult.Summary === 'NG'">
-                            <b-list-group-item to="test_descriptions_download" variant="info" active-class="active">
+                            <BListGroupItem to="test_descriptions_download" variant="info" active-class="active">
                                 <span v-if="!isActive">{{$t("testDescriptionDetail.download")}}</span>
                                 <img v-else :src="DownloadIcon" title="Download" alt="Image" class="imageBtn" width="30" height="auto">
-                            </b-list-group-item>
+                            </BListGroupItem>
                         </li>
                     </template>
                 </ul>
@@ -60,7 +60,7 @@
                             <div id="icon_btn">
                                 <template v-if="$i18n.locale === 'en'">
                                 <span id="btn_test" v-if="tdDtl.TestDescriptionResult == null || tdDtl.TestDescriptionResult.Summary ==='ERR' || tdDtl.TestDescriptionResult.Summary ==='NA'">
-                                    <input type="submit" value="Run test" class="btn_single" v-bind:class="{ 'un_btn' : isPush }" @click="runTest">
+                                    <input v-bind:class="{ 'un_btn' : isPush }" type="submit" value="Run test" class="btn_single" @click="runTest">
                                 </span>
                                     <router-link :to="{ name: 'TestDescriptionEdit'}" class="icon" v-if="tdDtl.TestDescriptionResult == null || tdDtl.TestDescriptionResult.Summary ==='ERR' || tdDtl.TestDescriptionResult.Summary ==='NA'">
                                         <img src="~@/assets/edit_white.svg" alt="edit" title="edit" class="icon" @click="postHistory_testDescriptionEdit($route.name,tdDtl.Id)">
@@ -74,16 +74,16 @@
                                 </template>
                                 <template v-else>
                                 <span id="btn_test" v-if="tdDtl.TestDescriptionResult == null || tdDtl.TestDescriptionResult.Summary ==='ERR' || tdDtl.TestDescriptionResult.Summary === 'NA'">
-                                    <input type="submit" value="テスト実行" class="btn_single" v-bind:class="{ 'un_btn' : isPush }" @click="runTest">
+                                    <input v-bind:class="{ 'un_btn' : isPush }" type="submit" value="テスト実行" class="btn_single" @click="runTest">
                                 </span>
                                     <router-link :to="{ name: 'TestDescriptionEdit'}" class="icon" v-if="tdDtl.TestDescriptionResult == null || tdDtl.TestDescriptionResult.Summary ==='ERR' || tdDtl.TestDescriptionResult.Summary === 'NA'">
-                                        <img src="~@/assets/edit.svg" alt="編集" title="編集" class="icon" @click="postHistory_testDescriptionEdit($route.name,tdDtl.Id)">
+                                        <img src="~@/assets/edit_white.svg" alt="編集" title="編集" class="icon" @click="postHistory_testDescriptionEdit($route.name,tdDtl.Id)">
                                     </router-link>
                                     <router-link :to="{ name: 'TestDescriptionCopy'}" class="icon">
-                                        <img src="~@/assets/copy.svg" alt="複製" title="複製" class="icon" @click='postHistory_testDescriptionCopy($route.name,tdDtl.Id)'>
+                                        <img src="~@/assets/copy_white.svg" alt="複製" title="複製" class="icon" @click='postHistory_testDescriptionCopy($route.name,tdDtl.Id)'>
                                     </router-link>
                                     <a href="#" class="icon">
-                                        <img src="~@/assets/delete.svg" alt="削除" title="削除" class="icon" @click="testDescriptionDelete">
+                                        <img src="~@/assets/delete_white.svg" alt="削除" title="削除" class="icon" @click="testDescriptionDelete">
                                     </a>
                                 </template>
                             </div>
@@ -100,7 +100,7 @@
                                     <template v-if="tdDtl.TestDescriptionResult">
                                         <span v-if="tdDtl.TestDescriptionResult.Summary === 'NG' || tdDtl.TestDescriptionResult.Summary === 'ERR'" style="color: red; font-weight: bold;">{{tdDtl.TestDescriptionResult.Summary}}</span>
                                         <span v-else-if="tdDtl.TestDescriptionResult.Summary === 'OK' || tdDtl.TestDescriptionResult.Summary === 'NEW'" style="color: green; font-weight: bold;">{{tdDtl.TestDescriptionResult.Summary}}</span>
-                                        <a id="log_download" v-bind:href=tdDtl.TestDescriptionResult.LogFile download=""><img :src="DownloadIcon" title="Download" alt="Image" class="icon" width="30" height="auto"></a>
+                                        <a v-bind:href=tdDtl.TestDescriptionResult.LogFile id="log_download" download=""><img :src="DownloadIcon" title="Download" alt="Image" class="icon" width="30" height="auto"></a>
                                     </template>
                                     <template v-else>
                                         <span>NA</span>
@@ -141,16 +141,16 @@
                                 <template v-if="tdDtl.TestDescriptionResult">
                                     <template v-if="tdDtl.TestDescriptionResult.Summary ==='OK' || tdDtl.TestDescriptionResult.Summary === 'NG'">
                                         <div id="table" align="center" v-on:click="updateUsedRowStyle">
-                                            <VueGoodTable :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center"
-                                                          :sort-options="{enabled: false,}" style-class="vgt-table"
-                                                          @on-select-all="onSelectAll"
-                                                          @on-row-click="onRowClick"
-                                                          @on-selected-rows-change="onSelectedRowsChange"
-                                                          @on-per-page-change="onPerPageChange"
-                                                          @on-page-change="onPageChange"
+                                            <vue-good-table :columns="columns" ref="tdTable" :rows="rows" max-height="300px" :fixed-header="true" align="center"
+                                                          :sort-options="{enabled: false,}" styleClass="vgt-table"
+                                                          v-on:select-all="onSelectAll"
+                                                          v-on:row-click="onRowClick"
+                                                          v-on:selected-rows-change="onSelectedRowsChange"
+                                                          v-on:per-page-change="onPerPageChange"
+                                                          v-on:page-change="onPageChange"
                                                           :group-options="groupSettings"
                                                           :select-options="selectSettings">
-                                                <template slot="table-row" slot-scope="props">
+                                                <template v-slot:table-row="props">
                                                     <!--ラジオボタン-->
                                                     <span v-if="props.column.field == 'radiobox'">
                                                     <input type="radio" name="graph">
@@ -167,7 +167,7 @@
                                                     {{props.formattedRow[props.column.field]}}
                                                 </span>
                                                 </template>
-                                            </VueGoodTable>
+                                            </vue-good-table>
                                         </div>
                                         <!-- 追加ボタン -->
                                         <div id="add_btn_wrapper">
@@ -177,9 +177,9 @@
 
                                             <template v-if="$i18n.locale === 'en'">
                                                 <div
-                                                        id="add_btn"
-                                                        class="btn_single"
                                                         v-bind:class="{ 'un_btn' : isActivated }"
+                                                        id="add_btn"
+                                                        class="btn_single add_btn"
                                                         @click="addRowData"
                                                 >
                                                 <span class="add_count">
@@ -191,9 +191,9 @@
                                             </template>
                                             <template v-else>
                                                 <div
-                                                        id="add_btn"
-                                                        class="btn_single"
                                                         v-bind:class="{ 'un_btn' : isActivated }"
+                                                        id="add_btn"
+                                                        class="btn_single add_btn"
                                                         @click="addRowData"
                                                 >
                                                 <span class="add_count">
@@ -206,16 +206,19 @@
                                             <br/>
                                         </div>
                                         <!-- グラフ -->
-                                        <div class="result_img" v-show="preview_visible">
+                                        <div class="result_img" v-show="preview_visible && selectedType === 'picture'">
                                             Preview: Graph ID = {{preview_row_index}}<br>
                                             <a class="image" target="_blank">
                                                 <img width="400px" name="imgsmp" id="image" class="result_img" />
                                             </a>
                                         </div>
                                         <!-- 表 -->
-                                        <table id="result_tbl" rules="rows" v-show="selectedType != null && selectedType === 'table'">
-                                            <tbody id="output_table"></tbody>
-                                        </table>
+                                        <div class="table-container" v-show="preview_visible && selectedType != null && selectedType === 'table'">
+                                            Preview: Graph ID = {{preview_row_index}}<br>
+                                            <table id="result_tbl" rules="rows">
+                                                <tbody id="output_table"></tbody>
+                                            </table>
+                                        </div>
                                         <!-- 合格条件 -->
                                         <div id="quality_measurement">
 <!--                                            <label for="Panel1_1">+ {{$t("testDescriptionDetail.qualityMeasurement")}}</label>-->
@@ -278,11 +281,11 @@
                                         </div>
                                     </div>
                                     <div id="other-table">
-                                        <VueGoodTable style-class="vgt-table"
+                                        <vue-good-table style-class="vgt-table"
                                                    :columns="columnDefs"
                                                    :rows="rowData"
                                         >
-                                        <template slot="table-row" slot-scope="props">
+                                        <template v-slot:table-row="props">
                                             <template v-if="props.column.field == 'remove'">
                                                 <button @click="onRemoveSelected(props.row.remove.id)" class="remove-button">
                                                     -
@@ -292,14 +295,14 @@
                                                 <input type="text" :value="props.row.reportName"  @blur="handleBlur(props.row, $event)" />
                                             </template>
                                         </template>
-                                        </VueGoodTable>
+                                        </vue-good-table>
                                     </div>
                                     <div id="btn_del_all">
                                         <template v-if="$i18n.locale === 'en'">
-                                            <input type="button" id="del_all_btn" value="←remove all Report graphs" class="btn_single" v-bind:class="{ 'un_btn' : isRemoveAllRowActive }" @click="removeAllRowData">
+                                            <input v-bind:class="{ 'un_btn' : isRemoveAllRowActive }" type="button" id="del_all_btn" value="←remove all Report graphs" class="btn_single" @click="removeAllRowData">
                                         </template>
                                         <template v-else>
-                                            <input type="button" id="del_all_btn" value="←レポートから全グラフ削除" class="btn_single" v-bind:class="{ 'un_btn' : isRemoveAllRowActive }" @click="removeAllRowData">
+                                            <input v-bind:class="{ 'un_btn' : isRemoveAllRowActive }" type="button" id="del_all_btn" value="←レポートから全グラフ削除" class="btn_single" @click="removeAllRowData">
                                         </template>
                                     </div>
                                     <!-- 見解 -->
@@ -448,17 +451,19 @@ import { tdMixin } from '../mixins/testDescriptionMixin';
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 import DownloadIcon from '@/assets/download.svg'
 import moreInfo from "@/assets/google_icon_unfold_less.svg";
 import lessInfo from "@/assets/google_icon_unfold_more.svg";
+import { BListGroupItem } from 'bootstrap-vue-next'
 
 export default {
     mixins: [subMenuMixin, tdMixin, urlParameterMixin, AccountControlMixin, csrfMixin],
     components: {
         SubMenuMLComponent,
-        VueGoodTable
+        VueGoodTable,
+        BListGroupItem
     },
     data() {
         return {
@@ -605,9 +610,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {
-                        error
-                    }
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 })
             });
 
@@ -891,9 +894,7 @@ export default {
                     .catch((error) => {
                         this.$router.push({
                             name: 'Information',
-                            params: {
-                                error
-                            }
+                            query: {error: JSON.stringify({...error, response: error.response})}
                         })
                     });
             } else {
@@ -931,9 +932,7 @@ export default {
                     .catch((error) => {
                         this.$router.push({
                             name: 'Information',
-                            params: {
-                                error
-                            }
+                            query: {error: JSON.stringify({...error, response: error.response})}
                         })
                     });
             } else {
@@ -1021,30 +1020,16 @@ export default {
                     .catch((error) => {
                         this.$router.push({
                             name: 'Information',
-                            params: {
-                                error
-                            }
+                            query: {error: JSON.stringify({...error, response: error.response})}
                         })
                     })
             }
         },
-        postTestDescriptionId_toEdit: function (testDescriptionId) {
-            this.$router.push({
-                name: 'TestDescriptionEdit',
-                params: {
-                    testDescriptionId: testDescriptionId
-                }
-            })
-        },
-        postTestDescriptionId_toCopy: function (testDescriptionId) {
-            this.$router.push({
-                name: 'TestDescriptionCopy',
-                params: {
-                    testDescriptionId: testDescriptionId
-                }
-            })
-        },
-        runTest() {
+        async runTest() {
+            // token取得するまではawaitで後続処理は待機
+            var aithubToken = '';
+            aithubToken = await this.getAithubToken();
+
             const that = this;
             this.isPush = true;
             const url = this.$backendURL +
@@ -1063,7 +1048,8 @@ export default {
             }
             this.$axios.post(url, {
                     "Command": "AsyncStart",
-                    "TestDescriptionIds": [this.testDescriptionId]
+                    "TestDescriptionIds": [this.testDescriptionId],
+                    "AithubToken": aithubToken
                 },
                 config)
                 .then((response) => {
@@ -1121,9 +1107,7 @@ export default {
                             .catch((error) => {
                                 this.$router.push({
                                     name: 'Information',
-                                    params: {
-                                        error
-                                    }
+                                    query: {error: JSON.stringify({...error, response: error.response})}
                                 })
                             })
 
@@ -1169,17 +1153,13 @@ export default {
             request.send();
         },
         convertArray(data) {
-            const dataArray = [];
+            let dataArray;
             const dataString = data.replace( /^(\n+)|(\n+)$/g , "" ).split('\n');
             if(data.indexOf('\t') != -1){
-                for (let i = 0; i < dataString.length; i++) {
-                    dataArray[i] = dataString[i].split('\t');
-                }
+                dataArray = this.splitTableItem(dataString, /"(.*?)"|([^\t]+)/g);
             }
-            else{
-                for (let i = 0; i < dataString.length; i++) {
-                    dataArray[i] = dataString[i].split(',');
-                }
+            else {
+                dataArray = this.splitTableItem(dataString, /"(.*?)"|([^,]+)/g);
             }
             let insertElement = '';
             for(var tr=0; tr<dataArray.length; tr++){
@@ -1198,6 +1178,18 @@ export default {
                 insertElement += '</tr>';
             }
             this.outputElement.innerHTML = insertElement;
+        },
+        splitTableItem(dataString, regex) {
+            const dataArray = [];
+            for (let i = 0; i < dataString.length; i++) {
+                const row = [];
+                let match;
+                while ((match = regex.exec(dataString[i])) !== null) {
+                    row.push(match[1] || match[2].trim());
+                }
+                dataArray.push(row);
+            }
+            return dataArray;
         },
         fileDownload(value) {
             if (value === 'file') {
@@ -1425,7 +1417,7 @@ export default {
                     continue;
                 }
                 var rowElement = graph_element.parentNode.parentNode.parentNode;
-                var viewId = rowElement.childNodes[4].childNodes[0].childNodes[0].childNodes[0].data;
+                var viewId = rowElement.children[1].children[0].children[0].textContent;
                 viewId = parseInt(viewId.trim());
 
                 for (var r_id in this.rowData) {
@@ -1510,7 +1502,7 @@ export default {
     border-radius: 5px;
 }
 .acd_subtitle {
-    background: #dc722b;
+    background: var(--secondary-color);
     color: white;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -1528,14 +1520,14 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
 #table input {
     display: none;
 
 }
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -1543,9 +1535,9 @@ export default {
     border: none;
     width: 100%;
 }
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -1554,59 +1546,61 @@ export default {
     vertical-align: middle;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr th {
+#table :deep(.vgt-table tbody tr th) {
     background: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr th:last-child {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
     background: none;
     border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
 }
-#table>>>.vgt-table tbody tr td:nth-child(0) {
+#table :deep(.vgt-table tbody tr td:nth-child(0)) {
     background: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     background: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border-radius: 5px;
     height: 2rem;
     vertical-align: middle;
 }
 
-#table>>>.vgt-table tbody tr:hover{
+#table :deep(.vgt-table tbody) tr:hover{
     border-radius: 5px;
-    background: #a9c7aa !important;
+    background: var(--primary-color-light) !important;
 }
 
 
-#table>>>.vgt-checkbox-col {
+#table :deep(.vgt-checkbox-col) {
     width: 5% !important;
     border: none;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -1615,46 +1609,53 @@ export default {
     max-width: 140px;
 }
 
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
-#table>>>.vgt-table tbody th,
-#table>>>.vgt-table tbody td{
+#table :deep(.vgt-table tbody) th,
+#table :deep(.vgt-table tbody) td{
     cursor:pointer;
 }
-#table>>>.vgt-table th.vgt-row-header>span{
+#table :deep(.vgt-table) th.vgt-row-header>span{
     display: block;
 }
 
-#table>>>.vgt-table tr.clickable.graph_used {
+#table :deep(.vgt-table tr.clickable.graph_used) {
     background-color: #8cfff9;
 }
-#table>>>.vgt-table tr.clickable.graph_previewed {
+#table :deep(.vgt-table tr.graph_previewed) {
     background-color: #faf500 !important;
 }
-#table>>>.vgt-table th.vgt-row-header{
+#table :deep(.vgt-table) th.vgt-row-header{
     color: black !important;
 }
-#table>>>.vgt-left-align {
+#table :deep(.vgt-left-align) {
     text-align: left !important;
     vertical-align: middle !important;
 }
-#table>>>.vgt-table th.sortable:after,
-#table>>>.vgt-table th.sortable::before {
+#table :deep(.vgt-table) th.sortable:after,
+#table :deep(.vgt-table th.sortable::before) {
     right: 40px !important;
+}
+.table-container {
+  width: 100%;        /* 親要素の幅を100%に設定 */
+  max-height: 500px;  /* テーブルの最大高さを設定 */
+  overflow-x: auto;   /* 横スクロールを有効にする */
+  overflow-y: auto;   /* 縦スクロールを有効にする */
+  margin-top: 10px;   /* 上部に少し余白を追加 */
 }
 
 #quality_measurement {
@@ -1685,7 +1686,7 @@ input[type="checkbox"].on_off:checked+ul {
 #acd_bottom{
     display: inline-block;
     width: 100%;
-    background: #f0f0f0;
+    background: var(--gray-thema);
 }
 
 .accordion{
@@ -1701,10 +1702,12 @@ input[type="checkbox"].on_off:checked+ul {
     border-spacing: 0 5px;
     border-collapse: separate;
     border: none;
+    padding-top: 0.3rem;
+    background-color: #fff;
 }
 .dataTable td{
-    text-overflow: ellipsis;
-    overflow: hidden;
+    text-overflow: clip;
+    overflow: auto;
     white-space: nowrap;
     max-width: 10rem;
     font-size: 0.85rem;
@@ -1712,9 +1715,9 @@ input[type="checkbox"].on_off:checked+ul {
     padding: unset;
 }
 .dataTable .expanded td {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
+    white-space: nowrap;
+    overflow: auto;
+    text-overflow: clip;
     max-width: 10%;
 }
 .dataTable td:nth-child(1) {
@@ -1722,17 +1725,13 @@ input[type="checkbox"].on_off:checked+ul {
     width: 30%;
     font-weight: bold;
     color: white;
-    background: #43645b;
+    background: var(--primary-color);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    &:hover {
-        background-color: #a9c7aa;
-        color: black;
-    }
 }
 .dataTable td:last-child{
     border: 1px solid;
-    border-color: #a9c7aa;
+    border-color: var(--primary-color-light);
     text-align: center;
     color: black;
     background: white;
@@ -1740,7 +1739,7 @@ input[type="checkbox"].on_off:checked+ul {
     border-bottom-right-radius: 5px;
 }
 #quality_measurement label {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     padding: 2px 8px;
     height: 2.5rem;
@@ -1752,7 +1751,7 @@ input[type="checkbox"].on_off:checked+ul {
     width: 100%;
 }
 #ait label {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     padding: 2px 8px;
     height: 2.5rem;
@@ -1764,7 +1763,7 @@ input[type="checkbox"].on_off:checked+ul {
     width: 100%;
 }
 #td_detail label{
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     padding: 2px 8px;
     height: 2.5rem;
@@ -1807,7 +1806,7 @@ input[type="checkbox"].on_off:checked+ul {
 }
 #add_btn {
     float: right;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -1820,16 +1819,20 @@ input[type="checkbox"].on_off:checked+ul {
     border-radius: 5px;
     z-index: 10;
     &:hover {
-        background-color: #43645b;
+        background-color: var(--primary-color);
         color: white;
     }
 }
+.add_btn{
+    margin-top: 0.5rem;
+}
 #btn_del_all {
+    margin-top: 0.5rem;
     text-align: left;
 }
 #btn_del_all input{
 
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -1841,7 +1844,7 @@ input[type="checkbox"].on_off:checked+ul {
     border-radius: 5px;
     z-index: 10;
     &:hover {
-        background-color: #43645b;
+        background-color: var(--primary-color);
         color: white;
     }
 }
@@ -1852,7 +1855,7 @@ input[type="checkbox"].on_off:checked+ul {
 }
 
 #btn_reg input {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -1865,12 +1868,13 @@ input[type="checkbox"].on_off:checked+ul {
     border-radius: 5px;
     z-index: 10;
     &:hover {
-        background-color: #43645b;
+        background-color: var(--primary-color);
         color: white;
     }
 }
 
 .eachInfo {
+    background-color: #fff;
     margin-top: 1rem;
 }
 
@@ -1888,17 +1892,17 @@ input[type="checkbox"].on_off:checked+ul {
     border-radius: 5px;
     align-items: center;
     padding: 2px 8px;
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
 }
 .opinion textarea {
     margin-top: 0.3rem;
     width: 100%;
-    background: #f0f0f0;
+    background: var(--gray-thema);
     border-radius: 5px;
     border: 1px solid;
 }
 #testdescriptions {
-    background-color: #43645b;
+    background-color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1917,11 +1921,11 @@ input[type="checkbox"].on_off:checked+ul {
 #other-table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     text-align: center !important;
 }
 
-#other-table>>>.vgt-table {
+#other-table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -1929,9 +1933,9 @@ input[type="checkbox"].on_off:checked+ul {
     border: none;
     width: 100%;
 }
-#other-table>>>.vgt-table thead th {
+#other-table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -1941,57 +1945,57 @@ input[type="checkbox"].on_off:checked+ul {
     text-align: center !important;
 }
 
-#other-table>>>.vgt-fixed-header .vgt-table {
+#other-table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#other-table>>>.vgt-table tbody {
+#other-table :deep(.vgt-table tbody) {
     text-align: center !important;
     font-size: 0.85rem;
 }
-#other-table>>>.vgt-table tbody tr th {
+#other-table :deep(.vgt-table tbody tr th) {
     background: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#other-table>>>.vgt-table tbody tr th:last-child {
+#other-table :deep(.vgt-table tbody tr th:last-child) {
     background: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-#other-table>>>.vgt-table td {
+#other-table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     text-align: center !important;
 }
-#other-table>>>.vgt-table tbody tr td:nth-child(0) {
+#other-table :deep(.vgt-table tbody tr td:nth-child(0)) {
     background: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#other-table>>>.vgt-table tbody tr td:last-child {
+#other-table :deep(.vgt-table tbody tr td:last-child) {
     background: none;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#other-table>>>.vgt-table tbody tr {
+#other-table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border-radius: 5px;
     height: 2rem;
     vertical-align: middle;
 }
 
-#other-table>>>.vgt-table tbody tr:hover{
+#other-table :deep(.vgt-table tbody) tr:hover{
     border-radius: 5px;
-    background: #a9c7aa !important;
+    background: var(--primary-color-light) !important;
 }
 
-#other-table>>>.vgt-table tr td{
+#other-table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -2000,48 +2004,48 @@ input[type="checkbox"].on_off:checked+ul {
     max-width: 140px;
 }
 
-#other-table>>>.vgt-table .expanded td, th {
+#other-table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
-#other-table>>>.vgt-inner-wrap {
+#other-table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
-#other-table>>>.vgt-table tbody th,
-#other-table>>>.vgt-table tbody td{
+#other-table :deep(.vgt-table tbody) th,
+#other-table :deep(.vgt-table tbody) td{
     cursor:pointer;
 }
-#other-table>>>.vgt-table th.vgt-row-header>span{
+#other-table :deep(.vgt-table) th.vgt-row-header>span{
     display: block;
 }
 
-#other-table>>>.vgt-table tr.clickable.graph_used {
+#other-table :deep(.vgt-table tr.clickable.graph_used) {
     background-color: #8cfff9;
 }
-#other-table>>>.vgt-table tr.clickable.graph_previewed {
+#other-table :deep(.vgt-table tr.graph_previewed) {
     background-color: #faf500 !important;
 }
-#other-table>>>.vgt-table th.vgt-row-header{
+#other-table :deep(.vgt-table) th.vgt-row-header{
     color: black !important;
 }
-#other-table>>>.vgt-left-align {
+#other-table :deep(.vgt-left-align) {
     text-align: left !important;
     vertical-align: middle !important;
 }
-#other-table>>>.vgt-table th.sortable:after,
-#other-table>>>.vgt-table th.sortable::before {
+#other-table :deep(.vgt-table) th.sortable:after,
+#other-table :deep(.vgt-table th.sortable::before) {
     right: 40px !important;
 }
-#other-table>>>.vgt-table th.sortable button {
+#other-table :deep(.vgt-table th.sortable button) {
     display: none;
 }
 #other-table input {
