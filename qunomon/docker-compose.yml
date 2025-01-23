@@ -463,8 +463,3 @@ volumes:
     driver: local
   registry-data:
     driver: local
-
-# 外部（AIT-HUB）のdocker network
-networks:
-  aithub_app_net:
-    external: true

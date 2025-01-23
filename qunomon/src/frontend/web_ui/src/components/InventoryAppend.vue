@@ -8,15 +8,15 @@
                 <input type="submit" v-on:click="show" value="作成" id="openModal" class="btn_single_test" />
             </template>
         </div>
-        <modal name="inventoryCreateModal" class="modalContents">
+        <BModal v-model="showModal" name="inventoryCreateModal" class="modalContents" no-footer no-header>
             <div class="subtitleArea">
                 <span class="subtitle">{{$t("inventoryAppend.mes")}}</span>
-                <span id="asterisk"><span class="error">&#042;</span> {{$t("common.require")}}</span>
+                <span id="asterisk" class="asterisk">&#042; {{$t("common.require")}}</span>
             </div>
             <div class="error">
-                <ui v-for="errorMessage in errorMessages" v-bind:key="errorMessage.text">
+                <ul v-for="errorMessage in errorMessages" v-bind:key="errorMessage.text">
                     <li class="error_message">{{ errorMessage }}</li>
-                </ui>
+                </ul>
             </div>
 
             <!--テキストボックス-->
@@ -52,7 +52,7 @@
                                     <option value="" hidden style="color: gray">
                                         {{$t("common.defaultPulldown")}}
                                     </option>
-                                    <option v-for="dataType in dataTypes" :key="dataType.Id" v-bind:value="dataType.Id">
+                                    <option v-for="dataType in dataTypes" v-bind:value="dataType.Id" :key="dataType.Id">
                                         {{ dataType.Name }}
                                     </option>
                                 </select>
@@ -61,12 +61,11 @@
                         <dl>
                             <dt class="label">{{$t("inventoryAppend.format")}}<span class="error">&#042;</span></dt>
                             <dd>
-                                <VueSelect  class="vueselect"
-                                            :options="formats"
+                                <multiselect :options="formats"
                                             v-model="selectedFormat"
-                                            taggable
+                                            :taggable="true"
                                             >
-                                </VueSelect>
+                                </multiselect>
                             </dd>
                         </dl>
                         <dl>
@@ -92,7 +91,7 @@
             <div id="closeModal" class="closeModal" @click="postInventoryCancel">
                 ×
             </div>
-        </modal>
+        </BModal>
     </div>
 </template>
 
@@ -104,11 +103,16 @@ import {
     urlParameterMixin
 } from "../mixins/urlParameterMixin";
 import { csrfMixin } from '../mixins/csrfMixin';
-import { VueSelect } from "vue-select";
-import "vue-select/dist/vue-select.css";
+import Multiselect from 'vue-multiselect';
+import { BModal } from 'bootstrap-vue-next';
 
 export default {
     mixins: [inventoryMixin, urlParameterMixin, csrfMixin],
+    data() {
+        return {
+            showModal: false
+        }
+    },
     mounted() {
         this.mlComponentIdCheck();
         this.organizationIdCheck = sessionStorage.getItem("organizationId");
@@ -118,16 +122,17 @@ export default {
         this.getFormats();
     },
     components: {
-        VueSelect
+        Multiselect,
+        BModal
     },
     methods: {
         show() {
             this.clearInputInventory();
-            this.$modal.show("inventoryCreateModal");
+            this.showModal = true;
         },
         hide() {
             this.clearInputInventory();
-            this.$modal.hide("inventoryCreateModal");
+            this.showModal = false;
         },
         postInventory() {
             this.errorMessages = [];
@@ -156,20 +161,14 @@ export default {
 
                             this.result = response.data;
                             this.clearInputInventory();
-                            if (this.$route.params.testDescriptionId) {
+                            if (this.$route.query.testDescriptionId) {
                                 this.$router.push({
-                                    name: this.$route.params.history,
-                                    params: {
-                                        testDescriptionId: this.$route.params.testDescriptionId,
-                                        previousPageSettingData: this.$route.params.previousPageSettingData
-                                    }
+                                    name: this.$route.query.history,
+                                    query: {testDescriptionId: this.$route.query.testDescriptionId}
                                 })
-                            } else if (this.$route.params.history != null) {
+                            } else if (this.$route.query.history != null) {
                                 this.$router.push({
-                                    name: this.$route.params.history,
-                                    params: {
-                                        previousPageSettingData: this.$route.params.previousPageSettingData
-                                    }
+                                    name: this.$route.query.history
                                 })
                             } else {
                                 this.$router.push({
@@ -184,9 +183,7 @@ export default {
 
                             this.$router.push({
                                 name: "Information",
-                                params: {
-                                    error
-                                }
+                                query: {error: JSON.stringify({...error, response: error.response})}
                             })
                         })
                 }
@@ -195,20 +192,14 @@ export default {
             }
         },
         cancel() {
-            if (this.$route.params.testDescriptionId != null) {
+            if (this.$route.query.testDescriptionId != null) {
                 this.$router.push({
-                    name: this.$route.params.history,
-                    params: {
-                        testDescriptionId: this.$route.params.testDescriptionId,
-                        previousPageSettingData: this.$route.params.previousPageSettingData,
-                    },
+                    name: this.$route.query.history,
+                    query: {testDescriptionId: this.$route.query.testDescriptionId}
                 });
-            } else if (this.$route.params.history != null) {
+            } else if (this.$route.query.history != null) {
                 this.$router.push({
-                    name: this.$route.params.history,
-                    params: {
-                        previousPageSettingData: this.$route.params.previousPageSettingData,
-                    },
+                    name: this.$route.query.history
                 });
             } else {
                 this.$router.push({
@@ -233,10 +224,12 @@ export default {
 };
 </script>
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style scoped>
 
 .subtitleArea {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -248,6 +241,9 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.subtitle{
+    color: #fff;
 }
 
 
@@ -269,7 +265,7 @@ export default {
     font-size: 0.85rem;
     font-weight: bold;
     flex-basis: 30%;
-    background: #43645b;
+    background: var(--primary-color);
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -287,7 +283,7 @@ export default {
     width: 100%;
     border: 1px solid;
     min-height: 2rem;
-    border-color: #43645b;
+    border-color: var(--primary-color);
 }
 .formDetail dl dd textarea {
     width: 100%;
@@ -297,14 +293,14 @@ export default {
 }
 
 
-.modalContents>>>.vm--modal {
+.modalContents :deep(.vm--modal) {
     position: absolute !important;
     top: 10% !important;
     /*left: 22% !important;*/
     width: 32% !important;
     height: 52% !important;
     /*padding: 15px 0px !important;*/
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     border-radius: 10px;
     overflow-y: auto;
 }
@@ -316,12 +312,6 @@ export default {
     margin-bottom: 10px;
 }
 
-.vueselect {
-    width: 100%;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border:none;
-}
 .search_table_option {
     display: flex;
     float: right;
@@ -329,7 +319,7 @@ export default {
 
 
 .search_table_option input {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -348,7 +338,7 @@ export default {
 
 .search_table_option input:hover {
     color: white;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
 }
 @media ( max-width: 767px ){
     .defaultStyleInput {
@@ -384,5 +374,8 @@ export default {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border: none;
+}
+.asterisk{
+    color: #ff0000;
 }
 </style>

@@ -1,5 +1,5 @@
 import { csrfMixin } from '../mixins/csrfMixin';
-import { EventBus } from '../eventBus';
+import EventBus from '../eventBus';
 
 export const AccountControlMixin = {
     mixins: [csrfMixin],
@@ -51,7 +51,7 @@ export const AccountControlMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             });
         },
@@ -97,10 +97,10 @@ export const AccountControlMixin = {
             })
         },
         triggerMessage(messageCode, messageText) {
-            EventBus.$emit('show-message', messageCode, messageText);
+            EventBus.emit('show-message', messageCode, messageText);
         },
         triggerAithubUsing() {
-            EventBus.$emit('set-aithub-using');
+            EventBus.emit('set-aithub-using');
         },
     }
 }

@@ -45,7 +45,7 @@
         margin:0; padding:0;     /*全要素のマージン・パディングをリセット*/
     }
     body{
-        color:#000066;        /*文字色*/
+        color: var(--text-color-black);        /*文字色*/
         font-size: 16px;
         font-family:Meiryo;            /*フォント*/
     }
@@ -62,7 +62,7 @@
         left: 75%;
         transform: translate(-50%,-50%);
         border-radius: 6px;
-        background:#f0f0f0;    /*シート背景色（灰色）*/
+        background:var(--gray-thema);    /*シート背景色（灰色）*/
         padding: 20px 0px;
         text-align: center;
         width: 400px;

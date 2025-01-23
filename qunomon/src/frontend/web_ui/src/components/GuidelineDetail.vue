@@ -30,33 +30,30 @@
         <div id="main" :class="{ active: this.isActive }">
             <div id="main_body">
                 <div class="accordion">
-                    <template>
                         <div>
                             <p>{{$t("guidelineDetail.description")}}</p>
-                            <vue-json-editor
+                            <Vue3JsonEditor
                                 v-model="json"
                                 :show-btns="false"
                                 :expandedOnStart="true"
                                 :mode="'code'"
-                            >
-                            </vue-json-editor>
+                                @json-change="onJsonChange"
+                                @has-error="onHasError" />
                         </div>
-                    </template>
                 </div>
+                <div v-if="jsonErrorMessage" class="json_error_message">{{ jsonErrorMessage }}</div>
 
                 <!-- button -->
                 <div class="btn_area">
                     <template v-if="$i18n.locale === 'en'">
-                        <input type="button" value="Update" class="btn_left"
-                               @click="guidelineUpdate" v-bind:disabled="!guideline_install_flag"
-                               v-bind:class="{'un_btn' : !guideline_install_flag}"/>
+                        <input v-bind:disabled="!guideline_install_flag" v-bind:class="{'un_btn' : !guideline_install_flag}" type="button" value="Update" class="btn_left"
+                               @click="guidelineUpdate" />
                         <input type="button" value="Back" class="btn_left"
                                @click="guidelineBack" />
                     </template>
                     <template v-else>
-                        <input type="button" value="更新" class="btn_right"
-                               @click="guidelineUpdate" v-bind:disabled="!guideline_install_flag"
-                               v-bind:class="{'un_btn' : !guideline_install_flag}"/>
+                        <input v-bind:disabled="!guideline_install_flag" v-bind:class="{'un_btn' : !guideline_install_flag}" type="button" value="更新" class="btn_right"
+                               @click="guidelineUpdate" />
                         <input type="button" value="戻る" class="btn_right"
                                @click="guidelineBack" />
                     </template>
@@ -78,7 +75,7 @@ import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { GuidelinesMixin } from '../mixins/GuidelinesMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import vueJsonEditor from 'vue-json-editor';
+import { Vue3JsonEditor } from 'vue3-json-editor'
 
 export default {
     mixins: [subMenuMixin, urlParameterMixin, GuidelinesMixin, AccountControlMixin, csrfMixin],
@@ -90,7 +87,8 @@ export default {
             },
             errorMessages: [],
             guideline_install_flag: false,
-            guideline_id: null
+            guideline_id: null,
+            jsonErrorMessage: ""
         }
     },
     mounted: async function () {
@@ -118,7 +116,7 @@ export default {
     },
     components: {
         SubMenu,
-        vueJsonEditor
+        Vue3JsonEditor
     },
     methods: {
         guidelineUpdate(){
@@ -152,7 +150,7 @@ export default {
                     .catch((error) => {
                         this.$router.push({
                             name: 'Information',
-                            params: {error}
+                            query: {error: JSON.stringify({...error, response: error.response})}
                         })
                     })
             } else {
@@ -164,6 +162,20 @@ export default {
                 name: "Guidelines"
             });
         },
+        /**
+         * JSONの値が変更された場合の処理
+         * @param json JSONの値
+         */
+        onJsonChange(json){
+            this.json = json;
+            this.jsonErrorMessage = "";
+        },
+        /**
+         * JSONの構文に誤りがある場合の処理
+         */
+        onHasError(){
+            this.jsonErrorMessage = this.$t("guidelineDetail.errorMessage");
+        }
     }
 }
 </script>
@@ -195,6 +207,13 @@ export default {
     font-size: 2rem;
     width: 80%;
     /*background: red;*/
+}
+
+/* JSONの構文に誤りがある場合のエラーメッセージ */
+.json_error_message {
+    text-align: center;
+    margin: 0px;
+    color: #ff0000;
 }
 
 /*エラーメッセージ*/

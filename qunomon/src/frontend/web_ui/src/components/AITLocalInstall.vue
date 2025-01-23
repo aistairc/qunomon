@@ -69,7 +69,7 @@
                     <!--                <label>{{$t("aitLocalInstall.aitList")}}</label>-->
                     <div id="search_table">
                         <div id="table" align="center">
-                            <VueGoodTable
+                            <vue-good-table
                                 ref="aitListTable"
                                 :columns="aitLocalInstall_columns"
                                 :rows="aitLocalInstall_rows"
@@ -87,9 +87,9 @@
                                     ]
                                 }"
                                 :pagination-options="{enabled: true, mode: 'pages'}"
-                                @on-row-click="onRowClick"
+                                v-on:row-click="onRowClick"
                             >
-                                <template slot="table-row" slot-scope="props">
+                                <template v-slot:table-row="props">
                                     <!--EditOptions-->
                                     <template v-if="props.column.field == 'status'">
                                         <span v-if="props.row.status == 'OK'">
@@ -114,7 +114,7 @@
                                         </router-link>
                                     </template>
                                 </template>
-                            </VueGoodTable>
+                            </vue-good-table>
                         </div>
                     </div>
                 </div>
@@ -133,8 +133,8 @@ import SubMenu from './SubMenu.vue';
 import { subMenuMixin } from "../mixins/subMenuMixin";
 import { AITLocalMixin } from '../mixins/AITLocalMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 
 export default {
     mixins: [subMenuMixin, AITLocalMixin, AccountControlMixin],
@@ -284,12 +284,12 @@ export default {
 /*---------------
 表
 ----------------*/
-#table>>>.vgt-input, .vgt-select {
+#table :deep(.vgt-input, .vgt-select) {
     width: 50% !important;
     float: left;
 
 }
-#table>>>.vgt-inner-wrap .vgt-global-search {
+#table :deep(.vgt-inner-wrap .vgt-global-search) {
     background: unset;
     border: unset;
     padding: unset;
@@ -298,16 +298,16 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
 
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -316,22 +316,22 @@ export default {
     width: 100%;
 }
 
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -339,29 +339,35 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -372,7 +378,7 @@ export default {
     height: 2rem;
     vertical-align: middle;
 }
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
@@ -441,7 +447,7 @@ textarea:focus {
     background: white;
 }
 .option-menu div .cardTitle {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -456,7 +462,7 @@ textarea:focus {
 }
 .option-menu div table {
     width: 95%;
-    margin: 0 auto;
+    margin: 0.5rem auto 0.8rem auto;
     vertical-align: middle;
     text-align: center;
     position: relative;
@@ -469,7 +475,7 @@ textarea:focus {
 }
 
 .option-menu div table td:nth-child(1) {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -477,7 +483,7 @@ textarea:focus {
     font-weight: bold;
 
     &:hover {
-        background-color: #43645b;
+        background-color: var(--primary-color);
         color: white;
     }
 }
@@ -485,14 +491,15 @@ textarea:focus {
 .option-menu div table td:nth-child(2) {
     width: 50%;
     border: 1px solid;
-    border-color: #a9c7aa;
-    background-color: #f0f0f0;
+    border-color: var(--primary-color-light);
+    background-color: var(--gray-thema);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     text-align: left;
+    padding-left: 0.5rem;
 }
 .option-menu div table td:nth-child(2) input {
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 .option-menu div table td:last-child {
     padding-left: 1rem;
@@ -544,10 +551,10 @@ textarea:focus {
     border-radius: 5px;
     color: black;
     font-weight: bold;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     &:hover {
         color: white;
-        background-color: #43645b;
+        background-color: var(--primary-color);
     }
 }
 

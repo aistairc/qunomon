@@ -8,15 +8,15 @@
                 <input type="submit" v-on:click="show" value="作成" id="openModal" class="btn_single_test">
             </template>
         </div>
-        <modal name="mlcCreateModal" class="modalContents">
+        <BModal v-model="showModal" name="mlcCreateModal" class="modalContents" no-footer no-header>
             <div class="subtitleArea">
                 <span class="subtitle">{{$t("mlComponentCreate.title")}}</span>
                 <span id="asterisk"><span class="error">&#042;</span> {{$t("common.require")}}</span>
             </div>
             <div class="error">
-                <ui v-for="errorMessage in errorMessages" v-bind:key="errorMessage.text">
+                <ul v-for="errorMessage in errorMessages" v-bind:key="errorMessage.text">
                     <li class="error_message">{{errorMessage}}</li>
-                </ui>
+                </ul>
             </div>
             <!--テキストボックス-->
             <div class="input">
@@ -60,7 +60,7 @@
                                 <td>
                                     <select class="defaultStyleSelect" v-model="select_guideline_id" v-on:change="setScopeList">
                                         <option value="" hidden>--Please Select--</option>
-                                        <option v-for="guideline in guidelines" :key="guideline.Id" v-bind:value="guideline.Id">
+                                        <option v-for="guideline in guidelines" v-bind:value="guideline.Id" :key="guideline.Id">
                                             {{guideline.Name}}
                                         </option>
                                     </select>
@@ -81,7 +81,7 @@
                                 <td>
                                     <select class="defaultStyleSelect" v-model="select_scope_id">
                                         <option value="" hidden>--Please Select--</option>
-                                        <option v-for="scope in scopes" :key="scope.Id" v-bind:value="scope.Id">
+                                        <option v-for="scope in scopes" v-bind:value="scope.Id" :key="scope.Id">
                                             {{scope.Name}}
                                         </option>
                                     </select>
@@ -119,7 +119,7 @@
             <div id="closeModal" class="closeModal" @click="postMLComponentCancel">
                 ×
             </div>
-        </modal>
+        </BModal>
     </div>
 </template>
 
@@ -128,13 +128,17 @@ import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { MLComponentMixin } from '../mixins/MLComponentMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-
+import { BModal } from 'bootstrap-vue-next';
 export default {
     data() {
         return {
             mlComponentId: null,
-            edit_flag: false
+            edit_flag: false,
+            showModal: false
         }
+    },
+    components: {
+        BModal
     },
     mixins: [urlParameterMixin, MLComponentMixin, AccountControlMixin, csrfMixin],
     mounted: function () {
@@ -143,10 +147,10 @@ export default {
     },
     methods: {
         show() {
-            this.$modal.show('mlcCreateModal');
+            this.showModal = true;
         },
         hide() {
-            this.$modal.hide('mlcCreateModal');
+            this.showModal = false;
             this.$emit('reset');
         },
         postMLComponent() {
@@ -179,9 +183,7 @@ export default {
                         .catch((error) => {
                             this.$router.push({
                                 name: 'Information',
-                                params: {
-                                    error
-                                }
+                                query: {error: JSON.stringify({...error, response: error.response})}
                             })
                         })
                 }
@@ -224,7 +226,7 @@ export default {
             }
             this.guideline_reason = inputGuidelineReason;
             this.scope_reason = inputScopeReason;
-            this.$modal.show('mlcCreateModal');
+            this.showModal = true;
         },
         putMLComponent() {
             this.errorMessages = [];
@@ -257,9 +259,7 @@ export default {
                         .catch((error) => {
                             this.$router.push({
                                 name: 'Information',
-                                params: {
-                                    error
-                                }
+                                query: {error: JSON.stringify({...error, response: error.response})}
                             })
                         })
                 }
@@ -283,7 +283,7 @@ export default {
     float: right;
 }
 .search_table_option input {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -298,23 +298,23 @@ export default {
 }
 .search_table_option input:hover {
     color: white;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
 }
 
-.modalContents>>>.vm--modal {
+.modalContents :deep(.vm--modal) {
     position: absolute !important;
     top: 10% !important;
     /*left: 22% !important;*/
     width: 32% !important;
     height: 65% !important;
     /*padding: 15px 0px !important;*/
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     border-radius: 10px;
     overflow-y: auto;
 }
 
 .subtitleArea {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -362,12 +362,12 @@ export default {
     height: 100%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background: #f0f0f0;
+    background: var(--gray-thema);
 }
 
 .formDetail table tr td:nth-child(1) {
     width: 40%;
-    background: #43645b;
+    background: var(--primary-color);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     font-weight: bold;
@@ -375,7 +375,7 @@ export default {
 }
 .formDetail table tr td:last-child {
     width: 60%;
-    background: #f0f0f0;
+    background: var(--gray-thema);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -387,7 +387,7 @@ export default {
     color: white;
     text-align: center;
     width: 100%;
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     align-items: center;

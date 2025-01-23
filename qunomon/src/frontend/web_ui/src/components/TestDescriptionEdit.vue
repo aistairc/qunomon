@@ -115,10 +115,10 @@
                                 </thead>
                                 <tbody class="tbody">
                                     <tr class="trName" @click="toggleRow" v-for="(TestRunner, i) in sortFilterTestRunners" :key="TestRunner.Id" v-show="filterTestRunnersDisplayList[i]">
-                                        <template v-if="$route.params.backTestDescriptionEditData != null">
-                                            <template v-if="TestRunner.Id == $route.params.backTestDescriptionEditData.selectedTestrunner.Id">
+                                        <template v-if="queryBackTestDescriptionEditData != null">
+                                            <template v-if="TestRunner.Id == queryBackTestDescriptionEditData.selectedTestrunner.Id">
                                                 <td class="ait_check aitProgramTableColor background">
-                                                    <input type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" v-bind:value="TestRunner" @change="nextBtnCheck" @click="changeColorTable" />
+                                                    <input v-bind:value="TestRunner" type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" @change="nextBtnCheck" @click="changeColorTable" />
                                                 </td>
                                                 <td class="ait_name aitProgramTableColor background">
                                                     <span>{{ TestRunner.Name }}</span>
@@ -132,7 +132,7 @@
                                             </template>
                                             <template v-else>
                                                 <td class="ait_check background">
-                                                    <input type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" v-bind:value="TestRunner" @change="nextBtnCheck" @click="changeColorTable" />
+                                                    <input v-bind:value="TestRunner" type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" @change="nextBtnCheck" @click="changeColorTable" />
                                                 </td>
                                                 <td class="ait_name background">
                                                     <span>{{ TestRunner.Name }}</span>
@@ -148,7 +148,7 @@
                                         <template v-else>
                                             <template v-if="TestRunner.Id == test_description_detail.TestRunner.Id">
                                                 <td class="ait_check aitProgramTableColor background">
-                                                    <input type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" v-bind:value="TestRunner" @change="nextBtnCheck" @click="changeColorTable" />
+                                                    <input v-bind:value="TestRunner" type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" @change="nextBtnCheck" @click="changeColorTable" />
                                                 </td>
                                                 <td class="ait_name aitProgramTableColor background">
                                                     <span>{{ TestRunner.Name }}</span>
@@ -162,7 +162,7 @@
                                             </template>
                                             <template v-else>
                                                 <td class="ait_check background">
-                                                    <input type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" v-bind:value="TestRunner" @change="nextBtnCheck" @click="changeColorTable" />
+                                                    <input v-bind:value="TestRunner" type="radio" class="list_ radioCheck" name="radio" v-model="changeTestrunner" @change="nextBtnCheck" @click="changeColorTable" />
                                                 </td>
                                                 <td class="ait_name background">
                                                     <span>{{ TestRunner.Name }}</span>
@@ -206,7 +206,7 @@
                                         <option value=null style="color: gray" disabled>
                                             {{$t("common.defaultPulldown")}}
                                         </option>
-                                        <option v-for="qualityDimension in qualityDimensions.QualityDimensions" :key="qualityDimension.Id" v-bind:value="qualityDimension.Id">
+                                        <option v-for="qualityDimension in qualityDimensions.QualityDimensions" v-bind:value="qualityDimension.Id" :key="qualityDimension.Id">
                                             {{ qualityDimension.Name }}
                                         </option>
                                     </select>
@@ -254,7 +254,7 @@ import { subMenuMixin } from "../mixins/subMenuMixin";
 import { urlParameterMixin } from "../mixins/urlParameterMixin";
 import { tdMixin } from "../mixins/testDescriptionMixin";
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
-import "vue-good-table/dist/vue-good-table.css";
+import "vue-good-table-next/dist/vue-good-table-next.css";
 
 export default {
     components: {SubMenuMLComponent},
@@ -265,7 +265,8 @@ export default {
             nameCheck: false,
             aitProgramCheck: false,
             test_description_detail: null,
-            setTempTestRunner: null
+            setTempTestRunner: null,
+            queryBackTestDescriptionEditData: this.$route.query.backTestDescriptionEditData === undefined ? undefined : JSON.parse(this.$route.query.backTestDescriptionEditData)
         };
     },
     created() {
@@ -369,7 +370,7 @@ export default {
                 .then((response) => {
                     this.test_description_detail = response.data.TestDescriptionDetail;
                     // 初期値の代入
-                    if (this.$route.params.backTestDescriptionEditData == null) {
+                    if (this.queryBackTestDescriptionEditData == null) {
                         this.testDescriptionName = this.test_description_detail.Name;
                         this.selectedQualityDimension = this.test_description_detail.QualityDimension.Id;
                         this.setTempTestRunner = this.test_description_detail.TestRunner;
@@ -384,9 +385,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: "Information",
-                        params: {
-                            error
-                        },
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     });
                 });
         },
@@ -478,19 +477,19 @@ export default {
         },
         //TestDescriptionEdit2画面から戻ってきたときの処理
         getBackTestDescriptionData() {
-            this.testDescriptionName = this.$route.params.backTestDescriptionEditData.testDescriptionName;
-            this.selectedQualityDimension = this.$route.params.backTestDescriptionEditData.selectedQualityDimension;
+            this.testDescriptionName = this.queryBackTestDescriptionEditData.testDescriptionName;
+            this.selectedQualityDimension = this.queryBackTestDescriptionEditData.selectedQualityDimension;
             this.setTempTestRunner = this.test_description_detail.TestRunner;
-            this.changeTestrunner = this.$route.params.backTestDescriptionEditData.selectedTestrunner;
-            this.aitNameFilter = this.$route.params.backTestDescriptionEditData.aitNameFilter;
-            this.aitDescriptionFilter = this.$route.params.backTestDescriptionEditData.aitDescriptionFilter;
+            this.changeTestrunner = this.queryBackTestDescriptionEditData.selectedTestrunner;
+            this.aitNameFilter = this.queryBackTestDescriptionEditData.aitNameFilter;
+            this.aitDescriptionFilter = this.queryBackTestDescriptionEditData.aitDescriptionFilter;
         },
         //選択行の色変化
         changeColorTable() {
             var aitRadio = document.getElementsByClassName("radioCheck");
             for (var i = 0; i < aitRadio.length; i++) {
                 var aitTr = aitRadio[i].parentNode.parentNode;
-                var aitTd = aitTr.childNodes;
+                var aitTd = aitTr.children;
                 if (aitRadio[i].checked) {
                     aitTd[0].classList.add("aitProgramTableColor");
                     aitTd[1].classList.add("aitProgramTableColor");
@@ -565,13 +564,13 @@ export default {
 }
 .eachCard {
     width: 100%;
-    background: white;
+    background: #fff;
     border-radius: 5px;
     max-height:30rem;
     overflow:auto
 }
 .subtitleArea {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -588,9 +587,12 @@ export default {
     font-size: 1rem;
     font-weight: bold;
 }
+.subtitle{
+    color: #fff;
+}
 .table_block {
     width: 95%;
-    margin: auto;
+    margin: 0.5rem auto;
     vertical-align: middle;
     position: relative;
     border-collapse: separate;
@@ -599,7 +601,7 @@ export default {
 }
 .table_block thead {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -607,6 +609,12 @@ export default {
     padding: unset;
     vertical-align: middle;
     font-weight: bold;
+}
+.table_block thead tr td:first-child {
+    border-top-left-radius: 5px;
+}
+.table_block thead tr td:last-child {
+    border-top-right-radius: 5px;
 }
 .trName td:nth-child(1) {
     width: 5%;
@@ -625,7 +633,7 @@ export default {
     text-overflow: unset;
 }
 .table_block tbody tr {
-    background-color: #f0f0f0; /* Set row background color */
+    background-color: var(--gray-thema); /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
@@ -640,7 +648,7 @@ export default {
 }
 
 .table_block tbody tr:hover{
-    background: #a9c7aa !important;
+    background: var(--primary-color-light) !important;
 
 }
 .table_block .contents-area {
@@ -652,7 +660,7 @@ export default {
     font-size: 0.85rem;
 }
 .table_block .left {
-    background: #43645b;
+    background: var(--primary-color);
     color: white;
     width: 100%;
     font-weight: bold;
@@ -661,22 +669,20 @@ export default {
 }
 .table_block .right {
     border: 1px solid;
-    border-color: #43645b;
-    background: #f0f0f0;
+    border-color: var(--primary-color);
+    background: var(--gray-thema);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 .table_block .right input {
     width: 100%;
     height: 2rem;
-    background: #f0f0f0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 .table_block .right select {
     width: 100%;
     height: 2rem;
-    background: #f0f0f0;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -692,7 +698,6 @@ export default {
 .ait_name.center input {
     width: 50%;
     padding-left: 1rem;
-    background: #f0f0f0;
     border-radius: 5px;
 }
 .ait_version.center {
@@ -714,20 +719,19 @@ export default {
     font-size: 1rem;
 }
 .aitProgramTableColor {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
 }
 .ait_description.center input{
     width: 50%;
     margin-left: 1rem;
-    background: #f0f0f0;
     border-radius: 5px;
 }
 .asterisk {
     color: #ff0000;
 }
 .category_description {
-    font-size: 0.7rem;
-    color: #7d4aff;
+    font-size: 0.8rem;
+    color: var(--text-color-black);
 }
 .table_block .sortable{
     cursor:pointer;

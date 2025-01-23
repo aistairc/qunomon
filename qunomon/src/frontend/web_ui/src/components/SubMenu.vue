@@ -2,16 +2,13 @@
 <template>
     <div id="sidebar-main">
         <aside>
-            <b-sidebar
+            <BNavbar
                 id="sidebar"
-                backdrop
-                bg-variant="#f0f0f0"
-                no-header
-                sidebar-class="border-right"
                 width="12.5rem"
+                container="'Breakpoint'"
             >
 
-                <b-list-group flush>
+                <BListGroup flush>
                     <div id="submenu" :class="{'active': this.isActive}">
                         <div id="logo">
                             <img src="~@/assets/logo.svg" alt="logo" class="logo">
@@ -19,45 +16,50 @@
                         <slot></slot><!--ここに言語切替要素が入ってくる-->
 
 
-                        <b-list-group-item to="MLComponents" variant="success" active-class="active" exact>
+                        <BListGroupItem 
+                            :active="$route.path === '/mLcomponents'" 
+                            to="MLComponents" 
+                            variant="success" 
+                            active-class="active"
+                        >
                             <span v-if="this.isActive" :title="$t('common.menuMLComponents')"><img :src="MLComponentIcon"  alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuMLComponents")}}</span>
-                        </b-list-group-item>
-                        <b-list-group-item to="Guidelines" variant="success" active-class="active">
+                        </BListGroupItem>
+                        <BListGroupItem to="Guidelines" variant="success" active-class="active" :active="$route.path === '/guidelines'">
                             <span v-if="this.isActive" :title="$t('common.menuGuidelines')"><img :src="GuidelinesIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuGuidelines")}}</span>
-                        </b-list-group-item>
-                        <b-list-group-item to="AITDashboard" variant="success" active-class="active">
+                        </BListGroupItem>
+                        <BListGroupItem to="AITDashboard" variant="success" active-class="active" :active="$route.path === '/AITDashboard'">
                             <span v-if="this.isActive" :title="$t('')"><img :src="InstalledAITsIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuAITDashboard")}}</span>
-                        </b-list-group-item>
+                        </BListGroupItem>
                         <template v-if="aithub_linkage_mode">
-                            <b-list-group-item to="AITSearch" variant="success" active-class="active">
+                            <BListGroupItem to="AITSearch" variant="success" active-class="active" :active="$route.path === '/AITSearch'">
                                 <span v-if="this.isActive" :title="$t('common.menuAITSearch')"><img :src="AITSearchIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                                 <span v-else>{{$t("common.menuAITSearch")}}</span>
-                            </b-list-group-item>
+                            </BListGroupItem>
                         </template>
                         <template v-if="aithub_linkage_mode">
-                            <b-list-group-item to="AITRanking" variant="success" active-class="active">
+                            <BListGroupItem to="AITRanking" variant="success" active-class="active" :active="$route.path === '/AITRanking'">
                                 <span v-if="this.isActive" :title="$t('common.menuAITRanking')"><img :src="AITRankingIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                                 <span v-else>{{$t("common.menuAITRanking")}}</span>
-                            </b-list-group-item>
+                            </BListGroupItem>
                         </template>
-                        <b-list-group-item to="AITLocalInstall" variant="success" active-class="active">
+                        <BListGroupItem to="AITLocalInstall" variant="success" active-class="active" :active="$route.path === '/AITLocalInstall'">
                             <span v-if="this.isActive" :title="$t('common.menuAITLocalInstall')"><img :src="AITLocalInstallIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuAITLocalInstall")}}</span>
-                        </b-list-group-item>
-                        <b-list-group-item to="ReportTemplate" variant="success" active-class="active">
+                        </BListGroupItem>
+                        <BListGroupItem to="ReportTemplate" variant="success" active-class="active" :active="$route.path === '/ReportTemplate'">
                             <span v-if="this.isActive" :title="$t('common.menuReportTemplate')"><img :src="ReportTemplateIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuReportTemplate")}}</span>
-                        </b-list-group-item>
-                        <b-list-group-item to="Setting" variant="success" active-class="active">
+                        </BListGroupItem>
+                        <BListGroupItem to="Setting" variant="success" active-class="active" :active="$route.path === '/setting'">
                             <span v-if="this.isActive" :title="$t('common.menuSetting')"><img :src="SettingIcon" alt="Image" class="imageBtn" width="30" height="auto"></span>
                             <span v-else>{{$t("common.menuSetting")}}</span>
-                        </b-list-group-item>
+                        </BListGroupItem>
                     </div>
-                </b-list-group>
-            </b-sidebar>
+                </BListGroup>
+            </BNavbar>
         </aside>
     </div>
 </template>
@@ -74,10 +76,16 @@ import AITRankingIcon from "@/assets/AITRanking_icon.svg";
 import AITLocalInstallIcon from '@/assets/AITLocalInstall_icon.svg'
 import ReportTemplateIcon from '@/assets/ReportTemplate_icon.svg'
 import SettingIcon from '@/assets/Setting_icon.svg'
+import { BNavbar, BListGroup, BListGroupItem } from 'bootstrap-vue-next'
 
 
 export default {
     mixins: [AccountControlMixin, csrfMixin],
+    components: {
+        BNavbar,
+        BListGroup,
+        BListGroupItem
+    },
     data() {
         return{
             MLComponentIcon: MLComponentIcon,
@@ -92,7 +100,7 @@ export default {
         }
     },
     created: async function() {
-        pageMixin.$on('classToggled', isActive => {
+        pageMixin.on('classToggled', isActive => {
             this.isActive = isActive;
         })
     },
@@ -111,13 +119,19 @@ export default {
                 return checkIsActive !== "false";
             }
         },
+    },
+    computed: {
+        currentPath() {
+            return this.$route.path;
+        }
     }
 }
 </script>
 
 <style>
 #sidebar-main, #sidebar{
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
+    height: 3rem;
 }
 
 #company_name {
@@ -135,7 +149,7 @@ export default {
 /* SidebarをNavbarの下に配置 */
 .b-sidebar,
 .b-sidebar-backdrop {
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     top: 3rem;
     padding-bottom: 56px;
 }
@@ -145,13 +159,13 @@ export default {
     margin-top: 56px;
     min-height: calc(100vh - 56px);
     padding-bottom: 30px;
-    background: #f0f0f0;
+    background: var(--gray-thema);
 
 }
 
 .list-group-item.list-group-item-success {
-    color: #43645b;
-    background-color: #a9c7aa;
+    color: var(--primary-color);
+    background-color: var(--primary-color-light);
 }
 .list-group-item.list-group-item-success.list-group-item-action:hover, .list-group-item-success.list-group-item-action:focus {
     color: #fff;
@@ -159,8 +173,8 @@ export default {
 }
 .list-group-item.list-group-item-success.list-group-item-action.active {
     color: #fff;
-    background-color: #43645b;
-    border-color: #43645b;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 .qq {
     background: unset;
@@ -189,5 +203,33 @@ export default {
     .b-sidebar {
         display: block !important;
     }
+}
+
+/* アクティブなアイテムのスタイル */
+.list-group-item.active {
+    color: #fff !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* ホバー時のスタイル */
+.list-group-item:hover {
+    color: #fff;
+    background-color: rgba(67, 100, 91, 0.8) !important;
+}
+
+/* アクティブ状態のスタイルをより具体的に指定 */
+.list-group-item.list-group-item-success.active,
+.list-group-item.list-group-item-success.router-link-active {
+  color: #fff !important;
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* ホバー時のスタイル */
+.list-group-item.list-group-item-success:hover {
+  color: #fff;
+  background-color: rgba(67, 100, 91, 0.8) !important;
+  cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <modal name="TDReletionModal" class="modalContents"  @before-close="tableReroad">
+        <BModal v-model="showModal" name="TDReletionModal" class="modalContents" size="lg"  @hide="tableReroad" no-footer no-header>
             <div id="search_table">
                 <div id="modal_description">
                     <div id="title_area">
@@ -9,29 +9,29 @@
                     </div>
                     <div id="btn_test">
                         <template v-if="$i18n.locale === 'en'">
-                            <input id="compare_btn" type="submit" value="Compare" class="uploadBTN" v-bind:class="{ 'un_btn' : isActivated }" @click="compare">
+                            <input v-bind:class="{ 'un_btn' : isActivated }" id="compare_btn" type="submit" value="Compare" class="uploadBTN" @click="compare">
                         </template>
                         <template v-else>
-                            <input id="compare_btn" type="submit" value="比較" class="uploadBTN" v-bind:class="{ 'un_btn' : isActivated }" @click="compare">
+                            <input v-bind:class="{ 'un_btn' : isActivated }" id="compare_btn" type="submit" value="比較" class="uploadBTN" @click="compare">
                         </template>
                     </div>
                 </div>
 
                 <!--テーブル-->
                 <div id="table" align="center">
-                    <VueGoodTable
+                    <vue-good-table
                         ref="tdTable"
                         :columns="columns"
                         :rows="rows"
                         max-height="350px"
                         :fixed-header="true"
                         align="center"
-                        style-class="vgt-table"
+                        styleClass="vgt-table"
                     >
-                        <template slot="table-row" slot-scope="props">
+                        <template v-slot:table-row="props">
                             <!--チェックボックス-->
                             <span v-if="props.column.field == 'checked'">
-                                <input type="checkbox" name="background" v-bind:value="td_test[props.row.originalIndex].Id" v-model="checkedItems" @change="onRowClick">
+                                <input v-bind:value="td_test[props.row.originalIndex].Id" v-model="checkedItems" @change="onRowClick" type="checkbox" name="background">
                             </span>
                             <!--お気に入り-->
                             <span v-if="td_test[props.row.originalIndex].Star === false && props.column.field == 'star'">
@@ -51,7 +51,7 @@
                                 {{props.formattedRow[props.column.field]}}
                             </span>
                         </template>
-                    </VueGoodTable>
+                    </vue-good-table>
                 </div>
                 <!-- テーブル下コンテンツ -->
 
@@ -59,7 +59,7 @@
             <div id="closeModal" class="closeModal" @click="postTDRelationshipCancel">
             ×
             </div>
-        </modal>
+        </BModal>
     </div>
 </template>
 
@@ -67,9 +67,10 @@
     import { tdMixin } from '../mixins/testDescriptionMixin';
     import { urlParameterMixin } from '../mixins/urlParameterMixin';
     import { AccountControlMixin } from '../mixins/AccountControlMixin';
-    import 'vue-good-table/dist/vue-good-table.css';
-    import { VueGoodTable } from 'vue-good-table';
-	
+    import 'vue-good-table-next/dist/vue-good-table-next.css';
+    import { VueGoodTable } from 'vue-good-table-next';
+    import { BModal } from 'bootstrap-vue-next';
+    
     export default {
         mixins: [urlParameterMixin, tdMixin, AccountControlMixin],
         mounted: function () {
@@ -77,7 +78,10 @@
 			this.organizationIdCheck = sessionStorage.getItem('organizationId');
             this.mlComponentId = sessionStorage.getItem('mlComponentId');
         },
-        components: {VueGoodTable },
+        components: {
+            VueGoodTable,
+            BModal
+        },
 		data() {
 			return{
                 isActivated: true,
@@ -145,7 +149,8 @@
                         sortFn: this.sortNumber,
                     }
 				],
-				rows: []
+				rows: [],
+                showModal: false
             }
         },
         methods: {
@@ -215,7 +220,7 @@
             },
             show(TestDescriptionId) {
                 this.testDescriptionId = TestDescriptionId;
-                this.$modal.show('TDReletionModal');
+                this.showModal = true;
                 const url = this.$backendURL
                         + '/'
                         + this.organizationIdCheck
@@ -233,12 +238,12 @@
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 });
             },
 			hide() {
-				this.$modal.hide('TDReletionModal');
+				this.showModal = false;
 			},
             getAncestors(val){
                 for(var td in val){
@@ -326,7 +331,7 @@
 <style scoped>
 /*---------z----------テーブル-------------------*/
 
-#table>>>.vgt-inner-wrap .vgt-global-search {
+#table :deep(.vgt-inner-wrap .vgt-global-search) {
     background: unset;
     border: unset;
     padding: unset;
@@ -335,18 +340,18 @@
 #table {
     display: inline-block;
     height: 90%;
-    width: 95%;
+    width: 100%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
 
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -355,22 +360,22 @@
     width: 100%;
 }
 
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -378,29 +383,35 @@
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -408,14 +419,14 @@
     text-overflow: ellipsis;
     max-width: 140px;
 }
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
 
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;
@@ -433,13 +444,14 @@
 /*-------------------モーダル-------------------*/
 
 #search_table {
-  width: 800px;
+  width: 780;
 }
 #title_area{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 50%;
+    padding-left: 0.5rem;
 }
 #btn_test {
     width: 50%;
@@ -451,12 +463,12 @@
     text-align: center;
     border-radius: 5px;
     color: black;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     font-size: 0.85rem;
     font-weight: bold;
     &:hover {
         color: white;
-        background-color: #43645b;
+        background-color: var(--primary-color);
     }
     &.un_btn{
         background: silver;
@@ -469,7 +481,8 @@
     justify-content: space-between;
     align-items: center;
   height: 2.5rem;
-    background: #dc722b;
+    background: var(--secondary-color);
+    border-radius: 5px;
 }
 
 .modal_title {
@@ -483,13 +496,13 @@
     color: #d1ff8c
 }
 
-.modalContents >>> .vm--modal {
+.modalContents  :deep( .vm--modal) {
     text-align: center;
     position: absolute !important;
     width: auto !important;
     height: auto !important;
     max-height: 90% !important;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
     top: 50%  !important;
 	left: 50% !important;
     transform:translate(-50%,-50%) !important;

@@ -64,10 +64,8 @@
                                         <option value=null style="color: gray">
                                             {{$t("common.defaultPulldown")}}
                                         </option>
-                                        <option v-for="category in searchCondition.categories" 
-                                                :key="category.param_name" 
-                                                v-bind:value="category.param_name" 
-                                                v-bind:disabled="selectedSearchCategories.has(category.param_name)" >
+                                        <option v-bind:value="category.param_name"  v-bind:disabled="selectedSearchCategories.has(category.param_name)" v-for="category in searchCondition.categories" 
+                                                :key="category.param_name">
                                             {{ category.categoryname }} 
                                         </option>
                                     </select>
@@ -101,7 +99,7 @@
             <!--検索結果-->
             <div id="search_table">
                 <div id="table" align="center">
-                    <VueGoodTable 
+                    <vue-good-table 
                         ref="aitSearchListTable" 
                         :columns="aitSearch_columns" 
                         :rows="aitRows" 
@@ -109,9 +107,9 @@
                         max-height="43.75rem"
                         align="center" 
                         :pagination-options="{enabled: true, mode: 'pages'}" 
-                        @on-row-click="onRowClick"
+                        v-on:row-click="onRowClick"
                     >
-                        <template slot="table-row" slot-scope="props">
+                        <template v-slot:table-row="props">
                             <!--EditOptions-->
 
                             <template v-if="props.column.field == 'installed'">
@@ -140,7 +138,7 @@
                             </template>
 
                         </template>
-                    </VueGoodTable>
+                    </vue-good-table>
                 </div>
 
                 <!-- button -->
@@ -161,8 +159,8 @@ import { subMenuMixin } from "../mixins/subMenuMixin";
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AITHubMixin } from '../mixins/AITHubMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 
 export default {
     mixins: [subMenuMixin, urlParameterMixin, AITHubMixin, AccountControlMixin],
@@ -332,7 +330,7 @@ export default {
                 keyword: ''
             });
         },
-        search(){
+        search() {
             this.searchConditions = {};
             for (var row in this.searchCondition_rows) {
                 if (!this.isCategorySelected(this.searchCondition_rows[row].selectedSearchCategory)) {
@@ -352,9 +350,8 @@ export default {
                     }
                 }
 
-                this.$set(this.searchConditions, 
-                          this.searchCondition_rows[row].selectedSearchCategory, 
-                          this.searchCondition_rows[row].keyword);
+                this.searchConditions[this.searchCondition_rows[row].selectedSearchCategory] = 
+                    this.searchCondition_rows[row].keyword;
             }
             this.aitRows = [];
             this.getAITListFromAITHub(this.searchConditions, this.screenName);
@@ -439,12 +436,12 @@ export default {
 ----------------*/
 
 
-#table>>>.vgt-input, .vgt-select {
+#table :deep(.vgt-input, .vgt-select) {
     width: 100% !important;
     float: left;
 }
 
-#table>>>.vgt-inner-wrap .vgt-global-search{
+#table :deep(.vgt-inner-wrap) .vgt-global-search{
     background: unset;
     border: unset;
     padding: unset;
@@ -454,15 +451,15 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -470,21 +467,21 @@ export default {
     border: none;
     width: 100%;
 }
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -492,30 +489,36 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr th {
+#table :deep(.vgt-table tbody tr th) {
     background: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td {
+#table :deep(.vgt-table tbody tr td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;
 }
 
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
@@ -524,16 +527,16 @@ export default {
     vertical-align: middle;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
 
 
-#table>>>.vgt-checkbox-col {
+#table :deep(.vgt-checkbox-col) {
     width: 5% !important;
     border: none;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
 /* padding: 1rem; */
     text-align: center;
@@ -543,7 +546,7 @@ export default {
     max-width: 140px;
 }
 
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
@@ -569,7 +572,7 @@ export default {
     background: white;
 }
 #search_conditions .cardTitle {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -591,12 +594,12 @@ export default {
     text-align: center;
     border-radius: 5px;
     color: black;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     font-size: 0.85rem;
     font-weight: bold;
     &:hover {
         color: white;
-        background-color: #43645b;
+        background-color: var(--primary-color);
     }
 }
 #search_conditions_table {
@@ -612,7 +615,7 @@ export default {
 #search_conditions_table thead {
     margin-top: 1rem;
     height: 2rem;
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     font-weight: bold;
     font-size: 1rem;
     color: white;
@@ -622,7 +625,7 @@ export default {
 }
 #search_conditions_table tbody tr {
     height: 2rem;
-    background: #f0f0f0;
+    background: var(--gray-thema);
 }
 #search_conditions_table tbody td:nth-child(1){
     border-top-left-radius: 5px;
@@ -651,14 +654,14 @@ export default {
     width: 100%;
 }
 #search_conditions_table tbody tr:hover{
-    background: #a9c7aa !important;
+    background: var(--primary-color-light) !important;
 }
 .categories_select, .keyword {
     width: 100%;
     background: white;
     border-radius: 5px;
     border: 1px solid;
-    border-color: #f0f0f0;
+    border-color: var(--gray-thema);
     min-height: 2rem;
 }
 </style>

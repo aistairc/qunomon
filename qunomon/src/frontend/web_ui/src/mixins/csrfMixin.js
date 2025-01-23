@@ -13,7 +13,7 @@ export const csrfMixin = {
                 // 異常処理
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             })
         },

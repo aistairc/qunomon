@@ -71,7 +71,7 @@ export const AITHubMixin = {
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error:JSON.stringify({...error, response: error.response})}
                 })
             })
             .finally(() => {
@@ -120,7 +120,7 @@ export const AITHubMixin = {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error:JSON.stringify({...error, response: error.response})}
                     })
                 });
             }
@@ -181,7 +181,37 @@ export const AITHubMixin = {
                 }
             }
         },
-        aitInstallCore(aithub_id, create_user_account, create_user_name){
+        async aitInstallCore(aithub_id, create_user_account, create_user_name){
+            // token取得するまではawaitで後続処理は待機
+            const aithub_url = this.$aithubURL + '/pull_authorization';
+            await this.$axios.get(aithub_url)
+            .then((response) => {
+                if(response.data.Token !== undefined){
+                    this.requestData.token = response.data.Token;
+                }
+                else{
+                    this.$router.push({
+                        name: 'Information',
+                        query: {error: JSON.stringify(
+                            {
+                                response:{
+                                    data:{
+                                        Code: '',
+                                        message: 'AitHub not login.'
+                                    }
+                                }
+                            }
+                        )}
+                    })
+                }
+            })
+            .catch((error) => {
+                this.$router.push({
+                    name: 'Information',
+                    query: {error:JSON.stringify({...error, response: error.response})}
+                })
+            });
+
             const url = this.$aithubURL + '/aits/' + aithub_id + '/manifest';
             this.$axios.get(url)
             .then((response) => {
@@ -225,7 +255,7 @@ export const AITHubMixin = {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error:JSON.stringify({...error, response: error.response})}
                     })
                 });
             })

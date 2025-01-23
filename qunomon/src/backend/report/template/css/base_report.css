@@ -33,8 +33,8 @@ body {
     word-wrap: break-word;
 }
 .author_infomation {
-    top: 1100px;
-    left: 200px;
+    top: 1200px;
+    left: 100px;
     position: absolute;
 }
 .infomation {
@@ -46,7 +46,10 @@ h1{
 
 /*目次*/
 #contents {
-    font-size: 25px;
+    font-size: 30px;
+}
+#contents li {
+    margin: 10px 0;
 }
 .contents_sub {
     font-size: 20px;
@@ -68,6 +71,9 @@ h3 {
     color: green;
     margin-left: 20px;
 }
+p{
+    line-height: 1.6;
+}
 .section_area {
     left: 20px;
     position:relative;
@@ -85,24 +91,30 @@ h3 {
 .page-break-before p+p{
     margin-top: 0.4em;
 }
+/* インベントリ一覧のテーブル */
+.inventory_table{
+    margin-top: 30px;
+}
+.inventory_datatype_column{
+    width: 20%;
+}
+.inventory_name_column{
+    width: 30%;
+}
+.inventory_description_column{
+    width: 50%;
+}
 /*環境情報のテーブル*/
+#text table{
+    margin-top: 30px;
+}
 .terms, .value {
     width: 475px;
-}
-
-/*サマリの図*/
-.summary_fig {
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.summary_img {
-    height: 600px;
-    width: 800px;
 }
   
 /*テスト結果のフレーム*/
 th {
+    padding: 0.5em;
     background: #d0e2be;
     border:solid 1px #000000;
 }
@@ -118,22 +130,19 @@ td {
 
 /*出力されるグラフ*/
 figure {
-    width: 480px;
-    margin: 0px;
+    width: 756px;
+    margin: 0;
     text-align: center;
 }
 .frame {
     width: 1000px;
 }
 .result_frame{
-    width: 480px;
-    height: 460px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-.result_img {
-    width: 480px;
-    height: 460px;
+    display: block;
+    width: 756px;
+    height: 702px;
+    margin: 0 auto;
+    padding-top: 32px; 
 }
 .result_img img {
     width: 100%;
@@ -154,13 +163,9 @@ table {
     text-align: center;
 }
 .result_table table{
-    margin: 0px auto;
+    margin: 0 auto;
     table-layout: fixed;
-    width: 450px;
-}
-.result_table {
-    width: 480px;
-    height: 460px;
+    width: 756px;
 }
 
 /*判定色分け*/
@@ -190,6 +195,9 @@ table {
 }
 
 /* 用語集テーブル */
+.term_table p{
+    line-height: 1.4;
+}
 .term_name_column{
     width:20%;
 }

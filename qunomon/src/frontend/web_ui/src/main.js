@@ -1,45 +1,37 @@
-import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
-import VueI18n from 'vue-i18n'
-import VModal from 'vue-js-modal'
+import { createI18n } from 'vue-i18n'
+import { createApp } from 'vue'
+import {createBootstrap} from 'bootstrap-vue-next'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-next/dist/bootstrap-vue-next.css';
+import { configureCompat } from 'vue';
 
-import { BootstrapVue} from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
+const app = createApp(App)
 
-Vue.config.productionTip = false
-Vue.use(VueI18n)
+// vue3の変更で影響が大きい部分をオプトインでvue2のままにする
+// OPTIONS_DATA_MERGE: dataのマージが浅いコピーになる挙動
+configureCompat({
+  MODE: 3,
+  OPTIONS_DATA_MERGE: true
+})
+
 //JSONの読み込み
 const data = require('./components/languages/languages.json');
 
-const i18n = new VueI18n({
+const i18n = createI18n({
   locale: 'en',
   messages: data
 })
 
-Vue.prototype.$axios = axios;
+app.config.globalProperties.$axios = axios;
 
-Vue.use(VModal);
+app.config.globalProperties.$backendURL = process.env.VUE_APP_BACKENDURL
+app.config.globalProperties.$frontendURL = process.env.VUE_APP_FRONTENDURL
+app.config.globalProperties.$aithubURL = process.env.VUE_APP_AITHUBURL
 
-Vue.use(BootstrapVue)
-
-// API以外のJavaScript内でのエラーをハンドリングする予定（未検証）
-Vue.config.errorHandler = (err, vm, info) => {
-  // eslint-disable-next-line no-console
-  console.log(err);
-  // eslint-disable-next-line no-console
-  console.log(vm);
-  // eslint-disable-next-line no-console
-  console.log(info);
-  router.push({
-    name: 'Information',
-    params: {err, vm, info}
-  })
-}
-
-new Vue({
-  i18n,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+app.use(createBootstrap());
+app.use(i18n);
+app.use(router);
+app.mount('#app');

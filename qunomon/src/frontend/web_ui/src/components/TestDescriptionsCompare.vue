@@ -40,17 +40,17 @@
                         <span class="message">{{$t("testDescriptionCompare.graphExp")}}</span>
                     </div>
                     <div id="table">
-                        <VueGoodTable ref="tdTable" :columns="columns" :rows="rows" max-height="300px" :fixed-header="true" align="center" style-class="vgt-table" :sort-options="{enabled: false,}" @on-row-click="onRowClick">
-                            <template slot="table-row" slot-scope="props">
+                        <vue-good-table ref="tdTable" :columns="columns" :rows="rows" max-height="300px" :fixed-header="true" align="center" styleClass="vgt-table" :sort-options="{enabled: false,}" v-on:row-click="onRowClick">
+                            <template v-slot:table-row="props">
                                 <!--ラジオボタン-->
-                                <span v-if="props.column.field == 'radiobox'">
-                            <input type="radio" name="graph">
-                        </span>
+                                <span v-if="props.column.field == 'radiobox'" >
+                                    <input v-bind:value="props.row.originalIndex" type="radio" name="graph" v-model="selected_gragh">
+                                </span>
                                 <span v-else>
-                            {{props.formattedRow[props.column.field]}}
-                        </span>
+                                    {{props.formattedRow[props.column.field]}}
+                                </span>
                             </template>
-                        </VueGoodTable>
+                        </vue-good-table>
                     </div>
                 </div>
                 <div id="com_left">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div id="quality_measurement_left" class="detail">
-                        <label for="Panel_right">{{$t("testDescriptionCompare.qualityMeasurement")}}</label>
+                        <label class="panel_title" for="Panel_right">{{$t("testDescriptionCompare.qualityMeasurement")}}</label>
                         <table class="ac_text">
                             <tr>
                                 <td class="tbl21">{{$t("testDescriptionCompare.qualityDimension")}}</td>
@@ -181,7 +181,7 @@
                         </div>
                     </div>
                     <div id="quality_measurement_right" class="detail">
-                        <label for="Panel_left">{{$t("testDescriptionCompare.qualityMeasurement")}}</label>
+                        <label class="panel_title" for="Panel_left">{{$t("testDescriptionCompare.qualityMeasurement")}}</label>
                         <table class="ac_text">
                             <tr>
                                 <td class="tbl21">{{$t("testDescriptionCompare.qualityDimension")}}</td>
@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div id="ait" class="detail">
-                    <label for="Panel">{{$t("testDescriptionCompare.aitInformation")}}</label>
+                    <label class="panel_title" for="Panel">{{$t("testDescriptionCompare.aitInformation")}}</label>
                     <table>
                         <tr>
                             <td>{{$t("testDescriptionCompare.name")}}</td>
@@ -235,7 +235,7 @@
                         </tr>
                         <tr>
                             <td>{{$t("testDescriptionCompare.quality")}}</td>
-                            <td>
+                            <td class="quality_url">
                                 <img v-if="td_compare_1.TestRunner.Quality" src="~@/assets/new_window.svg" alt="new-window" title="new-window" class="new-window">
                                 <a v-bind:href=cleanUrl(td_compare_1.TestRunner.Quality) target="_blank">{{cleanUrl(td_compare_1.TestRunner.Quality)}}</a>
                             </td>
@@ -268,8 +268,8 @@ import { subMenuMixin } from "../mixins/subMenuMixin";
 import { tdMixin } from "../mixins/testDescriptionMixin";
 import { urlParameterMixin } from "../mixins/urlParameterMixin";
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
-import 'vue-good-table/dist/vue-good-table.css';
-import { VueGoodTable } from 'vue-good-table';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
+import { VueGoodTable } from 'vue-good-table-next';
 
 export default {
     components: {
@@ -280,6 +280,8 @@ export default {
     data() {
         return {
             selectedType: '',
+            // 選択中ラジオボタンのvalue（行数）.
+            selected_gragh: '',
             testDescriptionId: '',
             test_description_1: null,
             test_description_2: null,
@@ -348,9 +350,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: "Information",
-                    params: {
-                        error
-                    },
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 });
             });
 
@@ -364,9 +364,7 @@ export default {
             .catch((error) => {
                 this.$router.push({
                     name: "Information",
-                    params: {
-                        error
-                    },
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 });
             });
     },
@@ -435,7 +433,7 @@ export default {
         },
         onRowClick(params) {
 
-            //選択されている行数を取得
+            // 新しく選択された行数を取得
             var row_num = params.row.originalIndex
             this.selectedType = '';
 
@@ -444,13 +442,16 @@ export default {
             for (var j = 0; j < tdTable.rows.length; j++) {
                 //選択された行の場合
                 if (row_num == j) {
-                    if (document.getElementsByName('graph')[j].checked) {
-                        document.getElementsByName('graph')[j].checked = false;
+                    // もともと選択していた行と新しく選択された行が同じ場合に、ラジオボタンのチェックをはずし、グラフを非表示にする.
+                    if (row_num === this.selected_gragh) {
                         document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.remove('checked');
                         this.selectedType = '';
-                    } else {
+                        this.selected_gragh = '';
+                    }
+                    // もともと選択していた行と新しく選択された行が違う場合に、ラジオボタンのチェックを付け替え、グラフを表示する. 
+                    else {
                         this.selectedType = params.row.graph_format;
-                        document.getElementsByName('graph')[j].checked = true;
+                        this.selected_gragh = row_num;
                         document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.add('checked')
                         if (this.selectedType === "picture") {
                             this.getImage1(this.td_compare_1.TestDescriptionResult.Graphs[row_num].Graph);
@@ -460,9 +461,9 @@ export default {
                             this.getTableData2(this.td_compare_2.TestDescriptionResult.Graphs[row_num].Graph);
                         }
                     }
-                    //選択されていない行の場合
-                } else {
-                    document.getElementsByName('graph')[j].checked = false;
+                    
+                } //選択されていない行の場合
+                else {
                     document.getElementsByName('graph')[j].parentNode.parentNode.parentNode.classList.remove('checked');
                 }
             }
@@ -628,7 +629,7 @@ export default {
 #graphs {
     width: 100%;
     height: 2.5rem;
-    background: #dc722b;
+    background: var(--secondary-color);
     font-size: 1rem;
     font-weight: bold;
     color: white;
@@ -665,7 +666,7 @@ export default {
 
 /*-------------------Table-------------------*/
 
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -674,9 +675,9 @@ export default {
     width: 100%;
 }
 
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -684,31 +685,37 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr th {
+#table :deep(.vgt-table tbody tr th) {
     background: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;
 }
 
-#table>>>.vgt-table tbody tr td:nth-child(0) {
+#table :deep(.vgt-table tbody tr td:nth-child(0)) {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
@@ -717,16 +724,16 @@ export default {
     vertical-align: middle;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
 
 
-#table>>>.vgt-checkbox-col {
+#table :deep(.vgt-checkbox-col) {
     width: 5% !important;
     border: none;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -741,7 +748,7 @@ export default {
 #quality_measurement_right {
     margin-bottom: 0.2rem;
 }
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
@@ -755,7 +762,7 @@ export default {
 }
 #compare_result .detail label {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     font-size: 1rem;
     font-weight: bold;
     height: 2.5rem;
@@ -784,20 +791,20 @@ export default {
 #compare_result .detail table td:nth-child(1){
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
     color: white;
 }
 #compare_result .detail table td:last-child{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background: #f0f0f0 !important;
+    background: var(--gray-thema) !important;
     color: black;
 }
 
 #testdescription_left {
     display: flex;
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     width: 100%;
     height: 2.5rem;
     justify-content: center;
@@ -810,7 +817,7 @@ export default {
 #testdescription_right {
     display: flex;
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     width: 100%;
     height: 2.5rem;
     justify-content: center;
@@ -839,13 +846,20 @@ export default {
 .status_table tr td:nth-child(1){
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
     color: white;
 }
 .status_table tr td:last-child{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    background: #f0f0f0 !important;
+    background: var(--gray-thema) !important;
     font-weight: bold;
+}
+.quality_url{
+    word-break: break-all;
+}
+#testdescription_left, #testdescription_right, .panel_title{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 </style>

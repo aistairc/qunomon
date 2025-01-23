@@ -106,6 +106,7 @@ class ResourceCollector():
         from qai_testbed_backend.entities.quality_dimension import QualityDimensionMapper
         from qai_testbed_backend.entities.ml_component import MLComponentMapper
         from qai_testbed_backend.entities.test_description import TestDescriptionMapper
+        from qai_testbed_backend.entities.run_measure import RunMeasureMapper
         from qai_testbed_backend.entities.run import RunMapper
         from qai_testbed_backend.entities.organization import OrganizationMapper
         from qai_testbed_backend.entities.scope_quality_dimension import ScopeQualityDimensionMapper
@@ -161,10 +162,28 @@ class ResourceCollector():
                 filter(
                 or_(InventoryMapper.id == inventory_id for inventory_id in inventory_id_list))\
                 .all()
-            inventory_list = self.__make_inventory_list(inventory_mapper_list, data_type_table)
-            td_inventory_dict[str(td_id)] = inventory_list
-            
-
+            td_inventory_list = self.__make_inventory_list(inventory_mapper_list, data_type_table)
+            td_inventory_dict[str(td_id)] = td_inventory_list
+        # 使用されたTDのmesurementのmapperのリストを取得
+        td_measures_mapper_list = dbinfo.session.query(RunMeasureMapper).\
+            filter(
+            or_(RunMeasureMapper.run_id == test_description.run_id for test_description in test_descriptions))\
+            .all()
+        # 使用されたTDのIDをkeyにmeasurementのnameとvalueを持つ辞書をvalueとするdictを作成
+        # 使用されたTDのmesurementのnameをkeyに,mesurementのvalueをvalueとするsub_dictを作成
+        td_measures_dict={}
+        for test_description_id in test_description_list:
+            td_measures_sub_dict= {str(td_measure.measure_name):None for td_measure in td_measures_mapper_list}
+            for td_measure in td_measures_mapper_list:
+                td_measures=''
+                for test_description in test_descriptions:
+                    if td_measure.run_id== test_description.run_id and test_description_id==test_description.id:
+                        if td_measures_sub_dict[str(td_measure.measure_name)] is None:
+                            td_measures_sub_dict[str(td_measure.measure_name)] = str(td_measure.measure_value)
+                        else:
+                            td_measures = td_measures_sub_dict[str(td_measure.measure_name)] +','+ str(td_measure.measure_value)
+                            td_measures_sub_dict[str(td_measure.measure_name)]=td_measures
+                        td_measures_dict[str(test_description_id)] = td_measures_sub_dict
         # 内部品質のリストを取得
         qualities = dbinfo.session.query(QualityDimensionMapper).all()
         quality_props = {str(q.id): q.name for q in qualities}
@@ -272,6 +291,7 @@ class ResourceCollector():
             "TestEnvironment": test_environment,
             "TestDescriptionDetail": test_description_details,
             "TDInventoryDict": td_inventory_dict,
+            "TDMeasurementDict":td_measures_dict,
             "Date": str(datetime.date.today()),
             "Resources": graph_dic,
             "Guideline": guideline_dict,

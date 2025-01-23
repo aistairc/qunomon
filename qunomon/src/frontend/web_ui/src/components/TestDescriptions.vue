@@ -63,10 +63,10 @@
                                             </template>
                                         </td>
                                         <td><span class="search">{{$t("testDescriptions.upDate")}}</span></td>
-                                        <td>
-                                            <datepicker :format="'yyyy/MM/dd'" :clear-button="true" class="day" placeholder="yyyy/mm/dd" name="dateStart" v-model="dateStart"></datepicker>
+                                        <td class="date_picker_td">
+                                            <VueDatePicker :format="'MM/dd/yyyy'" placeholder="yyyy/mm/dd" name="dateStart" v-model="dateStart" />
                                             <span class="search">～</span>
-                                            <datepicker :format="'yyyy/MM/dd'" :clear-button="true" class="day day2" placeholder="yyyy/mm/dd" name="dateEnd" v-model="dateEnd"></datepicker>
+                                            <VueDatePicker  :format="'MM/dd/yyyy'" placeholder="yyyy/mm/dd" name="dateEnd" v-model="dateEnd" />
                                         </td>
                                     </tr>
                                 </table>
@@ -104,7 +104,7 @@
                             <tbody v-if="td_test"  ref="tdTable">
                                 <tr v-for="TestDescription in sorted" :key="TestDescription.Id">
                                     <td class="th1 t_center">
-                                        <input type="checkbox" v-bind:value="TestDescription.Id" v-model="checkedItems" @click="onRowClick" name="checkbox">
+                                        <input v-bind:value="TestDescription.Id" v-model="checkedItems" @change="onRowClick" type="checkbox" name="checkbox">
                                     </td>
                                     <!--お気に入り-->
                                     <td class="th2 t_center">
@@ -149,11 +149,11 @@
                                         </span>
                                     </td>
                                     <td class="th7 t_center">
-                                        <font size="4">{{TestDescription.UpdateDatetime | formatFn}}</font>
+                                        <font size="4">{{formatDateTime(TestDescription.UpdateDatetime)}}</font>
                                     </td>
                                     <!--EditOptions-->
                                     <td class="th8 t_right">
-                                        <template v-if="(TestDescription.Result === 'OK' || TestDescription.Result === 'NG') && TestDescription.ParentID != null" class="modal">
+                                        <template v-if="(TestDescription.Result === 'OK' || TestDescription.Result === 'NG') && TestDescription.ParentID != null">
                                             <template v-if="$i18n.locale === 'en'">
                                                 <img src="~@/assets/tree.svg" @click="TDRelation(TestDescription.Id)" alt="relationship" title="relationship" class="icon relationship">
                                             </template>
@@ -212,14 +212,14 @@
                                 </td>
                                 <td>
                                     <template v-if="$i18n.locale === 'en'">
-                                        <input type="submit" value="Run test" class="uploadBTN" @click="runTest" v-bind:class="{'un_btn' : isRunTest}">
+                                        <input v-bind:class="{'un_btn' : isRunTest}" type="submit" value="Run test" class="uploadBTN" @click="runTest">
                                     </template>
                                     <template v-else>
-                                        <input type="submit" value="テスト実行" class="uploadBTN" @click="runTest" v-bind:class="{'un_btn' : isRunTest}">
+                                        <input v-bind:class="{'un_btn' : isRunTest}" type="submit" value="テスト実行" class="uploadBTN" @click="runTest">
                                     </template>
                                 </td>
                                 <td>
-                                    <div id="status" v-if="test_descriptions" v-bind:class="{ 'status_disp' : isDisp }">
+                                    <div v-bind:class="{ 'status_disp' : isDisp }" id="status" v-if="test_descriptions">
                                         <p class="center result">{{$t("testDescriptions.result")}}</p>
                                         <p class="center">{{$t("testDescriptions.status")}}:{{test_descriptions.Test.Status}}</p>
                                         <p class="center">{{result}}</p>
@@ -236,18 +236,18 @@
                                 </td>
                                 <td>
                                     <template v-if="$i18n.locale === 'en'">
-                                        <input type="submit" value="Compare" class="uploadBTN" @click="compare" v-bind:class="{'un_btn' : isCompare}">
+                                        <input v-bind:class="{'un_btn' : isCompare}" type="submit" value="Compare" class="uploadBTN" @click="compare">
                                     </template>
                                     <template v-else>
-                                        <input type="submit" value="比較" class="uploadBTN" @click="compare" v-bind:class="{'un_btn' : isCompare}">
+                                        <input v-bind:class="{'un_btn' : isCompare}" type="submit" value="比較" class="uploadBTN" @click="compare">
                                     </template>
                                 </td>
                                 <td>
                                     <template v-if="$i18n.locale === 'en'">
-                                        <input type="submit" value="Download Report" class="uploadBTN" @click="downloadReport" v-bind:class="{'un_btn' : isDownloadReport}">
+                                        <input v-bind:class="{'un_btn' : isDownloadReport}" type="submit" value="Download Report" class="uploadBTN" @click="downloadReport">
                                     </template>
                                     <template v-else>
-                                        <input type="submit" value="レポートダウンロード" class="uploadBTN" @click="downloadReport" v-bind:class="{'un_btn' : isDownloadReport}">
+                                        <input v-bind:class="{'un_btn' : isDownloadReport}" type="submit" value="レポートダウンロード" class="uploadBTN" @click="downloadReport">
                                     </template>
                                 </td>
                             </tr>
@@ -264,19 +264,20 @@
 </template>
 
 <script scoped>
-import Datepicker from 'vuejs-datepicker';
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
 import SubMenuMLComponent from './SubMenuMLComponent.vue';
 import { subMenuMixin } from "../mixins/subMenuMixin";
 import { tdMixin } from '../mixins/testDescriptionMixin';
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import TDRelation from './TestDescriptionRelationship';
+import TDRelation from './TestDescriptionRelationship.vue';
 import TDSelectReportTemplate from './TestDescriptionsSelectReportTemplate';
 
 export default{
     components: {
-        Datepicker,
+        VueDatePicker,
         SubMenuMLComponent,
         TDRelation,
         TDSelectReportTemplate,
@@ -293,8 +294,8 @@ export default{
             selectStatus: '',
             starChecked: false,
             searchName: '',
-            dateStart: '',
-            dateEnd: '',
+            dateStart: null,
+            dateEnd: null,
             sort: {
                 key: 'Id',
                 isAsc: true
@@ -328,7 +329,7 @@ export default{
         .catch((error) => {
             this.$router.push({
                 name: 'Information',
-                params: {error}
+                query: {error: JSON.stringify({...error, response: error.response})}
             })
         });
     },
@@ -371,12 +372,16 @@ export default{
             .catch((error) => {
                 this.$router.push({
                     name: 'Information',
-                    params: {error}
+                    query: {error: JSON.stringify({...error, response: error.response})}
                 })
             })
             
         },
-        runTest(){
+        async runTest(){
+            // token取得するまではawaitで後続処理は待機
+            var aithubToken = '';
+            aithubToken = await this.getAithubToken();
+
             const that = this;
             this.isDisp = false;
             const url = this.$backendURL + '/'
@@ -390,7 +395,7 @@ export default{
                 },
                 withCredentials:true,
             }
-            this.$axios.post(url, {"Command": "AsyncStart", "TestDescriptionIds": this.checkedItems}, config)
+            this.$axios.post(url, {"Command": "AsyncStart", "TestDescriptionIds": this.checkedItems, "AithubToken": aithubToken}, config)
             .then((response) => {
                 this.run_test = response.data;
                 this.intervalId = setInterval(function () {
@@ -461,6 +466,7 @@ export default{
             this.sort.key = key;
         },
         compare: function(){
+            console.log(this.checkedItems);
             sessionStorage.setItem('testDescriptionId1', this.checkedItems[0]);
             sessionStorage.setItem('testDescriptionId2', this.checkedItems[1]);
             this.$router.push({
@@ -499,16 +505,10 @@ export default{
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {error}
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     })
                 })
             }
-        },
-        postTestDescriptionId_toAncestors: function(testDescriptionId){
-            this.$router.push({
-                name: 'TestDescriptionsRelationship',
-                params: {testDescriptionId: testDescriptionId}
-            })
         },
         onStarChange: function(testDescription){
             if(testDescription.Star === true){
@@ -770,7 +770,18 @@ export default{
         },
         TDRelation(TestDescriptionId){
             this.$refs.rel.show(TestDescriptionId);
-        }
+        },
+
+        formatDateTime(val) {
+            let moment = require('moment-timezone');
+            let datetime_conv = moment.tz(val, 'UTC');
+            datetime_conv.tz(moment.tz.guess());
+
+            let datetime = datetime_conv.format().slice(0,16);
+            datetime = datetime.replace(/T/g, ' ');
+            datetime = datetime.replace(/-/g, '/');
+            return datetime;
+        },
     },
     computed: {
         starMatched: function(){
@@ -819,7 +830,7 @@ export default{
             else if(!this.dateEnd){
                 var fil_start = this.nameMatched.filter(function(el){
                     return(
-                        new Date(this.$options.filters.formatFn(el.UpdateDatetime)) >=
+                        new Date(this.formatDateTime(el.UpdateDatetime)) >=
                         new Date(this.dateStart)
                     )
                 },this)
@@ -829,7 +840,7 @@ export default{
             else if(!this.dateStart){
                 var fil_end = this.nameMatched.filter(function(el){
                     return(
-                        new Date(this.$options.filters.formatFn(el.UpdateDatetime)) <=
+                        new Date(this.formatDateTime(el.UpdateDatetime)) <=
                         new Date(this.dateEnd)
                     )
                 },this)
@@ -840,10 +851,10 @@ export default{
             else{
                 var fil_full = this.nameMatched.filter(function(el){
                     return(
-                        new Date(this.$options.filters.formatFn(el.UpdateDatetime)) >=
+                        new Date(this.formatDateTime(el.UpdateDatetime)) >=
                         new Date(this.dateStart)
                         &&
-                        new Date(this.$options.filters.formatFn(el.UpdateDatetime)) <=
+                        new Date(this.formatDateTime(el.UpdateDatetime)) <=
                         new Date(this.dateEnd)
                     )
                 },this)
@@ -915,18 +926,6 @@ export default{
         processedList: function(){
             return this.paging
         }
-    },
-    filters: {
-        formatFn: function(val){
-            var moment = require('moment-timezone');
-            var datetime_conv = moment.tz(val, 'UTC');
-            datetime_conv.tz(moment.tz.guess());
-
-            var datetime = datetime_conv.format().slice(0,16);
-            datetime = datetime.replace(/T/g, ' ');
-            datetime = datetime.replace(/-/g, '/');
-            return datetime;
-        },
     }
 }
 </script>
@@ -959,40 +958,21 @@ export default{
     width: 90%;
 }
 
-#search_area{
+#search_area {
     width: 100%;
     background: white;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 #search_area > form {
     width: 80%;
     float: left;
 }
 
-.vdp-datepicker.day{
-    float:left;
-    width: 48%
-}
-.vdp-datepicker.day2{
-    float:right;
-    width: 48%;
-}
-.vdp-datepicker.day >>> input {
-    width: 100%;
-    background: #f0f0f0;
-    border: 1px solid;
-    border-radius: 5px;
-    border-color: #a9c7aa;
-}
-.vdp-datepicker.day2 >>> input {
-    width: 100%;
-}
-
-
 #formTable {
-    height: 2.5rem;
     width: 100%;
-
 }
 #formTable table {
     text-align: center;
@@ -1008,14 +988,14 @@ export default{
 }
 #formTable table tr td {
     border: 1px solid;
-    border-color: #a9c7aa;
+    border-color: var(--primary-color-light);
     vertical-align: middle;
     text-align: center;
 }
 #formTable table tr td:nth-child(2n+1) {
     min-width: 4rem;
     font-weight: bold;
-    background: #a9c7aa;
+    background: var(--primary-color-light);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
@@ -1042,7 +1022,7 @@ export default{
     background: white;
     &:hover{
         border: 0.5px solid;
-        border-color: #a9c7aa;
+        border-color: var(--primary-color-light);
     }
 }
 #formTable table tr td select {
@@ -1052,16 +1032,16 @@ export default{
     background: white;
     &:hover{
         border: 0.5px solid;
-        border-color: #f0f0f0;
-        background: #a9c7aa;
+        border-color: var(--gray-thema);
+        background: var(--primary-color-light);
     }
 }
 
 .btnArea {
-    float: right;
+    width: 20%;
 }
 .btnArea input {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -1077,7 +1057,7 @@ export default{
 
 .btnArea input:hover {
     color: white;
-    background: #43645b !important;
+    background: var(--primary-color) !important;
 }
 
 #table {
@@ -1086,7 +1066,7 @@ export default{
     width: 100%;
     z-index: 10;
 }
-#table >>> table {
+#table  :deep( table) {
     width: 100%;
     max-height: 43.75rem;
     text-align: center;
@@ -1096,9 +1076,9 @@ export default{
     border: none;
 }
 
-#table >>> table thead th {
+#table  :deep( table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -1138,27 +1118,33 @@ export default{
     &.sortable.sorted.asc::after{
         border-bottom: 5px solid #409eff;
     }
+    &:first-child {
+        border-top-left-radius: 8px;
+    }
+    &:last-child {
+        border-top-right-radius: 8px;
+    }
 }
 
 
-#table>>> table tbody {
+#table :deep( table tbody) {
     font-size: 0.85rem;
 }
-#table>>> table tbody tr{
+#table :deep( table tbody) tr{
     background: #fff;
     height: 2rem;
     border-radius: 5px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     &:hover {
-        background: #a9c7aa !important;
+        background: var(--primary-color-light) !important;
     }
 }
 
-#table>>> table tbody tr td:nth-child(1){
+#table :deep( table tbody tr) td:nth-child(1){
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-#table>>> table tbody tr td:last-child{
+#table :deep( table tbody tr) td:last-child{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -1247,7 +1233,7 @@ th.th4 {
     background: white;
 }
 .bottom_contents label {
-    background-color: #dc722b;
+    background-color: var(--secondary-color);
     color: #ffffff;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -1262,7 +1248,7 @@ th.th4 {
 }
 .bottom_contents table{
     width: 95%;
-    margin: 0 auto;
+    margin: 0.5rem auto;
     vertical-align: middle;
     text-align: center;
     position: relative;
@@ -1270,11 +1256,34 @@ th.th4 {
     border-spacing: 0 5px;
     font-size: 0.85rem;
 }
-.bottom_contents table tr td{
+.bottom_contents table tr:first-child td:nth-child(2){
     max-height: 2rem;
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 35%;
+}
+.bottom_contents table tr:last-child td:nth-child(2){
+    max-height: 2rem;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+    padding: 0.5rem 0;
+    width: 35%;
+}
+.bottom_contents table tr:last-child td:nth-child(3){
+    max-height: 2rem;
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+    border-right: 1px solid var(--primary-color);
+    padding: 0.5rem 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 35%;
 }
 .bottom_contents table tr td:nth-child(1) {
-    background: #43645b;
+    background: var(--primary-color);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     font-size: 0.85rem;
@@ -1282,20 +1291,8 @@ th.th4 {
     color: white;
     width: 30%;
 }
-.bottom_contents table tr td:nth-child(2) {
-    border: 1px solid;
-    border-color: #a9c7aa;
-    width: 35%;
-}
-.bottom_contents table tr td:last-child {
-    border: 1px solid;
-    border-color: #a9c7aa;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    width: 35%;
-}
 .bottom_contents table tr td input {
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     color: black;
     border: none;
     height: 2rem;
@@ -1305,15 +1302,16 @@ th.th4 {
     border: none;
     min-height: 2rem;
     max-height: 100%;
+    width: 97%;
     text-align: center;
     border-radius: 5px;
     color: black;
-    background-color: #a9c7aa;
+    background-color: var(--primary-color-light);
     font-size: 0.85rem;
     font-weight: bold;
     &:hover {
         color: white;
-        background-color: #43645b;
+        background-color: var(--primary-color);
     }
     &.un_btn{
         background: silver;
@@ -1350,6 +1348,12 @@ th.th4 {
 
 .status_disp {
     display: none;
+}
+
+.date_picker_td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>

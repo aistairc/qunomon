@@ -17,7 +17,6 @@ logger = get_logger()
 
 DEF_RESOURCE_DIR = "tds_results" + os.sep
 DEF_WORK_DIR = "work" + os.sep
-DEF_SUMMARY_DIR = "summary" + os.sep
 DEF_TEMPLATE_DIR = "template" + os.sep
 
 class ReportGenerator():
@@ -31,7 +30,6 @@ class ReportGenerator():
         self.resource_path = self.home_path + DEF_RESOURCE_DIR
         self.work_path     = self.home_path + DEF_WORK_DIR
         self.template_path = self.home_path + DEF_TEMPLATE_DIR
-        self.summary_path  = self.work_path + DEF_SUMMARY_DIR
 
     def __init_resource(self):
         # ディレクトリ初期化
@@ -52,14 +50,11 @@ class ReportGenerator():
             rm = reportgenerator.ResourceManager(self.template_path, report_dataset)
             rm.make_testdescription_result(self.work_path)
 
-            summary_file_path = self.summary_path+'summary.html'
-            rm.make_summary_result(self.work_path, self.summary_path, summary_file_path)
-
             # work_pathに空のbase_report.htmlを作成
             output_filepath   = self.work_path + 'base_report.html'
             tools.write_file(output_filepath, "")
 
-            sm = reportgenerator.SectionReportMaker(self.work_path, summary_file_path, report_dataset)
+            sm = reportgenerator.SectionReportMaker(self.work_path, report_dataset)
             # template_pathに生成されたbase_report.htmlでwork_path直下のbase_report.htmlに内容をコピーする
             with open(self.template_path + "base_report.html", mode="rt", encoding="utf-8_sig") as file:
                 for line in file:

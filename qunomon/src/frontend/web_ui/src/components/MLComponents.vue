@@ -34,7 +34,7 @@
                 </div>
                 <!--表-->
                 <div id="table" align="center">
-                    <VueGoodTable
+                    <vue-good-table
                         ref="mlTable"
                         :columns="columns"
                         styleClass="vgt-table"
@@ -44,9 +44,9 @@
                         align="center"
                         :search-options="{enabled: true}"
                         :pagination-options="{enabled: true, mode: 'pages'}"
-                        @on-row-click="onRowClick"
+                        v-on:row-click="onRowClick"
                     >
-                        <template slot="table-row" slot-scope="props">
+                        <template v-slot:table-row="props">
                             <!--EditOptions-->
                             <span v-if="props.column.field == 'edit_options'">
                                 <template v-if="$i18n.locale === 'en'">
@@ -68,7 +68,7 @@
                                 </template>
                             </span>
                         </template>
-                    </VueGoodTable>
+                    </vue-good-table>
                 </div>
             </div>
             <!-- フッタ -->
@@ -86,9 +86,9 @@ import { subMenuMixin } from "../mixins/subMenuMixin";
 import { urlParameterMixin } from '../mixins/urlParameterMixin';
 import { AccountControlMixin } from '../mixins/AccountControlMixin';
 import { csrfMixin } from '../mixins/csrfMixin';
-import 'vue-good-table/dist/vue-good-table.css';
+import 'vue-good-table-next/dist/vue-good-table-next.css';
 import mlcCreate from './MLComponentCreate';
-import { VueGoodTable } from 'vue-good-table';
+import { VueGoodTable } from 'vue-good-table-next';
 
 export default {
     mixins: [subMenuMixin, urlParameterMixin, AccountControlMixin, csrfMixin],
@@ -247,9 +247,7 @@ export default {
                 .catch((error) => {
                     this.$router.push({
                         name: 'Information',
-                        params: {
-                            error
-                        }
+                        query: {error: JSON.stringify({...error, response: error.response})}
                     }).catch(error => {
                         // eslint-disable-next-line no-console
                         console.log(error)
@@ -320,7 +318,7 @@ export default {
                     .catch((error) => {
                         this.$router.push({
                             name: 'Information',
-                            params: {error}
+                            query: {error: JSON.stringify({...error, response: error.response})}
                         })
                     })
             }
@@ -334,11 +332,11 @@ export default {
 表
 ----------------*/
 
-#table>>>.vgt-input, .vgt-select {
+#table :deep(.vgt-input, .vgt-select) {
     width: 100% !important;
     float: left;
 }
-#table>>>.vgt-inner-wrap .vgt-global-search {
+#table :deep(.vgt-inner-wrap .vgt-global-search) {
     background: unset;
     border: unset;
     padding: unset;
@@ -347,16 +345,16 @@ export default {
 #table {
     height: 90%;
     z-index: 10;
-    background-color: #f0f0f0;
+    background-color: var(--gray-thema);
 }
 
-#table>>>.vgt-inner-wrap {
+#table :deep(.vgt-inner-wrap) {
     border-radius: unset;
     box-shadow: unset;
     background: none;
 }
 
-#table>>>.vgt-table {
+#table :deep(.vgt-table) {
     text-align: center;
     border-collapse: separate;
     border-spacing: 0 5px;
@@ -365,22 +363,22 @@ export default {
     width: 100%;
 }
 
-.vgt-wrap>>>.vgt-wrap__footer {
+.vgt-wrap :deep(.vgt-wrap__footer) {
     padding: 0.5rem;
     border: none;
     background: unset;
 }
 
-#table>>>.vgt-fixed-header .vgt-table {
+#table :deep(.vgt-fixed-header .vgt-table) {
     position: absolute !important;
     z-index: 10 !important;
     width: 100% !important;
     overflow-x: auto !important;
 }
 
-#table>>>.vgt-table thead th {
+#table :deep(.vgt-table thead th) {
     color: white;
-    background: #dc722b;
+    background: var(--secondary-color);
     text-align: center;
     border: none;
     width: 1rem;
@@ -388,29 +386,35 @@ export default {
     padding: unset;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody {
+#table :deep(.vgt-table thead tr th:first-child) {
+    border-top-left-radius: 5px;
+}
+#table :deep(.vgt-table thead tr th:last-child) {
+    border-top-right-radius: 5px;
+}
+#table :deep(.vgt-table tbody) {
     font-size: 0.85rem;
 }
-#table>>>.vgt-table tbody tr {
+#table :deep(.vgt-table tbody tr) {
     background-color: #fff; /* Set row background color */
     border: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); /* Add a box shadow for depth */
     border-radius: 5px;
     vertical-align: middle;
 }
-#table>>>.vgt-table tbody tr td:nth-child(1) {
+#table :deep(.vgt-table tbody tr td:nth-child(1)) {
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-#table>>>.vgt-table tbody tr td:last-child {
+#table :deep(.vgt-table tbody tr td:last-child) {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-#table>>>.vgt-table tbody tr:hover{
-    background: #a9c7aa !important;
+#table :deep(.vgt-table tbody) tr:hover{
+    background: var(--primary-color-light) !important;
 }
-#table>>>.vgt-table tr td{
+#table :deep(.vgt-table tr) td{
     border: none;
     text-align: center;
     white-space: nowrap;
@@ -418,14 +422,14 @@ export default {
     text-overflow: ellipsis;
     max-width: 140px;
 }
-#table>>>.vgt-table .expanded td, th {
+#table :deep(.vgt-table .expanded td, th) {
     white-space: normal;
     overflow: visible;
     text-overflow: unset;
     max-width: 10%;
 }
 
-#table>>>.vgt-table td {
+#table :deep(.vgt-table td) {
     padding: unset;
     height: 2rem;
     vertical-align: middle;

@@ -19,6 +19,8 @@ Click the "AIT-HUB login" button on the Setting screen on your Qunomon.
 You can see the list of guideline which can be installed to your Qunomon from the "Guidelines" screen.
 Choose guideline to be installed with radio button, and then click the "Guideline install" button.
 
+※Guideline that have already been installed cannot be reinstalled.If necessary, click the delete icon in the "Install" column to delete the guideline, and reinstall it.
+
 ![0102](01/02.png)
 
 ### Install and register a new AIT
@@ -27,7 +29,9 @@ You can see the list of published AITs through "AITSearch" screen. You can filte
 
 If you want to know more detailed information (such like authors, detailed description, I/O requirements...) of the AIT, you can press the icon displayed on the "Detail" column on the table to see them.
 
-If the "×" mark are displayed on the "Installed" column, they are AITs currently not installed. Please check the detail and install them as needed. Choose an AIT to be installed with radio button, and then click the icon on the "Install" column. This will automatically download the selected AIT from AIT Hub and registration to your Qunomon.
+If the "×" mark are displayed on the "Installed" column, they are AITs currently not installed. Please check the detail and install them as needed. Click the icon in the “Install” column of the AIT you wish to install. This will automatically download the selected AIT from AIT Hub and registration to your Qunomon.
+
+※AIT that have already been installed cannot be reinstalled. If necessary, please go to the Installed AITs screen, remove it, and reinstall it.
 
 ![0103](01/03.png)
 
@@ -42,7 +46,7 @@ These procedure are for advanced users and may require some computer science kno
 
 ### Register Guideline (not using AIT-HUB)
 
-You must analyze guideline/standards and identify quality characteristics defined in them. After that, you required to write "Guideline JSON" conform to our [Guideline Schema](https://github.com/aistairc/qunomon/tree/dev2_schema/schema/doc/guideline_schema/develo) defined as JSON Schema.
+You must analyze guideline/standards and identify quality characteristics defined in them. After that, you required to write "Guideline JSON" conform to our [Guideline Schema](https://github.com/aistairc/qunomon/tree/dev2_schema/schema/doc/guideline_schema/develop) defined as JSON Schema.
 
 Click the "Guideline Create" button on the "Guidelines" screen.
 
@@ -54,6 +58,7 @@ A sample of guideline definition compliant with the schema will be displayed on 
 
 If you want modify them over a wide range, it is advised to read guideline schema carefully and edit them on the other editors. We recommend that you test your guideline JSON for schema compliance beforehand.
 
+
 ### Register AIT (not using AIT-HUB)
 
 Move to the "AITLocalInstall" screen. Press the "Select Upload File" and then you are choose zipped AIT to be installed. "AIT Create" button will register the AIT into your Qunomon.
@@ -62,3 +67,6 @@ To create AIT and its zipped archive, you should read [AIT Development Guide](ht
 
 ![0203](02/03.png)
 
+※AIT registration from local will take some time. Please wait for a while and make sure that the "Status" column becomes "Registered" before using it for the TestDescription. If the "Status" column  does not change from "Processing" after a while, please reload the screen.
+
+![0302](03/02.png)

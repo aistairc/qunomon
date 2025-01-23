@@ -1,21 +1,22 @@
-# AIT Guid
+# Qunomon利用者マニュアル
 
 ## Description
 
-AITのガイドドキュメントです。  
-sphinxを利用して、markdownからhtmlを生成します。  
+AITのガイドドキュメントです。
+sphinxを用いてドキュメント作成を行っています。
+ドキュメントコンパイル手順に従うことで、利用者の環境でドキュメントを執筆・ビルドできます。
 
 ## Requirement
 
-* python 3.6.8
+* python 3.9.13
 
 ## Usage
 
-N/A
+ドキュメントの更新・別所でのホスティングなどに用いることができます。
+公式の最新版ドキュメントはWebページからも閲覧できます。
 
-## Install
-
-### for generate
+## ドキュメントビルド手順
+### ビルド実行
 
 * 仮想環境アクティベート
 
@@ -30,7 +31,7 @@ N/A
     sphinx-build -b html .\doc_jp .\doc_jp\_build
     ```
 
-### for dev
+### ビルド用環境の準備
 
 * (初回だけ)仮想環境を作成
 
