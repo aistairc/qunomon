@@ -1,5 +1,4 @@
 # Appendix
 
-01_preinstalled_AITs.md
-02_faq.md
-03_terminology.md
+01_faq.md
+02_terminology.md

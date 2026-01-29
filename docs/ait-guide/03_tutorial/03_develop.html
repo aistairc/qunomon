@@ -235,7 +235,7 @@ AIT development involves breaking down the AI evaluation program created during 
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The python code on this page is identical to <a class="reference external" href="https://github.com/aistairc/ait-template/blob/main/develop/my_ait.ipynb">https://github.com/aistairc/ait-template/blob/main/develop/my_ait.ipynb</a>.</p>
+<p>The python code on this page is identical to <a class="reference external" href="https://github.com/qunomon/ait-template/blob/main/develop/my_ait.ipynb">https://github.com/qunomon/ait-template/blob/main/develop/my_ait.ipynb</a>.</p>
 </div>
 <p>The table below is the structure of my_ait.ipynb.</p>
 <ul class="simple">
@@ -382,7 +382,7 @@ Please write the OSS name in the first argument and the version in the second ar
 </div>
 </li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">requirements_generator</span></code> is an instance of the <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code> class. For detailed information about <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code>, please see <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">requirements_generator</span></code> is an instance of the <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code> class. For detailed information about <code class="docutils literal notranslate"><span class="pre">AITRequirementsGenerator</span></code>, please see <a class="reference external" href="https://qunomon.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator">here</a>.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>The AIT SDK itself are automatically added to the requirements.txt. Don’t explicitly add them in this area.</p>
@@ -546,11 +546,11 @@ In this area, we automatically generates ait.manifest.json file and place them t
 <li><p>Example</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">is_ait_launch</span><span class="p">:</span>
 <span class="c1">## sample ##</span>
-    <span class="kn">from</span> <span class="nn">ait_sdk.common.files.ait_manifest_generator</span> <span class="kn">import</span> <span class="n">AITManifestGenerator</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ait_sdk.common.files.ait_manifest_generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">AITManifestGenerator</span>
     <span class="n">manifest_genenerator</span> <span class="o">=</span> <span class="n">AITManifestGenerator</span><span class="p">(</span><span class="n">current_dir</span><span class="p">)</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_name</span><span class="p">(</span><span class="s1">&#39;dev_ait_template_for_aithub&#39;</span><span class="p">)</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_description</span><span class="p">(</span><span class="s1">&#39;アヤメの分類精度(sample)&#39;</span><span class="p">)</span>
-    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_source_repository</span><span class="p">(</span><span class="s1">&#39;https://github.com/aistairc/ait-template&#39;</span><span class="p">)</span>
+    <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_source_repository</span><span class="p">(</span><span class="s1">&#39;https://github.com/qunomon/ait-template&#39;</span><span class="p">)</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">set_ait_version</span><span class="p">(</span><span class="s1">&#39;0.1&#39;</span><span class="p">)</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_licenses</span><span class="p">(</span><span class="s1">&#39;Apache License Version 2.0&#39;</span><span class="p">)</span>
     <span class="n">manifest_genenerator</span><span class="o">.</span><span class="n">add_ait_keywords</span><span class="p">(</span><span class="s1">&#39;Template&#39;</span><span class="p">)</span>
@@ -580,7 +580,7 @@ In this area, we automatically generates ait.manifest.json file and place them t
 </li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> can validate the format of attributes and check whether required attributes are set. So if there’re missing or wrong attributes in this area, execution of <code class="docutils literal notranslate"><span class="pre">my_ait.ipynb</span></code> may fail at that time.
-For detailed information about <code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> class, please see the document <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator">AIT_SDK_API Specification</a>.</p>
+For detailed information about <code class="docutils literal notranslate"><span class="pre">AITManifestGenerator</span></code> class, please see the document <a class="reference external" href="https://qunomon.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator">AIT_SDK_API Specification</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The defined AIT manifest is saved as ait.manifest.json.</p>
@@ -599,7 +599,7 @@ Because it depends on the characteristics and purpose of the AI evaluation progr
 </ul>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_ait_launch</span><span class="p">:</span>
     <span class="c1">## sample ##</span>
-        <span class="kn">from</span> <span class="nn">ait_sdk.common.files.ait_input_generator</span> <span class="kn">import</span> <span class="n">AITInputGenerator</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ait_sdk.common.files.ait_input_generator</span><span class="w"> </span><span class="kn">import</span> <span class="n">AITInputGenerator</span>
         <span class="n">input_generator</span> <span class="o">=</span> <span class="n">AITInputGenerator</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">)</span>
         <span class="n">input_generator</span><span class="o">.</span><span class="n">add_ait_inventories</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;iris_data&#39;</span><span class="p">,</span>
                                             <span class="n">value</span><span class="o">=</span><span class="s1">&#39;iris_data/tableconvert_csv_4nryby.csv&#39;</span><span class="p">)</span>
@@ -608,7 +608,7 @@ Because it depends on the characteristics and purpose of the AI evaluation progr
         <span class="n">input_generator</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">AITInputGenerator</span></code>For details about the class, please see <a class="reference external" href="https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">AITInputGenerator</span></code>For details about the class, please see <a class="reference external" href="https://qunomon.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator">here</a>.</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> argument specified to the function is linked to the inventory parameter name in the AIT manifest generated in #5 Manifest Generation Area.</p>
 <ul>
@@ -657,7 +657,7 @@ So the function must return a value.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1">## sample ##</span>
 <span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
 <span class="nd">@measures</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">calc_mean</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_mean</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">iris_data</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -696,7 +696,7 @@ you must add following two annotations to your output function.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1">## sample ##</span>
 <span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
 <span class="nd">@resources</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="s1">&#39;pairplot&#39;</span><span class="p">,</span> <span class="s1">&#39;pairplot.png&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">save_pair_plot</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>    
+<span class="k">def</span><span class="w"> </span><span class="nf">save_pair_plot</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>    
     <span class="n">sn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;variety&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
 </pre></div>
@@ -734,7 +734,7 @@ you must add following two annotations to your output function.</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1">## sample ##</span>
 <span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
 <span class="nd">@downloads</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="s1">&#39;Log&#39;</span><span class="p">,</span> <span class="s1">&#39;ait.log&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">move_log</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">move_log</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">get_log_path</span><span class="p">(),</span> <span class="n">file_path</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -768,7 +768,7 @@ This area has some rules to follow.</p>
 <li><p>Example of the main algorithms area</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="nd">@log</span><span class="p">(</span><span class="n">logger</span><span class="p">)</span>
 <span class="nd">@ait_main</span><span class="p">(</span><span class="n">ait_output</span><span class="p">,</span> <span class="n">path_helper</span><span class="p">,</span> <span class="n">is_ait_launch</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">pass</span>
 <span class="c1">## sample ##</span>
     <span class="c1"># インベントリを読み込み</span>

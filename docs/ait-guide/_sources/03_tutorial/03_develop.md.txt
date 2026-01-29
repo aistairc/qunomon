@@ -25,7 +25,7 @@ AIT development involves breaking down the AI evaluation program created during 
 ```tip:: Some of the areas and cell are devided for understandability reason. So even if the number of cells or contents of the cell are not completely conforming to the definition of areas, they may work as expected.
 ```
 
-```tip:: The python code on this page is identical to https://github.com/aistairc/ait-template/blob/main/develop/my_ait.ipynb.
+```tip:: The python code on this page is identical to https://github.com/qunomon/ait-template/blob/main/develop/my_ait.ipynb.
 ```
 
 The table below is the structure of my_ait.ipynb.
@@ -70,7 +70,7 @@ Please write the OSS name in the first argument and the version in the second ar
         requirements_generator.add_package('numpy','1.26.4')
     ```
 
-`requirements_generator` is an instance of the `AITRequirementsGenerator` class. For detailed information about `AITRequirementsGenerator`, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator).
+`requirements_generator` is an instance of the `AITRequirementsGenerator` class. For detailed information about `AITRequirementsGenerator`, please see [here](https://qunomon.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_requirements_generator).
 
 ``` important:: The AIT SDK itself are automatically added to the requirements.txt. Don't explicitly add them in this area.
 ```
@@ -116,7 +116,7 @@ In this area, we automatically generates ait.manifest.json file and place them t
         manifest_genenerator = AITManifestGenerator(current_dir)
         manifest_genenerator.set_ait_name('dev_ait_template_for_aithub')
         manifest_genenerator.set_ait_description('アヤメの分類精度(sample)')
-        manifest_genenerator.set_ait_source_repository('https://github.com/aistairc/ait-template')
+        manifest_genenerator.set_ait_source_repository('https://github.com/qunomon/ait-template')
         manifest_genenerator.set_ait_version('0.1')
         manifest_genenerator.add_ait_licenses('Apache License Version 2.0')
         manifest_genenerator.add_ait_keywords('Template')
@@ -144,7 +144,7 @@ In this area, we automatically generates ait.manifest.json file and place them t
     ```
 
 `AITManifestGenerator` can validate the format of attributes and check whether required attributes are set. So if there're missing or wrong attributes in this area, execution of `my_ait.ipynb` may fail at that time.
-For detailed information about `AITManifestGenerator` class, please see the document [AIT_SDK_API Specification](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator).
+For detailed information about `AITManifestGenerator` class, please see the document [AIT_SDK_API Specification](https://qunomon.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_manifest_generator).
 
 ``` tip:: The defined AIT manifest is saved as ait.manifest.json.
 ```
@@ -169,7 +169,7 @@ Define the input data (data to be evaluated by the AIT) and parameters (settings
         input_generator.write()
 ```
 
-`AITInputGenerator`For details about the class, please see [here](https://aistairc.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator).
+`AITInputGenerator`For details about the class, please see [here](https://qunomon.github.io/qunomon/ait-sdk/ait_sdk.common.files.html#module-ait_sdk.common.files.ait_input_generator).
 * The `name` argument specified to the function is linked to the inventory parameter name in the AIT manifest generated in #5 Manifest Generation Area.
   * The `name` argument of the `add_ait_inventories` function should be the same as the `inventories/name` attribute in the AIT manifest.
   * The `name` argument of the `set_ait_params` function should be the same as the `parameters/name` attribute in the AIT manifest.
