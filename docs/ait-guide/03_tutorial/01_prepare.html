@@ -92,6 +92,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#how-to-proceed-in-this-tutorial">3.1.2. How to proceed in this tutorial</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#set-up-ait-templates-using-ait-cli">3.1.3. Set up AIT templates using ait-cli</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#recommended-naming-convention-of-ait">3.1.3.1. Recommended naming convention of AIT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-repository-on-github">3.1.3.2. Create a repository on Github</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#fork-the-ait-template">3.1.4. Fork the AIT template</a></li>
@@ -319,10 +320,18 @@ sample.sh<span class="w">  </span>
 </li>
 </ul>
 </div>
+<div class="section" id="create-a-repository-on-github">
+<h3><span class="section-number">3.1.3.2. </span>Create a repository on Github<a class="headerlink" href="#create-a-repository-on-github" title="Permalink to this headline">¶</a></h3>
+<p>Log in to GitHub and create a repository by clicking the “New” button in the “Repositories” menu.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When registering on AIT-HUB, please set the visibility of your GITHUB repository to public.</p>
+</div>
+</div>
 </div>
 <div class="section" id="fork-the-ait-template">
 <h2><span class="section-number">3.1.4. </span>Fork the AIT template<a class="headerlink" href="#fork-the-ait-template" title="Permalink to this headline">¶</a></h2>
-<p>AIT template is available on <code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/ait-template</span></code>.
+<p>AIT template is available on <code class="docutils literal notranslate"><span class="pre">https://github.com/qunomon/ait-template</span></code>.
 Please fork this repository for your own AIT development.
 <img alt="Alt template fork" src="../_images/03_ait_fork.png" /></p>
 <div class="admonition important">
@@ -419,6 +428,19 @@ After launching them, they are provided as web application on the localhost. You
 </pre></div>
 </div>
 </li>
+<li><p>ait-cli command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>YourAITname<span class="o">}</span>
+ait-cli<span class="w"> </span>prepare<span class="w">  </span><span class="o">(</span>Execution<span class="w"> </span>is<span class="w"> </span>optional.<span class="o">)</span><span class="w">  　  </span>
+ait-cli<span class="w"> </span>jupyter
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Executing prepare is optional. The interactive interface sets the basic information of AIT in my_ait.ipynb. You can also manually enter it later.</p>
+</div>
+<ul>
 <li><p>Launcher</p>
 <ul>
 <li><p>Windows:</p>

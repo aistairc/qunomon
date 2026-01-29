@@ -1,5 +1,5 @@
 # Installation
-Installation can be done with fork ait-template(`https://github.com/aistairc/ait-template`) from GitHub and clone them to any local directory.
+Installation can be done with fork ait-template(`https://github.com/qunomon/ait-template`) from GitHub and clone them to any local directory.
 
   * Git must be installed before perform this.
 

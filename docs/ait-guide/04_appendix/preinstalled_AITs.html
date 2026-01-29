@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4.2. FAQ &mdash; AIT Guide 0.1.0 documentation</title>
+  <title>Pre-installed AITs &mdash; AIT Guide 0.1.0 documentation</title>
   
 
   
@@ -36,9 +36,7 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.3. Terminology" href="03_terminology.html" />
-    <link rel="prev" title="4.1. Pre-installed AITs" href="01_preinstalled_AITs.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,16 +81,11 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../01_introduction/index.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_get_started/index.html">2. Prerequisites and installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../03_tutorial/index.html">3. Tutorial</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. Appendix</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01_preinstalled_AITs.html">4.1. Pre-installed AITs</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. FAQ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_terminology.html">4.3. Terminology</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">4. Appendix</a></li>
 </ul>
 
             
@@ -139,15 +132,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">4. </span>Appendix</a> &raquo;</li>
-        
-      <li><span class="section-number">4.2. </span>FAQ</li>
+      <li>Pre-installed AITs</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/04_appendix/02_faq.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/04_appendix/preinstalled_AITs.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,11 +175,23 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="faq">
-<h1><span class="section-number">4.2. </span>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
-<p>In this section, we answer the frequentry asked questions.</p>
+<div class="section" id="pre-installed-aits">
+<h1>Pre-installed AITs<a class="headerlink" href="#pre-installed-aits" title="Permalink to this headline">¶</a></h1>
+<p>Qunomon includes pre-installed AITs that are ready to use. While the quality metrics that can be measured with AITs are not limited to these, reviewing their configurations and implementations may serve as a reference for developing new AITs.
+The repository is located at <code class="docutils literal notranslate"><span class="pre">https://github.com/aistairc/{name_of_AIT}</span></code>. Please refer to Section 2. Operating Conditions and Installation for details on downloading methods and directory structure.</p>
 <ul class="simple">
-<li><p>Currently no FAQs are listed here.</p></li>
+<li><p>alyz_dataset_table_counts_comb_two_attr</p>
+<ul>
+<li><p>Specifies unnecessary (impossible) attribute value combinations in tabular data, and calculates the count and proportion of these unwanted data present in the table.</p></li>
+<li><p>AIT users can use this summary information to understand the unhealthiness of attribute values based on their occurrence trends.</p></li>
+</ul>
+</li>
+<li><p>eval_dataset_image_diversity_vae</p>
+<ul>
+<li><p>Calculates the feature metrics of evaluation image data using a VAE model trained on features of training image data.</p></li>
+<li><p>The closer these feature differences are to zero, the more comprehensively the evaluation image data is considered to encompass the features of the training data.</p></li>
+</ul>
+</li>
 </ul>
 </div>
 
@@ -197,15 +200,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="03_terminology.html" class="btn btn-neutral float-right" title="4.3. Terminology" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="01_preinstalled_AITs.html" class="btn btn-neutral float-left" title="4.1. Pre-installed AITs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

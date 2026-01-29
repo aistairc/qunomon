@@ -9,49 +9,102 @@ Users can directly utilize these in Qunomon, modify the code to develop new AITs
 ``` note:: For details on the AIT, please check develop/my_ait.ipynb.
 ```
 
+## Repository
+
+The published AIT exists as a branch in the following repository.
+
+[https://github.com/qunomon/Qunomon_AIT_Repository](https://github.com/qunomon/Qunomon_AIT_Repository)
+
+Switch from the main branch to the branch you want to use.
+
+## List of branch
+
+* alyz_dataset_set_difference_combinatorial_coverage
+  * It measures the Set Difference Combinatorial Coverage (SDCC) between the training data and the test data based on a combination of the attributes (categories) of the objects in the images and the attributes of the image labels (e.g., weather and time of day).
+
+* alyz_dataset_surprise_coverage
+  * Evaluate the diversity of the dataset by measuring how well the model covers inputs that are unexpected compared to the test data.
+  * Evaluating the diversity of the dataset from two perspectives, distribution-based evaluation and spatial distance-based evaluation, allows for a more robust evaluation.
+
 * alyz_dataset_table_counts_attr_coverage
   * Focuses on the number of records for attribute combinations within the data to assess for rare cases or imbalanced trends.
-  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_attr_coverage)
+
 * alyz_dataset_table_counts_comb_all_attr
   * Calculate the counts of attribute values and the percentage of occurrences by the combination of attributes in the table data.
   * Based on this summary information, the distribution trend of the frequency of occurrence of the table data can be inferred.
-  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_comb_all_attr)
+
 * alyz_dataset_table_counts_comb_two_attr
   * Specifies unnecessary (improbable) attribute value combinations in table data and calculates how much of this unwanted data is contained, along with the count and proportion of attribute values.
   * AIT users can use this summary information to understand the unhealthy trends of attribute values based on their occurrences.
-  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_comb_two_attr)
+
 * alyz_dataset_table_counts_inde_attr_by_chi2
   * For assessing data validity, calculates the independence of labels and each attribute in a CSV dataset using the chi-squared statistic.
-  * [link](https://github.com/aistairc/Qunomon_AIT_alyz_dataset_table_counts_inde_attr_by_chi2)
+
+* alyz_dataset_topcoverage_auc
+  * Considering the areas with high data density in the data distribution of the dataset, let S be the area of ​​the top p% of the area. The uniformity of the data is determined by checking the change in area S when the value of p is changed from 0 to 1.
+  * For table datasets, the distribution of the specified column is used, and uniformity is measured by grouping by the specified column.
+  * For image datasets, the distribution of the object's area ratio, average brightness, and the distance from the origin of the object's center coordinates is used.
+
 * eval_correctness_image_classifier_pytorch
   * Splits a dataset randomly and calculates the accuracy of the model for each split dataset.
   * Low variance in accuracy suggests that the model has acquired a generalizable performance across the dataset.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_correctness_image_classifier_pytorch)
-* eval_dataset_image_diversity_vae
-  * Uses a VAE model, trained on features of training image data, to calculate the feature values of evaluation training data.
-  * Smaller difference in feature values indicates that the evaluation image data comprehensively covers the features of the training data.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_dataset_image_diversity_vae)
+
 * eval_dataset_image_3features_kld
   * Inputs two groups of image data and calculates the KLD (KL Divergence, KL information) for the distribution of brightness, contrast, and exposure between them.
   * KLD close to zero indicates that the two image groups replicate the same features.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_dataset_image_3features_kld)
+
+* eval_dataset_image_diversity_vae
+  * Uses a VAE model, trained on features of training image data, to calculate the feature values of evaluation training data.
+  * Smaller difference in feature values indicates that the evaluation image data comprehensively covers the features of the training data.
+
+* eval_llm_bleu_score
+  * Using MLFlow, we use the LLM model to answer questions in the problem domain and evaluate the quality of the generated text.
+  * Using the LLM evaluation metric, we calculate the BLEU score of the answer text to quantify the quality of the text.
+
+* eval_llm_cider_score
+  * Answer questions from the problem domain using the LLM model and evaluate the quality of the generated text.
+  * Use the LLM evaluation criteria to calculate a CIDEr score for the answer text and quantify the quality of the text.
+
+* eval_llm_meteor_score
+  * Run a translation task using the LLM model and evaluate the quality of the generated translation text using a METEOR score.
+  * This score is used to quantify the quality of the translation and measure model performance.
+
+* eval_llm_perplexity_score
+  * Answer questions from the problem domain using the LLM model and evaluate the quality of the generated text.
+  * Use the LLM evaluation criteria to calculate a perplexity score for the answer text and quantify the quality of the text.
+
+* eval_llm_rouge_score
+  * Using MLFlow, we generate resumes for text using the LLM model and evaluate the quality of the generated text.
+  * Using the LLM evaluation criteria, we calculate the ROUGE score for the text and quantify the quality of the text.
+
+* eval_map_yolo_torch
+  * Calculate the mean average precision (mAP) of the test data from the inference results of the Pytorch object detection model and evaluate the accuracy.
+
+* eval_model_adversarial_robustness
+  * For deep learning models, perturbations are added to the input data, adversarial data is generated under distance measure constraints, and the strength of the perturbations and the change in predictive performance are evaluated to measure robustness.
+
 * eval_model_image_classify_acc_adversarial_example
   * Generates adversarial sample images from input images and calculates accuracy information (Accuracy, Precision, Recall, F-value, AUC) for the input model (an image classification model trained on input images).
   * These accuracy metrics allow the evaluation of the accuracy and stability of machine learning models.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_model_image_classify_acc_adversarial_example)
+
 * eval_model_peformance_pytorch
   * Given a dataset and a PyTorch classification model, evaluates the inference accuracy of the model from the dataset's inference results.
   * Calculates accuracy, AP (average precision), and balanced accuracy for inferences on the dataset, assessing the model's inference precision.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_model_peformance_pytorch)
+
+* eval_model_regression_rmse_and_mae
+  * Calculate the RMSE (Root Mean Square Error) and MAE (Mean Absolute Error) of a multiple regression analysis model constructed with multiple explanatory variables and one target variable.
+
+* eval_model_yolo_detect_robustness
+  * We apply adversarial perturbations to the YOLO object detection model under the L∞/L2 constraints and measure and evaluate their impact.
+  * We calculate the rate of decline in model accuracy (mAP) and the rate of increase in false negatives (FNR) due to adversarial attacks for each perturbation amount, and visualize the progress to reveal the model's vulnerability to attacks.
+
 * eval_noise_score_aquavs
   * To evaluate the stability of the model, we will validate with labels that have added noise.
   * Using the latent representations from the SVAE, we will measure the "noise score" of each sample in the input dataset to detect anomalies.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_noise_score_aquavs)
+
+* eval_processcheck_problem_domain_analysis
+  * A checklist method is used to examine whether the dataset used for the machine learning system satisfies the sufficiency of problem domain analysis.
+
 * eval_surprise_adequacy
   * We are calculating the Surprise Adequacy (SA) of the input VAE model.
   * SA evaluates the activation traces of each neuron for each sample in the input data.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_surprise_adequacy)
-* eval_processcheck_problem_domain_analysis
-  * A checklist method is used to examine whether the dataset used for the machine learning system satisfies the sufficiency of problem domain analysis.
-  * The checklist [checklist.csv] can be downloaded from the link below.
-  * [link](https://github.com/aistairc/Qunomon_AIT_eval_processcheck_problem_domain_analysis)

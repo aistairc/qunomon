@@ -6,7 +6,7 @@ Prepare an AIT (as zip file) and input-data for integration test.
 
 ## Running integration test
 The integration test is performed in the following procedure.
-Refer to [Qunomon User's Guide](https://aistairc.github.io/qunomon/user-manual/index.html) for details on Qunomon installation and operation.
+Refer to [Qunomon User's Guide](https://qunomon.github.io/qunomon/user-manual/index.html) for details on Qunomon installation and operation.
 
 1. install AIT to Qunomon  
    Install the created AIT to Qunomon
@@ -30,8 +30,8 @@ Check the logs below to identify the cause of the problem.
 
 | No | Log Type  | Cause Pattern | Acquisition Method |
 | --- | :--- | :--- | :--- |
-| 1 | ait.log| AIT | [Download from the details screen of TestDescription](https://aistairc.github.io/qunomon/user-manual/03_Execution/03_Execution.html#testdescriptions-details-display) |
-| 2 | Airflow log | AIT, Qunomon | [Acquisition method of airflow log](https://aistairc.github.io/qunomon/user-manual/03_Execution/03_Execution.html#run-testdescriptions) |
+| 1 | ait.log| AIT | [Download from the details screen of TestDescription](https://qunomon.github.io/qunomon/user-manual/03_Execution/03_Execution.html#testdescriptions-details-display) |
+| 2 | Airflow log | AIT, Qunomon | [Acquisition method of airflow log](https://qunomon.github.io/qunomon/user-manual/03_Execution/03_Execution.html#run-testdescriptions) |
 
 ``` tip:: If a problem occurs during integration test, the cause may be an error in the usage of Qunomon or in the environment definition of AIT.
   Check the following points.

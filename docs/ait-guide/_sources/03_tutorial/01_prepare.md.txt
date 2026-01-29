@@ -69,8 +69,14 @@ The recommended naming convention of AIT are as follows.
   * The name must be 50 characters or less.
   * The available characters are half-width alphanumeric characters and underscore `_`.  
 
+### Create a repository on Github
+Log in to GitHub and create a repository by clicking the "New" button in the "Repositories" menu.
+
+``` important:: When registering on AIT-HUB, please set the visibility of your GITHUB repository to public. 
+```
+
 ## Fork the AIT template
-AIT template is available on `https://github.com/aistairc/ait-template`.
+AIT template is available on `https://github.com/qunomon/ait-template`.
 Please fork this repository for your own AIT development.
 ![Alt template fork](01/03_ait_fork.png)
 
@@ -124,6 +130,15 @@ After launching them, they are provided as web application on the localhost. You
     ```
     docker rmi {ImageId of docker_jupyter}
     ```
+* ait-cli command
+  ```sh
+  cd {YourAITname}
+  ait-cli prepare  (Execution is optional.)  　  
+  ait-cli jupyter
+  ```
+
+``` note:: Executing prepare is optional. The interactive interface sets the basic information of AIT in my_ait.ipynb. You can also manually enter it later.
+``` 
 
 * Launcher
   * Windows:
